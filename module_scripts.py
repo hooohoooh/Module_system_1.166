@@ -1186,7 +1186,7 @@ scripts = [
       (call_script, "script_give_center_to_faction_aux", "p_town_10", "fac_kingdom_1"),
       (call_script, "script_give_center_to_faction_aux", "p_town_11", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_town_12", "fac_kingdom_18"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_13", "fac_kingdom_13"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_13", "fac_kingdom_23"),
       (call_script, "script_give_center_to_faction_aux", "p_town_14", "fac_kingdom_19"),
       (call_script, "script_give_center_to_faction_aux", "p_town_15", "fac_kingdom_2"),
       (call_script, "script_give_center_to_faction_aux", "p_town_16", "fac_kingdom_1"),
