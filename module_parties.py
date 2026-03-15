@@ -39,7 +39,6 @@ pf_village = pf_is_static|pf_always_visible|pf_hide_defenders|pf_label_small
 # Maine: Le Mans
 # Anjou: Angers
 
-
 parties = [
   ("main_party","Main Party",icon_player|pf_limit_members, no_menu, pt_none,fac_player_faction,0,ai_bhvr_hold,0,(110, -130),[(trp_player,1,0),(trp_hired_gunner,1,0)]),
   ("temp_party","{!}temp_party",pf_disabled, no_menu, pt_none, fac_commoners,0,ai_bhvr_hold,0,(120,-120),[]),
@@ -71,9 +70,7 @@ parties = [
 
 #  ("village_reinforcements","village_reinforcements",pf_is_static|pf_disabled, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(1,1),[]),
 
-###############################################################  
   ("zendar","Zendar",pf_disabled|icon_town|pf_is_static|pf_always_visible|pf_hide_defenders, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(209,242),[]),
-
   ("town_1", "town_1", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(116, -134.5),[],195),
   ("town_2", "town_2", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(152, -98),[],90),
   ("town_3", "town_3", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(169.0, 173.0),[],120),
@@ -96,8 +93,6 @@ parties = [
   ("town_20", "town_20", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-337.6, -338),[],225),
   ("town_21", "town_21", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-369, -279),[],270),
   ("town_22", "town_22", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-227.5, -230.9),[],240),
-  
-  #gekokujo new town ids
   ("town_23", "town_23", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(89, -157),[],225),
   ("town_24", "town_24", icon_town_steppe|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-79.5, -187.4),[],120),
   ("town_25", "town_25", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(24, -179),[],120),
@@ -107,8 +102,6 @@ parties = [
   ("town_29", "town_29", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-276.5, -260.5),[],270),
   ("town_30", "town_30", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-336.2, -276.6),[],150),
   ("town_31", "town_31", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-192, -240),[],135),
-  
-  #gekokujo new towns, 2nd addition
   ("town_32", "town_32", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-161.7, -138.4),[],255),
   ("town_33", "town_33", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-276.5, -290.5),[],255),
   ("town_34", "town_34", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(34.0, -174.0),[],255),
@@ -118,10 +111,6 @@ parties = [
   ("town_38", "town_38", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-115.6, -186.1),[],255),
   ("town_39", "town_39", icon_town|pf_town, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(110.0, -149.2),[],255),
   
-
-  
-#   Aztaq_Castle       
-#  Malabadi_Castle
   ("castle_1", "castle_1", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(98, -104.8),[],330),
   ("castle_2", "castle_2", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(130, -77.8),[],285),
   ("castle_3", "castle_3", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(78.9, -99.3),[],105),
@@ -170,8 +159,6 @@ parties = [
   ("castle_46", "castle_46", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-245.8, -245.6),[],60),
   ("castle_47", "castle_47", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-155.0, -173.5),[],180),
   ("castle_48", "castle_48", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-166.9, -200),[],315),
-  
-  #gekokujo new castle ids
   ("castle_49", "castle_49", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(94.3, -120),[],120),
   ("castle_50", "castle_50", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(135.2, -132.2),[],90),
   ("castle_51", "castle_51", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-123, -186),[],225),
@@ -192,18 +179,13 @@ parties = [
   ("castle_66", "castle_66", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-295.8, -241.8),[],240),
   ("castle_67", "castle_67", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-75.7, -180.4),[],60),
   ("castle_68", "castle_68", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-176.3, -200.1),[],180),
-  
-  #gekokujo new castles, 2nd addition
   ("castle_69", "castle_69", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(30.5, -101.9),[],30),
   ("castle_70", "castle_70", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(46, -85),[],240),
   ("castle_71", "castle_71", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(134.0, -72.0),[],60),
   ("castle_72", "castle_72", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-39.0, -169.0),[],180),
-  
-  #gekokujo new castles, 3rd addition
   ("castle_73", "castle_73", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(138.0, 159.0),[],180),
   ("castle_74", "castle_74", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-98.5, -188),[],60),
   ("castle_75", "castle_75", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-19.0, -177.0),[],30),
-  
   ("castle_76", "castle_76", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-355.5, -239.0),[],180),
   ("castle_77", "castle_77", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-265.3, -262.2),[],60),
   ("castle_78", "castle_78", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-291.3, -275.2),[],30),
@@ -211,9 +193,7 @@ parties = [
   ("castle_80", "castle_80", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-112.5, -203.9),[],60),
   ("castle_81", "castle_81", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(85.0, -25.0),[],30),
   ("castle_82", "castle_82", icon_castle_a|pf_castle, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(41.0, -170.0),[],30),
-#     Rinimad      
-#              Rietal Derchios Gerdus
-# Tuavus   Pamir   vezona 
+
   ("village_1","Atsugi", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(88, -142),[],345),
   ("village_2","Ichikawa", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(122.1, -131.3),[],120),
   ("village_3","Oizumi", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(111, -126),[],315),
@@ -253,8 +233,6 @@ parties = [
   ("village_37","Kuwana", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-36, -166),[],255),
   ("village_38","Chita", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-23, -169.2),[],165),
   ("village_39","Arako", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-31, -163),[],150),
-  #gekokujo 3.0 make kasugayama larger and richer than niigata
-  #("village_40","Uchino", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(61.0, -59.0),[],135),
   ("village_40","Yoita", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(61, -59),[],135),
   ("village_41","Tsubame", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(69, -40.3),[],195),
   ("village_42","Agano", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(89.3, -24.3),[],300),
@@ -279,7 +257,6 @@ parties = [
   ("village_61","Setouchi", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-155, -182.5),[],165),
   ("village_62","Kasaoka", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-181.3, -191.7),[],195),
   ("village_63","Gassantoda", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-213.1, -153.4),[],60),
-  #("village_64","Tottori", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(64.0, -163.0),[],255),
   ("village_64","Yoshiwara", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(64, -163),[],255),
   ("village_65","Hamada", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-260.4, -174.3),[],105),
   ("village_66","Hagi", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-291.2, -194.9),[],120),
@@ -292,8 +269,6 @@ parties = [
   ("village_73","Fukushima", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(156, -25),[],300),
   ("village_74","Nagai", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(120, -12),[],15),
   ("village_75","Nanyo", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(140, -8),[],90),
-  #gekokujo 3.0 make yonezawa poorer, kofu richer
-  #("village_76","Kaminoyama", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(65.5, -135.0),[],135),
   ("village_76","Tsuru", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(65.5, -135),[],135),
   ("village_77","Katagami", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(128, 76),[],30),
   ("village_78","Noshiro", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(131, 96),[],165),
@@ -329,8 +304,6 @@ parties = [
   ("village_108","Nakamura", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-247.8, -247.6),[],135),
   ("village_109","Anan", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-137, -227),[],105),
   ("village_110","Takamatsu", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-161.7, -202),[],0),
-  
-  #gekokujo new village ids
   ("village_111","Kawaguchi", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(117, -120),[],330),
   ("village_112","Bubaigawara", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(103, -134),[],270),
   ("village_113","Ikoma", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-85, -189),[],165),
@@ -345,7 +318,6 @@ parties = [
   ("village_122","Hofu", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-285, -217),[],60),
   ("village_123","Tokuyama", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-273, -222),[],75),
   ("village_124","Mihonoseki", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-208, -136.3),[],45),
-  #("village_125","Kurayoshi", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-204.0, -143.0),[],225),
   ("village_125","Yonago", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-204, -143),[],225),
   ("village_126","Unnan", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-228, -155),[],105),
   ("village_127","Usuki", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-269, -257),[],360),
@@ -377,44 +349,33 @@ parties = [
   ("village_153","Nakatsu", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-293, -241),[],165),
   ("village_154","Muroto", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-80.0, -180.0),[],315),
   ("village_155","Kawanoe", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-179.0, -201.8),[],315),
-  
-  #gekokujo new village, 2nd addition
   ("village_156","Mikata", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-145, -137),[],315),
   ("village_157","Kurayoshi", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-180, -142),[],165),
   ("village_158","Otari", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(30, -92),[],105),
   ("village_159","Iiyama", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(50, -80),[],300),
   ("village_160","Iwakura", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-165, -221),[],180),
   ("village_161","Nagashima", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-40, -167),[],150),
-  
-  #gekokujo new villages, 3rd addition
   ("village_162","Usukeshi", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(166, 174),[],150),
   ("village_163","Osaka", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-102.5, -189.5),[],150),
   ("village_164","Azukikaza", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-5, -165),[],150),
-  
   ("village_165","Kuyu", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-271.9, -275.5),[],150),
   ("village_166","Nakai", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-274.5, -266.5),[],150),
   ("village_167","Moroka", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-282.5, -281.5),[],150),
-  
   ("village_168","Oki", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-279.5, -294.5),[],150),
   ("village_169","Kusu", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-297.5, -279.5),[],150),
   ("village_170","Omo", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-282.5, -286.5),[],150),
-  
   ("village_171","Tamba", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-89.5, -158.5),[],150),
   ("village_172","Kawachi", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-90.5, -199.5),[],150),
   ("village_173","Noda", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(4.5, -167.5),[],150),
-  
   ("village_174","Yama", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(38.5, -171.5),[],150),
   ("village_175","Fuchi", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(34.5, -164.5),[],150),
   ("village_176","Nukata", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(30.5, -167.5),[],150),
-  
   ("village_177","Koyamagun", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(39.5, -156.5),[],150),
   ("village_178","Kinoidani", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-326.5, -231.5),[],150),
   ("village_179","Sohara", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-25.5, -137.5),[],150),
-  
   ("village_180","Unuma", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-24.5, -140.5),[],150),
   ("village_181","Ena", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-31.5, -145.5),[],150),
   ("village_182","Naegi", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-9.3, -140.9),[],150),
-  
   ("village_183","Ogaki", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-55.0, -158.9),[],150),
   ("village_184","Narumi", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-12.0, -158.9),[],150),
   ("village_185","Gochaku", icon_village_a|pf_village, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-123.0, -176.0),[],150),
