@@ -1132,172 +1132,165 @@ scripts = [
       (troop_set_slot, "trp_knight_5_11", slot_troop_banner_scene_prop, "spr_banner_g10"), #komai masatake gets takeda red
       (troop_set_slot, "trp_knight_6_2", slot_troop_banner_scene_prop, "spr_banner_f"), #honda tadakatsu gets his 'hon' rather than aoi banner
       (troop_set_slot, "trp_knight_6_6", slot_troop_banner_scene_prop, "spr_banner_ba"), #ii naomasa gets his irl banner
-	  (troop_set_slot, "trp_knight_6_7", slot_troop_banner_scene_prop, "spr_banner_i04"), #torii mototada gets his irl banner
+	    (troop_set_slot, "trp_knight_6_7", slot_troop_banner_scene_prop, "spr_banner_i04"), #torii mototada gets his irl banner
       (troop_set_slot, "trp_knight_9_8", slot_troop_banner_scene_prop, "spr_banner_o"), #ito yoshisuke gets his irl banner
       (troop_set_slot, "trp_knight_11_3", slot_troop_banner_scene_prop, "spr_banner_i"), #ishida masatsugu gets his irl banner
-	  (troop_set_slot, "trp_knight_19_6", slot_troop_banner_scene_prop, "spr_banner_ci"), #urakami munekage gets his irl banner
+	    (troop_set_slot, "trp_knight_19_6", slot_troop_banner_scene_prop, "spr_banner_ci"), #urakami munekage gets his irl banner
       (troop_set_slot, "trp_kingdom_5_pretender", slot_troop_banner_scene_prop, "spr_banner_g13"), #takeda yoshinobu gets the head of takeda's irl mon
-	  (troop_set_slot, "trp_kingdom_6_pretender", slot_troop_banner_scene_prop, "spr_banner_g12"), #this fake jukeini gets the imagawa banner
+	    (troop_set_slot, "trp_kingdom_6_pretender", slot_troop_banner_scene_prop, "spr_banner_g12"), #this fake jukeini gets the imagawa banner
 
 	  #the following lords get their auto-assigned banners taken away in exchange with the lords and factions above
 	  #i could have just ordered the banners correctly, but i didn't. no take-backs. R.I.P.
-	  (troop_set_slot, "trp_knight_2_1", slot_troop_banner_scene_prop, "spr_banner_g"), #endo exchanges away his banner
-	  (troop_set_slot, "trp_knight_2_3", slot_troop_banner_scene_prop, "spr_banner_h"), #inawashiro exchanges away his banner
-	  (troop_set_slot, "trp_knight_2_4", slot_troop_banner_scene_prop, "spr_banner_j"), #oniniwa exchanges away his banner
-	  (troop_set_slot, "trp_knight_2_5", slot_troop_banner_scene_prop, "spr_banner_bb"), #kakeda exchanges away his banner
-	  (troop_set_slot, "trp_knight_3_1", slot_troop_banner_scene_prop, "spr_banner_bf"), #maeda exchanges away his banner
-	  (troop_set_slot, "trp_knight_4_5", slot_troop_banner_scene_prop, "spr_banner_bi"), #fukubara exchanges away his banner
-	  (troop_set_slot, "trp_knight_4_7", slot_troop_banner_scene_prop, "spr_banner_br"), #kunishi exchanges away his banner
-	  (troop_set_slot, "trp_knight_5_3", slot_troop_banner_scene_prop, "spr_banner_bu"), #oyamada exchanges away his banner
-	  (troop_set_slot, "trp_knight_5_5", slot_troop_banner_scene_prop, "spr_banner_cb"), #obata exchanges away his banner
-	  (troop_set_slot, "trp_knight_5_10", slot_troop_banner_scene_prop, "spr_banner_cj"), #hara exchanges away his banner
-	  (troop_set_slot, "trp_knight_5_12", slot_troop_banner_scene_prop, "spr_banner_cn"), #aiki exchanges away his banner
-	  (troop_set_slot, "trp_knight_6_1", slot_troop_banner_scene_prop, "spr_banner_co"), #okudaira exchanges away his banner
-	  (troop_set_slot, "trp_knight_6_3", slot_troop_banner_scene_prop, "spr_banner_dq"), #hattori exchanges away his banner
-	  (troop_set_slot, "trp_knight_7_6", slot_troop_banner_scene_prop, "spr_banner_ee"), #atagi exchanges away his banner
-	  (troop_set_slot, "trp_knight_10_3", slot_troop_banner_scene_prop, "spr_banner_g19"), #ishikawa exchanges away his banner
-	  (troop_set_slot, "trp_knight_12_3", slot_troop_banner_scene_prop, "spr_banner_h10"), #yoshida exchanges away his banner
-	  (troop_set_slot, "trp_knight_14_1", slot_troop_banner_scene_prop, "spr_banner_h11"), #tateoka exchanges away his banner
-	  (troop_set_slot, "trp_knight_14_2", slot_troop_banner_scene_prop, "spr_banner_h12"), #buei exchanges away his banner
-	  (troop_set_slot, "trp_knight_16_6", slot_troop_banner_scene_prop, "spr_banner_h13"), #nabeshima exchanges away his banner
-	  (troop_set_slot, "trp_knight_17_1", slot_troop_banner_scene_prop, "spr_banner_h14"), #umezu exchanges away his banner
-	  (troop_set_slot, "trp_knight_17_2", slot_troop_banner_scene_prop, "spr_banner_h15"), #okamoto exchanges away his banner
-	  (troop_set_slot, "trp_knight_17_3", slot_troop_banner_scene_prop, "spr_banner_h16"), #kuruma exchanges away his banner
-	  (troop_set_slot, "trp_knight_17_4", slot_troop_banner_scene_prop, "spr_banner_h19"), #onuki exchanges away his banner
-	  (troop_set_slot, "trp_knight_17_5", slot_troop_banner_scene_prop, "spr_banner_h20"), #oba exchanges away his banner
-	  (troop_set_slot, "trp_knight_17_6", slot_troop_banner_scene_prop, "spr_banner_h21"), #wada exchanges away his banner
-	  (troop_set_slot, "trp_knight_18_1", slot_troop_banner_scene_prop, "spr_banner_i02"), #masaki exchanges away his banner
-	  (troop_set_slot, "trp_knight_18_2", slot_troop_banner_scene_prop, "spr_banner_i03"), #toki exchanges away his banner
-	  (troop_set_slot, "trp_knight_18_3", slot_troop_banner_scene_prop, "spr_banner_i05"), #mikogami exchanges away his banner
-	  (troop_set_slot, "trp_knight_18_4", slot_troop_banner_scene_prop, "spr_banner_i08"), #yuki exchanges away his banner
-	  (troop_set_slot, "trp_knight_18_5", slot_troop_banner_scene_prop, "spr_banner_i09"), #chiba exchanges away his banner
-	  (troop_set_slot, "trp_knight_18_6", slot_troop_banner_scene_prop, "spr_banner_i10"), #takagi exchanges away his banner  
+  	  (troop_set_slot, "trp_knight_2_1", slot_troop_banner_scene_prop, "spr_banner_g"), #endo exchanges away his banner
+  	  (troop_set_slot, "trp_knight_2_3", slot_troop_banner_scene_prop, "spr_banner_h"), #inawashiro exchanges away his banner
+  	  (troop_set_slot, "trp_knight_2_4", slot_troop_banner_scene_prop, "spr_banner_j"), #oniniwa exchanges away his banner
+  	  (troop_set_slot, "trp_knight_2_5", slot_troop_banner_scene_prop, "spr_banner_bb"), #kakeda exchanges away his banner
+  	  (troop_set_slot, "trp_knight_3_1", slot_troop_banner_scene_prop, "spr_banner_bf"), #maeda exchanges away his banner
+  	  (troop_set_slot, "trp_knight_4_5", slot_troop_banner_scene_prop, "spr_banner_bi"), #fukubara exchanges away his banner
+  	  (troop_set_slot, "trp_knight_4_7", slot_troop_banner_scene_prop, "spr_banner_br"), #kunishi exchanges away his banner
+  	  (troop_set_slot, "trp_knight_5_3", slot_troop_banner_scene_prop, "spr_banner_bu"), #oyamada exchanges away his banner
+  	  (troop_set_slot, "trp_knight_5_5", slot_troop_banner_scene_prop, "spr_banner_cb"), #obata exchanges away his banner
+  	  (troop_set_slot, "trp_knight_5_10", slot_troop_banner_scene_prop, "spr_banner_cj"), #hara exchanges away his banner
+  	  (troop_set_slot, "trp_knight_5_12", slot_troop_banner_scene_prop, "spr_banner_cn"), #aiki exchanges away his banner
+  	  (troop_set_slot, "trp_knight_6_1", slot_troop_banner_scene_prop, "spr_banner_co"), #okudaira exchanges away his banner
+  	  (troop_set_slot, "trp_knight_6_3", slot_troop_banner_scene_prop, "spr_banner_dq"), #hattori exchanges away his banner
+  	  (troop_set_slot, "trp_knight_7_6", slot_troop_banner_scene_prop, "spr_banner_ee"), #atagi exchanges away his banner
+  	  (troop_set_slot, "trp_knight_10_3", slot_troop_banner_scene_prop, "spr_banner_g19"), #ishikawa exchanges away his banner
+  	  (troop_set_slot, "trp_knight_12_3", slot_troop_banner_scene_prop, "spr_banner_h10"), #yoshida exchanges away his banner
+  	  (troop_set_slot, "trp_knight_14_1", slot_troop_banner_scene_prop, "spr_banner_h11"), #tateoka exchanges away his banner
+  	  (troop_set_slot, "trp_knight_14_2", slot_troop_banner_scene_prop, "spr_banner_h12"), #buei exchanges away his banner
+  	  (troop_set_slot, "trp_knight_16_6", slot_troop_banner_scene_prop, "spr_banner_h13"), #nabeshima exchanges away his banner
+  	  (troop_set_slot, "trp_knight_17_1", slot_troop_banner_scene_prop, "spr_banner_h14"), #umezu exchanges away his banner
+  	  (troop_set_slot, "trp_knight_17_2", slot_troop_banner_scene_prop, "spr_banner_h15"), #okamoto exchanges away his banner
+  	  (troop_set_slot, "trp_knight_17_3", slot_troop_banner_scene_prop, "spr_banner_h16"), #kuruma exchanges away his banner
+  	  (troop_set_slot, "trp_knight_17_4", slot_troop_banner_scene_prop, "spr_banner_h19"), #onuki exchanges away his banner
+  	  (troop_set_slot, "trp_knight_17_5", slot_troop_banner_scene_prop, "spr_banner_h20"), #oba exchanges away his banner
+  	  (troop_set_slot, "trp_knight_17_6", slot_troop_banner_scene_prop, "spr_banner_h21"), #wada exchanges away his banner
+  	  (troop_set_slot, "trp_knight_18_1", slot_troop_banner_scene_prop, "spr_banner_i02"), #masaki exchanges away his banner
+  	  (troop_set_slot, "trp_knight_18_2", slot_troop_banner_scene_prop, "spr_banner_i03"), #toki exchanges away his banner
+  	  (troop_set_slot, "trp_knight_18_3", slot_troop_banner_scene_prop, "spr_banner_i05"), #mikogami exchanges away his banner
+  	  (troop_set_slot, "trp_knight_18_4", slot_troop_banner_scene_prop, "spr_banner_i08"), #yuki exchanges away his banner
+  	  (troop_set_slot, "trp_knight_18_5", slot_troop_banner_scene_prop, "spr_banner_i09"), #chiba exchanges away his banner
+  	  (troop_set_slot, "trp_knight_18_6", slot_troop_banner_scene_prop, "spr_banner_i10"), #takagi exchanges away his banner  
 
 	  #Give centers to factions first, to ensure more equal distributions
       (call_script, "script_give_center_to_faction_aux", "p_town_1", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_town_2", "fac_kingdom_17"),
       (call_script, "script_give_center_to_faction_aux", "p_town_3", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_town_4", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_5", "fac_kingdom_7"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_6", "fac_kingdom_3"), 
+      (call_script, "script_give_center_to_faction_aux", "p_town_5", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_6", "fac_kingdom_3"),
       (call_script, "script_give_center_to_faction_aux", "p_town_7", "fac_kingdom_19"),
       (call_script, "script_give_center_to_faction_aux", "p_town_8", "fac_kingdom_20"),
       (call_script, "script_give_center_to_faction_aux", "p_town_9", "fac_kingdom_23"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_10", "fac_kingdom_1"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_11", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_12", "fac_kingdom_18"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_13", "fac_kingdom_23"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_10", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_11", "fac_kingdom_4"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_12", "fac_kingdom_16"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_13", "fac_kingdom_13"),
       (call_script, "script_give_center_to_faction_aux", "p_town_14", "fac_kingdom_19"),
       (call_script, "script_give_center_to_faction_aux", "p_town_15", "fac_kingdom_2"),
       (call_script, "script_give_center_to_faction_aux", "p_town_16", "fac_kingdom_1"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_17", "fac_kingdom_14"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_17", "fac_kingdom_26"),
       (call_script, "script_give_center_to_faction_aux", "p_town_18", "fac_kingdom_10"),
       (call_script, "script_give_center_to_faction_aux", "p_town_19", "fac_kingdom_9"),
       (call_script, "script_give_center_to_faction_aux", "p_town_20", "fac_kingdom_15"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_21", "fac_kingdom_16"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_22", "fac_kingdom_12"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_21", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_22", "fac_kingdom_22"),
       (call_script, "script_give_center_to_faction_aux", "p_town_23", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_24", "fac_kingdom_7"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_25", "fac_kingdom_23"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_26", "fac_kingdom_5"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_27", "fac_kingdom_4"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_28", "fac_kingdom_8"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_29", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_30", "fac_kingdom_21"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_31", "fac_kingdom_12"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_32", "fac_kingdom_8"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_33", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_34", "fac_kingdom_23"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_35", "fac_kingdom_23"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_36", "fac_kingdom_22"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_37", "fac_kingdom_7"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_38", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_town_39", "fac_kingdom_6"),
-	  
+      (call_script, "script_give_center_to_faction_aux", "p_town_24", "fac_kingdom_5"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_25", "fac_kingdom_21"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_26", "fac_kingdom_12"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_27", "fac_kingdom_8"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_28", "fac_kingdom_24"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_29", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_30", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_31", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_32", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_town_33", "fac_kingdom_27"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_1", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_2", "fac_kingdom_17"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_2", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_3", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_4", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_5", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_6", "fac_kingdom_22"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_7", "fac_kingdom_5"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_8", "fac_kingdom_7"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_9", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_10", "fac_kingdom_27"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_11", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_12", "fac_kingdom_3"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_13", "fac_kingdom_23"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_14", "fac_kingdom_20"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_15", "fac_kingdom_18"),
-	    (call_script, "script_give_center_to_faction_aux", "p_castle_16", "fac_kingdom_23"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_17", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_18", "fac_kingdom_25"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_19", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_20", "fac_kingdom_23"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_21", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_22", "fac_kingdom_23"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_23", "fac_kingdom_17"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_24", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_25", "fac_kingdom_4"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_26", "fac_kingdom_4"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_27", "fac_kingdom_13"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_28", "fac_kingdom_8"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_29", "fac_kingdom_4"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_30", "fac_kingdom_26"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_31", "fac_kingdom_26"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_32", "fac_kingdom_10"),
-	    (call_script, "script_give_center_to_faction_aux", "p_castle_33", "fac_kingdom_14"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_34", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_35", "fac_kingdom_25"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_36", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_37", "fac_kingdom_14"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_38", "fac_kingdom_16"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_39", "fac_kingdom_9"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_40", "fac_kingdom_20"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_41", "fac_kingdom_15"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_42", "fac_kingdom_21"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_43", "fac_kingdom_21"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_44", "fac_kingdom_9"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_45", "fac_kingdom_12"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_46", "fac_kingdom_12"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_47", "fac_kingdom_19"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_48", "fac_kingdom_22"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_49", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_50", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_51", "fac_kingdom_19"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_52", "fac_kingdom_8"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_53", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_54", "fac_kingdom_23"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_55", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_56", "fac_kingdom_23"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_5", "fac_kingdom_24"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_6", "fac_kingdom_27"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_7", "fac_kingdom_3"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_8", "fac_kingdom_2"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_9", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_10", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_11", "fac_kingdom_23"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_12", "fac_kingdom_20"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_13", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_14", "fac_kingdom_25"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_15", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_16", "fac_kingdom_27"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_17", "fac_kingdom_17"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_18", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_19", "fac_kingdom_4"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_20", "fac_kingdom_4"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_21", "fac_kingdom_13"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_22", "fac_kingdom_8"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_23", "fac_kingdom_4"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_24", "fac_kingdom_10"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_25", "fac_kingdom_14"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_26", "fac_kingdom_1"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_27", "fac_kingdom_25"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_28", "fac_kingdom_2"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_29", "fac_kingdom_26"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_30", "fac_kingdom_16"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_31", "fac_kingdom_4"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_32", "fac_kingdom_20"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_33", "fac_kingdom_15"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_34", "fac_kingdom_21"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_35", "fac_kingdom_21"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_36", "fac_kingdom_15"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_37", "fac_kingdom_12"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_38", "fac_kingdom_12"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_39", "fac_kingdom_19"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_40", "fac_kingdom_24"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_41", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_42", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_43", "fac_kingdom_19"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_44", "fac_kingdom_8"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_45", "fac_kingdom_23"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_46", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_47", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_48", "fac_kingdom_18"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_49", "fac_kingdom_19"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_50", "fac_kingdom_14"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_51", "fac_kingdom_1"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_52", "fac_kingdom_15"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_53", "fac_kingdom_9"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_54", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_55", "fac_kingdom_12"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_56", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_57", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_58", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_59", "fac_kingdom_18"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_60", "fac_kingdom_8"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_61", "fac_kingdom_19"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_62", "fac_kingdom_14"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_63", "fac_kingdom_17"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_64", "fac_kingdom_16"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_65", "fac_kingdom_15"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_66", "fac_kingdom_9"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_67", "fac_kingdom_7"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_68", "fac_kingdom_22"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_69", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_70", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_71", "fac_kingdom_17"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_72", "fac_kingdom_11"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_73", "fac_kingdom_24"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_74", "fac_kingdom_6"), 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_75", "fac_kingdom_23"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_76", "fac_kingdom_16"), 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_77", "fac_kingdom_6"), 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_78", "fac_kingdom_6"), 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_79", "fac_kingdom_6"), 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_80", "fac_kingdom_7"), 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_81", "fac_kingdom_1"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_82", "fac_kingdom_23"), 
+      (call_script, "script_give_center_to_faction_aux", "p_castle_59", "fac_kingdom_11"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_60", "fac_kingdom_10"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_61", "fac_kingdom_23"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_62", "fac_kingdom_9"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_63", "fac_kingdom_15"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_64", "fac_kingdom_21"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_65", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_66", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_67", "fac_kingdom_14"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_68", "fac_kingdom_16"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_69", "fac_kingdom_22"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_70", "fac_kingdom_8"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_71", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_72", "fac_kingdom_23"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_73", "fac_kingdom_23"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_74", "fac_kingdom_3"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_75", "fac_kingdom_27"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_76", "fac_kingdom_20"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_77", "fac_kingdom_5"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_78", "fac_kingdom_17"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_79", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_80", "fac_kingdom_2"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_81", "fac_kingdom_2"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_82", "fac_kingdom_25"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_83", "fac_kingdom_26"),
       
-
 	  #Now give towns to great lords
       
       #(call_script, "script_give_center_to_lord", "p_town_1", "trp_knight_13_4", 0), #edo to lord toyama
