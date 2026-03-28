@@ -17740,6 +17740,9 @@ presentations = [
             (is_between, ":cur_troop", soldiers_begin, mercenary_troops_end),
             (assign, ":troop_dest_faction", "fac_kingdoms_end"), # Mercenary
           (else_try),
+            (eq, ":troop_faction", "fac_kingdom_25"), 
+            (assign, ":troop_dest_faction", ":troop_faction"),
+          (else_try),
             (is_between, ":cur_troop", "trp_looter", bandits_end),
             (assign, ":troop_dest_faction", "fac_robber_knights"), # Outlaws
           (else_try),

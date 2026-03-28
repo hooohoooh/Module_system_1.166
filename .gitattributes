@@ -1,0 +1,7 @@
+# .gitattributes
+* text=auto eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.jpg binary
+*.jar binary
+*.zip binary
