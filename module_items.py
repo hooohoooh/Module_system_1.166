@@ -498,7 +498,7 @@ items = [
  ["gekokujo_okegawa_half_5", "Okegawa Hara-Ate Armor", [("gekokujo_okegawa_half_5",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 260 , weight(8)|abundance(150)|head_armor(0)|body_armor(20)|leg_armor(8)|difficulty(0) ,imodbits_armor ],
  ["gekokujo_okegawa_half_6", "Okegawa Hara-Ate Armor", [("gekokujo_okegawa_half_6",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 260 , weight(8)|abundance(150)|head_armor(0)|body_armor(21)|leg_armor(7)|difficulty(0) ,imodbits_armor ],
  
- ["gekokujo_okegawa_half_uesugi", "Uesugi Hara-Ate Armor", [("gekokujo_okegawa_half_uesugi",0)], itp_type_body_armor |itp_covers_legs ,0, 260 , weight(8)|abundance(150)|head_armor(0)|body_armor(19)|leg_armor(9)|difficulty(0) ,imodbits_armor ],
+ ["gekokujo_okegawa_half_uesugi", "Uesugi Hara-Ate Armor", [("gekokujo_okegawa_half_uesugi",0)], itp_type_body_armor |itp_covers_legs ,0, 260 , weight(8)|abundance(150)|head_armor(0)|body_armor(29)|leg_armor(12)|difficulty(0) ,imodbits_armor ],
  ["gekokujo_okegawa_half_date", "Date Hara-Ate Armor", [("gekokujo_okegawa_half_date",0)], itp_type_body_armor |itp_covers_legs ,0, 260 , weight(8)|abundance(150)|head_armor(0)|body_armor(20)|leg_armor(8)|difficulty(0) ,imodbits_armor ],
  ["gekokujo_okegawa_half_oda", "Oda Hara-Ate Armor", [("gekokujo_okegawa_half_oda",0)], itp_type_body_armor |itp_covers_legs ,0, 260 , weight(8)|abundance(150)|head_armor(0)|body_armor(21)|leg_armor(7)|difficulty(0) ,imodbits_armor ],
  ["gekokujo_okegawa_half_mori", "Mori Hara-Ate Armor", [("gekokujo_okegawa_half_mori",0)], itp_type_body_armor |itp_covers_legs ,0, 260 , weight(8)|abundance(150)|head_armor(0)|body_armor(19)|leg_armor(9)|difficulty(0) ,imodbits_armor ],
@@ -603,7 +603,7 @@ items = [
  #gekokujo helmets
  ["gekokujo_sugegasa_1", "Sugegasa", [("gekokujo_sugegasa",0)],itp_merchandise|itp_type_head_armor,0,9, weight(1)|abundance(100)|head_armor(3)|body_armor(0)|leg_armor(0)|difficulty(0),imodbits_cloth],
  ["gekokujo_monk_headwrap", "White Headwrap", [("gekokujo_headwrap",0),("gekokujo_headwrap_inv",ixmesh_inventory)], itp_merchandise|itp_type_head_armor|itp_attach_armature   ,0, 22 , weight(1)|abundance(100)|head_armor(6)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_cloth ],
- ["gekokujo_ninja_headwrap", "Black Headwrap", [("gekokujo_headwrap_black",0),("gekokujo_headwrap_black_inv",ixmesh_inventory)], itp_merchandise|itp_type_head_armor|itp_attach_armature   ,0, 22 , weight(1)|abundance(100)|head_armor(6)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_cloth ],
+ ["gekokujo_ninja_headwrap", "Black Headwrap", [("sengbingnew",0)],itp_merchandise|itp_type_head_armor,0,176, weight(1.75)|abundance(100)|head_armor(21)|body_armor(0)|leg_armor(0)|difficulty(0),imodbits_armor],
 
  ["gekokujo_jingasa_1", "Jingasa", [("gekokujo_jingasa_1",0)],itp_merchandise|itp_type_head_armor,0,176, weight(1.75)|abundance(100)|head_armor(21)|body_armor(0)|leg_armor(0)|difficulty(0),imodbits_armor],
  ["gekokujo_jingasa_2", "Jingasa", [("gekokujo_jingasa_2",0)],itp_merchandise|itp_type_head_armor,0,176, weight(1.75)|abundance(100)|head_armor(21)|body_armor(0)|leg_armor(0)|difficulty(0),imodbits_armor],
@@ -648,9 +648,9 @@ items = [
  ["gekokujo_shinomi_o_2", "Okashi Shinominari Kabuto", [("samurai_kabuto_4",0)],  itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
  ["gekokujo_shinomi_o_3", "Okashi Shinominari Kabuto", [("samurai_kabuto_5",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
  
- ["gekokujo_zunari_o_1", "Okashi Zunari Kabuto", [("gekokujo_zunari_o_1",0)], itp_merchandise|itp_type_head_armor   ,0, 600 , weight(2.5)|abundance(100)|head_armor(35)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
- ["gekokujo_zunari_o_2", "Okashi Zunari Kabuto", [("gekokujo_zunari_o_2",0)], itp_merchandise|itp_type_head_armor   ,0, 600 , weight(2.5)|abundance(100)|head_armor(35)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
- ["gekokujo_zunari_o_3", "Okashi Zunari Kabuto", [("gekokujo_zunari_o_3",0)], itp_merchandise|itp_type_head_armor   ,0, 600 , weight(2.5)|abundance(100)|head_armor(35)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
+ ["gekokujo_zunari_o_1", "Okashi Zunari Kabuto", [("gekokujo_taoxingdou1",0)], itp_merchandise|itp_type_head_armor   ,0, 600 , weight(2.5)|abundance(100)|head_armor(35)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
+ ["gekokujo_zunari_o_2", "Okashi Zunari Kabuto", [("gekokujo_taoxingdou2",0)], itp_merchandise|itp_type_head_armor   ,0, 600 , weight(2.5)|abundance(100)|head_armor(35)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
+ ["gekokujo_zunari_o_3", "Okashi Zunari Kabuto", [("gekokujo_taoxingdou3",0)], itp_merchandise|itp_type_head_armor   ,0, 600 , weight(2.5)|abundance(100)|head_armor(35)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
  
  ["gekokujo_kabuto3_o_1", "Okashi Shinominari Kabuto", [("samurai_kabuto_9",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
  ["gekokujo_kabuto3_o_2", "Okashi Shinominari Kabuto", [("samurai_kabuto_10",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
@@ -883,7 +883,7 @@ items = [
  ["samo_infanrty", "samo_infanrty", [("samo_infanrty",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
  ["fanbingmao1", "fanbingmao1", [("fanbingmao1",0)], itp_type_head_armor   ,0, 333 , weight(2)|abundance(100)|head_armor(10)|body_armor(0)|leg_armor(0) ,imodbits_cloth ],
  ["fanshizhenli", "fanshizhenli", [("fanshizhenli",0)], itp_type_head_armor   ,0, 333 , weight(2)|abundance(100)|head_armor(10)|body_armor(0)|leg_armor(0) ,imodbits_cloth ],
- ["enfield1853", "enfield1853",[("enfield1853",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(6.0)|difficulty(0)|spd_rtng(50) | shoot_speed(283) | thrust_damage(110 , pierce)|max_ammo(1)|accuracy(100),imodbits_gun, [(ti_on_weapon_attack, [(play_sound,"snd_gekokujo_shot"),(position_move_x, pos1,0),(position_move_y, pos1,112),(particle_system_burst_no_sync, "psys_gekokujo_shoot_smoke", pos1, 15)])]],
+ ["enfield1853", "enfield1853",[("enfield1853",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(6.0)|difficulty(0)|spd_rtng(50) | shoot_speed(283) | thrust_damage(110 , pierce)|max_ammo(1)|accuracy(100),imodbits_gun, [(ti_on_weapon_attack, [(play_sound,"snd_enfield53"),(position_move_x, pos1,0),(position_move_y, pos1,112),(particle_system_burst_no_sync, "psys_gekokujo_shoot_smoke", pos1, 15)])]],
  ["fanshizhenli2", "fanshizhenli2", [("fanshizhenli2",0)], itp_type_head_armor   ,0, 333 , weight(2)|abundance(100)|head_armor(10)|body_armor(0)|leg_armor(0) ,imodbits_cloth ],
  ["changzhou_infanrty", "changzhou_infanrty", [("changzhou_infanrty",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
  ["changzhoukuzi", "changzhoukuzi", [("changzhoukuzi",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(14)|difficulty(0) ,imodbits_cloth ],
@@ -916,7 +916,7 @@ items = [
  ["edo_civil_03", "edo_civil_03", [("edo_civil_03",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(6)|difficulty(0) ,imodbits_cloth ], 
  ["fanbingfu", "fanbingfu", [("fanbingfu",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(6)|difficulty(0) ,imodbits_cloth ], 
  ["fanbingfu2", "fanbingfu2", [("fanbingfu2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(6)|difficulty(0) ,imodbits_cloth ], 
-  ["springfield_42", "springfield_42",[("springfield_42",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(6.0)|difficulty(0)|spd_rtng(50) | shoot_speed(283) | thrust_damage(99 , pierce)|max_ammo(1)|accuracy(100),imodbits_gun, [(ti_on_weapon_attack, [(play_sound,"snd_gekokujo_shot"),(position_move_x, pos1,0),(position_move_y, pos1,112),(particle_system_burst_no_sync, "psys_gekokujo_shoot_smoke", pos1, 15)])]],
+  ["springfield_42", "springfield_42",[("springfield_42",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(6.0)|difficulty(0)|spd_rtng(50) | shoot_speed(283) | thrust_damage(99 , pierce)|max_ammo(1)|accuracy(100),imodbits_gun, [(ti_on_weapon_attack, [(play_sound,"snd_spring"),(position_move_x, pos1,0),(position_move_y, pos1,112),(particle_system_burst_no_sync, "psys_gekokujo_shoot_smoke", pos1, 15)])]],
    ["ceshi", "ceshi", [("mufuinfanrty2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
   ["shicongjudong", "shicongjudong", [("shicongjudong",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
   ["shicongjudong2", "shicongjudong2", [("shicongjudong2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
@@ -929,7 +929,7 @@ items = [
   ["chuanxiduiinfantrykuzi", "chuanxiduiinfantrykuzi", [("chuanxiduiinfantrykuzi",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(14)|difficulty(0) ,imodbits_cloth ],
   ["french_t", "french_t", [("french_t", 0)], itp_type_musket|itp_no_parry|itp_merchandise|itp_two_handed|itp_primary|itp_cant_use_on_horseback|itp_civilian|itp_next_item_as_melee, 6174031872, 2000, weight(4.250000)|abundance(10)|difficulty(0)|accuracy(88)|spd_rtng(70)|shoot_speed(390)|max_ammo(1)|thrust_damage(85, pierce)|weapon_length(0), imodbits_none, [
     (ti_on_weapon_attack, [
-        (play_sound, "snd_kaiqiang"),
+        (play_sound, "snd_xiasaibo"),
         (position_move_x, pos1, -13),
         (position_move_y, pos1, 10),
         (position_move_x, pos1, 3),
@@ -968,12 +968,12 @@ items = [
   ["wushiwaitao3", "wushiwaitao3", [("wushiwaitao3",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
   ["fanshizhenli_tongyong", "fanshizhenli_tongyong", [("fanshizhenli_tongyong",0)], itp_type_head_armor   ,0, 333 , weight(2)|abundance(100)|head_armor(10)|body_armor(0)|leg_armor(0) ,imodbits_cloth ],
   ["samoxinjun", "samoxinjun", [("samoxinjun",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
-  ["springfield_61", "springfield_61",[("springfield_61",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(6.0)|difficulty(0)|spd_rtng(55) | shoot_speed(343) | thrust_damage(110 , pierce)|max_ammo(1)|accuracy(100),imodbits_gun, [(ti_on_weapon_attack, [(play_sound,"snd_gekokujo_shot"),(position_move_x, pos1,0),(position_move_y, pos1,112),(particle_system_burst_no_sync, "psys_gekokujo_shoot_smoke", pos1, 15)])]],
+  ["springfield_61", "springfield_61",[("springfield_61",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(6.0)|difficulty(0)|spd_rtng(55) | shoot_speed(343) | thrust_damage(110 , pierce)|max_ammo(1)|accuracy(100),imodbits_gun, [(ti_on_weapon_attack, [(play_sound,"snd_spring"),(position_move_x, pos1,0),(position_move_y, pos1,112),(particle_system_burst_no_sync, "psys_gekokujo_shoot_smoke", pos1, 15)])]],
   ["samoshenqiangdui", "samoshenqiangdui", [("samoshenqiangdui",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
   ["samoshenqiangduikuzi", "samoshenqiangduikuzi", [("samoshenqiangduikuzi",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(14)|difficulty(0) ,imodbits_cloth ],
  ["snider", "snider", [("snider", 0)], itp_type_musket|itp_no_parry|itp_merchandise|itp_two_handed|itp_primary|itp_cant_use_on_horseback|itp_civilian|itp_next_item_as_melee, 6174031872, 2000, weight(4.250000)|abundance(10)|difficulty(0)|accuracy(88)|spd_rtng(70)|shoot_speed(390)|max_ammo(1)|thrust_damage(85, pierce)|weapon_length(0), imodbits_none, [
     (ti_on_weapon_attack, [
-        (play_sound, "snd_kaiqiang"),
+        (play_sound, "snd_rifle_shot3_02"),
         (position_move_x, pos1, -13),
         (position_move_y, pos1, 10),
         (position_move_x, pos1, 3),
@@ -1059,7 +1059,7 @@ items = [
  ["shicongjudong4", "shicongjudong4", [("shicongjudong4",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1650 , weight(10)|abundance(80)|head_armor(0)|body_armor(35)|leg_armor(15)|difficulty(9) ,imodbits_armor ],
  ["chasspotarty", "chasspotarty", [("chasspotarty", 0)], itp_type_musket|itp_no_parry|itp_merchandise|itp_two_handed|itp_primary, 4222130287820800, 1000, weight(4.350000)|abundance(10)|difficulty(0)|accuracy(78)|spd_rtng(60)|shoot_speed(180)|max_ammo(1)|thrust_damage(85, pierce)|weapon_length(0), imodbits_none, [
     (ti_on_weapon_attack, [
-         (play_sound, "snd_kaiqiang"),
+         (play_sound, "snd_xiasaibo"),
         (position_move_x, pos1, -13),
         (position_move_y, pos1, 10),
         (position_move_x, pos1, 3),
@@ -1092,7 +1092,7 @@ items = [
 ], [fac_kingdom_1, fac_kingdom_4, fac_kingdom_12, fac_kingdom_15, fac_kingdom_16]], 
 ["enfield_carbine", "enfield_carbine", [("enfield_carbine", 0)], itp_type_musket|itp_merchandise|itp_two_handed|itp_primary|itp_civilian|itp_next_item_as_melee, 555930353664, 800, weight(3.000000)|abundance(100)|difficulty(0)|accuracy(75)|spd_rtng(40)|shoot_speed(160)|max_ammo(1)|thrust_damage(75, pierce)|weapon_length(0), imodbits_none, [
     (ti_on_weapon_attack, [
-         (play_sound, "snd_kaiqiang"),
+         (play_sound, "snd_enfield53"),
         (position_move_x, pos1, -13),
         (position_move_y, pos1, 10),
         (position_move_x, pos1, 3),
@@ -1114,7 +1114,7 @@ items = [
 ], [fac_kingdom_1, fac_kingdom_4, fac_kingdom_12, fac_kingdom_13, fac_kingdom_15, fac_kingdom_16]], 
 ["enfield_bayonet", "enfield_bayonet", [("enfield_bayonet", 0), ("enfield_bayonet", ixmesh_carry)], itp_type_musket|itp_no_parry|itp_merchandise|itp_two_handed|itp_primary|itp_cant_use_on_horseback|itp_civilian|itp_next_item_as_melee|itp_fit_to_head|itp_offset_lance, 555393482752, 1000, weight(4.350000)|abundance(100)|difficulty(0)|accuracy(75)|spd_rtng(45)|shoot_speed(180)|max_ammo(1)|thrust_damage(80, pierce)|weapon_length(0), imodbits_none, [
     (ti_on_weapon_attack, [
-        (play_sound, "snd_gekokujo_shot"),
+        (play_sound, "snd_enfield53"),
                 (position_move_x, pos1, -13),
         (position_move_y, pos1, 10),
         (position_move_x, pos1, 3),
@@ -1159,12 +1159,12 @@ items = [
   ["cgzhenli", "cgzhenli", [("cgzhenli",0)], itp_type_head_armor   ,0, 333 , weight(2)|abundance(100)|head_armor(30)|body_armor(0)|leg_armor(0) ,imodbits_cloth ],
   ["cgfsxj", "cgfsxj", [("cgfsxj",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
   ["blue_trousers_infantry1", "cgfxjkz", [("cgfxjkz",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(14)|difficulty(0) ,imodbits_cloth ],
-  ["enfieldp53_scoped", "enfieldp53_scoped",[("enfieldp53_scoped",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(6.0)|difficulty(0)|spd_rtng(25) | shoot_speed(543) | thrust_damage(110 , pierce)|max_ammo(1)|accuracy(100),imodbits_gun, [(ti_on_weapon_attack, [(play_sound,"snd_gekokujo_shot"),(position_move_x, pos1,0),(position_move_y, pos1,112),(particle_system_burst_no_sync, "psys_gekokujo_shoot_smoke", pos1, 15)])]],
+  ["enfieldp53_scoped", "enfieldp53_scoped",[("enfieldp53_scoped",0)],itp_type_musket|itp_merchandise|itp_cant_reload_on_horseback|itp_primary|itp_two_handed, itcf_reload_musket|itcf_carry_spear|itcf_shoot_musket, 230 , weight(6.0)|difficulty(0)|spd_rtng(25) | shoot_speed(543) | thrust_damage(110 , pierce)|max_ammo(1)|accuracy(100),imodbits_gun, [(ti_on_weapon_attack, [(play_sound,"snd_enfield53"),(position_move_x, pos1,0),(position_move_y, pos1,112),(particle_system_burst_no_sync, "psys_gekokujo_shoot_smoke", pos1, 15)])]],
   ["yujq", "yujq", [("yujq",0)], itp_couchable|itp_type_polearm|itp_offset_lance|itp_merchandise|itp_primary|itp_penalty_with_shield|itp_wooden_parry|itp_no_blur, itcf_banner_staff|itcf_banner_staff, 350, abundance(90)|weight(2.5)|difficulty(0)|spd_rtng(80)|weapon_length(202)|swing_damage(20,blunt)|thrust_damage(27, pierce),imodbits_polearm_high],
   ["cgf_shino_suneate_", "cgf_shino_suneate_", [("cgf_shino_suneate_",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(24)|difficulty(0) ,imodbits_cloth ],
   ["dreyse", "dreyse", [("dreyse", 0), ("dreyse", ixmesh_carry)], itp_type_musket|itp_no_parry|itp_merchandise|itp_two_handed|itp_primary|itp_cant_use_on_horseback|itp_civilian|itp_next_item_as_melee|itp_fit_to_head|itp_offset_lance, 5637160960, 1500, weight(4.350000)|abundance(100)|difficulty(0)|accuracy(78)|spd_rtng(65)|shoot_speed(190)|max_ammo(1)|thrust_damage(85, pierce)|weapon_length(0), imodbits_none, [
         (ti_on_weapon_attack, [
-         (play_sound, "snd_kaiqiang"),
+         (play_sound, "snd_rifle_shot3_02"),
         (position_move_x, pos1, -13),
         (position_move_y, pos1, 10),
         (position_move_x, pos1, 3),
@@ -1221,7 +1221,7 @@ items = [
  ["mz_suneate", "mz_suneate", [("mz_suneate",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(18)|difficulty(0) ,imodbits_cloth ],
   ["snider_bayonet", "snider_bayonet", [("snider_bayonet", 0), ("snider_bayonet", ixmesh_carry)], itp_type_musket|itp_no_parry|itp_merchandise|itp_two_handed|itp_primary|itp_cant_use_on_horseback|itp_civilian|itp_next_item_as_melee|itp_fit_to_head|itp_offset_lance, 5637160960, 1500, weight(4.350000)|abundance(100)|difficulty(0)|accuracy(78)|spd_rtng(65)|shoot_speed(190)|max_ammo(1)|thrust_damage(85, pierce)|weapon_length(0), imodbits_none, [
         (ti_on_weapon_attack, [
-         (play_sound, "snd_kaiqiang"),
+         (play_sound, "snd_rifle_shot3_02"),
         (position_move_x, pos1, -13),
         (position_move_y, pos1, 10),
         (position_move_x, pos1, 3),
@@ -1243,6 +1243,31 @@ items = [
  ["qinwangjia", "qinwangjia", [("qinwangjia",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1400 , weight(19)|abundance(100)|head_armor(0)|body_armor(52)|leg_armor(25)|difficulty(9) ,imodbits_armor ],
  ["samurtakedaorg", "samurtakedaorg", [("samurtakedaorg",0)], itp_type_head_armor   ,0, 333 , weight(2)|abundance(100)|head_armor(10)|body_armor(0)|leg_armor(0) ,imodbits_cloth ],
  ["hongrishanz", "hongrishanz", [("hongrishanz",0),("invalid_item",ixmesh_carry)], itp_type_one_handed_wpn|itp_merchandise|itp_primary|itp_secondary, itc_longsword|itcf_carry_wakizashi|itcf_show_holster_when_drawn, 321 , abundance(105)|weight(1.25)|difficulty(0)|spd_rtng(115) | weapon_length(59)|swing_damage(25 , cut) | thrust_damage(19 ,  pierce),imodbits_sword_high ],
+ ["zhuangnei_suneate", "zhuangnei_suneate", [("zhuangnei_suneate",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(8)|difficulty(0) ,imodbits_cloth ],
+  ["zhuangnei", "zhuangnei", [("zhuangnei",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(8)|difficulty(0) ,imodbits_cloth ],
+  ["gekokujo_jingasa_zhuangnei", "gekokujo_jingasa_zhuangnei", [("gekokujo_jingasa_zhuangnei",0)],itp_merchandise|itp_type_head_armor,0,176, weight(1.75)|abundance(100)|head_armor(21)|body_armor(0)|leg_armor(0)|difficulty(0),imodbits_armor],
+  ["gekokujo_jingasa_zhuangnei2", "gekokujo_jingasa_zhuangnei2", [("gekokujo_jingasa_zhuangnei2",0)],itp_merchandise|itp_type_head_armor,0,176, weight(1.75)|abundance(100)|head_armor(21)|body_armor(0)|leg_armor(0)|difficulty(0),imodbits_armor],
+  ["zhuangneixiakua", "zhuangneixiakua", [("zhuangneixiakua",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(14)|difficulty(0) ,imodbits_cloth ],
+  ["zhuangneiqcd", "zhuangneiqcd", [("zhuangneiqcd",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(14)|difficulty(0) ,imodbits_cloth ],
+  ["tushifu", "tushifu", [("tushifu",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(14)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
+ ["tushifu2", "tushifu2", [("tushifu2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(15)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
+  ["tushifu3", "tushifu3", [("tushifu3",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(15)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
+  ["tushifu_zhuojia", "tushifu_zhuojia", [("tushifu_zhuojia",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(30)|leg_armor(16)|difficulty(0) ,imodbits_cloth ],
+  ["tushifu_zhuojia1", "tushifu_zhuojia1", [("tushifu_zhuojia1",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(30)|leg_armor(16)|difficulty(0) ,imodbits_cloth ],
+  ["tushifu_zhuojia2", "tushifu_zhuojia2", [("tushifu_zhuojia2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(30)|leg_armor(16)|difficulty(0) ,imodbits_cloth ],
+  ["2tushifu_zhuojia", "2tushifu_zhuojia", [("2tushifu_zhuojia",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(39)|leg_armor(16)|difficulty(0) ,imodbits_cloth ],
+  ["2tushifu_zhuojia1", "2tushifu_zhuojia1", [("2tushifu_zhuojia1",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(39)|leg_armor(16)|difficulty(0) ,imodbits_cloth ],
+  ["xiongben", "xiongben", [("xiongben",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(14)|difficulty(0) ,imodbits_cloth ],
+  ["hezhuang_shenlan", "hezhuang_shenlan", [("hezhuang_shenlan",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(15)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
+  ["xiongben2", "xiongben2", [("xiongben2",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(14)|difficulty(0) ,imodbits_cloth ],
+  ["xiongben_suneate", "xiongben_suneate", [("xiongben_suneate",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(21)|difficulty(0) ,imodbits_cloth ],
+  ["qinwangshicong", "qinwangshicong", [("qinwangshicong",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(39)|leg_armor(16)|difficulty(0) ,imodbits_cloth ],
+  ["jiangwusuo", "jiangwusuo", [("jiangwusuo",0)], itp_merchandise|itp_type_head_armor   ,0, 940 , weight(1)|abundance(100)|head_armor(12)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
+  ["gekokujo_tushi", "gekokujo_tushi", [("gekokujo_tushi",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(9)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
+   ["liudima", "liudima Armor", [("liudima",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1650 , weight(10)|abundance(80)|head_armor(0)|body_armor(55)|leg_armor(15)|difficulty(9) ,imodbits_armor ],
+   ["shenlantongxueku", "shenlantongxueku", [("shenlantongxueku",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(8)|difficulty(0) ,imodbits_cloth ],
+   ["mufuxiashi", "mufuxiashi", [("mufuxiashi",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(15)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
+   ["mufuxiashiku", "mufuxiashiku", [("mufuxiashiku",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(8)|difficulty(0) ,imodbits_cloth ],
  ["items_end", "Items End", [("shield_round_a",0)], 0, 0, 1, 0, 0],
 ]
 

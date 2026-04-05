@@ -170,13 +170,13 @@ scripts = [
       (faction_set_slot, "fac_culture_18", slot_faction_tier_0_troop, "trp_gekokujo_satomi_villager"),
       (faction_set_slot, "fac_culture_19", slot_faction_tier_0_troop, "trp_gekokujo_ukita_villager"),
       (faction_set_slot, "fac_culture_20", slot_faction_tier_0_troop, "trp_gekokujo_ikko_villager"),
-      (faction_set_slot, "fac_culture_21", slot_faction_tier_0_troop, "trp_gekokujo_ikko_villager"),
-      (faction_set_slot, "fac_culture_22", slot_faction_tier_0_troop, "trp_gekokujo_ikko_villager"),
-      (faction_set_slot, "fac_culture_23", slot_faction_tier_0_troop, "trp_gekokujo_ikko_villager"),
-      (faction_set_slot, "fac_culture_24", slot_faction_tier_0_troop, "trp_gekokujo_ikko_villager"),
-      (faction_set_slot, "fac_culture_25", slot_faction_tier_0_troop, "trp_gekokujo_zhuangnei_villager"),
-      (faction_set_slot, "fac_culture_26", slot_faction_tier_0_troop, "trp_gekokujo_ikko_villager"),
-      (faction_set_slot, "fac_culture_27", slot_faction_tier_0_troop, "trp_gekokujo_ikko_villager"),
+      (faction_set_slot, "fac_culture_21", slot_faction_tier_0_troop, "trp_ceshi1"),
+      (faction_set_slot, "fac_culture_22", slot_faction_tier_0_troop, "trp_ceshi12"),
+      (faction_set_slot, "fac_culture_23", slot_faction_tier_0_troop, "trp_ceshi13"),
+      (faction_set_slot, "fac_culture_24", slot_faction_tier_0_troop, "trp_ceshi14"),
+      (faction_set_slot, "fac_culture_25", slot_faction_tier_0_troop, "trp_ceshi15"),
+      (faction_set_slot, "fac_culture_26", slot_faction_tier_0_troop, "trp_ceshi16"),
+      (faction_set_slot, "fac_culture_27", slot_faction_tier_0_troop, "trp_ceshi17"),
 	  #gekokujo 3.0 get rid of player culture start
 	  ##gekokujo player culture
       #(faction_set_slot, "fac_culture_player", slot_faction_tier_0_troop, "trp_gekokujo_player_villager"),
@@ -296,29 +296,29 @@ scripts = [
       (faction_set_slot, "fac_culture_19", slot_faction_tier_4_troop, "trp_gekokujo_ukita_officer"),
       (faction_set_slot, "fac_culture_19", slot_faction_tier_5_troop, "trp_gekokujo_ukita_mounted_officer"),
 
-      (faction_set_slot, "fac_culture_20", slot_faction_tier_1_troop, "trp_gekokujo_ikko_monk"),
-      (faction_set_slot, "fac_culture_20", slot_faction_tier_2_troop, "trp_gekokujo_ikko_yari_monk"),
-      (faction_set_slot, "fac_culture_20", slot_faction_tier_3_troop, "trp_gekokujo_ikko_naginata_monk"),
-      (faction_set_slot, "fac_culture_20", slot_faction_tier_4_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-      (faction_set_slot, "fac_culture_20", slot_faction_tier_5_troop, "trp_gekokujo_ikko_elite_naginata_monk"),
+      (faction_set_slot, "fac_culture_20", slot_faction_tier_1_troop, "trp_gekokujo_ikko_jizamurai"),
+      (faction_set_slot, "fac_culture_20", slot_faction_tier_2_troop, "trp_gekokujo_ikko_retainer"),
+      (faction_set_slot, "fac_culture_20", slot_faction_tier_3_troop, "trp_gekokujo_ikko_marksman"),
+      (faction_set_slot, "fac_culture_20", slot_faction_tier_4_troop, "trp_gekokujo_ikko_veteran_retainer"),
+      (faction_set_slot, "fac_culture_20", slot_faction_tier_5_troop, "trp_gekokujo_ikko_mounted_officer"),
       
-      (faction_set_slot, "fac_culture_21", slot_faction_tier_1_troop, "trp_gekokujo_ikko_monk"),
-      (faction_set_slot, "fac_culture_21", slot_faction_tier_2_troop, "trp_gekokujo_ikko_yari_monk"),
-      (faction_set_slot, "fac_culture_21", slot_faction_tier_3_troop, "trp_gekokujo_ikko_naginata_monk"),
-      (faction_set_slot, "fac_culture_21", slot_faction_tier_4_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-      (faction_set_slot, "fac_culture_21", slot_faction_tier_5_troop, "trp_gekokujo_ikko_elite_naginata_monk"),
+      (faction_set_slot, "fac_culture_21", slot_faction_tier_1_troop, "trp_gekokujo_xb_veteran_skirmisher"),
+      (faction_set_slot, "fac_culture_21", slot_faction_tier_2_troop, "trp_gekokujo_xb_elite_spearman"),
+      (faction_set_slot, "fac_culture_21", slot_faction_tier_3_troop, "trp_gekokujo_xb_retainer"),
+      (faction_set_slot, "fac_culture_21", slot_faction_tier_4_troop, "trp_gekokujo_xb_marksman"),
+      (faction_set_slot, "fac_culture_21", slot_faction_tier_5_troop, "trp_gekokujo_xb_master_gunner"),
       
-      (faction_set_slot, "fac_culture_22", slot_faction_tier_1_troop, "trp_gekokujo_ikko_monk"),
-      (faction_set_slot, "fac_culture_22", slot_faction_tier_2_troop, "trp_gekokujo_ikko_yari_monk"),
-      (faction_set_slot, "fac_culture_22", slot_faction_tier_3_troop, "trp_gekokujo_ikko_naginata_monk"),
-      (faction_set_slot, "fac_culture_22", slot_faction_tier_4_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-      (faction_set_slot, "fac_culture_22", slot_faction_tier_5_troop, "trp_gekokujo_ikko_elite_naginata_monk"),
+      (faction_set_slot, "fac_culture_22", slot_faction_tier_1_troop, "trp_gekokujo_ss_officer"),
+      (faction_set_slot, "fac_culture_22", slot_faction_tier_2_troop, "trp_gekokujo_ss_mounted_officer"),
+      (faction_set_slot, "fac_culture_22", slot_faction_tier_3_troop, "trp_gekokujo_ss_master_archer"),
+      (faction_set_slot, "fac_culture_22", slot_faction_tier_4_troop, "trp_gekokujo_ss_veteran_skirmisher"),
+      (faction_set_slot, "fac_culture_22", slot_faction_tier_5_troop, "trp_gekokujo_ss_elite_spearman"),
       
-      (faction_set_slot, "fac_culture_23", slot_faction_tier_1_troop, "trp_gekokujo_ikko_monk"),
-      (faction_set_slot, "fac_culture_23", slot_faction_tier_2_troop, "trp_gekokujo_ikko_yari_monk"),
-      (faction_set_slot, "fac_culture_23", slot_faction_tier_3_troop, "trp_gekokujo_ikko_naginata_monk"),
-      (faction_set_slot, "fac_culture_23", slot_faction_tier_4_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-      (faction_set_slot, "fac_culture_23", slot_faction_tier_5_troop, "trp_gekokujo_ikko_elite_naginata_monk"),
+      (faction_set_slot, "fac_culture_23", slot_faction_tier_1_troop, "trp_gekokujo_wz_samurai_archer"),
+      (faction_set_slot, "fac_culture_23", slot_faction_tier_2_troop, "trp_gekokujo_wz_marksman"),
+      (faction_set_slot, "fac_culture_23", slot_faction_tier_3_troop, "trp_gekokujo_wz_master_archer"),
+      (faction_set_slot, "fac_culture_23", slot_faction_tier_4_troop, "trp_gekokujo_wz_mounted_retainer"),
+      (faction_set_slot, "fac_culture_23", slot_faction_tier_5_troop, "trp_gekokujo_wz_mounted_officer"),
       
       (faction_set_slot, "fac_culture_24", slot_faction_tier_1_troop, "trp_gekokujo_ikko_monk"),
       (faction_set_slot, "fac_culture_24", slot_faction_tier_2_troop, "trp_gekokujo_ikko_yari_monk"),
@@ -326,23 +326,23 @@ scripts = [
       (faction_set_slot, "fac_culture_24", slot_faction_tier_4_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
       (faction_set_slot, "fac_culture_24", slot_faction_tier_5_troop, "trp_gekokujo_ikko_elite_naginata_monk"),
       
-      (faction_set_slot, "fac_culture_25", slot_faction_tier_1_troop, "trp_gekokujo_ikko_monk"),
-      (faction_set_slot, "fac_culture_25", slot_faction_tier_2_troop, "trp_gekokujo_ikko_yari_monk"),
-      (faction_set_slot, "fac_culture_25", slot_faction_tier_3_troop, "trp_gekokujo_ikko_naginata_monk"),
-      (faction_set_slot, "fac_culture_25", slot_faction_tier_4_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-      (faction_set_slot, "fac_culture_25", slot_faction_tier_5_troop, "trp_gekokujo_ikko_elite_naginata_monk"),
+      (faction_set_slot, "fac_culture_25", slot_faction_tier_1_troop, "trp_gekokujo_dd_master_archer"),
+      (faction_set_slot, "fac_culture_25", slot_faction_tier_2_troop, "trp_gekokujo_dd_elite_spearman"),
+      (faction_set_slot, "fac_culture_25", slot_faction_tier_3_troop, "trp_gekokujo_dd_samurai_gunner"),
+      (faction_set_slot, "fac_culture_25", slot_faction_tier_4_troop, "trp_gekokujo_dd_officer"),
+      (faction_set_slot, "fac_culture_25", slot_faction_tier_5_troop, "trp_gekokujo_dd_master_gunner"),
       
-      (faction_set_slot, "fac_culture_26", slot_faction_tier_1_troop, "trp_gekokujo_ikko_monk"),
-      (faction_set_slot, "fac_culture_26", slot_faction_tier_2_troop, "trp_gekokujo_ikko_yari_monk"),
-      (faction_set_slot, "fac_culture_26", slot_faction_tier_3_troop, "trp_gekokujo_ikko_naginata_monk"),
-      (faction_set_slot, "fac_culture_26", slot_faction_tier_4_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-      (faction_set_slot, "fac_culture_26", slot_faction_tier_5_troop, "trp_gekokujo_ikko_elite_naginata_monk"),
+      (faction_set_slot, "fac_culture_26", slot_faction_tier_1_troop, "trp_gekokujo_qt_officer"),
+      (faction_set_slot, "fac_culture_26", slot_faction_tier_2_troop, "trp_gekokujo_qt_master_gunner"),
+      (faction_set_slot, "fac_culture_26", slot_faction_tier_3_troop, "trp_gekokujo_qt_veteran_retainer"),
+      (faction_set_slot, "fac_culture_26", slot_faction_tier_4_troop, "trp_gekokujo_qt_marksman"),
+      (faction_set_slot, "fac_culture_26", slot_faction_tier_5_troop, "trp_gekokujo_qt_elite_spearman"),
       
-      (faction_set_slot, "fac_culture_27", slot_faction_tier_1_troop, "trp_gekokujo_ikko_monk"),
-      (faction_set_slot, "fac_culture_27", slot_faction_tier_2_troop, "trp_gekokujo_ikko_yari_monk"),
-      (faction_set_slot, "fac_culture_27", slot_faction_tier_3_troop, "trp_gekokujo_ikko_naginata_monk"),
-      (faction_set_slot, "fac_culture_27", slot_faction_tier_4_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-      (faction_set_slot, "fac_culture_27", slot_faction_tier_5_troop, "trp_gekokujo_ikko_elite_naginata_monk"),
+      (faction_set_slot, "fac_culture_27", slot_faction_tier_1_troop, "trp_gekokujo_yg_veteran_retainer"),
+      (faction_set_slot, "fac_culture_27", slot_faction_tier_2_troop, "trp_gekokujo_yg_mounted_retainer"),
+      (faction_set_slot, "fac_culture_27", slot_faction_tier_3_troop, "trp_gekokujo_yg_samurai_gunner"),
+      (faction_set_slot, "fac_culture_27", slot_faction_tier_4_troop, "trp_gekokujo_yg_officer"),
+      (faction_set_slot, "fac_culture_27", slot_faction_tier_5_troop, "trp_gekokujo_yg_elite_skirmisher"),
 
 	  #gekokujo 3.0 get rid of player culture start
 	  ##gekokujo player units
@@ -1293,84 +1293,84 @@ scripts = [
       
 	  # Now give towns to great lords
       
-      (call_script, "script_give_center_to_lord", "p_town_1", "trp_knight_13_4", 0), #edo to lord toyama
-      (call_script, "script_give_center_to_lord", "p_town_2", "trp_kingdom_17_lord", 0), #mito great lord satake
-      (call_script, "script_give_center_to_lord", "p_town_3", "trp_kingdom_18_lord", 0), #choshi to great lord satomi
-      (call_script, "script_give_center_to_lord", "p_town_4", "trp_kingdom_7_lord", 0), #kyoto to great lord miyoshi
-      (call_script, "script_give_center_to_lord", "p_town_5", "trp_knight_7_1", 0), #sakai to lord hatakeyama
-      (call_script, "script_give_center_to_lord", "p_town_6", "trp_knight_3_4", 0), #tsu to lord hashiba #gekokujo 3.0 tsu now part of asakura clan
-      (call_script, "script_give_center_to_lord", "p_town_6", "trp_knight_11_6", 0), #tsu to lord kitabatake
-      (call_script, "script_give_center_to_lord", "p_town_7", "trp_knight_19_1", 0), #himeji to lord bessho
-      (call_script, "script_give_center_to_lord", "p_town_8", "trp_kingdom_20_lord", 0), #kanazawa to kennyo monshu
-      (call_script, "script_give_center_to_lord", "p_town_9", "trp_kingdom_3_lord", 0), #kiyosu to great lord oda
-      (call_script, "script_give_center_to_lord", "p_town_10", "trp_knight_1_6", 0), #niigata to lord naoe
-      (call_script, "script_give_center_to_lord", "p_town_11", "trp_kingdom_5_lord", 0), #kofu to great lord takeda
-      (call_script, "script_give_center_to_lord", "p_town_12", "trp_kingdom_1_lord", 0), #kasugayama to great lord uesugi
-      (call_script, "script_give_center_to_lord", "p_town_13", "trp_kingdom_4_lord", 0), #hiroshima to great lord mori
-      (call_script, "script_give_center_to_lord", "p_town_14", "trp_kingdom_19_lord", 0), #okayama to great lord ukita
-      (call_script, "script_give_center_to_lord", "p_town_15", "trp_kingdom_2_lord", 0), #sendai to great lord date
-      (call_script, "script_give_center_to_lord", "p_town_16", "trp_knight_2_1", 0), #yonezawa to lord endo
-      (call_script, "script_give_center_to_lord", "p_town_17", "trp_knight_14_6", 0), #kubota to lord akita
-      (call_script, "script_give_center_to_lord", "p_town_18", "trp_kingdom_10_lord", 0), #hirosaki to great lord nanbu
-      (call_script, "script_give_center_to_lord", "p_town_19", "trp_knight_9_7", 0), #hakata to lord tachibana
-      (call_script, "script_give_center_to_lord", "p_town_20", "trp_kingdom_15_lord", 0), #kagoshima to great lord shimazu
-      (call_script, "script_give_center_to_lord", "p_town_21", "trp_kingdom_16_lord", 0), #nagasaki to great lord ryuzoji
-      (call_script, "script_give_center_to_lord", "p_town_22", "trp_knight_12_1", 0), #matsuyama to lord ichijo
+      # (call_script, "script_give_center_to_lord", "p_town_1", "trp_knight_13_4", 0), #edo to lord toyama
+      # (call_script, "script_give_center_to_lord", "p_town_2", "trp_kingdom_17_lord", 0), #mito great lord satake
+      # (call_script, "script_give_center_to_lord", "p_town_3", "trp_kingdom_18_lord", 0), #choshi to great lord satomi
+      # (call_script, "script_give_center_to_lord", "p_town_4", "trp_kingdom_7_lord", 0), #kyoto to great lord miyoshi
+      # (call_script, "script_give_center_to_lord", "p_town_5", "trp_knight_7_1", 0), #sakai to lord hatakeyama
+      # (call_script, "script_give_center_to_lord", "p_town_6", "trp_knight_3_4", 0), #tsu to lord hashiba #gekokujo 3.0 tsu now part of asakura clan
+      # (call_script, "script_give_center_to_lord", "p_town_6", "trp_knight_11_6", 0), #tsu to lord kitabatake
+      # (call_script, "script_give_center_to_lord", "p_town_7", "trp_knight_19_1", 0), #himeji to lord bessho
+      # (call_script, "script_give_center_to_lord", "p_town_8", "trp_kingdom_20_lord", 0), #kanazawa to kennyo monshu
+      # (call_script, "script_give_center_to_lord", "p_town_9", "trp_kingdom_3_lord", 0), #kiyosu to great lord oda
+      # (call_script, "script_give_center_to_lord", "p_town_10", "trp_knight_1_6", 0), #niigata to lord naoe
+      # (call_script, "script_give_center_to_lord", "p_town_11", "trp_kingdom_5_lord", 0), #kofu to great lord takeda
+      # (call_script, "script_give_center_to_lord", "p_town_12", "trp_kingdom_1_lord", 0), #kasugayama to great lord uesugi
+      # (call_script, "script_give_center_to_lord", "p_town_13", "trp_kingdom_4_lord", 0), #hiroshima to great lord mori
+      # (call_script, "script_give_center_to_lord", "p_town_14", "trp_kingdom_19_lord", 0), #okayama to great lord ukita
+      # (call_script, "script_give_center_to_lord", "p_town_15", "trp_kingdom_2_lord", 0), #sendai to great lord date
+      # (call_script, "script_give_center_to_lord", "p_town_16", "trp_knight_2_1", 0), #yonezawa to lord endo
+      # (call_script, "script_give_center_to_lord", "p_town_17", "trp_knight_14_6", 0), #kubota to lord akita
+      # (call_script, "script_give_center_to_lord", "p_town_18", "trp_kingdom_10_lord", 0), #hirosaki to great lord nanbu
+      # (call_script, "script_give_center_to_lord", "p_town_19", "trp_knight_9_7", 0), #hakata to lord tachibana
+      # (call_script, "script_give_center_to_lord", "p_town_20", "trp_kingdom_15_lord", 0), #kagoshima to great lord shimazu
+      # (call_script, "script_give_center_to_lord", "p_town_21", "trp_kingdom_16_lord", 0), #nagasaki to great lord ryuzoji
+      # (call_script, "script_give_center_to_lord", "p_town_22", "trp_knight_12_1", 0), #matsuyama to lord ichijo
 
-      (call_script, "script_give_center_to_lord", "p_town_23", "trp_kingdom_13_lord", 0), #odawara to great lord hojo
-      (call_script, "script_give_center_to_lord", "p_town_24", "trp_knight_7_8", 0), #nara to lord matsunaga
-      (call_script, "script_give_center_to_lord", "p_town_25", "trp_kingdom_6_lord", 0), #hamamatsu to great lord tokugawa
-      (call_script, "script_give_center_to_lord", "p_town_26", "trp_knight_11_1", 0), #imahama to lord azai
-      (call_script, "script_give_center_to_lord", "p_town_27", "trp_knight_4_1", 0), #yamaguchi to lord kikkawa
-      (call_script, "script_give_center_to_lord", "p_town_28", "trp_kingdom_8_lord", 0), #izumo to great lord amako
-      (call_script, "script_give_center_to_lord", "p_town_29", "trp_kingdom_9_lord", 0), #funai to great lord otomo
-      (call_script, "script_give_center_to_lord", "p_town_30", "trp_knight_15_1", 0), #kumamoto to lord niiro
-      (call_script, "script_give_center_to_lord", "p_town_31", "trp_kingdom_12_lord", 0), #kochi to great lord chosokabe
+      # (call_script, "script_give_center_to_lord", "p_town_23", "trp_kingdom_13_lord", 0), #odawara to great lord hojo
+      # (call_script, "script_give_center_to_lord", "p_town_24", "trp_knight_7_8", 0), #nara to lord matsunaga
+      # (call_script, "script_give_center_to_lord", "p_town_25", "trp_kingdom_6_lord", 0), #hamamatsu to great lord tokugawa
+      # (call_script, "script_give_center_to_lord", "p_town_26", "trp_knight_11_1", 0), #imahama to lord azai
+      # (call_script, "script_give_center_to_lord", "p_town_27", "trp_knight_4_1", 0), #yamaguchi to lord kikkawa
+      # (call_script, "script_give_center_to_lord", "p_town_28", "trp_kingdom_8_lord", 0), #izumo to great lord amako
+      # (call_script, "script_give_center_to_lord", "p_town_29", "trp_kingdom_9_lord", 0), #funai to great lord otomo
+      # (call_script, "script_give_center_to_lord", "p_town_30", "trp_knight_15_1", 0), #kumamoto to lord niiro
+      # (call_script, "script_give_center_to_lord", "p_town_31", "trp_kingdom_12_lord", 0), #kochi to great lord chosokabe
 	  
-      (call_script, "script_give_center_to_lord", "p_town_32", "trp_kingdom_21_lord", 0), #tottori to lord yamana
+      # (call_script, "script_give_center_to_lord", "p_town_32", "trp_kingdom_21_lord", 0), #tottori to lord yamana
       
-      # (call_script, "script_give_center_to_lord", "p_town_33", "trp_kingdom_22_lord", 0), #tottori to lord yamana
+      # # (call_script, "script_give_center_to_lord", "p_town_33", "trp_kingdom_22_lord", 0), #tottori to lord yamana
       
-      # (call_script, "script_give_center_to_lord", "p_town_34", "trp_kingdom_23_lord", 0), #tottori to lord yamana
+      # # (call_script, "script_give_center_to_lord", "p_town_34", "trp_kingdom_23_lord", 0), #tottori to lord yamana
       
-      # (call_script, "script_give_center_to_lord", "p_town_35", "trp_kingdom_24_lord", 0), #tottori to lord yamana
+      # # (call_script, "script_give_center_to_lord", "p_town_35", "trp_kingdom_24_lord", 0), #tottori to lord yamana
       
-      # (call_script, "script_give_center_to_lord", "p_town_36", "trp_kingdom_25_lord", 0), #tottori to lord yamana
+      # # (call_script, "script_give_center_to_lord", "p_town_36", "trp_kingdom_25_lord", 0), #tottori to lord yamana
       
-      # (call_script, "script_give_center_to_lord", "p_town_37", "trp_kingdom_26_lord", 0), #tottori to lord yamana
+      # # (call_script, "script_give_center_to_lord", "p_town_37", "trp_kingdom_26_lord", 0), #tottori to lord yamana
       
-      # (call_script, "script_give_center_to_lord", "p_town_38", "trp_kingdom_27_lord", 0), #tottori to lord yamana
+      # # (call_script, "script_give_center_to_lord", "p_town_38", "trp_kingdom_27_lord", 0), #tottori to lord yamana
       
-      # (call_script, "script_give_center_to_lord", "p_town_39", "trp_kingdom_20_lord", 0), #tottori to lord yamana
+      # # (call_script, "script_give_center_to_lord", "p_town_39", "trp_kingdom_20_lord", 0), #tottori to lord yamana
 
-      # Give family castles to certain nobles.
-	    (call_script, "script_give_center_to_lord", "p_castle_15", "trp_knight_1_10", 0), #sakado castle to lord nagao
-      (call_script, "script_give_center_to_lord", "p_castle_8", "trp_knight_11_2", 0), #kannonji castle to lord rokkaku
-      (call_script, "script_give_center_to_lord", "p_castle_10", "trp_kingdom_11_lord", 0), #ichijodani castle to great lord asakura
-      (call_script, "script_give_center_to_lord", "p_castle_16", "trp_kingdom_11_lord", 0), #ono castle to great lord asakura
-      (call_script, "script_give_center_to_lord", "p_castle_21", "trp_knight_5_2", 0),	#ueda castle to lord sanada
-      (call_script, "script_give_center_to_lord", "p_castle_30", "trp_knight_10_4", 0), #hachinohe castle to lord hachinohe
-      (call_script, "script_give_center_to_lord", "p_castle_33", "trp_kingdom_14_lord", 0), #hachinohe castle to great lord mogami
-      (call_script, "script_give_center_to_lord", "p_castle_36", "trp_knight_2_7", 0), #iwaki castle to lord iwaki
-      (call_script, "script_give_center_to_lord", "p_castle_40", "trp_knight_9_8", 0), #nobeoka castle to lord ito
-      (call_script, "script_give_center_to_lord", "p_castle_64", "trp_knight_16_6", 0), #kashima castle to lord nabeshima
-      (call_script, "script_give_center_to_lord", "p_castle_73", "trp_knight_10_6", 0), #katsuyama castle to lord kakizaki
+      # # Give family castles to certain nobles.
+	    # (call_script, "script_give_center_to_lord", "p_castle_15", "trp_knight_1_10", 0), #sakado castle to lord nagao
+      # (call_script, "script_give_center_to_lord", "p_castle_8", "trp_knight_11_2", 0), #kannonji castle to lord rokkaku
+      # (call_script, "script_give_center_to_lord", "p_castle_10", "trp_kingdom_11_lord", 0), #ichijodani castle to great lord asakura
+      # (call_script, "script_give_center_to_lord", "p_castle_16", "trp_kingdom_11_lord", 0), #ono castle to great lord asakura
+      # (call_script, "script_give_center_to_lord", "p_castle_21", "trp_knight_5_2", 0),	#ueda castle to lord sanada
+      # (call_script, "script_give_center_to_lord", "p_castle_30", "trp_knight_10_4", 0), #hachinohe castle to lord hachinohe
+      # (call_script, "script_give_center_to_lord", "p_castle_33", "trp_kingdom_14_lord", 0), #hachinohe castle to great lord mogami
+      # (call_script, "script_give_center_to_lord", "p_castle_36", "trp_knight_2_7", 0), #iwaki castle to lord iwaki
+      # (call_script, "script_give_center_to_lord", "p_castle_40", "trp_knight_9_8", 0), #nobeoka castle to lord ito
+      # (call_script, "script_give_center_to_lord", "p_castle_64", "trp_knight_16_6", 0), #kashima castle to lord nabeshima
+      # (call_script, "script_give_center_to_lord", "p_castle_73", "trp_knight_10_6", 0), #katsuyama castle to lord kakizaki
 
-      (call_script, "script_give_center_to_lord", "p_village_162", "trp_knight_10_6", 0), #uzukeshi to lord kakizaki
+      # (call_script, "script_give_center_to_lord", "p_village_162", "trp_knight_10_6", 0), #uzukeshi to lord kakizaki
       
-      (call_script, "script_give_center_to_lord", "p_castle_73", "trp_kingdom_22_lord", 0),
+      # (call_script, "script_give_center_to_lord", "p_castle_73", "trp_kingdom_22_lord", 0),
       
-      (call_script, "script_give_center_to_lord", "p_castle_74", "trp_kingdom_23_lord", 0),
+      # (call_script, "script_give_center_to_lord", "p_castle_74", "trp_kingdom_23_lord", 0),
       
-      (call_script, "script_give_center_to_lord", "p_castle_75", "trp_kingdom_24_lord", 0),
+      # (call_script, "script_give_center_to_lord", "p_castle_75", "trp_kingdom_24_lord", 0),
       
-      (call_script, "script_give_center_to_lord", "p_castle_76", "trp_kingdom_25_lord", 0),
-      (call_script, "script_give_center_to_lord", "p_castle_77", "trp_kingdom_26_lord", 0),
-      (call_script, "script_give_center_to_lord", "p_castle_78", "trp_kingdom_27_lord", 0),
-      (call_script, "script_give_center_to_lord", "p_castle_79", "trp_kingdom_21_lord", 0),
-      (call_script, "script_give_center_to_lord", "p_castle_80", "trp_kingdom_27_lord", 0),
-      (call_script, "script_give_center_to_lord", "p_castle_81", "trp_kingdom_27_lord", 0),
-      (call_script, "script_give_center_to_lord", "p_castle_82", "trp_kingdom_27_lord", 0),
+      # (call_script, "script_give_center_to_lord", "p_castle_76", "trp_kingdom_25_lord", 0),
+      # (call_script, "script_give_center_to_lord", "p_castle_77", "trp_kingdom_26_lord", 0),
+      # (call_script, "script_give_center_to_lord", "p_castle_78", "trp_kingdom_27_lord", 0),
+      # (call_script, "script_give_center_to_lord", "p_castle_79", "trp_kingdom_21_lord", 0),
+      # (call_script, "script_give_center_to_lord", "p_castle_80", "trp_kingdom_27_lord", 0),
+      # (call_script, "script_give_center_to_lord", "p_castle_81", "trp_kingdom_27_lord", 0),
+      # (call_script, "script_give_center_to_lord", "p_castle_82", "trp_kingdom_27_lord", 0),
 
       ##diplomacy start+
 	  #Add home centers for claimants
@@ -7947,11 +7947,11 @@ scripts = [
         (else_try),
           (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_20"),
       
-          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_ikko_deserter"),
-          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_ikko_messenger"),
-          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_ikko_prison_guard"),
-          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_ikko_castle_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_ikko_jizamurai"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_ikko_retainer"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_ikko_mounted_retainer"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_ikko_master_gunner"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_ikko_mounted_officer"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_a, "pt_kingdom_20_reinforcements_a"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_20_reinforcements_b"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_20_reinforcements_c"),
@@ -7959,11 +7959,11 @@ scripts = [
        (else_try),
           (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_21"),
       
-          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_ikko_deserter"),
-          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_ikko_messenger"),
-          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_ikko_prison_guard"),
-          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_ikko_castle_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_xb_deserter"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_xb_hatamoto_archer"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_xb_messenger"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_xb_prison_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_xb_castle_guard"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_a, "pt_kingdom_21_reinforcements_a"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_21_reinforcements_b"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_21_reinforcements_c"),
@@ -7971,11 +7971,11 @@ scripts = [
        (else_try),
           (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_22"),
       
-          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_ikko_deserter"),
-          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_ikko_messenger"),
-          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_ikko_prison_guard"),
-          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_ikko_castle_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_ss_elite_spearman"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_ss_veteran_spearman"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_ss_master_gunner"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_ss_officer"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_ss_mounted_officer"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_a, "pt_kingdom_22_reinforcements_a"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_22_reinforcements_b"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_22_reinforcements_c"),
@@ -7983,11 +7983,11 @@ scripts = [
        (else_try),
           (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_23"),
       
-          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_ikko_deserter"),
-          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_ikko_messenger"),
-          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_ikko_prison_guard"),
-          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_ikko_castle_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_wz_retainer"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_wz_mounted_retainer"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_wz_samurai_archer"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_wz_samurai_archer"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_wz_mounted_officer"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_a, "pt_kingdom_23_reinforcements_a"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_23_reinforcements_b"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_23_reinforcements_c"),
@@ -7995,11 +7995,11 @@ scripts = [
         (else_try),
           (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_24"),
       
-          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_ikko_deserter"),
-          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_ikko_messenger"),
-          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_ikko_prison_guard"),
-          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_ikko_castle_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_dd_marksman"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_dd_officer"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_dd_mounted_officer"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_dd_veteran_retainer"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_dd_officer"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_a, "pt_kingdom_24_reinforcements_a"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_24_reinforcements_b"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_24_reinforcements_c"),
@@ -8007,11 +8007,11 @@ scripts = [
        (else_try),
           (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_25"),
       
-          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_ikko_deserter"),
-          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_ikko_messenger"),
-          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_ikko_prison_guard"),
-          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_ikko_castle_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_zhuangnei_deserter"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_zhuangnei_hatamoto_cavalry"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_zhuangnei_mounted_officer"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_zhuangnei_prison_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_zhuangnei_castle_guard"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_a, "pt_kingdom_25_reinforcements_a"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_25_reinforcements_b"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_25_reinforcements_c"),
@@ -8019,11 +8019,11 @@ scripts = [
         (else_try),
           (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_26"),
       
-          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_ikko_deserter"),
-          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_ikko_messenger"),
-          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_ikko_prison_guard"),
-          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_ikko_castle_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_qt_samurai_archer"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_qt_officer"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_qt_monk"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_qt_master_archer"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_qt_elite_spearman"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_a, "pt_kingdom_26_reinforcements_a"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_26_reinforcements_b"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_26_reinforcements_c"),
@@ -8031,11 +8031,11 @@ scripts = [
        (else_try),
           (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_27"),
       
-          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_ikko_deserter"),
-          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_ikko_veteran_naginata_monk"),
-          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_ikko_messenger"),
-          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_ikko_prison_guard"),
-          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_ikko_castle_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_yg_deserter"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_yg_hatamoto_cavalry"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_yg_messenger"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_yg_prison_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_yg_castle_guard"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_a, "pt_kingdom_27_reinforcements_a"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_27_reinforcements_b"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_27_reinforcements_c"),
@@ -30586,7 +30586,7 @@ scripts = [
         (mission_tpl_entry_clear_override_items, ":mission_template_no", 0),
         (mission_tpl_entry_add_override_item, ":mission_template_no", 0, "itm_gekokujo_monk_headwrap"),
         (mission_tpl_entry_add_override_item, ":mission_template_no", 0, "itm_gekokujo_kimono_2_monk"),
-        (mission_tpl_entry_add_override_item, ":mission_template_no", 0, "itm_gekokujo_jo"),
+        (mission_tpl_entry_add_override_item, ":mission_template_no", 0, "itm_gekokujo_katana_1"),
         (mission_tpl_entry_add_override_item, ":mission_template_no", 0, "itm_gekokujo_shuriken"),
       (try_end),   
       #new added end              
@@ -37566,7 +37566,70 @@ scripts = [
 	     #gekokujo 3.0 ikko ikko recruitment start
 	     #for toyama castle (p_castle_14) ikko ikki recruit samurai instead
 	     (eq, ":center_no", "p_castle_14"),
-	     (assign, ":volunteer_troop", "trp_gekokujo_ikko_jizamurai"),
+	     (assign, ":volunteer_troop", "trp_ceshi15_messenger"),
+       (else_try),
+         (eq, ":center_no", "p_castle_27"),
+	     (assign, ":volunteer_troop", "trp_ceshi15_messenger"),
+       (else_try),
+         (eq, ":center_no", "p_castle_82"),
+	     (assign, ":volunteer_troop", "trp_ceshi15_messenger"),
+       (else_try),
+         (eq, ":center_no", "p_town_25"),
+	     (assign, ":volunteer_troop", "trp_ceshi1_messenger"),
+       (else_try),
+         (eq, ":center_no", "p_castle_34"),
+	     (assign, ":volunteer_troop", "trp_ceshi1_messenger"),
+       (else_try),
+         (eq, ":center_no", "p_castle_35"),
+	     (assign, ":volunteer_troop", "trp_ceshi1_messenger"),
+       (else_try),
+         (eq, ":center_no", "p_castle_64"),
+	     (assign, ":volunteer_troop", "trp_ceshi1_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_town_9"),
+	     (assign, ":volunteer_troop", "trp_ceshi13_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_castle_61"),
+	     (assign, ":volunteer_troop", "trp_ceshi13_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_castle_45"),
+	     (assign, ":volunteer_troop", "trp_ceshi13_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_castle_11"),
+	     (assign, ":volunteer_troop", "trp_ceshi13_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_castle_72"),
+	     (assign, ":volunteer_troop", "trp_ceshi13_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_castle_73"),
+	     (assign, ":volunteer_troop", "trp_ceshi13_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_town_22"),
+	     (assign, ":volunteer_troop", "trp_ceshi12_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_castle_69"),
+	     (assign, ":volunteer_troop", "trp_ceshi12_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_castle_6"),
+	     (assign, ":volunteer_troop", "trp_ceshi17_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_castle_16"),
+	     (assign, ":volunteer_troop", "trp_ceshi17_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_castle_75"),
+	     (assign, ":volunteer_troop", "trp_ceshi17_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_town_33"),
+	     (assign, ":volunteer_troop", "trp_ceshi17_messenger"),
+      (else_try),
+         (eq, ":center_no", "p_town_28"),
+	     (assign, ":volunteer_troop", "trp_ceshi14_messenger"),    
+      (else_try),
+         (eq, ":center_no", "p_castle_5"),
+	     (assign, ":volunteer_troop", "trp_ceshi14_messenger"), 
+      (else_try),
+         (eq, ":center_no", "p_castle_40"),
+	     (assign, ":volunteer_troop", "trp_ceshi14_messenger"), 
 	     #gekokujo 3.0 ikko ikko recruitment end
 	   (else_try),
          (this_or_next|party_slot_eq, ":center_no", slot_party_type, spt_town),
@@ -69867,60 +69930,65 @@ Born at {s43}^Contact in {s44} of the {s45}.^\
   # Input:  <a_fixed_point>, <b_fixed_point>, <c_fixed_point> : ax^2+bx+c=0
   # Output: <reg0> - number of roots, <reg1_fixed_point> - first root, <reg2_fixed_point> - second root
   # Note:   Fixed_point_multiplier can be any. It will be converted for precise calculation.
-  ("cf_quadratic_roots", [
+("cf_quadratic_roots", [
     (store_script_param, ":a", 1),
     (store_script_param, ":b", 2),
     (store_script_param, ":c", 3),
-
-    (assign, ":save_fpm", 1),
-    (convert_to_fixed_point, ":save_fpm"),
-    (set_fixed_point_multiplier, 100000), # precise calculation
-    (convert_to_fixed_point, ":a"),
-    (convert_to_fixed_point, ":b"),
-    (convert_to_fixed_point, ":c"),
-    (val_div, ":a", ":save_fpm"),
-    (val_div, ":b", ":save_fpm"),
-    (val_div, ":c", ":save_fpm"),
-
-    (store_mul, ":b2", ":b", ":b"),
-    (convert_from_fixed_point, ":b2"),
-    (val_mul, ":c", ":a"),
-    (convert_from_fixed_point, ":c"),
-    (val_mul, ":c", 4),
-    (val_sub, ":b2", ":c"),
-   
     (try_begin),
-      (lt, ":b2", 0),
+      (eq, ":a", 0),
       (assign, reg0, 0),
       (assign, reg1, -1),
       (assign, reg2, -1),
     (else_try),
-      (eq, ":b2", 0),
-      (assign, reg0, 1),
-      (assign, reg2, -1),
-      (store_mul, reg1, ":b", -1),
-      (val_mul, ":a", 2),
-      (convert_to_fixed_point, reg1),
-      (val_div, reg1, ":a"),
-      (val_mul, reg1, ":save_fpm"),
-      (convert_from_fixed_point, reg1),
-    (else_try),
-      (assign, reg0, 2),
-      (store_sqrt, reg1, ":b2"),
-      (store_mul, reg2, reg1, -1),
-      (val_sub, reg1, ":b"),
-      (val_sub, reg2, ":b"),
-      (val_mul, ":a", 2),
-      (convert_to_fixed_point, reg1),
-      (convert_to_fixed_point, reg2),
-      (val_div, reg1, ":a"),
-      (val_div, reg2, ":a"),
-      (val_mul, reg1, ":save_fpm"),
-      (val_mul, reg2, ":save_fpm"),
-      (convert_from_fixed_point, reg1),
-      (convert_from_fixed_point, reg2),
+      (assign, ":save_fpm", 1),
+      (convert_to_fixed_point, ":save_fpm"),
+      (set_fixed_point_multiplier, 100000), # precise calculation
+      (convert_to_fixed_point, ":a"),
+      (convert_to_fixed_point, ":b"),
+      (convert_to_fixed_point, ":c"),
+      (val_div, ":a", ":save_fpm"),
+      (val_div, ":b", ":save_fpm"),
+      (val_div, ":c", ":save_fpm"),
+      (store_mul, ":b2", ":b", ":b"),
+      (convert_from_fixed_point, ":b2"),
+      (val_mul, ":c", ":a"),
+      (convert_from_fixed_point, ":c"),
+      (val_mul, ":c", 4),
+      (val_sub, ":b2", ":c"),
+      (try_begin),
+        (lt, ":b2", 0),
+        (assign, reg0, 0),
+        (assign, reg1, -1),
+        (assign, reg2, -1),
+      (else_try),
+        (eq, ":b2", 0),
+        (assign, reg0, 1),
+        (assign, reg2, -1),
+        (store_mul, reg1, ":b", -1),
+        (val_mul, ":a", 2),
+        (convert_to_fixed_point, reg1),
+        (val_div, reg1, ":a"),
+        (val_mul, reg1, ":save_fpm"),
+        (convert_from_fixed_point, reg1),
+      (else_try),
+        (assign, reg0, 2),
+        (store_sqrt, reg1, ":b2"),
+        (store_mul, reg2, reg1, -1),
+        (val_sub, reg1, ":b"),
+        (val_sub, reg2, ":b"),
+        (val_mul, ":a", 2),
+        (convert_to_fixed_point, reg1),
+        (convert_to_fixed_point, reg2),
+        (val_div, reg1, ":a"),
+        (val_div, reg2, ":a"),
+        (val_mul, reg1, ":save_fpm"),
+        (val_mul, reg2, ":save_fpm"),
+        (convert_from_fixed_point, reg1),
+        (convert_from_fixed_point, reg2),
+      (try_end),
+      (set_fixed_point_multiplier, ":save_fpm"),
     (try_end),
-    (set_fixed_point_multiplier, ":save_fpm"),
+
     (gt, reg0, 0), # There are no roots
   ]),
   # script_point_missile_position

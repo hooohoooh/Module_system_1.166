@@ -981,10 +981,6 @@ qstr_{s0}^{s1}_villages_wit|{s0} ^ {s1}繁 荣 的 村 庄 40-59： {reg0}
 qstr_{s0}^{s1}_villages_with|{s0} ^ {s1}繁 荣 的 村 庄 20-39： {reg0} 
 qstr_{s0}^{s1}_villages_with_|{s0} ^ {s1}繁 荣 的 村 庄 0-19： {reg0}
 qstr_You_have_deserted_an|您 已 经 离 开 了 ， 并 且 现 在 被 通 缉 了 ！ 
-qstr_Keihoku|比 叡 山 
-qstr_Bubaigawara|分 倍 河 原 
-qstr_Oizumi|小 泉 
-qstr_Atsugi|箱 根 
 qstr_Hidden|隐 藏 村 庄 
 qstr_Breaking_camp...|终 止 宿 营 …… 
 qstr_{s5}_has_decided_to_|{s5}已 决 定 将 {s4}授 予 {s7}的 另 一 位 领 主 。 

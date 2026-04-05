@@ -40,7 +40,7 @@ pf_village = pf_is_static|pf_always_visible|pf_hide_defenders|pf_label_small
 # Anjou: Angers
 
 parties = [
-  ("main_party","Main Party",icon_player|pf_limit_members, no_menu, pt_none,fac_player_faction,0,ai_bhvr_hold,0,(110, -130),[(trp_player,1,0),(trp_hired_gunner,1,0)]),
+  ("main_party","Main Party",icon_player|pf_limit_members, no_menu, pt_none,fac_player_faction,0,ai_bhvr_hold,0,(110, -130),[(trp_player,1,0),(trp_gekokujo_zunwang_veteran_gunner,1,0)]),
   ("temp_party","{!}temp_party",pf_disabled, no_menu, pt_none, fac_commoners,0,ai_bhvr_hold,0,(120,-120),[]),
   ("camp_bandits","{!}camp_bandits",pf_disabled, no_menu, pt_none, fac_outlaws,0,ai_bhvr_hold,0,(120,-120),[(trp_temp_troop,3,0)]),
 #parties before this point are hardwired. Their order should not be changed.

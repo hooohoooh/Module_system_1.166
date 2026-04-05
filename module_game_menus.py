@@ -62,63 +62,134 @@ game_menus = [
     "none",
     [],
     [
-      ("town_1",[(eq, "$current_startup_quest_phase", 0),],"Join a caravan to Tsu, in Ise province.",
-       [
-         (assign, "$current_town", "p_town_6"),
-         (assign, "$g_starting_town", "$current_town"),
-         (assign, "$g_journey_string", "str_journey_to_tsu"),
-		 (jump_to_menu, "mnu_start_phase_2_5"),
-#         (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
-#         (change_screen_return),
-       ]),
-       
-	   #gekokujo 3.0 starting locations placeholder
-      ("town_2",[(eq, "$current_startup_quest_phase", 0),],"Join a caravan to Hirosaki, in the far north.",
-       [
-         (assign, "$current_town", "p_town_18"),
-         (assign, "$g_starting_town", "$current_town"),
-         (assign, "$g_journey_string", "str_journey_to_hirosaki"),
-		 (jump_to_menu, "mnu_start_phase_2_5"),
-#         (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
-#         (change_screen_return),
-       ]),
-       
-      ("town_3",[(eq, "$current_startup_quest_phase", 0),],"Join a caravan to Niigata, in Echigo province.",
-       [
-         (assign, "$current_town", "p_town_10"),
-         (assign, "$g_starting_town", "$current_town"),
-         (assign, "$g_journey_string", "str_journey_to_niigata"),
-		 (jump_to_menu, "mnu_start_phase_2_5"),
-#         (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
-#         (change_screen_return),
-       ]),
-       
-      ("town_4",[(eq, "$current_startup_quest_phase", 0),],"Take a ship to Edo, in the Kanto region.",
+      ("town_1",[(eq, "$current_startup_quest_phase", 0),],"join a caravan to Praven, in the Kingdom of Swadia.",
        [
          (assign, "$current_town", "p_town_1"),
          (assign, "$g_starting_town", "$current_town"),
-         (assign, "$g_journey_string", "str_journey_to_edo"),
-		 (jump_to_menu, "mnu_start_phase_2_5"),
+            (call_script, "script_player_arrived"),
+            (party_set_morale, "p_main_party", 100),
+            (assign, ":max_dist", 0),
+            (party_get_position, pos1, "$current_town"),
+            (try_for_range, ":unused", 0, 10),
+                (map_get_random_position_around_position, pos0, pos1, 2),
+                (get_distance_between_positions, ":dist", pos0, pos1),
+                (ge, ":dist", ":max_dist"),
+                (assign, ":max_dist", ":dist"),
+                (copy_position, pos2, pos0),
+            (try_end),  
+            (party_set_position, "p_main_party", pos2), 
+            (change_screen_map),
+		 # (jump_to_menu, "mnu_start_phase_2_5"),
 #         (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
 #         (change_screen_return),
        ]),
        
-      ("town_5",[(eq, "$current_startup_quest_phase", 0),],"Take a ship to Sakai, in the Kinai region.",
+      ("town_2",[(eq, "$current_startup_quest_phase", 0),],"join a caravan to Reyvadin, in the Kingdom of the Vaegirs.",
+       [
+         (assign, "$current_town", "p_town_2"),
+         (assign, "$g_starting_town", "$current_town"),
+            (call_script, "script_player_arrived"),
+            (party_set_morale, "p_main_party", 100),
+            (assign, ":max_dist", 0),
+            (party_get_position, pos1, "$current_town"),
+            (try_for_range, ":unused", 0, 10),
+                (map_get_random_position_around_position, pos0, pos1, 2),
+                (get_distance_between_positions, ":dist", pos0, pos1),
+                (ge, ":dist", ":max_dist"),
+                (assign, ":max_dist", ":dist"),
+                (copy_position, pos2, pos0),
+            (try_end),  
+            (party_set_position, "p_main_party", pos2), 
+            (change_screen_map),
+		 # (jump_to_menu, "mnu_start_phase_2_5"),
+#         (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
+#         (change_screen_return),
+       ]),
+       
+      ("town_3",[(eq, "$current_startup_quest_phase", 0),],"join a caravan to Tulga, in the Khergit Khanate.",
+       [
+         (assign, "$current_town", "p_town_3"),
+         (assign, "$g_starting_town", "$current_town"),
+            (call_script, "script_player_arrived"),
+            (party_set_morale, "p_main_party", 100),
+            (assign, ":max_dist", 0),
+            (party_get_position, pos1, "$current_town"),
+            (try_for_range, ":unused", 0, 10),
+                (map_get_random_position_around_position, pos0, pos1, 2),
+                (get_distance_between_positions, ":dist", pos0, pos1),
+                (ge, ":dist", ":max_dist"),
+                (assign, ":max_dist", ":dist"),
+                (copy_position, pos2, pos0),
+            (try_end),  
+            (party_set_position, "p_main_party", pos2), 
+            (change_screen_map),
+		 # (jump_to_menu, "mnu_start_phase_2_5"),
+#         (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
+#         (change_screen_return),
+       ]),
+       
+      ("town_4",[(eq, "$current_startup_quest_phase", 0),],"take a ship to Sargoth, in the Kingdom of the Nords.",
+       [
+         (assign, "$current_town", "p_town_4"),
+         (assign, "$g_starting_town", "$current_town"),
+            (call_script, "script_player_arrived"),
+            (party_set_morale, "p_main_party", 100),
+            (assign, ":max_dist", 0),
+            (party_get_position, pos1, "$current_town"),
+            (try_for_range, ":unused", 0, 10),
+                (map_get_random_position_around_position, pos0, pos1, 2),
+                (get_distance_between_positions, ":dist", pos0, pos1),
+                (ge, ":dist", ":max_dist"),
+                (assign, ":max_dist", ":dist"),
+                (copy_position, pos2, pos0),
+            (try_end),  
+            (party_set_position, "p_main_party", pos2), 
+            (change_screen_map),
+		 # (jump_to_menu, "mnu_start_phase_2_5"),
+#         (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
+#         (change_screen_return),
+       ]),
+       
+      ("town_5",[(eq, "$current_startup_quest_phase", 0),],"take a ship to Jelkala, in the Kingdom of the Rhodoks.",
        [
          (assign, "$current_town", "p_town_5"),
          (assign, "$g_starting_town", "$current_town"),
-         (assign, "$g_journey_string", "str_journey_to_osaka"),
-		 (jump_to_menu, "mnu_start_phase_2_5"),
+            (call_script, "script_player_arrived"),
+            (party_set_morale, "p_main_party", 100),
+            (assign, ":max_dist", 0),
+            (party_get_position, pos1, "$current_town"),
+            (try_for_range, ":unused", 0, 10),
+                (map_get_random_position_around_position, pos0, pos1, 2),
+                (get_distance_between_positions, ":dist", pos0, pos1),
+                (ge, ":dist", ":max_dist"),
+                (assign, ":max_dist", ":dist"),
+                (copy_position, pos2, pos0),
+            (try_end),  
+            (party_set_position, "p_main_party", pos2), 
+            (change_screen_map),
+		 # (jump_to_menu, "mnu_start_phase_2_5"),
 #         (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
 #         (change_screen_return),
        ]),
        
-      ("town_6",[(eq, "$current_startup_quest_phase", 0),],"Take a ship to Hakata, in Kyushu.",
+       ("town_6",[(eq, "$current_startup_quest_phase", 0),],"take a ship to Jelkala, in the Kingdom of the Rhodoks.",
        [
-         (assign, "$current_town", "p_town_19"),
+         (assign, "$current_town", "p_town_6"),
          (assign, "$g_starting_town", "$current_town"),
-         (assign, "$g_journey_string", "str_journey_to_hakata"),
-		 (jump_to_menu, "mnu_start_phase_2_5"),
+            (call_script, "script_player_arrived"),
+            (party_set_morale, "p_main_party", 100),
+            (assign, ":max_dist", 0),
+            (party_get_position, pos1, "$current_town"),
+            (try_for_range, ":unused", 0, 10),
+                (map_get_random_position_around_position, pos0, pos1, 2),
+                (get_distance_between_positions, ":dist", pos0, pos1),
+                (ge, ":dist", ":max_dist"),
+                (assign, ":max_dist", ":dist"),
+                (copy_position, pos2, pos0),
+            (try_end),  
+            (party_set_position, "p_main_party", pos2), 
+            (change_screen_map),
+		 # (jump_to_menu, "mnu_start_phase_2_5"),
 #         (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
 #         (change_screen_return),
        ]),
@@ -14362,11 +14433,21 @@ game_menus = [
         ], "Door to the garden."),										
 
 #Gekokujo Town Recruitment
-      ("recruit_volunteers",
+       ("recruit_volunteers",
        [(call_script, "script_cf_town_castle_recruit_volunteers_cond"),]
        ,"Recruit Volunteers.",
        [(jump_to_menu, "mnu_recruit_volunteers"),]
       ),
+      
+      ("zhaobing", 
+      [
+		(ge,"$player_honor",10),
+		(troop_slot_ge,"trp_player",slot_troop_renown,200),	
+	  ],
+         "Go to zhaobing",
+     [
+        (jump_to_menu,"mnu_zhaobing"),
+    ]),
 		
       ("trade_with_merchants",
        [
@@ -14380,6 +14461,20 @@ game_menus = [
              (jump_to_menu,"mnu_town_trade"),
            (try_end),
           ]),
+          
+           ("trade_with_merchants",
+       [
+           (party_slot_eq,"$current_town",slot_party_type, spt_town)
+        ],
+         "Go to the marketplace.",
+         [
+           (try_begin),
+             (call_script, "script_cf_enter_center_location_bandit_check"),
+           (else_try),
+             (jump_to_menu,"mnu_town_trade"),
+           (try_end),
+          ]),
+       
 
       ("walled_center_manage",
       [
@@ -17231,30 +17326,20 @@ goods, and books will never be sold. ^^You can change some settings here freely.
      (faction_get_slot, ":king", "$players_kingdom", slot_faction_leader),
      (str_store_troop_name, s15, ":king"),
      (str_store_faction_name, s23, "$players_kingdom"),
-     ],
-    [
+   ],
+   [
       ("marshall_candidate_accept", [], "Let {s15} learn that you are willing to serve as strategist.",
        [
          (start_presentation, "prsnt_marshall_selection"),
-        ]
-       ),
+       ]
+      ),
       ("marshall_candidate_reject", [], "Tell everyone that you are too busy these days.",
        [
-         (try_begin),
-           (eq, "$g_presentation_marshall_selection_max_renown_2_troop", "trp_player"),
-           (assign, "$g_presentation_marshall_selection_max_renown_2", "$g_presentation_marshall_selection_max_renown_3"),
-           (assign, "$g_presentation_marshall_selection_max_renown_2_troop", "$g_presentation_marshall_selection_max_renown_3_troop"),
-         (else_try),
-           (assign, "$g_presentation_marshall_selection_max_renown_1", "$g_presentation_marshall_selection_max_renown_2"),
-           (assign, "$g_presentation_marshall_selection_max_renown_1_troop", "$g_presentation_marshall_selection_max_renown_2_troop"),
-           (assign, "$g_presentation_marshall_selection_max_renown_2", "$g_presentation_marshall_selection_max_renown_3"),
-           (assign, "$g_presentation_marshall_selection_max_renown_2_troop", "$g_presentation_marshall_selection_max_renown_3_troop"),
-         (try_end),
          (start_presentation, "prsnt_marshall_selection"),
-        ]
-       ),
-      ]
-  ),
+       ]
+      ),
+   ]
+),
 
 
 
@@ -22115,6 +22200,33 @@ goods, and books will never be sold. ^^You can change some settings here freely.
            (jump_to_menu, "mnu_reports"),
         ]),
       ]
+  ),
+  
+  ("zhaobing",mnf_disable_all_keys,
+    "welcome to zhaobing",
+    "none",   
+    [],
+    [
+     ("buy_munitions",[
+		(store_free_inventory_capacity,":num","trp_player"),
+		(store_troop_gold,":gold","trp_player"),
+		(try_begin),
+			(ge,":num",1),
+			(ge,":gold",20000),
+		(else_try),
+			(disable_menu_option),
+		(try_end),
+	 ],"Buy munitions",
+       [
+		(troop_remove_gold,"trp_player",600),
+		(party_add_members, "p_main_party", "trp_gekokujo_zhuangnei_samurai_gunner", 50),
+       ]),
+       
+     ("go_back",[],"Go back",
+       [
+        (jump_to_menu, "mnu_town"),
+       ]),
+    ]
   ),
 ##diplomacy end+
 

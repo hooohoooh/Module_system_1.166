@@ -213,6 +213,11 @@ sounds = [
  ("team_scored_a_point", sf_2d|sf_priority_10|sf_vol_10, ["you_scored_a_point.ogg"]),
  ("enemy_scored_a_point", sf_2d|sf_priority_10|sf_vol_10, ["enemy_scored_a_point.ogg"]),
  ("kaiqiang", sf_2d|sf_priority_10|sf_vol_10, ["kaiqiang.ogg"]),
+ ("xiasaibo",sf_priority_10|sf_vol_10, ["xiasaiboo.wav"]),
+ ("spring",sf_priority_10|sf_vol_10, ["spring.wav"]),
+ ("rifle_shot3_02",sf_priority_10|sf_vol_10, ["rifle_shot3_02.wav"]),
+ ("minigun",sf_priority_10|sf_vol_10, ["minigun.wav"]),
+ ("enfield53",sf_priority_10|sf_vol_10, ["Enfield53.wav"]),
  #llf
  ("mortar_hit2", sf_2d|sf_priority_10|sf_vol_15, ["mortar_hit2.wav"]),
  #llf end

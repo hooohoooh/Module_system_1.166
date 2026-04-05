@@ -178,6 +178,11 @@ snd_flag_returned = 176
 snd_team_scored_a_point = 177
 snd_enemy_scored_a_point = 178
 snd_kaiqiang = 179
-snd_mortar_hit2 = 180
+snd_xiasaibo = 180
+snd_spring = 181
+snd_rifle_shot3_02 = 182
+snd_minigun = 183
+snd_enfield53 = 184
+snd_mortar_hit2 = 185
 
 
