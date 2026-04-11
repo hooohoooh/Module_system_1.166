@@ -76,53 +76,53 @@ simple_triggers = [
 	  #kamigyo is renamed to keihoku because kamigyo is where the imperial palace is
 	  #imperial palace is going to be in a future version of gekokujo and shouldn't be a village
 	  #kameoka should also be further out
-	  (try_begin),
-	    (eq, "$kyoto_changed", 0),
-		(assign, "$kyoto_changed", 1),
-		
-		(set_fixed_point_multiplier, 100),
-		
-		(party_set_name, "p_village_16", "@Keihoku"), #kamigyo-keihoku
-		
-		(position_set_x, pos2, -9580), #from -8880
-		(position_set_y, pos2, -16600), #from -16900
-		(party_set_position, "p_village_17", pos2), #kameoka's new position
-        
-        #use this for kanto fixes as well
-		(position_set_x, pos2, 9430), #from -9930
-		(position_set_y, pos2, -12000), #from -12500
-		(party_set_position, "p_castle_49", pos2), #kawagoe castle's new position
-        
-		(position_set_x, pos2, 9630), #from -10130
-		(position_set_y, pos2, -12150), #from -12650
-		(party_set_position, "p_village_136", pos2), #kawagoe's new position
-        
-		(party_set_name, "p_village_112", "@Bubaigawara"), #shiki-bubaigawara
-		(position_set_x, pos2, 10300), #from 10650
-		(position_set_y, pos2, -13400), #from -12150
-		(party_set_position, "p_village_112", pos2), #bubaigawara's new position
-        
-		(party_set_name, "p_village_3", "@Oizumi"), #kiyose-oizumi
-        
-		(party_set_name, "p_village_1", "@Atsugi"), #yamakita-atsugi
-		(position_set_x, pos2, 8800), #from 8350
-		(position_set_y, pos2, -14200), #from -15000
-		(party_set_position, "p_village_1", pos2), #atsugi's new position
-        
-        #gekokujo 3.1 bogmir's quests start
-        #let's hijack this for the hidden village
-        (party_set_name, "p_hidden_village", "@Hidden"), #p_reserved_5 is now p_hidden_village
-        (party_set_icon, "p_hidden_village", "icon_bandit_lair"),
-        (party_set_flags, "p_hidden_village", pf_disabled, 0),
-        (party_set_flags, "p_hidden_village", pf_hide_defenders, 1),
-        (party_set_faction, "p_hidden_village", "fac_neutral"),
-        (position_set_x, pos2, -5500),
-        (position_set_y, pos2, -16300),
-        (party_set_position, "p_hidden_village", pos2), #hidden village moved north of the pass at iga
-        (party_clear, "p_hidden_village"),
-        #gekokujo 3.1 bogmir's quests end
-		
-	  (try_end),
+	  #(try_begin),
+	  #  (eq, "$kyoto_changed", 0),
+		#(assign, "$kyoto_changed", 1),
+		#
+		#(set_fixed_point_multiplier, 100),
+		#
+		#(party_set_name, "p_village_16", "@Keihoku"), #kamigyo-keihoku
+		#
+		#(position_set_x, pos2, -9580), #from -8880
+		#(position_set_y, pos2, -16600), #from -16900
+		#(party_set_position, "p_village_17", pos2), #kameoka's new position
+    #    
+    #    #use this for kanto fixes as well
+		#(position_set_x, pos2, 9430), #from -9930
+		#(position_set_y, pos2, -12000), #from -12500
+		#(party_set_position, "p_castle_49", pos2), #kawagoe castle's new position
+    #    
+		#(position_set_x, pos2, 9630), #from -10130
+		#(position_set_y, pos2, -12150), #from -12650
+		#(party_set_position, "p_village_136", pos2), #kawagoe's new position
+    #    
+		#(party_set_name, "p_village_112", "@Bubaigawara"), #shiki-bubaigawara
+		#(position_set_x, pos2, 10300), #from 10650
+		#(position_set_y, pos2, -13400), #from -12150
+		#(party_set_position, "p_village_112", pos2), #bubaigawara's new position
+    #    
+		#(party_set_name, "p_village_3", "@Oizumi"), #kiyose-oizumi
+    #    
+		#(party_set_name, "p_village_1", "@Atsugi"), #yamakita-atsugi
+		#(position_set_x, pos2, 8800), #from 8350
+		#(position_set_y, pos2, -14200), #from -15000
+		#(party_set_position, "p_village_1", pos2), #atsugi's new position
+    #    
+    #    #gekokujo 3.1 bogmir's quests start
+    #    #let's hijack this for the hidden village
+    #    (party_set_name, "p_hidden_village", "@Hidden"), #p_reserved_5 is now p_hidden_village
+    #    (party_set_icon, "p_hidden_village", "icon_bandit_lair"),
+    #    (party_set_flags, "p_hidden_village", pf_disabled, 0),
+    #    (party_set_flags, "p_hidden_village", pf_hide_defenders, 1),
+    #    (party_set_faction, "p_hidden_village", "fac_neutral"),
+    #    (position_set_x, pos2, -5500),
+    #    (position_set_y, pos2, -16300),
+    #    (party_set_position, "p_hidden_village", pos2), #hidden village moved north of the pass at iga
+    #    (party_clear, "p_hidden_village"),
+    #    #gekokujo 3.1 bogmir's quests end
+		#
+	  #(try_end),
 	  #gekokujo 3.1 kyoto changes end
 
       #gekokujo 3.0 move hamada castle 1 unit south start
