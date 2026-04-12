@@ -1,4 +1,4 @@
-﻿trp_multiplayer_profile_troop_male|multiplayer profile troop male{***}
+trp_multiplayer_profile_troop_male|multiplayer profile troop male
 trp_multiplayer_profile_troop_male_pl|联 机 男 性 玩 家 角 色 
 trp_multiplayer_profile_troop_female|联 机 女 性 玩 家 角 色 
 trp_multiplayer_profile_troop_female_pl|联 机 女 性 玩 家 角 色 
@@ -46,7 +46,7 @@ trp_arena_training_fighter_10|精 英 斗 士
 trp_arena_training_fighter_10_pl|精 英 斗 士 
 trp_cattle|牛 
 trp_cattle_pl|牛 
-trp_farmer|町 人  
+trp_farmer|町 人 
 trp_farmer_pl|町 人 
 trp_townsman|町 人 
 trp_townsman_pl|町 人 
@@ -55,7 +55,7 @@ trp_hired_guard_pl|雇 佣 护 卫
 trp_yojimbo|浪 人 
 trp_yojimbo_pl|浪 人 
 trp_hired_warrior|雇 佣 徒 士 番 
-trp_hired_warrior_pl|雇 佣 徒 士 番  
+trp_hired_warrior_pl|雇 佣 徒 士 番 
 trp_hired_warrior_veteran|雇 佣 小 姓 番 
 trp_hired_warrior_veteran_pl|雇 佣 小 姓 番 
 trp_hired_gunner|雇 佣 铁 炮 手 
@@ -90,12 +90,12 @@ trp_gekokujo_date_skirmisher|仙 台 射 手 足 轻
 trp_gekokujo_date_skirmisher_pl|仙 台 射 手 足 轻 
 trp_gekokujo_date_trained_spearman|仙 台 熟 练 足 轻 
 trp_gekokujo_date_trained_spearman_pl|仙 台 熟 练 足 轻 
-trp_gekokujo_date_trained_skirmisher|仙 台 足 轻 铁 炮 组  
-trp_gekokujo_date_trained_skirmisher_pl|仙 台 足 轻 铁 炮 组  
-trp_gekokujo_date_veteran_spearman|仙 台 资 深 枪 队
-trp_gekokujo_date_veteran_spearman_pl|仙 台 资 深 枪 队
-trp_gekokujo_date_veteran_skirmisher|仙 台 松 山 步 枪 队
-trp_gekokujo_date_veteran_skirmisher_pl|仙 台 松 山 步 枪 队
+trp_gekokujo_date_trained_skirmisher|仙 台 足 轻 铁 炮 组 
+trp_gekokujo_date_trained_skirmisher_pl|仙 台 足 轻 铁 炮 组 
+trp_gekokujo_date_veteran_spearman|仙 台 资 深 枪 队 
+trp_gekokujo_date_veteran_spearman_pl|仙 台 资 深 枪 队 
+trp_gekokujo_date_veteran_skirmisher|仙 台 松 山 步 枪 队 
+trp_gekokujo_date_veteran_skirmisher_pl|仙 台 松 山 步 枪 队 
 trp_gekokujo_date_elite_spearman|仙 台 乌 组 冲 击 队 
 trp_gekokujo_date_elite_spearman_pl|仙 台 乌 组 冲 击 队 
 trp_gekokujo_oda_villager|藤 堂 民 兵 
@@ -108,24 +108,24 @@ trp_gekokujo_oda_trained_spearman|藤 堂 熟 练 足 轻
 trp_gekokujo_oda_trained_spearman_pl|藤 堂 熟 练 足 轻 
 trp_gekokujo_oda_trained_skirmisher|藤 堂 熟 练 射 手 足 轻 
 trp_gekokujo_oda_trained_skirmisher_pl|藤 堂 熟 练 射 手 足 轻 
-trp_gekokujo_oda_veteran_spearman|山 崎 関 門 足 轻 队
-trp_gekokujo_oda_veteran_spearman_pl|山 崎 関 門 足 轻 队
+trp_gekokujo_oda_veteran_spearman|山 崎 関 門 足 轻 队 
+trp_gekokujo_oda_veteran_spearman_pl|山 崎 関 門 足 轻 队 
 trp_gekokujo_oda_veteran_skirmisher|藤 堂 资 深 射 手 足 轻 
 trp_gekokujo_oda_veteran_skirmisher_pl|藤 堂 资 深 射 手 足 轻 
-trp_gekokujo_oda_elite_skirmisher|藤 堂  伊 贺 流 忍 者 
-trp_gekokujo_oda_elite_skirmisher_pl|藤 堂  伊 贺 流 忍 者 
-trp_gekokujo_mori_villager|长 州 农 兵
-trp_gekokujo_mori_villager_pl|长 州 农 兵
-trp_gekokujo_mori_spearman|长 州 藩 兵
-trp_gekokujo_mori_spearman_pl|长 州 藩 兵
-trp_gekokujo_mori_skirmisher|长 州 足 轻 铁 炮 组  
-trp_gekokujo_mori_skirmisher_pl|长 州 足 轻 铁 炮 组  
-trp_gekokujo_mori_trained_spearman|长 州 佩 刀 藩 兵
-trp_gekokujo_mori_trained_spearman_pl|长 州 佩 刀 藩 兵
-trp_gekokujo_mori_trained_skirmisher|长 州 应 征 步 兵
-trp_gekokujo_mori_trained_skirmisher_pl|长 州 应 征 步 兵
-trp_gekokujo_mori_veteran_spearman|长 州 屠 勇 队
-trp_gekokujo_mori_veteran_spearman_pl|长 州 屠 勇 队
+trp_gekokujo_oda_elite_skirmisher|藤 堂 伊 贺 流 忍 者 
+trp_gekokujo_oda_elite_skirmisher_pl|藤 堂 伊 贺 流 忍 者 
+trp_gekokujo_mori_villager|长 州 农 兵 
+trp_gekokujo_mori_villager_pl|长 州 农 兵 
+trp_gekokujo_mori_spearman|长 州 藩 兵 
+trp_gekokujo_mori_spearman_pl|长 州 藩 兵 
+trp_gekokujo_mori_skirmisher|长 州 足 轻 铁 炮 组 
+trp_gekokujo_mori_skirmisher_pl|长 州 足 轻 铁 炮 组 
+trp_gekokujo_mori_trained_spearman|长 州 佩 刀 藩 兵 
+trp_gekokujo_mori_trained_spearman_pl|长 州 佩 刀 藩 兵 
+trp_gekokujo_mori_trained_skirmisher|长 州 应 征 步 兵 
+trp_gekokujo_mori_trained_skirmisher_pl|长 州 应 征 步 兵 
+trp_gekokujo_mori_veteran_spearman|长 州 屠 勇 队 
+trp_gekokujo_mori_veteran_spearman_pl|长 州 屠 勇 队 
 trp_gekokujo_mori_veteran_skirmisher|长 州 线 列 步 兵 
 trp_gekokujo_mori_veteran_skirmisher_pl|长 州 线 列 步 兵 
 trp_gekokujo_mori_elite_spearman|长 州 奇 兵 队 
@@ -134,34 +134,34 @@ trp_gekokujo_takeda_villager|福 井 民 兵
 trp_gekokujo_takeda_villager_pl|福 井 民 兵 
 trp_gekokujo_takeda_spearman|福 井 足 轻 
 trp_gekokujo_takeda_spearman_pl|福 井 足 轻 
-trp_gekokujo_takeda_skirmisher|福 井 足 轻 铁 炮 组  
-trp_gekokujo_takeda_skirmisher_pl|福 井 足 轻 铁 炮 组  
+trp_gekokujo_takeda_skirmisher|福 井 足 轻 铁 炮 组 
+trp_gekokujo_takeda_skirmisher_pl|福 井 足 轻 铁 炮 组 
 trp_gekokujo_takeda_trained_spearman|福 井 枪 足 轻 
 trp_gekokujo_takeda_trained_spearman_pl|福 井 枪 足 轻 
 trp_gekokujo_takeda_trained_skirmisher|福 井 徒 士 铁 炮 组 
-trp_gekokujo_takeda_trained_skirmisher_pl|福 井 徒 士 铁 炮 组  
+trp_gekokujo_takeda_trained_skirmisher_pl|福 井 徒 士 铁 炮 组 
 trp_gekokujo_takeda_veteran_spearman|福 井 枪 徒 士 
-trp_gekokujo_takeda_veteran_spearman_pl|福 井 枪 徒 士  
-trp_gekokujo_takeda_veteran_skirmisher|福 井 足 轻 铁 炮 众
+trp_gekokujo_takeda_veteran_spearman_pl|福 井 枪 徒 士 
+trp_gekokujo_takeda_veteran_skirmisher|福 井 足 轻 铁 炮 众 
 trp_gekokujo_takeda_veteran_skirmisher_pl|福 井 足 轻 铁 炮 众 
-trp_gekokujo_takeda_elite_spearman|越 前 义 勇 队 足 轻
+trp_gekokujo_takeda_elite_spearman|越 前 义 勇 队 足 轻 
 trp_gekokujo_takeda_elite_spearman_pl|越 前 义 勇 队 足 轻 
 trp_gekokujo_tokugawa_villager|江 户 农 兵 
 trp_gekokujo_tokugawa_villager_pl|江 户 农 兵 
-trp_gekokujo_tokugawa_spearman|江 户 应 征 枪 兵
-trp_gekokujo_tokugawa_spearman_pl|江 户 应 征 枪 兵
+trp_gekokujo_tokugawa_spearman|江 户 应 征 枪 兵 
+trp_gekokujo_tokugawa_spearman_pl|江 户 应 征 枪 兵 
 trp_gekokujo_tokugawa_skirmisher|江 户 足 轻 铁 炮 组 
 trp_gekokujo_tokugawa_skirmisher_pl|江 户 足 轻 铁 炮 组 
-trp_gekokujo_tokugawa_trained_spearman|幕 府 枪 徒 士
-trp_gekokujo_tokugawa_trained_spearman_pl|幕 府 枪 徒 士
+trp_gekokujo_tokugawa_trained_spearman|幕 府 枪 徒 士 
+trp_gekokujo_tokugawa_trained_spearman_pl|幕 府 枪 徒 士 
 trp_gekokujo_tokugawa_trained_skirmisher|幕 府 应 征 步 兵 
 trp_gekokujo_tokugawa_trained_skirmisher_pl|幕 府 应 征 步 兵 
 trp_gekokujo_tokugawa_veteran_spearman|德 川 资 深 足 轻 
 trp_gekokujo_tokugawa_veteran_spearman_pl|德 川 资 深 足 轻 
 trp_gekokujo_tokugawa_veteran_skirmisher|幕 府 联 队 新 兵 
 trp_gekokujo_tokugawa_veteran_skirmisher_pl|幕 府 联 队 新 兵 
-trp_gekokujo_tokugawa_elite_skirmisher|幕 府 联 队 步 兵
-trp_gekokujo_tokugawa_elite_skirmisher_pl|幕 府 联 队 步 兵
+trp_gekokujo_tokugawa_elite_skirmisher|幕 府 联 队 步 兵 
+trp_gekokujo_tokugawa_elite_skirmisher_pl|幕 府 联 队 步 兵 
 trp_gekokujo_miyoshi_villager|纪 州 民 兵 
 trp_gekokujo_miyoshi_villager_pl|纪 州 民 兵 
 trp_gekokujo_miyoshi_spearman|纪 州 足 轻 
@@ -185,9 +185,9 @@ trp_gekokujo_amako_spearman_pl|鸟 取 足 轻
 trp_gekokujo_amako_skirmisher|鸟 取 射 手 足 轻 
 trp_gekokujo_amako_skirmisher_pl|鸟 取 射 手 足 轻 
 trp_gekokujo_amako_trained_spearman|鸟 取 熟 练 足 轻 
-trp_gekokujo_amako_trained_spearman_pl|尼 子熟 练 足 轻
+trp_gekokujo_amako_trained_spearman_pl|尼 子 熟 练 足 轻 
 trp_gekokujo_amako_trained_skirmisher|鸟 取 足 轻 铁 炮 组 
-trp_gekokujo_amako_trained_skirmisher_pl|鸟 取 足 轻 铁 炮 组   
+trp_gekokujo_amako_trained_skirmisher_pl|鸟 取 足 轻 铁 炮 组 
 trp_gekokujo_amako_veteran_spearman|鸟 取 力 士 队 
 trp_gekokujo_amako_veteran_spearman_pl|鸟 取 力 士 队 
 trp_gekokujo_amako_veteran_skirmisher|鸟 取 徒 士 铁 炮 组 
@@ -217,21 +217,21 @@ trp_gekokujo_nanbu_spearman_pl|南 部 足 轻
 trp_gekokujo_nanbu_skirmisher|南 部 射 手 足 轻 
 trp_gekokujo_nanbu_skirmisher_pl|南 部 射 手 足 轻 
 trp_gekokujo_nanbu_trained_spearman|南 部 发 机 队 
-trp_gekokujo_nanbu_trained_spearman_pl|南 部 发 机 队
+trp_gekokujo_nanbu_trained_spearman_pl|南 部 发 机 队 
 trp_gekokujo_nanbu_trained_skirmisher|南 部 足 轻 铁 炮 组 
 trp_gekokujo_nanbu_trained_skirmisher_pl|南 部 足 轻 铁 炮 组 
 trp_gekokujo_nanbu_veteran_spearman|南 部 乌 蛇 队 
 trp_gekokujo_nanbu_veteran_spearman_pl|南 部 乌 蛇 队 
-trp_gekokujo_nanbu_veteran_skirmisher|南 部 应 征 步 兵
-trp_gekokujo_nanbu_veteran_skirmisher_pl|南 部 应 征 步 兵
+trp_gekokujo_nanbu_veteran_skirmisher|南 部 应 征 步 兵 
+trp_gekokujo_nanbu_veteran_skirmisher_pl|南 部 应 征 步 兵 
 trp_gekokujo_nanbu_elite_skirmisher|南 部 铳 队 士 
 trp_gekokujo_nanbu_elite_skirmisher_pl|南 部 铳 队 士 
 trp_gekokujo_asakura_villager|桑 名 农 兵 
 trp_gekokujo_asakura_villager_pl|桑 名 农 兵 
 trp_gekokujo_asakura_spearman|桑 名 足 轻 
 trp_gekokujo_asakura_spearman_pl|桑 名 足 轻 
-trp_gekokujo_asakura_skirmisher|桑 名 足 轻 铁 炮 组  
-trp_gekokujo_asakura_skirmisher_pl|桑 名 足 轻 铁 炮 组  
+trp_gekokujo_asakura_skirmisher|桑 名 足 轻 铁 炮 组 
+trp_gekokujo_asakura_skirmisher_pl|桑 名 足 轻 铁 炮 组 
 trp_gekokujo_asakura_trained_spearman|桑 名 枪 徒 士 
 trp_gekokujo_asakura_trained_spearman_pl|桑 名 枪 徒 士 
 trp_gekokujo_asakura_trained_skirmisher|桑 名 徒 士 铁 炮 组 
@@ -240,14 +240,14 @@ trp_gekokujo_asakura_veteran_spearman|桑 名 资 深 枪 徒 士
 trp_gekokujo_asakura_veteran_spearman_pl|桑 名 资 深 枪 徒 士 
 trp_gekokujo_asakura_veteran_skirmisher|桑 名 铳 队 士 
 trp_gekokujo_asakura_veteran_skirmisher_pl|桑 名 铳 队 士 
-trp_gekokujo_asakura_elite_spearman|桑 名 衝 鋒 队
-trp_gekokujo_asakura_elite_spearman_pl|桑 名 衝 鋒 队
+trp_gekokujo_asakura_elite_spearman|桑 名 衝 鋒 队 
+trp_gekokujo_asakura_elite_spearman_pl|桑 名 衝 鋒 队 
 trp_gekokujo_chosokabe_villager|土 佐 藩 农 兵 
 trp_gekokujo_chosokabe_villager_pl|土 佐 藩 农 兵 
 trp_gekokujo_chosokabe_spearman|土 佐 藩 枪 队 
 trp_gekokujo_chosokabe_spearman_pl|土 佐 藩 枪 队 
-trp_gekokujo_chosokabe_skirmisher|土 佐 藩 足 轻 铁 炮 组  
-trp_gekokujo_chosokabe_skirmisher_pl|土 佐 藩 足 轻 铁 炮 组  
+trp_gekokujo_chosokabe_skirmisher|土 佐 藩 足 轻 铁 炮 组 
+trp_gekokujo_chosokabe_skirmisher_pl|土 佐 藩 足 轻 铁 炮 组 
 trp_gekokujo_chosokabe_trained_spearman|土 佐 枪 徒 士 
 trp_gekokujo_chosokabe_trained_spearman_pl|土 佐 枪 徒 士 
 trp_gekokujo_chosokabe_trained_skirmisher|土 佐 藩 应 征 步 兵 
@@ -258,68 +258,70 @@ trp_gekokujo_chosokabe_veteran_skirmisher|土 佐 藩 线 列 步 兵
 trp_gekokujo_chosokabe_veteran_skirmisher_pl|土 佐 藩 线 列 步 兵 
 trp_gekokujo_chosokabe_elite_skirmisher|土 佐 迅 冲 队 
 trp_gekokujo_chosokabe_elite_skirmisher_pl|土 佐 迅 冲 队 
-trp_gekokujo_hojo_villager|广 岛  民 兵 
-trp_gekokujo_hojo_villager_pl|广 岛  民 兵 
-trp_gekokujo_hojo_spearman|广 岛  足 轻 
-trp_gekokujo_hojo_spearman_pl|广 岛  足 轻 
-trp_gekokujo_hojo_skirmisher|广 岛  射 手 足 轻 
-trp_gekokujo_hojo_skirmisher_pl|广 岛  射 手 足 轻 
-trp_gekokujo_hojo_trained_spearman|广 岛  熟 练 足 轻 
-trp_gekokujo_hojo_trained_spearman_pl|广 岛  熟 练 足 轻 
+trp_gekokujo_hojo_villager|广 岛 民 兵 
+trp_gekokujo_hojo_villager_pl|广 岛 民 兵 
+trp_gekokujo_hojo_spearman|广 岛 足 轻 
+trp_gekokujo_hojo_spearman_pl|广 岛 足 轻 
+trp_gekokujo_hojo_skirmisher|广 岛 射 手 足 轻 
+trp_gekokujo_hojo_skirmisher_pl|广 岛 射 手 足 轻 
+trp_gekokujo_hojo_trained_spearman|广 岛 熟 练 足 轻 
+trp_gekokujo_hojo_trained_spearman_pl|广 岛 熟 练 足 轻 
 trp_gekokujo_hojo_trained_skirmisher|广 岛 铁 炮 足 轻 
 trp_gekokujo_hojo_trained_skirmisher_pl|广 岛 铁 炮 足 轻 
 trp_gekokujo_hojo_veteran_spearman|广 岛 奏 勇 队 
 trp_gekokujo_hojo_veteran_spearman_pl|广 岛 奏 勇 队 
 trp_gekokujo_hojo_veteran_skirmisher|广 岛 铁 炮 徒 士 
 trp_gekokujo_hojo_veteran_skirmisher_pl| 广 岛 铁 炮 徒 士 
-trp_gekokujo_hojo_elite_spearman|广 岛 应 变 队  
+trp_gekokujo_hojo_elite_spearman|广 岛 应 变 队 
 trp_gekokujo_hojo_elite_spearman_pl|广 岛 应 变 队 
-trp_gekokujo_mogami_villager|米 泽 农 兵
+trp_gekokujo_mogami_villager|米 泽 农 兵 
 trp_gekokujo_mogami_villager_pl|米 泽 农 兵 
 trp_gekokujo_mogami_spearman|米 泽 足 轻 
 trp_gekokujo_mogami_spearman_pl|米 泽 足 轻 
 trp_gekokujo_mogami_skirmisher|米 泽 铁 炮 农 兵 
-trp_gekokujo_mogami_skirmisher_pl|米 泽 铁 炮 农 兵
-trp_gekokujo_mogami_trained_spearman|米 泽 有 志 队   
-trp_gekokujo_mogami_trained_spearman_pl|米 泽 有 志 队  
+trp_gekokujo_mogami_skirmisher_pl|米 泽 铁 炮 农 兵 
+trp_gekokujo_mogami_trained_spearman|米 泽 有 志 队 
+trp_gekokujo_mogami_trained_spearman_pl|米 泽 有 志 队 
 trp_gekokujo_mogami_trained_skirmisher|米 泽 足 轻 铁 炮 组 
-trp_gekokujo_mogami_trained_skirmisher_pl|米 泽 足 轻 铁 炮 组  
+trp_gekokujo_mogami_trained_skirmisher_pl|米 泽 足 轻 铁 炮 组 
 trp_gekokujo_mogami_veteran_spearman|米 泽 剛 士 队 
-trp_gekokujo_mogami_veteran_spearman_pl|米 泽 剛 士 队  
-trp_gekokujo_mogami_veteran_skirmisher|米 泽 应 征 步 兵  
-trp_gekokujo_mogami_veteran_skirmisher_pl|米 泽 应 征 步 兵
-trp_gekokujo_mogami_elite_skirmisher|米 泽 和 銃 队
-trp_gekokujo_mogami_elite_skirmisher_pl|米 泽 和 銃 队  
+trp_gekokujo_mogami_veteran_spearman_pl|米 泽 剛 士 队 
+trp_gekokujo_mogami_veteran_skirmisher|米 泽 应 征 步 兵 
+trp_gekokujo_mogami_veteran_skirmisher_pl|米 泽 应 征 步 兵 
+trp_gekokujo_mogami_elite_skirmisher|米 泽 和 銃 队 
+trp_gekokujo_mogami_elite_skirmisher_pl|米 泽 和 銃 队 
 trp_gekokujo_shimazu_villager|萨 摩 农 兵 
 trp_gekokujo_shimazu_villager_pl|萨 摩 农 兵 
-trp_gekokujo_shimazu_spearman|萨 摩 枪 兵
-trp_gekokujo_shimazu_spearman_pl|萨 摩 枪 兵
-trp_gekokujo_shimazu_skirmisher|萨 摩 足 轻 铁 炮 组  
-trp_gekokujo_shimazu_skirmisher_pl|萨 摩 足 轻 铁 炮 组  
-trp_gekokujo_shimazu_trained_spearman|萨 摩 示 显 流 刀 队
-trp_gekokujo_shimazu_trained_spearman_pl|萨 摩 示 显 流 刀 队
+trp_gekokujo_shimazu_spearman|萨 摩 枪 兵 
+trp_gekokujo_shimazu_spearman_pl|萨 摩 枪 兵 
+trp_gekokujo_shimazu_skirmisher|萨 摩 足 轻 铁 炮 组 
+trp_gekokujo_shimazu_skirmisher_pl|萨 摩 足 轻 铁 炮 组 
+trp_gekokujo_shimazu_trained_spearman|萨 摩 示 显 流 刀 队 
+trp_gekokujo_shimazu_trained_spearman_pl|萨 摩 示 显 流 刀 队 
 trp_gekokujo_shimazu_trained_skirmisher|萨 摩 乡 中 铳 队 
 trp_gekokujo_shimazu_trained_skirmisher_pl|萨 摩 乡 中 铳 队 
 trp_gekokujo_shimazu_veteran_spearman|岛 津 资 深 足 轻 
 trp_gekokujo_shimazu_veteran_spearman_pl|岛 津 资 深 足 轻 
-trp_gekokujo_shimazu_veteran_skirmisher|萨 摩 线 列 步 兵
-trp_gekokujo_shimazu_veteran_skirmisher_pl|萨 摩 线 列 步 兵
-trp_gekokujo_shimazu_elite_spearman|萨 摩 示 显 流 军 官
-trp_gekokujo_shimazu_elite_spearman_pl|萨 摩 示 显 流 军 官
-trp_gekokujo_ryuzoji_villager|佐 贺 铁 炮 农 兵
-trp_gekokujo_ryuzoji_villager_pl|佐 贺 铁 炮 农 兵
+trp_gekokujo_shimazu_veteran_skirmisher|萨 摩 线 列 步 兵 
+trp_gekokujo_shimazu_veteran_skirmisher_pl|萨 摩 线 列 步 兵 
+trp_gekokujo_shimazu_elite_spearman|萨 摩 示 显 流 军 官 
+trp_gekokujo_shimazu_elite_spearman_pl|萨 摩 示 显 流 军 官 
+trp_gekokujo_zunwang_veteran_gunner|Veteran zunwang gunner
+trp_gekokujo_zunwang_veteran_gunner_pl|Veteran gunner Skirmishers
+trp_gekokujo_ryuzoji_villager|佐 贺 铁 炮 农 兵 
+trp_gekokujo_ryuzoji_villager_pl|佐 贺 铁 炮 农 兵 
 trp_gekokujo_ryuzoji_spearman|佐 贺 足 轻 
 trp_gekokujo_ryuzoji_spearman_pl|佐 贺 足 轻 
 trp_gekokujo_ryuzoji_skirmisher|佐 贺 应 征 步 兵 
 trp_gekokujo_ryuzoji_skirmisher_pl|佐 贺 应 征 步 兵 
 trp_gekokujo_ryuzoji_trained_spearman|佐 贺 熟 练 足 轻 
 trp_gekokujo_ryuzoji_trained_spearman_pl|佐 贺 熟 练 足 轻 
-trp_gekokujo_ryuzoji_trained_skirmisher|佐 贺 荷 训 步 兵
-trp_gekokujo_ryuzoji_trained_skirmisher_pl|佐 贺 荷 训 步 兵
+trp_gekokujo_ryuzoji_trained_skirmisher|佐 贺 荷 训 步 兵 
+trp_gekokujo_ryuzoji_trained_skirmisher_pl|佐 贺 荷 训 步 兵 
 trp_gekokujo_ryuzoji_veteran_spearman|佐 贺 手 明 枪 队 
 trp_gekokujo_ryuzoji_veteran_spearman_pl|佐 贺 手 明 枪 队 
-trp_gekokujo_ryuzoji_veteran_skirmisher|佐 贺 铳 队 士
-trp_gekokujo_ryuzoji_veteran_skirmisher_pl|佐 贺 铳 队 士
+trp_gekokujo_ryuzoji_veteran_skirmisher|佐 贺 铳 队 士 
+trp_gekokujo_ryuzoji_veteran_skirmisher_pl|佐 贺 铳 队 士 
 trp_gekokujo_ryuzoji_elite_skirmisher|佐 贺 西 式 常 备 步 兵 队 
 trp_gekokujo_ryuzoji_elite_skirmisher_pl|佐 贺 西 式 常 备 步 兵 队 
 trp_gekokujo_satake_villager|水 户 民 兵 
@@ -332,18 +334,18 @@ trp_gekokujo_satake_trained_spearman|水 户 熟 练 足 轻
 trp_gekokujo_satake_trained_spearman_pl|水 户 熟 练 足 轻 
 trp_gekokujo_satake_trained_skirmisher|水 户 熟 练 射 手 足 轻 
 trp_gekokujo_satake_trained_skirmisher_pl|水 户 熟 练 射 手 足 轻 
-trp_gekokujo_satake_veteran_spearman|水 户 诸 生 军
-trp_gekokujo_satake_veteran_spearman_pl|水 户 诸 生 军
+trp_gekokujo_satake_veteran_spearman|水 户 诸 生 军 
+trp_gekokujo_satake_veteran_spearman_pl|水 户 诸 生 军 
 trp_gekokujo_satake_veteran_skirmisher|水 户 资 深 射 手 足 轻 
 trp_gekokujo_satake_veteran_skirmisher_pl|水 户 资 深 射 手 足 轻 
-trp_gekokujo_satake_elite_spearman|水 户 志 诚 队  
-trp_gekokujo_satake_elite_spearman_pl|水 户 志 诚 队  
+trp_gekokujo_satake_elite_spearman|水 户 志 诚 队 
+trp_gekokujo_satake_elite_spearman_pl|水 户 志 诚 队 
 trp_gekokujo_satomi_villager|长 冈 农 兵 
 trp_gekokujo_satomi_villager_pl|长 冈 农 兵 
-trp_gekokujo_satomi_spearman|长 冈 足 轻
-trp_gekokujo_satomi_spearman_pl|长 冈 足 轻
-trp_gekokujo_satomi_skirmisher|长 冈 足 轻 铁 炮 组   
-trp_gekokujo_satomi_skirmisher_pl|长 冈 足 轻 铁 炮 组   
+trp_gekokujo_satomi_spearman|长 冈 足 轻 
+trp_gekokujo_satomi_spearman_pl|长 冈 足 轻 
+trp_gekokujo_satomi_skirmisher|长 冈 足 轻 铁 炮 组 
+trp_gekokujo_satomi_skirmisher_pl|长 冈 足 轻 铁 炮 组 
 trp_gekokujo_satomi_trained_spearman|长 冈 熟 练 足 轻 
 trp_gekokujo_satomi_trained_spearman_pl|长 冈 熟 练 足 轻 
 trp_gekokujo_satomi_trained_skirmisher|长 冈 应 征 步 兵 
@@ -358,18 +360,16 @@ trp_gekokujo_ukita_villager|冈 山 农 兵
 trp_gekokujo_ukita_villager_pl|冈 山 农 兵 
 trp_gekokujo_ukita_spearman|冈 山 足 轻 
 trp_gekokujo_ukita_spearman_pl|冈 山 足 轻 
-trp_gekokujo_ukita_skirmisher|冈 山 足 轻 铁 炮 组  
-trp_gekokujo_ukita_skirmisher_pl|冈 山 足 轻 铁 炮 组  
-trp_gekokujo_ukita_trained_spearman|冈 山 游 奇 隊
-trp_gekokujo_ukita_trained_spearman_pl|冈 山 游 奇 隊
+trp_gekokujo_ukita_skirmisher|冈 山 足 轻 铁 炮 组 
+trp_gekokujo_ukita_skirmisher_pl|冈 山 足 轻 铁 炮 组 
+trp_gekokujo_ukita_trained_spearman|冈 山 游 奇 隊 
+trp_gekokujo_ukita_trained_spearman_pl|冈 山 游 奇 隊 
 trp_gekokujo_ukita_trained_skirmisher|冈 山 徒 士 铁 炮 组 
 trp_gekokujo_ukita_trained_skirmisher_pl|冈 山 徒 士 铁 炮 组 
-trp_gekokujo_ukita_veteran_spearman|冈 山 電 擊 队
-trp_gekokujo_ukita_veteran_spearman_pl|冈 山 電 擊 队
-trp_gekokujo_ukita_veteran_skirmisher|冈 山 游 擊 隊
-trp_gekokujo_ukita_veteran_skirmisher_pl|冈 山 游 擊 隊
-trp_gekokujo_ukita_elite_spearman|冈 山 耕 战 队 
-trp_gekokujo_ukita_elite_spearman_pl|冈 山 耕 战 队 
+trp_gekokujo_ukita_veteran_spearman|冈 山 電 擊 队 
+trp_gekokujo_ukita_veteran_spearman_pl|冈 山 電 擊 队 
+trp_gekokujo_ukita_veteran_skirmisher|冈 山 游 擊 隊 
+trp_gekokujo_ukita_veteran_skirmisher_pl|冈 山 游 擊 隊 
 trp_gekokujo_ukita_elite_spearman|冈 山 耕 战 队 
 trp_gekokujo_ukita_elite_spearman_pl|冈 山 耕 战 队 
 trp_gekokujo_ikko_villager|加 贺 民 兵 
@@ -386,18 +386,18 @@ trp_gekokujo_ikko_veteran_spearman|加 贺 资 深 足 轻
 trp_gekokujo_ikko_veteran_spearman_pl|加 贺 资 深 足 轻 
 trp_gekokujo_ikko_veteran_skirmisher|加 贺 资 深 射 手 足 轻 
 trp_gekokujo_ikko_veteran_skirmisher_pl|加 贺 资 深 射 手 足 轻 
-trp_gekokujo_uesugi_jizamurai|会 津 士 中 白 虎 队
-trp_gekokujo_uesugi_jizamurai_pl|会 津 士 中 白 虎 队
+trp_gekokujo_uesugi_jizamurai|会 津 士 中 白 虎 队 
+trp_gekokujo_uesugi_jizamurai_pl|会 津 士 中 白 虎 队 
 trp_gekokujo_uesugi_retainer|会 津 藩 藩 士 
 trp_gekokujo_uesugi_retainer_pl|会 津 藩 藩 士 
-trp_gekokujo_uesugi_marksman|会 津 玄 武 队 铁 炮 手  
-trp_gekokujo_uesugi_marksman_pl|会 津 玄 武 队 铁 炮 手  
-trp_gekokujo_uesugi_veteran_retainer|会 津 正 奇 队 武 士
-trp_gekokujo_uesugi_veteran_retainer_pl|会 津 正 奇 队 武 士
-trp_gekokujo_uesugi_mounted_retainer|会 津 马 回 众  
-trp_gekokujo_uesugi_mounted_retainer_pl|会 津 马 回 众  
-trp_gekokujo_uesugi_samurai_gunner|会 津 青 龙 队 铁 炮 众  
-trp_gekokujo_uesugi_samurai_gunner_pl|会 津 青 龙 队 铁 炮 众  
+trp_gekokujo_uesugi_marksman|会 津 玄 武 队 铁 炮 手 
+trp_gekokujo_uesugi_marksman_pl|会 津 玄 武 队 铁 炮 手 
+trp_gekokujo_uesugi_veteran_retainer|会 津 正 奇 队 武 士 
+trp_gekokujo_uesugi_veteran_retainer_pl|会 津 正 奇 队 武 士 
+trp_gekokujo_uesugi_mounted_retainer|会 津 马 回 众 
+trp_gekokujo_uesugi_mounted_retainer_pl|会 津 马 回 众 
+trp_gekokujo_uesugi_samurai_gunner|会 津 青 龙 队 铁 炮 众 
+trp_gekokujo_uesugi_samurai_gunner_pl|会 津 青 龙 队 铁 炮 众 
 trp_gekokujo_uesugi_samurai_archer|会 津 持 弓 众 
 trp_gekokujo_uesugi_samurai_archer_pl|会 津 持 弓 众 
 trp_gekokujo_uesugi_officer|会 津 小 姓 番 
@@ -408,8 +408,8 @@ trp_gekokujo_uesugi_master_gunner|会 津 朱 雀 队
 trp_gekokujo_uesugi_master_gunner_pl|会 津 朱 雀 队 
 trp_gekokujo_uesugi_master_archer|会 津 铳 队 士 
 trp_gekokujo_uesugi_master_archer_pl|会 津 铳 队 士 
-trp_gekokujo_uesugi_hatamoto_guard|会 津 鎮 將 队
-trp_gekokujo_uesugi_hatamoto_guard_pl|会 津 鎮 將 队
+trp_gekokujo_uesugi_hatamoto_guard|会 津 鎮 將 队 
+trp_gekokujo_uesugi_hatamoto_guard_pl|会 津 鎮 將 队 
 trp_gekokujo_uesugi_hatamoto_cavalry|上 杉 母 衣 众 
 trp_gekokujo_uesugi_hatamoto_cavalry_pl|上 杉 母 衣 众 
 trp_gekokujo_uesugi_messenger|上 杉 信 使 
@@ -428,32 +428,32 @@ trp_gekokujo_date_marksman|仙 台 持 弓 众
 trp_gekokujo_date_marksman_pl|仙 台 持 弓 众 
 trp_gekokujo_date_veteran_retainer|仙 台 家 臣 团 小 姓 番 
 trp_gekokujo_date_veteran_retainer_pl|仙 台 家 臣 团 小 姓 番 
-trp_gekokujo_date_mounted_retainer|仙 台 马 回 众  
-trp_gekokujo_date_mounted_retainer_pl|仙 台 马 回 众  
-trp_gekokujo_date_samurai_gunner|仙 台 铁 炮 众  
-trp_gekokujo_date_samurai_gunner_pl|仙 台 铁 炮 众  
+trp_gekokujo_date_mounted_retainer|仙 台 马 回 众 
+trp_gekokujo_date_mounted_retainer_pl|仙 台 马 回 众 
+trp_gekokujo_date_samurai_gunner|仙 台 铁 炮 众 
+trp_gekokujo_date_samurai_gunner_pl|仙 台 铁 炮 众 
 trp_gekokujo_date_samurai_archer|仙 台 资 深 持 弓 众 
 trp_gekokujo_date_samurai_archer_pl|仙 台 资 深 持 弓 众 
-trp_gekokujo_date_officer|仙 台 家 臣 团 书 院番  
-trp_gekokujo_date_officer_pl|仙 台 家 臣 团 书 院番  
-trp_gekokujo_date_mounted_officer|仙 台 家 臣 团 良 马 队
-trp_gekokujo_date_mounted_officer_pl|仙 台 家 臣 团 良 马 队
-trp_gekokujo_date_master_gunner|仙 台 精 锐 铁 炮 众  
-trp_gekokujo_date_master_gunner_pl|仙 台 精 锐 铁 炮 众  
+trp_gekokujo_date_officer|仙 台 家 臣 团 书 院 番 
+trp_gekokujo_date_officer_pl|仙 台 家 臣 团 书 院 番 
+trp_gekokujo_date_mounted_officer|仙 台 家 臣 团 良 马 队 
+trp_gekokujo_date_mounted_officer_pl|仙 台 家 臣 团 良 马 队 
+trp_gekokujo_date_master_gunner|仙 台 精 锐 铁 炮 众 
+trp_gekokujo_date_master_gunner_pl|仙 台 精 锐 铁 炮 众 
 trp_gekokujo_date_master_archer|仙 台 额 兵 队 
 trp_gekokujo_date_master_archer_pl|仙 台 额 兵 队 
-trp_gekokujo_date_hatamoto_guard|仙 台 家 臣 团 旗 本
-trp_gekokujo_date_hatamoto_guard_pl|仙 台 家 臣 团 旗 本
+trp_gekokujo_date_hatamoto_guard|仙 台 家 臣 团 旗 本 
+trp_gekokujo_date_hatamoto_guard_pl|仙 台 家 臣 团 旗 本 
 trp_gekokujo_date_hatamoto_cavalry|仙 台 家 臣 团 母 衣 众 
 trp_gekokujo_date_hatamoto_cavalry_pl|仙 台 家 臣 团 母 衣 众 
 trp_gekokujo_date_messenger|仙 台 使 者 
 trp_gekokujo_date_messenger_pl|仙 台 使 者 
 trp_gekokujo_date_deserter|仙 台 逃 兵 
 trp_gekokujo_date_deserter_pl|仙 台 逃 兵 
-trp_gekokujo_date_prison_guard|仙 台 监 狱 守 卫
-trp_gekokujo_date_prison_guard_pl|仙 台 监 狱 守 卫
-trp_gekokujo_date_castle_guard|仙 台 城 堡 卫 队
-trp_gekokujo_date_castle_guard_pl|仙 台 城 堡 卫 队
+trp_gekokujo_date_prison_guard|仙 台 监 狱 守 卫 
+trp_gekokujo_date_prison_guard_pl|仙 台 监 狱 守 卫 
+trp_gekokujo_date_castle_guard|仙 台 城 堡 卫 队 
+trp_gekokujo_date_castle_guard_pl|仙 台 城 堡 卫 队 
 trp_gekokujo_oda_jizamurai|藤 堂 藩 士 
 trp_gekokujo_oda_jizamurai_pl|藤 堂 藩 士 
 trp_gekokujo_oda_retainer|藤 堂 徒 士 番 
@@ -462,32 +462,32 @@ trp_gekokujo_oda_marksman|藤 堂 持 弓 众
 trp_gekokujo_oda_marksman_pl|藤 堂 持 弓 众 
 trp_gekokujo_oda_veteran_retainer|藤 堂 小 姓 番 
 trp_gekokujo_oda_veteran_retainer_pl|藤 堂 小 姓 番 
-trp_gekokujo_oda_mounted_retainer|藤 堂 马 回 众  
-trp_gekokujo_oda_mounted_retainer_pl|藤 堂 马 回 众  
-trp_gekokujo_oda_samurai_gunner|藤 堂 铁 炮 众  
-trp_gekokujo_oda_samurai_gunner_pl|藤 堂 铁 炮 众  
+trp_gekokujo_oda_mounted_retainer|藤 堂 马 回 众 
+trp_gekokujo_oda_mounted_retainer_pl|藤 堂 马 回 众 
+trp_gekokujo_oda_samurai_gunner|藤 堂 铁 炮 众 
+trp_gekokujo_oda_samurai_gunner_pl|藤 堂 铁 炮 众 
 trp_gekokujo_oda_samurai_archer|藤 堂 资 深 持 弓 众 
 trp_gekokujo_oda_samurai_archer_pl|藤 堂 资 深 持 弓 众 
-trp_gekokujo_oda_officer|山 崎 関 門 守 卫 队
-trp_gekokujo_oda_officer_pl|山 崎 関 門 守 卫 队
+trp_gekokujo_oda_officer|山 崎 関 門 守 卫 队 
+trp_gekokujo_oda_officer_pl|山 崎 関 門 守 卫 队 
 trp_gekokujo_oda_mounted_officer|山 崎 関 門 马 回 队 
 trp_gekokujo_oda_mounted_officer_pl|山 崎 関 門 马 回 队 
-trp_gekokujo_oda_master_gunner|藤 堂  西 式 常 备 军 
-trp_gekokujo_oda_master_gunner_pl|藤 堂  西 式 常 备 军 
+trp_gekokujo_oda_master_gunner|藤 堂 西 式 常 备 军 
+trp_gekokujo_oda_master_gunner_pl|藤 堂 西 式 常 备 军 
 trp_gekokujo_oda_master_archer|藤 堂 精 锐 持 弓 众 
 trp_gekokujo_oda_master_archer_pl|藤 堂 精 锐 持 弓 众 
 trp_gekokujo_oda_hatamoto_cavalry|藤 堂 母 衣 众 
 trp_gekokujo_oda_hatamoto_cavalry_pl|藤 堂 母 衣 众 
 trp_gekokujo_oda_hatamoto_gunner|山 崎 関 門 步 枪 队 
 trp_gekokujo_oda_hatamoto_gunner_pl|山 崎 関 門 步 枪 队 
-trp_gekokujo_oda_messenger|藤 堂 使 者
-trp_gekokujo_oda_messenger_pl|藤 堂 使 者
-trp_gekokujo_oda_deserter|藤 堂 逃 兵
-trp_gekokujo_oda_deserter_pl|藤 堂 逃 兵
-trp_gekokujo_oda_prison_guard|藤 堂 监 狱 守 卫
-trp_gekokujo_oda_prison_guard_pl|藤 堂 监 狱 守 卫
-trp_gekokujo_oda_castle_guard|藤 堂 城 堡 卫 队
-trp_gekokujo_oda_castle_guard_pl|藤 堂 城 堡 卫 队
+trp_gekokujo_oda_messenger|藤 堂 使 者 
+trp_gekokujo_oda_messenger_pl|藤 堂 使 者 
+trp_gekokujo_oda_deserter|藤 堂 逃 兵 
+trp_gekokujo_oda_deserter_pl|藤 堂 逃 兵 
+trp_gekokujo_oda_prison_guard|藤 堂 监 狱 守 卫 
+trp_gekokujo_oda_prison_guard_pl|藤 堂 监 狱 守 卫 
+trp_gekokujo_oda_castle_guard|藤 堂 城 堡 卫 队 
+trp_gekokujo_oda_castle_guard_pl|藤 堂 城 堡 卫 队 
 trp_gekokujo_mori_jizamurai|长 州 藩 尊 王 派 志 士 
 trp_gekokujo_mori_jizamurai_pl|长 州 藩 尊 王 派 志 士 
 trp_gekokujo_mori_retainer|长 州 藩 报 国 队 
@@ -496,8 +496,8 @@ trp_gekokujo_mori_marksman|长 州 尊 王 派 火 枪 藩 士
 trp_gekokujo_mori_marksman_pl|长 州 尊 王 派 火 枪 藩 士 
 trp_gekokujo_mori_veteran_retainer|长 州 尊 王 派 中 士 
 trp_gekokujo_mori_veteran_retainer_pl|长 州 尊 王 派 中 士 
-trp_gekokujo_mori_mounted_retainer|长 州 马 回 众  
-trp_gekokujo_mori_mounted_retainer_pl|长 州 马 回 众  
+trp_gekokujo_mori_mounted_retainer|长 州 马 回 众 
+trp_gekokujo_mori_mounted_retainer_pl|长 州 马 回 众 
 trp_gekokujo_mori_samurai_gunner|长 州 尊 王 派 新 军 
 trp_gekokujo_mori_samurai_gunner_pl|长 州 尊 王 派 新 军 
 trp_gekokujo_mori_samurai_archer|长 州 资 深 持 弓 众 
@@ -512,34 +512,34 @@ trp_gekokujo_mori_master_archer|长 州 白 熊 军 官
 trp_gekokujo_mori_master_archer_pl|长 州 白 熊 军 官 
 trp_gekokujo_mori_hatamoto_guard|长 州 旗 本 
 trp_gekokujo_mori_hatamoto_guard_pl|长 州 旗 本 
-trp_gekokujo_mori_hatamoto_cavalry|长 州 配 枪 骑 兵
-trp_gekokujo_mori_hatamoto_cavalry_pl|长 州 配 枪 骑 兵
-trp_gekokujo_mori_messenger|毛 利 信 使
-trp_gekokujo_mori_messenger_pl|毛 利 信 使
-trp_gekokujo_mori_deserter|毛 利 逃 兵
-trp_gekokujo_mori_deserter_pl|毛 利 逃 兵
-trp_gekokujo_mori_prison_guard|毛 利 监 狱 守 卫
-trp_gekokujo_mori_prison_guard_pl|毛 利 监 狱 守 卫
-trp_gekokujo_mori_castle_guard|毛 利 城 堡 卫 队
-trp_gekokujo_mori_castle_guard_pl|毛 利 城 堡 卫 队
-trp_gekokujo_takeda_jizamurai|福 井 藩 士
-trp_gekokujo_takeda_jizamurai_pl|福 井 藩 士
+trp_gekokujo_mori_hatamoto_cavalry|长 州 配 枪 骑 兵 
+trp_gekokujo_mori_hatamoto_cavalry_pl|长 州 配 枪 骑 兵 
+trp_gekokujo_mori_messenger|毛 利 信 使 
+trp_gekokujo_mori_messenger_pl|毛 利 信 使 
+trp_gekokujo_mori_deserter|毛 利 逃 兵 
+trp_gekokujo_mori_deserter_pl|毛 利 逃 兵 
+trp_gekokujo_mori_prison_guard|毛 利 监 狱 守 卫 
+trp_gekokujo_mori_prison_guard_pl|毛 利 监 狱 守 卫 
+trp_gekokujo_mori_castle_guard|毛 利 城 堡 卫 队 
+trp_gekokujo_mori_castle_guard_pl|毛 利 城 堡 卫 队 
+trp_gekokujo_takeda_jizamurai|福 井 藩 士 
+trp_gekokujo_takeda_jizamurai_pl|福 井 藩 士 
 trp_gekokujo_takeda_retainer|福 井 徒 士 番 
 trp_gekokujo_takeda_retainer_pl|福 井 徒 士 番 
-trp_gekokujo_takeda_marksman|福 井 铁 炮 藩 士
-trp_gekokujo_takeda_marksman_pl|福 井 铁 炮 藩 士
+trp_gekokujo_takeda_marksman|福 井 铁 炮 藩 士 
+trp_gekokujo_takeda_marksman_pl|福 井 铁 炮 藩 士 
 trp_gekokujo_takeda_veteran_retainer|福 井 小 姓 番 
 trp_gekokujo_takeda_veteran_retainer_pl|福 井 小 姓 番 
-trp_gekokujo_takeda_mounted_retainer|福 井 马 回 众  
-trp_gekokujo_takeda_mounted_retainer_pl|福 井 马 回 众  
-trp_gekokujo_takeda_samurai_gunner|福 井 铁 炮 众  
-trp_gekokujo_takeda_samurai_gunner_pl|福 井 铁 炮 众  
+trp_gekokujo_takeda_mounted_retainer|福 井 马 回 众 
+trp_gekokujo_takeda_mounted_retainer_pl|福 井 马 回 众 
+trp_gekokujo_takeda_samurai_gunner|福 井 铁 炮 众 
+trp_gekokujo_takeda_samurai_gunner_pl|福 井 铁 炮 众 
 trp_gekokujo_takeda_samurai_archer|福 井 资 深 持 弓 众 
 trp_gekokujo_takeda_samurai_archer_pl|福 井 资 深 持 弓 众 
-trp_gekokujo_takeda_officer|福 井 书 院番  
-trp_gekokujo_takeda_officer_pl|福 井 书 院番  
-trp_gekokujo_takeda_mounted_officer|福 井 骑 马 书 院番  
-trp_gekokujo_takeda_mounted_officer_pl|福 井 骑 马 书 院番  
+trp_gekokujo_takeda_officer|福 井 书 院 番 
+trp_gekokujo_takeda_officer_pl|福 井 书 院 番 
+trp_gekokujo_takeda_mounted_officer|福 井 骑 马 书 院 番 
+trp_gekokujo_takeda_mounted_officer_pl|福 井 骑 马 书 院 番 
 trp_gekokujo_takeda_master_gunner|福 井 西 式 新 军 
 trp_gekokujo_takeda_master_gunner_pl|福 井 西 式 新 军 
 trp_gekokujo_takeda_master_archer|福 井 神 射 手 
@@ -548,48 +548,48 @@ trp_gekokujo_takeda_hatamoto_cavalry|福 井 母 衣 众
 trp_gekokujo_takeda_hatamoto_cavalry_pl|福 井 母 衣 众 
 trp_gekokujo_takeda_hatamoto_archer|越 前 洋 式 铳 队 
 trp_gekokujo_takeda_hatamoto_archer_pl|越 前 洋 式 铳 队 
-trp_gekokujo_takeda_messenger|福 井 信 使
-trp_gekokujo_takeda_messenger_pl|福 井 信 使
-trp_gekokujo_takeda_deserter|福 井 逃 兵
-trp_gekokujo_takeda_deserter_pl|福 井 逃 兵
-trp_gekokujo_takeda_prison_guard|福 井 监 狱 守 卫
-trp_gekokujo_takeda_prison_guard_pl|福 井 监 狱 守 卫
-trp_gekokujo_takeda_castle_guard|福 井 城 堡 卫 队
-trp_gekokujo_takeda_castle_guard_pl|福 井 城 堡 卫 队
+trp_gekokujo_takeda_messenger|福 井 信 使 
+trp_gekokujo_takeda_messenger_pl|福 井 信 使 
+trp_gekokujo_takeda_deserter|福 井 逃 兵 
+trp_gekokujo_takeda_deserter_pl|福 井 逃 兵 
+trp_gekokujo_takeda_prison_guard|福 井 监 狱 守 卫 
+trp_gekokujo_takeda_prison_guard_pl|福 井 监 狱 守 卫 
+trp_gekokujo_takeda_castle_guard|福 井 城 堡 卫 队 
+trp_gekokujo_takeda_castle_guard_pl|福 井 城 堡 卫 队 
 trp_gekokujo_tokugawa_jizamurai|幕 府 藩 士 
 trp_gekokujo_tokugawa_jizamurai_pl|幕 府 藩 士 
 trp_gekokujo_tokugawa_retainer|德 川 徒 士 番 
-trp_gekokujo_tokugawa_retainer_pl|德 川 徒 士 番
+trp_gekokujo_tokugawa_retainer_pl|德 川 徒 士 番 
 trp_gekokujo_tokugawa_marksman|幕 府 新 军 
 trp_gekokujo_tokugawa_marksman_pl|幕 府 新 军 
 trp_gekokujo_tokugawa_veteran_retainer|德 川 小 姓 番 
 trp_gekokujo_tokugawa_veteran_retainer_pl|德 川 小 姓 番 
-trp_gekokujo_tokugawa_mounted_retainer|德 川 马 回 众  
-trp_gekokujo_tokugawa_mounted_retainer_pl|德 川 马 回 众  
+trp_gekokujo_tokugawa_mounted_retainer|德 川 马 回 众 
+trp_gekokujo_tokugawa_mounted_retainer_pl|德 川 马 回 众 
 trp_gekokujo_tokugawa_samurai_gunner|幕 府 陆 军 
 trp_gekokujo_tokugawa_samurai_gunner_pl|幕 府 陆 军 
 trp_gekokujo_tokugawa_samurai_archer|幕 府 弓 名 人 
 trp_gekokujo_tokugawa_samurai_archer_pl|幕 府 弓 名 人 
-trp_gekokujo_tokugawa_officer|德 川 书 院番 
-trp_gekokujo_tokugawa_officer_pl|德 川 书 院番  
+trp_gekokujo_tokugawa_officer|德 川 书 院 番 
+trp_gekokujo_tokugawa_officer_pl|德 川 书 院 番 
 trp_gekokujo_tokugawa_mounted_officer|传 习 队 骑 兵 
 trp_gekokujo_tokugawa_mounted_officer_pl|传 习 队 骑 兵 
 trp_gekokujo_tokugawa_master_gunner|传 习 队 步 兵 
 trp_gekokujo_tokugawa_master_gunner_pl|传 习 队 步 兵 
 trp_gekokujo_tokugawa_master_archer|幕 府 军 官 
 trp_gekokujo_tokugawa_master_archer_pl|幕 府 军 官 
-trp_gekokujo_tokugawa_hatamoto_guard|德 川 小 十 人 众
+trp_gekokujo_tokugawa_hatamoto_guard|德 川 小 十 人 众 
 trp_gekokujo_tokugawa_hatamoto_guard_pl|德 川 小 十 人 众 
 trp_gekokujo_tokugawa_hatamoto_gunner|传 习 队 精 锐 步 兵 
 trp_gekokujo_tokugawa_hatamoto_gunner_pl|传 习 队 精 锐 步 兵 
-trp_gekokujo_tokugawa_messenger|德 川 信 使
-trp_gekokujo_tokugawa_messenger_pl|德 川 信 使
-trp_gekokujo_tokugawa_deserter|德 川 逃 兵
-trp_gekokujo_tokugawa_deserter_pl|德 川 逃 兵
-trp_gekokujo_tokugawa_prison_guard|德 川 监 狱 守 卫
-trp_gekokujo_tokugawa_prison_guard_pl|德 川 监 狱 守 卫
-trp_gekokujo_tokugawa_castle_guard|德 川 城 堡 卫 队
-trp_gekokujo_tokugawa_castle_guard_pl|德 川 城 堡 卫 队
+trp_gekokujo_tokugawa_messenger|德 川 信 使 
+trp_gekokujo_tokugawa_messenger_pl|德 川 信 使 
+trp_gekokujo_tokugawa_deserter|德 川 逃 兵 
+trp_gekokujo_tokugawa_deserter_pl|德 川 逃 兵 
+trp_gekokujo_tokugawa_prison_guard|德 川 监 狱 守 卫 
+trp_gekokujo_tokugawa_prison_guard_pl|德 川 监 狱 守 卫 
+trp_gekokujo_tokugawa_castle_guard|德 川 城 堡 卫 队 
+trp_gekokujo_tokugawa_castle_guard_pl|德 川 城 堡 卫 队 
 trp_gekokujo_miyoshi_jizamurai|纪 州 藩 士 
 trp_gekokujo_miyoshi_jizamurai_pl|纪 州 藩 士 
 trp_gekokujo_miyoshi_retainer|纪 州 徒 士 番 
@@ -598,32 +598,32 @@ trp_gekokujo_miyoshi_marksman|纪 州 持 弓 众
 trp_gekokujo_miyoshi_marksman_pl|纪 州 持 弓 众 
 trp_gekokujo_miyoshi_veteran_retainer|纪 州 小 姓 番 
 trp_gekokujo_miyoshi_veteran_retainer_pl|纪 州 小 姓 番 
-trp_gekokujo_miyoshi_mounted_retainer|纪 州 马 回 众  
-trp_gekokujo_miyoshi_mounted_retainer_pl|纪 州 马 回 众  
-trp_gekokujo_miyoshi_samurai_gunner|纪 州 铁 炮 众  
-trp_gekokujo_miyoshi_samurai_gunner_pl|纪 州 铁 炮 众  
+trp_gekokujo_miyoshi_mounted_retainer|纪 州 马 回 众 
+trp_gekokujo_miyoshi_mounted_retainer_pl|纪 州 马 回 众 
+trp_gekokujo_miyoshi_samurai_gunner|纪 州 铁 炮 众 
+trp_gekokujo_miyoshi_samurai_gunner_pl|纪 州 铁 炮 众 
 trp_gekokujo_miyoshi_samurai_archer|纪 州 资 深 持 弓 众 
 trp_gekokujo_miyoshi_samurai_archer_pl|纪 州 资 深 持 弓 众 
-trp_gekokujo_miyoshi_officer|纪 州 书 院番  
-trp_gekokujo_miyoshi_officer_pl|纪 州 书 院番  
-trp_gekokujo_miyoshi_mounted_officer|纪 州 骑 马 书 院 番  
-trp_gekokujo_miyoshi_mounted_officer_pl|纪 州 骑 马 书 院 番  
+trp_gekokujo_miyoshi_officer|纪 州 书 院 番 
+trp_gekokujo_miyoshi_officer_pl|纪 州 书 院 番 
+trp_gekokujo_miyoshi_mounted_officer|纪 州 骑 马 书 院 番 
+trp_gekokujo_miyoshi_mounted_officer_pl|纪 州 骑 马 书 院 番 
 trp_gekokujo_miyoshi_master_gunner|纪 州 新 军 
-trp_gekokujo_miyoshi_master_gunner_pl|纪 州 新 军  
+trp_gekokujo_miyoshi_master_gunner_pl|纪 州 新 军 
 trp_gekokujo_miyoshi_master_archer|纪 州 精 锐 持 弓 众 
 trp_gekokujo_miyoshi_master_archer_pl|纪 州 精 锐 持 弓 众 
-trp_gekokujo_miyoshi_hatamoto_guard|纪 州 旗 本 众
-trp_gekokujo_miyoshi_hatamoto_guard_pl|纪 州 旗 本 众
+trp_gekokujo_miyoshi_hatamoto_guard|纪 州 旗 本 众 
+trp_gekokujo_miyoshi_hatamoto_guard_pl|纪 州 旗 本 众 
 trp_gekokujo_miyoshi_hatamoto_gunner|纪 州 游 击 队 
 trp_gekokujo_miyoshi_hatamoto_gunner_pl|纪 州 游 击 队 
-trp_gekokujo_miyoshi_messenger|纪 州 信 使
-trp_gekokujo_miyoshi_messenger_pl|纪 州 信 使
+trp_gekokujo_miyoshi_messenger|纪 州 信 使 
+trp_gekokujo_miyoshi_messenger_pl|纪 州 信 使 
 trp_gekokujo_miyoshi_deserter|纪 州 逃 兵 
 trp_gekokujo_miyoshi_deserter_pl|纪 州 逃 兵 
-trp_gekokujo_miyoshi_prison_guard|纪 州 监 狱 守 卫
-trp_gekokujo_miyoshi_prison_guard_pl|纪 州 监 狱 守 卫
-trp_gekokujo_miyoshi_castle_guard|纪 州 城 堡 卫 队
-trp_gekokujo_miyoshi_castle_guard_pl|纪 州 城 堡 卫 队
+trp_gekokujo_miyoshi_prison_guard|纪 州 监 狱 守 卫 
+trp_gekokujo_miyoshi_prison_guard_pl|纪 州 监 狱 守 卫 
+trp_gekokujo_miyoshi_castle_guard|纪 州 城 堡 卫 队 
+trp_gekokujo_miyoshi_castle_guard_pl|纪 州 城 堡 卫 队 
 trp_gekokujo_amako_jizamurai|鸟 取 藩 士 
 trp_gekokujo_amako_jizamurai_pl|鸟 取 藩 士 
 trp_gekokujo_amako_retainer|鸟 取 徒 士 番 
@@ -632,32 +632,32 @@ trp_gekokujo_amako_marksman|鸟 取 持 弓 众
 trp_gekokujo_amako_marksman_pl|鸟 取 持 弓 众 
 trp_gekokujo_amako_veteran_retainer|鸟 取 小 姓 番 
 trp_gekokujo_amako_veteran_retainer_pl|鸟 取 小 姓 番 
-trp_gekokujo_amako_mounted_retainer|鸟 取 马 回 众  
-trp_gekokujo_amako_mounted_retainer_pl|鸟 取 马 回 众  
-trp_gekokujo_amako_samurai_gunner|鸟 取 铁 炮 众  
-trp_gekokujo_amako_samurai_gunner_pl|鸟 取 铁 炮 众  
+trp_gekokujo_amako_mounted_retainer|鸟 取 马 回 众 
+trp_gekokujo_amako_mounted_retainer_pl|鸟 取 马 回 众 
+trp_gekokujo_amako_samurai_gunner|鸟 取 铁 炮 众 
+trp_gekokujo_amako_samurai_gunner_pl|鸟 取 铁 炮 众 
 trp_gekokujo_amako_samurai_archer|鸟 取 资 深 持 弓 众 
 trp_gekokujo_amako_samurai_archer_pl|鸟 取 资 深 持 弓 众 
-trp_gekokujo_amako_officer|鸟 取 书 院 番  
-trp_gekokujo_amako_officer_pl|鸟 取 书 院 番  
-trp_gekokujo_amako_mounted_officer|鸟 取 骑 马 书 院 番  
-trp_gekokujo_amako_mounted_officer_pl|鸟 取 骑 马 书 院 番  
-trp_gekokujo_amako_master_gunner|鸟 取 精 锐 铁 炮 众  
-trp_gekokujo_amako_master_gunner_pl|鸟 取 精 锐 铁 炮 众  
+trp_gekokujo_amako_officer|鸟 取 书 院 番 
+trp_gekokujo_amako_officer_pl|鸟 取 书 院 番 
+trp_gekokujo_amako_mounted_officer|鸟 取 骑 马 书 院 番 
+trp_gekokujo_amako_mounted_officer_pl|鸟 取 骑 马 书 院 番 
+trp_gekokujo_amako_master_gunner|鸟 取 精 锐 铁 炮 众 
+trp_gekokujo_amako_master_gunner_pl|鸟 取 精 锐 铁 炮 众 
 trp_gekokujo_amako_master_archer|鸟 取 新 国 队 
-trp_gekokujo_amako_master_archer_pl|鸟 取 新 国 队
+trp_gekokujo_amako_master_archer_pl|鸟 取 新 国 队 
 trp_gekokujo_amako_hatamoto_guard|鸟 取 健 雄 队 
-trp_gekokujo_amako_hatamoto_guard_pl|鸟 取 健 雄 队
+trp_gekokujo_amako_hatamoto_guard_pl|鸟 取 健 雄 队 
 trp_gekokujo_amako_hatamoto_cavalry|鸟 取 母 衣 众 
 trp_gekokujo_amako_hatamoto_cavalry_pl|鸟 取 母 衣 众 
 trp_gekokujo_amako_messenger|鸟 取 信 使 
 trp_gekokujo_amako_messenger_pl|鸟 取 信 使 
 trp_gekokujo_amako_deserter|鸟 取 逃 兵 
 trp_gekokujo_amako_deserter_pl|鸟 取 逃 兵 
-trp_gekokujo_amako_prison_guard|鸟 取 监 狱 守 卫
-trp_gekokujo_amako_prison_guard_pl|鸟 取 监 狱 守 卫
-trp_gekokujo_amako_castle_guard|鸟 取 城 堡 卫 队
-trp_gekokujo_amako_castle_guard_pl|鸟 取 城 堡 卫 队
+trp_gekokujo_amako_prison_guard|鸟 取 监 狱 守 卫 
+trp_gekokujo_amako_prison_guard_pl|鸟 取 监 狱 守 卫 
+trp_gekokujo_amako_castle_guard|鸟 取 城 堡 卫 队 
+trp_gekokujo_amako_castle_guard_pl|鸟 取 城 堡 卫 队 
 trp_gekokujo_otomo_jizamurai|福 冈 藩 士 
 trp_gekokujo_otomo_jizamurai_pl|福 冈 藩 士 
 trp_gekokujo_otomo_retainer|福 冈 徒 士 番 
@@ -666,32 +666,32 @@ trp_gekokujo_otomo_marksman|福 冈 持 弓 众
 trp_gekokujo_otomo_marksman_pl|福 冈 持 弓 众 
 trp_gekokujo_otomo_veteran_retainer|福 冈 小 姓 番 
 trp_gekokujo_otomo_veteran_retainer_pl|福 冈 小 姓 番 
-trp_gekokujo_otomo_mounted_retainer|福 冈 马 回 众  
-trp_gekokujo_otomo_mounted_retainer_pl|福 冈 马 回 众  
-trp_gekokujo_otomo_samurai_gunner|福 冈 铁 炮 众  
-trp_gekokujo_otomo_samurai_gunner_pl|福 冈 铁 炮 众  
+trp_gekokujo_otomo_mounted_retainer|福 冈 马 回 众 
+trp_gekokujo_otomo_mounted_retainer_pl|福 冈 马 回 众 
+trp_gekokujo_otomo_samurai_gunner|福 冈 铁 炮 众 
+trp_gekokujo_otomo_samurai_gunner_pl|福 冈 铁 炮 众 
 trp_gekokujo_otomo_samurai_archer|福 冈 资 深 持 弓 众 
 trp_gekokujo_otomo_samurai_archer_pl|大 资 深 持 弓 众 
-trp_gekokujo_otomo_officer|福 冈 书 院 番  
-trp_gekokujo_otomo_officer_pl|福 冈 书 院 番  
-trp_gekokujo_otomo_mounted_officer|福 冈 骑 马 书 院 番  
-trp_gekokujo_otomo_mounted_officer_pl|福 冈 骑 马 书 院 番  
-trp_gekokujo_otomo_master_gunner|福 冈 精 锐 铁 炮 众  
-trp_gekokujo_otomo_master_gunner_pl|福 冈 精 锐 铁 炮 众  
+trp_gekokujo_otomo_officer|福 冈 书 院 番 
+trp_gekokujo_otomo_officer_pl|福 冈 书 院 番 
+trp_gekokujo_otomo_mounted_officer|福 冈 骑 马 书 院 番 
+trp_gekokujo_otomo_mounted_officer_pl|福 冈 骑 马 书 院 番 
+trp_gekokujo_otomo_master_gunner|福 冈 精 锐 铁 炮 众 
+trp_gekokujo_otomo_master_gunner_pl|福 冈 精 锐 铁 炮 众 
 trp_gekokujo_otomo_master_archer|福 冈 精 锐 持 弓 众 
 trp_gekokujo_otomo_master_archer_pl|福 冈 精 锐 持 弓 众 
 trp_gekokujo_otomo_hatamoto_cavalry|福 冈 御 马 回 组 
 trp_gekokujo_otomo_hatamoto_cavalry_pl|福 冈 御 马 回 组 
 trp_gekokujo_otomo_hatamoto_archer|福 冈 侧 筒 组 
 trp_gekokujo_otomo_hatamoto_archer_pl|福 侧 筒 组 
-trp_gekokujo_otomo_messenger|福 冈 信 使
-trp_gekokujo_otomo_messenger_pl|福 冈 信 使
-trp_gekokujo_otomo_deserter|福 冈 逃 兵
-trp_gekokujo_otomo_deserter_pl|福 冈 逃 兵
-trp_gekokujo_otomo_prison_guard|福 冈 监 狱 守 卫
-trp_gekokujo_otomo_prison_guard_pl|福 冈 监 狱 守 卫
-trp_gekokujo_otomo_castle_guard|福 冈 城 堡 卫 队
-trp_gekokujo_otomo_castle_guard_pl|福 冈 城 堡 卫 队
+trp_gekokujo_otomo_messenger|福 冈 信 使 
+trp_gekokujo_otomo_messenger_pl|福 冈 信 使 
+trp_gekokujo_otomo_deserter|福 冈 逃 兵 
+trp_gekokujo_otomo_deserter_pl|福 冈 逃 兵 
+trp_gekokujo_otomo_prison_guard|福 冈 监 狱 守 卫 
+trp_gekokujo_otomo_prison_guard_pl|福 冈 监 狱 守 卫 
+trp_gekokujo_otomo_castle_guard|福 冈 城 堡 卫 队 
+trp_gekokujo_otomo_castle_guard_pl|福 冈 城 堡 卫 队 
 trp_gekokujo_nanbu_jizamurai|南 部 藩 士 
 trp_gekokujo_nanbu_jizamurai_pl|南 部 藩 士 
 trp_gekokujo_nanbu_retainer|南 部 徒 士 番 
@@ -700,32 +700,32 @@ trp_gekokujo_nanbu_marksman|南 部 持 弓 众
 trp_gekokujo_nanbu_marksman_pl|南 部 持 弓 众 
 trp_gekokujo_nanbu_veteran_retainer|南 部 天 象 队 
 trp_gekokujo_nanbu_veteran_retainer_pl|南 部 天 象 队 
-trp_gekokujo_nanbu_mounted_retainer|南 部 马 回 众  
-trp_gekokujo_nanbu_mounted_retainer_pl|南 部 马 回 众  
-trp_gekokujo_nanbu_samurai_gunner|南 部 铁 炮 众  
-trp_gekokujo_nanbu_samurai_gunner_pl|南 部 铁 炮 众  
+trp_gekokujo_nanbu_mounted_retainer|南 部 马 回 众 
+trp_gekokujo_nanbu_mounted_retainer_pl|南 部 马 回 众 
+trp_gekokujo_nanbu_samurai_gunner|南 部 铁 炮 众 
+trp_gekokujo_nanbu_samurai_gunner_pl|南 部 铁 炮 众 
 trp_gekokujo_nanbu_samurai_archer|南 部 资 深 持 弓 众 
 trp_gekokujo_nanbu_samurai_archer_pl|南 部 资 深 持 弓 众 
 trp_gekokujo_nanbu_officer|南 部 地 仪 队 
 trp_gekokujo_nanbu_officer_pl|南 部 地 仪 队 
-trp_gekokujo_nanbu_mounted_officer|南 部 骑 马 书 院番  
-trp_gekokujo_nanbu_mounted_officer_pl|南 部 骑 马 书 院番  
-trp_gekokujo_nanbu_master_gunner|南 部 精 锐 铁 炮 众  
-trp_gekokujo_nanbu_master_gunner_pl|南 部 精 锐 铁 炮 众  
+trp_gekokujo_nanbu_mounted_officer|南 部 骑 马 书 院 番 
+trp_gekokujo_nanbu_mounted_officer_pl|南 部 骑 马 书 院 番 
+trp_gekokujo_nanbu_master_gunner|南 部 精 锐 铁 炮 众 
+trp_gekokujo_nanbu_master_gunner_pl|南 部 精 锐 铁 炮 众 
 trp_gekokujo_nanbu_master_archer|南 部 精 锐 持 弓 众 
 trp_gekokujo_nanbu_master_archer_pl|南 部 精 锐 持 弓 众 
 trp_gekokujo_nanbu_hatamoto_cavalry|南 部 母 衣 众 
 trp_gekokujo_nanbu_hatamoto_cavalry_pl|南 部 母 衣 众 
 trp_gekokujo_nanbu_hatamoto_gunner|南 部 圣 武 队 
 trp_gekokujo_nanbu_hatamoto_gunner_pl|南 部 圣 武 队 
-trp_gekokujo_nanbu_messenger|南 部 信 使
-trp_gekokujo_nanbu_messenger_pl|南 部 信 使
-trp_gekokujo_nanbu_deserter|南 部 逃 兵
-trp_gekokujo_nanbu_deserter_pl|南 部 逃 兵
-trp_gekokujo_nanbu_prison_guard|南 部 监 狱 守 卫
-trp_gekokujo_nanbu_prison_guard_pl|南 部 监 狱 守 卫
-trp_gekokujo_nanbu_castle_guard|南 部 城 堡 卫 队
-trp_gekokujo_nanbu_castle_guard_pl|南 部 城 堡 卫 队
+trp_gekokujo_nanbu_messenger|南 部 信 使 
+trp_gekokujo_nanbu_messenger_pl|南 部 信 使 
+trp_gekokujo_nanbu_deserter|南 部 逃 兵 
+trp_gekokujo_nanbu_deserter_pl|南 部 逃 兵 
+trp_gekokujo_nanbu_prison_guard|南 部 监 狱 守 卫 
+trp_gekokujo_nanbu_prison_guard_pl|南 部 监 狱 守 卫 
+trp_gekokujo_nanbu_castle_guard|南 部 城 堡 卫 队 
+trp_gekokujo_nanbu_castle_guard_pl|南 部 城 堡 卫 队 
 trp_gekokujo_asakura_jizamurai|桑 名 藩 士 
 trp_gekokujo_asakura_jizamurai_pl|桑 名 藩 士 
 trp_gekokujo_asakura_retainer|桑 名 徒 士 番 
@@ -734,16 +734,16 @@ trp_gekokujo_asakura_marksman|桑 名 铁 炮 藩 士
 trp_gekokujo_asakura_marksman_pl|桑 名 铁 炮 藩 士 
 trp_gekokujo_asakura_veteran_retainer|桑 名 小 姓 番 
 trp_gekokujo_asakura_veteran_retainer_pl|桑 名 小 姓 番 
-trp_gekokujo_asakura_mounted_retainer|桑 名 马 回 众  
-trp_gekokujo_asakura_mounted_retainer_pl|桑 名 马 回 众  
-trp_gekokujo_asakura_samurai_gunner|桑 名 铁 炮 众  
-trp_gekokujo_asakura_samurai_gunner_pl|桑 名 铁 炮 众  
+trp_gekokujo_asakura_mounted_retainer|桑 名 马 回 众 
+trp_gekokujo_asakura_mounted_retainer_pl|桑 名 马 回 众 
+trp_gekokujo_asakura_samurai_gunner|桑 名 铁 炮 众 
+trp_gekokujo_asakura_samurai_gunner_pl|桑 名 铁 炮 众 
 trp_gekokujo_asakura_samurai_archer|桑 名 精 资 深 持 弓 众 
 trp_gekokujo_asakura_samurai_archer_pl|桑 名 资 深 持 弓 众 
-trp_gekokujo_asakura_officer|桑 名 神 風 队
-trp_gekokujo_asakura_officer_pl|桑 名 神 風 队
+trp_gekokujo_asakura_officer|桑 名 神 風 队 
+trp_gekokujo_asakura_officer_pl|桑 名 神 風 队 
 trp_gekokujo_asakura_mounted_officer|桑 名 御 马 廻 众 
-trp_gekokujo_asakura_mounted_officer_pl|桑 名 御 马 廻 众
+trp_gekokujo_asakura_mounted_officer_pl|桑 名 御 马 廻 众 
 trp_gekokujo_asakura_master_gunner|桑 名 致 人 队 
 trp_gekokujo_asakura_master_gunner_pl|桑 名 致 人 队 
 trp_gekokujo_asakura_master_archer|桑 名 精 锐 持 弓 众 
@@ -752,32 +752,32 @@ trp_gekokujo_asakura_hatamoto_gunner|桑 名 雷 神 队
 trp_gekokujo_asakura_hatamoto_gunner_pl|桑 名 雷 神 队 
 trp_gekokujo_asakura_hatamoto_archer|桑 名 神 射 手 
 trp_gekokujo_asakura_hatamoto_archer_pl|桑 名 神 射 手 
-trp_gekokujo_asakura_messenger|桑 名 信 使
-trp_gekokujo_asakura_messenger_pl|桑 名 信 使
-trp_gekokujo_asakura_deserter|桑 名 逃 兵
-trp_gekokujo_asakura_deserter_pl|桑 名 逃 兵
-trp_gekokujo_asakura_prison_guard|桑 名 监 狱 守 卫
-trp_gekokujo_asakura_prison_guard_pl|桑 名 监 狱 守 卫
-trp_gekokujo_asakura_castle_guard|京 都 所 司 代 护 卫 队
-trp_gekokujo_asakura_castle_guard_pl|京 都 所 司 代 护 卫 队
+trp_gekokujo_asakura_messenger|桑 名 信 使 
+trp_gekokujo_asakura_messenger_pl|桑 名 信 使 
+trp_gekokujo_asakura_deserter|桑 名 逃 兵 
+trp_gekokujo_asakura_deserter_pl|桑 名 逃 兵 
+trp_gekokujo_asakura_prison_guard|桑 名 监 狱 守 卫 
+trp_gekokujo_asakura_prison_guard_pl|桑 名 监 狱 守 卫 
+trp_gekokujo_asakura_castle_guard|京 都 所 司 代 护 卫 队 
+trp_gekokujo_asakura_castle_guard_pl|京 都 所 司 代 护 卫 队 
 trp_gekokujo_chosokabe_jizamurai|土 佐 藩 藩 士 
 trp_gekokujo_chosokabe_jizamurai_pl|土 佐 藩 藩 士 
-trp_gekokujo_chosokabe_retainer|土 佐 藩 武 士
-trp_gekokujo_chosokabe_retainer_pl|土 佐 藩 武 士
-trp_gekokujo_chosokabe_marksman|土 佐 藩 铁 炮 众  
-trp_gekokujo_chosokabe_marksman_pl|土 佐 藩 铁 炮 众  
+trp_gekokujo_chosokabe_retainer|土 佐 藩 武 士 
+trp_gekokujo_chosokabe_retainer_pl|土 佐 藩 武 士 
+trp_gekokujo_chosokabe_marksman|土 佐 藩 铁 炮 众 
+trp_gekokujo_chosokabe_marksman_pl|土 佐 藩 铁 炮 众 
 trp_gekokujo_chosokabe_veteran_retainer|土 佐 藩 小 姓 番 
 trp_gekokujo_chosokabe_veteran_retainer_pl|土 佐 藩 小 姓 番 
-trp_gekokujo_chosokabe_mounted_retainer|土 佐 御 马 回 队
-trp_gekokujo_chosokabe_mounted_retainer_pl|土 佐 御 马 回 队
+trp_gekokujo_chosokabe_mounted_retainer|土 佐 御 马 回 队 
+trp_gekokujo_chosokabe_mounted_retainer_pl|土 佐 御 马 回 队 
 trp_gekokujo_chosokabe_samurai_gunner|土 佐 胡 蝶 队 
 trp_gekokujo_chosokabe_samurai_gunner_pl|土 佐 胡 蝶 队 
 trp_gekokujo_chosokabe_samurai_archer|土 佐 护 国 队 
 trp_gekokujo_chosokabe_samurai_archer_pl|土 佐 护 国 队 
 trp_gekokujo_chosokabe_officer|土 佐 藩 上 士 
 trp_gekokujo_chosokabe_officer_pl|土 佐 藩 上 士 
-trp_gekokujo_chosokabe_mounted_officer|土 佐 陆 援 队 骑 兵
-trp_gekokujo_chosokabe_mounted_officer_pl|土 佐 陆 援 队 骑 兵
+trp_gekokujo_chosokabe_mounted_officer|土 佐 陆 援 队 骑 兵 
+trp_gekokujo_chosokabe_mounted_officer_pl|土 佐 陆 援 队 骑 兵 
 trp_gekokujo_chosokabe_master_gunner|土 佐 断 金 队 
 trp_gekokujo_chosokabe_master_gunner_pl|土 佐 断 金 队 
 trp_gekokujo_chosokabe_master_archer|土 佐 赤 熊 军 官 
@@ -786,82 +786,82 @@ trp_gekokujo_chosokabe_hatamoto_guard|土 佐 藩 旗 本
 trp_gekokujo_chosokabe_hatamoto_guard_pl|土 佐 藩 旗 本 
 trp_gekokujo_chosokabe_hatamoto_archer|土 佐 神 射 手 
 trp_gekokujo_chosokabe_hatamoto_archer_pl|土 佐 神 射 手 
-trp_gekokujo_chosokabe_messenger|土 佐 信 使
-trp_gekokujo_chosokabe_messenger_pl|土 佐 信 使
-trp_gekokujo_chosokabe_deserter|土 佐 逃 兵
-trp_gekokujo_chosokabe_deserter_pl|土 佐 逃 兵
-trp_gekokujo_chosokabe_prison_guard|土 佐 监 狱 守 卫
-trp_gekokujo_chosokabe_prison_guard_pl|土 佐 监 狱 守 卫
-trp_gekokujo_chosokabe_castle_guard|土 佐 城 堡 卫 队
-trp_gekokujo_chosokabe_castle_guard_pl|土 佐 城 堡 卫 队
+trp_gekokujo_chosokabe_messenger|土 佐 信 使 
+trp_gekokujo_chosokabe_messenger_pl|土 佐 信 使 
+trp_gekokujo_chosokabe_deserter|土 佐 逃 兵 
+trp_gekokujo_chosokabe_deserter_pl|土 佐 逃 兵 
+trp_gekokujo_chosokabe_prison_guard|土 佐 监 狱 守 卫 
+trp_gekokujo_chosokabe_prison_guard_pl|土 佐 监 狱 守 卫 
+trp_gekokujo_chosokabe_castle_guard|土 佐 城 堡 卫 队 
+trp_gekokujo_chosokabe_castle_guard_pl|土 佐 城 堡 卫 队 
 trp_gekokujo_hojo_jizamurai|广 岛 藩 士 
 trp_gekokujo_hojo_jizamurai_pl|广 岛 藩 士 
 trp_gekokujo_hojo_retainer|广 岛 徒 士 番 
 trp_gekokujo_hojo_retainer_pl|广 岛 徒 士 番 
-trp_gekokujo_hojo_marksman|广 岛  持 弓 众 
-trp_gekokujo_hojo_marksman_pl|广 岛  持 弓 众 
-trp_gekokujo_hojo_veteran_retainer|广 岛  小 姓 番 
-trp_gekokujo_hojo_veteran_retainer_pl|广 岛  小 姓 番 
-trp_gekokujo_hojo_mounted_retainer|广 岛  马 回 众  
-trp_gekokujo_hojo_mounted_retainer_pl|广 岛  马 回 众  
-trp_gekokujo_hojo_samurai_gunner|广 岛  铁 炮 众  
-trp_gekokujo_hojo_samurai_gunner_pl|广 岛  铁 炮 众  
-trp_gekokujo_hojo_samurai_archer|广 岛  资 深 持 弓 众 
-trp_gekokujo_hojo_samurai_archer_pl|广 岛  资 深 持 弓 众 
+trp_gekokujo_hojo_marksman|广 岛 持 弓 众 
+trp_gekokujo_hojo_marksman_pl|广 岛 持 弓 众 
+trp_gekokujo_hojo_veteran_retainer|广 岛 小 姓 番 
+trp_gekokujo_hojo_veteran_retainer_pl|广 岛 小 姓 番 
+trp_gekokujo_hojo_mounted_retainer|广 岛 马 回 众 
+trp_gekokujo_hojo_mounted_retainer_pl|广 岛 马 回 众 
+trp_gekokujo_hojo_samurai_gunner|广 岛 铁 炮 众 
+trp_gekokujo_hojo_samurai_gunner_pl|广 岛 铁 炮 众 
+trp_gekokujo_hojo_samurai_archer|广 岛 资 深 持 弓 众 
+trp_gekokujo_hojo_samurai_archer_pl|广 岛 资 深 持 弓 众 
 trp_gekokujo_hojo_officer|广 岛 协 和 军 
 trp_gekokujo_hojo_officer_pl|广 岛 协 和 军 
-trp_gekokujo_hojo_mounted_officer|广 岛  骑 马 书 院 番  
-trp_gekokujo_hojo_mounted_officer_pl|广 岛  骑 马 书 院 番  
-trp_gekokujo_hojo_master_gunner|广 岛  精 锐 铁 炮 众  
-trp_gekokujo_hojo_master_gunner_pl|广 岛  精 锐 铁 炮 众  
+trp_gekokujo_hojo_mounted_officer|广 岛 骑 马 书 院 番 
+trp_gekokujo_hojo_mounted_officer_pl|广 岛 骑 马 书 院 番 
+trp_gekokujo_hojo_master_gunner|广 岛 精 锐 铁 炮 众 
+trp_gekokujo_hojo_master_gunner_pl|广 岛 精 锐 铁 炮 众 
 trp_gekokujo_hojo_master_archer|广 岛 捷 机 队 
 trp_gekokujo_hojo_master_archer_pl|广 岛 捷 机 队 
-trp_gekokujo_hojo_hatamoto_cavalry|广 岛  母 衣 众 
-trp_gekokujo_hojo_hatamoto_cavalry_pl|广 岛  母 衣 众 
+trp_gekokujo_hojo_hatamoto_cavalry|广 岛 母 衣 众 
+trp_gekokujo_hojo_hatamoto_cavalry_pl|广 岛 母 衣 众 
 trp_gekokujo_hojo_hatamoto_archer|广 岛 神 机 队 
 trp_gekokujo_hojo_hatamoto_archer_pl|广 岛 神 机 队 
-trp_gekokujo_hojo_messenger|广 岛  信 使
-trp_gekokujo_hojo_messenger_pl|广 岛  信 使
-trp_gekokujo_hojo_deserter|广 岛  逃 兵
-trp_gekokujo_hojo_deserter_pl|广 岛  逃 兵
-trp_gekokujo_hojo_prison_guard|广 岛  监 狱 守 卫
-trp_gekokujo_hojo_prison_guard_pl|广 岛  监 狱 守 卫
-trp_gekokujo_hojo_castle_guard|广 岛  城 堡 卫 队
-trp_gekokujo_hojo_castle_guard_pl|广 岛  城 堡 卫 队
-trp_gekokujo_mogami_jizamurai|米 泽 藩 士
-trp_gekokujo_mogami_jizamurai_pl|米 泽 藩 士
-trp_gekokujo_mogami_retainer|米 泽 濟 民 队
-trp_gekokujo_mogami_retainer_pl|米 泽 濟 民 队
-trp_gekokujo_mogami_marksman|米 泽 持 铳 众
+trp_gekokujo_hojo_messenger|广 岛 信 使 
+trp_gekokujo_hojo_messenger_pl|广 岛 信 使 
+trp_gekokujo_hojo_deserter|广 岛 逃 兵 
+trp_gekokujo_hojo_deserter_pl|广 岛 逃 兵 
+trp_gekokujo_hojo_prison_guard|广 岛 监 狱 守 卫 
+trp_gekokujo_hojo_prison_guard_pl|广 岛 监 狱 守 卫 
+trp_gekokujo_hojo_castle_guard|广 岛 城 堡 卫 队 
+trp_gekokujo_hojo_castle_guard_pl|广 岛 城 堡 卫 队 
+trp_gekokujo_mogami_jizamurai|米 泽 藩 士 
+trp_gekokujo_mogami_jizamurai_pl|米 泽 藩 士 
+trp_gekokujo_mogami_retainer|米 泽 濟 民 队 
+trp_gekokujo_mogami_retainer_pl|米 泽 濟 民 队 
+trp_gekokujo_mogami_marksman|米 泽 持 铳 众 
 trp_gekokujo_mogami_marksman_pl|米 泽 持 铳 众 
 trp_gekokujo_mogami_veteran_retainer|米 泽 小 姓 番 
 trp_gekokujo_mogami_veteran_retainer_pl|米 泽 小 姓 番 
-trp_gekokujo_mogami_mounted_retainer|米 泽 马 回 众  
-trp_gekokujo_mogami_mounted_retainer_pl|米 泽 马 回 众  
-trp_gekokujo_mogami_samurai_gunner|米 泽 铁 炮 众  
-trp_gekokujo_mogami_samurai_gunner_pl|米 泽 铁 炮 众  
+trp_gekokujo_mogami_mounted_retainer|米 泽 马 回 众 
+trp_gekokujo_mogami_mounted_retainer_pl|米 泽 马 回 众 
+trp_gekokujo_mogami_samurai_gunner|米 泽 铁 炮 众 
+trp_gekokujo_mogami_samurai_gunner_pl|米 泽 铁 炮 众 
 trp_gekokujo_mogami_samurai_archer|米 泽 资 深 持 弓 众 
 trp_gekokujo_mogami_samurai_archer_pl|米 泽 资 深 持 弓 众 
-trp_gekokujo_mogami_officer|米 泽 书 院 番  
-trp_gekokujo_mogami_officer_pl|米 泽 书 院 番  
-trp_gekokujo_mogami_mounted_officer|米 泽 骑 马 书 院 番  
-trp_gekokujo_mogami_mounted_officer_pl|米 泽 骑 马 书 院 番  
+trp_gekokujo_mogami_officer|米 泽 书 院 番 
+trp_gekokujo_mogami_officer_pl|米 泽 书 院 番 
+trp_gekokujo_mogami_mounted_officer|米 泽 骑 马 书 院 番 
+trp_gekokujo_mogami_mounted_officer_pl|米 泽 骑 马 书 院 番 
 trp_gekokujo_mogami_master_gunner|米 泽 西 式 新 军 
 trp_gekokujo_mogami_master_gunner_pl|米 泽 西 式 新 军 
 trp_gekokujo_mogami_master_archer|米 泽 散 兵 队 
 trp_gekokujo_mogami_master_archer_pl|米 泽 散 兵 队 
-trp_gekokujo_mogami_hatamoto_cavalry|米 泽 五 十 騎 组
-trp_gekokujo_mogami_hatamoto_cavalry_pl|米 泽 五 十 騎 组
-trp_gekokujo_mogami_hatamoto_gunner|米 泽 新 铳 队
-trp_gekokujo_mogami_hatamoto_gunner_pl|米 泽 新 铳 队
-trp_gekokujo_mogami_messenger|米 泽 信 使
-trp_gekokujo_mogami_messenger_pl|米 泽 信 使
-trp_gekokujo_mogami_deserter|米 泽 逃 兵
-trp_gekokujo_mogami_deserter_pl|米 泽 逃 兵
-trp_gekokujo_mogami_prison_guard|米 泽 监 狱 守 卫
-trp_gekokujo_mogami_prison_guard_pl|米 泽 监 狱 守 卫
-trp_gekokujo_mogami_castle_guard|米 泽 城 堡 卫 队
-trp_gekokujo_mogami_castle_guard_pl|米 泽 城 堡 卫 队
+trp_gekokujo_mogami_hatamoto_cavalry|米 泽 五 十 騎 组 
+trp_gekokujo_mogami_hatamoto_cavalry_pl|米 泽 五 十 騎 组 
+trp_gekokujo_mogami_hatamoto_gunner|米 泽 新 铳 队 
+trp_gekokujo_mogami_hatamoto_gunner_pl|米 泽 新 铳 队 
+trp_gekokujo_mogami_messenger|米 泽 信 使 
+trp_gekokujo_mogami_messenger_pl|米 泽 信 使 
+trp_gekokujo_mogami_deserter|米 泽 逃 兵 
+trp_gekokujo_mogami_deserter_pl|米 泽 逃 兵 
+trp_gekokujo_mogami_prison_guard|米 泽 监 狱 守 卫 
+trp_gekokujo_mogami_prison_guard_pl|米 泽 监 狱 守 卫 
+trp_gekokujo_mogami_castle_guard|米 泽 城 堡 卫 队 
+trp_gekokujo_mogami_castle_guard_pl|米 泽 城 堡 卫 队 
 trp_gekokujo_shimazu_jizamurai|萨 摩 藩 藩 士 
 trp_gekokujo_shimazu_jizamurai_pl|萨 摩 藩 藩 士 
 trp_gekokujo_shimazu_retainer|萨 摩 示 显 流 徒 士 番 
@@ -870,32 +870,32 @@ trp_gekokujo_shimazu_marksman|萨 摩 城 下 铳 队
 trp_gekokujo_shimazu_marksman_pl|萨 摩 城 下 铳 队 
 trp_gekokujo_shimazu_veteran_retainer|萨 摩 小 姓 番 
 trp_gekokujo_shimazu_veteran_retainer_pl|萨 摩 小 姓 番 
-trp_gekokujo_shimazu_mounted_retainer|岛 津 马 回 众  
-trp_gekokujo_shimazu_mounted_retainer_pl|岛 津 马 回 众  
+trp_gekokujo_shimazu_mounted_retainer|岛 津 马 回 众 
+trp_gekokujo_shimazu_mounted_retainer_pl|岛 津 马 回 众 
 trp_gekokujo_shimazu_samurai_gunner|萨 摩 精 锐 步 兵 
 trp_gekokujo_shimazu_samurai_gunner_pl|萨 摩 精 锐 步 兵 
 trp_gekokujo_shimazu_samurai_archer|岛 津 资 深 持 弓 众 
 trp_gekokujo_shimazu_samurai_archer_pl|岛 津 资 深 持 弓 众 
 trp_gekokujo_shimazu_officer|萨 摩 示 显 流 剑 豪 
 trp_gekokujo_shimazu_officer_pl|萨 摩 示 显 流 剑 豪 
-trp_gekokujo_shimazu_mounted_officer|岛 津 骑 马 书 院番  
-trp_gekokujo_shimazu_mounted_officer_pl|岛 津 骑 马 书 院番  
+trp_gekokujo_shimazu_mounted_officer|岛 津 骑 马 书 院 番 
+trp_gekokujo_shimazu_mounted_officer_pl|岛 津 骑 马 书 院 番 
 trp_gekokujo_shimazu_master_gunner|萨 摩 神 枪 队 
 trp_gekokujo_shimazu_master_gunner_pl|萨 摩 神 枪 队 
 trp_gekokujo_shimazu_master_archer|岛 津 精 锐 持 弓 众 
 trp_gekokujo_shimazu_master_archer_pl|岛 津 精 锐 持 弓 众 
-trp_gekokujo_shimazu_hatamoto_guard|萨 摩 黑 熊 军 官
-trp_gekokujo_shimazu_hatamoto_guard_pl|萨 摩 黑 熊 军 官
-trp_gekokujo_shimazu_hatamoto_gunner|萨 摩 卡 宾 枪 兵 队
-trp_gekokujo_shimazu_hatamoto_gunner_pl|萨 摩 卡 宾 枪 兵 队
-trp_gekokujo_shimazu_messenger|岛 津 信 使
-trp_gekokujo_shimazu_messenger_pl|岛 津 信 使
-trp_gekokujo_shimazu_deserter|岛 津 逃 兵
-trp_gekokujo_shimazu_deserter_pl|岛 津 逃 兵
-trp_gekokujo_shimazu_prison_guard|岛 津 监 狱 守 卫
-trp_gekokujo_shimazu_prison_guard_pl|岛 津 监 狱 守 卫
-trp_gekokujo_shimazu_castle_guard|岛 津 城 堡 卫 队
-trp_gekokujo_shimazu_castle_guard_pl|岛 津 城 堡 卫 队
+trp_gekokujo_shimazu_hatamoto_guard|萨 摩 黑 熊 军 官 
+trp_gekokujo_shimazu_hatamoto_guard_pl|萨 摩 黑 熊 军 官 
+trp_gekokujo_shimazu_hatamoto_gunner|萨 摩 卡 宾 枪 兵 队 
+trp_gekokujo_shimazu_hatamoto_gunner_pl|萨 摩 卡 宾 枪 兵 队 
+trp_gekokujo_shimazu_messenger|岛 津 信 使 
+trp_gekokujo_shimazu_messenger_pl|岛 津 信 使 
+trp_gekokujo_shimazu_deserter|岛 津 逃 兵 
+trp_gekokujo_shimazu_deserter_pl|岛 津 逃 兵 
+trp_gekokujo_shimazu_prison_guard|岛 津 监 狱 守 卫 
+trp_gekokujo_shimazu_prison_guard_pl|岛 津 监 狱 守 卫 
+trp_gekokujo_shimazu_castle_guard|岛 津 城 堡 卫 队 
+trp_gekokujo_shimazu_castle_guard_pl|岛 津 城 堡 卫 队 
 trp_gekokujo_ryuzoji_jizamurai|佐 贺 藩 士 
 trp_gekokujo_ryuzoji_jizamurai_pl|佐 贺 藩 士 
 trp_gekokujo_ryuzoji_retainer|佐 贺 徒 士 番 
@@ -904,16 +904,16 @@ trp_gekokujo_ryuzoji_marksman|佐 贺 铁 炮 徒 士
 trp_gekokujo_ryuzoji_marksman_pl|佐 贺 铁 炮 徒 士 
 trp_gekokujo_ryuzoji_veteran_retainer|佐 贺 小 姓 番 
 trp_gekokujo_ryuzoji_veteran_retainer_pl|佐 贺 小 姓 番 
-trp_gekokujo_ryuzoji_mounted_retainer|佐 贺 马 回 众  
-trp_gekokujo_ryuzoji_mounted_retainer_pl|佐 贺 马 回 众  
-trp_gekokujo_ryuzoji_samurai_gunner|佐 贺 铁 炮 众  
-trp_gekokujo_ryuzoji_samurai_gunner_pl|佐 贺 铁 炮 众  
+trp_gekokujo_ryuzoji_mounted_retainer|佐 贺 马 回 众 
+trp_gekokujo_ryuzoji_mounted_retainer_pl|佐 贺 马 回 众 
+trp_gekokujo_ryuzoji_samurai_gunner|佐 贺 铁 炮 众 
+trp_gekokujo_ryuzoji_samurai_gunner_pl|佐 贺 铁 炮 众 
 trp_gekokujo_ryuzoji_samurai_archer|佐 贺 资 深 持 弓 众 
 trp_gekokujo_ryuzoji_samurai_archer_pl|龙 造 资 深 持 弓 众 
-trp_gekokujo_ryuzoji_officer|佐 贺 书 院番  
-trp_gekokujo_ryuzoji_officer_pl|佐 贺 书 院番  
-trp_gekokujo_ryuzoji_mounted_officer|佐 贺 配 枪 骑 马 队
-trp_gekokujo_ryuzoji_mounted_officer_pl|佐 贺 配 枪 骑 马 队
+trp_gekokujo_ryuzoji_officer|佐 贺 书 院 番 
+trp_gekokujo_ryuzoji_officer_pl|佐 贺 书 院 番 
+trp_gekokujo_ryuzoji_mounted_officer|佐 贺 配 枪 骑 马 队 
+trp_gekokujo_ryuzoji_mounted_officer_pl|佐 贺 配 枪 骑 马 队 
 trp_gekokujo_ryuzoji_master_gunner|佐 贺 游 兵 队 
 trp_gekokujo_ryuzoji_master_gunner_pl|佐 贺 游 兵 队 
 trp_gekokujo_ryuzoji_master_archer|佐 贺 精 锐 持 弓 众 
@@ -922,14 +922,14 @@ trp_gekokujo_ryuzoji_hatamoto_guard|佐 贺 旗 本
 trp_gekokujo_ryuzoji_hatamoto_guard_pl|佐 贺 旗 本 
 trp_gekokujo_ryuzoji_hatamoto_archer|佐 贺 振 远 队 
 trp_gekokujo_ryuzoji_hatamoto_archer_pl|佐 贺 振 远 队 
-trp_gekokujo_ryuzoji_messenger|佐 贺 信 使
-trp_gekokujo_ryuzoji_messenger_pl|佐 贺 信 使
-trp_gekokujo_ryuzoji_deserter|佐 贺 逃 兵
-trp_gekokujo_ryuzoji_deserter_pl|佐 贺 逃 兵
-trp_gekokujo_ryuzoji_prison_guard|佐 贺 监 狱 守 卫
-trp_gekokujo_ryuzoji_prison_guard_pl|佐 贺 监 狱 守 卫
-trp_gekokujo_ryuzoji_castle_guard|佐 贺 城 堡 卫 队
-trp_gekokujo_ryuzoji_castle_guard_pl|佐 贺 城 堡 卫 队
+trp_gekokujo_ryuzoji_messenger|佐 贺 信 使 
+trp_gekokujo_ryuzoji_messenger_pl|佐 贺 信 使 
+trp_gekokujo_ryuzoji_deserter|佐 贺 逃 兵 
+trp_gekokujo_ryuzoji_deserter_pl|佐 贺 逃 兵 
+trp_gekokujo_ryuzoji_prison_guard|佐 贺 监 狱 守 卫 
+trp_gekokujo_ryuzoji_prison_guard_pl|佐 贺 监 狱 守 卫 
+trp_gekokujo_ryuzoji_castle_guard|佐 贺 城 堡 卫 队 
+trp_gekokujo_ryuzoji_castle_guard_pl|佐 贺 城 堡 卫 队 
 trp_gekokujo_satake_jizamurai|水 户 藩 士 
 trp_gekokujo_satake_jizamurai_pl|水 户 藩 士 
 trp_gekokujo_satake_retainer|水 户 徒 士 番 
@@ -938,52 +938,52 @@ trp_gekokujo_satake_marksman|水 户 持 弓 众
 trp_gekokujo_satake_marksman_pl|水 户 持 弓 众 
 trp_gekokujo_satake_veteran_retainer|水 户 诸 生 党 
 trp_gekokujo_satake_veteran_retainer_pl|水 户 诸 生 党 
-trp_gekokujo_satake_mounted_retainer|水 户 天 狗 党  
-trp_gekokujo_satake_mounted_retainer_pl|水 户 天 狗 党  
-trp_gekokujo_satake_samurai_gunner|水 户 铁 炮 众  
-trp_gekokujo_satake_samurai_gunner_pl|水 户 铁 炮 众  
+trp_gekokujo_satake_mounted_retainer|水 户 天 狗 党 
+trp_gekokujo_satake_mounted_retainer_pl|水 户 天 狗 党 
+trp_gekokujo_satake_samurai_gunner|水 户 铁 炮 众 
+trp_gekokujo_satake_samurai_gunner_pl|水 户 铁 炮 众 
 trp_gekokujo_satake_samurai_archer|水 户 资 深 持 弓 众 
 trp_gekokujo_satake_samurai_archer_pl|水 户 资 深 持 弓 众 
-trp_gekokujo_satake_officer|水 户 神 衛 隊
-trp_gekokujo_satake_officer_pl|水 户 神 衛 隊  
+trp_gekokujo_satake_officer|水 户 神 衛 隊 
+trp_gekokujo_satake_officer_pl|水 户 神 衛 隊 
 trp_gekokujo_satake_mounted_officer|水 户 天 勇 队 
 trp_gekokujo_satake_mounted_officer_pl|水 户 天 勇 队 
 trp_gekokujo_zunwangjianke|水 户 尊 王 激 进 剑 客 
 trp_gekokujo_zunwangjianke_pl|水 户 尊 王 激 进 剑 客 
-trp_gekokujo_satake_master_gunner|水 户 精 锐 铁 炮 众  
-trp_gekokujo_satake_master_gunner_pl|水 户 精 锐 铁 炮 众  
+trp_gekokujo_satake_master_gunner|水 户 精 锐 铁 炮 众 
+trp_gekokujo_satake_master_gunner_pl|水 户 精 锐 铁 炮 众 
 trp_gekokujo_satake_master_archer|水 户 精 锐 持 弓 众 
 trp_gekokujo_satake_master_archer_pl|水 户 精 锐 持 弓 众 
-trp_gekokujo_satake_hatamoto_gunner|水 户 旗 本 铁 炮 众  
-trp_gekokujo_satake_hatamoto_gunner_pl|水 户 旗 本 铁 炮 众  
+trp_gekokujo_satake_hatamoto_gunner|水 户 旗 本 铁 炮 众 
+trp_gekokujo_satake_hatamoto_gunner_pl|水 户 旗 本 铁 炮 众 
 trp_gekokujo_satake_hatamoto_archer|水 户 神 射 手 
 trp_gekokujo_satake_hatamoto_archer_pl|水 户 神 射 手 
-trp_gekokujo_satake_messenger|水 户 信 使
-trp_gekokujo_satake_messenger_pl|水 户 信 使
-trp_gekokujo_satake_deserter|水 户 逃 兵
+trp_gekokujo_satake_messenger|水 户 信 使 
+trp_gekokujo_satake_messenger_pl|水 户 信 使 
+trp_gekokujo_satake_deserter|水 户 逃 兵 
 trp_gekokujo_satake_deserter_pl|水 户 逃 兵 
-trp_gekokujo_satake_prison_guard|水 户 监 狱 守 卫
-trp_gekokujo_satake_prison_guard_pl|水 户 监 狱 守 卫
-trp_gekokujo_satake_castle_guard|水 户 城 堡 卫 队
-trp_gekokujo_satake_castle_guard_pl|水 户 城 堡 卫 队
+trp_gekokujo_satake_prison_guard|水 户 监 狱 守 卫 
+trp_gekokujo_satake_prison_guard_pl|水 户 监 狱 守 卫 
+trp_gekokujo_satake_castle_guard|水 户 城 堡 卫 队 
+trp_gekokujo_satake_castle_guard_pl|水 户 城 堡 卫 队 
 trp_gekokujo_satomi_jizamurai|长 冈 藩 藩 士 
 trp_gekokujo_satomi_jizamurai_pl|长 冈 藩 藩 士 
-trp_gekokujo_satomi_retainer|长 冈 越 后 流 衝 擊 队
-trp_gekokujo_satomi_retainer_pl|长 冈 越 后 流 衝 擊 队
+trp_gekokujo_satomi_retainer|长 冈 越 后 流 衝 擊 队 
+trp_gekokujo_satomi_retainer_pl|长 冈 越 后 流 衝 擊 队 
 trp_gekokujo_satomi_marksman|长 冈 藩 铳 藩 士 
 trp_gekokujo_satomi_marksman_pl|长 冈 藩 铳 藩 士 
 trp_gekokujo_satomi_veteran_retainer|长 冈 小 姓 番 
 trp_gekokujo_satomi_veteran_retainer_pl|长 冈 小 姓 番 
-trp_gekokujo_satomi_mounted_retainer|长 冈 马 回 众  
-trp_gekokujo_satomi_mounted_retainer_pl|长 冈 马 回 众  
+trp_gekokujo_satomi_mounted_retainer|长 冈 马 回 众 
+trp_gekokujo_satomi_mounted_retainer_pl|长 冈 马 回 众 
 trp_gekokujo_satomi_samurai_gunner|长 冈 新 军 
 trp_gekokujo_satomi_samurai_gunner_pl|长 冈 新 军 
 trp_gekokujo_satomi_samurai_archer|长 冈 御 持 筒 组 
 trp_gekokujo_satomi_samurai_archer_pl|长 冈 御 持 筒 组 
-trp_gekokujo_satomi_officer|长 冈 书 院番  
-trp_gekokujo_satomi_officer_pl|长 冈 书 院番  
-trp_gekokujo_satomi_mounted_officer|长 冈 骑 马 书 院番  
-trp_gekokujo_satomi_mounted_officer_pl|长 冈 骑 马 书 院番  
+trp_gekokujo_satomi_officer|长 冈 书 院 番 
+trp_gekokujo_satomi_officer_pl|长 冈 书 院 番 
+trp_gekokujo_satomi_mounted_officer|长 冈 骑 马 书 院 番 
+trp_gekokujo_satomi_mounted_officer_pl|长 冈 骑 马 书 院 番 
 trp_gekokujo_satomi_master_gunner|长 冈 藩 步 枪 队 
 trp_gekokujo_satomi_master_gunner_pl|长 冈 藩 步 枪 队 
 trp_gekokujo_satomi_master_archer|长 冈 藩 法 式 卫 队 
@@ -992,14 +992,14 @@ trp_gekokujo_satomi_hatamoto_guard|长 冈 旗 本
 trp_gekokujo_satomi_hatamoto_guard_pl|长 冈 旗 本 
 trp_gekokujo_satomi_hatamoto_cavalry|长 冈 母 衣 众 
 trp_gekokujo_satomi_hatamoto_cavalry_pl|长 冈 母 衣 众 
-trp_gekokujo_satomi_messenger|长 冈 信 使
-trp_gekokujo_satomi_messenger_pl|长 冈 信 使
-trp_gekokujo_satomi_deserter|长 冈 逃 兵
-trp_gekokujo_satomi_deserter_pl|长 冈 逃 兵
-trp_gekokujo_satomi_prison_guard|长 冈 监 狱 守 卫
-trp_gekokujo_satomi_prison_guard_pl|长 冈 监 狱 守 卫
-trp_gekokujo_satomi_castle_guard|长 冈 城 堡 卫 队
-trp_gekokujo_satomi_castle_guard_pl|长 冈 城 堡 卫 队
+trp_gekokujo_satomi_messenger|长 冈 信 使 
+trp_gekokujo_satomi_messenger_pl|长 冈 信 使 
+trp_gekokujo_satomi_deserter|长 冈 逃 兵 
+trp_gekokujo_satomi_deserter_pl|长 冈 逃 兵 
+trp_gekokujo_satomi_prison_guard|长 冈 监 狱 守 卫 
+trp_gekokujo_satomi_prison_guard_pl|长 冈 监 狱 守 卫 
+trp_gekokujo_satomi_castle_guard|长 冈 城 堡 卫 队 
+trp_gekokujo_satomi_castle_guard_pl|长 冈 城 堡 卫 队 
 trp_gekokujo_ukita_jizamurai|冈 山 藩 士 
 trp_gekokujo_ukita_jizamurai_pl|冈 山 藩 士 
 trp_gekokujo_ukita_retainer|冈 山 徒 士 番 
@@ -1008,10 +1008,10 @@ trp_gekokujo_ukita_marksman|冈 山 持 弓 众
 trp_gekokujo_ukita_marksman_pl|冈 山 持 弓 众 
 trp_gekokujo_ukita_veteran_retainer|冈 山 小 姓 番 
 trp_gekokujo_ukita_veteran_retainer_pl|冈 山 小 姓 番 
-trp_gekokujo_ukita_mounted_retainer|冈 山 马 回 众  
-trp_gekokujo_ukita_mounted_retainer_pl|冈 山 马 回 众  
-trp_gekokujo_ukita_samurai_gunner|冈 山 铁 炮 众  
-trp_gekokujo_ukita_samurai_gunner_pl|冈 山 铁 炮 众  
+trp_gekokujo_ukita_mounted_retainer|冈 山 马 回 众 
+trp_gekokujo_ukita_mounted_retainer_pl|冈 山 马 回 众 
+trp_gekokujo_ukita_samurai_gunner|冈 山 铁 炮 众 
+trp_gekokujo_ukita_samurai_gunner_pl|冈 山 铁 炮 众 
 trp_gekokujo_ukita_samurai_archer|冈 山 资 深 持 弓 众 
 trp_gekokujo_ukita_samurai_archer_pl|冈 山 资 深 持 弓 众 
 trp_gekokujo_ukita_officer|冈 山 壯 軍 队 
@@ -1022,18 +1022,18 @@ trp_gekokujo_ukita_master_gunner|冈 山 西 式 常 备 军
 trp_gekokujo_ukita_master_gunner_pl|冈 山 西 式 常 备 军 
 trp_gekokujo_ukita_master_archer|冈 山 精 锐 持 弓 众 
 trp_gekokujo_ukita_master_archer_pl|冈 山 精 锐 持 弓 众 
-trp_gekokujo_ukita_hatamoto_guard|冈 山 新 武 隊
-trp_gekokujo_ukita_hatamoto_guard_pl|冈 山 新 武 隊
-trp_gekokujo_ukita_hatamoto_gunner|備 州 精 锐 隊
-trp_gekokujo_ukita_hatamoto_gunner_pl|備 州 精 锐 隊
+trp_gekokujo_ukita_hatamoto_guard|冈 山 新 武 隊 
+trp_gekokujo_ukita_hatamoto_guard_pl|冈 山 新 武 隊 
+trp_gekokujo_ukita_hatamoto_gunner|備 州 精 锐 隊 
+trp_gekokujo_ukita_hatamoto_gunner_pl|備 州 精 锐 隊 
 trp_gekokujo_ukita_messenger|冈 山 信 使 
 trp_gekokujo_ukita_messenger_pl|冈 山 信 使 
-trp_gekokujo_ukita_deserter|冈 山 逃 兵
-trp_gekokujo_ukita_deserter_pl|冈 山 逃 兵
-trp_gekokujo_ukita_prison_guard|冈 山 监 狱 守 卫
-trp_gekokujo_ukita_prison_guard_pl|冈 山 监 狱 守 卫
-trp_gekokujo_ukita_castle_guard|冈 山 城 堡 卫 队
-trp_gekokujo_ukita_castle_guard_pl|冈 山 城 堡 卫 队
+trp_gekokujo_ukita_deserter|冈 山 逃 兵 
+trp_gekokujo_ukita_deserter_pl|冈 山 逃 兵 
+trp_gekokujo_ukita_prison_guard|冈 山 监 狱 守 卫 
+trp_gekokujo_ukita_prison_guard_pl|冈 山 监 狱 守 卫 
+trp_gekokujo_ukita_castle_guard|冈 山 城 堡 卫 队 
+trp_gekokujo_ukita_castle_guard_pl|冈 山 城 堡 卫 队 
 trp_gekokujo_ikko_jizamurai|加 贺 藩 士 
 trp_gekokujo_ikko_jizamurai_pl|加 贺 藩 士 
 trp_gekokujo_ikko_retainer|加 贺 徒 士 番 
@@ -1044,18 +1044,82 @@ trp_gekokujo_ikko_veteran_retainer|加 贺 资 深 义 勇 军
 trp_gekokujo_ikko_veteran_retainer_pl|加 贺 资 深 义 勇 军 
 trp_gekokujo_ikko_mounted_retainer|加 贺 义 勇 骑 马 队 
 trp_gekokujo_ikko_mounted_retainer_pl|加 贺 义 勇 骑 马 队 
-trp_gekokujo_ikko_samurai_gunner|加 贺 铁 炮 众  
-trp_gekokujo_ikko_samurai_gunner_pl|加 贺 铁 炮 众  
+trp_gekokujo_ikko_samurai_gunner|加 贺 铁 炮 众 
+trp_gekokujo_ikko_samurai_gunner_pl|加 贺 铁 炮 众 
 trp_gekokujo_ikko_samurai_archer|加 贺 资 深 持 弓 众 
 trp_gekokujo_ikko_samurai_archer_pl|加 贺 资 深 持 弓 众 
-trp_gekokujo_ikko_officer|加 贺 书 院番  
-trp_gekokujo_ikko_officer_pl|加 贺 书 院番  
-trp_gekokujo_ikko_mounted_officer|加 贺 骑 马 书 院番   
-trp_gekokujo_ikko_mounted_officer_pl|加 贺 骑 马 书 院番  
-trp_gekokujo_ikko_master_gunner|加 贺 精 锐 铁 炮 众  
-trp_gekokujo_ikko_master_gunner_pl|加 贺 精 锐 铁 炮 众  
+trp_gekokujo_ikko_officer|加 贺 书 院 番 
+trp_gekokujo_ikko_officer_pl|加 贺 书 院 番 
+trp_gekokujo_ikko_mounted_officer|加 贺 骑 马 书 院 番 
+trp_gekokujo_ikko_mounted_officer_pl|加 贺 骑 马 书 院 番 
+trp_gekokujo_ikko_master_gunner|加 贺 精 锐 铁 炮 众 
+trp_gekokujo_ikko_master_gunner_pl|加 贺 精 锐 铁 炮 众 
 trp_gekokujo_ikko_master_archer|加 贺 精 锐 持 弓 众 
 trp_gekokujo_ikko_master_archer_pl|加 贺 精 锐 持 弓 众 
+trp_ceshi1|Ji-Samurai from xb
+trp_ceshi1_pl|Ji-Samurai from xb
+trp_ceshi1_messenger|Ukita Messenger
+trp_ceshi1_messenger_pl|Ukita Messengers
+trp_ceshi1_deserter|Ukita Deserter
+trp_ceshi1_deserter_pl|Ukita Deserters
+trp_ceshi1_prison_guard|Ukita Prison Guard
+trp_ceshi1_prison_guard_pl|Ukita Prison Guards
+trp_ceshi1_castle_guard|Ukita Castle Guard
+trp_ceshi1_castle_guard_pl|Ukita Castle Guards
+trp_ceshi12|Ji-Samurai from Kaga
+trp_ceshi12_pl|Ji-Samurai from Kaga
+trp_ceshi12_messenger|Ukita Messenger
+trp_ceshi12_messenger_pl|Ukita Messengers
+trp_ceshi12_deserter|Ukita Deserter
+trp_ceshi12_deserter_pl|Ukita Deserters
+trp_ceshi12_prison_guard|Ukita Prison Guard
+trp_ceshi12_prison_guard_pl|Ukita Prison Guards
+trp_ceshi12_castle_guard|Ukita Castle Guard
+trp_ceshi12_castle_guard_pl|Ukita Castle Guards
+trp_ceshi13|Ji-Samurai from Kaga
+trp_ceshi13_pl|Ji-Samurai from Kaga
+trp_ceshi13_messenger|Ukita Messenger
+trp_ceshi13_messenger_pl|Ukita Messengers
+trp_ceshi13_deserter|Ukita Deserter
+trp_ceshi13_deserter_pl|Ukita Deserters
+trp_ceshi13_prison_guard|Ukita Prison Guard
+trp_ceshi13_prison_guard_pl|Ukita Prison Guards
+trp_ceshi13_castle_guard|Ukita Castle Guard
+trp_ceshi13_castle_guard_pl|Ukita Castle Guards
+trp_ceshi14|Ji-Samurai from Kaga
+trp_ceshi14_pl|Ji-Samurai from Kaga
+trp_ceshi14_messenger|Ukita Messenger
+trp_ceshi14_messenger_pl|Ukita Messengers
+trp_ceshi14_deserter|Ukita Deserter
+trp_ceshi14_deserter_pl|Ukita Deserters
+trp_ceshi14_prison_guard|Ukita Prison Guard
+trp_ceshi14_prison_guard_pl|Ukita Prison Guards
+trp_ceshi14_castle_guard|Ukita Castle Guard
+trp_ceshi14_castle_guard_pl|Ukita Castle Guards
+trp_ceshi15|Ji-Samurai from Kaga
+trp_ceshi15_pl|Ji-Samurai from Kaga
+trp_ceshi15_messenger|Ukita Messenger
+trp_ceshi15_messenger_pl|Ukita Messengers
+trp_ceshi16|Ji-Samurai from Kaga
+trp_ceshi16_pl|Ji-Samurai from Kaga
+trp_ceshi16_messenger|Ukita Messenger
+trp_ceshi16_messenger_pl|Ukita Messengers
+trp_ceshi16_deserter|Ukita Deserter
+trp_ceshi16_deserter_pl|Ukita Deserters
+trp_ceshi16_prison_guard|Ukita Prison Guard
+trp_ceshi16_prison_guard_pl|Ukita Prison Guards
+trp_ceshi16_castle_guard|Ukita Castle Guard
+trp_ceshi16_castle_guard_pl|Ukita Castle Guards
+trp_ceshi17|Ji-Samurai from Kaga
+trp_ceshi17_pl|Ji-Samurai from Kaga
+trp_ceshi17_messenger|Ukita Messenger
+trp_ceshi17_messenger_pl|Ukita Messengers
+trp_ceshi17_deserter|Ukita Deserter
+trp_ceshi17_deserter_pl|Ukita Deserters
+trp_ceshi17_prison_guard|Ukita Prison Guard
+trp_ceshi17_prison_guard_pl|Ukita Prison Guards
+trp_ceshi17_castle_guard|Ukita Castle Guard
+trp_ceshi17_castle_guard_pl|Ukita Castle Guards
 trp_gekokujo_ikko_monk|加 贺 僧 兵 
 trp_gekokujo_ikko_monk_pl|加 贺 僧 兵 
 trp_gekokujo_ikko_marksman_monk|加 贺 僧 兵 射 手 
@@ -1074,18 +1138,18 @@ trp_gekokujo_ikko_veteran_yari_monk|加 贺 资 深 僧 兵
 trp_gekokujo_ikko_veteran_yari_monk_pl|加 贺 资 深 僧 兵 
 trp_gekokujo_ikko_naginata_monk|加 贺 剃 刀 僧 兵 
 trp_gekokujo_ikko_naginata_monk_pl|加 贺 剃 刀 僧 兵 
-trp_gekokujo_ikko_veteran_naginata_monk|加 贺 资 深 剃 刀 僧 兵
-trp_gekokujo_ikko_veteran_naginata_monk_pl|加 贺 资 深 剃 刀 僧 兵
-trp_gekokujo_ikko_elite_naginata_monk|加 贺 精 锐 剃 刀 僧 兵
-trp_gekokujo_ikko_elite_naginata_monk_pl|加 贺 精 锐 剃 刀 僧 兵
+trp_gekokujo_ikko_veteran_naginata_monk|加 贺 资 深 剃 刀 僧 兵 
+trp_gekokujo_ikko_veteran_naginata_monk_pl|加 贺 资 深 剃 刀 僧 兵 
+trp_gekokujo_ikko_elite_naginata_monk|加 贺 精 锐 剃 刀 僧 兵 
+trp_gekokujo_ikko_elite_naginata_monk_pl|加 贺 精 锐 剃 刀 僧 兵 
 trp_gekokujo_ikko_messenger|加 贺 信 使 
 trp_gekokujo_ikko_messenger_pl|加 贺 信 使 
-trp_gekokujo_ikko_deserter|加 贺 逃 兵
-trp_gekokujo_ikko_deserter_pl|加 贺 逃 兵
-trp_gekokujo_ikko_prison_guard|僧 兵 监 狱 守 卫
-trp_gekokujo_ikko_prison_guard_pl|僧 兵 监 狱 守 卫
-trp_gekokujo_ikko_castle_guard|僧 兵 城 堡 卫 队
-trp_gekokujo_ikko_castle_guard_pl|僧 兵 城 堡 卫 队
+trp_gekokujo_ikko_deserter|加 贺 逃 兵 
+trp_gekokujo_ikko_deserter_pl|加 贺 逃 兵 
+trp_gekokujo_ikko_prison_guard|僧 兵 监 狱 守 卫 
+trp_gekokujo_ikko_prison_guard_pl|僧 兵 监 狱 守 卫 
+trp_gekokujo_ikko_castle_guard|僧 兵 城 堡 卫 队 
+trp_gekokujo_ikko_castle_guard_pl|僧 兵 城 堡 卫 队 
 trp_looter|劫 匪 
 trp_looter_pl|劫 匪 
 trp_bandit|土 匪 
@@ -1098,14 +1162,14 @@ trp_shinano_rebel|信 浓 叛 军
 trp_shinano_rebel_pl|信 浓 叛 军 
 trp_kinai_rebel|畿 内 叛 军 
 trp_kinai_rebel_pl|畿 内 叛 军 
-trp_seto_pirate|濑 户 海 盗
+trp_seto_pirate|濑 户 海 盗 
 trp_seto_pirate_pl|濑 户 海 盗 
 trp_kanto_rebel|关 东 叛 军 
 trp_kanto_rebel_pl|关 东 叛 军 
 trp_northern_raider|虾 夷 勇 士 
 trp_northern_raider_pl|虾 夷 勇 士 
-trp_monk_rebel|加 贺 僧 兵  
-trp_monk_rebel_pl|加 贺 僧 兵  
+trp_monk_rebel|加 贺 僧 兵 
+trp_monk_rebel_pl|加 贺 僧 兵 
 trp_generic_ashigaru|足 轻 
 trp_generic_ashigaru_pl|足 轻 
 trp_generic_jizamurai|藩 士 
@@ -1186,8 +1250,8 @@ trp_kambei|勘 兵 卫
 trp_kambei_pl|勘 兵 卫 
 trp_katsushiro|勝 太 郎 
 trp_katsushiro_pl|勝 太 郎 
-trp_gorobei|五 郎 兵 卫
-trp_gorobei_pl|五 郎 兵 卫
+trp_gorobei|五 郎 兵 卫 
+trp_gorobei_pl|五 郎 兵 卫 
 trp_shichiroji|七 路 地 
 trp_shichiroji_pl|七 路 地 
 trp_heihachi|平 八 
@@ -1320,14 +1384,14 @@ trp_npc3|威 廉
 trp_npc3_pl|威 廉 
 trp_npc4|梦 想 权 之 助 
 trp_npc4_pl|梦 想 权 之 助 
-trp_npc5|洪 美 玲
-trp_npc5_pl|洪 美 玲
+trp_npc5|洪 美 玲 
+trp_npc5_pl|洪 美 玲 
 trp_npc6|东 治 子 
 trp_npc6_pl|东 治 子 
 trp_npc7|宫 本 武 藏 
 trp_npc7_pl|宫 本 武 藏 
 trp_npc8|弗 朗 西 斯 
-trp_npc8_pl|弗 朗 西 斯
+trp_npc8_pl|弗 朗 西 斯 
 trp_npc9|久 迩 宫 
 trp_npc9_pl|久 迩 宫 
 trp_npc10|五 右 卫 门 
@@ -1356,688 +1420,754 @@ trp_npc21|恩 里 克
 trp_npc21_pl|恩 里 克 
 trp_npc22|伊 锁 山 台 
 trp_npc22_pl|伊 锁 山 台 
-trp_fort_npc_1_2|本 间 桃 子　
-trp_fort_npc_1_2_pl|本 间 桃 子　
-trp_fort_npc_2_2|纯 然　
-trp_fort_npc_2_2_pl|纯 然　
-trp_fort_npc_3_2|元 禄　
-trp_fort_npc_3_2_pl|元 禄　
-trp_fort_npc_4_2|寿 桂 尼　
-trp_fort_npc_4_2_pl|寿 桂 尼　
-trp_fort_npc_5_2|酒 三 麻　
-trp_fort_npc_5_2_pl|酒 三 麻　
-trp_fort_npc_6_2|马 分 系　
-trp_fort_npc_6_2_pl|马 分 系　
-trp_fort_npc_1_1|本 间 家 主　
-trp_fort_npc_1_1_pl|本 间 家 主　
-trp_fort_npc_2_1|宗 氏 当 主　
-trp_fort_npc_2_1_pl|宗 氏 当 主　
-trp_fort_npc_3_1|杜 安　
-trp_fort_npc_3_1_pl|杜 安　
-trp_fort_npc_4_1|天 界　
-trp_fort_npc_4_1_pl|天 界　
-trp_fort_npc_5_1|阿 弖 流 为　
-trp_fort_npc_5_1_pl|阿 弖 流 为　
-trp_fort_npc_6_1|坷 相 曼 夷　
-trp_fort_npc_6_1_pl|坷 相 曼 夷　
-trp_kingdom_1_lord|上 杉 谦 信 
-trp_kingdom_1_lord_pl|上 杉 谦 信 
-trp_kingdom_2_lord|仙 台 政 宗 
-trp_kingdom_2_lord_pl|仙 台 政 宗 
-trp_kingdom_3_lord|藤 堂 信 长 
-trp_kingdom_3_lord_pl|藤 堂 信 长 
-trp_kingdom_4_lord|毛 利 元 就 
-trp_kingdom_4_lord_pl|毛 利 元 就 
-trp_kingdom_5_lord|福 井 信 玄 
-trp_kingdom_5_lord_pl|福 井 信 玄 
-trp_kingdom_6_lord|松 平 元 康 
-trp_kingdom_6_lord_pl|松 平 元 康 
-trp_kingdom_7_lord|纪 州 长 庆 
-trp_kingdom_7_lord_pl|纪 州 长 庆 
-trp_kingdom_8_lord|山 名 佑 丰 
-trp_kingdom_8_lord_pl|山 名 佑 丰 
-trp_kingdom_9_lord|福 冈 宗 麟 
-trp_kingdom_9_lord_pl|福 冈 宗 麟 
-trp_kingdom_10_lord|南 部 晴 政 
-trp_kingdom_10_lord_pl|南 部 晴 政 
-trp_kingdom_11_lord|桑 名 义 景 
-trp_kingdom_11_lord_pl|桑 名 义 景 
-trp_kingdom_12_lord|土 佐 元 亲 
-trp_kingdom_12_lord_pl|土 佐 元 亲 
-trp_kingdom_13_lord|广 岛  氏 政 
-trp_kingdom_13_lord_pl|广 岛  氏 政 
-trp_kingdom_14_lord|米 泽 义 守 
-trp_kingdom_14_lord_pl|米 泽 义 守 
-trp_kingdom_15_lord|岛 津 义 虎 
-trp_kingdom_15_lord_pl|岛 津 义 虎 
-trp_kingdom_16_lord|佐 贺 隆 信 
-trp_kingdom_16_lord_pl|佐 贺 隆 信 
-trp_kingdom_17_lord|水 户 义 重 
-trp_kingdom_17_lord_pl|水 户 义 重 
-trp_kingdom_18_lord|长 冈 义 尧 
-trp_kingdom_18_lord_pl|长 冈 义 尧 
-trp_kingdom_19_lord|浦 上 宗 景 
-trp_kingdom_19_lord_pl|浦 上 宗 景 
-trp_kingdom_20_lord|本 愿 寺 显 如 
-trp_kingdom_20_lord_pl|本 愿 寺 显 如 
-trp_knight_1_1|鬼 小 岛 弥 太 郎 
-trp_knight_1_1_pl|鬼 小 岛 弥 太 郎 
-trp_knight_1_2|斋 藤 朝 信 
-trp_knight_1_2_pl|斋 藤 朝 信 
-trp_knight_1_3|山 本 寺 定 长 
-trp_knight_1_3_pl|山 本 寺 定 长 
-trp_knight_1_4|本 庄 繁 长 
-trp_knight_1_4_pl|本 庄 繁 长 
-trp_knight_1_5|柿 崎 景 家 
-trp_knight_1_5_pl|柿 崎 景 家 
-trp_knight_1_6|宇 佐 美 定 满 
-trp_knight_1_6_pl|宇 佐 美 定 满 
-trp_knight_1_7|直 江 兼 续 
-trp_knight_1_7_pl|直 江 兼 续 
-trp_knight_1_8|村 上 国 清 
-trp_knight_1_8_pl|村 上 国 清 
-trp_knight_1_9|北 城 圭 一 
-trp_knight_1_9_pl|北 城 圭 一 
-trp_knight_1_10|长 尾 政 景 
-trp_knight_1_10_pl|长 尾 政 景 
-trp_knight_2_1|鬼 庭 左 月 
-trp_knight_2_1_pl|鬼 庭 左 月 
-trp_knight_2_2|后 藤 信 康 
-trp_knight_2_2_pl|后 藤 信 康 
-trp_knight_2_3|铃 木 元 信 
-trp_knight_2_3_pl|铃 木 元 信 
-trp_knight_2_4|原 田 宗 时 
-trp_knight_2_4_pl|原 田 宗 时 
-trp_knight_2_5|远 藤 基 信 
-trp_knight_2_5_pl|远 藤 基 信 
-trp_knight_2_6|片 仓 景 纲 
-trp_knight_2_6_pl|片 仓 景 纲 
-trp_knight_2_7|中 野 宗 时 
-trp_knight_2_7_pl|中 野 宗 时 
-trp_knight_2_8|白 石 氏 
-trp_knight_2_8_pl|白 石 氏 
-trp_knight_3_1|柴 田 胜 家 
-trp_knight_3_1_pl|柴 田 胜 家 
-trp_knight_3_2|前 田 利 家 
-trp_knight_3_2_pl|前 田 利 家 
-trp_knight_3_3|佐 佐 成 政 
-trp_knight_3_3_pl|佐 佐 成 政 
-trp_knight_3_4|陇 川 一 益 
-trp_knight_3_4_pl|陇 川 一 益 
-trp_knight_3_5|佐 久 间 盛 政 
-trp_knight_3_5_pl|佐 久 间 盛 政 
-trp_knight_3_6|羽 柴 秀 吉 
-trp_knight_3_6_pl|羽 柴 秀 吉 
-trp_knight_3_7|丹 羽 长 秀 
-trp_knight_3_7_pl|丹 羽 长 秀 
-trp_knight_3_8|池 田 恒 兴 
-trp_knight_3_8_pl|池 田 恒 兴 
-trp_knight_3_9|平 手 政 秀 
-trp_knight_3_9_pl|平 手 政 秀 
-trp_knight_3_10|佐 佐 政 次 
-trp_knight_3_10_pl|泷 川 一 益 
-trp_knight_4_1|小 早 川 隆 景 
-trp_knight_4_1_pl|小 早 川 隆 景 
-trp_knight_4_2|熊 谷 信 直 
-trp_knight_4_2_pl|熊 谷 信 直 
-trp_knight_4_3|国 司 元 相 
-trp_knight_4_3_pl|国 司 元 相 
-trp_knight_4_4|福 原 贞 俊 
-trp_knight_4_4_pl|福 原 贞 俊 
-trp_knight_4_5|吉 川 元 春 
-trp_knight_4_5_pl|吉 川 元 春 
-trp_knight_4_6|清 水 宗 治 
-trp_knight_4_6_pl|清 水 宗 治 
-trp_knight_4_7|乃 美 宗 胜 
-trp_knight_4_7_pl|乃 美 宗 胜 
-trp_knight_4_8|南 条 氏 
-trp_knight_4_8_pl|南 条 氏 
-trp_knight_4_9|安 国 寺 惠 琼 
-trp_knight_4_9_pl|安 国 寺 惠 琼 
-trp_knight_4_10|宍 戸 佑 名 
-trp_knight_4_10_pl|宍 戸 佑 名 
-trp_knight_5_1|饭 富 虎 昌 
-trp_knight_5_1_pl|饭 富 虎 昌 
-trp_knight_5_2|真 田 幸 隆 
-trp_knight_5_2_pl|真 田 幸 隆 
-trp_knight_5_3|穴 山 信 君 
-trp_knight_5_3_pl|穴 山 信 君 
-trp_knight_5_4|山 本 堪 助 
-trp_knight_5_4_pl|山 本 堪 助 
-trp_knight_5_5|马 场 信 房 
-trp_knight_5_5_pl|马 场 信 房 
-trp_knight_5_6|高 坂 昌 信 
-trp_knight_5_6_pl|高 坂 昌 信 
-trp_knight_5_7|山 县 昌 景 
-trp_knight_5_7_pl|山 县 昌 景 
-trp_knight_5_8|仁 科 盛 信 
-trp_knight_5_8_pl|仁 科 盛 信 
-trp_knight_5_9|小 山 田 信 茂 
-trp_knight_5_9_pl|小 山 田 信 茂 
-trp_knight_5_10|原 昌 胤 
-trp_knight_5_10_pl|原 昌 胤 
-trp_knight_5_11|工 藤 昌 秀 
-trp_knight_5_11_pl|工 藤 昌 秀 
-trp_knight_5_12|秋 山 虎 繁 
-trp_knight_5_12_pl|秋 山 虎 繁 
-trp_knight_6_1|本 多 忠 胜 
-trp_knight_6_1_pl|本 多 忠 胜 
-trp_knight_6_2|酒 井 忠 次 
-trp_knight_6_2_pl|酒 井 忠 次
-trp_knight_6_3|渡 边 守 纲 
-trp_knight_6_3_pl|渡 边 守 纲  
-trp_knight_6_4|蜂 屋 贞 次 
-trp_knight_6_4_pl|蜂 屋 贞 次 
-trp_knight_6_5|神 原 康 政 
-trp_knight_6_5_pl|神 原 康 政 
-trp_knight_6_6|鸟 居 忠 吉 
-trp_knight_6_6_pl|鸟 居 忠 吉 
-trp_knight_6_7|渡 边 守 纲 
-trp_knight_6_7_pl|渡 边 守 纲 
-trp_knight_6_8|大 久 保 忠 世 
-trp_knight_6_8_pl|大 久 保 忠 世 
-trp_knight_7_1|十 河 一 存 
-trp_knight_7_1_pl|十 河 一 存 
-trp_knight_7_2|安 宅 信 康 
-trp_knight_7_2_pl|安 宅 信 康 
-trp_knight_7_3|内 藤 如 安 
-trp_knight_7_3_pl|内 藤 如 安 
-trp_knight_7_4|小 笠 原 长 时 
-trp_knight_7_4_pl|小 笠 原 长 时 
-trp_knight_7_5|荒 木 村 重 
-trp_knight_7_5_pl|荒 木 村 重 
-trp_knight_7_6|中 川 清 秀 
-trp_knight_7_6_pl|中 川 清 秀 
-trp_knight_7_7|高 山 友 照 
-trp_knight_7_7_pl|高 山 友 照 
-trp_knight_7_8|松 永 久 秀 
-trp_knight_7_8_pl|松 永 久 秀 
-trp_knight_8_1|垣 屋 光 成 
-trp_knight_8_1_pl|垣 屋 光 成 
-trp_knight_8_2|别 所 长 治 
-trp_knight_8_2_pl|别 所 长 治 
-trp_knight_8_3|小 寺 政 职 
-trp_knight_8_3_pl|小 寺 政 职 
-trp_knight_8_4|户 川 达 安 
-trp_knight_8_4_pl|户 川 达 安 
-trp_knight_8_5|森 下 道 与 
-trp_knight_8_5_pl|森 下 道 与 
-trp_knight_8_6|母 里 太 兵 卫 
-trp_knight_8_6_pl|母 里 太 兵 卫 
-trp_knight_9_1|小 野 镇 幸 
-trp_knight_9_1_pl|小 野 镇 幸 
-trp_knight_9_2|佐 伯 惟 定 
-trp_knight_9_2_pl|佐 伯 惟 定 
-trp_knight_9_3|城 井 镇 房 
-trp_knight_9_3_pl|城 井 镇 房 
-trp_knight_9_4|田 北 镇 周 
-trp_knight_9_4_pl|田 北 镇 周 
-trp_knight_9_5|志 贺 亲 守 
-trp_knight_9_5_pl|志 贺 亲 守 
-trp_knight_9_6|一 万 田 鉴 实 
-trp_knight_9_6_pl|一 万 田 鉴 实 
-trp_knight_9_7|浦 池 鉴 盛 
-trp_knight_9_7_pl|浦 池 鉴 盛 
-trp_knight_9_8|秋 月 氏 
-trp_knight_9_8_pl|秋 月 氏 
-trp_knight_10_1|津 轻 为 信 
-trp_knight_10_1_pl|津 轻 为 信 
-trp_knight_10_2|石 川 高 信 
-trp_knight_10_2_pl|石 川 高 信 
-trp_knight_10_3|北 信 爱 
-trp_knight_10_3_pl|北 信 爱 
-trp_knight_10_4|富 田 隆 实  
-trp_knight_10_4_pl|富 田 隆 实 
-trp_knight_10_5|九 户 政 实 
-trp_knight_10_5_pl|九 户 政 实 
-trp_knight_10_6|泉 山 氏 
-trp_knight_10_6_pl|泉 山 氏 
-trp_knight_11_1|真 柄 直 隆 
-trp_knight_11_1_pl|真 柄 直 隆 
-trp_knight_11_2|山 崎 长 德  
-trp_knight_11_2_pl|山 崎 长 德
-trp_knight_11_3|前 波 吉 继 
-trp_knight_11_3_pl|前 波 吉 继 
-trp_knight_11_4|沟 尾 庄 兵 卫 
-trp_knight_11_4_pl|沟 尾 庄 兵 卫 
-trp_knight_11_5|富 田 重 政 
-trp_knight_11_5_pl|富 田 重 政 
-trp_knight_11_6|堀 江 景 忠 
-trp_knight_11_6_pl|堀 江 景 忠 
-trp_knight_12_1|久 武 亲 直 
-trp_knight_12_1_pl|久 武 亲 直 
-trp_knight_12_2|吉 田 重 俊 
-trp_knight_12_2_pl|吉 田 重 俊 
-trp_knight_12_3|中 岛 可 之 助 
-trp_knight_12_3_pl|中 岛 可 之 助 
-trp_knight_12_4|津 野 亲 忠 
-trp_knight_12_4_pl|津 野 亲 忠 
-trp_knight_12_5|福 留 仪 重 
-trp_knight_12_5_pl|福 留 仪 重 
-trp_knight_12_6|桑 名 吉 成 
-trp_knight_12_6_pl|桑 名 吉 成 
-trp_knight_13_1|清 水 康 英 
-trp_knight_13_1_pl|清 水 康 英 
-trp_knight_13_2|远 山 纲 景 
-trp_knight_13_2_pl|远 山 纲 景 
-trp_knight_13_3|成 田 长 泰 
-trp_knight_13_3_pl|成 田 长 泰 
-trp_knight_13_4|安 藤 良 整 
-trp_knight_13_4_pl|安 藤 良 整 
-trp_knight_13_5|松 田 宪 秀 
-trp_knight_13_5_pl|松 田 宪 秀 
-trp_knight_13_6|大 道 寺 政 繁 
-trp_knight_13_6_pl|大 道 寺 政 繁 
-trp_knight_13_7|上 田 将 军 
-trp_knight_13_7_pl|上 田 
-trp_knight_13_8|猪 俣 氏 
-trp_knight_13_8_pl|猪 俣 氏 
-trp_knight_14_1|盾 冈 满 茂 
-trp_knight_14_1_pl|盾 冈 满 茂 
-trp_knight_14_2|鲑 延 秀 纲 
-trp_knight_14_2_pl|鲑 延 秀 纲 
-trp_knight_14_3|氏 家 守 栋 
-trp_knight_14_3_pl|氏 家 守 栋 
-trp_knight_14_4|中 山 朝 正 
-trp_knight_14_4_pl|中 山 朝 正 
-trp_knight_14_5|志 村 光 安 
-trp_knight_14_5_pl|志 村 光 安  
-trp_knight_14_6|志 村 将 军 
-trp_knight_14_6_pl|志 村 
-trp_knight_15_1|新 纳 忠 元 
-trp_knight_15_1_pl|新 纳 忠 元 
-trp_knight_15_2|伊 地 知 重 秀 
-trp_knight_15_2_pl|伊 地 知 重 秀 
-trp_knight_15_3|东 乡 重 位 
-trp_knight_15_3_pl|东 乡 重 位 
-trp_knight_15_4|北 乡 氏 久 
-trp_knight_15_4_pl|北 乡 氏 久 
-trp_knight_15_5|颖 娃 久 虎 
-trp_knight_15_5_pl|颖 娃 久 虎 
-trp_knight_15_6|猿 渡 信 光 
-trp_knight_15_6_pl|猿 渡 信 光 
-trp_knight_15_7|平 冈 将 军 
-trp_knight_15_7_pl|平 冈 
-trp_knight_15_8|种 子 岛 将 军 
-trp_knight_15_8_pl|种 子 岛 
-trp_knight_16_1|江 里 口 信 常 
-trp_knight_16_1_pl|江 里 口 信 常 
-trp_knight_16_2|木 下 昌 直 
-trp_knight_16_2_pl|木 下 昌 直 
-trp_knight_16_3|大 村 纯 忠 
-trp_knight_16_3_pl|大 村 纯 忠 
-trp_knight_16_4|百 武 贤 兼 
-trp_knight_16_4_pl|百 武 贤 兼 
-trp_knight_16_5|锅 岛 直 茂 
-trp_knight_16_5_pl|锅 岛 直 茂 
-trp_knight_16_6|锅 岛 将 军 
-trp_knight_16_6_pl|锅 岛 
-trp_knight_17_1|真 壁 氏 干 
-trp_knight_17_1_pl|真 壁 氏 干 
-trp_knight_17_2|和 田 昭 为 
-trp_knight_17_2_pl|和 田 昭 为 
-trp_knight_17_3|冈 本 禅 哲 
-trp_knight_17_3_pl|冈 本 禅 哲 
-trp_knight_17_4|大 贯 将 军 
-trp_knight_17_4_pl|大 贯 
-trp_knight_17_5|大 羽 氏 
-trp_knight_17_5_pl|大 羽 氏 
-trp_knight_17_6|和 田 将 军 
-trp_knight_17_6_pl|和 田 
-trp_knight_18_1|长 冈 义 弘 
-trp_knight_18_1_pl|长 冈 义 弘 
-trp_knight_18_2|长 冈 义 康 
-trp_knight_18_2_pl|长 冈 义 康 
-trp_knight_18_3|长 冈 义 赖 
-trp_knight_18_3_pl|长 冈 义 赖 
-trp_knight_18_4|裕 纪 将 军 
-trp_knight_18_4_pl|裕 纪 将 军 
-trp_knight_18_5|千 叶 将 军 
-trp_knight_18_5_pl|千 叶 将 军 
-trp_knight_18_6|高 木 将 军 
-trp_knight_18_6_pl|高 木 将 军 
-trp_knight_19_1|松 田 元 贤
-trp_knight_19_1_pl|松 田 元 贤 
-trp_knight_19_2|赤 井 时 家 
-trp_knight_19_2_pl|赤 井 时 家 
-trp_knight_19_3|中 山 胜 政 
-trp_knight_19_3_pl|中 山 胜 政 
-trp_knight_19_4|宇 多 喜 忠 家 
-trp_knight_19_4_pl|宇 多 喜 忠 家 
-trp_knight_19_5|三 村 家 亲 
-trp_knight_19_5_pl|三 村 家 亲 
-trp_knight_19_6|冈 山 直 家 
-trp_knight_19_6_pl|冈 山 直 家 
-trp_knight_20_1|下 間 賴 廉 
-trp_knight_20_1_pl|下 間 賴 廉 
-trp_knight_20_2|七 里 赖 周
-trp_knight_20_2_pl|七 里 赖 周 
-trp_knight_20_3|杉 浦 玄 任 
-trp_knight_20_3_pl|杉 浦 玄 任 
-trp_knight_20_4|洼 田 经 忠 
-trp_knight_20_4_pl|洼 田 经 忠 
-trp_knight_20_5|粟 津 元 隅 
-trp_knight_20_5_pl|粟 津 元 隅 
-trp_knight_20_6|下 间 赖 兼 
-trp_knight_20_6_pl|下 间 赖 兼 
-trp_knight_20_7|宇 野 主 水 
-trp_knight_20_7_pl|宇 野 主 水 
-trp_kingdom_1_pretender|长 尾 晴 景 
-trp_kingdom_1_pretender_pl|长 尾 晴 景 
-trp_kingdom_2_pretender|仙 台 辉 宗 
-trp_kingdom_2_pretender_pl|仙 台 辉 宗 
-trp_kingdom_3_pretender|藤 堂 信 行 
-trp_kingdom_3_pretender_pl|藤 堂 信 行 
-trp_kingdom_4_pretender|陶 晴 贤 
-trp_kingdom_4_pretender_pl|陶 晴 贤 
-trp_kingdom_5_pretender|福 井 信 虎 
-trp_kingdom_5_pretender_pl|福 井 信 虎 
-trp_kingdom_6_pretender|今 川 濑 名 
-trp_kingdom_6_pretender_pl|今 川 濑 名 
-trp_knight_1_1_wife|knight 1 1 wife 
-trp_knight_1_1_wife_pl|knight 1 1 wife 
-trp_kingdom_1_lady_1|广 岛  薰 
-trp_kingdom_1_lady_1_pl|广 岛  薰 
-trp_kingdom_1_lady_2|斋 藤 惠
-trp_kingdom_1_lady_2_pl|斋 藤 惠 
-trp_kingdom_1_lady_3|山 本 小 川
-trp_kingdom_1_lady_3_pl|山 本 小 川
-trp_kingdom_1_lady_4|饭 田 织
-trp_kingdom_1_lady_4_pl|饭 田 织
-trp_kingdom_1_lady_5|本 庄 荷
-trp_kingdom_1_lady_5_pl|本 庄 荷
-trp_kingdom_1_lady_6|宇 佐 美 智 子 
-trp_kingdom_1_lady_6_pl|宇 佐 美 智 子 
-trp_kingdom_1_lady_7|风 林 蓓 
-trp_kingdom_1_lady_7_pl|风 林 蓓  
-trp_kingdom_1_lady_8|东 河 珊 
-trp_kingdom_1_lady_8_pl|东 河 珊  
-trp_kingdom_1_lady_9|美 里 
-trp_kingdom_1_lady_9_pl|美 里 
-trp_kingdom_1_lady_10|律 子 
-trp_kingdom_1_lady_10_pl|律 子 
-trp_kingdom_2_lady_1|海 枫 莲 
-trp_kingdom_2_lady_1_pl|海 枫 莲  
-trp_kingdom_2_lady_2|后 藤 春
-trp_kingdom_2_lady_2_pl|后 藤 春 
-trp_kingdom_2_lady_3|铃 木 萍
-trp_kingdom_2_lady_3_pl|铃 木 萍 
-trp_kingdom_2_lady_4|玉 树 光 睿 
-trp_kingdom_2_lady_4_pl|玉 树 光 睿 
-trp_kingdom_2_lady_5|原 田 优 
-trp_kingdom_2_lady_5_pl|原 田 优 
-trp_kingdom_2_lady_6|片 仓 幸 未  
-trp_kingdom_2_lady_6_pl|片 仓 幸 未
-trp_kingdom_2_lady_7|河 野 澄
-trp_kingdom_2_lady_7_pl|河 野 澄 
-trp_kingdom_2_lady_8|光 
-trp_kingdom_2_lady_8_pl|光 
-trp_kingdom_3_lady_1|浅 野 兰
-trp_kingdom_3_lady_1_pl|浅 野 兰 
-trp_kingdom_3_lady_2|柴 田 鹰 
-trp_kingdom_3_lady_2_pl|柴 田 鹰 
-trp_kingdom_3_lady_3|佐 佐 玲 美
-trp_kingdom_3_lady_3_pl|佐 佐 玲 美 
-trp_kingdom_3_lady_4|爱 田 美 
-trp_kingdom_3_lady_4_pl|爱 田 美 
-trp_kingdom_3_lady_5|陇 川 翠 
-trp_kingdom_3_lady_5_pl|陇 川 翠
-trp_kingdom_3_lady_6|羽 柴 织 芳 
-trp_kingdom_3_lady_6_pl|羽 柴 织 芳 
-trp_kingdom_3_lady_7|平 手 葵 
-trp_kingdom_3_lady_7_pl|平 手 葵 
-trp_kingdom_3_lady_8|丹 羽 菲
-trp_kingdom_3_lady_8_pl|丹 羽 菲 
-trp_kingdom_3_lady_9|翁 市 
-trp_kingdom_3_lady_9_pl|翁 市 
-trp_kingdom_3_lady_10|小 町 
-trp_kingdom_3_lady_10_pl|小 町 
-trp_kingdom_4_lady_1|广 岛  莉 秀
-trp_kingdom_4_lady_1_pl|广 岛  莉 秀
-trp_kingdom_4_lady_2|毛 利 静
-trp_kingdom_4_lady_2_pl|毛 利 静
-trp_kingdom_4_lady_3|国 司 慧 子 
-trp_kingdom_4_lady_3_pl|国 司 慧 子
-trp_kingdom_4_lady_4|毛 利 菁
-trp_kingdom_4_lady_4_pl|毛 利 菁 
-trp_kingdom_4_lady_5|福 原 媚 
-trp_kingdom_4_lady_5_pl|福 原 媚 
-trp_kingdom_4_lady_6|毛 利 香 
-trp_kingdom_4_lady_6_pl|毛 利 香
-trp_kingdom_4_lady_7|湖 田 淑 
-trp_kingdom_4_lady_7_pl|湖 田 淑 
-trp_kingdom_4_lady_8|结 衣 
-trp_kingdom_4_lady_8_pl|结 衣 
-trp_kingdom_4_lady_9|小 铃 
-trp_kingdom_4_lady_9_pl|小 铃 
-trp_kingdom_4_lady_10|里 奈 
-trp_kingdom_4_lady_10_pl|里 奈 
-trp_kingdom_5_lady_1|春 山 由 美 
-trp_kingdom_5_lady_1_pl|春 山 由 美
-trp_kingdom_5_lady_2|饭 富 雅
-trp_kingdom_5_lady_2_pl|饭 富 雅
-trp_kingdom_5_lady_3|保 科 琴
-trp_kingdom_5_lady_3_pl|保 科 琴
-trp_kingdom_5_lady_4|冬 岛 蕙 
-trp_kingdom_5_lady_4_pl|冬 岛 蕙  
-trp_kingdom_5_lady_5|饭 富 媛 馨
-trp_kingdom_5_lady_5_pl|饭 富 媛 馨
-trp_kingdom_5_lady_6|高 坂 爱
-trp_kingdom_5_lady_6_pl|高 坂 爱
-trp_kingdom_5_lady_7|山 口 红
-trp_kingdom_5_lady_7_pl|山 口 红
-trp_kingdom_5_lady_8|山 县 舞 
-trp_kingdom_5_lady_8_pl|山 县 舞
-trp_kingdom_5_lady_9|京 子 
-trp_kingdom_5_lady_9_pl|京 子 
-trp_kingdom_5_lady_10|八 重 
-trp_kingdom_5_lady_10_pl|八 重 
-trp_kingdom_5_lady_11|祥 子 
-trp_kingdom_5_lady_11_pl|祥 子 
-trp_kingdom_5_lady_12|丸 井 
-trp_kingdom_5_lady_12_pl|丸 井 
-trp_kingdom_6_lady_1|德 川 冰
-trp_kingdom_6_lady_1_pl|德 川 冰
-trp_kingdom_6_lady_2|神 原 清 
-trp_kingdom_6_lady_2_pl|神 原 清
-trp_kingdom_6_lady_3|渡 边 淳
-trp_kingdom_6_lady_3_pl|渡 边 淳
-trp_kingdom_6_lady_4|阳 子 
-trp_kingdom_6_lady_4_pl|阳 子 
-trp_kingdom_6_lady_5|奈 绪 子 
-trp_kingdom_6_lady_5_pl|奈 绪 子 
-trp_kingdom_6_lady_6|麻 衣 子 
-trp_kingdom_6_lady_6_pl|麻 衣 子 
-trp_kingdom_6_lady_7|小 月 
-trp_kingdom_6_lady_7_pl|小 月 
-trp_kingdom_6_lady_8|青 子
-trp_kingdom_6_lady_8_pl|青 子 
-trp_kingdom_7_lady_1|纪 州 光 澄
-trp_kingdom_7_lady_1_pl|纪 州 光 澄 
-trp_kingdom_7_lady_2|十 河 丽 夏
-trp_kingdom_7_lady_2_pl|十 河 丽 夏 
-trp_kingdom_7_lady_3|海 德 威 格 
-trp_kingdom_7_lady_3_pl|海 德 威 格 
-trp_kingdom_7_lady_4|纪 州 柳
-trp_kingdom_7_lady_4_pl|纪 州 柳 
-trp_kingdom_7_lady_5|纪 州 晴 
-trp_kingdom_7_lady_5_pl|纪 州 晴
-trp_kingdom_7_lady_6|中 川 清 奈
-trp_kingdom_7_lady_6_pl|中 川 清 奈 
-trp_kingdom_7_lady_7|安 室 奈 美 
-trp_kingdom_7_lady_7_pl|安 室 奈 美  
-trp_kingdom_7_lady_8|雾 子 
-trp_kingdom_7_lady_8_pl|雾 子 
-trp_kingdom_8_lady_1|下 田 霄
-trp_kingdom_8_lady_1_pl|下 田 霄 
-trp_kingdom_8_lady_2|安 田 照
-trp_kingdom_8_lady_2_pl|安 田 照 
-trp_kingdom_8_lady_3|小 寺 娜
-trp_kingdom_8_lady_3_pl|小 寺 娜
-trp_kingdom_8_lady_4|皮 瑞 斯 卡 
-trp_kingdom_8_lady_4_pl|皮 瑞 斯 卡 
-trp_kingdom_8_lady_5|户 川 英
-trp_kingdom_8_lady_5_pl|户 川 英
-trp_kingdom_8_lady_6|河 川 影 
-trp_kingdom_8_lady_6_pl|河 川 影  
-trp_kingdom_9_lady_1|福 冈 清 华
-trp_kingdom_9_lady_1_pl|福 冈 清 华 
-trp_kingdom_9_lady_2|小 野 盈 
-trp_kingdom_9_lady_2_pl|小 野 盈
-trp_kingdom_9_lady_3|城 井 钟
-trp_kingdom_9_lady_3_pl|城 井 钟 
-trp_kingdom_9_lady_4|福 冈 幸 子 
-trp_kingdom_9_lady_4_pl|福 冈 幸 子
-trp_kingdom_9_lady_5|田 北 邙 
-trp_kingdom_9_lady_5_pl|田 北 邙 
-trp_kingdom_9_lady_6|一 万 智 妍 
-trp_kingdom_9_lady_6_pl|一 万 智 妍  
-trp_kingdom_9_lady_7|福 冈 玲 
-trp_kingdom_9_lady_7_pl|福 冈 玲 
-trp_kingdom_9_lady_8|理 惠 
-trp_kingdom_9_lady_8_pl|理 惠 
-trp_kingdom_10_lady_1|月 隐 馨 
-trp_kingdom_10_lady_1_pl|月 隐 馨  
-trp_kingdom_10_lady_2|津 轻 珠 
-trp_kingdom_10_lady_2_pl|津 轻 珠 
-trp_kingdom_10_lady_3|北 信 蕙 
-trp_kingdom_10_lady_3_pl|北 信 蕙 
-trp_kingdom_10_lady_4|英 川 熙 
-trp_kingdom_10_lady_4_pl|英 川 熙 
-trp_kingdom_10_lady_5|富 田 颖
-trp_kingdom_10_lady_5_pl|富 田 颖
-trp_kingdom_10_lady_6|妖 梦 
-trp_kingdom_10_lady_6_pl|妖 梦 
-trp_kingdom_11_lady_1|山 吹 梅 
-trp_kingdom_11_lady_1_pl|山 吹 梅
-trp_kingdom_11_lady_2|真 柄 芙 
-trp_kingdom_11_lady_2_pl|真 柄 芙 
-trp_kingdom_11_lady_3|桑 名 鹤 
-trp_kingdom_11_lady_3_pl|桑 名 鹤  
-trp_kingdom_11_lady_4|兰 山 瑶 
-trp_kingdom_11_lady_4_pl|兰 山 瑶 
-trp_kingdom_11_lady_5|真 柄 翦 
-trp_kingdom_11_lady_5_pl|真 柄 翦 
-trp_kingdom_11_lady_6|千 代 女 
-trp_kingdom_11_lady_6_pl|千 代 女 
-trp_kingdom_12_lady_1|土 佐 芯 雅
-trp_kingdom_12_lady_1_pl|土 佐 芯 雅 
-trp_kingdom_12_lady_2|久 武 薇
-trp_kingdom_12_lady_2_pl|久 武 薇 
-trp_kingdom_12_lady_3|中 岛 怜 
-trp_kingdom_12_lady_3_pl|中 岛 怜  
-trp_kingdom_12_lady_4|田 山 桂 
-trp_kingdom_12_lady_4_pl|田 山 桂 
-trp_kingdom_12_lady_5|津 野 箫
-trp_kingdom_12_lady_5_pl|津 野 箫
-trp_kingdom_12_lady_6|爱 子 
-trp_kingdom_12_lady_6_pl|爱 子 
-trp_kingdom_13_lady_1|林 川 莱 丽
-trp_kingdom_13_lady_1_pl|林 川 莱 丽
-trp_kingdom_13_lady_2|清 水 鹿 子 
-trp_kingdom_13_lady_2_pl|清 水 鹿 子 
-trp_kingdom_13_lady_3|成 田 蔓
-trp_kingdom_13_lady_3_pl|成 田 蔓 
-trp_kingdom_13_lady_4|河 田 安 
-trp_kingdom_13_lady_4_pl|河 田 安
-trp_kingdom_13_lady_5|安 藤 良 秀 
-trp_kingdom_13_lady_5_pl|安 藤 良 秀 
-trp_kingdom_13_lady_6|大 道 寺 政 桂 
-trp_kingdom_13_lady_6_pl|大 道 寺 政 桂  
-trp_kingdom_13_lady_7|茶 茶 
-trp_kingdom_13_lady_7_pl|茶 茶 
-trp_kingdom_13_lady_8|雅 子 
-trp_kingdom_13_lady_8_pl|雅 子 
-trp_kingdom_14_lady_1|芙 媛 霭
-trp_kingdom_14_lady_1_pl|芙 媛 霭
-trp_kingdom_14_lady_2|盾 冈 知 蝶 
-trp_kingdom_14_lady_2_pl|盾 冈 知 蝶
-trp_kingdom_14_lady_3|氏 家 怜 馨  
-trp_kingdom_14_lady_3_pl|氏 家 怜 馨 
-trp_kingdom_14_lady_4|米 泽 伊  
-trp_kingdom_14_lady_4_pl|米 泽 伊  
-trp_kingdom_14_lady_5|中 山 樱  
-trp_kingdom_14_lady_5_pl|中 山 樱 
-trp_kingdom_14_lady_6|巴 
-trp_kingdom_14_lady_6_pl|巴 
-trp_kingdom_15_lady_1|上 川 莉 美
-trp_kingdom_15_lady_1_pl|上 川 莉 美
-trp_kingdom_15_lady_2|新 纳 美 莉 子
-trp_kingdom_15_lady_2_pl|新 纳 美 莉 子
-trp_kingdom_15_lady_3|东 乡 湖 子
-trp_kingdom_15_lady_3_pl|东 乡 湖 子
-trp_kingdom_15_lady_4|冬 树 光
-trp_kingdom_15_lady_4_pl|冬 树 光
-trp_kingdom_15_lady_5|北 乡 秀 慧
-trp_kingdom_15_lady_5_pl|北 乡 秀 慧
-trp_kingdom_15_lady_6|猿 渡 飞
-trp_kingdom_15_lady_6_pl|猿 渡 飞
-trp_kingdom_15_lady_7|万 叶 
-trp_kingdom_15_lady_7_pl|万 叶 
-trp_kingdom_15_lady_8|黄 泉 
-trp_kingdom_15_lady_8_pl|黄 泉 
-trp_kingdom_16_lady_1|三 浦 纯
-trp_kingdom_16_lady_1_pl|三 浦 纯
-trp_kingdom_16_lady_2|木 下 智 子
-trp_kingdom_16_lady_2_pl|木 下 智 子
-trp_kingdom_16_lady_3|大 村 秀
-trp_kingdom_16_lady_3_pl|大 村 秀
-trp_kingdom_16_lady_4|川 里 奈
-trp_kingdom_16_lady_4_pl|川 里 奈
-trp_kingdom_16_lady_5|百 武 里 奈
-trp_kingdom_16_lady_5_pl|百 武 里 奈
-trp_kingdom_16_lady_6|茜 
-trp_kingdom_16_lady_6_pl|茜 
-trp_kingdom_17_lady_1|松 岛 仓
-trp_kingdom_17_lady_1_pl|松 岛 仓
-trp_kingdom_17_lady_2|和 田 冬
-trp_kingdom_17_lady_2_pl|和 田 冬
-trp_kingdom_17_lady_3|冈 本 下 惠
-trp_kingdom_17_lady_3_pl|冈 本 下 惠
-trp_kingdom_17_lady_4|德 姬 
-trp_kingdom_17_lady_4_pl|德 姬 
-trp_kingdom_17_lady_5|铃 音 
-trp_kingdom_17_lady_5_pl|铃 音 
-trp_kingdom_17_lady_6|响 子 
-trp_kingdom_17_lady_6_pl|响 子 
-trp_kingdom_18_lady_1|山 上 盈
-trp_kingdom_18_lady_1_pl|山 上 盈
-trp_kingdom_18_lady_2|长 冈 泉 
-trp_kingdom_18_lady_2_pl|长 冈 泉
-trp_kingdom_18_lady_3|长 冈 雨
-trp_kingdom_18_lady_3_pl|长 冈 雨
-trp_kingdom_18_lady_4|直 子 
-trp_kingdom_18_lady_4_pl|直 子 
-trp_kingdom_18_lady_5|伏 姫 
-trp_kingdom_18_lady_5_pl|伏 姫 
-trp_kingdom_18_lady_6|彩 羽 
-trp_kingdom_18_lady_6_pl|彩 羽 
-trp_kingdom_19_lady_1|小 田 梅
-trp_kingdom_19_lady_1_pl|小 田 梅
-trp_kingdom_19_lady_2|下 间 鸿
-trp_kingdom_19_lady_2_pl|下 间 鸿
-trp_kingdom_19_lady_3|归 蝶 
-trp_kingdom_19_lady_3_pl|归 蝶 
-trp_kingdom_19_lady_4|能 子 
-trp_kingdom_19_lady_4_pl|能 子 
-trp_kingdom_19_lady_5|依 子 
-trp_kingdom_19_lady_5_pl|依 子 
-trp_kingdom_19_lady_6|优 子 
-trp_kingdom_19_lady_6_pl|优 子 
-trp_kingdom_20_lady_1|慧 音 
-trp_kingdom_20_lady_1_pl|慧 音 
-trp_kingdom_20_lady_2|阿 求 
-trp_kingdom_20_lady_2_pl|阿 求 
-trp_kingdom_20_lady_3|琴 姬 
-trp_kingdom_20_lady_3_pl|琴 姬 
-trp_kingdom_20_lady_4|菊 里 
-trp_kingdom_20_lady_4_pl|菊 里 
-trp_kingdom_20_lady_5|美 词 
-trp_kingdom_20_lady_5_pl|美 词 
-trp_kingdom_20_lady_6|涼 子 
-trp_kingdom_20_lady_6_pl|涼 子 
-trp_kingdom_20_lady_7|忠 子 
-trp_kingdom_20_lady_7_pl|忠 子 
+trp_fort_npc_1_2|本 间 桃 子 　
+trp_fort_npc_1_2_pl|本 间 桃 子 　
+trp_fort_npc_2_2|纯 然 　
+trp_fort_npc_2_2_pl|纯 然 　
+trp_fort_npc_3_2|元 禄 　
+trp_fort_npc_3_2_pl|元 禄 　
+trp_fort_npc_4_2|寿 桂 尼 　
+trp_fort_npc_4_2_pl|寿 桂 尼 　
+trp_fort_npc_5_2|酒 三 麻 　
+trp_fort_npc_5_2_pl|酒 三 麻 　
+trp_fort_npc_6_2|马 分 系 　
+trp_fort_npc_6_2_pl|马 分 系 　
+trp_fort_npc_1_1|本 间 家 主 　
+trp_fort_npc_1_1_pl|本 间 家 主 　
+trp_fort_npc_2_1|宗 氏 当 主 　
+trp_fort_npc_2_1_pl|宗 氏 当 主 　
+trp_fort_npc_3_1|杜 安 　
+trp_fort_npc_3_1_pl|杜 安 　
+trp_fort_npc_4_1|天 界 　
+trp_fort_npc_4_1_pl|天 界 　
+trp_fort_npc_5_1|阿 弖 流 为 　
+trp_fort_npc_5_1_pl|阿 弖 流 为 　
+trp_fort_npc_6_1|坷 相 曼 夷 　
+trp_fort_npc_6_1_pl|坷 相 曼 夷 　
+trp_kingdom_1_lord|松 平 容 保 
+trp_kingdom_1_lord_pl|松 平 容 保 
+trp_kingdom_2_lord|伊 达 庆 邦 
+trp_kingdom_2_lord_pl|伊 达 庆 邦 
+trp_kingdom_3_lord|藤 堂 高 猷 
+trp_kingdom_3_lord_pl|藤 堂 高 猷 
+trp_kingdom_4_lord|毛 利 敬 亲 
+trp_kingdom_4_lord_pl|毛 利 敬 亲 
+trp_kingdom_5_lord|松 平 茂 昭 
+trp_kingdom_5_lord_pl|松 平 茂 昭 
+trp_kingdom_6_lord|德 川 庆 喜 
+trp_kingdom_6_lord_pl|德 川 庆 喜 
+trp_kingdom_7_lord|德 川 茂 承 
+trp_kingdom_7_lord_pl|德 川 茂 承 
+trp_kingdom_8_lord|池 田 庆 德 
+trp_kingdom_8_lord_pl|池 田 庆 德 
+trp_kingdom_9_lord|黑 田 长 溥 
+trp_kingdom_9_lord_pl|黑 田 长 溥 
+trp_kingdom_10_lord|南 部 利 刚 
+trp_kingdom_10_lord_pl|南 部 利 刚 
+trp_kingdom_11_lord|松 平 定 教 
+trp_kingdom_11_lord_pl|松 平 定 教 
+trp_kingdom_12_lord|山 内 丰 范 
+trp_kingdom_12_lord_pl|山 内 丰 范 
+trp_kingdom_13_lord|浅 野 长 训 
+trp_kingdom_13_lord_pl|浅 野 长 训 
+trp_kingdom_14_lord|上 杉 齐 宪 
+trp_kingdom_14_lord_pl|上 杉 齐 宪 
+trp_kingdom_15_lord|岛 津 忠 义 
+trp_kingdom_15_lord_pl|岛 津 忠 义 
+trp_kingdom_16_lord|锅 岛 直 大 
+trp_kingdom_16_lord_pl|锅 岛 直 大 
+trp_kingdom_17_lord|德 川 庆 笃 
+trp_kingdom_17_lord_pl|德 川 庆 笃 
+trp_kingdom_18_lord|牧 野 忠 训 
+trp_kingdom_18_lord_pl|牧 野 忠 训 
+trp_kingdom_19_lord|池 田 茂 政 
+trp_kingdom_19_lord_pl|池 田 茂 政 
+trp_kingdom_20_lord|前 田 庆 宁 
+trp_kingdom_20_lord_pl|前 田 庆 宁 
+trp_kingdom_21_lord|细 川 韶 邦 
+trp_kingdom_21_lord_pl|细 川 韶 邦 
+trp_kingdom_22_lord|松 平 定 昭 
+trp_kingdom_22_lord_pl|松 平 定 昭 
+trp_kingdom_23_lord|德 川 庆 胜 
+trp_kingdom_23_lord_pl|德 川 庆 胜 
+trp_kingdom_24_lord|蜂 须 贺 茂 韶 
+trp_kingdom_24_lord_pl|蜂 须 贺 茂 韶 
+trp_kingdom_25_lord|酒 井 忠 笃 
+trp_kingdom_25_lord_pl|酒 井 忠 笃 
+trp_kingdom_26_lord|佐 竹 义 尧 
+trp_kingdom_26_lord_pl|佐 竹 义 尧 
+trp_kingdom_27_lord|井 伊 直 宪 
+trp_kingdom_27_lord_pl|井 伊 直 宪 
+trp_knight_1_1|丹 羽 长 国 
+trp_knight_1_1_pl|丹 羽 长 国 
+trp_knight_1_2|阿 部 正 静 
+trp_knight_1_2_pl|阿 部 正 静 
+trp_knight_1_3|秋 田 季 春 
+trp_knight_1_3_pl|秋 田 季 春 
+trp_knight_1_4|山 川 浩 
+trp_knight_1_4_pl|山 川 浩 
+trp_knight_1_5|佐 川 官 兵 卫 
+trp_knight_1_5_pl|佐 川 官 兵 卫 
+trp_knight_1_6|秋 月 悌 次 郎 
+trp_knight_1_6_pl|秋 月 悌 次 郎 
+trp_knight_1_7|萱 野 长 修 
+trp_knight_1_7_pl|萱 野 长 修 
+trp_knight_1_8|神 保 修 理 
+trp_knight_1_8_pl|神 保 修 理 
+trp_knight_1_9|梶 原 平 马 
+trp_knight_1_9_pl|梶 原 平 马 
+trp_knight_1_10|西 乡 赖 母 
+trp_knight_1_10_pl|西 乡 赖 母 
+trp_knight_2_1|相 马 诚 胤 
+trp_knight_2_1_pl|相 马 诚 胤 
+trp_knight_2_2|安 藤 信 勇 
+trp_knight_2_2_pl|安 藤 信 勇 
+trp_knight_2_3|伊 达 邦 成 
+trp_knight_2_3_pl|伊 达 邦 成 
+trp_knight_2_4|伊 达 邦 直 
+trp_knight_2_4_pl|伊 达 邦 直 
+trp_knight_2_5|石 川 邦 光 
+trp_knight_2_5_pl|石 川 邦 光 
+trp_knight_2_6|留 守 邦 宁 
+trp_knight_2_6_pl|留 守 邦 宁 
+trp_knight_3_1|石 川 成 之 
+trp_knight_3_1_pl|石 川 成 之 
+trp_knight_3_2|藤 堂 高 邦 
+trp_knight_3_2_pl|藤 堂 高 邦 
+trp_knight_3_3|藤 堂 高 洁 
+trp_knight_3_3_pl|藤 堂 高 洁 
+trp_knight_3_4|土 方 雄 永 
+trp_knight_3_4_pl|土 方 雄 永 
+trp_knight_3_5|稻 垣 长 行 
+trp_knight_3_5_pl|稻 垣 长 行 
+trp_knight_3_6|藤 堂 高 克 
+trp_knight_3_6_pl|藤 堂 高 克 
+trp_knight_4_1|毛 利 元 周 
+trp_knight_4_1_pl|毛 利 元 周 
+trp_knight_4_2|松 平 武 聪 
+trp_knight_4_2_pl|松 平 武 聪 
+trp_knight_4_3|大 村 益 次 郎 
+trp_knight_4_3_pl|大 村 益 次 郎 
+trp_knight_4_4|山 县 有 朋 
+trp_knight_4_4_pl|山 县 有 朋 
+trp_knight_4_5|佐 久 间 左 马 太 
+trp_knight_4_5_pl|佐 久 间 左 马 太 
+trp_knight_4_6|伊 藤 后 辅 
+trp_knight_4_6_pl|伊 藤 后 辅 
+trp_knight_4_7|三 好 重 臣 
+trp_knight_4_7_pl|三 好 重 臣 
+trp_knight_4_8|桂 小 五 郎 
+trp_knight_4_8_pl|桂 小 五 郎 
+trp_knight_4_9|井 上 闻 多 
+trp_knight_4_9_pl|井 上 闻 多 
+trp_knight_4_10|前 原 一 诚 
+trp_knight_4_10_pl|前 原 一 诚 
+trp_knight_5_1|有 马 道 纯 
+trp_knight_5_1_pl|有 马 道 纯 
+trp_knight_5_2|小 笠 原 长 守 
+trp_knight_5_2_pl|小 笠 原 长 守 
+trp_knight_5_3|松 平 庆 永 
+trp_knight_5_3_pl|松 平 庆 永 
+trp_knight_5_4|中 根 雪 江 
+trp_knight_5_4_pl|中 根 雪 江 
+trp_knight_5_5|由 利 公 正 
+trp_knight_5_5_pl|由 利 公 正 
+trp_knight_6_1|Okudaira
+trp_knight_6_1_pl|Okudaira
+trp_knight_6_2|Honda
+trp_knight_6_2_pl|Honda
+trp_knight_6_3|Hattori
+trp_knight_6_3_pl|Hattori
+trp_knight_6_4|Sakai
+trp_knight_6_4_pl|Sakai
+trp_knight_6_5|Sakakibara
+trp_knight_6_5_pl|Sakakibara
+trp_knight_6_6|Ii
+trp_knight_6_6_pl|Ii
+trp_knight_6_7|Torii
+trp_knight_6_7_pl|Torii
+trp_knight_6_8|Nishio
+trp_knight_6_8_pl|Nishio
+trp_knight_6_9|Nishio
+trp_knight_6_9_pl|Nishio
+trp_knight_6_10|Nishio
+trp_knight_6_10_pl|Nishio
+trp_knight_6_11|Okudaira
+trp_knight_6_11_pl|Okudaira
+trp_knight_6_12|Honda
+trp_knight_6_12_pl|Honda
+trp_knight_6_13|Hattori
+trp_knight_6_13_pl|Hattori
+trp_knight_6_14|Sakai
+trp_knight_6_14_pl|Sakai
+trp_knight_6_15|Sakakibara
+trp_knight_6_15_pl|Sakakibara
+trp_knight_6_16|Ii
+trp_knight_6_16_pl|Ii
+trp_knight_6_17|Torii
+trp_knight_6_17_pl|Torii
+trp_knight_6_18|Nishio
+trp_knight_6_18_pl|Nishio
+trp_knight_6_19|Nishio
+trp_knight_6_19_pl|Nishio
+trp_knight_7_1|稻 叶 正 邦 
+trp_knight_7_1_pl|稻 叶 正 邦 
+trp_knight_7_2|青 山 忠 敏 
+trp_knight_7_2_pl|青 山 忠 敏 
+trp_knight_7_3|冈 部 长 宽 
+trp_knight_7_3_pl|冈 部 长 宽 
+trp_knight_7_4|水 野 忠 干 
+trp_knight_7_4_pl|水 野 忠 干 
+trp_knight_7_5|安 藤 直 裕 
+trp_knight_7_5_pl|安 藤 直 裕 
+trp_knight_7_6|陆 奥 宗 光 
+trp_knight_7_6_pl|陆 奥 宗 光 
+trp_knight_7_7|津 田 出 
+trp_knight_7_7_pl|津 田 出 
+trp_knight_8_1|松 平 定 安 
+trp_knight_8_1_pl|松 平 定 安 
+trp_knight_8_2|松 平 庆 伦 
+trp_knight_8_2_pl|松 平 庆 伦 
+trp_knight_8_3|松 平 宗 武 
+trp_knight_8_3_pl|松 平 宗 武 
+trp_knight_8_4|荒 尾 成 裕 
+trp_knight_8_4_pl|荒 尾 成 裕 
+trp_knight_8_5|荒 尾 直 就 
+trp_knight_8_5_pl|荒 尾 直 就 
+trp_knight_9_1|小 笠 原 长 国 
+trp_knight_9_1_pl|小 笠 原 长 国 
+trp_knight_9_2|奥 平 昌 服 
+trp_knight_9_2_pl|奥 平 昌 服 
+trp_knight_9_3|井 上 良 馨 
+trp_knight_9_3_pl|井 上 良 馨 
+trp_knight_9_4|黑 田 播 磨 
+trp_knight_9_4_pl|黑 田 播 磨 
+trp_knight_9_5|黑 田 长 德 
+trp_knight_9_5_pl|黑 田 长 德 
+trp_knight_10_1|松 前 勘 解 由 （ 摄 政 ） 
+trp_knight_10_1_pl|松 前 勘 解 由 （ 摄 政 ） 
+trp_knight_10_2|津 轻 承 昭 
+trp_knight_10_2_pl|津 轻 承 昭 
+trp_knight_10_3|南 部 信 民 
+trp_knight_10_3_pl|南 部 信 民 
+trp_knight_10_4|南 部 信 顺 
+trp_knight_10_4_pl|南 部 信 顺 
+trp_knight_10_5|南 部 利 义 
+trp_knight_10_5_pl|南 部 利 义 
+trp_knight_11_1|增 山 正 同 
+trp_knight_11_1_pl|增 山 正 同 
+trp_knight_11_2|酒 井 孙 八 郎 
+trp_knight_11_2_pl|酒 井 孙 八 郎 
+trp_knight_12_1|加 藤 泰 秋 
+trp_knight_12_1_pl|加 藤 泰 秋 
+trp_knight_12_2|伊 达 宗 德 
+trp_knight_12_2_pl|伊 达 宗 德 
+trp_knight_12_3|京 极 朗 彻 
+trp_knight_12_3_pl|京 极 朗 彻 
+trp_knight_12_4|板 垣 退 助 
+trp_knight_12_4_pl|板 垣 退 助 
+trp_knight_12_5|后 藤 象 二 郎 
+trp_knight_12_5_pl|后 藤 象 二 郎 
+trp_knight_12_6|菅 野 觉 兵 卫 
+trp_knight_12_6_pl|菅 野 觉 兵 卫 
+trp_knight_12_7|深 尾 成 质 
+trp_knight_12_7_pl|深 尾 成 质 
+trp_knight_12_8|谷 干 城 
+trp_knight_12_8_pl|谷 干 城 
+trp_knight_12_9|岩 崎 弥 太 郎 
+trp_knight_12_9_pl|岩 崎 弥 太 郎 
+trp_knight_12_10|山 内 丰 诚 
+trp_knight_12_10_pl|山 内 丰 诚 
+trp_knight_13_1|浅 野 忠 
+trp_knight_13_1_pl|浅 野 忠 
+trp_knight_13_2|辻 将 曹 
+trp_knight_13_2_pl|辻 将 曹 
+trp_knight_13_3|浅 野 长 勋 
+trp_knight_13_3_pl|浅 野 长 勋 
+trp_knight_13_4|船 越 卫 
+trp_knight_13_4_pl|船 越 卫 
+trp_knight_13_5|小 林 柔 吉 
+trp_knight_13_5_pl|小 林 柔 吉 
+trp_knight_13_6|浅 野 长 厚 
+trp_knight_13_6_pl|浅 野 长 厚 
+trp_knight_14_1|水 野 忠 精 
+trp_knight_14_1_pl|水 野 忠 精 
+trp_knight_14_2|沟 口 直 溥 
+trp_knight_14_2_pl|沟 口 直 溥 
+trp_knight_14_3|上 杉 茂 宪 
+trp_knight_14_3_pl|上 杉 茂 宪 
+trp_knight_14_4|云 井 龙 雄 
+trp_knight_14_4_pl|云 井 龙 雄 
+trp_knight_14_5|上 杉 胜 道 
+trp_knight_14_5_pl|上 杉 胜 道 
+trp_knight_14_6|千 坂 高 雅 
+trp_knight_14_6_pl|千 坂 高 雅 
+trp_knight_15_1|有 马 赖 咸 
+trp_knight_15_1_pl|有 马 赖 咸 
+trp_knight_15_2|稻 叶 久 通 
+trp_knight_15_2_pl|稻 叶 久 通 
+trp_knight_15_3|内 藤 政 举 
+trp_knight_15_3_pl|内 藤 政 举 
+trp_knight_15_4|伊 东 佑 相 
+trp_knight_15_4_pl|伊 东 佑 相 
+trp_knight_15_5|木 户 孝 允 
+trp_knight_15_5_pl|木 户 孝 允 
+trp_knight_15_6|桐 野 利 秋 
+trp_knight_15_6_pl|桐 野 利 秋 
+trp_knight_15_7|西 乡 隆 盛 
+trp_knight_15_7_pl|西 乡 隆 盛 
+trp_knight_15_8|岛 津 久 光 
+trp_knight_15_8_pl|岛 津 久 光 
+trp_knight_15_9|小 松 带 刀 
+trp_knight_15_9_pl|小 松 带 刀 
+trp_knight_15_10|大 久 保 利 通 
+trp_knight_15_10_pl|大 久 保 利 通 
+trp_knight_15_11|黑 田 清 隆 
+trp_knight_15_11_pl|黑 田 清 隆 
+trp_knight_15_12|伊 地 知 正 治 
+trp_knight_15_12_pl|伊 地 知 正 治 
+trp_knight_16_1|松 浦 诠 
+trp_knight_16_1_pl|松 浦 诠 
+trp_knight_16_2|松 平 忠 和 
+trp_knight_16_2_pl|松 平 忠 和 
+trp_knight_16_3|锅 岛 直 正 
+trp_knight_16_3_pl|锅 岛 直 正 
+trp_knight_16_4|大 隈 重 信 
+trp_knight_16_4_pl|大 隈 重 信 
+trp_knight_16_5|江 藤 新 平 
+trp_knight_16_5_pl|江 藤 新 平 
+trp_knight_16_6|副 岛 种 臣 
+trp_knight_16_6_pl|副 岛 种 臣 
+trp_knight_16_7|大 木 乔 任 
+trp_knight_16_7_pl|大 木 乔 任 
+trp_knight_16_8|岛 义 勇 
+trp_knight_16_8_pl|岛 义 勇 
+trp_knight_17_1|牧 野 贞 直 
+trp_knight_17_1_pl|牧 野 贞 直 
+trp_knight_17_2|土 屋 寅 直 
+trp_knight_17_2_pl|土 屋 寅 直 
+trp_knight_17_3|德 川 昭 武 
+trp_knight_17_3_pl|德 川 昭 武 
+trp_knight_17_4|市 川 三 左 卫 门 
+trp_knight_17_4_pl|市 川 三 左 卫 门 
+trp_knight_17_5|山 野 边 义 艺 
+trp_knight_17_5_pl|山 野 边 义 艺 
+trp_knight_18_1|河 井 继 之 助 
+trp_knight_18_1_pl|河 井 继 之 助 
+trp_knight_18_2|山 本 带 刀 
+trp_knight_18_2_pl|山 本 带 刀 
+trp_knight_19_1|阿 部 正 桓 
+trp_knight_19_1_pl|阿 部 正 桓 
+trp_knight_19_2|协 坂 安 斐 
+trp_knight_19_2_pl|协 坂 安 斐 
+trp_knight_19_3|酒 井 忠 惇 
+trp_knight_19_3_pl|酒 井 忠 惇 
+trp_knight_19_4|松 平 庆 宪 
+trp_knight_19_4_pl|松 平 庆 宪 
+trp_knight_19_5|池 田 章 政 
+trp_knight_19_5_pl|池 田 章 政 
+trp_knight_19_6|伊 木 忠 恭 
+trp_knight_19_6_pl|伊 木 忠 恭 
+trp_knight_20_1|前 田 利 畅 
+trp_knight_20_1_pl|前 田 利 畅 
+trp_knight_20_2|横 山 政 和 
+trp_knight_20_2_pl|横 山 政 和 
+trp_knight_20_3|前 田 利 声 
+trp_knight_20_3_pl|前 田 利 声 
+trp_knight_20_4|本 多 政 均 
+trp_knight_20_4_pl|本 多 政 均 
+trp_knight_20_5|村 井 长 在 
+trp_knight_20_5_pl|村 井 长 在 
+trp_knight_20_6|岛 田 一 郎 
+trp_knight_20_6_pl|岛 田 一 郎 
+trp_knight_21_1|立 花 鉴 宽 
+trp_knight_21_1_pl|立 花 鉴 宽 
+trp_knight_21_2|中 川 久 昭 
+trp_knight_21_2_pl|中 川 久 昭 
+trp_knight_21_3|松 井 盈 之 
+trp_knight_21_3_pl|松 井 盈 之 
+trp_knight_21_4|细 川 护 久 
+trp_knight_21_4_pl|细 川 护 久 
+trp_knight_21_5|长 冈 护 美 
+trp_knight_21_5_pl|长 冈 护 美 
+trp_knight_21_6|米 田 虎 雄 
+trp_knight_21_6_pl|米 田 虎 雄 
+trp_knight_22_1|松 平 定 法 
+trp_knight_22_1_pl|松 平 定 法 
+trp_knight_22_2|松 平 胜 成 
+trp_knight_22_2_pl|松 平 胜 成 
+trp_knight_23_1|本 多 忠 直 
+trp_knight_23_1_pl|本 多 忠 直 
+trp_knight_23_2|松 平 乘 秩 
+trp_knight_23_2_pl|松 平 乘 秩 
+trp_knight_23_3|大 河 内 信 古 
+trp_knight_23_3_pl|大 河 内 信 古 
+trp_knight_23_4|井 上 正 直 
+trp_knight_23_4_pl|井 上 正 直 
+trp_knight_23_5|太 田 资 美 
+trp_knight_23_5_pl|太 田 资 美 
+trp_knight_23_6|德 川 茂 德 
+trp_knight_23_6_pl|德 川 茂 德 
+trp_knight_24_1|松 平 赖 聪 
+trp_knight_24_1_pl|松 平 赖 聪 
+trp_knight_24_2|稻 田 邦 植 
+trp_knight_24_2_pl|稻 田 邦 植 
+trp_knight_24_3|贺 岛 政 绰 
+trp_knight_24_3_pl|贺 岛 政 绰 
+trp_knight_24_4|池 田 昌 丰 
+trp_knight_24_4_pl|池 田 昌 丰 
+trp_knight_25_1|Tokuda
+trp_knight_25_1_pl|Tokuda
+trp_knight_25_2|Saika
+trp_knight_25_2_pl|Saika
+trp_knight_25_3|Tokuda
+trp_knight_25_3_pl|Tokuda
+trp_knight_25_4|Saika
+trp_knight_25_4_pl|Saika
+trp_knight_25_5|Tokuda
+trp_knight_25_5_pl|Tokuda
+trp_knight_25_6|Saika
+trp_knight_25_6_pl|Saika
+trp_knight_26_1|Tokuda
+trp_knight_26_1_pl|Tokuda
+trp_knight_26_2|Saika
+trp_knight_26_2_pl|Saika
+trp_knight_26_3|Tokuda
+trp_knight_26_3_pl|Tokuda
+trp_knight_26_4|Saika
+trp_knight_26_4_pl|Saika
+trp_knight_26_5|Tokuda
+trp_knight_26_5_pl|Tokuda
+trp_knight_26_6|Saika
+trp_knight_26_6_pl|Saika
+trp_knight_27_1|Tokuda
+trp_knight_27_1_pl|Tokuda
+trp_knight_27_2|Saika
+trp_knight_27_2_pl|Saika
+trp_knight_27_3|Tokuda
+trp_knight_27_3_pl|Tokuda
+trp_knight_27_4|Saika
+trp_knight_27_4_pl|Saika
+trp_knight_27_5|Tokuda
+trp_knight_27_5_pl|Tokuda
+trp_knight_27_6|Saika
+trp_knight_27_6_pl|Saika
+trp_kingdom_1_pretender|Lady Yamanouchi of Kozuke
+trp_kingdom_1_pretender_pl|Yamanouchi
+trp_kingdom_2_pretender|Ashina of Mutsu
+trp_kingdom_2_pretender_pl|Ashina
+trp_kingdom_3_pretender|Saito of Mino
+trp_kingdom_3_pretender_pl|Saito
+trp_kingdom_4_pretender|Ouchi of Suo
+trp_kingdom_4_pretender_pl|Ouchi
+trp_kingdom_5_pretender|Takeda of Kai
+trp_kingdom_5_pretender_pl|Takeda
+trp_kingdom_6_pretender|Lady Imagawa of Suruga
+trp_kingdom_6_pretender_pl|Imagawa
+trp_knight_1_1_wife|Error - knight 1 1 wife should not appear in game
+trp_knight_1_1_wife_pl|knight 1 1 wife
+trp_kingdom_1_lady_1|Lady Wakasa
+trp_kingdom_1_lady_1_pl|Wakasa
+trp_kingdom_1_lady_2|Lady Mai
+trp_kingdom_1_lady_2_pl|Mai
+trp_kingdom_1_lady_3|Lady Kasa
+trp_kingdom_1_lady_3_pl|Kasa
+trp_kingdom_1_lady_4|Lady Yayoi
+trp_kingdom_1_lady_4_pl|Yayoi
+trp_kingdom_1_lady_5|Lady Sho
+trp_kingdom_1_lady_5_pl|Sho
+trp_kingdom_1_lady_6|Lady Mako
+trp_kingdom_1_lady_6_pl|Mako
+trp_kingdom_1_lady_7|Lady Ryoko
+trp_kingdom_1_lady_7_pl|Ryoko
+trp_kingdom_1_lady_8|Lady Mio
+trp_kingdom_1_lady_8_pl|Mio
+trp_kingdom_1_lady_9|Lady Misato
+trp_kingdom_1_lady_9_pl|Misato
+trp_kingdom_1_lady_10|Lady Ritsu
+trp_kingdom_1_lady_10_pl|Ritsu
+trp_kingdom_2_lady_1|Lady Minabe
+trp_kingdom_2_lady_1_pl|Minabe
+trp_kingdom_2_lady_2|Lady Mikasa
+trp_kingdom_2_lady_2_pl|Mikasa
+trp_kingdom_2_lady_3|Lady Izumi
+trp_kingdom_2_lady_3_pl|Izumi
+trp_kingdom_2_lady_4|Lady Kuni
+trp_kingdom_2_lady_4_pl|Kuni
+trp_kingdom_2_lady_5|Lady Haruna
+trp_kingdom_2_lady_5_pl|Haruna
+trp_kingdom_2_lady_6|Lady Ayame
+trp_kingdom_2_lady_6_pl|Ayame
+trp_kingdom_2_lady_7|Lady Hina
+trp_kingdom_2_lady_7_pl|Hina
+trp_kingdom_2_lady_8|Lady Hikari
+trp_kingdom_2_lady_8_pl|Hikari
+trp_kingdom_3_lady_1|Lady Matsu
+trp_kingdom_3_lady_1_pl|Matsu
+trp_kingdom_3_lady_2|Lady Sen
+trp_kingdom_3_lady_2_pl|Sen
+trp_kingdom_3_lady_3|Lady Hatsu
+trp_kingdom_3_lady_3_pl|Hatsu
+trp_kingdom_3_lady_4|Lady Ne
+trp_kingdom_3_lady_4_pl|Ne
+trp_kingdom_3_lady_5|Lady Gracia
+trp_kingdom_3_lady_5_pl|Gracia
+trp_kingdom_3_lady_6|Lady Tomiko
+trp_kingdom_3_lady_6_pl|Tomiko
+trp_kingdom_3_lady_7|Lady Yukari
+trp_kingdom_3_lady_7_pl|Yukari
+trp_kingdom_3_lady_8|Lady Rei
+trp_kingdom_3_lady_8_pl|Rei
+trp_kingdom_3_lady_9|Lady Ichi
+trp_kingdom_3_lady_9_pl|Ichi
+trp_kingdom_3_lady_10|Lady Aki
+trp_kingdom_3_lady_10_pl|Aki
+trp_kingdom_4_lady_1|Lady Sue
+trp_kingdom_4_lady_1_pl|Sue
+trp_kingdom_4_lady_2|Lady Emon
+trp_kingdom_4_lady_2_pl|Emon
+trp_kingdom_4_lady_3|Lady Mei
+trp_kingdom_4_lady_3_pl|Mei
+trp_kingdom_4_lady_4|Lady Rika
+trp_kingdom_4_lady_4_pl|Rika
+trp_kingdom_4_lady_5|Lady Mihoshi
+trp_kingdom_4_lady_5_pl|Mihoshi
+trp_kingdom_4_lady_6|Lady Yoshino
+trp_kingdom_4_lady_6_pl|Yoshino
+trp_kingdom_4_lady_7|Lady Kita
+trp_kingdom_4_lady_7_pl|Kita
+trp_kingdom_4_lady_8|Lady Yui
+trp_kingdom_4_lady_8_pl|Yui
+trp_kingdom_4_lady_9|Lady Suzu
+trp_kingdom_4_lady_9_pl|Suzu
+trp_kingdom_4_lady_10|Lady Ayase
+trp_kingdom_4_lady_10_pl|Ayase
+trp_kingdom_5_lady_1|Lady Yura
+trp_kingdom_5_lady_1_pl|Yura
+trp_kingdom_5_lady_2|Lady Shinome
+trp_kingdom_5_lady_2_pl|Shinome
+trp_kingdom_5_lady_3|Lady Minori
+trp_kingdom_5_lady_3_pl|Minori
+trp_kingdom_5_lady_4|Lady Yu
+trp_kingdom_5_lady_4_pl|Yu
+trp_kingdom_5_lady_5|Lady Hana
+trp_kingdom_5_lady_5_pl|Hana
+trp_kingdom_5_lady_6|Lady Yasu
+trp_kingdom_5_lady_6_pl|Yasu
+trp_kingdom_5_lady_7|Lady Kiku
+trp_kingdom_5_lady_7_pl|Kiku
+trp_kingdom_5_lady_8|Lady Haruka
+trp_kingdom_5_lady_8_pl|Haruka
+trp_kingdom_5_lady_9|Lady Kyoko
+trp_kingdom_5_lady_9_pl|Kyoko
+trp_kingdom_5_lady_10|Lady Yae
+trp_kingdom_5_lady_10_pl|Yae
+trp_kingdom_5_lady_11|Lady Shoko
+trp_kingdom_5_lady_11_pl|Shoko
+trp_kingdom_5_lady_12|Lady Marui
+trp_kingdom_5_lady_12_pl|Marui
+trp_kingdom_6_lady_1|Lady Meiko
+trp_kingdom_6_lady_1_pl|Meiko
+trp_kingdom_6_lady_2|Lady Ume
+trp_kingdom_6_lady_2_pl|Ume
+trp_kingdom_6_lady_3|Lady Fuse
+trp_kingdom_6_lady_3_pl|Fuse
+trp_kingdom_6_lady_4|Lady Maya
+trp_kingdom_6_lady_4_pl|Maya
+trp_kingdom_6_lady_5|Lady Naoko
+trp_kingdom_6_lady_5_pl|Naoko
+trp_kingdom_6_lady_6|Lady Mana
+trp_kingdom_6_lady_6_pl|Mana
+trp_kingdom_6_lady_7|Lady Miru
+trp_kingdom_6_lady_7_pl|Miru
+trp_kingdom_6_lady_8|Lady Aoi
+trp_kingdom_6_lady_8_pl|Aoi
+trp_kingdom_7_lady_1|Lady Miwa
+trp_kingdom_7_lady_1_pl|Miwa
+trp_kingdom_7_lady_2|Lady Fuka
+trp_kingdom_7_lady_2_pl|Fuka
+trp_kingdom_7_lady_3|Lady Matoi
+trp_kingdom_7_lady_3_pl|Matoi
+trp_kingdom_7_lady_4|Lady Riko
+trp_kingdom_7_lady_4_pl|Riko
+trp_kingdom_7_lady_5|Lady Yuuko
+trp_kingdom_7_lady_5_pl|Yuuko
+trp_kingdom_7_lady_6|Lady Chie
+trp_kingdom_7_lady_6_pl|Chie
+trp_kingdom_7_lady_7|Lady Maki
+trp_kingdom_7_lady_7_pl|Maki
+trp_kingdom_7_lady_8|Lady Kiri
+trp_kingdom_7_lady_8_pl|Kiri
+trp_kingdom_8_lady_1|Lady Shiho
+trp_kingdom_8_lady_1_pl|Shiho
+trp_kingdom_8_lady_2|Lady Iku
+trp_kingdom_8_lady_2_pl|Iku
+trp_kingdom_8_lady_3|Lady Yuzu
+trp_kingdom_8_lady_3_pl|Yuzu
+trp_kingdom_8_lady_4|Lady Rin
+trp_kingdom_8_lady_4_pl|Rin
+trp_kingdom_8_lady_5|Lady Saki
+trp_kingdom_8_lady_5_pl|Saki
+trp_kingdom_8_lady_6|Lady Teishi
+trp_kingdom_8_lady_6_pl|Teishi
+trp_kingdom_9_lady_1|Lady Miki
+trp_kingdom_9_lady_1_pl|Miki
+trp_kingdom_9_lady_2|Lady Nori
+trp_kingdom_9_lady_2_pl|Nori
+trp_kingdom_9_lady_3|Lady Yume
+trp_kingdom_9_lady_3_pl|Yume
+trp_kingdom_9_lady_4|Lady Shino
+trp_kingdom_9_lady_4_pl|Shino
+trp_kingdom_9_lady_5|Lady Yuki
+trp_kingdom_9_lady_5_pl|Yuki
+trp_kingdom_9_lady_6|Lady Akebi
+trp_kingdom_9_lady_6_pl|Akebi
+trp_kingdom_9_lady_7|Lady Ginchiyo
+trp_kingdom_9_lady_7_pl|Ginchiyo
+trp_kingdom_9_lady_8|Lady Nonaka
+trp_kingdom_9_lady_8_pl|Nonaka
+trp_kingdom_10_lady_1|Lady Kiyomi
+trp_kingdom_10_lady_1_pl|Kiyomi
+trp_kingdom_10_lady_2|Lady Harumi
+trp_kingdom_10_lady_2_pl|Harumi
+trp_kingdom_10_lady_3|Lady Chiri
+trp_kingdom_10_lady_3_pl|Chiri
+trp_kingdom_10_lady_4|Lady Taka
+trp_kingdom_10_lady_4_pl|Taka
+trp_kingdom_10_lady_5|Lady Kaede
+trp_kingdom_10_lady_5_pl|Kaede
+trp_kingdom_10_lady_6|Lady Yasu
+trp_kingdom_10_lady_6_pl|Yasu
+trp_kingdom_11_lady_1|Lady Yuuka
+trp_kingdom_11_lady_1_pl|Yuuka
+trp_kingdom_11_lady_2|Lady Taki
+trp_kingdom_11_lady_2_pl|Taki
+trp_kingdom_11_lady_3|Lady Kazu
+trp_kingdom_11_lady_3_pl|Kazu
+trp_kingdom_11_lady_4|Lady Rina
+trp_kingdom_11_lady_4_pl|Rina
+trp_kingdom_11_lady_5|Lady Yoshiko
+trp_kingdom_11_lady_5_pl|Yoshiko
+trp_kingdom_11_lady_6|Lady Chiyome
+trp_kingdom_11_lady_6_pl|Chiyome
+trp_kingdom_12_lady_1|Lady Yuuki
+trp_kingdom_12_lady_1_pl|Yuuki
+trp_kingdom_12_lady_2|Lady Ayumi
+trp_kingdom_12_lady_2_pl|Ayumi
+trp_kingdom_12_lady_3|Lady Hisa
+trp_kingdom_12_lady_3_pl|Hisa
+trp_kingdom_12_lady_4|Lady Eyo
+trp_kingdom_12_lady_4_pl|Eyo
+trp_kingdom_12_lady_5|Lady Yoko
+trp_kingdom_12_lady_5_pl|Yoko
+trp_kingdom_12_lady_6|Lady Na
+trp_kingdom_12_lady_6_pl|Na
+trp_kingdom_13_lady_1|Lady Kai
+trp_kingdom_13_lady_1_pl|Kai
+trp_kingdom_13_lady_2|Lady Toyo
+trp_kingdom_13_lady_2_pl|Toyo
+trp_kingdom_13_lady_3|Lady Yori
+trp_kingdom_13_lady_3_pl|Yori
+trp_kingdom_13_lady_4|Lady Satoko
+trp_kingdom_13_lady_4_pl|Satoko
+trp_kingdom_13_lady_5|Lady Futo
+trp_kingdom_13_lady_5_pl|Futo
+trp_kingdom_13_lady_6|Lady Miko
+trp_kingdom_13_lady_6_pl|Miko
+trp_kingdom_13_lady_7|Lady Yodo
+trp_kingdom_13_lady_7_pl|Yodo
+trp_kingdom_13_lady_8|Lady Masako
+trp_kingdom_13_lady_8_pl|Masako
+trp_kingdom_14_lady_1|Lady Ami
+trp_kingdom_14_lady_1_pl|Ami
+trp_kingdom_14_lady_2|Lady Cha
+trp_kingdom_14_lady_2_pl|Cha
+trp_kingdom_14_lady_3|Lady Sena
+trp_kingdom_14_lady_3_pl|Sena
+trp_kingdom_14_lady_4|Lady Emi
+trp_kingdom_14_lady_4_pl|Emi
+trp_kingdom_14_lady_5|Lady Ren
+trp_kingdom_14_lady_5_pl|Ren
+trp_kingdom_14_lady_6|Lady Tomoe
+trp_kingdom_14_lady_6_pl|Tomoe
+trp_kingdom_15_lady_1|Lady Mayo
+trp_kingdom_15_lady_1_pl|Mayo
+trp_kingdom_15_lady_2|Lady Uchi
+trp_kingdom_15_lady_2_pl|Uchi
+trp_kingdom_15_lady_3|Lady Chihiro
+trp_kingdom_15_lady_3_pl|Chihiro
+trp_kingdom_15_lady_4|Lady Hitomi
+trp_kingdom_15_lady_4_pl|Hitomi
+trp_kingdom_15_lady_5|Lady Madoka
+trp_kingdom_15_lady_5_pl|Madoka
+trp_kingdom_15_lady_6|Lady Homura
+trp_kingdom_15_lady_6_pl|Homura
+trp_kingdom_15_lady_7|Lady Kana
+trp_kingdom_15_lady_7_pl|Kana
+trp_kingdom_15_lady_8|Lady Yomi
+trp_kingdom_15_lady_8_pl|Yomi
+trp_kingdom_16_lady_1|Lady Sayaka
+trp_kingdom_16_lady_1_pl|Sayaka
+trp_kingdom_16_lady_2|Lady Ai
+trp_kingdom_16_lady_2_pl|Ai
+trp_kingdom_16_lady_3|Lady Aya
+trp_kingdom_16_lady_3_pl|Aya
+trp_kingdom_16_lady_4|Lady Chika
+trp_kingdom_16_lady_4_pl|Chika
+trp_kingdom_16_lady_5|Lady Nozomi
+trp_kingdom_16_lady_5_pl|Nozomi
+trp_kingdom_16_lady_6|Lady Kazu
+trp_kingdom_16_lady_6_pl|Kazu
+trp_kingdom_17_lady_1|Lady Koto
+trp_kingdom_17_lady_1_pl|Koto
+trp_kingdom_17_lady_2|Lady Kasumi
+trp_kingdom_17_lady_2_pl|Kasumi
+trp_kingdom_17_lady_3|Lady Akane
+trp_kingdom_17_lady_3_pl|Akane
+trp_kingdom_17_lady_4|Lady Toku
+trp_kingdom_17_lady_4_pl|Toku
+trp_kingdom_17_lady_5|Lady Suzune
+trp_kingdom_17_lady_5_pl|Suzune
+trp_kingdom_17_lady_6|Lady Hibiki
+trp_kingdom_17_lady_6_pl|Hibiki
+trp_kingdom_18_lady_1|Lady Umika
+trp_kingdom_18_lady_1_pl|Umika
+trp_kingdom_18_lady_2|Lady Sana
+trp_kingdom_18_lady_2_pl|Sana
+trp_kingdom_18_lady_3|Lady Kaoru
+trp_kingdom_18_lady_3_pl|Kaoru
+trp_kingdom_18_lady_4|Lady Saya
+trp_kingdom_18_lady_4_pl|Saya
+trp_kingdom_18_lady_5|Lady Fusa
+trp_kingdom_18_lady_5_pl|Fusa
+trp_kingdom_18_lady_6|Lady Atsu
+trp_kingdom_18_lady_6_pl|Atsu
+trp_kingdom_19_lady_1|Lady Nami
+trp_kingdom_19_lady_1_pl|Nami
+trp_kingdom_19_lady_2|Lady Meru
+trp_kingdom_19_lady_2_pl|Meru
+trp_kingdom_19_lady_3|Lady Michiru
+trp_kingdom_19_lady_3_pl|Michiru
+trp_kingdom_19_lady_4|Lady Noh
+trp_kingdom_19_lady_4_pl|Noh
+trp_kingdom_19_lady_5|Lady Ina
+trp_kingdom_19_lady_5_pl|Ina
+trp_kingdom_19_lady_6|Lady Yuu
+trp_kingdom_19_lady_6_pl|Yuu
+trp_kingdom_20_lady_1|Lady Misako
+trp_kingdom_20_lady_1_pl|Misako
+trp_kingdom_20_lady_2|Lady Mitsu
+trp_kingdom_20_lady_2_pl|Mitsu
+trp_kingdom_20_lady_3|Lady Koto
+trp_kingdom_20_lady_3_pl|Koto
+trp_kingdom_20_lady_4|Lady Kikuri
+trp_kingdom_20_lady_4_pl|Kikuri
+trp_kingdom_20_lady_5|Lady Omi
+trp_kingdom_20_lady_5_pl|Omi
+trp_kingdom_20_lady_6|Lady Ko
+trp_kingdom_20_lady_6_pl|Ko
+trp_kingdom_20_lady_7|Lady Tadako
+trp_kingdom_20_lady_7_pl|Tadako
 trp_town_1_arena_master|竞 技 场 老 板 
 trp_town_2_arena_master|竞 技 场 老 板 
 trp_town_3_arena_master|竞 技 场 老 板 
@@ -2156,16 +2286,16 @@ trp_town_19_tavernkeeper|酒 馆 老 板
 trp_town_20_tavernkeeper|酒 馆 老 板 
 trp_town_21_tavernkeeper|酒 馆 老 板 
 trp_town_22_tavernkeeper|酒 馆 老 板 
-trp_town_23_tavernkeeper|酒 馆 老 板
-trp_town_24_tavernkeeper|酒 馆 老 板
-trp_town_25_tavernkeeper|酒 馆 老 板
-trp_town_26_tavernkeeper|酒 馆 老 板
-trp_town_27_tavernkeeper|酒 馆 老 板
-trp_town_28_tavernkeeper|酒 馆 老 板
-trp_town_29_tavernkeeper|酒 馆 老 板
-trp_town_30_tavernkeeper|酒 馆 老 板
-trp_town_31_tavernkeeper|酒 馆 老 板
-trp_town_32_tavernkeeper|酒 馆 老 板
+trp_town_23_tavernkeeper|酒 馆 老 板 
+trp_town_24_tavernkeeper|酒 馆 老 板 
+trp_town_25_tavernkeeper|酒 馆 老 板 
+trp_town_26_tavernkeeper|酒 馆 老 板 
+trp_town_27_tavernkeeper|酒 馆 老 板 
+trp_town_28_tavernkeeper|酒 馆 老 板 
+trp_town_29_tavernkeeper|酒 馆 老 板 
+trp_town_30_tavernkeeper|酒 馆 老 板 
+trp_town_31_tavernkeeper|酒 馆 老 板 
+trp_town_32_tavernkeeper|酒 馆 老 板 
 trp_town_1_merchant|杂 货 商 人 
 trp_town_2_merchant|杂 货 商 人 
 trp_town_3_merchant|杂 货 商 人 
@@ -2589,8 +2719,8 @@ trp_dplmc_recruiter|征 兵 人
 trp_dplmc_recruiter_pl|征 兵 人 
 trp_stupid_asshole|战 士 
 trp_stupid_asshole_pl|战 士 
-trp_fort_troop_1_1|本 间 侍 从　
-trp_fort_troop_1_1_pl|本 间 侍 从　
+trp_fort_troop_1_1|本 间 侍 从 　
+trp_fort_troop_1_1_pl|本 间 侍 从 　
 trp_fort_troop_2_1|对 马 铁 炮 队 
 trp_fort_troop_2_1_pl|对 马 铁 炮 队 
 trp_fort_troop_3_1|根 来 铁 炮 僧 兵 
@@ -2602,10 +2732,11 @@ trp_fort_troop_5_1_pl|阿 努 族 足 轻
 trp_fort_troop_6_1|阿 努 族 射 手 足 轻 
 trp_fort_troop_6_1_pl|阿 努 族 射 手 足 轻 
 trp_fort_troop_1_2|本 间 弓 武 者 
+trp_fort_troop_1_2_pl|Sado Returnees
 trp_fort_troop_2_2|对 马 资 深 铁 炮 队 
 trp_fort_troop_2_2_pl|对 马 资 深 铁 炮 队 
-trp_fort_troop_3_2|根 来 铁 炮 众　
-trp_fort_troop_3_2_pl|根 来 铁 炮 众　
+trp_fort_troop_3_2|根 来 铁 炮 众 　
+trp_fort_troop_3_2_pl|根 来 铁 炮 众 　
 trp_fort_troop_4_2|新 选 组 精 锐 
 trp_fort_troop_4_2_pl|新 选 组 精 锐 
 trp_fort_troop_5_2|阿 努 族 资 深 足 轻 
@@ -2618,3 +2749,283 @@ trp_black_swordsman|黑 剑 士
 trp_black_swordsman_pl|黑 剑 士 
 trp_smithy_master|铁 匠 
 trp_smithy_master_pl|铁 匠 
+trp_assistant_gunner|Assistant Gunner
+trp_assistant_gunner_pl|Assistant Gunners
+trp_gekokujo_zhuangnei_villager|Villager25
+trp_gekokujo_zhuangnei_villager_pl|Villagers25
+trp_gekokujo_zhuangnei_spearman|zhuangnei Spearman
+trp_gekokujo_zhuangnei_spearman_pl|zhuangnei Spearmen
+trp_gekokujo_zhuangnei_skirmisher|zhuangnei Skirmisher
+trp_gekokujo_zhuangnei_skirmisher_pl|zhuangnei Skirmishers
+trp_gekokujo_zhuangnei_trained_spearman|Trained zhuangnei Spearman
+trp_gekokujo_zhuangnei_trained_spearman_pl|Trained zhuangnei Spearmen
+trp_gekokujo_zhuangnei_trained_skirmisher|Trained zhuangnei Skirmisher
+trp_gekokujo_zhuangnei_trained_skirmisher_pl|Trained zhuangnei Skirmishers
+trp_gekokujo_zhuangnei_veteran_spearman|Veteran zhuangnei Spearman
+trp_gekokujo_zhuangnei_veteran_spearman_pl|Veteran zhuangnei Spearmen
+trp_gekokujo_zhuangnei_veteran_skirmisher|Veteran zhuangnei Skirmisher
+trp_gekokujo_zhuangnei_veteran_skirmisher_pl|Veteran zhuangnei Skirmishers
+trp_gekokujo_zhuangnei_elite_spearman|Elite zhuangnei Spearman
+trp_gekokujo_zhuangnei_elite_spearman_pl|Elite zhuangnei Spearmen
+trp_gekokujo_zhuangnei_jizamurai|Ji-Samurai from zhuangnei
+trp_gekokujo_zhuangnei_jizamurai_pl|Ji-Samurai from zhuangnei
+trp_gekokujo_zhuangnei_retainer|zhuangnei Retainer
+trp_gekokujo_zhuangnei_retainer_pl|zhuangnei Retainers
+trp_gekokujo_zhuangnei_marksman|zhuangnei Marksman
+trp_gekokujo_zhuangnei_marksman_pl|zhuangnei Marksmen
+trp_gekokujo_zhuangnei_veteran_retainer|Veteran zhuangnei Retainer
+trp_gekokujo_zhuangnei_veteran_retainer_pl|Veteran zhuangnei Retainers
+trp_gekokujo_zhuangnei_mounted_retainer|Mounted zhuangnei Retainer
+trp_gekokujo_zhuangnei_mounted_retainer_pl|Mounted zhuangnei Retainers
+trp_gekokujo_zhuangnei_samurai_gunner|zhuangnei Samurai Gunner
+trp_gekokujo_zhuangnei_samurai_gunner_pl|zhuangnei Samurai Gunners
+trp_gekokujo_zhuangnei_samurai_archer|zhuangnei Samurai Archer
+trp_gekokujo_zhuangnei_samurai_archer_pl|zhuangnei Samurai Archers
+trp_gekokujo_zhuangnei_officer|zhuangnei Officer
+trp_gekokujo_zhuangnei_officer_pl|zhuangnei Officers
+trp_gekokujo_zhuangnei_mounted_officer|Mounted zhuangnei Officer
+trp_gekokujo_zhuangnei_mounted_officer_pl|Mounted zhuangnei Officers
+trp_gekokujo_zhuangnei_master_gunner|zhuangnei Master Gunner
+trp_gekokujo_zhuangnei_master_gunner_pl|zhuangnei Master Gunner
+trp_gekokujo_zhuangnei_master_archer|zhuangnei Master Archer
+trp_gekokujo_zhuangnei_master_archer_pl|zhuangnei Master Archers
+trp_gekokujo_zhuangnei_hatamoto_cavalry|zhuangnei Hatamoto Cavalry
+trp_gekokujo_zhuangnei_hatamoto_cavalry_pl|zhuangnei Hatamoto Cavalry
+trp_gekokujo_zhuangnei_hatamoto_archer|zhuangnei Hatamoto Archer
+trp_gekokujo_zhuangnei_hatamoto_archer_pl|zhuangnei Hatamoto Archers
+trp_gekokujo_zhuangnei_messenger|zhuangnei Messenger
+trp_gekokujo_zhuangnei_messenger_pl|zhuangnei Messengers
+trp_gekokujo_zhuangnei_deserter|zhuangnei Deserter
+trp_gekokujo_zhuangnei_deserter_pl|zhuangnei Deserters
+trp_gekokujo_zhuangnei_prison_guard|zhuangnei Prison Guard
+trp_gekokujo_zhuangnei_prison_guard_pl|zhuangnei Prison Guards
+trp_gekokujo_zhuangnei_castle_guard|zhuangnei Castle Guard
+trp_gekokujo_zhuangnei_castle_guard_pl|zhuangnei Castle Guards
+trp_gekokujo_xb_spearman|xb Spearman
+trp_gekokujo_xb_spearman_pl|xb Spearmen
+trp_gekokujo_xb_skirmisher|xb Skirmisher
+trp_gekokujo_xb_skirmisher_pl|xb Skirmishers
+trp_gekokujo_xb_trained_spearman|Trained xb Spearman
+trp_gekokujo_xb_trained_spearman_pl|Trained xb Spearmen
+trp_gekokujo_xb_trained_skirmisher|Trained xb Skirmisher
+trp_gekokujo_xb_trained_skirmisher_pl|Trained xb Skirmishers
+trp_gekokujo_xb_veteran_spearman|Veteran xb Spearman
+trp_gekokujo_xb_veteran_spearman_pl|Veteran xb Spearmen
+trp_gekokujo_xb_veteran_skirmisher|Veteran xb Skirmisher
+trp_gekokujo_xb_veteran_skirmisher_pl|Veteran xb Skirmishers
+trp_gekokujo_xb_elite_spearman|Elite xb Spearman
+trp_gekokujo_xb_elite_spearman_pl|Elite xb Spearmen
+trp_gekokujo_xb_retainer|xb Retainer
+trp_gekokujo_xb_retainer_pl|xb Retainers
+trp_gekokujo_xb_marksman|xb Marksman
+trp_gekokujo_xb_marksman_pl|xb Marksmen
+trp_gekokujo_xb_veteran_retainer|Veteran xb Retainer
+trp_gekokujo_xb_veteran_retainer_pl|Veteran xb Retainers
+trp_gekokujo_xb_mounted_retainer|Mounted xb Retainer
+trp_gekokujo_xb_mounted_retainer_pl|Mounted xb Retainers
+trp_gekokujo_xb_samurai_gunner|Otomo xb Gunner
+trp_gekokujo_xb_samurai_gunner_pl|Otomo xb Gunners
+trp_gekokujo_xb_samurai_archer|xb Samurai Archer
+trp_gekokujo_xb_samurai_archer_pl|xb Samurai Archers
+trp_gekokujo_xb_officer|xb Officer
+trp_gekokujo_xb_officer_pl|xb Officers
+trp_gekokujo_xb_mounted_officer|Mounted xb Officer
+trp_gekokujo_xb_mounted_officer_pl|Mounted xb Officers
+trp_gekokujo_xb_master_gunner|xb Master Gunner
+trp_gekokujo_xb_master_gunner_pl|xb Master Gunner
+trp_gekokujo_xb_master_archer|xb Master Archer
+trp_gekokujo_xb_master_archer_pl|xb Master Archers
+trp_gekokujo_xb_hatamoto_cavalry|xb Hatamoto Cavalry
+trp_gekokujo_xb_hatamoto_cavalry_pl|xb Hatamoto Cavalry
+trp_gekokujo_xb_hatamoto_archer|xb Hatamoto Archer
+trp_gekokujo_xb_hatamoto_archer_pl|xb Hatamoto Archers
+trp_gekokujo_xb_messenger|xb Messenger
+trp_gekokujo_xb_messenger_pl|xb Messengers
+trp_gekokujo_xb_deserter|xb Deserter
+trp_gekokujo_xb_deserter_pl|xb Deserters
+trp_gekokujo_xb_prison_guard|xb Prison Guard
+trp_gekokujo_xb_prison_guard_pl|xb Prison Guards
+trp_gekokujo_xb_castle_guard|xb Castle Guard
+trp_gekokujo_xb_castle_guard_pl|xb Castle Guards
+trp_gekokujo_wz_spearman|wz Spearman
+trp_gekokujo_wz_spearman_pl|wz Spearmen
+trp_gekokujo_wz_skirmisher|wz Skirmisher
+trp_gekokujo_wz_skirmisher_pl|wz Skirmishers
+trp_gekokujo_wz_trained_spearman|Trained wz Spearman
+trp_gekokujo_wz_trained_spearman_pl|Trained wz Spearmen
+trp_gekokujo_wz_trained_skirmisher|Trained wz Skirmisher
+trp_gekokujo_wz_trained_skirmisher_pl|Trained wz Skirmishers
+trp_gekokujo_wz_veteran_spearman|Veteran wz Spearman
+trp_gekokujo_wz_veteran_spearman_pl|Veteran wz Spearmen
+trp_gekokujo_wz_veteran_skirmisher|Veteran wz Skirmisher
+trp_gekokujo_wz_veteran_skirmisher_pl|Veteran wz Skirmishers
+trp_gekokujo_wz_elite_skirmisher|Elite wz Skirmisher
+trp_gekokujo_wz_elite_skirmisher_pl|Elite wz Skirmishers
+trp_gekokujo_wz_retainer|wz Volunteer
+trp_gekokujo_wz_retainer_pl|wz Volunteers
+trp_gekokujo_wz_marksman|wz Marksman
+trp_gekokujo_wz_marksman_pl|wz Marksmen
+trp_gekokujo_wz_veteran_retainer|Veteran wz Volunteer
+trp_gekokujo_wz_veteran_retainer_pl|Veteran wz Volunteers
+trp_gekokujo_wz_mounted_retainer|Mounted wz Volunteer
+trp_gekokujo_wz_mounted_retainer_pl|Mounted wz Volunteers
+trp_gekokujo_wz_samurai_gunner|wz Samurai Gunner
+trp_gekokujo_wz_samurai_gunner_pl|wz Samurai Gunners
+trp_gekokujo_wz_samurai_archer|wz Samurai Archer
+trp_gekokujo_wz_samurai_archer_pl|wz Samurai Archers
+trp_gekokujo_wz_officer|wz Officer
+trp_gekokujo_wz_officer_pl|wz Officers
+trp_gekokujo_wz_mounted_officer|Mounted wz Officer
+trp_gekokujo_wz_mounted_officer_pl|Mounted wz Officers
+trp_gekokujo_wz_master_gunner|wz Master Gunner
+trp_gekokujo_wz_master_gunner_pl|wz Master Gunner
+trp_gekokujo_wz_master_archer|wz Master Archer
+trp_gekokujo_wz_master_archer_pl|wz Master Archers
+trp_gekokujo_ss_retainer|ss Volunteer
+trp_gekokujo_ss_retainer_pl|ss Volunteers
+trp_gekokujo_ss_marksman|ss Marksman
+trp_gekokujo_ss_marksman_pl|ss Marksmen
+trp_gekokujo_ss_veteran_retainer|Veteran ss Volunteer
+trp_gekokujo_ss_veteran_retainer_pl|Veteran ss Volunteers
+trp_gekokujo_ss_mounted_retainer|Mounted ss Volunteer
+trp_gekokujo_ss_mounted_retainer_pl|Mounted ss Volunteers
+trp_gekokujo_ss_samurai_gunner|ss Samurai Gunner
+trp_gekokujo_ss_samurai_gunner_pl|ss Samurai Gunners
+trp_gekokujo_ss_samurai_archer|ss Samurai Archer
+trp_gekokujo_ss_samurai_archer_pl|ss Samurai Archers
+trp_gekokujo_ss_officer|ss Officer
+trp_gekokujo_ss_officer_pl|ss Officers
+trp_gekokujo_ss_mounted_officer|Mounted ss Officer
+trp_gekokujo_ss_mounted_officer_pl|Mounted ss Officers
+trp_gekokujo_ss_master_gunner|ss Master Gunner
+trp_gekokujo_ss_master_gunner_pl|ss Master Gunner
+trp_gekokujo_ss_master_archer|ss Master Archer
+trp_gekokujo_ss_master_archer_pl|ss Master Archers
+trp_gekokujo_ss_spearman|ss Spearman
+trp_gekokujo_ss_spearman_pl|ss Spearmen
+trp_gekokujo_ss_skirmisher|ss Skirmisher
+trp_gekokujo_ss_skirmisher_pl|ss Skirmishers
+trp_gekokujo_ss_trained_spearman|Trained ss Spearman
+trp_gekokujo_ss_trained_spearman_pl|Trained ss Spearmen
+trp_gekokujo_ss_trained_skirmisher|Trained ss Skirmisher
+trp_gekokujo_ss_trained_skirmisher_pl|Trained ss Skirmishers
+trp_gekokujo_ss_veteran_spearman|Veteran ss Spearman
+trp_gekokujo_ss_veteran_spearman_pl|Veteran ss Spearmen
+trp_gekokujo_ss_veteran_skirmisher|Veteran ss Skirmisher
+trp_gekokujo_ss_veteran_skirmisher_pl|Veteran ss Skirmishers
+trp_gekokujo_ss_elite_spearman|Elite ss Spearman
+trp_gekokujo_ss_elite_spearman_pl|Elite ss Spearmen
+trp_gekokujo_yg_spearman|yg Spearman
+trp_gekokujo_yg_spearman_pl|yg Spearmen
+trp_gekokujo_yg_skirmisher|yg Skirmisher
+trp_gekokujo_yg_skirmisher_pl|yg Skirmishers
+trp_gekokujo_yg_trained_spearman|Trained yg Spearman
+trp_gekokujo_yg_trained_spearman_pl|Trained yg Spearmen
+trp_gekokujo_yg_trained_skirmisher|Trained yg Skirmisher
+trp_gekokujo_yg_trained_skirmisher_pl|Trained yg Skirmishers
+trp_gekokujo_yg_veteran_spearman|Veteran yg Spearman
+trp_gekokujo_yg_veteran_spearman_pl|Veteran yg Spearmen
+trp_gekokujo_yg_veteran_skirmisher|Veteran yg Skirmisher
+trp_gekokujo_yg_veteran_skirmisher_pl|Veteran yg Skirmishers
+trp_gekokujo_yg_elite_skirmisher|Elite yg Skirmisher
+trp_gekokujo_yg_elite_skirmisher_pl|Elite yg Skirmishers
+trp_gekokujo_yg_retainer|yg Retainer
+trp_gekokujo_yg_retainer_pl|yg Retainers
+trp_gekokujo_yg_marksman|yg Marksman
+trp_gekokujo_yg_marksman_pl|yg Marksmen
+trp_gekokujo_yg_veteran_retainer|Veteran yg Retainer
+trp_gekokujo_yg_veteran_retainer_pl|Veteran yg Retainers
+trp_gekokujo_yg_mounted_retainer|Mounted yg Retainer
+trp_gekokujo_yg_mounted_retainer_pl|Mounted yg Retainers
+trp_gekokujo_yg_samurai_gunner|yg Samurai Gunner
+trp_gekokujo_yg_samurai_gunner_pl|yg Samurai Gunners
+trp_gekokujo_yg_samurai_archer|yg Samurai Archer
+trp_gekokujo_yg_samurai_archer_pl|yg Samurai Archers
+trp_gekokujo_yg_officer|yg Officer
+trp_gekokujo_yg_officer_pl|yg Officers
+trp_gekokujo_yg_mounted_officer|Mounted yg Officer
+trp_gekokujo_yg_mounted_officer_pl|Mounted yg Officers
+trp_gekokujo_yg_master_gunner|yg Master Gunner
+trp_gekokujo_yg_master_gunner_pl|yg Master Gunner
+trp_gekokujo_yg_master_archer|yg Master Archer
+trp_gekokujo_yg_master_archer_pl|yg Master Archers
+trp_gekokujo_yg_hatamoto_cavalry|yg Hatamoto Cavalry
+trp_gekokujo_yg_hatamoto_cavalry_pl|yg Hatamoto Cavalry
+trp_gekokujo_yg_hatamoto_archer|yg Hatamoto Archer
+trp_gekokujo_yg_hatamoto_archer_pl|yg Hatamoto Archers
+trp_gekokujo_yg_messenger|yg Messenger
+trp_gekokujo_yg_messenger_pl|yg Messengers
+trp_gekokujo_yg_deserter|yg Deserter
+trp_gekokujo_yg_deserter_pl|yg Deserters
+trp_gekokujo_yg_prison_guard|yg Prison Guard
+trp_gekokujo_yg_prison_guard_pl|yg Prison Guards
+trp_gekokujo_yg_castle_guard|yg Castle Guard
+trp_gekokujo_yg_castle_guard_pl|yg Castle Guards
+trp_gekokujo_qt_spearman|qt Spearman
+trp_gekokujo_qt_spearman_pl|qt Spearmen
+trp_gekokujo_qt_skirmisher|qt Skirmisher
+trp_gekokujo_qt_skirmisher_pl|qt Skirmishers
+trp_gekokujo_qt_trained_spearman|Trained qt Spearman
+trp_gekokujo_qt_trained_spearman_pl|Trained qt Spearmen
+trp_gekokujo_qt_trained_skirmisher|Trained qt Skirmisher
+trp_gekokujo_qt_trained_skirmisher_pl|Trained qt Skirmishers
+trp_gekokujo_qt_veteran_spearman|Veteran qt Spearman
+trp_gekokujo_qt_veteran_spearman_pl|Veteran qt Spearmen
+trp_gekokujo_qt_veteran_skirmisher|Veteran qt Skirmisher
+trp_gekokujo_qt_veteran_skirmisher_pl|Veteran qt Skirmishers
+trp_gekokujo_qt_elite_spearman|Elite qt Spearman
+trp_gekokujo_qt_elite_spearman_pl|Elite qt Spearmen
+trp_gekokujo_qt_retainer|qt Volunteer
+trp_gekokujo_qt_retainer_pl|qt Volunteers
+trp_gekokujo_qt_marksman|qt Marksman
+trp_gekokujo_qt_marksman_pl|qt Marksmen
+trp_gekokujo_qt_veteran_retainer|Veteran qt Volunteer
+trp_gekokujo_qt_veteran_retainer_pl|Veteran qt Volunteers
+trp_gekokujo_qt_mounted_retainer|Mounted qt Volunteer
+trp_gekokujo_qt_mounted_retainer_pl|Mounted qt Volunteers
+trp_gekokujo_qt_samurai_gunner|qt Samurai Gunner
+trp_gekokujo_qt_samurai_gunner_pl|qt Samurai Gunners
+trp_gekokujo_qt_samurai_archer|qt Samurai Archer
+trp_gekokujo_qt_samurai_archer_pl|qt Samurai Archers
+trp_gekokujo_qt_officer|qt Officer
+trp_gekokujo_qt_officer_pl|qt Officers
+trp_gekokujo_qt_monk|qt monk
+trp_gekokujo_qt_monk_pl|qt monk
+trp_gekokujo_qt_master_gunner|qt Master Gunner
+trp_gekokujo_qt_master_gunner_pl|qt Master Gunner
+trp_gekokujo_qt_master_archer|qt Master Archer
+trp_gekokujo_qt_master_archer_pl|qt Master Archers
+trp_gekokujo_dd_retainer|dd Volunteer
+trp_gekokujo_dd_retainer_pl|dd Volunteers
+trp_gekokujo_dd_marksman|dd Marksman
+trp_gekokujo_dd_marksman_pl|dd Marksmen
+trp_gekokujo_dd_veteran_retainer|Veteran dd Volunteer
+trp_gekokujo_dd_veteran_retainer_pl|Veteran dd Volunteers
+trp_gekokujo_dd_mounted_retainer|Mounted dd Volunteer
+trp_gekokujo_dd_mounted_retainer_pl|Mounted dd Volunteers
+trp_gekokujo_dd_samurai_gunner|dd Samurai Gunner
+trp_gekokujo_dd_samurai_gunner_pl|dd Samurai Gunners
+trp_gekokujo_dd_samurai_archer|dd Samurai Archer
+trp_gekokujo_dd_samurai_archer_pl|dd Samurai Archers
+trp_gekokujo_dd_officer|dd Officer
+trp_gekokujo_dd_officer_pl|dd Officers
+trp_gekokujo_dd_mounted_officer|Mounted dd Officer
+trp_gekokujo_dd_mounted_officer_pl|Mounted dd Officers
+trp_gekokujo_dd_master_gunner|dd Master Gunner
+trp_gekokujo_dd_master_gunner_pl|dd Master Gunner
+trp_gekokujo_dd_master_archer|dd Master Archer
+trp_gekokujo_dd_master_archer_pl|dd Master Archers
+trp_gekokujo_dd_spearman|dd Spearman
+trp_gekokujo_dd_spearman_pl|dd Spearmen
+trp_gekokujo_dd_skirmisher|dd Skirmisher
+trp_gekokujo_dd_skirmisher_pl|dd Skirmishers
+trp_gekokujo_dd_trained_spearman|Trained dd Spearman
+trp_gekokujo_dd_trained_spearman_pl|Trained dd Spearmen
+trp_gekokujo_dd_trained_skirmisher|Trained dd Skirmisher
+trp_gekokujo_dd_trained_skirmisher_pl|Trained dd Skirmishers
+trp_gekokujo_dd_veteran_spearman|Veteran dd Spearman
+trp_gekokujo_dd_veteran_spearman_pl|Veteran dd Spearmen
+trp_gekokujo_dd_veteran_skirmisher|Veteran dd Skirmisher
+trp_gekokujo_dd_veteran_skirmisher_pl|Veteran dd Skirmishers
+trp_gekokujo_dd_elite_spearman|Elite dd Spearman
+trp_gekokujo_dd_elite_spearman_pl|Elite dd Spearmen

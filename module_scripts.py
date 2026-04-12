@@ -1110,68 +1110,68 @@ scripts = [
       (try_end),
 	  
 	  #gekokujo 2.1 manual banner exchanges
-	  (troop_set_slot, "trp_knight_1_2", slot_troop_banner_scene_prop, "spr_banner_g01"), #honjo shigenaga gets the 'dragon' banner
-      (troop_set_slot, "trp_knight_1_6", slot_troop_banner_scene_prop, "spr_banner_g07"), #naoe kagetsuna gets 'love' even though it's kanetsugu's helmet date
-      (troop_set_slot, "trp_knight_1_7", slot_troop_banner_scene_prop, "spr_banner_h18"), #suda chikamitsu gets his irl swastika *gulp* (not mon)
-      (troop_set_slot, "trp_knight_1_8", slot_troop_banner_scene_prop, "spr_banner_h17"), #murakami yoshikiyo gets his 'mura' banner
-      (troop_set_slot, "trp_knight_1_9", slot_troop_banner_scene_prop, "spr_banner_g02"), #kitajo kagehiro gets the 'bishamonten' banner
-      (troop_set_slot, "trp_knight_1_10", slot_troop_banner_scene_prop, "spr_banner_i06"), #nagao masakage gets his irl banner
-      (troop_set_slot, "trp_knight_3_2", slot_troop_banner_scene_prop, "spr_banner_f03"), #shibata katsuie gets his irl banner
-      (troop_set_slot, "trp_knight_3_4", slot_troop_banner_scene_prop, "spr_banner_i01"), #HASHIBA hideyoshi gets his TOYOTOMI banner from when he became kampaku
-      (troop_set_slot, "trp_knight_3_5", slot_troop_banner_scene_prop, "spr_banner_n"), #akechi mitsuhide gets his irl banner
-      (troop_set_slot, "trp_knight_3_7", slot_troop_banner_scene_prop, "spr_banner_ck"), #ikeda nobuteru gets his irl banner
-      (troop_set_slot, "trp_knight_3_9", slot_troop_banner_scene_prop, "spr_banner_da"), #sakuma morimasa gets his irl banner
-      (troop_set_slot, "trp_knight_4_2", slot_troop_banner_scene_prop, "spr_banner_ek"), #kobayakawa takakage gets his irl banner
-      (troop_set_slot, "trp_knight_5_1", slot_troop_banner_scene_prop, "spr_banner_g03"), #baba nobuharu gets 'wind'
-      (troop_set_slot, "trp_knight_5_2", slot_troop_banner_scene_prop, "spr_banner_i07"), #sanada yukitaka gets his irl banner
-      (troop_set_slot, "trp_knight_5_4", slot_troop_banner_scene_prop, "spr_banner_g06"), #yamamoto kansuke gets 'mountain'
-      (troop_set_slot, "trp_knight_5_6", slot_troop_banner_scene_prop, "spr_banner_g08"), #kosaka masanobu gets takeda blue
-      (troop_set_slot, "trp_knight_5_7", slot_troop_banner_scene_prop, "spr_banner_g04"), #naito masatoyo gets 'forest'
-      (troop_set_slot, "trp_knight_5_8", slot_troop_banner_scene_prop, "spr_banner_g09"), #tsuchiya masatsugu gets takeda green
-      (troop_set_slot, "trp_knight_5_9", slot_troop_banner_scene_prop, "spr_banner_g05"), #yamagata masakage gets 'fire'
-      (troop_set_slot, "trp_knight_5_11", slot_troop_banner_scene_prop, "spr_banner_g10"), #komai masatake gets takeda red
-      (troop_set_slot, "trp_knight_6_2", slot_troop_banner_scene_prop, "spr_banner_f"), #honda tadakatsu gets his 'hon' rather than aoi banner
-      (troop_set_slot, "trp_knight_6_6", slot_troop_banner_scene_prop, "spr_banner_ba"), #ii naomasa gets his irl banner
-	    (troop_set_slot, "trp_knight_6_7", slot_troop_banner_scene_prop, "spr_banner_i04"), #torii mototada gets his irl banner
-      (troop_set_slot, "trp_knight_9_8", slot_troop_banner_scene_prop, "spr_banner_o"), #ito yoshisuke gets his irl banner
-      (troop_set_slot, "trp_knight_11_3", slot_troop_banner_scene_prop, "spr_banner_i"), #ishida masatsugu gets his irl banner
-	    (troop_set_slot, "trp_knight_19_6", slot_troop_banner_scene_prop, "spr_banner_ci"), #urakami munekage gets his irl banner
-      (troop_set_slot, "trp_kingdom_5_pretender", slot_troop_banner_scene_prop, "spr_banner_g13"), #takeda yoshinobu gets the head of takeda's irl mon
-	    (troop_set_slot, "trp_kingdom_6_pretender", slot_troop_banner_scene_prop, "spr_banner_g12"), #this fake jukeini gets the imagawa banner
+	    #(troop_set_slot, "trp_knight_1_2", slot_troop_banner_scene_prop, "spr_banner_g01"), #honjo shigenaga gets the 'dragon' banner
+      #(troop_set_slot, "trp_knight_1_6", slot_troop_banner_scene_prop, "spr_banner_g07"), #naoe kagetsuna gets 'love' even though it's kanetsugu's helmet date
+      #(troop_set_slot, "trp_knight_1_7", slot_troop_banner_scene_prop, "spr_banner_h18"), #suda chikamitsu gets his irl swastika *gulp* (not mon)
+      #(troop_set_slot, "trp_knight_1_8", slot_troop_banner_scene_prop, "spr_banner_h17"), #murakami yoshikiyo gets his 'mura' banner
+      #(troop_set_slot, "trp_knight_1_9", slot_troop_banner_scene_prop, "spr_banner_g02"), #kitajo kagehiro gets the 'bishamonten' banner
+      #(troop_set_slot, "trp_knight_1_10", slot_troop_banner_scene_prop, "spr_banner_i06"), #nagao masakage gets his irl banner
+      #(troop_set_slot, "trp_knight_3_2", slot_troop_banner_scene_prop, "spr_banner_f03"), #shibata katsuie gets his irl banner
+      #(troop_set_slot, "trp_knight_3_4", slot_troop_banner_scene_prop, "spr_banner_i01"), #HASHIBA hideyoshi gets his TOYOTOMI banner from when he became kampaku
+      #(troop_set_slot, "trp_knight_3_5", slot_troop_banner_scene_prop, "spr_banner_n"), #akechi mitsuhide gets his irl banner
+      #(troop_set_slot, "trp_knight_3_7", slot_troop_banner_scene_prop, "spr_banner_ck"), #ikeda nobuteru gets his irl banner
+      #(troop_set_slot, "trp_knight_3_9", slot_troop_banner_scene_prop, "spr_banner_da"), #sakuma morimasa gets his irl banner
+      #(troop_set_slot, "trp_knight_4_2", slot_troop_banner_scene_prop, "spr_banner_ek"), #kobayakawa takakage gets his irl banner
+      #(troop_set_slot, "trp_knight_5_1", slot_troop_banner_scene_prop, "spr_banner_g03"), #baba nobuharu gets 'wind'
+      #(troop_set_slot, "trp_knight_5_2", slot_troop_banner_scene_prop, "spr_banner_i07"), #sanada yukitaka gets his irl banner
+      #(troop_set_slot, "trp_knight_5_4", slot_troop_banner_scene_prop, "spr_banner_g06"), #yamamoto kansuke gets 'mountain'
+      #(troop_set_slot, "trp_knight_5_6", slot_troop_banner_scene_prop, "spr_banner_g08"), #kosaka masanobu gets takeda blue
+      #(troop_set_slot, "trp_knight_5_7", slot_troop_banner_scene_prop, "spr_banner_g04"), #naito masatoyo gets 'forest'
+      #(troop_set_slot, "trp_knight_5_8", slot_troop_banner_scene_prop, "spr_banner_g09"), #tsuchiya masatsugu gets takeda green
+      #(troop_set_slot, "trp_knight_5_9", slot_troop_banner_scene_prop, "spr_banner_g05"), #yamagata masakage gets 'fire'
+      #(troop_set_slot, "trp_knight_5_11", slot_troop_banner_scene_prop, "spr_banner_g10"), #komai masatake gets takeda red
+      #(troop_set_slot, "trp_knight_6_2", slot_troop_banner_scene_prop, "spr_banner_f"), #honda tadakatsu gets his 'hon' rather than aoi banner
+      #(troop_set_slot, "trp_knight_6_6", slot_troop_banner_scene_prop, "spr_banner_ba"), #ii naomasa gets his irl banner
+	    #(troop_set_slot, "trp_knight_6_7", slot_troop_banner_scene_prop, "spr_banner_i04"), #torii mototada gets his irl banner
+      #(troop_set_slot, "trp_knight_9_8", slot_troop_banner_scene_prop, "spr_banner_o"), #ito yoshisuke gets his irl banner
+      #(troop_set_slot, "trp_knight_11_3", slot_troop_banner_scene_prop, "spr_banner_i"), #ishida masatsugu gets his irl banner
+	    #(troop_set_slot, "trp_knight_19_6", slot_troop_banner_scene_prop, "spr_banner_ci"), #urakami munekage gets his irl banner
+      #(troop_set_slot, "trp_kingdom_5_pretender", slot_troop_banner_scene_prop, "spr_banner_g13"), #takeda yoshinobu gets the head of takeda's irl mon
+	    #(troop_set_slot, "trp_kingdom_6_pretender", slot_troop_banner_scene_prop, "spr_banner_g12"), #this fake jukeini gets the imagawa banner
 
 	  #the following lords get their auto-assigned banners taken away in exchange with the lords and factions above
 	  #i could have just ordered the banners correctly, but i didn't. no take-backs. R.I.P.
-  	  (troop_set_slot, "trp_knight_2_1", slot_troop_banner_scene_prop, "spr_banner_g"), #endo exchanges away his banner
-  	  (troop_set_slot, "trp_knight_2_3", slot_troop_banner_scene_prop, "spr_banner_h"), #inawashiro exchanges away his banner
-  	  (troop_set_slot, "trp_knight_2_4", slot_troop_banner_scene_prop, "spr_banner_j"), #oniniwa exchanges away his banner
-  	  (troop_set_slot, "trp_knight_2_5", slot_troop_banner_scene_prop, "spr_banner_bb"), #kakeda exchanges away his banner
-  	  (troop_set_slot, "trp_knight_3_1", slot_troop_banner_scene_prop, "spr_banner_bf"), #maeda exchanges away his banner
-  	  (troop_set_slot, "trp_knight_4_5", slot_troop_banner_scene_prop, "spr_banner_bi"), #fukubara exchanges away his banner
-  	  (troop_set_slot, "trp_knight_4_7", slot_troop_banner_scene_prop, "spr_banner_br"), #kunishi exchanges away his banner
-  	  (troop_set_slot, "trp_knight_5_3", slot_troop_banner_scene_prop, "spr_banner_bu"), #oyamada exchanges away his banner
-  	  (troop_set_slot, "trp_knight_5_5", slot_troop_banner_scene_prop, "spr_banner_cb"), #obata exchanges away his banner
-  	  (troop_set_slot, "trp_knight_5_10", slot_troop_banner_scene_prop, "spr_banner_cj"), #hara exchanges away his banner
-  	  (troop_set_slot, "trp_knight_5_12", slot_troop_banner_scene_prop, "spr_banner_cn"), #aiki exchanges away his banner
-  	  (troop_set_slot, "trp_knight_6_1", slot_troop_banner_scene_prop, "spr_banner_co"), #okudaira exchanges away his banner
-  	  (troop_set_slot, "trp_knight_6_3", slot_troop_banner_scene_prop, "spr_banner_dq"), #hattori exchanges away his banner
-  	  (troop_set_slot, "trp_knight_7_6", slot_troop_banner_scene_prop, "spr_banner_ee"), #atagi exchanges away his banner
-  	  (troop_set_slot, "trp_knight_10_3", slot_troop_banner_scene_prop, "spr_banner_g19"), #ishikawa exchanges away his banner
-  	  (troop_set_slot, "trp_knight_12_3", slot_troop_banner_scene_prop, "spr_banner_h10"), #yoshida exchanges away his banner
-  	  (troop_set_slot, "trp_knight_14_1", slot_troop_banner_scene_prop, "spr_banner_h11"), #tateoka exchanges away his banner
-  	  (troop_set_slot, "trp_knight_14_2", slot_troop_banner_scene_prop, "spr_banner_h12"), #buei exchanges away his banner
-  	  (troop_set_slot, "trp_knight_16_6", slot_troop_banner_scene_prop, "spr_banner_h13"), #nabeshima exchanges away his banner
-  	  (troop_set_slot, "trp_knight_17_1", slot_troop_banner_scene_prop, "spr_banner_h14"), #umezu exchanges away his banner
-  	  (troop_set_slot, "trp_knight_17_2", slot_troop_banner_scene_prop, "spr_banner_h15"), #okamoto exchanges away his banner
-  	  (troop_set_slot, "trp_knight_17_3", slot_troop_banner_scene_prop, "spr_banner_h16"), #kuruma exchanges away his banner
-  	  (troop_set_slot, "trp_knight_17_4", slot_troop_banner_scene_prop, "spr_banner_h19"), #onuki exchanges away his banner
-  	  (troop_set_slot, "trp_knight_17_5", slot_troop_banner_scene_prop, "spr_banner_h20"), #oba exchanges away his banner
-  	  (troop_set_slot, "trp_knight_17_6", slot_troop_banner_scene_prop, "spr_banner_h21"), #wada exchanges away his banner
-  	  (troop_set_slot, "trp_knight_18_1", slot_troop_banner_scene_prop, "spr_banner_i02"), #masaki exchanges away his banner
-  	  (troop_set_slot, "trp_knight_18_2", slot_troop_banner_scene_prop, "spr_banner_i03"), #toki exchanges away his banner
-  	  (troop_set_slot, "trp_knight_18_3", slot_troop_banner_scene_prop, "spr_banner_i05"), #mikogami exchanges away his banner
-  	  (troop_set_slot, "trp_knight_18_4", slot_troop_banner_scene_prop, "spr_banner_i08"), #yuki exchanges away his banner
-  	  (troop_set_slot, "trp_knight_18_5", slot_troop_banner_scene_prop, "spr_banner_i09"), #chiba exchanges away his banner
-  	  (troop_set_slot, "trp_knight_18_6", slot_troop_banner_scene_prop, "spr_banner_i10"), #takagi exchanges away his banner  
+  	  #(troop_set_slot, "trp_knight_2_1", slot_troop_banner_scene_prop, "spr_banner_g"), #endo exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_2_3", slot_troop_banner_scene_prop, "spr_banner_h"), #inawashiro exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_2_4", slot_troop_banner_scene_prop, "spr_banner_j"), #oniniwa exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_2_5", slot_troop_banner_scene_prop, "spr_banner_bb"), #kakeda exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_3_1", slot_troop_banner_scene_prop, "spr_banner_bf"), #maeda exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_4_5", slot_troop_banner_scene_prop, "spr_banner_bi"), #fukubara exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_4_7", slot_troop_banner_scene_prop, "spr_banner_br"), #kunishi exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_5_3", slot_troop_banner_scene_prop, "spr_banner_bu"), #oyamada exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_5_5", slot_troop_banner_scene_prop, "spr_banner_cb"), #obata exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_5_10", slot_troop_banner_scene_prop, "spr_banner_cj"), #hara exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_5_12", slot_troop_banner_scene_prop, "spr_banner_cn"), #aiki exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_6_1", slot_troop_banner_scene_prop, "spr_banner_co"), #okudaira exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_6_3", slot_troop_banner_scene_prop, "spr_banner_dq"), #hattori exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_7_6", slot_troop_banner_scene_prop, "spr_banner_ee"), #atagi exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_10_3", slot_troop_banner_scene_prop, "spr_banner_g19"), #ishikawa exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_12_3", slot_troop_banner_scene_prop, "spr_banner_h10"), #yoshida exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_14_1", slot_troop_banner_scene_prop, "spr_banner_h11"), #tateoka exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_14_2", slot_troop_banner_scene_prop, "spr_banner_h12"), #buei exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_16_6", slot_troop_banner_scene_prop, "spr_banner_h13"), #nabeshima exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_17_1", slot_troop_banner_scene_prop, "spr_banner_h14"), #umezu exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_17_2", slot_troop_banner_scene_prop, "spr_banner_h15"), #okamoto exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_17_3", slot_troop_banner_scene_prop, "spr_banner_h16"), #kuruma exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_17_4", slot_troop_banner_scene_prop, "spr_banner_h19"), #onuki exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_17_5", slot_troop_banner_scene_prop, "spr_banner_h20"), #oba exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_17_6", slot_troop_banner_scene_prop, "spr_banner_h21"), #wada exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_18_1", slot_troop_banner_scene_prop, "spr_banner_i02"), #masaki exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_18_2", slot_troop_banner_scene_prop, "spr_banner_i03"), #toki exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_18_3", slot_troop_banner_scene_prop, "spr_banner_i05"), #mikogami exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_18_4", slot_troop_banner_scene_prop, "spr_banner_i08"), #yuki exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_18_5", slot_troop_banner_scene_prop, "spr_banner_i09"), #chiba exchanges away his banner
+  	  #(troop_set_slot, "trp_knight_18_6", slot_troop_banner_scene_prop, "spr_banner_i10"), #takagi exchanges away his banner  
 
 	  #Give centers to factions first, to ensure more equal distributions
       (call_script, "script_give_center_to_faction_aux", "p_town_1", "fac_kingdom_6"),
@@ -1281,81 +1281,136 @@ scripts = [
       (call_script, "script_give_center_to_faction_aux", "p_castle_72", "fac_kingdom_17"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_73", "fac_kingdom_17"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_74", "fac_kingdom_14"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_75", "fac_kingdom_1"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_76", "fac_kingdom_2"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_75", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_76", "fac_kingdom_1"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_77", "fac_kingdom_1"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_78", "fac_kingdom_10"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_79", "fac_kingdom_26"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_80", "fac_kingdom_26"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_81", "fac_kingdom_2"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_81", "fac_kingdom_1"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_82", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_83", "fac_kingdom_2"), 
-      
+      (call_script, "script_give_center_to_faction_aux", "p_castle_83", "fac_kingdom_2"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_84", "fac_kingdom_8"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_85", "fac_kingdom_5"),
+
 	  # Now give towns to great lords
-      (call_script, "script_give_center_to_lord", "p_town_1", "trp_kingdom_6_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_2", "trp_kingdom_17_lord", 0), 
-      #(call_script, "script_give_center_to_lord", "p_town_3", "trp_kingdom_6_lord", 0), 
-      #(call_script, "script_give_center_to_lord", "p_town_4", "trp_kingdom_6_lord", 0), 
-      #(call_script, "script_give_center_to_lord", "p_town_5", "trp_kingdom_6_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_6", "trp_kingdom_3_lord", 0), 
-      #(call_script, "script_give_center_to_lord", "p_town_7", "trp_kingdom_19_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_8", "trp_kingdom_20_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_9", "trp_kingdom_7_lord", 0), 
-      #(call_script, "script_give_center_to_lord", "p_town_10", "trp_kingdom_6_lord", 0), 
-      #(call_script, "script_give_center_to_lord", "p_town_11", "trp_kingdom_4_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_12", "trp_kingdom_16_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_13", "trp_kingdom_13_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_14", "trp_kingdom_19_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_15", "trp_kingdom_2_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_16", "trp_kingdom_1_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_17", "trp_kingdom_26_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_18", "trp_kingdom_10_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_19", "trp_kingdom_9_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_20", "trp_kingdom_15_lord", 0), 
-      #(call_script, "script_give_center_to_lord", "p_town_21", "trp_kingdom_6_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_22", "trp_kingdom_22_lord", 0), 
-      #(call_script, "script_give_center_to_lord", "p_town_23", "trp_kingdom_6_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_24", "trp_kingdom_5_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_25", "trp_kingdom_21_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_26", "trp_kingdom_12_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_27", "trp_kingdom_8_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_28", "trp_kingdom_24_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_29", "trp_kingdom_7_lord", 0), 
-      #(call_script, "script_give_center_to_lord", "p_town_30", "trp_kingdom_6_lord", 0), 
-      #(call_script, "script_give_center_to_lord", "p_town_31", "trp_kingdom_6_lord", 0), 
-      #(call_script, "script_give_center_to_lord", "p_town_32", "trp_kingdom_6_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_33", "trp_kingdom_27_lord", 0),
+      (call_script, "script_give_center_to_lord", "p_town_1" , "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_2" , "trp_kingdom_16_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_3" , "trp_kingdom_15_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_4" , "trp_kingdom_9_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_5" , "trp_kingdom_21_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_6" , "trp_knight_4_1" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_7" , "trp_kingdom_13_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_8" , "trp_kingdom_22_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_9" , "trp_kingdom_12_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_10", "trp_kingdom_19_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_11", "trp_kingdom_8_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_12", "trp_kingdom_24_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_13", "trp_knight_19_3", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_14", "trp_kingdom_7_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_15", "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_16", "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_17", "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_18", "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_19", "trp_kingdom_27_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_20", "trp_kingdom_5_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_21", "trp_kingdom_3_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_22", "trp_kingdom_20_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_23", "trp_kingdom_23_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_24", "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_25", "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_26", "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_27", "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_28", "trp_kingdom_1_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_29", "trp_kingdom_26_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_30", "trp_kingdom_17_lord", 0), 
+      (call_script, "script_give_center_to_lord", "p_town_31", "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_32", "trp_kingdom_2_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_33", "trp_kingdom_10_lord", 0),
 
       # # Give family castles to certain nobles.
-	    # (call_script, "script_give_center_to_lord", "p_castle_15", "trp_knight_1_10", 0), #sakado castle to lord nagao
-      # (call_script, "script_give_center_to_lord", "p_castle_8", "trp_knight_11_2", 0), #kannonji castle to lord rokkaku
-      # (call_script, "script_give_center_to_lord", "p_castle_10", "trp_kingdom_11_lord", 0), #ichijodani castle to great lord asakura
-      # (call_script, "script_give_center_to_lord", "p_castle_16", "trp_kingdom_11_lord", 0), #ono castle to great lord asakura
-      # (call_script, "script_give_center_to_lord", "p_castle_21", "trp_knight_5_2", 0),	#ueda castle to lord sanada
-      # (call_script, "script_give_center_to_lord", "p_castle_30", "trp_knight_10_4", 0), #hachinohe castle to lord hachinohe
-      # (call_script, "script_give_center_to_lord", "p_castle_33", "trp_kingdom_14_lord", 0), #hachinohe castle to great lord mogami
-      # (call_script, "script_give_center_to_lord", "p_castle_36", "trp_knight_2_7", 0), #iwaki castle to lord iwaki
-      # (call_script, "script_give_center_to_lord", "p_castle_40", "trp_knight_9_8", 0), #nobeoka castle to lord ito
-      # (call_script, "script_give_center_to_lord", "p_castle_64", "trp_knight_16_6", 0), #kashima castle to lord nabeshima
-      # (call_script, "script_give_center_to_lord", "p_castle_73", "trp_knight_10_6", 0), #katsuyama castle to lord kakizaki
+      (call_script, "script_give_center_to_lord", "p_castle_76", "trp_knight_1_1", 0),
+	    (call_script, "script_give_center_to_lord", "p_castle_77", "trp_knight_1_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_81", "trp_knight_1_3", 0),
 
-      # (call_script, "script_give_center_to_lord", "p_village_162", "trp_knight_10_6", 0), #uzukeshi to lord kakizaki
-      
-      # (call_script, "script_give_center_to_lord", "p_castle_73", "trp_kingdom_22_lord", 0),
-      
-      # (call_script, "script_give_center_to_lord", "p_castle_74", "trp_kingdom_23_lord", 0),
-      
-      # (call_script, "script_give_center_to_lord", "p_castle_75", "trp_kingdom_24_lord", 0),
-      
-      # (call_script, "script_give_center_to_lord", "p_castle_76", "trp_kingdom_25_lord", 0),
-      # (call_script, "script_give_center_to_lord", "p_castle_77", "trp_kingdom_26_lord", 0),
-      # (call_script, "script_give_center_to_lord", "p_castle_78", "trp_kingdom_27_lord", 0),
-      # (call_script, "script_give_center_to_lord", "p_castle_79", "trp_kingdom_21_lord", 0),
-      # (call_script, "script_give_center_to_lord", "p_castle_80", "trp_kingdom_27_lord", 0),
-      # (call_script, "script_give_center_to_lord", "p_castle_81", "trp_kingdom_27_lord", 0),
-      # (call_script, "script_give_center_to_lord", "p_castle_82", "trp_kingdom_27_lord", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_82", "trp_knight_2_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_83", "trp_knight_2_2", 0),
 
-      ##diplomacy start+
+      (call_script, "script_give_center_to_lord", "p_castle_39", "trp_knight_3_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_35", "trp_kingdom_3_lord", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_10", "trp_kingdom_4_lord", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_12", "trp_knight_4_3", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_15", "trp_knight_4_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_7" , "trp_kingdom_4_lord", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_36", "trp_knight_5_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_85", "trp_knight_5_2", 0),
+
+
+
+      (call_script, "script_give_center_to_lord", "p_castle_33", "trp_knight_7_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_29", "trp_knight_7_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_28", "trp_knight_7_3", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_41", "trp_kingdom_7_lord", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_19", "trp_knight_8_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_23", "trp_knight_8_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_30", "trp_knight_8_3", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_84", "trp_knight_8_4", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_2" , "trp_knight_9_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_9" , "trp_knight_9_2", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_69", "trp_knight_10_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_78", "trp_knight_10_2", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_16", "trp_knight_12_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_17", "trp_knight_12_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_22", "trp_knight_12_2", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_20", "trp_knight_13_1", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_74", "trp_knight_14_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_58", "trp_knight_14_2", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_6" , "trp_knight_15_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_14", "trp_knight_15_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_13", "trp_knight_15_3", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_8" , "trp_knight_15_4", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_1" , "trp_knight_16_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_3" , "trp_knight_16_2", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_73", "trp_knight_17_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_72", "trp_knight_17_2", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_55", "trp_kingdom_18_lord", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_21", "trp_knight_19_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_25", "trp_knight_19_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_27", "trp_knight_19_4", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_37", "trp_knight_20_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_40", "trp_knight_20_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_45", "trp_knight_20_3", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_5" , "trp_knight_21_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_11", "trp_knight_21_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_4" , "trp_knight_21_3", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_18", "trp_knight_22_1", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_43", "trp_knight_23_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_44", "trp_knight_23_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_46", "trp_knight_23_3", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_47", "trp_knight_23_4", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_49", "trp_knight_23_5", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_24", "trp_knight_24_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_26", "trp_knight_24_2", 0),
+    
+    ##diplomacy start+
 	  #Add home centers for claimants
 	  (troop_set_slot, "trp_kingdom_1_pretender", slot_troop_home, "p_town_10"),#Lady Yamanouchi - Niigata
 	  (troop_set_slot, "trp_kingdom_2_pretender", slot_troop_home, "p_town_16"),#Lord Tamura - Yonezawa
@@ -1364,12 +1419,12 @@ scripts = [
     (troop_set_slot, "trp_kingdom_5_pretender", slot_troop_home, "p_town_11"),#Lord Takeda - Kofu
 	  (troop_set_slot, "trp_kingdom_6_pretender", slot_troop_home, "p_town_25"),#Lady Imagawa - Hamamatsu
 	  #Also the primary six towns:
-	  (troop_set_slot, "trp_kingdom_1_lord", slot_troop_home, "p_town_12"),#Kenshin to Kasugayama
-	  (troop_set_slot, "trp_kingdom_2_lord", slot_troop_home, "p_town_15"),#Masamune to Sendai
-	  (troop_set_slot, "trp_kingdom_3_lord", slot_troop_home, "p_town_9"),#Nobunaga to Kiyosu
-	  (troop_set_slot, "trp_kingdom_4_lord", slot_troop_home, "p_town_13"),#Motonari to Hiroshima
-	  (troop_set_slot, "trp_kingdom_5_lord", slot_troop_home, "p_town_11"),#Shingen to Kofu
-	  (troop_set_slot, "trp_kingdom_6_lord", slot_troop_home, "p_town_25"),#Ieyasu to Hamamatsu
+	  #(troop_set_slot, "trp_kingdom_1_lord", slot_troop_home, "p_town_12"),#Kenshin to #Kasugayama
+	  #(troop_set_slot, "trp_kingdom_2_lord", slot_troop_home, "p_town_15"),#Masamune to Sendai
+	  #(troop_set_slot, "trp_kingdom_3_lord", slot_troop_home, "p_town_9"),#Nobunaga to Kiyosu
+	  #(troop_set_slot, "trp_kingdom_4_lord", slot_troop_home, "p_town_13"),#Motonari to #Hiroshima
+	  #(troop_set_slot, "trp_kingdom_5_lord", slot_troop_home, "p_town_11"),#Shingen to Kofu
+	  #(troop_set_slot, "trp_kingdom_6_lord", slot_troop_home, "p_town_25"),#Ieyasu to Hamamatsu
     
     ##Also set home slots for starting quest merchants (merchant of praven, merchant of reyvadin, etc.)
     (try_for_range, ":npc", major_kings_begin, major_kings_end),
@@ -6898,7 +6953,6 @@ scripts = [
 			(store_random_in_range, ":age", 18, 64),
 		(try_end),
 		(call_script, "script_init_troop_age", ":cur_troop", ":age"),
-		#gekokujo kingdom_5_lord age not set
 		#(eq, ":cur_troop", "trp_kingdom_5_lord"),
 		#(troop_set_slot, ":cur_troop", slot_troop_age, 47),	
 	  (try_end),
@@ -7073,10 +7127,10 @@ scripts = [
 			(eq, ":cur_troop", "trp_knight_3_5"), #Akechi Mitsuhide
 			(assign, ":age", 40),
 			(assign, ":reputation", 3), #backstabber
-		(else_try),
-			(eq, ":cur_troop", "trp_knight_9_7"), #Tachibana Dosetsu
-			(assign, ":age", 55),
-			(assign, ":reputation", 1),
+		#(else_try),
+		#	(eq, ":cur_troop", "trp_knight_9_7"), #Tachibana Dosetsu
+		#	(assign, ":age", 55),
+		#	(assign, ":reputation", 1),
 		(else_try),
 			(eq, ":cur_troop", "trp_knight_13_1"), #Narita Ujinaga
 			(assign, ":age", 39),
