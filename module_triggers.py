@@ -30,7 +30,6 @@ num_merchandise_goods = 36
 
 triggers = [
 # Tutorial:
-  (0.1, 0, ti_once, [(map_free,0)], [(dialog_box,"str_tutorial_map1")]),
 
 # Refresh Merchants
   (0.0, 0, 168.0, [],
@@ -1687,6 +1686,49 @@ triggers = [
   ]),
 
   (0.1, 0.5, 0, [(map_free,0),(eq,"$g_move_fast", 1)], [(assign,"$g_move_fast", 0)]),
+  
+  (0, 0, 24,[],
+  [
+    (try_begin),
+      (eq, "$c_year", 1868),
+      (eq, "$c_month", 1),
+      (eq, "$c_day", 3),
+      (assign, "$4_1", 1),
+    (end_try),
+  ]),
+  
+  (0, 5, 0,[],
+  [
+    (try_begin),
+      (eq, "$4_1", 1),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_6", "fac_kingdom_15", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_6", "fac_kingdom_4", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_6", "fac_kingdom_12", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_1", "fac_kingdom_15", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_1", "fac_kingdom_4", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_1", "fac_kingdom_12", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_2", "fac_kingdom_15", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_2", "fac_kingdom_4", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_2", "fac_kingdom_12", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_10", "fac_kingdom_15", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_10", "fac_kingdom_4", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_10", "fac_kingdom_12", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_11", "fac_kingdom_15", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_11", "fac_kingdom_4", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_11", "fac_kingdom_12", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_18", "fac_kingdom_15", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_18", "fac_kingdom_4", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_18", "fac_kingdom_12", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_25", "fac_kingdom_15", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_25", "fac_kingdom_4", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_25", "fac_kingdom_12", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_27", "fac_kingdom_15", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_27", "fac_kingdom_4", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_27", "fac_kingdom_12", 0),
+      (dialog_box,"str_tutorial_map1"),
+      (val_add, "$4_1", 1),
+    (else_try),
+  ]),
 
 ##diplomacy end
 

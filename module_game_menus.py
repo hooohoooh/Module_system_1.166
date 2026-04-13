@@ -1336,44 +1336,24 @@ game_menus = [
     [],
     [
       ("revenge",[],"Personal revenge.",[
-        (assign,"$background_answer_4", cb4_revenge),
-      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become an adventurer.\
- Still, it was not a difficult choice to leave, with the rage burning brightly in your heart.\
- You want vengeance. You want justice. What was done to you cannot be undone,\
- and these debts can only be paid in blood..."),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_15", 0),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_4", 0),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_12", 0),
         (jump_to_menu,"mnu_choose_skill"),
         ]),
       ("death",[],"The loss of a loved one.",[
-        (assign,"$background_answer_4",cb4_loss),
-      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become an adventurer.\
- All you can say is that you couldn't bear to stay, not with the memories of those you loved so close and so\
- painful. Perhaps your new life will let you forget,\
- or honour the name that you can no longer bear to speak..."),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_1", 0),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_2", 0),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_6", 0),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_10", 0),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_11", 0),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_18", 0),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_25", 0),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_27", 0),
         (jump_to_menu,"mnu_choose_skill"),
         ]),
       ("wanderlust",[],"Wanderlust.",[
-        (assign,"$background_answer_4",cb4_wanderlust),
-      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become an adventurer.\
- You're not even sure when your home became a prison, when the familiar became mundane, but your dreams of\
- wandering have taken over your life. Whether you yearn for some faraway place or merely for the open road and the\
- freedom to travel, you could no longer bear to stay in the same place. You simply went and never looked back..."),
-        (jump_to_menu,"mnu_choose_skill"),
-        ]),
-      ("disown",[],"Being forced out of your home.",[
-        (assign,"$background_answer_4",cb4_disown),
-      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become an adventurer.\
- However, you know you cannot go back. There's nothing to go back to. Whatever home you may have had is gone\
- now, and you must face the fact that you're out in the wide wide world. Alone to sink or swim..."),
-        (jump_to_menu,"mnu_choose_skill"),
-        ]),
-     ("greed",[],"Lust for money and power.",[
-        (assign,"$background_answer_4",cb4_greed),
-      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become an adventurer.\
- To everyone else, it's clear that you're now motivated solely by personal gain.\
- You want to be rich, powerful, respected, feared.\
- You want to be the one whom others hurry to obey.\
- You want people to know your name, and tremble whenever it is spoken.\
- You want everything, and you won't let anyone stop you from having it..."),
+        (assign, "$gonghe", 1),
         (jump_to_menu,"mnu_choose_skill"),
         ]),
       ("go_back",[],"Go back.",
@@ -1812,9 +1792,6 @@ game_menus = [
              (change_screen_return, 0),
            (try_end),
            (set_show_messages, 1),
-        ]),
-      ("go_back_dot",[],"Go back.",[
-        (jump_to_menu,"mnu_start_character_4"),
         ]),
     ]
   ),
@@ -14442,11 +14419,25 @@ game_menus = [
       ("zhaobing", 
       [
 		(ge,"$player_honor",10),
+        (this_or_next|eq, "$current_town", "p_town_10"),
+        (this_or_next|eq, "$current_town", "p_town_31"),
+        (this_or_next|eq, "$current_town", "p_town_30"),
+        (this_or_next|eq, "$current_town", "p_town_21"),
+        (eq, "$current_town", "p_town_1"),
 		(troop_slot_ge,"trp_player",slot_troop_renown,200),	
 	  ],
          "Go to zhaobing",
      [
         (jump_to_menu,"mnu_zhaobing"),
+    ]),
+    
+    ("ceshi", 
+      [
+		(eq, "$gonghe", 1),
+	  ],
+         "招 募 共 和 志 士！",
+     [
+        (jump_to_menu,"mnu_zhaobing2"),
     ]),
 		
       ("trade_with_merchants",
@@ -22203,7 +22194,34 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ),
   
   ("zhaobing",mnf_disable_all_keys,
-    "welcome to zhaobing",
+    "欢 迎 来 到 招 募 界 面",
+    "none",   
+    [(eq, "$current_town", "p_town_1"),],
+    [
+     ("buy_munitions",[
+		(store_free_inventory_capacity,":num","trp_player"),
+		(store_troop_gold,":gold","trp_player"),
+		(try_begin),
+			(ge,":num",1),
+			(ge,":gold",10000),
+		(else_try),
+			(disable_menu_option),
+		(try_end),
+	 ],"购 买 一 组 炮 兵 ，花 费 一 万",
+       [
+		(troop_remove_gold,"trp_player",10000),
+		(party_add_members, "p_main_party", "trp_gekokujo_zunwang_veteran_gunner", 1),
+       ]),
+       
+     ("go_back",[],"Go back",
+       [
+        (jump_to_menu, "mnu_town"),
+       ]),
+    ]
+  ),
+  
+  ("zhaobing2",mnf_disable_all_keys,
+    "民 主 人 士，欢 迎 来 到 招 募 界 面",
     "none",   
     [],
     [
@@ -22212,16 +22230,45 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 		(store_troop_gold,":gold","trp_player"),
 		(try_begin),
 			(ge,":num",1),
-			(ge,":gold",20000),
+			(ge,":gold",100),
 		(else_try),
 			(disable_menu_option),
 		(try_end),
-	 ],"Buy munitions",
+	 ],"购 买 一 个 共 和 国 卫 队 ，花 费 一 百",
        [
-		(troop_remove_gold,"trp_player",600),
-		(party_add_members, "p_main_party", "trp_gekokujo_zhuangnei_samurai_gunner", 50),
+		(troop_remove_gold,"trp_player",100),
+		(party_add_members, "p_main_party", "trp_republic_citizen", 1),
        ]),
        
+     ("buy_munitions2",[
+		(store_free_inventory_capacity,":num","trp_player"),
+		(store_troop_gold,":gold","trp_player"),
+		(try_begin),
+			(ge,":num",1),
+			(ge,":gold",1000),
+		(else_try),
+			(disable_menu_option),
+		(try_end),
+	 ],"购 买 十 个 共 和 国 卫 队 ，花 费 一 千",
+       [
+		(troop_remove_gold,"trp_player",1001),
+		(party_add_members, "p_main_party", "trp_republic_citizen", 10),
+       ]),
+       
+     ("buy_munitions3",[
+		(store_free_inventory_capacity,":num","trp_player"),
+		(store_troop_gold,":gold","trp_player"),
+		(try_begin),
+			(ge,":num",1),
+			(ge,":gold",10000),
+		(else_try),
+			(disable_menu_option),
+		(try_end),
+	 ],"购 买 一百 个 共 和 国 卫 队 ，花 费 一 万",
+       [
+		(troop_remove_gold,"trp_player",10000),
+		(party_add_members, "p_main_party", "trp_republic_citizen", 100),
+       ]),
      ("go_back",[],"Go back",
        [
         (jump_to_menu, "mnu_town"),

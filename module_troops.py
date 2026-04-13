@@ -1091,7 +1091,7 @@ troops = [
 
 #This troop is the troop marked as soldiers_end and town_walkers_begin
  ["town_walker_1","Townsman","Townsmen",tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
-   [itm_gekokujo_kimono_1_1,itm_gekokujo_kimono_1_2,itm_gekokujo_kimono_1_3,itm_gekokujo_kimono_2_1,itm_gekokujo_kimono_2_2,itm_gekokujo_kimono_2_3,itm_gekokujo_sandal_1,itm_gekokujo_sandal_2,itm_gekokujo_sandal_3],
+   [itm_gekokujo_kimono_1_1,itm_gekokujo_kimono_1_2,itm_gekokujo_kimono_1_3,itm_gekokujo_kimono_2_1,itm_gekokujo_kimono_2_2,itm_gekokujo_kimono_2_3,itm_gekokujo_sandal_1,itm_gekokujo_sandal_2,itm_gekokujo_sandal_3,itm_gekokujo_wakizashi_1],
    def_attrib|level(4),wp(60),knows_common,
    man_face_young_1, man_face_old_2],
  ["town_walker_2","Townswoman","Townswomen",tf_female|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
@@ -2694,6 +2694,16 @@ troops = [
    str_8|agi_8|level(11),wp(90),knows_common|knows_ironflesh_1|knows_power_strike_1|knows_athletics_1|knows_riding_1|knows_shield_2,
    mercenary_face_1, mercenary_face_2],
    
+   ["republic_Citizen", "republic_Citizen", "republic_Citizen", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, [itm_gekokujo_katana_1, itm_gekokujo_katana_2, itm_gekokujo_katana_3, itm_samuraioutfit_01, itm_samuraioutfit_3, itm_gekokujo_sandal_1], def_attrib|level(7), wp(65), knows_common, bandit_face1, bandit_face2],
+   ["republic_volunteer", "republic_volunteer", "republic_volunteer", tf_guarantee_all, no_scene, reserved, fac_commoners, [itm_gekokujo_wakizashi_1, itm_gekokujo_bullets_1, itm_springfield_42, itm_xizhuang2, itm_xizhuang, itm_civilian_hat4c, itm_civilian_hat4d, itm_civilian_hat2, itm_civilian_hat6, itm_heisexiaku], def_attrib|level(7), wp(75), knows_common, samurai_face_1, samurai_face_2],
+   ["republic_army", "republic_army", "republic_army", tf_guarantee_all, no_scene, reserved, fac_commoners, [itm_gekokujo_wakizashi_1, itm_gekokujo_bullets_1, itm_enfield_bayonet, itm_xizhuang2, itm_xizhuang, itm_civilian_hat4c, itm_civilian_hat4d, itm_civilian_hat2, itm_civilian_hat6, itm_springfield_42, itm_ghgdayi, itm_ghgdayi ,itm_ghgcap, itm_heisexiaku], def_attrib|level(12), wp(105), knows_common, samurai_face_1, samurai_face_2],
+   ["republic_infantry", "republic_infantry", "republic_infantry", tf_guarantee_all, no_scene, reserved, fac_commoners, [itm_xinjundao, itm_gekokujo_bullets_1, itm_enfield_bayonet, itm_ghgcap, itm_xishiinfantry_bag, itm_shenlankuzi,  itm_fanbingmao5], def_attrib|level(19), wp(125), knows_common, samurai_face_1, samurai_face_2],
+   ["republic_Veteran", "republic_Veteran", "republic_Veteran", tf_guarantee_all, no_scene, reserved, fac_commoners, [itm_xinjundao, itm_gekokujo_bullets_1, itm_enfield_bayonet, itm_ghgcap, itm_shenlankuzi,  itm_fanbingmao5, itm_ghgdayi, itm_fanshizhenli_tongyong], def_attrib|level(24), wp(135), knows_common, samurai_face_1, samurai_face_2],
+   ["republic_guard", "republic_guard", "republic_guard", tf_guarantee_all, no_scene, reserved, fac_commoners, [itm_xinjundao, itm_gekokujo_bullets_1, itm_snider_bayonet, itm_ghgcap2, itm_ghg_legs1, itm_ghgarmy, itm_ghgcap2, itm_dreyse], def_attrib|level(29), wp(175), knows_common, samurai_face_1, samurai_face_2],
+   ["republic_Sniper", "republic_Sniper", "republic_Sniper", tf_guarantee_all, no_scene, reserved, fac_commoners, [itm_xinjundao, itm_gekokujo_bullets_1, itm_enfieldp53_scoped, itm_ghgcap2, itm_ghg_legs1, itm_ghgdayi, itm_ghgcap, itm_ghgdayi, itm_civilian_hat4c, itm_civilian_hat4d], def_attrib|level(27), wp(155), knows_common, samurai_face_1, samurai_face_2],
+   
+ 
+   ["fort_troop_2_1", "Tsushima Gunner", "Tsushima Gunners", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners, [itm_jptoujin, itm_gekokujo_bullets_1, itm_springfield_42, itm_gekokujo_wakizashi_1, itm_gekokujo_sandal_1, itm_gekokujo_light_suneate_2, itm_gekokujo_tekko_1], def_attrib|level(7), wp(65), knows_common, samurai_face_1, samurai_face_2],
   #gekokujo 3.0 microfactions! start
   #fort recruit troops
   ["fort_troop_1_1", "Sado Exile", "Sado Exiles", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, [itm_gekokujo_katana_1, itm_gekokujo_katana_2, itm_gekokujo_katana_3, itm_gekokujo_hakama_1, itm_gekokujo_haori_3, itm_gekokujo_sandal_1], def_attrib|level(7), wp(65), knows_common, bandit_face1, bandit_face2],
@@ -3368,9 +3378,11 @@ upgrade(troops, "fort_troop_5_1", "fort_troop_5_2")
 upgrade(troops, "fort_troop_6_1", "fort_troop_6_2")
 
 
-
-
-
+upgrade(troops, "republic_Citizen", "republic_volunteer",)
+upgrade(troops, "republic_volunteer", "republic_army",)
+upgrade(troops, "republic_army", "republic_infantry",)
+upgrade(troops, "republic_infantry", "republic_Veteran",)
+upgrade2(troops, "republic_Veteran", "republic_guard", "republic_Sniper")
 
 
 

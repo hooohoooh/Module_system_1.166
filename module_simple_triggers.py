@@ -71,9 +71,9 @@ simple_triggers = [
 #        (party_set_position, "p_training_ground_4", pos2),
 #      (try_end),
 
-      #gekokujo 3.1 kyoto changes start
-	  #this is for save compatibility, so disable for next version
-	  #kamigyo is renamed to keihoku because kamigyo is where the imperial palace is
+
+
+ #kamigyo is renamed to keihoku because kamigyo is where the imperial palace is
 	  #imperial palace is going to be in a future version of gekokujo and shouldn't be a village
 	  #kameoka should also be further out
 	  #(try_begin),

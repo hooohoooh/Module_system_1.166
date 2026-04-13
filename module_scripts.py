@@ -70,6 +70,7 @@ scripts = [
   # INPUT: none
   ("game_start",
    [
+      (assign, "$gonghe", 0),
       (assign, "$cut_body", 1),
       (faction_set_slot, "fac_player_supporters_faction", slot_faction_state, sfs_inactive),
       (assign, "$g_player_luck", 200),
@@ -1293,7 +1294,7 @@ scripts = [
       (call_script, "script_give_center_to_faction_aux", "p_castle_84", "fac_kingdom_8"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_85", "fac_kingdom_5"),
 
-	  # Now give towns to great lords
+    # Now give towns to great lords
       (call_script, "script_give_center_to_lord", "p_town_1" , "trp_kingdom_6_lord" , 0), 
       (call_script, "script_give_center_to_lord", "p_town_2" , "trp_kingdom_16_lord", 0), 
       (call_script, "script_give_center_to_lord", "p_town_3" , "trp_kingdom_15_lord", 0), 
@@ -1330,7 +1331,7 @@ scripts = [
 
       # # Give family castles to certain nobles.
       (call_script, "script_give_center_to_lord", "p_castle_76", "trp_knight_1_1", 0),
-	    (call_script, "script_give_center_to_lord", "p_castle_77", "trp_knight_1_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_77", "trp_knight_1_2", 0),
       (call_script, "script_give_center_to_lord", "p_castle_81", "trp_knight_1_3", 0),
 
       (call_script, "script_give_center_to_lord", "p_castle_82", "trp_knight_2_1", 0),
@@ -1411,20 +1412,20 @@ scripts = [
       (call_script, "script_give_center_to_lord", "p_castle_26", "trp_knight_24_2", 0),
     
     ##diplomacy start+
-	  #Add home centers for claimants
-	  (troop_set_slot, "trp_kingdom_1_pretender", slot_troop_home, "p_town_10"),#Lady Yamanouchi - Niigata
-	  (troop_set_slot, "trp_kingdom_2_pretender", slot_troop_home, "p_town_16"),#Lord Tamura - Yonezawa
-    (troop_set_slot, "trp_kingdom_3_pretender", slot_troop_home, "p_town_9"),#Lord Saito - Kiyosu
-    (troop_set_slot, "trp_kingdom_4_pretender", slot_troop_home, "p_town_27"),#Lord Ouchi - Yamaguchi
-    (troop_set_slot, "trp_kingdom_5_pretender", slot_troop_home, "p_town_11"),#Lord Takeda - Kofu
-	  (troop_set_slot, "trp_kingdom_6_pretender", slot_troop_home, "p_town_25"),#Lady Imagawa - Hamamatsu
-	  #Also the primary six towns:
-	  #(troop_set_slot, "trp_kingdom_1_lord", slot_troop_home, "p_town_12"),#Kenshin to #Kasugayama
-	  #(troop_set_slot, "trp_kingdom_2_lord", slot_troop_home, "p_town_15"),#Masamune to Sendai
-	  #(troop_set_slot, "trp_kingdom_3_lord", slot_troop_home, "p_town_9"),#Nobunaga to Kiyosu
-	  #(troop_set_slot, "trp_kingdom_4_lord", slot_troop_home, "p_town_13"),#Motonari to #Hiroshima
-	  #(troop_set_slot, "trp_kingdom_5_lord", slot_troop_home, "p_town_11"),#Shingen to Kofu
-	  #(troop_set_slot, "trp_kingdom_6_lord", slot_troop_home, "p_town_25"),#Ieyasu to Hamamatsu
+    #Add home centers for claimants
+      (troop_set_slot, "trp_kingdom_1_pretender", slot_troop_home, "p_town_10"),#Lady Yamanouchi - Niigata
+      (troop_set_slot, "trp_kingdom_2_pretender", slot_troop_home, "p_town_16"),#Lord Tamura - Yonezawa
+      (troop_set_slot, "trp_kingdom_3_pretender", slot_troop_home, "p_town_9"),#Lord Saito - Kiyosu
+      (troop_set_slot, "trp_kingdom_4_pretender", slot_troop_home, "p_town_27"),#Lord Ouchi - Yamaguchi
+      (troop_set_slot, "trp_kingdom_5_pretender", slot_troop_home, "p_town_11"),#Lord Takeda - Kofu
+      (troop_set_slot, "trp_kingdom_6_pretender", slot_troop_home, "p_town_25"),#Lady Imagawa - Hamamatsu
+    #Also the primary six towns:
+      #(troop_set_slot, "trp_kingdom_1_lord", slot_troop_home, "p_town_12"),#Kenshin to #Kasugayama
+      #(troop_set_slot, "trp_kingdom_2_lord", slot_troop_home, "p_town_15"),#Masamune to Sendai
+      #(troop_set_slot, "trp_kingdom_3_lord", slot_troop_home, "p_town_9"),#Nobunaga to Kiyosu
+      #(troop_set_slot, "trp_kingdom_4_lord", slot_troop_home, "p_town_13"),#Motonari to #Hiroshima
+      #(troop_set_slot, "trp_kingdom_5_lord", slot_troop_home, "p_town_11"),#Shingen to Kofu
+      #(troop_set_slot, "trp_kingdom_6_lord", slot_troop_home, "p_town_25"),#Ieyasu to Hamamatsu
     
     ##Also set home slots for starting quest merchants (merchant of praven, merchant of reyvadin, etc.)
     (try_for_range, ":npc", major_kings_begin, major_kings_end),
@@ -5409,10 +5410,9 @@ scripts = [
     [
       (store_script_param_2, ":num_hours"),
       (store_div, ":num_days", ":num_hours", 24),
-      (store_add, ":cur_day", ":num_days", 23),
-      (assign, ":cur_month", 3),
-	  #gekokujo set date
-      (assign, ":cur_year", 1568),
+      (store_add, ":cur_day", ":num_days", 1),
+      (assign, ":cur_month", 1),
+      (assign, ":cur_year", 1868),
       (assign, ":try_range", 99999),
       (try_for_range, ":unused", 0, ":try_range"),
         (try_begin),
@@ -5493,7 +5493,11 @@ scripts = [
         (str_store_string, s1, "str_december_reg1_reg2"),
       (try_end),
       (set_result_string, s1),
-    ]),  
+	  #
+	  (assign, "$c_year", ":cur_year"),
+      (assign, "$c_month", ":cur_month"),
+      (assign, "$c_day", ":cur_day"),
+    ]),
   
   #script_game_get_money_text:
   # This script is called from the game engine when an amount of money needs to be displayed.
@@ -6953,6 +6957,7 @@ scripts = [
 			(store_random_in_range, ":age", 18, 64),
 		(try_end),
 		(call_script, "script_init_troop_age", ":cur_troop", ":age"),
+		#gekokujo kingdom_5_lord age not set
 		#(eq, ":cur_troop", "trp_kingdom_5_lord"),
 		#(troop_set_slot, ":cur_troop", slot_troop_age, 47),	
 	  (try_end),
@@ -9134,7 +9139,8 @@ scripts = [
         (this_or_next|eq, ":village_no", "p_village_135"), #Susaki
         (this_or_next|eq, ":village_no", "p_village_137"), #Konodai
         (this_or_next|eq, ":village_no", "p_village_140"), #Sunpu
-        (eq, ":village_no", "p_village_148"), #Takahashi
+        (this_or_next|eq, ":village_no", "p_village_147"), #Takahashi
+        (eq, ":village_no", "p_village_148"), #Kurayoshi
 	  
 	    (store_random_in_range, ":random_value_between_15_and_20", 15, 20),
 	    (party_set_slot, ":village_no", slot_center_fishing_fleet, ":random_value_between_15_and_20"),
@@ -29691,38 +29697,33 @@ scripts = [
 		(is_between, "$players_kingdom", "fac_kingdom_1", kingdoms_end),
 		(assign, ":players_kingdom_at_peace", 1),
 	(try_end),
-
-	##diplomacy start+
-	#Introduce some minor variation by changing the order in which factions consider things.
-	##OLD:	
-    #(try_for_range, ":cur_kingdom", "fac_kingdom_1", kingdoms_end),
-    #    (faction_slot_eq, ":cur_kingdom", slot_faction_state, sfs_active),
-	#  
-	#	(try_for_range, ":cur_kingdom_2", kingdoms_begin, kingdoms_end),
-	##NEW:
-	(store_random_in_range, ":random_offset_1", "fac_kingdom_1", kingdoms_end),
-	(val_sub, ":random_offset_1", "fac_kingdom_1"),
-	(try_for_range, ":cur_kingdom", "fac_kingdom_1", kingdoms_end),
-		(val_add, ":cur_kingdom", ":random_offset_1"),
-		(try_begin),
-			(ge, ":cur_kingdom", kingdoms_end),
-			(val_sub, ":cur_kingdom", kingdoms_end),
-			(val_add, ":cur_kingdom", "fac_kingdom_1"),
-		(try_end),
-		(faction_slot_eq, ":cur_kingdom", slot_faction_state, sfs_active),
-		(store_random_in_range, ":random_offset_2", kingdoms_begin, kingdoms_end),
-		(val_sub, ":random_offset_2", kingdoms_begin),
+	
+    (try_for_range, ":cur_kingdom", "fac_kingdom_1", kingdoms_end),
+        (faction_slot_eq, ":cur_kingdom", slot_faction_state, sfs_active),
+	  
 		(try_for_range, ":cur_kingdom_2", kingdoms_begin, kingdoms_end),
-			(val_add, ":cur_kingdom_2", ":random_offset_2"),
-			(try_begin),
-				(ge, ":cur_kingdom_2", kingdoms_end),
-				(val_sub, ":cur_kingdom_2", kingdoms_end),
-				(val_add, ":cur_kingdom_2", kingdoms_begin),
-			(try_end),
-	##diplomacy end+
 			(neq, ":cur_kingdom", ":cur_kingdom_2"),
 			(faction_slot_eq, ":cur_kingdom_2", slot_faction_state, sfs_active),
-		
+            
+            (assign,":jixu",1),
+            (try_begin),
+                (this_or_next|eq,":cur_kingdom","fac_kingdom_1"),
+                (this_or_next|eq,":cur_kingdom","fac_kingdom_2"),
+                (this_or_next|eq,":cur_kingdom","fac_kingdom_6"),
+                (this_or_next|eq,":cur_kingdom","fac_kingdom_10"),
+                (this_or_next|eq,":cur_kingdom","fac_kingdom_11"),
+                (this_or_next|eq,":cur_kingdom","fac_kingdom_18"),
+                (this_or_next|eq,":cur_kingdom","fac_kingdom_25"),
+                (eq,":cur_kingdom","fac_kingdom_27"),
+                (assign,":jixu",0),
+            (else_try),
+                (this_or_next|eq,":cur_kingdom","fac_kingdom_4"),
+                (this_or_next|eq,":cur_kingdom","fac_kingdom_12"),
+                (eq,":cur_kingdom","fac_kingdom_15"),
+                (assign,":jixu",0),
+            (try_end),
+            (eq,":jixu",1),
+            	
 			(call_script, "script_npc_decision_checklist_peace_or_war", ":cur_kingdom", ":cur_kingdom_2", -1),
 			(assign, ":kingdom_1_to_kingdom_2", reg0),
 			
@@ -29736,14 +29737,7 @@ scripts = [
 				(try_end),
 				
 				(ge, ":kingdom_1_to_kingdom_2", 1),
-
-        ##diplomacy begin
-        (try_begin),
-      	  (store_current_hours, ":cur_hours"),
-          (faction_get_slot, ":faction_ai_last_decisive_event", ":cur_kingdom", slot_faction_ai_last_decisive_event),
-          (store_sub, ":hours_since_last_decisive_event", ":cur_hours", ":faction_ai_last_decisive_event"),
-          (ge, ":hours_since_last_decisive_event", 96), #wait 4 days until you conclude peace after war
-        ##diplomacy end								
+								
 	            (try_begin),
 	                (eq, ":cur_kingdom_2", "fac_player_supporters_faction"),
 					
@@ -29770,216 +29764,49 @@ scripts = [
 
 	                (call_script, "script_diplomacy_start_peace_between_kingdoms", ":cur_kingdom", ":cur_kingdom_2", ":initializing_war_peace_cond"),
 	            (try_end),
-        ##diplomacy begin
-        (try_end),
-        ##diplomacy end
-			(else_try),
-				(ge, ":cur_relation", 0), #AT PEACE
+			# (else_try),
+				# (ge, ":cur_relation", 0), #AT PEACE
 			
-			    (call_script, "script_npc_decision_checklist_peace_or_war", ":cur_kingdom", ":cur_kingdom_2", -1),
+			    # (call_script, "script_npc_decision_checklist_peace_or_war", ":cur_kingdom", ":cur_kingdom_2", -1),
 				
-				#negative, leans towards war/positive, leans towards peace
-				(le, reg0, 0), #still no chance of war unless provocation, or at start of game
+				# #negative, leans towards war/positive, leans towards peace
+				# (le, reg0, 0), #still no chance of war unless provocation, or at start of game
 			 
-			    (assign, ":hostility", reg0),
+			    # (assign, ":hostility", reg0),
 
-			    (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", ":cur_kingdom", ":cur_kingdom_2"),
+			    # (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", ":cur_kingdom", ":cur_kingdom_2"),
+			    # (le, reg0, 0), #no truce
+
+				# (val_add, ":hostility", reg0), #increase hostility if there is a provocation
+
+				# (val_sub, ":hostility", 1), #greater chance at start of game
+				# (val_add, ":hostility", ":initializing_war_peace_cond"), #this variable = 1 after the start
 				
-			    (le, reg0, 0), #no truce
-
-				(val_add, ":hostility", reg0), #increase hostility if there is a provocation
-
-				(val_sub, ":hostility", 1), #greater chance at start of game
-				(val_add, ":hostility", ":initializing_war_peace_cond"), #this variable = 1 after the start
+				# (store_mul, ":hostility_squared", ":hostility", ":hostility"),
+				# (store_random_in_range, ":random", 0, 50),
+			    # (lt, ":random", ":hostility_squared"),
 				
-				(store_mul, ":hostility_squared", ":hostility", ":hostility"),
-				(store_random_in_range, ":random", 0, 50),
-
-        ##diplomacy begin
-        #check for pact and lower probability if there is one
-        (try_for_range, ":third_kingdom", kingdoms_begin, kingdoms_end),
-          (neq, ":third_kingdom", ":cur_kingdom"),
-          (neq, ":third_kingdom", ":cur_kingdom_2"),
-		  ##nested diplomacy start+  Faction must be active
-		  (faction_slot_eq, ":third_kingdom", slot_faction_state, sfs_active),
-		  ##nested diplomacy end+
-
-          (store_relation, ":cur_relation", ":cur_kingdom_2", ":third_kingdom"),
-    			(ge, ":cur_relation", 0), #AT PEACE
-
-          (store_add, ":truce_slot", ":third_kingdom", slot_faction_truce_days_with_factions_begin),
-      		(val_sub, ":truce_slot", kingdoms_begin),
-      		(faction_get_slot, ":truce_days", ":cur_kingdom_2", ":truce_slot"),
-      		##nested diplomacy start+ replace "40" with a named constant
-      		#(gt, ":truce_days", 40),
-      		(gt, ":truce_days", dplmc_treaty_defense_days_expire),
-      		##nested diplomacy end+
-      		(store_div, ":hostility_change", ":truce_days", 20),
-      		(val_sub, ":hostility_squared", ":hostility_change"),
-        (try_end),
-        ##diplomacy end
-		
-			    (lt, ":random", ":hostility_squared"),
+				# (try_begin),
+					# (eq, "$g_include_diplo_explanation", 0),
+					# (assign, "$g_include_diplo_explanation", ":cur_kingdom"),
+					# (str_store_string, s57, "str_s14"),
+				# (try_end),	
+                # (call_script, "script_diplomacy_start_war_between_kingdoms", ":cur_kingdom", ":cur_kingdom_2", ":initializing_war_peace_cond"),
 				
-				(try_begin),
-					(eq, "$g_include_diplo_explanation", 0),
-					(assign, "$g_include_diplo_explanation", ":cur_kingdom"),
-					(str_store_string, s57, "str_s14"),
-				(try_end),	
-                (call_script, "script_diplomacy_start_war_between_kingdoms", ":cur_kingdom", ":cur_kingdom_2", ":initializing_war_peace_cond"),
-				
-				(try_begin), #do some war damage for 
-					(eq, ":initializing_war_peace_cond", 0),
-					(store_random_in_range, ":war_damage_inflicted", 10, 120),			
-					(store_add, ":slot_war_damage_inflicted", ":cur_kingdom", slot_faction_war_damage_inflicted_on_factions_begin),
-					(val_sub, ":slot_war_damage_inflicted", kingdoms_begin),
-					(faction_set_slot, ":cur_kingdom_2",  ":slot_war_damage_inflicted", ":war_damage_inflicted"),
+				# (try_begin), #do some war damage for 
+					# (eq, ":initializing_war_peace_cond", 0),
+					# (store_random_in_range, ":war_damage_inflicted", 10, 120),			
+					# (store_add, ":slot_war_damage_inflicted", ":cur_kingdom", slot_faction_war_damage_inflicted_on_factions_begin),
+					# (val_sub, ":slot_war_damage_inflicted", kingdoms_begin),
+					# (faction_set_slot, ":cur_kingdom_2",  ":slot_war_damage_inflicted", ":war_damage_inflicted"),
 			
-					(store_add, ":slot_war_damage_inflicted", ":cur_kingdom_2", slot_faction_war_damage_inflicted_on_factions_begin),
-					(val_sub, ":slot_war_damage_inflicted", kingdoms_begin),
-					(faction_set_slot, ":cur_kingdom", ":slot_war_damage_inflicted", ":war_damage_inflicted"),
-				(try_end),
-      ##diplomacy begin
-      (else_try),
-        (ge, ":cur_relation", 0), #AT PEACE
-        (ge, ":kingdom_1_to_kingdom_2", 1),
-
-        #(assign, ":barrier", 2),
-        (store_add, ":faction1_to_faction2_slot", ":cur_kingdom_2", dplmc_slot_faction_attitude_begin),
-        (party_get_slot, ":barrier",":cur_kingdom", ":faction1_to_faction2_slot"),
-
-        (try_for_range, ":third_kingdom", kingdoms_begin, kingdoms_end),
-          (neq, ":third_kingdom", ":cur_kingdom"),
-          (neq, ":third_kingdom", ":cur_kingdom_2"),
-
-          (store_add, ":slot_truce_days", ":cur_kingdom", slot_faction_truce_days_with_factions_begin),
-          (val_sub, ":slot_truce_days", kingdoms_begin),
-          (faction_get_slot, ":truce_days", ":third_kingdom", ":slot_truce_days"),
-          ##nested diplomacy start+ change to use constants
-          #(gt, ":truce_days", 10),
-          (gt, ":truce_days", dplmc_treaty_truce_days_half_done),
-          ##nested diplomacy end+
-          (val_sub, ":barrier", 1),
-
-          (try_begin), #debug
-            (eq, "$cheat_mode", 1),
-            (str_store_faction_name, s5, ":cur_kingdom"),
-            (str_store_faction_name, s6, ":third_kingdom"),
-            (str_store_faction_name, s7, ":cur_kingdom_2"),
-            (display_message, "@{!}DEBUG: {s5} has truce with {s6}. Pact with {s7} is harder!"),
-          (try_end),
-
-        (try_end),
-
-        (val_max, ":barrier", 0),
-        (store_random_in_range, ":random", 0, 130),
-        (le, ":random", ":barrier"),
-
-        (store_add, ":slot_truce_days", ":cur_kingdom", slot_faction_truce_days_with_factions_begin),
-        (val_sub, ":slot_truce_days", kingdoms_begin),
-        (faction_get_slot, ":truce_days", ":cur_kingdom_2", ":slot_truce_days"),
-
-        (store_random_in_range, ":random", 0, 3),
-        (assign, ":continue", 0),
-        (try_begin),
-          ##nested diplomacy start+ change to use constants
-          #(is_between, ":truce_days", 0, 50),
-          (is_between, ":truce_days", 0, dplmc_treaty_defense_days_half_done),#50 = halfway from a defensive alliance to a trade treaty
-          ##nested diplomacy end+
-          (ge, ":cur_relation", 20),
-          (try_begin),
-            (le, ":random", 0), #1/3 for alliance, defensive
-            (assign, ":continue", 1),
-          (try_end),
-        (else_try),
-          ##nested diplomacy start+ change to use constants
-          #(is_between, ":truce_days", 0, 10),
-          (is_between, ":truce_days", 0, dplmc_treaty_truce_days_half_done),#10 = halfway done with a truce
-          ##nested diplomacy end+
-          (ge, ":cur_relation", 10),
-          (try_begin),
-            (le, ":random", 1), #2/3 # for trade
-            (assign, ":continue", 1),
-          (try_end),
-        (else_try),
-          (assign, ":continue", 1),  # for non-aggression
-        (try_end),
-        (eq, ":continue", 1),
-
-        (try_begin),
-		  ##nested diplomacy start+
-		  (call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", ":cur_kingdom_2"),
-		  (this_or_next|ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-		  ##nested diplomacy end+
-          (eq, ":cur_kingdom_2", "fac_player_supporters_faction"),
-          (ge, ":kingdom_1_to_kingdom_2", 1),
-
-          (try_begin),
-            ##nested diplomacy start+ change to use constants
-            #(is_between, ":truce_days", 20, 50),
-            (is_between, ":truce_days", dplmc_treaty_trade_days_expire, dplmc_treaty_defense_days_half_done),
-            ##nested diplomacy end+
-            (ge, ":cur_relation", 30),
-            (faction_slot_eq, ":cur_kingdom", slot_faction_recognized_player, 1), #recognized us
-            (call_script, "script_add_notification_menu", "mnu_dplmc_question_alliance_offer", ":cur_kingdom", 0),
-          (else_try),
-            ##nested diplomacy start+ change to use constants
-            #(is_between, ":truce_days", 0, 30), #you need a non-aggression or trade aggreement for an defensive pact
-            (is_between, ":truce_days", 0, dplmc_treaty_trade_days_half_done),
-            ##nested diplomacy end+
-            (ge, ":cur_relation", 20),
-            (faction_slot_eq, ":cur_kingdom", slot_faction_recognized_player, 1), #recognized us
-            (call_script, "script_add_notification_menu", "mnu_dplmc_question_defensive_offer", ":cur_kingdom", 0),
-          (else_try),
-            ##nested diplomacy start+ change to use constants
-            #(is_between, ":truce_days", 0, 10),
-            (is_between, ":truce_days", 0, dplmc_treaty_truce_days_half_done),
-            ##diplomacy end+
-            (ge, ":cur_relation", 10),
-            (faction_slot_eq, ":cur_kingdom", slot_faction_recognized_player, 1), #recognized us
-            (call_script, "script_add_notification_menu", "mnu_dplmc_question_trade_offer", ":cur_kingdom", 0),
-          (else_try),
-            (eq, ":truce_days", 0),
-            (ge, ":cur_relation", 5),
-            (call_script, "script_add_notification_menu", "mnu_dplmc_question_nonaggression_offer", ":cur_kingdom", 0),
-          (try_end),
-        (else_try),
-          (ge, ":kingdom_1_to_kingdom_2", 1),
-
-          (call_script, "script_npc_decision_checklist_peace_or_war", ":cur_kingdom_2", ":cur_kingdom", -1),
-          (assign, ":kingdom_2_to_kingdom_1", reg0),
-          (ge, ":kingdom_2_to_kingdom_1", 1),
-
-          (try_begin),
-            ##nested diplomacy start+ change to use constants
-            #(is_between, ":truce_days", 20, 50),
-            (is_between, ":truce_days", dplmc_treaty_trade_days_expire, dplmc_treaty_defense_days_half_done),
-            ##nested diplomacy end+
-            (ge, ":cur_relation", 30),
-            (call_script, "script_dplmc_start_alliance_between_kingdoms", ":cur_kingdom", ":cur_kingdom_2", ":initializing_war_peace_cond"),
-          (else_try),
-            ##nested diplomacy start+ change to use constants
-            #(is_between, ":truce_days", 0, 30), #you need a non-aggression or trade aggreement for an defensive pact
-            (is_between, ":truce_days", 0, dplmc_treaty_trade_days_half_done),
-            ##nested diplomacy end+
-            (ge, ":cur_relation", 20),
-            (call_script, "script_dplmc_start_defensive_between_kingdoms", ":cur_kingdom", ":cur_kingdom_2", ":initializing_war_peace_cond"),
-          (else_try),
-            ##nested diplomacy start+ change to use constants
-            #(is_between, ":truce_days", 0, 10),
-            (is_between, ":truce_days", 0, dplmc_treaty_truce_days_half_done),
-            ##nested diplomacy end+
-            (ge, ":cur_relation", 10),
-            (call_script, "script_dplmc_start_trade_between_kingdoms", ":cur_kingdom", ":cur_kingdom_2", ":initializing_war_peace_cond"),
-          (else_try),
-            (eq, ":truce_days", 0),
-            (call_script, "script_dplmc_start_nonaggression_between_kingdoms", ":cur_kingdom", ":cur_kingdom_2", ":initializing_war_peace_cond"),
-          (try_end),
-        (try_end),
-      ##diplomacy end
-            (try_end),
-		(try_end),
-	(try_end),	
+					# (store_add, ":slot_war_damage_inflicted", ":cur_kingdom_2", slot_faction_war_damage_inflicted_on_factions_begin),
+					# (val_sub, ":slot_war_damage_inflicted", kingdoms_begin),
+					# (faction_set_slot, ":cur_kingdom", ":slot_war_damage_inflicted", ":war_damage_inflicted"),
+				# (try_end),
+            # (try_end),
+		# (try_end),
+	# (try_end),	
 	
 	(try_begin),
 		(eq, ":players_kingdom_at_peace", 1),

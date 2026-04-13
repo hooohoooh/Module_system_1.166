@@ -1268,6 +1268,18 @@ items = [
    ["shenlantongxueku", "shenlantongxueku", [("shenlantongxueku",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(8)|difficulty(0) ,imodbits_cloth ],
    ["mufuxiashi", "mufuxiashi", [("mufuxiashi",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(15)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
    ["mufuxiashiku", "mufuxiashiku", [("mufuxiashiku",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(8)|difficulty(0) ,imodbits_cloth ],
+   ["xizhuang", "xizhuang", [("xizhuang",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(15)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
+   ["ghgwaitao", "ghgwaitao", [("ghgwaitao",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(15)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
+   ["ghgarmy", "ghgarmy", [("ghgarmy",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(15)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
+  ["civilian_hat4c", "civilian_hat4c", [("civilian_hat4c",0)], itp_merchandise|itp_type_head_armor   ,0, 940 , weight(1)|abundance(100)|head_armor(12)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
+   ["civilian_hat4d", "civilian_hat4d", [("civilian_hat4d",0)], itp_merchandise|itp_type_head_armor   ,0, 940 , weight(1)|abundance(100)|head_armor(12)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
+   ["heisexiaku", "heisexiaku", [("heisexiaku",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(8)|difficulty(0) ,imodbits_cloth ],
+   ["ghgcap", "ghgcap", [("ghgcap",0)],itp_merchandise|itp_type_head_armor,0,176, weight(1.75)|abundance(100)|head_armor(11)|body_armor(0)|leg_armor(0)|difficulty(0),imodbits_armor],
+   ["ghgdayi", "ghgdayi", [("ghgdayi",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(15)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
+   ["ghgcap2", "ghgcap2", [("ghgcap2",0)],itp_merchandise|itp_type_head_armor,0,176, weight(1.75)|abundance(100)|head_armor(11)|body_armor(0)|leg_armor(0)|difficulty(0),imodbits_armor],
+    ["fanbingmao5", "fanbingmao5", [("fanbingmao5",0)],itp_merchandise|itp_type_head_armor,0,176, weight(1.75)|abundance(100)|head_armor(11)|body_armor(0)|leg_armor(0)|difficulty(0),imodbits_armor],
+   ["xizhuang2", "xizhuang2", [("xizhuang2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs |itp_civilian,0, 91 , weight(1.5)|abundance(100)|head_armor(0)|body_armor(15)|leg_armor(6)|difficulty(0) ,imodbits_cloth ],
+  ["ghg_legs1", "ghg_legs1", [("ghg_legs1",0)],  itp_type_foot_armor  |itp_civilian | itp_attach_armature,0, 90 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(8)|difficulty(0) ,imodbits_cloth ],
  ["items_end", "Items End", [("shield_round_a",0)], 0, 0, 1, 0, 0],
 ]
 

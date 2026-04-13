@@ -63,36 +63,36 @@ factions = [
 
   ("player_faction","Player Faction",0, 0.9, [], []),
   ("player_supporters_faction","Player's Supporters",0, 0.9, [("player_faction",1.00),("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xFF4433), #changed name so that can tell difference if shows up on map
-  ("kingdom_1",   "kingdom_1",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x80FF00),
-  ("kingdom_2",   "kingdom_2",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x6599ff),
-  ("kingdom_3",   "kingdom_3",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x631d77),
-  ("kingdom_4",   "kingdom_4",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x028482),
-  ("kingdom_5",   "kingdom_5",  	0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x005502),
-  ("kingdom_6",   "kingdom_6",  	0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xffde00),
-  ("kingdom_7",   "kingdom_7",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xff3333),
-  ("kingdom_8",   "kingdom_8",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x87dc00),
-  ("kingdom_9",   "kingdom_9",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x7c821e),
-  ("kingdom_10",  "kingdom_10",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xa0a0a0), 
-  ("kingdom_11",  "kingdom_11",   0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x7a4012),
-  ("kingdom_12",  "kingdom_12",   0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x7a3e48),
-  ("kingdom_13",  "kingdom_13",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x93e2d5),
-  ("kingdom_14",  "kingdom_14",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xc3d938),
-  ("kingdom_15",  "kingdom_15",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x800000),
-  ("kingdom_16",  "kingdom_16",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xb186b1), 
-  ("kingdom_17",  "kingdom_17",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xb287b1),
-  ("kingdom_18",  "kingdom_18",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xc186c1),
-  ("kingdom_19",  "kingdom_19",   0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x334db3), 
-  ("kingdom_20",  "kingdom_20",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xcccccc), 
-  ("kingdom_21",  "kingdom_21",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x703E10), 
-  ("kingdom_22",  "kingdom_22",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xFF80FF), 
-  ("kingdom_23",  "kingdom_23",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x913C8E), 
-  ("kingdom_24",  "kingdom_24",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x80FF80), 
-  ("kingdom_25",  "kingdom_25",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x408080), 
-  ("kingdom_26",  "kingdom_26",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x8000FF), 
-  ("kingdom_27",  "kingdom_27",	  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x390000), 
+  ("kingdom_1",  "Uesugi Clan",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x80FF00),
+  ("kingdom_2",  "Date Clan",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x6599ff),
+  ("kingdom_3",  "Oda Clan",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x631d77),
+  ("kingdom_4",  "Mori Clan",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x028482),
+  ("kingdom_5",  "Takeda Clan",  	0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x005502),
+  ("kingdom_6",  "Tokugawa Clan",  	0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xffde00),
+  ("kingdom_7",  "Miyoshi Clan",	0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xff3333),
+  ("kingdom_8",  "Amako Clan",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x87dc00),
+  ("kingdom_9",  "Otomo Clan",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x7c821e),
+  ("kingdom_10",  "Nanbu Clan",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xa0a0a0), #from 0x808080
+  ("kingdom_11",  "Asakura Clan",	0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x7a4012),
+  ("kingdom_12",  "Chosokabe Clan",	0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x7a3e48),
+  ("kingdom_13",  "Hojo Clan",		0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x93e2d5),
+  ("kingdom_14",  "Mogami Clan",	0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xc3d938),
+  ("kingdom_15",  "Shimazu Clan",	0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x800000),
+  ("kingdom_16",  "Ryuzoji Clan",	0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x505050), #from 0x222222
+  ("kingdom_17",  "Satake Clan",	0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xd8b98b),
+  ("kingdom_18",  "Satomi Clan",	0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xc186c1),
+  ("kingdom_19",  "Ukita Clan",     0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x334db3), #from 0x000066
+  ("kingdom_20",  "Ikko Ikki",	    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xcccccc), #from 0xeeeeee
+  ("kingdom_21",  "ceshifan2",	    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x703E10), #from 0xeeeeee
+  ("kingdom_22",  "ceshifan2",	    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xFF80FF), #from 0xeeeeee
+  ("kingdom_23",  "ceshifan3",	    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x913C8E), #from 0xeeeeee
+  ("kingdom_24",  "ceshifan4",	    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x80FF80), #from 0xeeeeee
+  ("kingdom_25",  "ceshifan5",	    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x408080), #from 0xeeeeee
+  ("kingdom_26",  "ceshifan6",	    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x8000FF), #from 0xeeeeee
+  ("kingdom_27",  "ceshifan7",	    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x390000), #from 0xeeeeee
 
 ##  ("kingdom_1_rebels",  "Swadian rebels", 0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xCC2211),
-##  ("kingdom_2_rebels",  "Vaegir rebels",  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xCC2211),
+##  ("kingdom_2_rebels",  "Vaegir rebels",    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xCC2211),
 ##  ("kingdom_3_rebels",  "Khergit rebels", 0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xCC2211),
 ##  ("kingdom_4_rebels",  "Nord rebels",    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xCC2211),
 ##  ("kingdom_5_rebels",  "Rhodok rebels",  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xCC2211),
