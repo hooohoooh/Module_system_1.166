@@ -1410,7 +1410,18 @@ scripts = [
 
       (call_script, "script_give_center_to_lord", "p_castle_24", "trp_knight_24_1", 0),
       (call_script, "script_give_center_to_lord", "p_castle_26", "trp_knight_24_2", 0),
-    
+
+      (call_script, "script_give_center_to_lord", "p_castle_63", "trp_knight_25_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_71", "trp_knight_25_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_65", "trp_kingdom_25_lord", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_79", "trp_knight_26_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_80", "trp_knight_26_2", 0),
+
+      (call_script, "script_give_center_to_lord", "p_castle_32", "trp_knight_27_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_34", "trp_knight_27_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_38", "trp_knight_27_3", 0),
+      
     ##diplomacy start+
     #Add home centers for claimants
       (troop_set_slot, "trp_kingdom_1_pretender", slot_troop_home, "p_town_10"),#Lady Yamanouchi - Niigata
