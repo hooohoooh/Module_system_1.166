@@ -1175,6 +1175,7 @@ scripts = [
   	  #(troop_set_slot, "trp_knight_18_6", slot_troop_banner_scene_prop, "spr_banner_i10"), #takagi exchanges away his banner  
 
 	  #Give centers to factions first, to ensure more equal distributions
+      # Generated from CSV data
       (call_script, "script_give_center_to_faction_aux", "p_town_1", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_town_2", "fac_kingdom_16"),
       (call_script, "script_give_center_to_faction_aux", "p_town_3", "fac_kingdom_15"),
@@ -1280,7 +1281,7 @@ scripts = [
       (call_script, "script_give_center_to_faction_aux", "p_castle_70", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_71", "fac_kingdom_25"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_72", "fac_kingdom_17"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_73", "fac_kingdom_17"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_73", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_74", "fac_kingdom_14"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_75", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_76", "fac_kingdom_1"),
@@ -1293,9 +1294,10 @@ scripts = [
       (call_script, "script_give_center_to_faction_aux", "p_castle_83", "fac_kingdom_2"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_84", "fac_kingdom_8"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_85", "fac_kingdom_5"),
-
+      (call_script, "script_give_center_to_faction_aux", "p_castle_86", "fac_kingdom_6"),
+      
     # Now give towns to great lords
-      (call_script, "script_give_center_to_lord", "p_town_1" , "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_1" , "trp_knight_6_19" , 0), 
       (call_script, "script_give_center_to_lord", "p_town_2" , "trp_kingdom_16_lord", 0), 
       (call_script, "script_give_center_to_lord", "p_town_3" , "trp_kingdom_15_lord", 0), 
       (call_script, "script_give_center_to_lord", "p_town_4" , "trp_kingdom_9_lord" , 0), 
@@ -1310,8 +1312,8 @@ scripts = [
       (call_script, "script_give_center_to_lord", "p_town_13", "trp_knight_19_3", 0), 
       (call_script, "script_give_center_to_lord", "p_town_14", "trp_kingdom_7_lord" , 0), 
       (call_script, "script_give_center_to_lord", "p_town_15", "trp_kingdom_6_lord" , 0), 
-      (call_script, "script_give_center_to_lord", "p_town_16", "trp_kingdom_6_lord" , 0), 
-      (call_script, "script_give_center_to_lord", "p_town_17", "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_16", "trp_knight_6_2" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_17", "trp_knight_6_1" , 0), 
       (call_script, "script_give_center_to_lord", "p_town_18", "trp_kingdom_6_lord" , 0), 
       (call_script, "script_give_center_to_lord", "p_town_19", "trp_kingdom_27_lord", 0), 
       (call_script, "script_give_center_to_lord", "p_town_20", "trp_kingdom_5_lord" , 0), 
@@ -1325,7 +1327,7 @@ scripts = [
       (call_script, "script_give_center_to_lord", "p_town_28", "trp_kingdom_1_lord" , 0), 
       (call_script, "script_give_center_to_lord", "p_town_29", "trp_kingdom_26_lord", 0), 
       (call_script, "script_give_center_to_lord", "p_town_30", "trp_kingdom_17_lord", 0), 
-      (call_script, "script_give_center_to_lord", "p_town_31", "trp_kingdom_6_lord" , 0), 
+      (call_script, "script_give_center_to_lord", "p_town_31", "trp_knight_6_4" , 0), 
       (call_script, "script_give_center_to_lord", "p_town_32", "trp_kingdom_2_lord" , 0), 
       (call_script, "script_give_center_to_lord", "p_town_33", "trp_kingdom_10_lord", 0),
 
@@ -1348,7 +1350,8 @@ scripts = [
       (call_script, "script_give_center_to_lord", "p_castle_36", "trp_knight_5_1", 0),
       (call_script, "script_give_center_to_lord", "p_castle_85", "trp_knight_5_2", 0),
 
-
+      (call_script, "script_give_center_to_lord", "p_castle_73", "trp_knight_6_2", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_86", "trp_knight_6_3", 0),
 
       (call_script, "script_give_center_to_lord", "p_castle_33", "trp_knight_7_1", 0),
       (call_script, "script_give_center_to_lord", "p_castle_29", "trp_knight_7_2", 0),
