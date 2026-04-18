@@ -12101,13 +12101,13 @@ game_menus = [
 	 
 	 #gekokujo 3.0 ikko ikko recruitment start
 	 #kanazawa, ishiyama, nagashima, and joguji all cost 10 because they have monk recruits
-     (try_begin),
-	   (this_or_next|eq, "$current_town", "p_town_8"),
-	   (this_or_next|eq, "$current_town", "p_castle_72"),
-	   (this_or_next|eq, "$current_town", "p_castle_74"),
-	   (eq, "$current_town", "p_castle_75"),
-	   (store_div, ":gold_capacity", ":gold", 10),
-     (try_end),
+     #(try_begin),
+	 #  (this_or_next|eq, "$current_town", "p_town_8"),
+	 #  (this_or_next|eq, "$current_town", "p_castle_72"),
+	 #  (this_or_next|eq, "$current_town", "p_castle_74"),
+	 #  (eq, "$current_town", "p_castle_75"),
+	 #  (store_div, ":gold_capacity", ":gold", 10),
+     #(try_end),
 	 #gekokujo 3.0 ikko ikko recruitment end
 
      (assign, ":party_capacity", ":free_capacity"),
@@ -12120,10 +12120,10 @@ game_menus = [
 	     (eq, "$g_gekokujo_samurai_penalty", 1),
          (this_or_next|party_slot_eq, "$current_town", slot_party_type, spt_castle),
          (party_slot_eq, "$current_town", slot_party_type, spt_town),
-		 (neq, "$current_town", "p_town_8"), #not kanazawa (monks)
-	     (neq, "$current_town", "p_castle_72"), #not nagashima fortress (monks)
-	     (neq, "$current_town", "p_castle_74"), #not ishiyama fortress (monks)
-	     (neq, "$current_town", "p_castle_75"), #not joguji fortress (monks)
+		 #(neq, "$current_town", "p_town_8"), #not kanazawa (monks)
+	     #(neq, "$current_town", "p_castle_72"), #not nagashima fortress (monks)
+	     #(neq, "$current_town", "p_castle_74"), #not ishiyama fortress (monks)
+	     #(neq, "$current_town", "p_castle_75"), #not joguji fortress (monks)
 		 
 		 (val_div, ":party_capacity", 2),
 	   (try_end),
@@ -12152,10 +12152,10 @@ game_menus = [
 			#now it should be by town so only kanazawa + the 3 fortresses have modified costs (10)
 			#toyama castle (p_castle_14) is now treated normally again
 			#(party_slot_eq, "$current_town", slot_center_culture, "fac_culture_20"),
-			(this_or_next|eq, "$current_town", "p_town_8"),
-			(this_or_next|eq, "$current_town", "p_castle_72"),
-			(this_or_next|eq, "$current_town", "p_castle_74"),
-			(eq, "$current_town", "p_castle_75"),
+			#(this_or_next|eq, "$current_town", "p_town_8"),
+			#(this_or_next|eq, "$current_town", "p_castle_72"),
+			#(this_or_next|eq, "$current_town", "p_castle_74"),
+			#(eq, "$current_town", "p_castle_75"),
 		    #gekokujo 3.1 ikko samurai recruitment fix end
 			(store_mul, reg6, ":volunteer_amount", 10),
 			(assign, reg8, 10), #gekokujo -- display cost when recruiting only a single monk
