@@ -9315,7 +9315,8 @@ scripts = [
       (this_or_next|eq, ":village_no", "p_village_151"), 
       (this_or_next|eq, ":village_no", "p_village_152"), 
       (this_or_next|eq, ":village_no", "p_village_158"), 
-      (eq, ":village_no", "p_village_160"), 
+      (this_or_next|eq, ":village_no", "p_village_160"), 
+      (eq, ":village_no", "p_village_162"), 
 	  
 	    (store_random_in_range, ":random_value_between_15_and_20", 15, 20),
 	    (party_set_slot, ":village_no", slot_center_head_sheep, ":random_value_between_15_and_20"),
