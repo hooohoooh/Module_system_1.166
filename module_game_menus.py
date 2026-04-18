@@ -64,7 +64,7 @@ game_menus = [
     [
       ("town_1",[(eq, "$current_startup_quest_phase", 0),],"join a caravan to Praven, in the Kingdom of Swadia.",
        [
-         (assign, "$current_town", "p_town_21"),
+         (assign, "$current_town", "p_town_6"),
          (assign, "$g_starting_town", "$current_town"),
             (call_script, "script_player_arrived"),
             (party_set_morale, "p_main_party", 100),
@@ -86,7 +86,7 @@ game_menus = [
        
       ("town_2",[(eq, "$current_startup_quest_phase", 0),],"join a caravan to Reyvadin, in the Kingdom of the Vaegirs.",
        [
-         (assign, "$current_town", "p_castle_78"),
+         (assign, "$current_town", "p_castle_24"),
          (assign, "$g_starting_town", "$current_town"),
             (call_script, "script_player_arrived"),
             (party_set_morale, "p_main_party", 100),
@@ -108,7 +108,7 @@ game_menus = [
        
       ("town_3",[(eq, "$current_startup_quest_phase", 0),],"join a caravan to Tulga, in the Khergit Khanate.",
        [
-         (assign, "$current_town", "p_town_25"),
+         (assign, "$current_town", "p_town_10"),
          (assign, "$g_starting_town", "$current_town"),
             (call_script, "script_player_arrived"),
             (party_set_morale, "p_main_party", 100),
@@ -130,7 +130,7 @@ game_menus = [
        
       ("town_4",[(eq, "$current_startup_quest_phase", 0),],"take a ship to Sargoth, in the Kingdom of the Nords.",
        [
-         (assign, "$current_town", "p_town_27"),
+         (assign, "$current_town", "p_town_1"),
          (assign, "$g_starting_town", "$current_town"),
             (call_script, "script_player_arrived"),
             (party_set_morale, "p_main_party", 100),
@@ -152,7 +152,7 @@ game_menus = [
        
       ("town_5",[(eq, "$current_startup_quest_phase", 0),],"take a ship to Jelkala, in the Kingdom of the Rhodoks.",
        [
-         (assign, "$current_town", "p_town_16"),
+         (assign, "$current_town", "p_town_5"),
          (assign, "$g_starting_town", "$current_town"),
             (call_script, "script_player_arrived"),
             (party_set_morale, "p_main_party", 100),
@@ -174,7 +174,7 @@ game_menus = [
        
        ("town_6",[(eq, "$current_startup_quest_phase", 0),],"take a ship to Jelkala, in the Kingdom of the Rhodoks.",
        [
-         (assign, "$current_town", "p_town_4"),
+         (assign, "$current_town", "p_town_19"),
          (assign, "$g_starting_town", "$current_town"),
             (call_script, "script_player_arrived"),
             (party_set_morale, "p_main_party", 100),
@@ -14419,10 +14419,10 @@ game_menus = [
       ("zhaobing", 
       [
 		(ge,"$player_honor",10),
-        (this_or_next|eq, "$current_town", "p_town_27"),
-        (this_or_next|eq, "$current_town", "p_town_16"),
-        (this_or_next|eq, "$current_town", "p_town_17"),
-        (this_or_next|eq, "$current_town", "p_town_25"),
+        (this_or_next|eq, "$current_town", "p_town_10"),
+        (this_or_next|eq, "$current_town", "p_town_31"),
+        (this_or_next|eq, "$current_town", "p_town_30"),
+        (this_or_next|eq, "$current_town", "p_town_21"),
         (eq, "$current_town", "p_town_1"),
 		(troop_slot_ge,"trp_player",slot_troop_renown,200),	
 	  ],
@@ -14718,7 +14718,7 @@ game_menus = [
 		(else_try),
 			#Always enable this in Praven for the sake of playability, since
 			#the guild master there is weirdly hard to find.
-			(this_or_next|eq, "$current_town", "p_town_17"),
+			(this_or_next|eq, "$current_town", "p_town_6"),
 			#Also enable in the starting town, to avoid confusing players into
 			#thinking the menu item doesn't exist.
 			(eq, "$g_starting_town", "$current_town"),
@@ -14760,7 +14760,7 @@ game_menus = [
 		(gt, ":guild_master_troop", 0),
 		(eq, "$cheat_mode", 0),
 		(neq, "$g_starting_town", "$current_town"),
-		(neq, "$current_town", "p_town_17"),
+		(neq, "$current_town", "p_town_6"),
 		(troop_slot_eq, ":guild_master_troop", slot_troop_met, 0),
 		(disable_menu_option),
 		],
@@ -20394,27 +20394,27 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (assign, "$town_entered", 1),
          
         (try_begin),
-          (eq, "$current_town", "p_town_27"),
+          (eq, "$current_town", "p_town_1"),
           (assign, ":town_merchant", "trp_edo_merchant"),
           (assign, ":town_room_scene", "scn_town_1_room"),
         (else_try),  
-          (eq, "$current_town", "p_town_16"),
+          (eq, "$current_town", "p_town_5"),
           (assign, ":town_merchant", "trp_sakai_merchant"),
           (assign, ":town_room_scene", "scn_town_5_room"),
         (else_try),  
-          (eq, "$current_town", "p_town_21"),
+          (eq, "$current_town", "p_town_6"),
           (assign, ":town_merchant", "trp_tsu_merchant"),
           (assign, ":town_room_scene", "scn_town_6_room"),
         (else_try),  
-          (eq, "$current_town", "p_castle_78"),
+          (eq, "$current_town", "p_castle_24"),
           (assign, ":town_merchant", "trp_hirosaki_merchant"),
           (assign, ":town_room_scene", "scn_town_18_room"),
         (else_try),  
-          (eq, "$current_town", "p_town_25"),
+          (eq, "$current_town", "p_town_10"),
           (assign, ":town_merchant", "trp_niigata_merchant"),
           (assign, ":town_room_scene", "scn_town_10_room"),
         (else_try),  
-          (eq, "$current_town", "p_town_4"),
+          (eq, "$current_town", "p_town_19"),
           (assign, ":town_merchant", "trp_hakata_merchant"),
           (assign, ":town_room_scene", "scn_town_19_room"),
         (try_end),        
