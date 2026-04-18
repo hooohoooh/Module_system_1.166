@@ -1278,7 +1278,7 @@ scripts = [
       (call_script, "script_give_center_to_faction_aux", "p_castle_67", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_68", "fac_kingdom_14"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_69", "fac_kingdom_10"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_70", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_70", "fac_kingdom_17"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_71", "fac_kingdom_25"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_72", "fac_kingdom_17"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_73", "fac_kingdom_6"),
@@ -1386,7 +1386,7 @@ scripts = [
       (call_script, "script_give_center_to_lord", "p_castle_1" , "trp_knight_16_1", 0),
       (call_script, "script_give_center_to_lord", "p_castle_3" , "trp_knight_16_2", 0),
 
-      (call_script, "script_give_center_to_lord", "p_castle_73", "trp_knight_17_1", 0),
+      (call_script, "script_give_center_to_lord", "p_castle_70", "trp_knight_17_1", 0),
       (call_script, "script_give_center_to_lord", "p_castle_72", "trp_knight_17_2", 0),
 
       (call_script, "script_give_center_to_lord", "p_castle_55", "trp_kingdom_18_lord", 0),
@@ -8983,34 +8983,38 @@ scripts = [
 	
 	#Coastal (Sea Fish, Salt, Offal)
         (try_begin),
-          (this_or_next|eq, ":town_no", "p_town_1"), #Edo
-          (this_or_next|eq, ":town_no", "p_town_2"), #Mito
-          (this_or_next|eq, ":town_no", "p_town_3"), #Choshi
-          (this_or_next|eq, ":town_no", "p_town_5"), #Osaka
-          (this_or_next|eq, ":town_no", "p_town_6"), #Tsu
-          (this_or_next|eq, ":town_no", "p_town_7"), #Himeji
-          (this_or_next|eq, ":town_no", "p_town_8"), #Kanazawa
-          (this_or_next|eq, ":town_no", "p_town_9"), #Kiyosu
-          (this_or_next|eq, ":town_no", "p_town_10"), #Niigata
-          (this_or_next|eq, ":town_no", "p_town_12"), #Takada
-          (this_or_next|eq, ":town_no", "p_town_13"), #Hiroshima
-          (this_or_next|eq, ":town_no", "p_town_14"), #Okayama
-          (this_or_next|eq, ":town_no", "p_town_15"), #Sendai
-          (this_or_next|eq, ":town_no", "p_town_17"), #Kubota
-          (this_or_next|eq, ":town_no", "p_town_18"), #Hirosaki
-          (this_or_next|eq, ":town_no", "p_town_19"), #Hakata
-          (this_or_next|eq, ":town_no", "p_town_20"), #Kagoshima
-          (this_or_next|eq, ":town_no", "p_town_21"), #Nagasaki
-          (this_or_next|eq, ":town_no", "p_town_22"), #Matsuyama
-		  (this_or_next|eq, ":town_no", "p_town_23"), #Odawara
-		  (this_or_next|eq, ":town_no", "p_town_25"), #Hamamatsu
-		  (this_or_next|eq, ":town_no", "p_town_26"), #Ichijodani
-		  (this_or_next|eq, ":town_no", "p_town_27"), #Yamaguchi
-		  (this_or_next|eq, ":town_no", "p_town_28"), #Izumo
-		  (this_or_next|eq, ":town_no", "p_town_29"), #Funai
-		  (this_or_next|eq, ":town_no", "p_town_30"), #Kumamoto
-		  (this_or_next|eq, ":town_no", "p_town_31"), #Kochi
-		  (eq, ":town_no", "p_town_32"), #Tottori
+          (this_or_next|eq, ":town_no", "p_town_1"), 
+          (this_or_next|eq, ":town_no", "p_town_2"), 
+          (this_or_next|eq, ":town_no", "p_town_3"), 
+          (this_or_next|eq, ":town_no", "p_town_4"), 
+          (this_or_next|eq, ":town_no", "p_town_5"), 
+          (this_or_next|eq, ":town_no", "p_town_6"), 
+          #(this_or_next|eq, ":town_no", "p_town_7"), 
+          (this_or_next|eq, ":town_no", "p_town_8"), 
+          (this_or_next|eq, ":town_no", "p_town_9"),
+          (this_or_next|eq, ":town_no", "p_town_10"), 
+          (this_or_next|eq, ":town_no", "p_town_11"), 
+          (this_or_next|eq, ":town_no", "p_town_12"), 
+          (this_or_next|eq, ":town_no", "p_town_13"), 
+          (this_or_next|eq, ":town_no", "p_town_14"), 
+          (this_or_next|eq, ":town_no", "p_town_15"), 
+          (this_or_next|eq, ":town_no", "p_town_16"), 
+          (this_or_next|eq, ":town_no", "p_town_17"), 
+          #(this_or_next|eq, ":town_no", "p_town_18"), 
+          #(this_or_next|eq, ":town_no", "p_town_19"),
+          (this_or_next|eq, ":town_no", "p_town_20"), 
+          (this_or_next|eq, ":town_no", "p_town_21"), 
+          (this_or_next|eq, ":town_no", "p_town_22"), 
+          (this_or_next|eq, ":town_no", "p_town_23"), 
+          (this_or_next|eq, ":town_no", "p_town_24"), 
+          (this_or_next|eq, ":town_no", "p_town_25"), 
+          (this_or_next|eq, ":town_no", "p_town_26"), 
+          (this_or_next|eq, ":town_no", "p_town_27"), 
+          #(this_or_next|eq, ":town_no", "p_town_28"), 
+          (this_or_next|eq, ":town_no", "p_town_29"),
+          (this_or_next|eq, ":town_no", "p_town_30"), 
+          (this_or_next|eq, ":town_no", "p_town_31"), 
+                       (eq, ":town_no", "p_town_32"), 
 	  
 	      (store_random_in_range, ":random_value_between_5_and_30", 5, 30),
 	      (party_set_slot, ":town_no", slot_center_fishing_fleet, ":random_value_between_5_and_30"),
@@ -9082,79 +9086,167 @@ scripts = [
 	
 	  #Coastal (Sea Fish)
 	  (try_begin),
-        (this_or_next|eq, ":village_no", "p_village_1"), #Yokohama
-        (this_or_next|eq, ":village_no", "p_village_4"), #Kamakura
-        (this_or_next|eq, ":village_no", "p_village_5"), #Yokosuka
-        (this_or_next|eq, ":village_no", "p_village_6"), #Naka
-        (this_or_next|eq, ":village_no", "p_village_9"), #Asahi
-        (this_or_next|eq, ":village_no", "p_village_14"), #Kimitsu
-        (this_or_next|eq, ":village_no", "p_village_18"), #Sakai
-        (this_or_next|eq, ":village_no", "p_village_22"), #Matsusaka
-        (this_or_next|eq, ":village_no", "p_village_27"), #Izushi
-        (this_or_next|eq, ":village_no", "p_village_32"), #Tsu
-        (this_or_next|eq, ":village_no", "p_village_33"), #Wajima
-        (this_or_next|eq, ":village_no", "p_village_34"), #Hakui
-        (this_or_next|eq, ":village_no", "p_village_35"), #Kahoku
-        (this_or_next|eq, ":village_no", "p_village_36"), #Komatsu
-        (this_or_next|eq, ":village_no", "p_village_38"), #Chita
-        (this_or_next|eq, ":village_no", "p_village_39"), #Aisai
-        (this_or_next|eq, ":village_no", "p_village_40"), #Murakami
-        (this_or_next|eq, ":village_no", "p_village_45"), #Kashiwazaki
-        (this_or_next|eq, ":village_no", "p_village_47"), #Toyohashi
-        (this_or_next|eq, ":village_no", "p_village_48"), #Toyama
-        (this_or_next|eq, ":village_no", "p_village_50"), #Fukui
-        (this_or_next|eq, ":village_no", "p_village_54"), #Shizuoka
-        (this_or_next|eq, ":village_no", "p_village_57"), #Iwakuni
-        (this_or_next|eq, ":village_no", "p_village_59"), #Takehara
-        (this_or_next|eq, ":village_no", "p_village_60"), #Kurashiki
-        (this_or_next|eq, ":village_no", "p_village_61"), #Setouchi
-        (this_or_next|eq, ":village_no", "p_village_62"), #Kasaoka
-        (this_or_next|eq, ":village_no", "p_village_64"), #Yoshiwara
-        (this_or_next|eq, ":village_no", "p_village_65"), #Hamada
-        (this_or_next|eq, ":village_no", "p_village_69"), #Shimonseki
-        (this_or_next|eq, ":village_no", "p_village_70"), #Iwanuma
-        (this_or_next|eq, ":village_no", "p_village_71"), #Matsushima
-        (this_or_next|eq, ":village_no", "p_village_77"), #Katagami
-        (this_or_next|eq, ":village_no", "p_village_78"), #Noshiro
-        (this_or_next|eq, ":village_no", "p_village_79"), #Utou
-        (this_or_next|eq, ":village_no", "p_village_81"), #Hachinohe
-        (this_or_next|eq, ":village_no", "p_village_86"), #Tsuruoka
-        (this_or_next|eq, ":village_no", "p_village_87"), #Iwaki
-        (this_or_next|eq, ":village_no", "p_village_89"), #Fukuoka
-        (this_or_next|eq, ":village_no", "p_village_90"), #Itoshima
-        (this_or_next|eq, ":village_no", "p_village_92"), #Ibusuki
-        (this_or_next|eq, ":village_no", "p_village_93"), #Kirishima
-        (this_or_next|eq, ":village_no", "p_village_94"), #Kanoya
-        (this_or_next|eq, ":village_no", "p_village_95"), #Sasebo
-        (this_or_next|eq, ":village_no", "p_village_96"), #Unzen
-        (this_or_next|eq, ":village_no", "p_village_97"), #Hirado
-        (this_or_next|eq, ":village_no", "p_village_98"), #Kitakyushu
-        (this_or_next|eq, ":village_no", "p_village_100"), #Miyazaki
-        (this_or_next|eq, ":village_no", "p_village_102"), #Sashiki
-        (this_or_next|eq, ":village_no", "p_village_103"), #Yanagawa
-        (this_or_next|eq, ":village_no", "p_village_104"), #Saijo
-        (this_or_next|eq, ":village_no", "p_village_106"), #Iyo
-        (this_or_next|eq, ":village_no", "p_village_107"), #Uwajima
-        (this_or_next|eq, ":village_no", "p_village_108"), #Kochi
-        (this_or_next|eq, ":village_no", "p_village_109"), #Tokushima
-        (this_or_next|eq, ":village_no", "p_village_110"), #Takamatsu
-        (this_or_next|eq, ":village_no", "p_village_116"), #Nishi
-        (this_or_next|eq, ":village_no", "p_village_119"), #Echizen
-        (this_or_next|eq, ":village_no", "p_village_121"), #Ube
-        (this_or_next|eq, ":village_no", "p_village_122"), #Hofu
-        (this_or_next|eq, ":village_no", "p_village_123"), #Tokuyama
-        (this_or_next|eq, ":village_no", "p_village_124"), #Mihonoseki
-        (this_or_next|eq, ":village_no", "p_village_125"), #Kurayoshi
-        (this_or_next|eq, ":village_no", "p_village_127"), #Oita
-        (this_or_next|eq, ":village_no", "p_village_130"), #Tamana
-        (this_or_next|eq, ":village_no", "p_village_131"), #Yatsushiro
-        (this_or_next|eq, ":village_no", "p_village_133"), #Nankoku
-        (this_or_next|eq, ":village_no", "p_village_134"), #Aki
-        (this_or_next|eq, ":village_no", "p_village_135"), #Susaki
-        (this_or_next|eq, ":village_no", "p_village_137"), #Konodai
-        (this_or_next|eq, ":village_no", "p_village_140"), #Sunpu
-        (this_or_next|eq, ":village_no", "p_village_147"), #Takahashi
-        (eq, ":village_no", "p_village_148"), #Kurayoshi
+        (this_or_next|eq, ":village_no", "p_village_1"), 
+        (this_or_next|eq, ":village_no", "p_village_2"), 
+        (this_or_next|eq, ":village_no", "p_village_3"), 
+        (this_or_next|eq, ":village_no", "p_village_4"), 
+        (this_or_next|eq, ":village_no", "p_village_5"), 
+        (this_or_next|eq, ":village_no", "p_village_6"), 
+        (this_or_next|eq, ":village_no", "p_village_7"), 
+        (this_or_next|eq, ":village_no", "p_village_8"), 
+        (this_or_next|eq, ":village_no", "p_village_9"), 
+        (this_or_next|eq, ":village_no", "p_village_10"), 
+        (this_or_next|eq, ":village_no", "p_village_11"), 
+        #(this_or_next|eq, ":village_no", "p_village_12"), 
+        #(this_or_next|eq, ":village_no", "p_village_13"), 
+        (this_or_next|eq, ":village_no", "p_village_14"), 
+        #(this_or_next|eq, ":village_no", "p_village_15"), 
+        (this_or_next|eq, ":village_no", "p_village_16"), 
+        (this_or_next|eq, ":village_no", "p_village_17"), 
+        (this_or_next|eq, ":village_no", "p_village_18"), 
+        (this_or_next|eq, ":village_no", "p_village_19"), 
+        #(this_or_next|eq, ":village_no", "p_village_20"), 
+        (this_or_next|eq, ":village_no", "p_village_21"), 
+        (this_or_next|eq, ":village_no", "p_village_22"), 
+        (this_or_next|eq, ":village_no", "p_village_23"), 
+        (this_or_next|eq, ":village_no", "p_village_24"), 
+        (this_or_next|eq, ":village_no", "p_village_25"), 
+        (this_or_next|eq, ":village_no", "p_village_26"), 
+        (this_or_next|eq, ":village_no", "p_village_27"), 
+        (this_or_next|eq, ":village_no", "p_village_28"), 
+        (this_or_next|eq, ":village_no", "p_village_29"),  
+        (this_or_next|eq, ":village_no", "p_village_30"), 
+        (this_or_next|eq, ":village_no", "p_village_31"), 
+        (this_or_next|eq, ":village_no", "p_village_32"), 
+        #(this_or_next|eq, ":village_no", "p_village_33"), 
+        (this_or_next|eq, ":village_no", "p_village_34"), 
+        (this_or_next|eq, ":village_no", "p_village_35"), 
+        (this_or_next|eq, ":village_no", "p_village_36"), 
+        (this_or_next|eq, ":village_no", "p_village_37"), 
+        (this_or_next|eq, ":village_no", "p_village_38"), 
+        (this_or_next|eq, ":village_no", "p_village_39"), 
+        (this_or_next|eq, ":village_no", "p_village_40"), 
+        (this_or_next|eq, ":village_no", "p_village_41"), 
+        (this_or_next|eq, ":village_no", "p_village_42"), 
+        (this_or_next|eq, ":village_no", "p_village_43"), 
+        #(this_or_next|eq, ":village_no", "p_village_44"), 
+        (this_or_next|eq, ":village_no", "p_village_45"), 
+        (this_or_next|eq, ":village_no", "p_village_46"), 
+        (this_or_next|eq, ":village_no", "p_village_47"), 
+        #(this_or_next|eq, ":village_no", "p_village_48"), 
+        (this_or_next|eq, ":village_no", "p_village_49"), 
+        (this_or_next|eq, ":village_no", "p_village_40"), 
+        (this_or_next|eq, ":village_no", "p_village_51"), 
+        #(this_or_next|eq, ":village_no", "p_village_52"), 
+        #(this_or_next|eq, ":village_no", "p_village_53"), 
+        (this_or_next|eq, ":village_no", "p_village_54"), 
+        (this_or_next|eq, ":village_no", "p_village_55"), 
+        #(this_or_next|eq, ":village_no", "p_village_56"), 
+        (this_or_next|eq, ":village_no", "p_village_57"), 
+        (this_or_next|eq, ":village_no", "p_village_58"), 
+        (this_or_next|eq, ":village_no", "p_village_59"),  
+        (this_or_next|eq, ":village_no", "p_village_50"), 
+        (this_or_next|eq, ":village_no", "p_village_61"), 
+        (this_or_next|eq, ":village_no", "p_village_62"), 
+        #(this_or_next|eq, ":village_no", "p_village_63"), 
+        #(this_or_next|eq, ":village_no", "p_village_64"), 
+        #(this_or_next|eq, ":village_no", "p_village_65"), 
+        #(this_or_next|eq, ":village_no", "p_village_66"), 
+        #(this_or_next|eq, ":village_no", "p_village_67"), 
+        #(this_or_next|eq, ":village_no", "p_village_68"), 
+        #(this_or_next|eq, ":village_no", "p_village_69"),
+        #(this_or_next|eq, ":village_no", "p_village_70"), 
+        #(this_or_next|eq, ":village_no", "p_village_71"), 
+        #(this_or_next|eq, ":village_no", "p_village_72"), 
+        #(this_or_next|eq, ":village_no", "p_village_73"), 
+        (this_or_next|eq, ":village_no", "p_village_74"), 
+        (this_or_next|eq, ":village_no", "p_village_75"), 
+        (this_or_next|eq, ":village_no", "p_village_76"), 
+        #(this_or_next|eq, ":village_no", "p_village_77"), 
+        (this_or_next|eq, ":village_no", "p_village_78"), 
+        #(this_or_next|eq, ":village_no", "p_village_79"), 
+        #(this_or_next|eq, ":village_no", "p_village_80"), 
+        (this_or_next|eq, ":village_no", "p_village_81"), 
+        (this_or_next|eq, ":village_no", "p_village_82"), 
+        (this_or_next|eq, ":village_no", "p_village_83"), 
+        (this_or_next|eq, ":village_no", "p_village_84"), 
+        (this_or_next|eq, ":village_no", "p_village_85"), 
+        (this_or_next|eq, ":village_no", "p_village_86"), 
+        (this_or_next|eq, ":village_no", "p_village_87"), 
+        (this_or_next|eq, ":village_no", "p_village_88"), 
+        #(this_or_next|eq, ":village_no", "p_village_89"),  
+        (this_or_next|eq, ":village_no", "p_village_90"), 
+        #(this_or_next|eq, ":village_no", "p_village_91"), 
+        (this_or_next|eq, ":village_no", "p_village_92"), 
+        #(this_or_next|eq, ":village_no", "p_village_93"), 
+        (this_or_next|eq, ":village_no", "p_village_94"), 
+        #(this_or_next|eq, ":village_no", "p_village_95"), 
+        #(this_or_next|eq, ":village_no", "p_village_96"), 
+        (this_or_next|eq, ":village_no", "p_village_97"), 
+        (this_or_next|eq, ":village_no", "p_village_98"), 
+        #(this_or_next|eq, ":village_no", "p_village_99"), 
+        #(this_or_next|eq, ":village_no", "p_village_100"), 
+        #(this_or_next|eq, ":village_no", "p_village_101"), 
+        (this_or_next|eq, ":village_no", "p_village_102"), 
+        (this_or_next|eq, ":village_no", "p_village_103"), 
+        (this_or_next|eq, ":village_no", "p_village_104"), 
+        #(this_or_next|eq, ":village_no", "p_village_105"), 
+        #(this_or_next|eq, ":village_no", "p_village_106"), 
+        (this_or_next|eq, ":village_no", "p_village_107"), 
+        #(this_or_next|eq, ":village_no", "p_village_108"), 
+        (this_or_next|eq, ":village_no", "p_village_109"), 
+        #(this_or_next|eq, ":village_no", "p_village_110"), 
+        #(this_or_next|eq, ":village_no", "p_village_111"), 
+        #(this_or_next|eq, ":village_no", "p_village_112"), 
+        (this_or_next|eq, ":village_no", "p_village_113"), 
+        #(this_or_next|eq, ":village_no", "p_village_114"), 
+        (this_or_next|eq, ":village_no", "p_village_115"), 
+        (this_or_next|eq, ":village_no", "p_village_116"), 
+        #(this_or_next|eq, ":village_no", "p_village_117"), 
+        #(this_or_next|eq, ":village_no", "p_village_118"), 
+        (this_or_next|eq, ":village_no", "p_village_119"), 
+        #(this_or_next|eq, ":village_no", "p_village_120"), 
+        #(this_or_next|eq, ":village_no", "p_village_121"), 
+        #(this_or_next|eq, ":village_no", "p_village_122"), 
+        #(this_or_next|eq, ":village_no", "p_village_123"), 
+        (this_or_next|eq, ":village_no", "p_village_124"), 
+        #(this_or_next|eq, ":village_no", "p_village_125"), 
+        (this_or_next|eq, ":village_no", "p_village_126"), 
+        #(this_or_next|eq, ":village_no", "p_village_127"), 
+        (this_or_next|eq, ":village_no", "p_village_128"), 
+        (this_or_next|eq, ":village_no", "p_village_129"), 
+        (this_or_next|eq, ":village_no", "p_village_130"), 
+        #(this_or_next|eq, ":village_no", "p_village_131"), 
+        #(this_or_next|eq, ":village_no", "p_village_132"), 
+        #(this_or_next|eq, ":village_no", "p_village_133"), 
+        #(this_or_next|eq, ":village_no", "p_village_134"), 
+        #(this_or_next|eq, ":village_no", "p_village_135"), 
+        #(this_or_next|eq, ":village_no", "p_village_136"), 
+        #(this_or_next|eq, ":village_no", "p_village_137"), 
+        (this_or_next|eq, ":village_no", "p_village_138"), 
+        #(this_or_next|eq, ":village_no", "p_village_139"), 
+        (this_or_next|eq, ":village_no", "p_village_140"), 
+        (this_or_next|eq, ":village_no", "p_village_141"), 
+        #(this_or_next|eq, ":village_no", "p_village_142"), 
+        (this_or_next|eq, ":village_no", "p_village_143"), 
+        #(this_or_next|eq, ":village_no", "p_village_144"), 
+        (this_or_next|eq, ":village_no", "p_village_145"), 
+        #(this_or_next|eq, ":village_no", "p_village_146"), 
+        (this_or_next|eq, ":village_no", "p_village_147"), 
+        (this_or_next|eq, ":village_no", "p_village_148"), 
+        (this_or_next|eq, ":village_no", "p_village_149"), 
+        (this_or_next|eq, ":village_no", "p_village_150"), 
+        #(this_or_next|eq, ":village_no", "p_village_151"), 
+        #(this_or_next|eq, ":village_no", "p_village_152"), 
+        (this_or_next|eq, ":village_no", "p_village_153"), 
+        (this_or_next|eq, ":village_no", "p_village_154"), 
+        (this_or_next|eq, ":village_no", "p_village_155"), 
+        (this_or_next|eq, ":village_no", "p_village_156"), 
+        (this_or_next|eq, ":village_no", "p_village_157"), 
+        #(this_or_next|eq, ":village_no", "p_village_158"), 
+        (this_or_next|eq, ":village_no", "p_village_159"),
+        #(this_or_next|eq, ":village_no", "p_village_160"), 
+                     (eq, ":village_no", "p_village_161"), 
 	  
 	    (store_random_in_range, ":random_value_between_15_and_20", 15, 20),
 	    (party_set_slot, ":village_no", slot_center_fishing_fleet, ":random_value_between_15_and_20"),
@@ -9162,26 +9254,68 @@ scripts = [
 	
 	  #Riverine (River Fish, Eels)
 	  (try_begin),
-	    (this_or_next|eq, ":village_no", "p_village_3"), #Saitama
-        (this_or_next|eq, ":village_no", "p_village_8"), #Katori
-        (this_or_next|eq, ":village_no", "p_village_13"), #Sakasai
-        (this_or_next|eq, ":village_no", "p_village_15"), #Ibaraki
-        (this_or_next|eq, ":village_no", "p_village_20"), #Ashiya
-        (this_or_next|eq, ":village_no", "p_village_26"), #Hyogo
-        (this_or_next|eq, ":village_no", "p_village_28"), #Azuchi
-        (this_or_next|eq, ":village_no", "p_village_37"), #Ichinomiya
-        (this_or_next|eq, ":village_no", "p_village_41"), #Tsubame
-        (this_or_next|eq, ":village_no", "p_village_44"), #Chuo
-        (this_or_next|eq, ":village_no", "p_village_49"), #Nagaoka
-        (this_or_next|eq, ":village_no", "p_village_71"), #Matsushima
-        (this_or_next|eq, ":village_no", "p_village_82"), #Morioka
-        (this_or_next|eq, ":village_no", "p_village_83"), #Ichinoseki
-        (this_or_next|eq, ":village_no", "p_village_91"), #Chikushino
-        (this_or_next|eq, ":village_no", "p_village_103"), #Yanagawa
-        (this_or_next|eq, ":village_no", "p_village_111"), #Kawaguchi
-        (this_or_next|eq, ":village_no", "p_village_112"), #Shiki
-        (this_or_next|eq, ":village_no", "p_village_116"), #Nishi
-        (eq, ":village_no", "p_village_117"), #Kosai
+      (this_or_next|eq, ":village_no", "p_village_12"), 
+      (this_or_next|eq, ":village_no", "p_village_13"), 
+      (this_or_next|eq, ":village_no", "p_village_15"), 
+      (this_or_next|eq, ":village_no", "p_village_20"), 
+      (this_or_next|eq, ":village_no", "p_village_33"), 
+      (this_or_next|eq, ":village_no", "p_village_44"), 
+      (this_or_next|eq, ":village_no", "p_village_48"), 
+      (this_or_next|eq, ":village_no", "p_village_52"), 
+      (this_or_next|eq, ":village_no", "p_village_53"), 
+      (this_or_next|eq, ":village_no", "p_village_56"), 
+      (this_or_next|eq, ":village_no", "p_village_63"), 
+      (this_or_next|eq, ":village_no", "p_village_64"), 
+      (this_or_next|eq, ":village_no", "p_village_65"), 
+      (this_or_next|eq, ":village_no", "p_village_66"), 
+      (this_or_next|eq, ":village_no", "p_village_67"), 
+      (this_or_next|eq, ":village_no", "p_village_68"), 
+      (this_or_next|eq, ":village_no", "p_village_69"),
+      (this_or_next|eq, ":village_no", "p_village_70"), 
+      (this_or_next|eq, ":village_no", "p_village_71"), 
+      (this_or_next|eq, ":village_no", "p_village_72"), 
+      (this_or_next|eq, ":village_no", "p_village_73"), 
+      (this_or_next|eq, ":village_no", "p_village_77"), 
+      (this_or_next|eq, ":village_no", "p_village_79"), 
+      (this_or_next|eq, ":village_no", "p_village_80"), 
+      (this_or_next|eq, ":village_no", "p_village_89"),
+      (this_or_next|eq, ":village_no", "p_village_91"), 
+      (this_or_next|eq, ":village_no", "p_village_93"), 
+      (this_or_next|eq, ":village_no", "p_village_95"), 
+      (this_or_next|eq, ":village_no", "p_village_96"), 
+      (this_or_next|eq, ":village_no", "p_village_99"), 
+      (this_or_next|eq, ":village_no", "p_village_100"), 
+      (this_or_next|eq, ":village_no", "p_village_101"), 
+      (this_or_next|eq, ":village_no", "p_village_105"), 
+      (this_or_next|eq, ":village_no", "p_village_106"), 
+      (this_or_next|eq, ":village_no", "p_village_108"), 
+      (this_or_next|eq, ":village_no", "p_village_110"), 
+      (this_or_next|eq, ":village_no", "p_village_111"), 
+      (this_or_next|eq, ":village_no", "p_village_112"), 
+      (this_or_next|eq, ":village_no", "p_village_114"), 
+      (this_or_next|eq, ":village_no", "p_village_117"), 
+      (this_or_next|eq, ":village_no", "p_village_118"), 
+      (this_or_next|eq, ":village_no", "p_village_120"), 
+      (this_or_next|eq, ":village_no", "p_village_121"), 
+      (this_or_next|eq, ":village_no", "p_village_122"), 
+      (this_or_next|eq, ":village_no", "p_village_123"), 
+      (this_or_next|eq, ":village_no", "p_village_125"), 
+      (this_or_next|eq, ":village_no", "p_village_127"), 
+      (this_or_next|eq, ":village_no", "p_village_131"), 
+      (this_or_next|eq, ":village_no", "p_village_132"), 
+      (this_or_next|eq, ":village_no", "p_village_133"), 
+      (this_or_next|eq, ":village_no", "p_village_134"), 
+      (this_or_next|eq, ":village_no", "p_village_135"), 
+      (this_or_next|eq, ":village_no", "p_village_136"), 
+      (this_or_next|eq, ":village_no", "p_village_137"), 
+      (this_or_next|eq, ":village_no", "p_village_139"), 
+      (this_or_next|eq, ":village_no", "p_village_142"), 
+      (this_or_next|eq, ":village_no", "p_village_144"), 
+      (this_or_next|eq, ":village_no", "p_village_146"), 
+      (this_or_next|eq, ":village_no", "p_village_151"), 
+      (this_or_next|eq, ":village_no", "p_village_152"), 
+      (this_or_next|eq, ":village_no", "p_village_158"), 
+      (eq, ":village_no", "p_village_160"), 
 	  
 	    (store_random_in_range, ":random_value_between_15_and_20", 15, 20),
 	    (party_set_slot, ":village_no", slot_center_head_sheep, ":random_value_between_15_and_20"),
@@ -9189,17 +9323,24 @@ scripts = [
 	
 	#Frontier (Furs)
 	  (try_begin),
-        (this_or_next|eq, ":village_no", "p_village_72"), #Osaki
-        (this_or_next|eq, ":village_no", "p_village_74"), #Nagai
-        (this_or_next|eq, ":village_no", "p_village_75"), #Nanyo
-        (this_or_next|eq, ":village_no", "p_village_77"), #Katagami
-        (this_or_next|eq, ":village_no", "p_village_78"), #Noshiro
-        (this_or_next|eq, ":village_no", "p_village_79"), #Utou
-        (this_or_next|eq, ":village_no", "p_village_80"), #Hirakawa
-        (this_or_next|eq, ":village_no", "p_village_81"), #Hachinohe
-        (this_or_next|eq, ":village_no", "p_village_84"), #Yamagata
-        (this_or_next|eq, ":village_no", "p_village_88"), #Yokote
-        (eq, ":village_no", "p_village_149"), #Aizu
+        (this_or_next|eq, ":village_no", "p_village_132"), 
+        (this_or_next|eq, ":village_no", "p_village_141"), 
+        (this_or_next|eq, ":village_no", "p_village_150"), 
+        (this_or_next|eq, ":village_no", "p_village_140"), 
+        (this_or_next|eq, ":village_no", "p_village_130"), 
+        (this_or_next|eq, ":village_no", "p_village_128"), 
+        (this_or_next|eq, ":village_no", "p_village_146"), 
+        (this_or_next|eq, ":village_no", "p_village_136"), 
+        (this_or_next|eq, ":village_no", "p_village_144"), 
+        (this_or_next|eq, ":village_no", "p_village_147"), 
+        (this_or_next|eq, ":village_no", "p_village_124"), 
+        (this_or_next|eq, ":village_no", "p_village_137"), 
+        (this_or_next|eq, ":village_no", "p_village_131"), 
+        (this_or_next|eq, ":village_no", "p_village_125"), 
+        (this_or_next|eq, ":village_no", "p_village_139"), 
+        (this_or_next|eq, ":village_no", "p_village_143"), 
+        (this_or_next|eq, ":village_no", "p_village_117"), 
+        (eq, ":village_no", "p_village_137"),
 	  
 	    (store_random_in_range, ":random_value_between_1_and_5", 1, 5),
 	    (party_set_slot, ":village_no", slot_center_fur_traps, ":random_value_between_1_and_5"),
@@ -9207,9 +9348,10 @@ scripts = [
 	
 	#Iron (Iron)
 	  (try_begin),
-        (this_or_next|eq, ":village_no", "p_village_82"), #Akitakata
-        (this_or_next|eq, ":village_no", "p_village_58"), #Morioka
-        (eq, ":village_no", "p_village_111"), #Kawaguchi
+        (this_or_next|eq, ":village_no", "p_village_148"),
+        (this_or_next|eq, ":village_no", "p_village_150"),
+        (this_or_next|eq, ":village_no", "p_village_153"),
+        (eq, ":village_no", "p_village_126"), 
 	  
 	    (store_random_in_range, ":random_value_between_10_and_20", 10, 20),
 	    (party_set_slot, ":village_no", slot_center_iron_deposits, ":random_value_between_10_and_20"),
