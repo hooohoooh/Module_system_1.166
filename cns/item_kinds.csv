@@ -1,5 +1,5 @@
-itm_no_item|INVALID ITEM{***}
-itm_no_item_pl|INVALID ITEM{***}
+itm_no_item|无 效 项 目 
+itm_no_item_pl|INVALID ITEM
 itm_tutorial_spear|矛 
 itm_tutorial_spear_pl|矛 
 itm_tutorial_club|棍 棒 
@@ -558,6 +558,18 @@ itm_gekokujo_tatami_half_2|畳 胴 腹 当
 itm_gekokujo_tatami_half_2_pl|畳 胴 腹 当 
 itm_gekokujo_tatami_half_3|畳 胴 腹 当 
 itm_gekokujo_tatami_half_3_pl|畳 胴 腹 当 
+itm_gekokujo_okegawa_half_1|桶 侧 腹 当 
+itm_gekokujo_okegawa_half_1_pl|桶 侧 腹 当 
+itm_gekokujo_okegawa_half_2|桶 侧 腹 当 
+itm_gekokujo_okegawa_half_2_pl|桶 侧 腹 当 
+itm_gekokujo_okegawa_half_3|桶 侧 腹 当 
+itm_gekokujo_okegawa_half_3_pl|桶 侧 腹 当 
+itm_gekokujo_okegawa_half_4|桶 侧 腹 当 
+itm_gekokujo_okegawa_half_4_pl|桶 侧 腹 当 
+itm_gekokujo_okegawa_half_5|桶 侧 腹 当 
+itm_gekokujo_okegawa_half_5_pl|桶 侧 腹 当 
+itm_gekokujo_okegawa_half_6|桶 侧 腹 当 
+itm_gekokujo_okegawa_half_6_pl|桶 侧 腹 当 
 itm_gekokujo_okegawa_half_uesugi|上 杉 腹 当 
 itm_gekokujo_okegawa_half_uesugi_pl|上 杉 腹 当 
 itm_gekokujo_okegawa_half_date|伊 达 腹 当 
@@ -1180,7 +1192,535 @@ itm_calradia_broken_sword|断 剑 （ 重 铸 ）
 itm_calradia_broken_sword_pl|断 剑 （ 重 铸 ） 
 itm_calradia_steel_sword|剑 
 itm_calradia_steel_sword_pl|剑 
-itm_gekokujo_tekko_2|皮 手 套 
-itm_gekokujo_tekko_2_pl|皮 手 套 
-itm_items_end|Items End{***}
-itm_items_end_pl|Items End{***}
+itm_lianduibubing|联 队 步 兵 服 
+itm_lianduibubing_pl|联 队 步 兵 服 
+itm_mufbb|幕 府 步 兵 服 
+itm_mufbb_pl|幕 府 步 兵 服 
+itm_mufbbkuzi|幕 府 步 兵 裤 
+itm_mufbbkuzi_pl|幕 府 步 兵 裤 
+itm_samokuzi|萨 摩 步 兵 裤 
+itm_samokuzi_pl|萨 摩 步 兵 裤 
+itm_samo_infanrty|萨 摩 步 兵 服 
+itm_samo_infanrty_pl|萨 摩 步 兵 服 
+itm_fanbingmao1|藩 兵 帽 
+itm_fanbingmao1_pl|藩 兵 帽 
+itm_fanshizhenli|藩 士 阵 笠 
+itm_fanshizhenli_pl|藩 士 阵 笠 
+itm_enfield1853|恩 菲 尔 德 1853式 步 枪 
+itm_enfield1853_pl|恩 菲 尔 德 1853式 步 枪 
+itm_fanshizhenli2|藩 士 阵 笠 
+itm_fanshizhenli2_pl|藩 士 阵 笠 
+itm_changzhou_infanrty|长 州 步 兵 服 
+itm_changzhou_infanrty_pl|长 州 步 兵 服 
+itm_changzhoukuzi|长 州 步 兵 裤 
+itm_changzhoukuzi_pl|长 州 步 兵 裤 
+itm_fanbingmao|藩 兵 帽 
+itm_fanbingmao_pl|藩 兵 帽 
+itm_mufuinfanrty|幕 府 步 兵 服 
+itm_mufuinfanrty_pl|幕 府 步 兵 服 
+itm_mufuinfanrtykuzi|幕 府 步 兵 裤 
+itm_mufuinfanrtykuzi_pl|幕 府 步 兵 裤 
+itm_mufuinfanrty2|幕 府 步 兵 服 
+itm_mufuinfanrty2_pl|幕 府 步 兵 服 
+itm_weixin_hat5|维 新 步 兵 帽 
+itm_weixin_hat5_pl|维 新 步 兵 帽 
+itm_mufulianduicap|幕 府 联 队 帽 
+itm_mufulianduicap_pl|幕 府 联 队 帽 
+itm_mufbb2|幕 府 步 兵 服 
+itm_mufbb2_pl|幕 府 步 兵 服 
+itm_mufbbkuzi2|幕 府 步 兵 裤 
+itm_mufbbkuzi2_pl|幕 府 步 兵 裤 
+itm_fanbingmao2|藩 兵 帽 
+itm_fanbingmao2_pl|藩 兵 帽 
+itm_heiliw|黑 色 阵 笠 
+itm_heiliw_pl|黑 色 阵 笠 
+itm_chuanxiduimao|传 习 队 帽 
+itm_chuanxiduimao_pl|传 习 队 帽 
+itm_chuaniduiqibkuzi|传 习 队 骑 兵 裤 
+itm_chuaniduiqibkuzi_pl|传 习 队 骑 兵 裤 
+itm_chuaniduiqib|传 习 队 骑 兵 服 
+itm_chuaniduiqib_pl|传 习 队 骑 兵 服 
+itm_mufu_hat2|幕 府 帽 
+itm_mufu_hat2_pl|幕 府 帽 
+itm_mufbb3|幕 府 步 兵 服 
+itm_mufbb3_pl|幕 府 步 兵 服 
+itm_mufbbkuzi3|幕 府 步 兵 裤 
+itm_mufbbkuzi3_pl|幕 府 步 兵 裤 
+itm_samuraioutfit_3|萨 摩 外 套 
+itm_samuraioutfit_3_pl|萨 摩 外 套 
+itm_samuraioutfit_01|萨 摩 外 套 
+itm_samuraioutfit_01_pl|萨 摩 外 套 
+itm_tgoe_edo_civil_04|江 户 便 服 
+itm_tgoe_edo_civil_04_pl|江 户 便 服 
+itm_wushiwaitao|武 士 外 套 
+itm_wushiwaitao_pl|武 士 外 套 
+itm_edo_civil_02|江 户 便 服 
+itm_edo_civil_02_pl|江 户 便 服 
+itm_heixiongjunguan|黑 熊 军 官 
+itm_heixiongjunguan_pl|黑 熊 军 官 
+itm_heixiong|黑 熊 
+itm_heixiong_pl|黑 熊 
+itm_baixiong|白 熊 
+itm_baixiong_pl|白 熊 
+itm_jptoujin|头 巾 
+itm_jptoujin_pl|头 巾 
+itm_edo_civil_03|江 户 便 服 
+itm_edo_civil_03_pl|江 户 便 服 
+itm_fanbingfu|藩 兵 服 
+itm_fanbingfu_pl|藩 兵 服 
+itm_fanbingfu2|藩 兵 服 
+itm_fanbingfu2_pl|藩 兵 服 
+itm_springfield_42|斯 普 林 菲 尔 德 42式 
+itm_springfield_42_pl|斯 普 林 菲 尔 德 42式 
+itm_ceshi|军 服 
+itm_ceshi_pl|军 服 
+itm_shicongjudong|侍 从 具 胴 
+itm_shicongjudong_pl|侍 从 具 胴 
+itm_shicongjudong2|侍 从 具 胴 
+itm_shicongjudong2_pl|侍 从 具 胴 
+itm_samurai_sword|武 士 剑 
+itm_samurai_sword_pl|武 士 剑 
+itm_xinjundao|刀 
+itm_xinjundao_pl|刀 
+itm_wushiwaitao2|武 士 外 套 
+itm_wushiwaitao2_pl|武 士 外 套 
+itm_mfxj|幕 府 新 军 服 
+itm_mfxj_pl|幕 府 新 军 服 
+itm_fanshizhenli3|藩 士 阵 笠 
+itm_fanshizhenli3_pl|藩 士 阵 笠 
+itm_chuanxiduiinfantry|传 习 队 步 兵 服 
+itm_chuanxiduiinfantry_pl|传 习 队 步 兵 服 
+itm_chuanxiduiinfantrykuzi|传 习 队 步 兵 裤 
+itm_chuanxiduiinfantrykuzi_pl|传 习 队 步 兵 裤 
+itm_french_t|法 兰 西 铳 
+itm_french_t_pl|法 兰 西 铳 
+itm_dcdong2|德 川 胴 
+itm_dcdong2_pl|德 川 胴 
+itm_spencer_carb|斯 宾 塞 卡 宾 枪 
+itm_spencer_carb_pl|斯 宾 塞 卡 宾 枪 
+itm_shicongjudong3|侍 从 具 胴 
+itm_shicongjudong3_pl|侍 从 具 胴 
+itm_mufujunguankuzi|幕 府 军 官 裤 
+itm_mufujunguankuzi_pl|幕 府 军 官 裤 
+itm_mufujunguan2|幕 府 军 官 服 
+itm_mufujunguan2_pl|幕 府 军 官 服 
+itm_mufujunguan|幕 府 军 官 服 
+itm_mufujunguan_pl|幕 府 军 官 服 
+itm_banner_yari|指 物 枪 
+itm_banner_yari_pl|指 物 枪 
+itm_british_light_cav_sabre|轻 骑 兵 马 刀 
+itm_british_light_cav_sabre_pl|轻 骑 兵 马 刀 
+itm_dechuandakai|德 川 大 铠 
+itm_dechuandakai_pl|德 川 大 铠 
+itm_hualidakai|华 丽 大 铠 
+itm_hualidakai_pl|华 丽 大 铠 
+itm_hualidakai2|华 丽 大 铠 
+itm_hualidakai2_pl|华 丽 大 铠 
+itm_edo_helmet2|江 户 兜 
+itm_edo_helmet2_pl|江 户 兜 
+itm_edo_helmet|江 户 兜 
+itm_edo_helmet_pl|江 户 兜 
+itm_fanbingfu3|藩 兵 服 
+itm_fanbingfu3_pl|藩 兵 服 
+itm_fanbingfu4|藩 兵 服 
+itm_fanbingfu4_pl|藩 兵 服 
+itm_nongbing|农 兵 服 
+itm_nongbing_pl|农 兵 服 
+itm_samo_daodui|萨 摩 刀 队 服 
+itm_samo_daodui_pl|萨 摩 刀 队 服 
+itm_wushiwaitao3|武 士 外 套 
+itm_wushiwaitao3_pl|武 士 外 套 
+itm_fanshizhenli_tongyong|藩 士 阵 笠 
+itm_fanshizhenli_tongyong_pl|藩 士 阵 笠 
+itm_samoxinjun|萨 摩 新 军 服 
+itm_samoxinjun_pl|萨 摩 新 军 服 
+itm_springfield_61|斯 普 林 菲 尔 德 61式 
+itm_springfield_61_pl|斯 普 林 菲 尔 德 61式 
+itm_samoshenqiangdui|萨 摩 神 枪 队 服 
+itm_samoshenqiangdui_pl|萨 摩 神 枪 队 服 
+itm_samoshenqiangduikuzi|萨 摩 神 枪 队 裤 
+itm_samoshenqiangduikuzi_pl|萨 摩 神 枪 队 裤 
+itm_snider|施 奈 德 步 枪 
+itm_snider_pl|施 奈 德 步 枪 
+itm_samodong3|萨 摩 胴 
+itm_samodong3_pl|萨 摩 胴 
+itm_hualidakai4|华 丽 大 铠 
+itm_hualidakai4_pl|华 丽 大 铠 
+itm_daojindakai|岛 津 大 铠 
+itm_daojindakai_pl|岛 津 大 铠 
+itm_new_kabuto_hei|兜 
+itm_new_kabuto_hei_pl|兜 
+itm_new_kabuto2|兜 
+itm_new_kabuto2_pl|兜 
+itm_sxljg|示 显 流 军 官 服 
+itm_sxljg_pl|示 显 流 军 官 服 
+itm_shell|盾 
+itm_shell_pl|盾 
+itm_huijijndong3|会 津 胴 
+itm_huijijndong3_pl|会 津 胴 
+itm_edo_civil_04|江 户 便 服 
+itm_edo_civil_04_pl|江 户 便 服 
+itm_huijinfanbingfu|会 津 藩 兵 服 
+itm_huijinfanbingfu_pl|会 津 藩 兵 服 
+itm_huijinfanbingfu2|会 津 藩 兵 服 
+itm_huijinfanbingfu2_pl|会 津 藩 兵 服 
+itm_edo_fanbing|江 户 藩 兵 服 
+itm_edo_fanbing_pl|江 户 藩 兵 服 
+itm_edo_fanbing2|江 户 藩 兵 服 
+itm_edo_fanbing2_pl|江 户 藩 兵 服 
+itm_edo_fanbing3|江 户 藩 兵 服 
+itm_edo_fanbing3_pl|江 户 藩 兵 服 
+itm_edo_fanbing4|江 户 藩 兵 服 
+itm_edo_fanbing4_pl|江 户 藩 兵 服 
+itm_huijinbb|会 津 步 兵 服 
+itm_huijinbb_pl|会 津 步 兵 服 
+itm_hjkuzi2|会 津 步 兵 裤 
+itm_hjkuzi2_pl|会 津 步 兵 裤 
+itm_huijinbaihudui|会 津 白 虎 队 服 
+itm_huijinbaihudui_pl|会 津 白 虎 队 服 
+itm_baihudui3|白 虎 队 头 巾 
+itm_baihudui3_pl|白 虎 队 头 巾 
+itm_baihudui2|白 虎 队 头 巾 
+itm_baihudui2_pl|白 虎 队 头 巾 
+itm_huijindong|会 津 胴 
+itm_huijindong_pl|会 津 胴 
+itm_wushiwaitao4|武 士 外 套 
+itm_wushiwaitao4_pl|武 士 外 套 
+itm_classichelm_plume_copy|金 边 韭 山 笠 
+itm_classichelm_plume_copy_pl|金 边 韭 山 笠 
+itm_huijindong2|会 津 胴 
+itm_huijindong2_pl|会 津 胴 
+itm_huijinchongduishi|会 津 铳 队 士 服 
+itm_huijinchongduishi_pl|会 津 铳 队 士 服 
+itm_huijincds|会 津 铳 队 士 裤 
+itm_huijincds_pl|会 津 铳 队 士 裤 
+itm_muyi3_b|母 衣 
+itm_muyi3_b_pl|母 衣 
+itm_mori_fanbing|毛 利 藩 兵 服 
+itm_mori_fanbing_pl|毛 利 藩 兵 服 
+itm_fanbingtongyong|藩 兵 服 
+itm_fanbingtongyong_pl|藩 兵 服 
+itm_tongyong_fanbing|藩 兵 甲 
+itm_tongyong_fanbing_pl|藩 兵 甲 
+itm_shicongjudong4|侍 从 具 胴 
+itm_shicongjudong4_pl|侍 从 具 胴 
+itm_chasspotarty|夏 塞 波 步 枪 
+itm_chasspotarty_pl|夏 塞 波 步 枪 
+itm_1860_hen|亨 利 M1860步 枪 
+itm_1860_hen_pl|亨 利 M1860步 枪 
+itm_smithcarbine|史 密 斯 卡 宾 枪 
+itm_smithcarbine_pl|史 密 斯 卡 宾 枪 
+itm_enfield_carbine|恩 菲 尔 德 卡 宾 枪 
+itm_enfield_carbine_pl|恩 菲 尔 德 卡 宾 枪 
+itm_sharps_rifle|夏 普 斯 来 福 枪 
+itm_sharps_rifle_pl|夏 普 斯 来 福 枪 
+itm_enfield_bayonet|恩 菲 尔 德 （ 刺 刀 ） 
+itm_enfield_bayonet_pl|恩 菲 尔 德 （ 刺 刀 ） 
+itm_enfield_bayonet_melee|恩 菲 尔 德 （ 刺 刀 ） 
+itm_enfield_bayonet_melee_pl|恩 菲 尔 德 （ 刺 刀 ） 
+itm_changzhoujrbb|长 州 精 锐 步 兵 服 
+itm_changzhoujrbb_pl|长 州 精 锐 步 兵 服 
+itm_changzhoujrbbkuzi|长 州 精 锐 步 兵 裤 
+itm_changzhoujrbbkuzi_pl|长 州 精 锐 步 兵 裤 
+itm_czqbd|奇 兵 队 服 
+itm_czqbd_pl|奇 兵 队 服 
+itm_qbdkz|奇 兵 队 裤 
+itm_qbdkz_pl|奇 兵 队 裤 
+itm_civilian_hat2|便 帽 
+itm_civilian_hat2_pl|便 帽 
+itm_helmhorn|阵 笠 
+itm_helmhorn_pl|阵 笠 
+itm_gekokujo_tuzuo|土 佐 阵 笠 
+itm_gekokujo_tuzuo_pl|土 佐 阵 笠 
+itm_zwpxjf|倒 幕 派 新 军 服 
+itm_zwpxjf_pl|倒 幕 派 新 军 服 
+itm_czqbd2|奇 兵 队 服 
+itm_czqbd2_pl|奇 兵 队 服 
+itm_mfxiakua|幕 府 军 裤 
+itm_mfxiakua_pl|幕 府 军 裤 
+itm_tuzuoqiangdui|土 佐 枪 队 服 
+itm_tuzuoqiangdui_pl|土 佐 枪 队 服 
+itm_red_trousers_infantry1|红 色 步 兵 裤 
+itm_red_trousers_infantry1_pl|红 色 步 兵 裤 
+itm_fanbingmao3|藩 兵 帽 
+itm_fanbingmao3_pl|藩 兵 帽 
+itm_chixiong|赤 熊 
+itm_chixiong_pl|赤 熊 
+itm_xcdxiakua|传 习 队 军 裤 
+itm_xcdxiakua_pl|传 习 队 军 裤 
+itm_civilian_hat6|便 帽 
+itm_civilian_hat6_pl|便 帽 
+itm_qiufan_hat|秋 帆 帽 
+itm_qiufan_hat_pl|秋 帆 帽 
+itm_mufbbkuzi4|幕 府 步 兵 裤 
+itm_mufbbkuzi4_pl|幕 府 步 兵 裤 
+itm_ebingdui|额 兵 队 服 
+itm_ebingdui_pl|额 兵 队 服 
+itm_ebigdui3|额 兵 队 服 
+itm_ebigdui3_pl|额 兵 队 服 
+itm_ebigdui1|额 兵 队 服 
+itm_ebigdui1_pl|额 兵 队 服 
+itm_tongyong_fanbing2|藩 兵 服 
+itm_tongyong_fanbing2_pl|藩 兵 服 
+itm_gekokujo_okegawa_short_date|伊 达 桶 侧 胴 
+itm_gekokujo_okegawa_short_date_pl|伊 达 桶 侧 胴 
+itm_gekokujo__dateblack|伊 达 黑 胴 
+itm_gekokujo__dateblack_pl|伊 达 黑 胴 
+itm_tgun|铁 炮 
+itm_tgun_pl|铁 炮 
+itm_greathelmwhat|额 铁 
+itm_greathelmwhat_pl|额 铁 
+itm_etie|额 铁 
+itm_etie_pl|额 铁 
+itm_etie2|额 铁 
+itm_etie2_pl|额 铁 
+itm_etie3|额 铁 
+itm_etie3_pl|额 铁 
+itm_shinsengumi|新 选 组 服 
+itm_shinsengumi_pl|新 选 组 服 
+itm_changgangfan|长 冈 藩 兵 服 
+itm_changgangfan_pl|长 冈 藩 兵 服 
+itm_cgzhenli|长 冈 阵 笠 
+itm_cgzhenli_pl|长 冈 阵 笠 
+itm_cgfsxj|长 冈 新 军 服 
+itm_cgfsxj_pl|长 冈 新 军 服 
+itm_blue_trousers_infantry1|长 冈 新 军 裤 
+itm_blue_trousers_infantry1_pl|长 冈 新 军 裤 
+itm_enfieldp53_scoped|恩 菲 尔 德 53式 狙 击 枪 
+itm_enfieldp53_scoped_pl|恩 菲 尔 德 53式 狙 击 枪 
+itm_yujq|御 旗 
+itm_yujq_pl|御 旗 
+itm_cgf_shino_suneate_|长 冈 藩 篠 臑 当 
+itm_cgf_shino_suneate__pl|长 冈 藩 篠 臑 当 
+itm_dreyse|德 莱 赛 步 枪 
+itm_dreyse_pl|德 莱 赛 步 枪 
+itm_dreyse_melee|德 莱 赛 步 枪 
+itm_dreyse_melee_pl|德 莱 赛 步 枪 
+itm_cgyccd|长 冈 御 持 铳 队 服 
+itm_cgyccd_pl|长 冈 御 持 铳 队 服 
+itm_br_cavalry_gloves_short|白 手 套 
+itm_br_cavalry_gloves_short_pl|白 手 套 
+itm_cgfxjkz|长 冈 新 军 裤 
+itm_cgfxjkz_pl|长 冈 新 军 裤 
+itm_cgqwd|长 冈 亲 卫 队 服 
+itm_cgqwd_pl|长 冈 亲 卫 队 服 
+itm_cg_infanrty|长 冈 步 兵 服 
+itm_cg_infanrty_pl|长 冈 步 兵 服 
+itm_jinweimianjia|近 卫 面 甲 
+itm_jinweimianjia_pl|近 卫 面 甲 
+itm_jinweimianjia1|近 卫 面 甲 
+itm_jinweimianjia1_pl|近 卫 面 甲 
+itm_jdssddong|京 都 所 司 代 胴 
+itm_jdssddong_pl|京 都 所 司 代 胴 
+itm_smleishendui|萨 摩 雷 神 队 服 
+itm_smleishendui_pl|萨 摩 雷 神 队 服 
+itm_samoinfantry2|萨 摩 步 兵 服 
+itm_samoinfantry2_pl|萨 摩 步 兵 服 
+itm_shinsengumi2|新 选 组 服 
+itm_shinsengumi2_pl|新 选 组 服 
+itm_shinsengumi3|新 选 组 服 
+itm_shinsengumi3_pl|新 选 组 服 
+itm_invisible_head|无 头 
+itm_invisible_head_pl|无 头 
+itm_shishou|十 手 
+itm_shishou_pl|十 手 
+itm_nagigama|长 柄 镰 刀 
+itm_nagigama_pl|长 柄 镰 刀 
+itm_kasa_zen_full|笠 
+itm_kasa_zen_full_pl|笠 
+itm_wuqixiang|武 器 箱 
+itm_wuqixiang_pl|武 器 箱 
+itm_gai_box_wod|木 材 捆 
+itm_gai_box_wod_pl|木 材 捆 
+itm_kidate|木 盾 
+itm_kidate_pl|木 盾 
+itm_xishiinfantry2|西 式 步 兵 服 
+itm_xishiinfantry2_pl|西 式 步 兵 服 
+itm_ninjia_okegawa_half_4|半 身 桶 侧 忍 甲 
+itm_ninjia_okegawa_half_4_pl|半 身 桶 侧 忍 甲 
+itm_xishiinfantry1|西 式 步 兵 服 
+itm_xishiinfantry1_pl|西 式 步 兵 服 
+itm_nninja_headwrap1|忍 者 护 面 
+itm_nninja_headwrap1_pl|忍 者 护 面 
+itm_nninja_etie|忍 者 额 铁 
+itm_nninja_etie_pl|忍 者 额 铁 
+itm_beiqian|备 前 军 裤 
+itm_beiqian_pl|备 前 军 裤 
+itm_beiqian_suneate|备 前 臑 当 
+itm_beiqian_suneate_pl|备 前 臑 当 
+itm_tengt_suneate|藤 堂 臑 当 
+itm_tengt_suneate_pl|藤 堂 臑 当 
+itm_tengtang|藤 堂 军 裤 
+itm_tengtang_pl|藤 堂 军 裤 
+itm_tengtang2|藤 堂 军 裤 
+itm_tengtang2_pl|藤 堂 军 裤 
+itm_yida|伊 达 军 裤 
+itm_yida_pl|伊 达 军 裤 
+itm_yd_suneate|伊 达 臑 当 
+itm_yd_suneate_pl|伊 达 臑 当 
+itm_sangm|桑 名 军 裤 
+itm_sangm_pl|桑 名 军 裤 
+itm_sm_suneate|桑 名 臑 当 
+itm_sm_suneate_pl|桑 名 臑 当 
+itm_fujing|福 井 军 裤 
+itm_fujing_pl|福 井 军 裤 
+itm_fj_suneate|福 井 臑 当 
+itm_fj_suneate_pl|福 井 臑 当 
+itm_gekokujo_fujing|福 井 胴 
+itm_gekokujo_fujing_pl|福 井 胴 
+itm_gekokujo_jizhou_half_3|纪 州 半 身 胴 
+itm_gekokujo_jizhou_half_3_pl|纪 州 半 身 胴 
+itm_samurai_kabuto_21|武 士 兜 
+itm_samurai_kabuto_21_pl|武 士 兜 
+itm_gekokujo_jizhou|纪 州 胴 
+itm_gekokujo_jizhou_pl|纪 州 胴 
+itm_sabingdui|撒 兵 队 服 
+itm_sabingdui_pl|撒 兵 队 服 
+itm_xishiinfantry_bag|西 式 步 兵 服 
+itm_xishiinfantry_bag_pl|西 式 步 兵 服 
+itm_mize|米 泽 军 裤 
+itm_mize_pl|米 泽 军 裤 
+itm_hezhuang_bag|和 式 军 服 
+itm_hezhuang_bag_pl|和 式 军 服 
+itm_mz_suneate|米 泽 臑 当 
+itm_mz_suneate_pl|米 泽 臑 当 
+itm_snider_bayonet|施 奈 德 步 枪 
+itm_snider_bayonet_pl|施 奈 德 步 枪 
+itm_snider_bayonet_melee|施 奈 德 步 枪 
+itm_snider_bayonet_melee_pl|施 奈 德 步 枪 
+itm_kasa3zen|黑 笠 
+itm_kasa3zen_pl|黑 笠 
+itm_dou_kasa1|笠 
+itm_dou_kasa1_pl|笠 
+itm_gekokujo_tatamido_1|叠 胴 
+itm_gekokujo_tatamido_1_pl|叠 胴 
+itm_shenlanjunfu|深 蓝 军 服 
+itm_shenlanjunfu_pl|深 蓝 军 服 
+itm_shenlankuzi|深 蓝 军 裤 
+itm_shenlankuzi_pl|深 蓝 军 裤 
+itm_cetongzu2|侧 筒 组 服 
+itm_cetongzu2_pl|侧 筒 组 服 
+itm_cetongzu|侧 筒 组 服 
+itm_cetongzu_pl|侧 筒 组 服 
+itm_cetongzu3|侧 筒 组 服 
+itm_cetongzu3_pl|侧 筒 组 服 
+itm_gekokujo_guodao|锅 岛 阵 笠 
+itm_gekokujo_guodao_pl|锅 岛 阵 笠 
+itm_qinwangjia|亲 王 胴 
+itm_qinwangjia_pl|亲 王 胴 
+itm_samurtakedaorg|亲 王 兜 
+itm_samurtakedaorg_pl|亲 王 兜 
+itm_hongrishanz|红 日 扇 子 
+itm_hongrishanz_pl|红 日 扇 子 
+itm_zhuangnei_suneate|庄 内 臑 当 
+itm_zhuangnei_suneate_pl|庄 内 臑 当 
+itm_zhuangnei|庄 内 军 裤 
+itm_zhuangnei_pl|庄 内 军 裤 
+itm_gekokujo_jingasa_zhuangnei|庄 内 阵 笠 
+itm_gekokujo_jingasa_zhuangnei_pl|庄 内 阵 笠 
+itm_gekokujo_jingasa_zhuangnei2|庄 内 阵 笠 
+itm_gekokujo_jingasa_zhuangnei2_pl|庄 内 阵 笠 
+itm_zhuangneixiakua|庄 内 军 裤 
+itm_zhuangneixiakua_pl|庄 内 军 裤 
+itm_zhuangneiqcd|庄 内 奇 铳 队 服 
+itm_zhuangneiqcd_pl|庄 内 奇 铳 队 服 
+itm_tushifu|徒 士 服 
+itm_tushifu_pl|徒 士 服 
+itm_tushifu2|徒 士 服 
+itm_tushifu2_pl|徒 士 服 
+itm_tushifu3|徒 士 服 
+itm_tushifu3_pl|徒 士 服 
+itm_tushifu_zhuojia|徒 士 甲 
+itm_tushifu_zhuojia_pl|徒 士 甲 
+itm_tushifu_zhuojia1|徒 士 甲 
+itm_tushifu_zhuojia1_pl|徒 士 甲 
+itm_tushifu_zhuojia2|徒 士 甲 
+itm_tushifu_zhuojia2_pl|徒 士 甲 
+itm_2tushifu_zhuojia|徒 士 甲 
+itm_2tushifu_zhuojia_pl|徒 士 甲 
+itm_2tushifu_zhuojia1|徒 士 甲 
+itm_2tushifu_zhuojia1_pl|徒 士 甲 
+itm_xiongben|熊 本 军 裤 
+itm_xiongben_pl|熊 本 军 裤 
+itm_hezhuang_shenlan|深 蓝 和 式 军 服 
+itm_hezhuang_shenlan_pl|深 蓝 和 式 军 服 
+itm_xiongben2|熊 本 军 裤 
+itm_xiongben2_pl|熊 本 军 裤 
+itm_xiongben_suneate|熊 本 臑 当 
+itm_xiongben_suneate_pl|熊 本 臑 当 
+itm_qinwangshicong|亲 王 侍 从 胴 
+itm_qinwangshicong_pl|亲 王 侍 从 胴 
+itm_jiangwusuo|讲 武 所 额 铁 
+itm_jiangwusuo_pl|讲 武 所 额 铁 
+itm_gekokujo_tushi|徒 士 服 
+itm_gekokujo_tushi_pl|徒 士 服 
+itm_liudima|流 镝 马 胴 
+itm_liudima_pl|流 镝 马 胴 
+itm_shenlantongxueku|深 蓝 筒 靴 裤 
+itm_shenlantongxueku_pl|深 蓝 筒 靴 裤 
+itm_mufuxiashi|幕 府 下 士 服 
+itm_mufuxiashi_pl|幕 府 下 士 服 
+itm_mufuxiashiku|幕 府 下 士 裤 
+itm_mufuxiashiku_pl|幕 府 下 士 裤 
+itm_xizhuang|西 装 
+itm_xizhuang_pl|西 装 
+itm_ghgwaitao|共 和 外 套 
+itm_ghgwaitao_pl|共 和 外 套 
+itm_ghgarmy|共 和 军 服 
+itm_ghgarmy_pl|共 和 军 服 
+itm_civilian_hat4c|便 帽 
+itm_civilian_hat4c_pl|便 帽 
+itm_civilian_hat4d|便 帽 
+itm_civilian_hat4d_pl|便 帽 
+itm_heisexiaku||黑 色 军 裤 
+itm_heisexiaku_pl||黑 色 军 裤 
+itm_ghgcap|共 和 军 帽 
+itm_ghgcap_pl|共 和 军 帽 
+itm_ghgdayi|共 和 军 大 衣 
+itm_ghgdayi_pl|共 和 军 大 衣 
+itm_ghgcap2|共 和 军 帽 
+itm_ghgcap2_pl|共 和 军 帽 
+itm_fanbingmao5|藩 兵 帽 
+itm_fanbingmao5_pl|藩 兵 帽 
+itm_xizhuang2|西 装 
+itm_xizhuang2_pl|西 装 
+itm_ghg_legs1|共 和 军 裤 
+itm_ghg_legs1_pl|共 和 军 裤 
+itm_samo_lord|萨 摩 军 官 服 
+itm_samo_lord_pl|萨 摩 军 官 服 
+itm_changzhou_lord|长 州 军 官 服 
+itm_changzhou_lord_pl|长 州 军 官 服 
+itm_british_infantry_ranker|英 国 列 兵 服 
+itm_british_infantry_ranker_pl|英 国 列 兵 服 
+itm_british_rifle_pants_grey|英 军 裤 
+itm_british_rifle_pants_grey_pl|英 军 裤 
+itm_uk_army|英 军 帽 
+itm_uk_army_pl|英 军 帽 
+itm_british_offcier_ranker|英 国 军 官 服 
+itm_british_offcier_ranker_pl|英 国 军 官 服 
+itm_uk_army2|英 军 帽 
+itm_uk_army2_pl|英 军 帽 
+itm_french_inf_shako_84_colours|法 军 帽 
+itm_french_inf_shako_84_colours_pl|法 军 帽 
+itm_marinecoat|海 军 陆 战 队 服 
+itm_marinecoat_pl|海 军 陆 战 队 服 
+itm_french_infantry_ranker|法 国 列 兵 服 
+itm_french_infantry_ranker_pl|法 国 列 兵 服 
+itm_marinepants|海 军 陆 战 队 裤 
+itm_marinepants_pl|海 军 陆 战 队 裤 
+itm_rus_arty_pants2|俄 国 炮 兵 裤 
+itm_rus_arty_pants2_pl|俄 国 炮 兵 裤 
+itm_f_chassepot|夏 塞 波 步 枪 
+itm_f_chassepot_pl|夏 塞 波 步 枪 
+itm_f_chassepot1|夏 塞 波 步 枪 
+itm_f_chassepot1_pl|夏 塞 波 步 枪 
+itm_marinecoat2|海 军 陆 战 队 服 
+itm_marinecoat2_pl|海 军 陆 战 队 服 
+itm_shenlanjunfupao|深 蓝 军 服 
+itm_shenlanjunfupao_pl|深 蓝 军 服 
+itm_mufbb2p|幕 府 步 兵 服 
+itm_mufbb2p_pl|幕 府 步 兵 服 
+itm_mufbbkuzip|幕 府 步 兵 裤 
+itm_mufbbkuzip_pl|幕 府 步 兵 裤 
+itm_items_end|Items End 
+itm_items_end_pl|Items End 

@@ -147,7 +147,7 @@ qstr__Character_&_Compani|角 色 和 同 伴
 qstr__Done_|完 成 
 qstr_Your_supporters|你 的 支 持 者 
 qstr_Uesugi|上 杉 
-str_Date|伊 达 
+qstr_Date|Sendai
 qstr_Oda|织 田 
 qstr_Mori|毛 利 
 qstr_Takeda|武 田 
@@ -177,42 +177,45 @@ qstr_F8___Ranged|F8 - 远 程 武 器
 qstr_F9___Escape_Menu|F9 - 取 消 菜 单 
 qstr_F5___Use_Shields|F5 - 使 用 盾 牌 
 qstr_F6___No_Shields|F6 - 不 带 盾 牌 
-qstr_F7___Free|F7 - Free{***}
-qstr_F5___Skirmish|F5 - Skirmish{***}
-qstr_F6___Melee|F6 - Melee{***}
-qstr_Initial|Initial{***}
-qstr_Movement_1|Movement 1{***}
-qstr_Movement_2|Movement 2{***}
-qstr_Attack|Attack{***}
-qstr_Weapon_Type|Weapon Type{***}
-qstr_Shield|Shield{***}
-qstr_Skirmish|Skirmish{***}
-qstr_Hold_Position|Hold Position{***}
-qstr_Back_10|Back 10{***}
-qstr_Forward_10|Forward 10{***}
-qstr_Repeat_x|Repeat x{***}
-qstr_Ranged|Ranged{***}
-qstr_Polearms|Polearms{***}
-qstr_Two_Handed|Two Handed{***}
-qstr_One_Handed|One Handed{***}
-qstr_No_Shields|No Shields{***}
-qstr_Use_Shields|Use Shields{***}
-qstr_Avoid_Melee|Avoid Melee{***}
-qstr_Turn_to_weapon_order|Turn to weapon orders...{***}
-qstr_Reassess|Reassess{***}
-qstr_Scrap_All|Scrap All{***}
-qstr_Prepare_Orders|Prepare Orders{***}
-qstr_Dispatch_Orders|Dispatch Orders{***}
-qstr_...Turn_to_positioni|...Turn to positioning orders{***}
-qstr_CURRENT_COMMANDER_S_|CURRENT COMMANDER' S REPORT!{***}
+qstr_F7___Free|F7 - 自 由 行 动 
+qstr_F5___Skirmish|F5 - 游 击 
+qstr_F6___Melee|F6 - 近 战 
+qstr_Initial|初 始 
+qstr_Movement_1|行 动 1
+qstr_Movement_2|行 动 2
+qstr_Attack|攻 击 
+qstr_Weapon_Type|武 器 类 型 
+qstr_Shield|盾 牌 
+qstr_Skirmish|散 战 
+qstr_Hold_Position|保 持 位 置 
+qstr_Back_10|后 退 10步 
+qstr_Forward_10|前 进 10步 
+qstr_Repeat_x|重 复 x
+qstr_Ranged|远 程 
+qstr_Polearms|长 柄 
+qstr_Two_Handed|双 手 
+qstr_One_Handed|单 手 
+qstr_No_Shields|不 使 用 盾 
+qstr_Use_Shields|用 盾 
+qstr_Avoid_Melee|规 避 近 战 
+qstr_Turn_to_weapon_order|转 为 武 器 指 令 ...
+qstr_Reassess|重 新 评 估 
+qstr_Scrap_All|全 部 废 弃 
+qstr_Prepare_Orders|准 备 指 令 
+qstr_Dispatch_Orders|下 达 指 令 
+qstr_...Turn_to_positioni|...转 为 阵 型 指 令 
+qstr_Mercenary|佣 兵 
+qstr_Outlaws|不 法 之 徒 
+qstr_Others|其 他 
+qstr_CURRENT_COMMANDER_S_|当 前 指 挥 官 报 告 ！ 
 qstr_Your_Commander:_{s19|你 的 指 挥 官 :{s19}
 qstr_Commander_Relation:_|指 挥 官 关 系 :{reg0}
 qstr_Enlisted_Faction:_{s|士 兵 阵 营 :{s20}
 qstr_Current_Rank:_{s21}|当 前 级 别 :{s21}
 qstr_N/A|无 效 
 qstr_Experience_to_next_p|下 次 升 级 所 需 经 验 ： {s1}
-qstr_Days_in_service:_{re}|服 役 天 数 ： {reg20} 
-qstr_Current_Wage:_{reg23}|当 前 工 资 ： {reg23}文 钱 。 
+qstr_Days_in_service:_{re|服 务 天 数 ， {reg20}
+qstr_Current_Wage:_{reg23|当 前 工 资 ， {reg23} 月 。 
 qstr_Next_Pay/Promotion_d|下 一 个 发 薪 日 /晋 升 日 ： {s25}
 qstr_Army_size:_{reg26}|部 队 规 模 ： {reg26} 
 qstr_Commander_s_Army|指 挥 官 军 队 
@@ -223,8 +226,8 @@ qstr_Your_messenger_on_th|您 在 前 往 {s13}的 途 中 的 使 者 已 被 �
 qstr_Your_soldiers_patrol|您 在 {s13}巡 逻 的 士 兵 已 被 杀 光 {s10}！ 
 qstr_A_scout_trying_to_ga|一 名 试 图 收 集 有 关 {s13}讯 息 的 侦 察 兵 被 杀 {s10}
 qstr_{s1}_of_{s3}_was_def|{s3}的 {s1}在 战 场 上 被 击 败 了 ， 但 设 法 逃 离 了 。 
-qstr_Nagahama|Nagahama{***}
-qstr_Imahama|Imahama{***}
+qstr_Nagahama|长 滨 
+qstr_Imahama|今 滨 
 qstr_{s1}_is_now_a_prison|{s1}现 在 是 {s2}的 囚 犯 
 qstr_{s54}_is_a_claimant_|{s54}声 称 应 由 他 担 任 {s56}的 家 督 。 
 qstr_nowhere|无 
@@ -274,10 +277,10 @@ qstr_Try_to_destroy_as_ma|你 需 要 在 两 分 半 钟 的 时 间 内 尽 �
 qstr_Stay_behind_the_line|站 在 线 后 射 击 目 标 。 尽 量 不 要 浪 费 任 何 一 发 弹 药 。 
 qstr_Battle_Advantage_=_{|战 场 优 势 为 {reg0}。 
 qstr_{s9}_wants_you_to_re|{s9}希 望 你 能 够 在 接 到 进 一 步 的 指 令 以 前 跟 着 他 的 部 队 前 进 。 
-qstr_Tribune|Tribune{***}
+qstr_Tribune|军 奉 行 
 qstr_{s5}_of_the_{s7}_has|{s7}中 的 {s5}已 拥 有 {s4}的 所 有 权 。 
 qstr_{s4}_has_been_awarde|{s4}已 被 授 予 给 {s7}中 的 {s5}。 
-qstr_pt_in_{s11}|pt in {s11}{***}
+qstr_pt_in_{s11}|在 {s11}之 据 点 
 qstr__Being_Raided_|（ 被 掠 夺 中 ） 
 qstr__Looted_|（ 已 被 洗 劫 ） 
 qstr__Under_Siege_|（ 陷 入 包 围 ） 
@@ -434,37 +437,37 @@ qstr_swing_my_naginata|挥 舞 我 的 薙 刀
 qstr_lift_my_spear|举 起 我 的 矛 
 qstr_loose_my_arrows|射 出 我 的 箭 
 qstr_swing_my_sword|挥 舞 我 的 剑 
-qstr_great_lords|great lords{***}
-qstr_lord|lord{***}
-qstr_lords|lords{***}
-qstr_goatherd|goatherd{***}
-qstr_swineherd|swineherd{***}
-qstr_stable_{boy/girl}|stable {boy/girl}{***}
+qstr_great_lords|大 名 
+qstr_lord|领 主 
+qstr_lords|领 主 们 
+qstr_goatherd|牧 羊 童 
+qstr_swineherd|养 猪 郎 
+qstr_stable_{boy/girl}|马 厩 {童 /女 }
 qstr_shepherd_{boy/girl}|牧 羊 人 {男 孩 /女 孩 }
 qstr_sake|清 酒 
-qstr_{reg6?M:m}y_poppet|{reg6?M:m}y poppet{***}
-qstr_{reg0?Y:y}ou|{reg0?Y:y}ou{***}
-qstr_{reg0?M:m}yself|{reg0?M:m}yself{***}
-qstr_{reg0?O:o}ur_{s1}_{s|{reg0?O:o}ur {s1} {s0}{***}
-qstr_{reg0?M:m}y_{s1}_{s0|{reg0?M:m}y {s1} {s0}{***}
-qstr_{reg0?Y:y}our_{s1}_{|{reg0?Y:y}our {s1} {s0}{***}
+qstr_{reg6?M:m}y_poppet|我 的 宝 贝 
+qstr_{reg0?Y:y}ou|你 
+qstr_{reg0?M:m}yself|我 
+qstr_{reg0?O:o}ur_{s1}_{s|我 的 {s1}{s0}
+qstr_{reg0?M:m}y_{s1}_{s0|我 的 {s1}{s0}
+qstr_{reg0?Y:y}our_{s1}_{|你 的 {s1}{s0}
 qstr_{s2}:_{reg3}_{reg4}_|{s2}: {reg3}, {reg4} 天 
-qstr_{s4}:_{reg4}|{s4}: {reg4}{***}
-qstr_{s1}_gathering_suppo|{s1}(gathering support){***}
-qstr_{s1}__intelligence_|{s1} (intelligence){***}
-qstr_{s1}__ambassy_|{s1} (ambassy){***}
-qstr_{s1}__minister|{s1} (minister{***}
-qstr_{s1}__under_arms_|{s1} (under arms){***}
-qstr_{s1}__attempting_to_|{s1} (attempting to rejoin){***}
-qstr_{s1}__separated_afte|{s1} (separated after battle){***}
-qstr__knows_of_you.| knows of you.{***}
-qstr__has_no_opinion_abou| has no opinion about you.{***}
-qstr_{s57}_and_{s50}|{s57} and {s50}{***}
+qstr_{s4}:_{reg4}|{s4}， {reg4}
+qstr_{s1}_gathering_suppo|{s1}( 寻 求 支 持 )
+qstr_{s1}__intelligence_|{s1}( 收 集 情 报 )
+qstr_{s1}__ambassy_|{s1}( 使 节 )
+qstr_{s1}__minister|{s1}( 家 老 )
+qstr_{s1}__under_arms_|{s1}( 备 战 中 )
+qstr_{s1}__attempting_to_|{s1}( 尝 试 归 队 )
+qstr_{s1}__separated_afte|{s1}( 战 后 失 散 )
+qstr__knows_of_you.|听 说 过 你 。 
+qstr__has_no_opinion_abou|对 你 无 特 定 看 法 。 
+qstr_{s57}_and_{s50}|{s57}与 {s50}
 qstr_Japan.|日 本 
-qstr_sworn_man|sworn man{***}
-qstr_ruler|ruler{***}
-qstr_free_man|free man{***}
-qstr_{s1}_Renown:_{reg40}|{s1} Renown: {reg40}, Controversy: {reg41}^Honor: {reg42}, Right to rule: {reg43}^You are a {s44} of {s45}^{reg45?{reg46?Your liege, {s46},{s47}:You are the ruler of {s45}}:}^^Friends: ^Enemies: ^^Fiefs:^  {reg50?{s50}:no fief}{***}
+qstr_sworn_man|家 臣 
+qstr_ruler|统 治 者 
+qstr_free_man|自 由 民 
+qstr_{s1}_Renown:_{reg40}|{s1} 声 望 ， {reg40}， 争 议 ， {reg41}^名 誉 ， {reg42}， 统 治 正 当 性 ， {reg43}^你 是 {s45}的 {s44}^{reg45?{reg46?你 的 主 君 {s46}， {s47}， 你 为 {s45}之 统 治 者 }， }^^友 方 ， ^敌 方 ， ^^封 地 ， ^  {reg50?{s50}， 无 封 地 }
 qstr_{s1}{s2}_{reg46?Repu|{s1}{s2}{reg46?被 誉 为 是 {s42}:}^声 望 :{reg40},争 议 :{reg41}{reg46?不 耐 烦 :{reg43}:}^{s45}的 {s44}贵 族 ^{reg46?君 臣 :{s46},关 系 :{reg47}:{s45}的 统 治 者 }^^{reg48?当 前 是 {s48}的 俘 虏 :}^自 上 次 见 面 以 来 的 天 数 :{reg49}^^封 地 {reg51?(被 许 诺 封 地 ):}:^{reg50?{s50}:无 封 地 }
 qstr_conventional|传 统 的 
 qstr_adventurous|冒 险 地 
@@ -485,7 +488,7 @@ qstr_{s1}{s2}_Controversy|{s1} {s2}争 议 ： {reg41} ^声 誉 ： {s42}， 求
 qstr_Gathering_support|收 集 支 持 
 qstr_Gathering_intelligen|在 {s66} 中 收 集 情 报 
 qstr_Ambassy_to_{s66}|派 特 使 前 往 {s66}
-qstr_Minister|Minister{***}
+qstr_Minister|家 老 
 qstr_none|无 
 qstr_{s1}_{s2}^Reputation|{s1}， {s2} ^声 誉 ： {s42} ^出 生 于 {s43} ^ {s45}的 {s44}的 联 系 人 。 ^^ {reg48？ 目 前 {s48}的 囚 徒 ： } ^距 离 上 次 交 谈 的 天 数 到 ： {reg49} ^^当 前 任 务 ： ^ {s50} {reg50 ?， 又 回 到 {reg50}天 。 ： } 
 qstr_{s1}^|{s1}^
@@ -514,6 +517,7 @@ qstr_Everyone|所 有 人
 qstr_Your_party_consumed_|你 的 队 伍 消 耗 了 {reg1}个 单 位 的 食 物 {reg4?, {reg4}来 自 觅 食 : }（ 还 剩 {reg2}天 ） 。 
 qstr_{s2}_managed_to_fora|{s2}设 法 觅 食 {reg4}单 位 的 食 物 补 充 供 给 。 
 qstr_Added_money_for_your|为 你 的 老 马 增 加 金 币 。 
+qstr_Error:_script_point_|Error: script point missile position invalid roots
 qstr_You_have_been_enlist|您 已 入 伍 ！ 
 qstr_Current_rank:_{s5}|当 前 排 名 ： {s5}
 qstr_You_have_been_allowe|您 已 被 允 许 保 留 您 的 装 备 ！ 
@@ -521,11 +525,11 @@ qstr_You_have_left_your_c|您 已 经 离 开 了 指 挥 官 ！
 qstr_You_have_been_grante|您 已 获 准 假 ！ 
 qstr_You_have_rejoined_yo|您 已 重 新 加 入 指 挥 官 队 伍 ！ 
 qstr_{s11}_has_left_for_h|{s11}已 经 离 家 出 走 了 。 
-qstr_{s11}_has_left_to_fi|{s11} has left to find greener pastures.{***}
+qstr_{s11}_has_left_to_fi|{s11}已 经 离 开 ， 去 寻 找 更 广 阔 的 天 地 。 
 qstr_{s3}_{s2}|{s3}, {s2}
 qstr_The_equipment_of_a_{|{s1}： {s2}的 装 备 已 分 配 给 您 。 
 qstr_The_equipment_of_a_{s|{s1}： {s2}的 装 备 已 从 您 手 中 拿 走 。 
-qstr_You_got_keys_of_dung|你 获 得 了 监 狱 的 钥 匙 。 
+qstr_You_got_the_keys_of_|你 拿 到 了 牢 房 钥 匙 。 
 qstr_Press_TAB_to_end_the|按 TAB键 结 束 战 斗 。 
 qstr_You_were_defeated.|您 被 击 败 了 。 
 qstr_Rotate_with_the_mous|用 鼠 标 旋 转 ， 用 标 准 键 移 动 。 
@@ -562,7 +566,7 @@ qstr_As_a_{reg3?girl:boy}_|你 作 为 一 名 本 地 工 匠 的 学 徒 学 �
 qstr_As_a_{reg3?girl:boy}_g|你 作 为 一 名 有 钱 的 商 人 的 学 徒 ， 在 多 年 的 交 易 和 行 商 中 挖 掘 出 买 卖 才 能 ， 渐 渐 像 其 他 {reg3?女 孩 :男 孩 }一 样 长 大 。 你 很 快 就 学 会 了 低 入 高 出 ， 并 标 出 让 顾 客 满 意 价 格 的 技 巧 。 
 qstr_As_a_{reg3?girl:boy}_gr|你 被 遗 弃 在 大 街 上 为 了 生 存 而 无 所 不 为 ， 却 像 其 他 {reg3?女 孩 :男 孩 }一 样 逐 渐 成 长 。 从 最 初 的 偷 盗 ， 到 仅 仅 只 是 为 了 获 得 一 块 面 包 而 为 那 些 歹 徒 工 作 。 你 每 天 都 在 这 种 残 酷 的 世 界 中 挣 扎 ， 并 总 在 执 法 者 和 病 魔 到 来 之 前 藏 好 自 己 。 
 qstr_As_a_{reg3?girl:boy}_gro|在 和 其 他 {reg3?女 孩 :男 孩 }一 样 的 成 长 过 程 中 ， 你 曾 在 大 草 原 上 骑 着 自 己 的 马 匹 ， 学 习 着 从 草 原 或 沙 漠 之 中 寻 找 方 向 。 在 无 痕 的 大 地 上 虽 然 不 时 挨 饿 ， 你 还 是 成 了 一 名 熟 练 的 猎 人 和 探 险 者 ， 你 的 身 体 也 开 始 布 满 了 结 实 的 肌 肉 —— 这 ， 就 是 作 为 游 牧 之 {reg3?女 :民 }的 生 活 方 式 。 
-qstr_As_a_{reg3?girl:boy}_grow|As a {reg3?girl:boy} growing out of childhood, you lived deep in the mountains, surviving away from civilization. Although often hungry, you became a skillful hunter and pathfinder in this trackless country. Your body too started to harden with muscle as you endured your rough life.{***}
+qstr_As_a_{reg3?girl:boy}_grow|童 年 时 你 住 在 深 山 里 ， 远 离 村 子 。 虽 然 经 常 挨 饿 ， 但 您 在 这 个 无 路 可 走 的 领 国 成 为 了 熟 练 的 猎 人 和 探 路 者 。 当 您 忍 受 艰 苦 的 生 活 时 ， 您 的 身 体 也 开 始 变 强 壮 。 
 qstr_{reg3?daughter:man}|{reg3?女 人 :男 人 }
 qstr_Though_the_distincti|尽 管 阶 级 高 下 如 此 悬 殊 ， 你 仍 然 在 某 种 力 量 的 指 引 下 成 为 一 个 {reg3?女 人 :男 人 }， 整 个 世 界 将 因 你 而 改 变 。 作 为 一 个 上 层 贵 族 的 指 定 护 卫 ， 你 长 时 间 的 练 习 各 种 武 器 ， 学 习 如 何 出 击 和 招 架 。 被 教 导 要 对 主 人 效 忠 ， 以 及 对 那 些 将 来 可 能 成 为 你 属 下 的 人 负 责 。 在 学 习 骑 士 理 想 的 时 候 ， 从 那 些 老 兵 的 故 事 你 也 知 道 了 不 怎 么 光 彩 的 一 面 —— 残 忍 的 强 权 政 治 ， 背 叛 和 篡 夺 ， 以 及 为 了 目 的 不 择 手 段 。 
 qstr_{reg3?woman:man}|{reg3?女 人 :男 人 }
@@ -572,12 +576,7 @@ qstr_Though_the_distinction_|你 在 某 种 力 量 的 指 引 下 成 为 一
 qstr_Though_the_distinction_f|尽 管 你 突 然 领 悟 到 阶 级 差 别 ， 你 仍 然 在 某 种 力 量 的 指 引 下 成 为 一 名 {reg3?女 人 :男 人 }， 你 身 边 的 整 个 世 界 似 乎 都 变 了 。 你 走 村 串 巷 ， 沿 街 叫 卖 自 己 贩 来 的 货 物 。 那 一 段 并 不 富 裕 的 生 活 ， 让 你 逐 渐 成 长 为 讲 价 的 能 手 ， 即 使 最 吝 啬 的 老 前 辈 也 能 给 你 一 个 好 价 钱 。 你 知 道 ， 不 久 你 将 开 始 发 展 自 己 的 贸 易 帝 国 …… 
 qstr_Though_the_distinction_fe|尽 管 你 突 然 领 悟 到 阶 级 差 别 ， 你 仍 然 在 某 种 力 量 的 指 引 下 成 为 一 名 {reg3?女 人 :男 人 }， 你 身 边 的 整 个 世 界 似 乎 都 变 了 。 你 从 事 铁 匠 职 业 ， 用 手 打 造 出 各 种 各 样 的 工 具 。 你 逐 渐 掌 握 了 技 巧 ， 努 力 的 工 作 也 换 来 了 金 钱 、 食 物 和 火 上 的 铁 料 。 你 以 自 己 的 工 作 为 傲 ， 并 且 不 久 就 会 获 得 工 匠 大 师 的 称 号 。 
 qstr_Though_the_distinction_fel|尽 管 你 突 然 领 悟 到 阶 级 差 别 ， 你 仍 然 在 某 种 力 量 的 指 引 下 成 为 一 名 {reg3?女 人 :男 人 }， 你 身 边 的 整 个 世 界 似 乎 都 变 了 。 不 满 于 普 通 人 对 于 金 钱 的 拼 死 争 夺 ， 你 潜 入 领 主 的 森 林 ， 在 该 死 的 法 律 之 外 自 己 来 一 点 慷 慨 。 你 猎 杀 野 鹿 、 野 猪 和 野 鹅 ， 偷 偷 卖 出 这 些 美 味 的 干 肉 。 你 在 看 守 的 鼻 子 底 下 砍 树 并 劈 成 木 柴 ， 在 冬 夜 温 暖 许 多 冰 冷 的 家 庭 。 当 然 ， 只 收 一 点 点 银 子 。 
-qstr_Though_the_distinction_felt|Though the distinction felt sudden to you, somewhere along the way you had become a {s13}, and the whole world seemed to change around you. Dissatisfied with common men' s desperate scrabble for coin, you took to your local lord' s own forests and decided to help yourself to its bounty, laws be damned. You hunted deer, boars and geese and sold the precious meat under the table. You cut down trees right under the watchmen' s noses and turned them into firewood that warmed many freezing homes during winter. All for a few coins, of course.{***}
-qstr_Only_you_know_exactl|只 有 你 确 切 知 道 自 己 为 何 放 弃 以 前 的 生 活 ， 来 做 一 个 冒 险 者 。 因 为 心 中 的 熊 熊 燃 烧 的 怒 火 ， 决 定 离 开 并 不 艰 难 。 你 要 复 仇 ， 你 要 审 判 ， 对 你 所 作 的 一 切 都 不 能 饶 恕 ， 所 有 的 债 只 能 用 鲜 血 来 偿 还 …… 
-qstr_Only_you_know_exactly|只 有 你 确 切 知 道 自 己 为 何 放 弃 以 前 的 生 活 ， 来 做 一 个 冒 险 者 。 你 只 想 说 的 就 是 不 能 再 忍 受 下 去 ， 带 着 那 些 让 你 爱 得 如 此 甜 蜜 又 如 此 痛 苦 的 记 忆 。 也 许 新 的 生 活 会 让 你 忘 掉 ， 或 者 给 你 再 也 忍 不 住 要 说 的 那 个 名 字 带 去 荣 誉 ……
-qstr_Only_you_know_exactly_|只 有 你 确 切 知 道 自 己 为 何 放 弃 以 前 的 生 活 ， 来 做 一 个 冒 险 者 。 你 不 确 定 从 何 时 起 ， 家 园 变 成 了 监 狱 ， 亲 人 也 变 得 陌 生 ， 只 有 流 浪 占 据 了 你 的 世 界 。 不 管 是 向 往 遥 远 的 乐 土 还 是 仅 仅 路 上 的 自 由 ， 你 再 不 愿 呆 在 同 样 的 地 方 ， 只 是 再 不 回 头 地 走 下 去 …… 
-qstr_Only_you_know_exactly_w|只 有 你 确 切 知 道 自 己 为 何 放 弃 以 前 的 生 活 ， 来 做 一 个 冒 险 者 。 你 知 道 再 也 不 能 回 去 ， 也 没 有 地 方 可 回 。 曾 经 的 家 园 已 经 烟 消 云 散 ， 你 必 须 面 对 现 实 ， 在 大 千 世 界 上 ， 沉 浮 全 靠 自 己 一 人 …… 
-qstr_Only_you_know_exactly_wh|只 有 你 确 切 知 道 自 己 为 何 放 弃 以 前 的 生 活 ， 来 做 一 个 冒 险 者 。 每 个 人 都 知 道 ， 很 明 显 你 是 单 纯 为 钱 财 而 来 。 你 想 富 有 、 强 大 、 受 人 尊 敬 、 令 人 畏 惧 、 让 人 顺 从 。 你 想 让 人 们 都 知 道 你 的 名 字 ， 并 且 无 论 何 时 听 到 它 就 发 抖 。 你 想 要 每 一 样 东 西 ， 并 且 不 会 让 任 何 人 阻 止 你 得 到 它 …… 
+qstr_Though_the_distinction_felt|你 逐 渐 领 悟 到 阶 级 差 别 。 不 知 从 什 么 时 候 起 ， 你 已 经 成 为 了 一 名 {s13}， 整 个 世 界 似 乎 都 在 发 生 变 化 。 你 不 满 足 于 普 通 人 拼 命 捞 钱 的 生 活 ， 于 是 你 来 到 了 当 地 领 主 的 森 林 ， 决 定 自 己 动 手 丰 衣 足 食 ， 去 他 大 爷 的 法 律 。 你 猎 杀 鹿 、 野 猪 和 野 鹅 ， 然 后 把 珍 贵 的 肉 偷 偷 卖 掉 。 你 在 守 卫 的 眼 皮 底 下 砍 伐 树 木 ， 把 它 们 变 成 木 柴 ， 在 冬 天 温 暖 许 多 冰 冷 的 家 庭 。 这 一 切 只 是 为 了 几 个 铜 板 。 
 qstr_Back_to_the_beginnin|退 回 开 始 …… 
 qstr_View_next_segment...|查 看 下 节 …… 
 qstr_^No_food:___{reg7}|^ 没 有 食 物 ： -{reg7}
@@ -591,18 +590,18 @@ qstr_You_are_currently_re|你 正 在 阅 读 {s8}。
 qstr_You_are_not_reading_|你 没 有 在 读 任 何 书 籍 。 
 qstr_{s5}_and_{s6}|{s5}和 {s6}
 qstr_Your_estates_are:_{s|你 的 封 地 在 ： {s8}。 ^{s9}
-qstr_^Samurai_Penalty:__{|^Samurai Penalty: -{reg5} (from off-screen servants){s5}{***}
-qstr_^Clan_Strategist:_+2|^Clan Strategist: +20{s5}{***}
-qstr_^Clan_Leader:_+20{s5|^Clan Leader: +20{s5}{***}
-qstr_^Walled_Fief:_+{reg5|^Walled Fief: +{reg5}{s5}{***}
-qstr_^Walled_Fiefs:_+{reg|^Walled Fiefs: +{reg5}{s5}{***}
+qstr_^Samurai_Penalty:__{|^武 士 惩 罚 : -{reg5} (仆 人 占 1人 数 ){s5}
+qstr_^Clan_Strategist:_+2|^总 大 将 : +20{s5}
+qstr_^Clan_Leader:_+20{s5|^大 名 : +20{s5}
+qstr_^Walled_Fief:_+{reg5|^城 池 : +{reg5}{s5}
+qstr_^Walled_Fiefs:_+{reg|^城 池 : +{reg5}{s5}
 qstr_Current_prisoner_lim|当 前 的 囚 犯 限 制 为 {reg8}。 ^^狱 卒 ： {s6} {reg6} ^政 党 人 数 修 饰 符 ： {s7} {reg7} 
 qstr_Current_bodyguard_li|当 前 的 保 镖 限 额 为 {reg9}。 ^^随 同 同 伴 或 特 工 ： {reg10} ^仅 特 工 ： {reg11} 
 qstr_Current_party_size_l|当 前 的 部 队 上 限 为 {reg5}^ 当 前 部 队 上 限 的 修 正 为 ： ^^基 础 人 数 ： {reg4}^玩 家 统 御 ： {s2}{reg1}^玩 家 魅 力 ： {s3}{reg2}^玩 家 声 望 ： {s4}{reg3}^玩 家 封 地 ： {s6}{reg6}^玩 家 骑 兵 ： {s7}{reg7}^国 家 政 策 ： {s8}{reg8}^ 总 计 ： {reg5}
 qstr_Your_relation_with_t|你 与 各 个 阵 营 的 关 系 为 ： ^{s2}
 qstr_Player_renown_is_inc|玩 家 声 望 上 升 100 点 。 
 qstr_Player_honor_is_incr|玩 家 荣 誉 值 增 加 一 点 现 在 是 {reg7}。 
-qstr_In_{playername}_s_pa|In {playername}' s party{***}
+qstr_In_{playername}_s_pa|在 {playername}队 中 
 qstr_{s3}_Inn|{s3}旅 馆 
 qstr_{s3}_Prison|{s3}监 狱 
 qstr_Captured__Travelling|被 抓 （ 旅 行 ） 
@@ -617,7 +616,6 @@ qstr_{playername}_was_rai|{playername}由 一 个 居 住 在 陆 地 上 的 �
 qstr_{playername}_s_famil|{playername}的 家 人 得 到 了 {reg3?她 :他 }父 亲 的 犯 罪 活 动 的 支 持 。 
 qstr_{s1}_Growing_up_{reg|{s1}长 大 了 ， {reg3?她 :他 } 
 qstr_{s1}_joined_the_hous|{s1}加 入 了 一 个 大 的 武 士 家 庭 ， 成 为 武 士 的 侍 从 。 
-qstr_{s1}_My_father_provi|{s1}父 亲 为 我 提 供 了 我 所 能 获 得 的 最 好 的 教 育 。 很 快 ， 我 掌 握 了 剑 术 和 兵 法 。 
 qstr_{s1}_joined_the_house|{s1}加 入 了 一 个 贵 族 家 庭 的 家 庭 ， 成 为 房 主 的 侍 女 。 
 qstr_{s1}_joined_the_househ|{s1}加 入 了 一 个 伟 大 的 武 士 家 庭 的 家 中 ， 成 为 了 房 主 的 侍 从 。 																								   
 qstr_{s1}_learned_a_craft|{s1}学 了 一 种 手 艺 ， 并 在 一 个 大 师 的 教 导 下 成 为 徒 弟 ， 直 到 {reg3?她 :他 }能 够 以 自 己 的 方 式 谋 生 。 
@@ -666,9 +664,9 @@ qstr_{s9}_wants_you_to_fo|{s9}希 望 你 能 够 在 接 到 进 一 步 的 �
 qstr_{s8}_of_{s9}|{s9}的 {s8}
 qstr_liege|说 谎 
 qstr_former_overlord|前 领 主 
-qstr_affiliate|affiliate{***}
-qstr_former_companion|former companion{***}
-qstr_marshall|marshall{***}
+qstr_affiliate|附 属 
+qstr_former_companion|旧 从 
+qstr_marshall|总 大 将 
 qstr_vassal|家 臣 
 qstr__Your_own_banner_fli|你 自 己 的 旗 帜 飘 扬 在 城 堡 大 门 上 。 
 qstr__You_see_the_banner_|你 看 到 {s7}的 旗 帜 挂 在 城 堡 大 门 上 。 
@@ -697,7 +695,7 @@ qstr_As_you_approach_you_|当 你 走 近 城 堡 ， 你 被 守 卫 发 现 �
 qstr_As_you_approach_you_a|当 您 靠 近 时 ， 城 堡 守 卫 发 现 了 您 ， 他 们 欢 迎 您 并 为 他 们 的 主 人 打 开 大 门 。 
 qstr_{s2}_Mansion|{s2} 城 
 qstr_{s2}_Castle|{s2} 城 堡 
-qstr_{s2}_Temple|{s2} 庙 
+qstr_{s2}_Temple|{s2} 
 qstr_the_village_of_{s2}|{s2}的 村 庄 
 qstr_the_burnt_out_ruins_|在 {s2}的 废 墟 。 您 在 残 骸 中 发 现 了 一 些 人 ， 但 他 们 却 在 您 的 视 线 中 逃 离 。 
 qstr_{s2}._Its_defenders_|{s2}。 守 卫 者 看 上 去 会 胜 利 在 击 败 你 之 后 ， 但 您 可 以 逃 脱 。 
@@ -705,7 +703,7 @@ qstr_{s2}._Its_defenses_a|{s2}。 它 的 防 御 力 异 常 强 大 ， 其 �
 qstr_{s2}._Your_banners_f|{s2}。 您 的 横 幅 高 高 飘 扬 ， 哨 兵 向 您 致 敬 ， 他 们 的 {主 /女 士 } 
 qstr_mansion|城 
 qstr_castle|城 堡 
-qstr_temple|庙 
+qstr_temple|
 qstr_village|村 子 
 qstr_{playername}_has_tak|{playername}已 占 领 {s44} 
 qstr_{s8}_a|{s8} 一 个 
@@ -717,7 +715,7 @@ qstr_{s8}_{s18}.|{s8} {s18}.
 qstr_{s3}^^{s4}|{s3}^^{s4}
 qstr_{reg12}_mon|{reg12} 文 
 qstr_Your_mark_got_a_good|您 的 印 记 使 您 的 脸 孔 看 起 来 很 好 看 ， 并 广 为 传 播 。 
-qstr_former_liege|former liege{***}
+qstr_former_liege|昔 日 主 公 
 qstr__This_village_and_th|这 个 村 子 及 周 围 的 土 地 属 于 你 。 
 qstr__You_remember_that_t|你 记 得 这 个 村 子 及 周 围 的 土 地 属 于 {s7}。 
 qstr__You_remember_that_th|您 还 记 得 这 个 村 庄 和 周 围 的 土 地 属 于 {s7}。 
@@ -767,198 +765,198 @@ qstr_The_training_went_pe|训 练 进 行 得 很 完 美 。
 qstr_{s13}_asked_you_to_r|{s13}要 你 带 着 至 少 {reg13}人 去 向 他 报 告 。 
 qstr_{s13}_ordered_you_to|{s13}命 令 你 参 加 对 {s14}的 攻 击 。 
 qstr_Find_and_speak_with_|找 到 并 请 求 {s4}的 {s3}让 他 接 受 你 为 他 立 下 效 忠 的 誓 言 。 
-qstr_Find_and_speak_with_{|Find and speak with {s3} of {s4} to give {reg4?her:him} your oath of fealty.{***}
+qstr_Find_and_speak_with_{|找 到 {s3}的 {s4}并 与 之 交 谈 ， 向 {reg4?她 :他 }宣 誓 效 忠 。 
 qstr_There_has_been_an_al|有 涉 嫌 边 境 事 件 ： {s9}
-qstr_Ashina_Clan|Ashina Clan{***}
-qstr_Ashina_Spearman|Ashina Spearman{***}
-qstr_Ashina_Skirmisher|Ashina Skirmisher{***}
-qstr_Ashina_Trained_Spear|Ashina Trained Spearman{***}
-qstr_Ashina_Trained_Skirm|Ashina Trained Skirmisher{***}
-qstr_Ashina_Veteran_Spear|Ashina Veteran Spearman{***}
-qstr_Ashina_Veteran_Skirm|Ashina Veteran Skirmisher{***}
-qstr_Ashina_Elite_Spearma|Ashina Elite Spearman*{***}
-qstr_Ashina_Retainer|Ashina Retainer{***}
-qstr_Ashina_Marksman|Ashina Marksman{***}
-qstr_Ashina_Veteran_Retai|Ashina Veteran Retainer{***}
-qstr_Ashina_Mounted_Retai|Ashina Mounted Retainer{***}
-qstr_Ashina_Samurai_Gunne|Ashina Samurai Gunner{***}
-qstr_Ashina_Samurai_Arche|Ashina Samurai Archer{***}
-qstr_Ashina_Officer|Ashina Officer{***}
-qstr_Ashina_Mounted_Offic|Ashina Mounted Officer{***}
-qstr_Ashina_Master_Gunner|Ashina Master Gunner{***}
-qstr_Ashina_Master_Archer|Ashina Master Archer{***}
-qstr_Ashina_Hatamoto_Guar|Ashina Hatamoto Guard{***}
-qstr_Ashina_Hatamoto_Cava|Ashina Hatamoto Cavalry{***}
-qstr_Ashina_Messenger|Ashina Messenger{***}
-qstr_Ashina_Deserter|Ashina Deserter{***}
-qstr_Ashina_Prison_Guard|Ashina Prison Guard{***}
-qstr_Ashina_Castle_Guard|Ashina Castle Guard{***}
-qstr_Ashina_Spearmen|Ashina Spearmen{***}
-qstr_Ashina_Skirmishers|Ashina Skirmishers{***}
-qstr_Ashina_Trained_Spearm|Ashina Trained Spearmen{***}
-qstr_Ashina_Trained_Skirmi|Ashina Trained Skirmishers{***}
-qstr_Ashina_Veteran_Spearm|Ashina Veteran Spearmen{***}
-qstr_Ashina_Veteran_Skirmi|Ashina Veteran Skirmishers{***}
-qstr_Ashina_Elite_Spearme|Ashina Elite Spearmen{***}
-qstr_Ashina_Retainers|Ashina Retainers{***}
-qstr_Ashina_Marksmen|Ashina Marksmen{***}
-qstr_Ashina_Veteran_Retain|Ashina Veteran Retainers{***}
-qstr_Ashina_Mounted_Retain|Ashina Mounted Retainers{***}
-qstr_Ashina_Samurai_Gunner|Ashina Samurai Gunners{***}
-qstr_Ashina_Samurai_Archer|Ashina Samurai Archers{***}
-qstr_Ashina_Officers|Ashina Officers{***}
-qstr_Ashina_Mounted_Office|Ashina Mounted Officers{***}
-qstr_Ashina_Master_Gunners|Ashina Master Gunners{***}
-qstr_Ashina_Master_Archers|Ashina Master Archers{***}
-qstr_Ashina_Hatamoto_Guard|Ashina Hatamoto Guards{***}
-qstr_Ashina_Messengers|Ashina Messengers{***}
-qstr_Ashina_Deserters|Ashina Deserters{***}
-qstr_Ashina_Prison_Guards|Ashina Prison Guards{***}
-qstr_Ashina_Castle_Guards|Ashina Castle Guards{***}
-qstr_Saito_Clan|Saito Clan{***}
-qstr_Saito_Spearman|Saito Spearman{***}
-qstr_Saito_Skirmisher|Saito Skirmisher{***}
-qstr_Saito_Trained_Spearm|Saito Trained Spearman{***}
-qstr_Saito_Trained_Skirmi|Saito Trained Skirmisher{***}
-qstr_Saito_Veteran_Spearm|Saito Veteran Spearman{***}
-qstr_Saito_Veteran_Skirmi|Saito Veteran Skirmisher{***}
-qstr_Saito_Elite_Skirmish|Saito Elite Skirmisher{***}
-qstr_Saito_Retainer|Saito Retainer{***}
-qstr_Saito_Marksman|Saito Marksman{***}
-qstr_Saito_Veteran_Retain|Saito Veteran Retainer{***}
-qstr_Saito_Mounted_Retain|Saito Mounted Retainer{***}
-qstr_Saito_Samurai_Gunner|Saito Samurai Gunner{***}
-qstr_Saito_Samurai_Archer|Saito Samurai Archer{***}
-qstr_Saito_Officer|Saito Officer{***}
-qstr_Saito_Mounted_Office|Saito Mounted Officer{***}
-qstr_Saito_Master_Gunner|Saito Master Gunner{***}
-qstr_Saito_Master_Archer|Saito Master Archer{***}
-qstr_Saito_Hatamoto_Caval|Saito Hatamoto Cavalry{***}
-qstr_Saito_Hatamoto_Gunne|Saito Hatamoto Gunner{***}
-qstr_Saito_Messenger|Saito Messenger{***}
-qstr_Saito_Deserter|Saito Deserter{***}
-qstr_Saito_Prison_Guard|Saito Prison Guard{***}
-qstr_Saito_Castle_Guard|Saito Castle Guard{***}
-qstr_Saito_Spearmen|Saito Spearmen{***}
-qstr_Saito_Skirmishers|Saito Skirmishers{***}
-qstr_Saito_Trained_Spearme|Saito Trained Spearmen{***}
-qstr_Saito_Trained_Skirmis|Saito Trained Skirmishers{***}
-qstr_Saito_Veteran_Spearme|Saito Veteran Spearmen{***}
-qstr_Saito_Veteran_Skirmis|Saito Veteran Skirmishers{***}
-qstr_Saito_Elite_Skirmishe|Saito Elite Skirmishers{***}
-qstr_Saito_Retainers|Saito Retainers{***}
-qstr_Saito_Marksmen|Saito Marksmen{***}
-qstr_Saito_Veteran_Retaine|Saito Veteran Retainers{***}
-qstr_Saito_Mounted_Retaine|Saito Mounted Retainers{***}
-qstr_Saito_Samurai_Gunners|Saito Samurai Gunners{***}
-qstr_Saito_Samurai_Archers|Saito Samurai Archers{***}
-qstr_Saito_Officers|Saito Officers{***}
-qstr_Saito_Mounted_Officer|Saito Mounted Officers{***}
-qstr_Saito_Master_Gunners|Saito Master Gunners{***}
-qstr_Saito_Master_Archers|Saito Master Archers{***}
-qstr_Saito_Hatamoto_Gunner|Saito Hatamoto Gunners{***}
-qstr_Saito_Messengers|Saito Messengers{***}
-qstr_Saito_Deserters|Saito Deserters{***}
-qstr_Saito_Prison_Guards|Saito Prison Guards{***}
-qstr_Saito_Castle_Guards|Saito Castle Guards{***}
-qstr_Ouchi_Clan|Ouchi Clan{***}
-qstr_Ouchi_Spearman|Ouchi Spearman{***}
-qstr_Ouchi_Skirmisher|Ouchi Skirmisher{***}
-qstr_Ouchi_Trained_Spearm|Ouchi Trained Spearman{***}
-qstr_Ouchi_Trained_Skirmi|Ouchi Trained Skirmisher{***}
-qstr_Ouchi_Veteran_Spearm|Ouchi Veteran Spearman{***}
-qstr_Ouchi_Veteran_Skirmi|Ouchi Veteran Skirmisher{***}
-qstr_Ouchi_Elite_Spearman|Ouchi Elite Spearman{***}
-qstr_Ouchi_Retainer|Ouchi Retainer{***}
-qstr_Ouchi_Marksman|Ouchi Marksman{***}
-qstr_Ouchi_Veteran_Retain|Ouchi Veteran Retainer{***}
-qstr_Ouchi_Mounted_Retain|Ouchi Mounted Retainer{***}
-qstr_Ouchi_Samurai_Gunner|Ouchi Samurai Gunner{***}
-qstr_Ouchi_Samurai_Archer|Ouchi Samurai Archer{***}
-qstr_Ouchi_Officer|Ouchi Officer{***}
-qstr_Ouchi_Mounted_Office|Ouchi Mounted Officer{***}
-qstr_Ouchi_Master_Gunner|Ouchi Master Gunner{***}
-qstr_Ouchi_Master_Archer|Ouchi Master Archer{***}
-qstr_Ouchi_Hatamoto_Guard|Ouchi Hatamoto Guard{***}
-qstr_Ouchi_Hatamoto_Caval|Ouchi Hatamoto Cavalry{***}
-qstr_Ouchi_Messenger|Ouchi Messenger{***}
-qstr_Ouchi_Deserter|Ouchi Deserter{***}
-qstr_Ouchi_Prison_Guard|Ouchi Prison Guard{***}
-qstr_Ouchi_Castle_Guard|Ouchi Castle Guard{***}
-qstr_Ouchi_Spearmen|Ouchi Spearmen{***}
-qstr_Ouchi_Skirmishers|Ouchi Skirmishers{***}
-qstr_Ouchi_Trained_Spearme|Ouchi Trained Spearmen{***}
-qstr_Ouchi_Trained_Skirmis|Ouchi Trained Skirmishers{***}
-qstr_Ouchi_Veteran_Spearme|Ouchi Veteran Spearmen{***}
-qstr_Ouchi_Veteran_Skirmis|Ouchi Veteran Skirmishers{***}
-qstr_Ouchi_Elite_Spearmen|Ouchi Elite Spearmen{***}
-qstr_Ouchi_Retainers|Ouchi Retainers{***}
-qstr_Ouchi_Marksmen|Ouchi Marksmen{***}
-qstr_Ouchi_Veteran_Retaine|Ouchi Veteran Retainers{***}
-qstr_Ouchi_Mounted_Retaine|Ouchi Mounted Retainers{***}
-qstr_Ouchi_Samurai_Gunners|Ouchi Samurai Gunners{***}
-qstr_Ouchi_Samurai_Archers|Ouchi Samurai Archers{***}
-qstr_Ouchi_Officers|Ouchi Officers{***}
-qstr_Ouchi_Mounted_Officer|Ouchi Mounted Officers{***}
-qstr_Ouchi_Master_Gunners|Ouchi Master Gunners{***}
-qstr_Ouchi_Master_Archers|Ouchi Master Archers{***}
-qstr_Ouchi_Hatamoto_Guards|Ouchi Hatamoto Guards{***}
-qstr_Ouchi_Messengers|Ouchi Messengers{***}
-qstr_Ouchi_Deserters|Ouchi Deserters{***}
-qstr_Ouchi_Prison_Guards|Ouchi Prison Guards{***}
-qstr_Ouchi_Castle_Guards|Ouchi Castle Guards{***}
-qstr_Imagawa_Clan|Imagawa Clan{***}
-qstr_Imagawa_Spearman|Imagawa Spearman{***}
-qstr_Imagawa_Skirmisher|Imagawa Skirmisher{***}
-qstr_Imagawa_Trained_Spea|Imagawa Trained Spearman{***}
-qstr_Imagawa_Trained_Skir|Imagawa Trained Skirmisher{***}
-qstr_Imagawa_Veteran_Spea|Imagawa Veteran Spearman{***}
-qstr_Imagawa_Veteran_Skir|Imagawa Veteran Skirmisher{***}
-qstr_Imagawa_Elite_Skirmi|Imagawa Elite Skirmisher{***}
-qstr_Imagawa_Retainer|Imagawa Retainer{***}
-qstr_Imagawa_Marksman|Imagawa Marksman{***}
-qstr_Imagawa_Veteran_Reta|Imagawa Veteran Retainer{***}
-qstr_Imagawa_Mounted_Reta|Imagawa Mounted Retainer{***}
-qstr_Imagawa_Samurai_Gunn|Imagawa Samurai Gunner{***}
-qstr_Imagawa_Samurai_Arch|Imagawa Samurai Archer{***}
-qstr_Imagawa_Officer|Imagawa Officer{***}
-qstr_Imagawa_Mounted_Offi|Imagawa Mounted Officer{***}
-qstr_Imagawa_Master_Gunne|Imagawa Master Gunner{***}
-qstr_Imagawa_Master_Arche|Imagawa Master Archer{***}
-qstr_Imagawa_Hatamoto_Gua|Imagawa Hatamoto Guard{***}
-qstr_Imagawa_Hatamoto_Gun|Imagawa Hatamoto Gunner{***}
-qstr_Imagawa_Messenger|Imagawa Messenger{***}
-qstr_Imagawa_Deserter|Imagawa Deserter{***}
-qstr_Imagawa_Prison_Guard|Imagawa Prison Guard{***}
-qstr_Imagawa_Castle_Guard|Imagawa Castle Guard{***}
-qstr_Imagawa_Spearmen|Imagawa Spearmen{***}
-qstr_Imagawa_Skirmishers|Imagawa Skirmishers{***}
-qstr_Imagawa_Trained_Spear|Imagawa Trained Spearmen{***}
-qstr_Imagawa_Trained_Skirm|Imagawa Trained Skirmishers{***}
-qstr_Imagawa_Veteran_Spear|Imagawa Veteran Spearmen{***}
-qstr_Imagawa_Veteran_Skirm|Imagawa Veteran Skirmishers{***}
-qstr_Imagawa_Retainers|Imagawa Retainers{***}
-qstr_Imagawa_Marksmen|Imagawa Marksmen{***}
-qstr_Imagawa_Veteran_Retai|Imagawa Veteran Retainers{***}
-qstr_Imagawa_Mounted_Retai|Imagawa Mounted Retainers{***}
-qstr_Imagawa_Samurai_Gunne|Imagawa Samurai Gunners{***}
-qstr_Imagawa_Samurai_Arche|Imagawa Samurai Archers{***}
-qstr_Imagawa_Officers|Imagawa Officers{***}
-qstr_Imagawa_Mounted_Offic|Imagawa Mounted Officers{***}
-qstr_Imagawa_Master_Gunner|Imagawa Master Gunners{***}
-qstr_Imagawa_Master_Archer|Imagawa Master Archers{***}
-qstr_Imagawa_Hatamoto_Guar|Imagawa Hatamoto Guards{***}
-qstr_Imagawa_Hatamoto_Gunn|Imagawa Hatamoto Gunners{***}
-qstr_Imagawa_Messengers|Imagawa Messengers{***}
-qstr_Imagawa_Deserters|Imagawa Deserters{***}
-qstr_Imagawa_Prison_Guards|Imagawa Prison Guards{***}
-qstr_Imagawa_Castle_Guards|Imagawa Castle Guards{***}
-qstr_Great_Lord_{s9}|Great Lord {s9}{***}
+qstr_Ashina_Clan|芦 名 氏 
+qstr_Ashina_Spearman|Ashina Spearman
+qstr_Ashina_Skirmisher|Ashina Skirmisher
+qstr_Ashina_Trained_Spear|Ashina Trained Spearman
+qstr_Ashina_Trained_Skirm|Ashina Trained Skirmisher
+qstr_Ashina_Veteran_Spear|Ashina Veteran Spearman
+qstr_Ashina_Veteran_Skirm|Ashina Veteran Skirmisher
+qstr_Ashina_Elite_Spearma|Ashina Elite Spearman*
+qstr_Ashina_Retainer|Ashina Retainer
+qstr_Ashina_Marksman|Ashina Marksman
+qstr_Ashina_Veteran_Retai|Ashina Veteran Retainer
+qstr_Ashina_Mounted_Retai|Ashina Mounted Retainer
+qstr_Ashina_Samurai_Gunne|Ashina Samurai Gunner
+qstr_Ashina_Samurai_Arche|Ashina Samurai Archer
+qstr_Ashina_Officer|Ashina Officer
+qstr_Ashina_Mounted_Offic|Ashina Mounted Officer
+qstr_Ashina_Master_Gunner|Ashina Master Gunner
+qstr_Ashina_Master_Archer|Ashina Master Archer
+qstr_Ashina_Hatamoto_Guar|Ashina Hatamoto Guard
+qstr_Ashina_Hatamoto_Cava|Ashina Hatamoto Cavalry
+qstr_Ashina_Messenger|Ashina Messenger
+qstr_Ashina_Deserter|Ashina Deserter
+qstr_Ashina_Prison_Guard|Ashina Prison Guard
+qstr_Ashina_Castle_Guard|Ashina Castle Guard
+qstr_Ashina_Spearmen|Ashina Spearmen
+qstr_Ashina_Skirmishers|Ashina Skirmishers
+qstr_Ashina_Trained_Spearm|Ashina Trained Spearmen
+qstr_Ashina_Trained_Skirmi|Ashina Trained Skirmishers
+qstr_Ashina_Veteran_Spearm|Ashina Veteran Spearmen
+qstr_Ashina_Veteran_Skirmi|Ashina Veteran Skirmishers
+qstr_Ashina_Elite_Spearme|Ashina Elite Spearmen
+qstr_Ashina_Retainers|Ashina Retainers
+qstr_Ashina_Marksmen|Ashina Marksmen
+qstr_Ashina_Veteran_Retain|Ashina Veteran Retainers
+qstr_Ashina_Mounted_Retain|Ashina Mounted Retainers
+qstr_Ashina_Samurai_Gunner|Ashina Samurai Gunners
+qstr_Ashina_Samurai_Archer|Ashina Samurai Archers
+qstr_Ashina_Officers|Ashina Officers
+qstr_Ashina_Mounted_Office|Ashina Mounted Officers
+qstr_Ashina_Master_Gunners|Ashina Master Gunners
+qstr_Ashina_Master_Archers|Ashina Master Archers
+qstr_Ashina_Hatamoto_Guard|Ashina Hatamoto Guards
+qstr_Ashina_Messengers|Ashina Messengers
+qstr_Ashina_Deserters|Ashina Deserters
+qstr_Ashina_Prison_Guards|Ashina Prison Guards
+qstr_Ashina_Castle_Guards|Ashina Castle Guards
+qstr_Saito_Clan|Saito Clan
+qstr_Saito_Spearman|Saito Spearman
+qstr_Saito_Skirmisher|Saito Skirmisher
+qstr_Saito_Trained_Spearm|Saito Trained Spearman
+qstr_Saito_Trained_Skirmi|Saito Trained Skirmisher
+qstr_Saito_Veteran_Spearm|Saito Veteran Spearman
+qstr_Saito_Veteran_Skirmi|Saito Veteran Skirmisher
+qstr_Saito_Elite_Skirmish|Saito Elite Skirmisher
+qstr_Saito_Retainer|Saito Retainer
+qstr_Saito_Marksman|Saito Marksman
+qstr_Saito_Veteran_Retain|Saito Veteran Retainer
+qstr_Saito_Mounted_Retain|Saito Mounted Retainer
+qstr_Saito_Samurai_Gunner|Saito Samurai Gunner
+qstr_Saito_Samurai_Archer|Saito Samurai Archer
+qstr_Saito_Officer|Saito Officer
+qstr_Saito_Mounted_Office|Saito Mounted Officer
+qstr_Saito_Master_Gunner|Saito Master Gunner
+qstr_Saito_Master_Archer|Saito Master Archer
+qstr_Saito_Hatamoto_Caval|Saito Hatamoto Cavalry
+qstr_Saito_Hatamoto_Gunne|Saito Hatamoto Gunner
+qstr_Saito_Messenger|Saito Messenger
+qstr_Saito_Deserter|Saito Deserter
+qstr_Saito_Prison_Guard|Saito Prison Guard
+qstr_Saito_Castle_Guard|Saito Castle Guard
+qstr_Saito_Spearmen|Saito Spearmen
+qstr_Saito_Skirmishers|Saito Skirmishers
+qstr_Saito_Trained_Spearme|Saito Trained Spearmen
+qstr_Saito_Trained_Skirmis|Saito Trained Skirmishers
+qstr_Saito_Veteran_Spearme|Saito Veteran Spearmen
+qstr_Saito_Veteran_Skirmis|Saito Veteran Skirmishers
+qstr_Saito_Elite_Skirmishe|Saito Elite Skirmishers
+qstr_Saito_Retainers|Saito Retainers
+qstr_Saito_Marksmen|Saito Marksmen
+qstr_Saito_Veteran_Retaine|Saito Veteran Retainers
+qstr_Saito_Mounted_Retaine|Saito Mounted Retainers
+qstr_Saito_Samurai_Gunners|Saito Samurai Gunners
+qstr_Saito_Samurai_Archers|Saito Samurai Archers
+qstr_Saito_Officers|Saito Officers
+qstr_Saito_Mounted_Officer|Saito Mounted Officers
+qstr_Saito_Master_Gunners|Saito Master Gunners
+qstr_Saito_Master_Archers|Saito Master Archers
+qstr_Saito_Hatamoto_Gunner|Saito Hatamoto Gunners
+qstr_Saito_Messengers|Saito Messengers
+qstr_Saito_Deserters|Saito Deserters
+qstr_Saito_Prison_Guards|Saito Prison Guards
+qstr_Saito_Castle_Guards|Saito Castle Guards
+qstr_Ouchi_Clan|大 内 氏 
+qstr_Ouchi_Spearman|Ouchi Spearman
+qstr_Ouchi_Skirmisher|Ouchi Skirmisher
+qstr_Ouchi_Trained_Spearm|Ouchi Trained Spearman
+qstr_Ouchi_Trained_Skirmi|Ouchi Trained Skirmisher
+qstr_Ouchi_Veteran_Spearm|Ouchi Veteran Spearman
+qstr_Ouchi_Veteran_Skirmi|Ouchi Veteran Skirmisher
+qstr_Ouchi_Elite_Spearman|Ouchi Elite Spearman
+qstr_Ouchi_Retainer|Ouchi Retainer
+qstr_Ouchi_Marksman|Ouchi Marksman
+qstr_Ouchi_Veteran_Retain|Ouchi Veteran Retainer
+qstr_Ouchi_Mounted_Retain|Ouchi Mounted Retainer
+qstr_Ouchi_Samurai_Gunner|Ouchi Samurai Gunner
+qstr_Ouchi_Samurai_Archer|Ouchi Samurai Archer
+qstr_Ouchi_Officer|Ouchi Officer
+qstr_Ouchi_Mounted_Office|Ouchi Mounted Officer
+qstr_Ouchi_Master_Gunner|Ouchi Master Gunner
+qstr_Ouchi_Master_Archer|Ouchi Master Archer
+qstr_Ouchi_Hatamoto_Guard|Ouchi Hatamoto Guard
+qstr_Ouchi_Hatamoto_Caval|Ouchi Hatamoto Cavalry
+qstr_Ouchi_Messenger|Ouchi Messenger
+qstr_Ouchi_Deserter|Ouchi Deserter
+qstr_Ouchi_Prison_Guard|Ouchi Prison Guard
+qstr_Ouchi_Castle_Guard|Ouchi Castle Guard
+qstr_Ouchi_Spearmen|Ouchi Spearmen
+qstr_Ouchi_Skirmishers|Ouchi Skirmishers
+qstr_Ouchi_Trained_Spearme|Ouchi Trained Spearmen
+qstr_Ouchi_Trained_Skirmis|Ouchi Trained Skirmishers
+qstr_Ouchi_Veteran_Spearme|Ouchi Veteran Spearmen
+qstr_Ouchi_Veteran_Skirmis|Ouchi Veteran Skirmishers
+qstr_Ouchi_Elite_Spearmen|Ouchi Elite Spearmen
+qstr_Ouchi_Retainers|Ouchi Retainers
+qstr_Ouchi_Marksmen|Ouchi Marksmen
+qstr_Ouchi_Veteran_Retaine|Ouchi Veteran Retainers
+qstr_Ouchi_Mounted_Retaine|Ouchi Mounted Retainers
+qstr_Ouchi_Samurai_Gunners|Ouchi Samurai Gunners
+qstr_Ouchi_Samurai_Archers|Ouchi Samurai Archers
+qstr_Ouchi_Officers|Ouchi Officers
+qstr_Ouchi_Mounted_Officer|Ouchi Mounted Officers
+qstr_Ouchi_Master_Gunners|Ouchi Master Gunners
+qstr_Ouchi_Master_Archers|Ouchi Master Archers
+qstr_Ouchi_Hatamoto_Guards|Ouchi Hatamoto Guards
+qstr_Ouchi_Messengers|Ouchi Messengers
+qstr_Ouchi_Deserters|Ouchi Deserters
+qstr_Ouchi_Prison_Guards|Ouchi Prison Guards
+qstr_Ouchi_Castle_Guards|Ouchi Castle Guards
+qstr_Imagawa_Clan|Imagawa Clan
+qstr_Imagawa_Spearman|Imagawa Spearman
+qstr_Imagawa_Skirmisher|Imagawa Skirmisher
+qstr_Imagawa_Trained_Spea|Imagawa Trained Spearman
+qstr_Imagawa_Trained_Skir|Imagawa Trained Skirmisher
+qstr_Imagawa_Veteran_Spea|Imagawa Veteran Spearman
+qstr_Imagawa_Veteran_Skir|Imagawa Veteran Skirmisher
+qstr_Imagawa_Elite_Skirmi|Imagawa Elite Skirmisher
+qstr_Imagawa_Retainer|Imagawa Retainer
+qstr_Imagawa_Marksman|Imagawa Marksman
+qstr_Imagawa_Veteran_Reta|Imagawa Veteran Retainer
+qstr_Imagawa_Mounted_Reta|Imagawa Mounted Retainer
+qstr_Imagawa_Samurai_Gunn|Imagawa Samurai Gunner
+qstr_Imagawa_Samurai_Arch|Imagawa Samurai Archer
+qstr_Imagawa_Officer|Imagawa Officer
+qstr_Imagawa_Mounted_Offi|Imagawa Mounted Officer
+qstr_Imagawa_Master_Gunne|Imagawa Master Gunner
+qstr_Imagawa_Master_Arche|Imagawa Master Archer
+qstr_Imagawa_Hatamoto_Gua|Imagawa Hatamoto Guard
+qstr_Imagawa_Hatamoto_Gun|Imagawa Hatamoto Gunner
+qstr_Imagawa_Messenger|Imagawa Messenger
+qstr_Imagawa_Deserter|Imagawa Deserter
+qstr_Imagawa_Prison_Guard|Imagawa Prison Guard
+qstr_Imagawa_Castle_Guard|Imagawa Castle Guard
+qstr_Imagawa_Spearmen|Imagawa Spearmen
+qstr_Imagawa_Skirmishers|Imagawa Skirmishers
+qstr_Imagawa_Trained_Spear|Imagawa Trained Spearmen
+qstr_Imagawa_Trained_Skirm|Imagawa Trained Skirmishers
+qstr_Imagawa_Veteran_Spear|Imagawa Veteran Spearmen
+qstr_Imagawa_Veteran_Skirm|Imagawa Veteran Skirmishers
+qstr_Imagawa_Retainers|Imagawa Retainers
+qstr_Imagawa_Marksmen|Imagawa Marksmen
+qstr_Imagawa_Veteran_Retai|Imagawa Veteran Retainers
+qstr_Imagawa_Mounted_Retai|Imagawa Mounted Retainers
+qstr_Imagawa_Samurai_Gunne|Imagawa Samurai Gunners
+qstr_Imagawa_Samurai_Arche|Imagawa Samurai Archers
+qstr_Imagawa_Officers|Imagawa Officers
+qstr_Imagawa_Mounted_Offic|Imagawa Mounted Officers
+qstr_Imagawa_Master_Gunner|Imagawa Master Gunners
+qstr_Imagawa_Master_Archer|Imagawa Master Archers
+qstr_Imagawa_Hatamoto_Guar|Imagawa Hatamoto Guards
+qstr_Imagawa_Hatamoto_Gunn|Imagawa Hatamoto Gunners
+qstr_Imagawa_Messengers|Imagawa Messengers
+qstr_Imagawa_Deserters|Imagawa Deserters
+qstr_Imagawa_Prison_Guards|Imagawa Prison Guards
+qstr_Imagawa_Castle_Guards|Imagawa Castle Guards
+qstr_Great_Lord_{s9}|大 名 {s9}
 qstr_^^Note_that_so_long_|^^注 意 只 要 你 还 在 做 元 帅 ， 这 个 国 家 的 领 主 们 都 会 等 着 让 你 率 领 他 们 进 行 战 役 。 所 以 ， 如 果 你 正 在 准 备 一 场 宴 会 ， 或 者 是 婚 礼 以 及 其 它 活 动 ， 你 也 许 要 去 和 你 的 领 主 谈 谈 来 辞 去 元 帅 的 职 务 。 
 qstr_Try_as_you_might_you_|尽 你 所 能 ， 你 无 法 击 败 叛 乱 村 庄 。 
 qstr_{reg0}|{reg0}
-qstr_positive|positive{***}
-qstr_negative|negative{***}
+qstr_positive|积 极 
+qstr_negative|消 极 
 qstr_{s11}^^_The_current_|{s11} ^^目 前 的 驻 军 由 {reg5}名 士 兵 组 成 。 ^粮 食 储 备 持 续 {reg6}天 。 
 qstr_^^Additional_the_fol|^目 前 ， 还 有 以 下 各 方 ： ^
 qstr_{s12}_{s3}_with_{reg|s12} {s3}与 {reg1}部 队 。 ^ 
@@ -981,7 +979,6 @@ qstr_{s0}^{s1}_villages_wit|{s0} ^ {s1}繁 荣 的 村 庄 40-59： {reg0}
 qstr_{s0}^{s1}_villages_with|{s0} ^ {s1}繁 荣 的 村 庄 20-39： {reg0} 
 qstr_{s0}^{s1}_villages_with_|{s0} ^ {s1}繁 荣 的 村 庄 0-19： {reg0}
 qstr_You_have_deserted_an|您 已 经 离 开 了 ， 并 且 现 在 被 通 缉 了 ！ 
-qstr_Hidden|隐 藏 村 庄 
 qstr_Breaking_camp...|终 止 宿 营 …… 
 qstr_{s5}_has_decided_to_|{s5}已 决 定 将 {s4}授 予 {s7}的 另 一 位 领 主 。 
 qstr_A_livestock_epidemic|一 场 瘟 疫 在 {s4}中 杀 死 了 {reg4}头 牛 。 
@@ -1014,7 +1011,7 @@ qstr_The_trade_pact_betwe|{s1}与 {s2}之 间 的 贸 易 协 定 已 经 失 �
 qstr_{s1}_has_not_respond|{s1}未 对 {s2}的 挑 衅 作 出 回 应 。 
 qstr_Your_recruiter_who_wa|您 被 委 托 向 {s13}招 募 {reg10}新 兵 的 征 兵 官 被 击 败 了 ！ 
 qstr_{s13}_has_been_taken|{s13}已 被 敌 人 夺 走 ， 而 您 委 托 招 募 {reg10} 新 兵 的 征 兵 官 消 失 得 无 影 无 踪 ！ 
-qstr_ERROR_IN_THE_RECRUIT|ERROR IN THE RECRUITER KIT SIMPLE TRIGGERS!{***}
+qstr_ERROR_IN_THE_RECRUIT|ERROR IN THE RECRUITER KIT SIMPLE TRIGGERS!
 qstr_A_recruiter_has_brou|一 名 征 兵 官 已 将 {reg10}名 士 兵 带 到 {s13}。 
 qstr_Distance_between_{s1|{s14}与 {s15}之 间 的 距 离 ： {reg0}
 qstr_Your_caravan_has_bro|您 的 商 队 已 将 {s12}带 到 {s13}。 
@@ -1062,7 +1059,7 @@ qstr_we_have_suceeded_in_|我 们 成 功 占 领 了 一 些 土 地 ， 但 �
 qstr_we_have_become_a_sig|我 们 现 在 成 了 显 赫 一 方 的 势 力 了 ， 我 们 很 有 机 会 能 赢 得 最 终 的 胜 利 。 
 qstr_we_are_winning_the_w|我 们 赢 得 了 这 场 战 争 ， 但 是 我 们 的 敌 人 还 在 顽 强 抵 抗 
 qstr_we_are_on_the_verge_|我 们 已 经 接 近 最 终 的 胜 利 了 。 残 余 的 敌 人 完 全 够 不 成 威 胁 ， 但 是 我 们 仍 然 需 要 将 他 们 赶 尽 杀 绝 。 
-qstr_tono|tono{***}
+qstr_tono|大 人 
 qstr_Your_domain_has_no_s|您 的 领 土 没 有 指 定 的 文 化 
 qstr_Your_domain_culture_|您 的 领 地 文 化 是 ： {s11}
 qstr_Kingdom_culture:_Non|领 第 文 化 ： 无 
@@ -1140,7 +1137,7 @@ qstr_{s9}{reg5?_and_the_l|{s9}{reg5?而 且 是 {s8}的 领 主 。 :。 }
 qstr_{s13}_asked_you_to_g|{s13}要 你 收 集 {reg3}头 牛 ， 并 给 他 送 去 。 
 qstr_{s9}_wants_you_to_fol|{s9}希 望 您 跟 随 他 的 军 队 ， 直 到 另 行 通 知 。 
 qstr_{s9}_asked_you_to_sc|{s9}要 你 侦 察 {s13}， {s14}和 {s15}， 然 后 回 去 向 他 汇 报 。 
-qstr_pupil|pupil{***}
+qstr_pupil|门 徒 
 qstr_you|你 
 qstr_You_are_challenging_|你 准 备 向 我 发 起 决 斗 ？ 开 什 么 玩 笑 ！ 如 你 所 愿 ， {playername}， 打 暴 你 的 头 将 会 是 非 常 有 意 思 的 事 情 。 
 qstr_{s16}_and_{s17}|{s16}和 {s17}
@@ -1182,13 +1179,13 @@ qstr_{s11}_asked_you_to_d|{s11}要 你 送 信 给 被 囚 禁 在 {s14}的 {s13
 qstr_You_agreed_to_challe|你 同 意 与 {s13}决 斗 以 维 护 {s11}的 名 誉 。 
 qstr_{s5}__Persuasion_str|{s5}（ 说 服 力 ： {reg5}） 
 qstr_Persuasion_Attempt|尝 试 说 服 
-qstr_{s12}_and_{s11}|{s12} and {s11}{***}
+qstr_{s12}_and_{s11}|{s12}和 {s11}
 qstr_You_can_find_book_me|您 可 以 在 {s11}找 到 书 商 。 
 qstr_{s12}_{s11}|{s12}, {s11}
 qstr_You_can_find_ransom_|您 可 以 在 {s11}找 到 奴 隶 贩 子 。 
 qstr_A_villager_from_{s7}|一 个 从 {s7}来 的 村 民 恳 求 你 ， 希 望 你 能 把 他 们 的 村 子 从 那 群 强 盗 手 里 解 救 出 来 。 
-qstr_Do_you_have_a_need_f|Do you have a need for more agents, {sir/madam}? {reg3?{reg4} of my comrades are:One of my comrades is} looking for a master. {reg3?They' ll:He' ll} join you for {reg5} mon.{***}
-qstr_Do_you_have_a_need_fo|Do you have a need for mercenaries, {sir/madam}? {reg3?Me and {reg4?{reg3} of my comrades:one of my comrades} are:I am} looking for a master. We' ll join you for {reg5} mon.{***}
+qstr_Do_you_have_a_need_f|你 要 事 务 官 吗 ， 大 人 ？ 我 手 下 在 找 雇 主 ， 只 要 {reg5} 文 。 
+qstr_Do_you_have_a_need_fo|你 要 佣 兵 吗 ， 大 人 ？ 我 手 下 在 找 雇 主 ， 只 要 {reg5} 文 。 
 qstr_You_chose_well_{s0}.|您 选 择 的 不 错 ， {s0}。 我 的 {reg65？ companions： lads}知 道 如 何 守 口 如 瓶 并 赚 取 薪 水 。 
 qstr_Well_done_{s0}._Keep|做 得 好 ， {s0}。 享 受 金 钱 和 清 酒 的 到 来 ， 在 日 本 呀 ， 不 需 要 惧 怕 任 何 人 。 
 qstr_We_are_at_your_servi|我 们 听 命 于 你 ， {先 生 /夫 人 }。 你 所 要 做 的 ， 仅 仅 是 为 我 们 指 明 攻 击 对 象 。 
@@ -1214,7 +1211,7 @@ qstr_Another_fool_come_to|又 一 个 傻 瓜 过 来 把 {他 的 /她 的 } �
 qstr_We_re_not_afraid_of_|我 们 不 怕 你 ， {小 子 /小 妞 }。 是 时 候 打 暴 某 些 人 的 头 了 ！ 
 qstr_That_was_a_mistake._|那 是 一 个 错 误 。 现 在 我 将 慢 慢 把 你 折 磨 到 死 。 
 qstr_Brave_words._Let_s_s|豪 言 壮 语 ， 让 我 看 看 你 怎 么 用 行 动 来 支 持 它 ， 坏 蛋 ！ 
-qstr_your_lordship|your lordship{***}
+qstr_your_lordship|你 的 大 名 之 位 
 qstr_A_{s5}?_Well..._Yes_|{s5}？ 呃 …… 是 的 ， 我 想 是 这 样 。 问 了 一 个 多 么 奇 怪 的 问 题 啊 。 
 qstr_Eh?_No_it_most_certa|是 吗 ？ 基 本 可 以 肯 定 那 不 是 一 个 {s5}。 如 果 我 是 你 的 话 ， 我 就 开 始 怀 疑 自 己 的 视 力 是 否 有 问 题 。 
 qstr_This_is_the_{reg4?to|这 里 是 {s5}{reg4?镇 :村 }， {先 生 /夫 人 }。 

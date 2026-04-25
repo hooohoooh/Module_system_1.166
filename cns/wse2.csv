@@ -398,7 +398,6 @@ ui_set_default_keys|恢 复 默 认 键
 ui_undo_changes|撤 销 改 变 
 ui_press_a_key|按 一 个 键 
 ui_return_to_game|回 到 游 戏 
-ui_options|选 项 
 ui_save_and_exit|保 存 并 退 出 
 ui_save|保 存 
 ui_save_as|保 存 为 
@@ -431,9 +430,6 @@ ui_show_framerate|显 示 帧 率
 ui_estimated_performance|性 能 估 计 ： %d%%
 ui_change_graphics_settings_explanation|一 些 变 化 需 要 进 入 新 的 场 景 后 才 能 生 效 。 
 ui_start_tutorial|游 戏 教 程 
-ui_start_a_new_game|开 始 新 游 戏 
-ui_restore_a_saved_game|载 入 游 戏 
-ui_exit_to_windows|离 开 
 ui_credits|贡 献 者 名 单 
 ui_version_value|v%s
 ui_active_quests|当 前 任 务 
@@ -564,7 +560,6 @@ ui_str_comma_str|%s， %s
 ui_need_to_learn_prisoner_management|你 需 要 学 习 俘 虏 管 理 技 能 ， 队 伍 才 能 带 俘 虏 。 
 ui_game_log|游 戏 日 志 
 ui_recent_messages|最 近 消 息 
-ui_custom_battle|自 定 义 战 斗 
 ui_player|玩 家 
 ui_value_denars|%d文 钱 
 ui_back|后 退 

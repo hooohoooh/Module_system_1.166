@@ -26,6 +26,11 @@ skinkey_face_depth|面 部 深 度
 skinkey_face_ratio|面 部 比 例 
 skinkey_face_width|面 部 宽 度 
 skinkey_post_edit|编 辑 完 成 
-skinkey_jaw_position|下 颌 位 置 
-skinkey_eyebrow_position|眉 毛 位 置 
+skinkey_jaw_size|下 颌 尺 寸 
+skinkey_upper_lip_size|上 唇 尺 寸 
+skinkey_lower_lip_size|下 唇 尺 寸 
+skinkey_eye_to_eye_distance|眼 距 
+skinkey_eye_size|眼 睛 尺 寸 
 skinkey_eyebrow_depth|眉 毛 深 度 
+skinkey_forehead_forward|前 额 前 倾 
+skinkey_forehead|前 额 
