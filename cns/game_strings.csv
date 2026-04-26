@@ -2384,7 +2384,7 @@ str_you_serve_another_realm_i_dont_see_s4_granting_reg4herhis_blessing_to_our_un
 str_madame_my_heart_currently_belongs_to_s4|夫 人 ， 我 的 心 现 在 属 于 {s4}。 
 str_my_lady_you_are_a_woman_of_great_spirit_and_bravery_possessed_of_beauty_grace_and_wit_i_shall_give_your_proposal_consideration|尊 敬 的 女 士 ， 你 是 一 位 集 勇 气 与 智 慧 ， 美 貌 与 优 雅 于 一 身 的 女 性 。 我 会 好 好 考 虑 你 的 提 议 的 。 
 str_my_lady_you_are_a_woman_of_great_spirit_and_bravery_possessed_of_beauty_grace_and_wit_i_would_be_most_honored_were_you_to_become_my_wife|尊 敬 的 女 士 ， 你 是 一 位 集 勇 气 与 智 慧 ， 美 貌 与 优 雅 于 一 身 的 女 性 。 能 娶 你 为 妻 是 我 莫 大 的 荣 耀 。 
-str_you_are_a_freelancer_troop|My {playernname}, I am afraid that it would be inappropriate to marry a warrior from my own army. Maybe in the future, when you are out of my service...
+str_you_are_a_freelancer_troop|我 认 为 娶 麾 下 士 兵 是 不 合 适 的 ， 等 你 退 役 后 再 说 吧 。 
 str_ah__kais_and_layali__such_a_sad_tale_many_a_time_has_it_been_recounted_for_my_family_by_the_wandering_poets_who_come_to_our_home_and_it_has_never_failed_to_bring_tears_to_our_eyes|啊 —— “ 秀 吉 和 宁 宁 ” —— 真 是 个 凄 美 的 传 说 。 来 我 们 家 的 吟 游 诗 人 们 ， 一 次 又 一 次 地 提 起 这 首 诗 ， 而 每 一 次 我 都 听 得 流 下 眼 泪 。 
 str_kais_and_layali_three_hundred_stanzas_of_pathetic_sniveling_if_you_ask_me_if_kais_wanted_to_escape_heartbreak_he_should_have_learned_to_live_within_his_station_and_not_yearn_for_what_he_cannot_have|“ 秀 吉 和 宁 宁 ” ？ 就 像 三 百 段 无 聊 的 啜 泣 ， 如 果 你 要 我 评 价 它 的 话 。 如 果 凯 斯 想 要 走 出 悲 伤 ， 那 么 他 必 须 活 在 现 实 里 ， 而 不 是 牵 挂 着 那 些 得 不 到 的 东 西 。 
 str_kais_and_layali_no_one_should_ever_have_written_such_a_sad_poem_if_it_was_the_destiny_of_kais_and_layali_to_be_together_than_their_love_should_have_conquered_all_obstacles|“ 秀 吉 和 宁 宁 ” ？ 谁 也 不 应 该 写 出 如 此 悲 伤 的 诗 歌 ！ 如 果 老 天 注 定 要 让 凯 斯 和 莱 亚 拉 在 一 起 ， 那 么 他 们 的 爱 情 就 该 冲 破 所 有 的 阻 碍 ！ 
@@ -3277,7 +3277,7 @@ str_gekokujo_fort_5_guard_talk|{酋 长 /女 祭 } {playername}?
 str_gekokujo_fort_6_guard_talk|{酋 长 /女 祭 } {playername}!
 str_gekokujo_fort_1_deputy_conquer|你 想 从 我 们 这 里 得 到 什 么 ？ 这 是 一 座 关 押 不 良 分 子 的 监 狱 。 我 们 要 陪 你 回 本 土 吗 ？ 
 str_gekokujo_fort_2_deputy_conquer|停 下 ！ 我 们 投 降 ！ 今 天 对 宗 氏 来 说 是 个 不 好 的 日 子 。 请 宽 恕 我 们 ， 我 们 将 为 您 尽 忠 。 
-str_gekokujo_fort_3_deputy_conquer|显 然 ， 西 行 方 丈 没 能 力 保 护 我 们 这 里 的 兄 弟 姐 妹 。 。 。 欢 迎 回 家 {方 丈 /师 太 } {playername}.
+str_gekokujo_fort_3_deputy_conquer|停 下 ！ 我 们 投 降 ！ 请 宽 恕 我 们 ， 我 们 将 为 您 尽 忠 。 
 str_gekokujo_fort_4_deputy_conquer|我 们 不 会 假 装 我 们 是 一 个 广 结 善 缘 的 教 派 ， 但 我 们 可 以 保 证 ， 因 我 们 的 刀 下 而 产 生 的 业 力 ， 可 以 让 你 免 受 十 八 层 地 狱 疾 苦 ， 便 往 生 轮 回 。 
 str_gekokujo_fort_5_deputy_conquer|很 好 ， 我 们 被 打 败 了 。 我 并 不 喜 欢 你 ， 但 我 的 职 责 是 让 我 的 村 庄 和 人 民 活 下 来 。 如 果 您 帮 助 我 们 恢 复 村 庄 ， 我 将 接 受 您 为 我 们 新 的 最 高 领 袖 。 
 str_gekokujo_fort_6_deputy_conquer|啊 ! 我 不 敢 相 信 你 击 败 了 我 们 ！ 我 们 将 从 现 在 开 始 为 您 服 务 ， 但 这 将 是 双 向 的 关 系 。 善 待 我 们 ， 我 们 将 助 您 一 臂 之 力 。 不 公 正 地 对 待 我 们 ， 我 们 将 离 开 ， 除 了 这 些 废 墟 ， 你 什 么 也 得 不 到 。 

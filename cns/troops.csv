@@ -54,10 +54,10 @@ trp_hired_guard|雇 佣 护 卫
 trp_hired_guard_pl|雇 佣 护 卫 
 trp_yojimbo|浪 人 
 trp_yojimbo_pl|浪 人 
-trp_hired_warrior|雇 佣 徒 士 番 
-trp_hired_warrior_pl|雇 佣 徒 士 番 
-trp_hired_warrior_veteran|雇 佣 小 姓 番 
-trp_hired_warrior_veteran_pl|雇 佣 小 姓 番 
+trp_hired_warrior|雇 佣 徒 士 
+trp_hired_warrior_pl|雇 佣 徒 士 
+trp_hired_warrior_veteran|雇 佣 小 姓 
+trp_hired_warrior_veteran_pl|雇 佣 小 姓 
 trp_hired_gunner|雇 佣 铁 炮 手 
 trp_hired_gunner_pl|雇 佣 铁 炮 手 
 trp_hired_agent|忍 者 
@@ -1668,8 +1668,8 @@ trp_knight_12_7|深 尾 成 质
 trp_knight_12_7_pl|深 尾 成 质 
 trp_knight_12_8|谷 干 城 
 trp_knight_12_8_pl|谷 干 城 
-trp_knight_12_9|岩 崎 弥 太 郎 
-trp_knight_12_9_pl|岩 崎 弥 太 郎 
+trp_knight_12_9|福 冈 孝 弟 
+trp_knight_12_9_pl|福 冈 孝 弟 
 trp_knight_12_10|山 内 丰 诚 
 trp_knight_12_10_pl|山 内 丰 诚 
 trp_knight_13_1|浅 野 忠 
