@@ -64,7 +64,7 @@ game_menus = [
     [
       ("town_1",[(eq, "$current_startup_quest_phase", 0),],"join a caravan to Praven, in the Kingdom of Swadia.",
        [
-         (assign, "$current_town", "p_town_6"),
+         (assign, "$current_town", "p_town_1"),
          (assign, "$g_starting_town", "$current_town"),
             (call_script, "script_player_arrived"),
             (party_set_morale, "p_main_party", 100),
@@ -86,7 +86,7 @@ game_menus = [
        
       ("town_2",[(eq, "$current_startup_quest_phase", 0),],"join a caravan to Reyvadin, in the Kingdom of the Vaegirs.",
        [
-         (assign, "$current_town", "p_castle_24"),
+         (assign, "$current_town", "p_town_2"),
          (assign, "$g_starting_town", "$current_town"),
             (call_script, "script_player_arrived"),
             (party_set_morale, "p_main_party", 100),
@@ -108,7 +108,7 @@ game_menus = [
        
       ("town_3",[(eq, "$current_startup_quest_phase", 0),],"join a caravan to Tulga, in the Khergit Khanate.",
        [
-         (assign, "$current_town", "p_town_10"),
+         (assign, "$current_town", "p_town_3"),
          (assign, "$g_starting_town", "$current_town"),
             (call_script, "script_player_arrived"),
             (party_set_morale, "p_main_party", 100),
@@ -130,7 +130,7 @@ game_menus = [
        
       ("town_4",[(eq, "$current_startup_quest_phase", 0),],"take a ship to Sargoth, in the Kingdom of the Nords.",
        [
-         (assign, "$current_town", "p_town_1"),
+         (assign, "$current_town", "p_town_4"),
          (assign, "$g_starting_town", "$current_town"),
             (call_script, "script_player_arrived"),
             (party_set_morale, "p_main_party", 100),
@@ -174,7 +174,7 @@ game_menus = [
        
        ("town_6",[(eq, "$current_startup_quest_phase", 0),],"take a ship to Jelkala, in the Kingdom of the Rhodoks.",
        [
-         (assign, "$current_town", "p_town_19"),
+         (assign, "$current_town", "p_town_6"),
          (assign, "$g_starting_town", "$current_town"),
             (call_script, "script_player_arrived"),
             (party_set_morale, "p_main_party", 100),
@@ -22196,7 +22196,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ("zhaobing",mnf_disable_all_keys,
     "欢 迎 来 到 招 募 界 面",
     "none",   
-    [(eq, "$current_town", "p_town_1"),],
+    [(eq, "$current_town", "p_town_1", "p_town_5", "p_town_4", "p_town_10", "p_town_21"),],
     [
      ("buy_munitions",[
 		(store_free_inventory_capacity,":num","trp_player"),

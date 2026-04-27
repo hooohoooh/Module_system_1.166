@@ -68,7 +68,7 @@ ti_on_scene_prop_start_use = -47.0 #can only be used in module_scene_props trigg
 ti_on_scene_prop_cancel_use = -48.0 #can only be used in module_scene_props triggers
 # Trigger Param 1: user agent id
 # Trigger Param 2: prop instance number
-
+ti_ai_updated            = 0
 ti_on_init_item          = -50.0 #can only be used in module_items triggers
 ti_on_weapon_attack      = -51.0 #can only be used in module_items triggers
 # Trigger Param 1: attacker agent id

@@ -7,6 +7,7 @@ from header_sounds import *
 from header_music import *
 from header_items import *
 from module_constants import *
+from header_triggers import *
 from header_terrain_types import * #gekokujo 3.0 no running away in sea battles
 
 ####################################################################################################################
@@ -109,6 +110,8 @@ common_init_assistant=(
 			(lt,":assistant",0),
 			(spawn_agent,"trp_assistant_gunner"),
 			(agent_set_team,reg0,":team"),
+            (agent_get_team, ":gunner_team", ":cannoneer"),
+            (agent_set_team, reg0, ":gunner_team"),
 			(set_fixed_point_multiplier,100), 
 			(prop_instance_get_position,pos31,":cannon"),
 			(position_move_x,pos31,100),#
@@ -194,7 +197,7 @@ common_move_cannon=(
 	  (try_end),
     ])
 common_fire_cannon=(
-	5,0,0,[],
+	10,0,0,[],
 	[
 		(try_for_agents,":cannoneer"),
 			(set_fixed_point_multiplier, 100),
@@ -243,7 +246,7 @@ common_fire_cannon=(
 					(get_distance_between_positions,":dis",pos45,pos52),
 					(is_between,":dis",12500,17500),
 					(prop_instance_animate_to_position,":cannon",pos45,100),
-					#(position_move_y, pos45, -200),
+					#(position_move_y, pos45, -200), 
 					#(agent_set_scripted_destination,":cannoneer",pos45),
 				(else_try),#
 					(prop_instance_get_position,pos45,":cannon"),
@@ -258,7 +261,7 @@ common_fire_cannon=(
 					(get_distance_between_positions,":dis",pos45,pos52),
 					(le,":dis",12500),
 					(set_fixed_point_multiplier, 1),
-					(assign,":ammo_speed",100),
+					(assign,":ammo_speed",10000),
 					(convert_to_fixed_point,":ammo_speed"),
 					(call_script,"script_point_missile_position",pos45,pos52,":ammo_speed"),
 					(add_missile,":cannoneer", pos45,":ammo_speed", "itm_shell", 0, "itm_shell", 0),#
@@ -288,6 +291,102 @@ common_fire_cannon=(
 trigger_cannon=[
 	common_init_cannoneer,common_init_cannon,common_init_assistant,common_move_assistant,common_move_cannon,common_fire_cannon,
 ]
+
+triggers = [
+        (ti_ai_updated, 0, 0, [], [
+  (try_for_agents, ":var_0"),
+    (agent_is_alive, ":var_0"),
+    (agent_is_human, ":var_0"),
+    (agent_is_non_player, ":var_0"),
+    (agent_get_horse, ":var_1", ":var_0"),
+    (neg|ge, ":var_1", 0),
+    (assign, ":var_2", 0),
+    (assign, ":var_3", 0),
+    (assign, ":var_4", 0),
+    (assign, ":var_5", 0),
+    (assign, ":var_6", 0),
+    (assign, ":var_7", 0),
+    (assign, ":var_8", 0),
+    (try_for_range, ":var_8", 0, 4),
+        (agent_get_item_slot, ":var_9", ":var_0", ":var_8"),
+        (gt, ":var_9", 0),
+        (item_get_type, ":var_10", ":var_9"),
+        (try_begin),
+            (eq, ":var_10", 4),
+            (assign, ":var_2", 1),
+            (assign, ":var_4", ":var_9"),
+        (else_try),
+            (eq, ":var_10", 2),
+            (assign, ":var_3", 1),
+            (assign, ":var_5", ":var_9"),
+        (else_try),
+            (eq, ":var_10", 3), 
+            (assign, ":var_3", 1),
+            (assign, ":var_6", ":var_9"),
+        (try_end),
+    (try_end),
+    (eq, ":var_2", 1),
+    (eq, ":var_3", 1),
+    (try_begin),
+        (gt, ":var_5", 0),
+        (eq, ":var_6", 0),
+        (assign, ":var_7", ":var_5"),
+    (else_try),
+        (eq, ":var_5", 0),
+        (gt, ":var_6", 0),
+        (assign, ":var_7", ":var_6"),
+    (else_try),
+        (gt, ":var_5", 0),
+        (gt, ":var_6", 0),
+        (agent_get_troop_id, ":var_11", ":var_0"),
+        (store_proficiency_level, ":var_12", ":var_11",wpt_one_handed_weapon),
+        (store_proficiency_level, ":var_13", ":var_11", wpt_two_handed_weapon),
+        (store_sub, ":var_14", ":var_13", ":var_12"),
+        (try_begin),
+            (ge, ":var_14", 0), 
+            (assign, ":var_7", ":var_6"),
+        (else_try), 
+            (assign, ":var_7", ":var_5"),
+        (try_end),
+    (try_end),
+    (agent_get_team, ":var_15", ":var_0"),
+    (agent_get_position, pos34, ":var_0"),
+    (assign, ":var_16", 3000),
+    (try_for_agents, ":var_17"),
+        (agent_is_alive, ":var_17"),
+        (agent_is_human, ":var_17"),
+        (agent_get_team, ":var_18", ":var_17"),
+        (teams_are_enemies, ":var_18", ":var_15"),
+        (agent_get_position, pos36, ":var_17"),
+        (get_distance_between_positions, ":var_19", pos36, pos34),
+        (neg|ge, ":var_19", ":var_16"),
+        (assign, ":var_16", ":var_19"),
+    (try_end),
+    (set_fixed_point_multiplier, 100),
+    (agent_get_speed, pos35, ":var_0"),
+    (position_get_y, ":var_20", pos35),
+    (convert_from_fixed_point, ":var_20"),
+    (agent_get_wielded_item, ":var_21", ":var_0"),
+    (gt, ":var_21", 0),
+    (item_get_type, ":var_22", ":var_21"),
+    (try_begin),
+        (neg|ge, ":var_16", 100),
+        (neg|gt, ":var_20", 1),
+        (eq, ":var_22", 4),
+        (agent_set_wielded_item, ":var_0", ":var_7"),
+    (else_try),
+        (this_or_next|gt, ":var_20", 2),
+        (gt, ":var_16", 100),
+        (this_or_next|eq, ":var_22", 2),
+        (eq, ":var_22", 3),
+        (agent_set_wielded_item, ":var_0", ":var_4"),
+    (try_end),
+(try_end),
+        ]),
+    ]
+    
+    
+
 #llf's tigger and common end
 
 #gekokujo 3.0 equipment distributions
@@ -6120,6 +6219,7 @@ mission_templates = [
      (1,mtef_team_0|mtef_use_exact_number,0,aif_start_alarmed, 7,[]),
      (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
      ],
+     trigger_cannon+
     [
       common_battle_tab_press,
       common_battle_init_banner,
@@ -6230,6 +6330,7 @@ mission_templates = [
      (1,mtef_attackers|mtef_team_1,0,aif_start_alarmed,12,[]),
      (1,mtef_attackers|mtef_team_1,0,aif_start_alarmed,0,[]),
      ],
+     trigger_cannon+
     [
       common_battle_tab_press,
       common_battle_init_banner,
@@ -6538,6 +6639,7 @@ mission_templates = [
      (19, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
      (20, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
      ],
+     trigger_cannon+
     [
       (ti_before_mission_start, 0, 0, [], [(call_script, "script_change_banners_and_chest")]),
 
@@ -6658,6 +6760,7 @@ mission_templates = [
      (27, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
      (28, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
      ],
+     trigger_cannon+
     [
       (ti_before_mission_start, 0, 0, [], [(call_script, "script_change_banners_and_chest")]),
 
@@ -6774,6 +6877,7 @@ mission_templates = [
      (3,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,12,[]),
      (3,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,0,[]),
      ],
+     trigger_cannon+
     [
       (ti_on_agent_spawn, 0, 0, [],
        [
@@ -6971,6 +7075,7 @@ mission_templates = [
      (46,mtef_defenders|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,1,[]),
      (47,mtef_defenders|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,1,[]),
      ],
+     trigger_cannon+
     [
       common_battle_mission_start,
       common_battle_tab_press,
@@ -7054,6 +7159,7 @@ mission_templates = [
      (45,mtef_defenders|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,1,[]),
      (46,mtef_defenders|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,1,[]),
      ],
+     trigger_cannon+
     [
       common_battle_mission_start,
       common_battle_tab_press,
@@ -7793,6 +7899,7 @@ mission_templates = [
      # (31,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
      # (32,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
     ],
+     trigger_cannon+
     [    
       (ti_before_mission_start, 0, 0, [], 
       [
@@ -11887,6 +11994,7 @@ mission_templates = [
       (30,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
       (31,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
      ],
+     trigger_cannon+
     [
       common_custom_battle_tab_press,
       common_custom_battle_question_answered,
@@ -11973,6 +12081,7 @@ mission_templates = [
       (46,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
       (47,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
      ],
+     trigger_cannon+
     [
 	  common_battle_mission_start,
       common_battle_init_banner,

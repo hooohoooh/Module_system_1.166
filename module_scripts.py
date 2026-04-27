@@ -858,9 +858,9 @@ scripts = [
 	  (party_set_slot, "p_fort_5", slot_fort_type, sft_village), #niputay is an ainu village
 	  (party_set_slot, "p_fort_6", slot_fort_type, sft_village), #otasut is an ainu village
 	  
-	  (party_set_slot, "p_fort_1", slot_fort_bandit_type, "trp_looter"), #sado island gets looters (placeholder)
+	  (party_set_slot, "p_fort_1", slot_fort_bandit_type, "trp_fort_troop_1_2"), #sado island gets looters (placeholder)
 	  (party_set_slot, "p_fort_2", slot_fort_bandit_type, "trp_woku_pirate"), #tsushima island gets pirates
-	  (party_set_slot, "p_fort_3", slot_fort_bandit_type, "trp_monk_rebel"), #kokawa-dera gets monk rebels
+	  (party_set_slot, "p_fort_3", slot_fort_bandit_type, "trp_fort_troop_3_2"), #kokawa-dera gets monk rebels
 	  (party_set_slot, "p_fort_4", slot_fort_bandit_type, "trp_fort_troop_4_2"), #mii-dera gets monk rebels
 	  (party_set_slot, "p_fort_5", slot_fort_bandit_type, "trp_northern_raider"), #niputay gets ezo warriors
 	  (party_set_slot, "p_fort_6", slot_fort_bandit_type, "trp_northern_raider"), #otasut gets ezo warriors

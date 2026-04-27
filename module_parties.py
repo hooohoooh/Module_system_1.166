@@ -40,7 +40,7 @@ pf_village = pf_is_static|pf_always_visible|pf_hide_defenders|pf_label_small
 # Anjou: Angers
 
 parties = [
-  ("main_party","Main Party",icon_player|pf_limit_members, no_menu, pt_none,fac_player_faction,0,ai_bhvr_hold,0,(110, -130),[(trp_player,1,0),(trp_gekokujo_zunwang_veteran_gunner,1,0)]),
+  ("main_party","Main Party",icon_player|pf_limit_members, no_menu, pt_none,fac_player_faction,0,ai_bhvr_hold,0,(110, -130),[(trp_player,1,0)]),
   ("temp_party","{!}temp_party",pf_disabled, no_menu, pt_none, fac_commoners,0,ai_bhvr_hold,0,(120,-120),[]),
   ("camp_bandits","{!}camp_bandits",pf_disabled, no_menu, pt_none, fac_outlaws,0,ai_bhvr_hold,0,(120,-120),[(trp_temp_troop,3,0)]),
 #parties before this point are hardwired. Their order should not be changed.
@@ -355,9 +355,9 @@ parties = [
 
   #gekokujo 3.0 microfactions! start
   #gekokujo 3.0 forts
-  ("fort_1","Sado",icon_mansion|pf_is_static|pf_always_visible|pf_label_small, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(48, -14.5),[],165),
+  ("fort_1","Sado",icon_mansion|pf_is_static|pf_always_visible|pf_label_small, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(110.000000, -140.200000),[],225),
   ("fort_2","Tsushima",icon_mansion|pf_is_static|pf_always_visible|pf_label_small, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-370, -210),[],75),
-  ("fort_3","Kokawa-dera",icon_temple|pf_is_static|pf_always_visible|pf_label_small, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-104, -215),[],225),
+  ("fort_3","Kokawa-dera",icon_temple|pf_is_static|pf_always_visible|pf_label_small, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(110.000000, -146.200000),[],225),
   ("fort_4","Mii-dera",icon_temple|pf_is_static|pf_always_visible|pf_label_small, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-83.3, -168.9),[],300),
   ("fort_5","Niputay",icon_village_snow_a|pf_is_static|pf_always_visible|pf_label_small, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(218, 244),[],120),
   ("fort_6","Otasut",icon_village_snow_a|pf_is_static|pf_always_visible|pf_label_small, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(280, 234),[],165),

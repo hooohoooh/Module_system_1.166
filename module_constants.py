@@ -886,7 +886,7 @@ slot_lady_courtship_comic_recited 		= 76
 slot_lady_courtship_mystic_recited 		= 77
 slot_lady_courtship_tragic_recited 		= 78
 
-
+slot_agent_last_fire_time               = 25
 
 #NPC history slots
 slot_troop_met_previously        = 80
