@@ -144,7 +144,7 @@ ibf_10bit_mask           = 0x00000000000000000000003ff
 ibf_head_armor_bits      = 0
 ibf_body_armor_bits      = 8
 ibf_leg_armor_bits       = 16
-ibf_weight_bits          = 24
+ibf_weight_bits          = 16
 ibf_difficulty_bits      = 32
 
 ibf_hitpoints_mask       = 0x0000ffff
@@ -170,13 +170,13 @@ iwf_damage_type_bits = 8
 
 
 def weight(x):
-  a = int(4.0 * x)
+  a = int(1.0 * x)
   a = ibf_armor_mask & a
   return (((bignum | a) & ibf_armor_mask) << ibf_weight_bits)
   
 def get_weight(y):
   a = (y >> ibf_weight_bits) & ibf_armor_mask
-  return 0.25 * a 
+  return 1.0 * a 
 
 def head_armor(x):
   return (((bignum | x) & ibf_armor_mask) << ibf_head_armor_bits)

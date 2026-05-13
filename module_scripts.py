@@ -39453,9 +39453,15 @@ scripts = [
 	 #gekokujo 3.0 new bandit types
 	 (party_template_set_slot, "pt_monk_rebels", slot_party_template_lair_type, "pt_monk_rebel_lair"),
 	
-	 (party_template_set_slot, "pt_seto_pirates", slot_party_template_lair_spawnpoint, "p_seto_pirate_spawn_point"),
+	 (party_template_set_slot, "pt_seto_pirates", slot_party_template_lair_spawnpoint, "p_kinai_osaka_spawn_point"),
 	 (party_template_set_slot, "pt_kanto_rebels", slot_party_template_lair_spawnpoint, "p_kanto_rebel_spawn_point"),
-	 (party_template_set_slot, "pt_woku_pirates", slot_party_template_lair_spawnpoint, "p_woku_pirate_spawn_point"),
+	 (party_template_set_slot, "pt_woku_pirates", slot_party_template_lair_spawnpoint, "p_kanto_rebel_spawn_point"),
+   	 (party_template_set_slot, "pt_woku_pirates", slot_party_template_lair_spawnpoint, "p_shinano_rebel_spawn_point"),
+   	 (party_template_set_slot, "pt_kanto_rebels", slot_party_template_lair_spawnpoint, "p_shinano_rebel_spawn_point"),
+     (party_template_set_slot, "pt_seto_pirates", slot_party_template_lair_spawnpoint, "p_shinano_rebel_spawn_point"),
+     (party_template_set_slot, "pt_woku_pirates", slot_party_template_lair_spawnpoint, "p_monk_rebel_spawn_point"),
+     (party_template_set_slot, "pt_kanto_rebels", slot_party_template_lair_spawnpoint, "p_monk_rebel_spawn_point"),
+     (party_template_set_slot, "pt_seto_pirates", slot_party_template_lair_spawnpoint, "p_monk_rebel_spawn_point"),
 	 (party_template_set_slot, "pt_shinano_rebels", slot_party_template_lair_spawnpoint, "p_shinano_rebel_spawn_point"),
 	 (party_template_set_slot, "pt_kinai_rebels", slot_party_template_lair_spawnpoint, "p_kinai_rebel_spawn_point"),
 	 (party_template_set_slot, "pt_northern_raiders", slot_party_template_lair_spawnpoint, "p_northern_raider_spawn_point"),
@@ -70367,7 +70373,10 @@ Born at {s43}^Contact in {s44} of the {s45}.^\
     (assign, reg0, ":var1"),
   ]),
   
+  
+
 ]
+
 # modmerger_start version=201 type=2
 try:
     component_name = "scripts"

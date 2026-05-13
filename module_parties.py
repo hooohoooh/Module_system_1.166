@@ -436,6 +436,7 @@ parties = [
   #gekokujo 3.0 new bandit types -- enable sea_raider_spawn_point_2 as monk rebel spawn point
   ("monk_rebel_spawn_point"   ,"the Tokaido",pf_disabled|pf_is_static, no_menu, pt_none, fac_outlaws,0,ai_bhvr_hold,0,(-7, -165),[(trp_looter,15,0)]),
   ("northern_raider_spawn_point"  ,"Ezo",pf_disabled|pf_is_static, no_menu, pt_none, fac_outlaws,0,ai_bhvr_hold,0,(130, 210),[(trp_looter,15,0)]),
+  ("kinai_osaka_spawn_point"   ,"the osaka",pf_disabled|pf_is_static, no_menu, pt_none, fac_outlaws,0,ai_bhvr_hold,0,(-104, -196),[(trp_looter,15,0)]),
   
   #gekokujo 3.1 bogmir's quests start
   #i took reserved_5 for save compatibility. add more reserved party templates in gekokujo 4.0

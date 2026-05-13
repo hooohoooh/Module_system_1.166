@@ -22275,6 +22275,89 @@ goods, and books will never be sold. ^^You can change some settings here freely.
        ]),
     ]
   ),
+  
+  
+  
+  
+  ## Tocan Invasion+ ##
+  ("set_invasion",0,
+   "Are the Great Ming army (Dark Knights) allowed to invade?^This feature is on a early development stage and not really tested. If you play a good save make please a copy of them before you let them invade!^The Diplomacy option 'terrain advantage in Autocalc battles' will be disabled.^^Currently, they {s1}",
+   "none",
+   [
+     (try_begin),
+       (eq,"$setting_invasion_time",0),
+       (str_store_string,s1,"@are not allowed to invade."),
+     (else_try),
+       (ge,"$setting_invasion_time",1),
+       (str_store_string,s1,"@are set to invade at an unknown date."),
+     #(else_try),
+     #  (eq,"$setting_invasion_time",1200),
+     #  (str_store_string,s1,"@50 days after start"),
+     #(else_try),
+     #  (eq,"$setting_invasion_time",1800),
+     #  (str_store_string,s1,"@75 days after start"),
+     #(else_try),
+     #  (eq,"$setting_invasion_time",2400),
+     #  (str_store_string,s1,"@100 days after start"),
+     #(else_try),
+     #  (eq,"$setting_invasion_time",3600),
+     #  (str_store_string,s1,"@150 days after start"),
+     #(else_try),
+     #  (eq,"$setting_invasion_time",4800),
+     #  (str_store_string,s1,"@200 days after start"),
+     #(else_try),
+     #  (str_store_string,s1,"@ERROR - NOT SET - BAD SAVE?"),
+     #(try_end),
+     (try_begin),
+       (gt,"$invaded",0),
+       (str_store_string,s1,"@have already invaded."),
+     (try_end),
+     ],
+    [
+      ("never",[(eq, "$invaded", 0)],"Never let them invade.",
+       [(assign,"$setting_invasion_time",0),
+        (display_message,"@The the Great Ming army will never invade."),
+        (jump_to_menu, "mnu_dplmc_preferences"),
+       ]),
+      ("now",[],"Immediately.",
+       [(assign,"$setting_invasion_time",1),
+        (display_message,"@The the Great Ming army will shortly begin their invasion."),
+        (jump_to_menu, "mnu_dplmc_preferences"),
+       ]),
+      ("unknown",[],"An unknown date in the future.",
+       [(store_random_in_range, "$setting_invasion_time", 1, 4800),
+        (display_message,"@The the Great Ming army will invade sometime in the future."),
+        (jump_to_menu, "mnu_dplmc_preferences"),
+       ]),
+      ("return",[],"Leave the setting as it is.",
+       [
+        (jump_to_menu, "mnu_dplmc_preferences"),
+       ]),
+   ]),	 
+## Tocan Invasion- ##
+## Tocan+ ##   
+   ("notification_give_vassal_gift",0, #Jinnai 
+    "{s4} is recognizing your loyal service as a vassal by rewarding you with a {s1}.",
+    "none",
+    [
+      (faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
+      (str_store_troop_name, s4, ":faction_leader"),
+      (str_store_item_name, s1, "$g_notification_menu_var1"),
+      (troop_add_items, "trp_player", "$g_notification_menu_var1", 1),
+      (set_fixed_point_multiplier, 100),
+      (position_set_x, pos0, 55),
+      (position_set_y, pos0, 20),
+      (position_set_z, pos0, 100),
+      (set_game_menu_tableau_mesh, "tableau_troop_note_mesh", ":faction_leader", pos0),
+      ],
+    [
+      ("continue",[],"Continue...",
+       [(change_screen_return),
+        ]),
+     ]
+  ),     
+## Tocan- ##  
+
 ##diplomacy end+
 
  ]

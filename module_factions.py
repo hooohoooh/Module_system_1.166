@@ -97,6 +97,9 @@ factions = [
 ##  ("kingdom_4_rebels",  "Nord rebels",    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xCC2211),
 ##  ("kingdom_5_rebels",  "Rhodok rebels",  0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xCC2211),
 
+ # ("dark_knights","{!}Dark Knights", 0, 0.5,[("innocents",-0.9),("player_faction",-0.4)], []), ## Tocan Invasion ##
+  
+  
   ("kingdoms_end","{!}kingdoms_end", 0, 0,[], []),
 
   ("robber_knights",  "{!}robber_knights", 0, 0.1, [], []),
