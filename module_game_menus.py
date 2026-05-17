@@ -21756,6 +21756,12 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 	##diplomacy end+
     ],
     [
+## Tocan Invasion+ ##		
+      ("tc_set_invasion",[(eq,"$invaded",0)],"Set when the Great Ming Army (Dark Knights) invasion begins.",
+       [
+        (jump_to_menu, "mnu_set_invasion"),
+       ]),		
+## Tocan Invasion- ##	   
       ("dplmc_disable_horse_speed",[(eq, "$g_dplmc_horse_speed", 0),],"Disable Diplomacy horse speed.",
        [
            (assign, "$g_dplmc_horse_speed", 1),
@@ -22280,6 +22286,33 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   
   
   ## Tocan Invasion+ ##
+  (
+    "dk_invasion_start_warning",mnf_scale_picture,
+    "A frightened and exhausted messenger boy rides up to you, his face red and hair soaked with sweat. '{s1}!' he cries, running up to you. 'Wait, you must hear me out!'^^\
+\
+After catching his breath, the messenger hands you a slip of paper. 'War has come! Conquerors from another land have stepped on Japan ground, bent on domination! Escape, \
+{s1}, while you still can! I have seen them myself, their armor as black as night, their eyes cold as steel!'^^\
+\
+With that, the boy rides off, shouting to any who will listen.",
+    "none",
+    [
+		(set_background_mesh, "mesh_pic_messenger"),
+                (try_begin),
+                   (troop_get_type, ":is_female", "trp_player"),
+                   (eq, ":is_female", 1),
+                   (str_store_string, s1, "@Milady"), 
+                (else_try),
+                   (str_store_string, s1, "@Milord"),
+                (try_end),
+   ],
+    [
+		("continue",[],"Continue...",
+			[
+			(change_screen_return),
+			],
+		),
+	]
+),
   ("set_invasion",0,
    "Are the Great Ming army (Dark Knights) allowed to invade?^This feature is on a early development stage and not really tested. If you play a good save make please a copy of them before you let them invade!^The Diplomacy option 'terrain advantage in Autocalc battles' will be disabled.^^Currently, they {s1}",
    "none",

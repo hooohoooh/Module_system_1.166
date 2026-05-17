@@ -8427,6 +8427,13 @@ presentations = [
         (assign, "$g_presentation_obj_marshall_selection_3", -1),
         (set_fixed_point_multiplier, 1000),
         (assign, "$g_presentation_next_presentation", -1),
+        (assign, "$g_presentation_marshall_selection_1_vote", 0),
+        (assign, "$g_presentation_marshall_selection_2_vote", 0),
+        (assign, "$g_presentation_marshall_selection_max_renown_1", -10000),
+        (assign, "$g_presentation_marshall_selection_max_renown_2", -10000),
+        (assign, "$g_presentation_marshall_selection_max_renown_1_troop", -1),
+        (assign, "$g_presentation_marshall_selection_max_renown_2_troop", -1),
+        (assign, "$g_presentation_marshall_selection_ended", 0),
 
         (store_add, ":total_renown", "$g_presentation_marshall_selection_max_renown_1", "$g_presentation_marshall_selection_max_renown_2"),
         (faction_get_slot, ":king", "$players_kingdom", slot_faction_leader),

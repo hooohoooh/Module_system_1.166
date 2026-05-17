@@ -229,6 +229,10 @@ party_templates = [
 
   ("leaded_looters","Samurai Travelling Party",icon_axeman|carries_goods(8)|pf_quest_party,0,fac_neutral,bandit_personality,[(trp_looter_leader,1,1),(trp_generic_ashigaru,3,3)]),
 
+  ("dark_knights_reinforcements_a", "{!}dark_knights_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_qt_spearman,5000,6000)] ),
+  ("dark_knights_reinforcements_b", "{!}dark_knights_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_qt_spearman,5000,6000)] ),
+  ("dark_knights_reinforcements_c", "{!}dark_knights_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_qt_spearman,5000,6000)] ),
+
    ##diplomacy begin
   ("dplmc_spouse","Your Spouse",icon_woman|pf_civilian|pf_show_faction,0,fac_neutral,merchant_personality,[]),
 

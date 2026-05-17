@@ -1572,6 +1572,18 @@ troops = [
   ["kingdom_26_lord", "Great Leader Kennyo", "Kennyo", tf_hero, 0, reserved, fac_kingdom_26, [itm_gekokujo_katana_5, itm_gekokujo_wakizashi_7, itm_gekokujo_nagamaki_6, itm_gekokujo_kabuto_unique_9, itm_gekokujo_mogami_long_1, itm_gekokujo_tsubo_suneate_1, itm_gekokujo_tekko_4_1, itm_arabian_horse_b, itm_gekokujo_tabi, itm_gekokujo_haori_3], knight_attrib_4, wp(215), knight_skills_4|knows_trainer_4, 0x00000007a70044405b2baed95aaec6e400000000001db8fc0000000000000000],
   ["kingdom_27_lord", "Great Leader Kennyo", "Kennyo", tf_hero, 0, reserved, fac_kingdom_27, [itm_gekokujo_katana_5, itm_gekokujo_wakizashi_7, itm_gekokujo_nagamaki_6, itm_gekokujo_kabuto_unique_9, itm_gekokujo_mogami_long_1, itm_gekokujo_tsubo_suneate_1, itm_gekokujo_tekko_4_1, itm_arabian_horse_b, itm_gekokujo_tabi, itm_gekokujo_haori_3], knight_attrib_4, wp(215), knight_skills_4|knows_trainer_4, 0x00000007a70044405b2baed95aaec6e400000000001db8fc0000000000000000],
 ## Tocan+ ## Invasion
+  ## Tocan Invasion - Ming troops ##
+  ["ming_ally","Ming Footman","Ming Footmen",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield,0,0,fac_commoners,
+  [itm_gekokujo_katana_3, itm_gekokujo_yari_2, itm_gekokujo_tatami_half_1, itm_gekokujo_light_suneate_1, itm_gekokujo_tekko_1, itm_jptoujin, itm_gekokujo_tabi], def_attrib|level(22), wp_melee(80)|wp(50), knows_common|knows_athletics_2|knows_shield_2, man_face_young_1, man_face_middle_2],
+  ["ming_guard","Ming Guard","Ming Guards",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet,0,0,fac_commoners,
+  [itm_gekokujo_katana_5, itm_gekokujo_yari_4, itm_gekokujo_okegawa_half_4, itm_gekokujo_light_suneate_1, itm_gekokujo_tekko_2, itm_jptoujin, itm_gekokujo_tabi], def_attrib|level(25), wp_melee(120)|wp(70), knows_common|knows_athletics_3|knows_ironflesh_3|knows_power_strike_3, man_face_young_1, man_face_middle_2],
+  ["ming_gunner","Ming Matchlockman","Ming Matchlockmen",tf_guarantee_ranged|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet,0,0,fac_commoners,
+  [itm_gekokujo_katana_4, itm_spencer_carb, itm_gekokujo_bullets_1, itm_fanshizhenli_tongyong, itm_samo_infanrty, itm_samokuzi, itm_gekokujo_tabi], def_attrib|level(25), wp_firearm(145)|wp(80), knows_common|knows_athletics_3|knows_ironflesh_3, man_face_young_1, man_face_middle_2],
+  ["ming_cavalry","Ming Cavalry","Ming Cavalries",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_mounted|tf_guarantee_horse,0,0,fac_commoners,
+  [itm_gekokujo_tachi_6, itm_gekokujo_jumonji_yari_2, itm_gekokujo_kebiki_10, itm_gekokujo_tsubo_suneate_1, itm_gekokujo_tekko_4_1, itm_arabian_horse_a, itm_gekokujo_tabi], def_attrib|level(25), wp_melee(140)|wp(90), knows_common|knows_riding_5|knows_power_strike_4, samurai_face_1, samurai_face_2],
+  ["ming_commander","Ming Commander","Ming Commanders",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_mounted|tf_guarantee_horse|tf_guarantee_shield,0,0,fac_commoners,
+  [itm_gekokujo_katana_8, itm_gekokujo_nagamaki_6, itm_gekokujo_kabuto_unique_9, itm_gekokujo_mogami_long_1, itm_gekokujo_tsubo_suneate_1, itm_gekokujo_tekko_4_1, itm_saddle_horse, itm_gekokujo_tabi, itm_gekokujo_haori_3], def_attrib|level(30), wp_melee(180)|wp(120), knows_common|knows_riding_7|knows_power_strike_5|knows_ironflesh_4, samurai_face_1, samurai_face_2],
+
 ["dark_knight_lord","General Qi Jiguang","Qi Jiguang",tf_hero,0,0,fac_dark_knights,
 [itm_gekokujo_katana_5, itm_gekokujo_wakizashi_7, itm_gekokujo_nagamaki_6, itm_gekokujo_kabuto_unique_9, itm_gekokujo_mogami_long_1, itm_gekokujo_tsubo_suneate_1, itm_gekokujo_tekko_4_1, itm_arabian_horse_b, itm_gekokujo_tabi, itm_gekokujo_haori_3], knight_attrib_4, wp(215), knight_skills_4|knows_trainer_4, 0x00000007a70044405b2baed95aaec6e400000000001db8fc0000000000000000],
 #Gekokujo Knights
@@ -1786,6 +1798,32 @@ troops = [
 [itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x00000009710051ce4ba391a5136eca9b00000000001eb7240000000000000000],
 ["dark_knight_lord7","Commander Chuang Tsun-chung","Chuang Tsun-chung",tf_hero,0,0,fac_dark_knights,
 [itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x00000009710051ce4ba391a5136eca9b00000000001eb7240000000000000000],
+["dark_knight_lord8","Commander Xiao Zhihuan","Xiao Zhihuan",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x00000007df0c214f1ce37e5a936ebb8c00000000001de7530000000000000000],
+["dark_knight_lord9","Commander Shaw Jin","Shaw Jin",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x00000006d105039024e24c96f5c4c75b00000000001da8940000000000000000],
+["dark_knight_lord10","Commander Lan Bai","Lan Bai",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x00000006370cc306473d8db6f56d391b00000000001ebb130000000000000000],
+["dark_knight_lord11","Commander Chang Zhong","Chang Zhong",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x00000006381054824a94de9534b0c26500000000001d25220000000000000000],
+["dark_knight_lord12","Commander Lui Zenguang","Lui Zenguang",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x00000004110045843d1bd3586c4a685b00000000001d27190000000000000000],
+["dark_knight_lord13","Commander Qu Jian","Qu Jian",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x000000076608c10022db9958b66ad8ab00000000001dd7630000000000000000],
+["dark_knight_lord14","Commander Chou Yang","Chou Yang",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x00000003b801200658e9482ae48f48e200000000001cc6930000000000000000],
+["dark_knight_lord15","Commander Xu Fa","Xu Fa",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x000000049a04b4c7545b6caade56c95900000000001e48aa0000000000000000],
+["dark_knight_lord16","Commander Zhen Lei","Zhen Lei",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x00000003e704125428da65d98b91a6de00000000001cd6b30000000000000000],
+["dark_knight_lord17","Commander Tian Chen","Tian Chen",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x00000003dd04350f5da27538c3cf172b00000000001d1ce20000000000000000],
+["dark_knight_lord18","Commander Meng Qianfan","Meng Qianfan",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x000000099a08c19266256a4b9454a86900000000001ccd2c0000000000000000],
+["dark_knight_lord19","Commander Yue Qingsheng","Yue Qingsheng",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x00000005c8090401125b7834cec9195500000000001ebd5e0000000000000000],
+["dark_knight_lord20","Commander Bao Yanlin","Bao Yanlin",tf_hero,0,0,fac_dark_knights,
+[itm_gekokujo_tachi_10, itm_gekokujo_wakizashi_6, itm_gekokujo_nagamaki_7, itm_gekokujo_kabuto3_m_3, itm_gekokujo_yukinoshita_long_3, itm_gekokujo_jinbaori_8, itm_gekokujo_tekko_3_3, itm_arabian_horse_a, itm_gekokujo_tabi, itm_gekokujo_hakama_1], knight_attrib_2, wp(145), knight_skills_2, 0x0000000b7010048a330410dc53ab23a500000000001e29240000000000000000],
 #Gekokujo Pretenders
   #Aya no Kata, fictional daughter of Uesugi Norimasa
   ["kingdom_1_pretender", "Lady Yamanouchi of Kozuke", "Yamanouchi", tf_hero|tf_female|tf_unmoveable_in_party_window, 0, reserved, fac_kingdom_1, [itm_gekokujo_katana_8, itm_gekokujo_wakizashi_8, itm_gekokujo_nodachi_8, itm_gekokujo_kabuto1_m_3, itm_gekokujo_okegawa_long_3, itm_gekokujo_jinbaori_7, itm_gekokujo_tekko_3_3, itm_courser, itm_gekokujo_tabi, itm_gekokujo_haori_5], knight_attrib_5, wp(250), knight_skills_5|knows_trainer_5, 0x00000003690050014923ae4b648e492c00000000001db89b0000000000000000],
@@ -3457,6 +3495,7 @@ upgrade(troops, "republic_army", "republic_infantry",)
 upgrade(troops, "republic_infantry", "republic_Veteran",)
 upgrade2(troops, "republic_Veteran", "republic_guard", "republic_Sniper")
 
+upgrade2(troops,"ming_ally","ming_guard","ming_cavalry")
 #Dark Knight Upgrade Paths #Invasion
 # upgrade(troops,"dark_initiate","dark_acolyte")
 # upgrade2(troops,"dark_acolyte","dark_page","dark_skirmisher")

@@ -22263,6 +22263,7 @@ All in all, you'd need to bring no less than {reg16} mon to make any friends in 
 [
 (faction_get_slot, ":faction_leader", "$g_talk_troop_faction", slot_faction_leader),
 (neq, "$g_talk_troop", ":faction_leader"),
+(neq, "$g_talk_troop_faction", "fac_dark_knights"), ## Tocan Invasion ##
 (str_store_troop_name, s7, ":faction_leader"),
 ], "I am in no position to offer you anything. You must speak to {s7}.", "lord_pretalk",[]],
 
@@ -22273,6 +22274,7 @@ All in all, you'd need to bring no less than {reg16} mon to make any friends in 
 (neq, "$temp_2", 0x434F52),#is not co-ruler
 ##diplomacy end+
 (neg|faction_slot_ge, "fac_player_supporters_faction", slot_faction_leader, 1),
+(neq, "$g_talk_troop_faction", "fac_dark_knights"), ## Tocan Invasion ##
 
 (store_sub, ":hostility", 4, "$g_talk_troop_faction_relation"),
 (val_mul, ":hostility", ":hostility"), #square it
@@ -22286,8 +22288,17 @@ All in all, you'd need to bring no less than {reg16} mon to make any friends in 
 
 [anyone,"lord_ask_pardon",
 [
+       (neq, "$g_talk_troop_faction", "fac_dark_knights"), ## Tocan Invasion ##
 ], "I am sorry. I am in no position to offer you a pardon", "lord_pretalk",[
 ]],
+
+## Tocan Invasion+ ##
+[anyone,"lord_ask_pardon",
+[
+       (eq, "$g_talk_troop_faction", "fac_dark_knights"), 
+], "Peace? Maybe after we grind you into a fine dust, burn your chattels, and hear the lamentation of your kinsfolk. Then we will give you peace.", "lord_pretalk",[
+	]], 
+## Tocan Invasion- ##
 
 
 

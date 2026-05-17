@@ -972,6 +972,8 @@ slot_troop_payment_request 				= 141
 #141, support base removed, slot now available
 
 slot_troop_kingsupport_state			= 142
+## Rongar assault scripts (troop_remove_pikes / troop_restore_pikes); shares slot 142 with kingsupport in SM
+slot_troop_weapon_store				= slot_troop_kingsupport_state
 slot_troop_kingsupport_argument			= 143
 slot_troop_kingsupport_opponent			= 144
 slot_troop_kingsupport_objection_state  = 145 #0, default, 1, needs to voice, 2, has voiced
@@ -1027,6 +1029,12 @@ troop_slots_reserved_for_relations_start        = 165 #this is based on id_troop
 
 slot_troop_relations_begin				= 0 #this creates an array for relations between troops
 											#Right now, lords start at 165 and run to around 290, including pretenders
+
+## Prisoner Talk - slot on troop after relation matrix (see script_determine_prisoner_agreed)
+slot_prisoner_agreed = 291 ## Tocan Prisoner Chat
+
+## Easy regulars upgrading kit by rubik (temporary flag in party upgrade scripts)
+slot_root_troop = 399
 											
 											
 											

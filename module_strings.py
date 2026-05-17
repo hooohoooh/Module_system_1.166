@@ -2493,6 +2493,7 @@ strings = [
   ("kingdom_17_adjective",                     "Satake"),
   ("kingdom_18_adjective",                     "Satomi"),
   ("kingdom_19_adjective",                     "Ukita"),
+  ("kingdom_dk_adjective",                     "Chinese"), ## Tocan ##
   ("kingdom_20_adjective",                     "Ikko Ikki"),
   
 
