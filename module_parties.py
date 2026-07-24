@@ -40,7 +40,7 @@ pf_village = pf_is_static|pf_always_visible|pf_hide_defenders|pf_label_small
 # Anjou: Angers
 
 parties = [
-  ("main_party","Main Party",icon_player|pf_limit_members, no_menu, pt_none,fac_player_faction,0,ai_bhvr_hold,0,(110, -130),[(trp_player,1,0)]),
+  ("main_party","Main Party",icon_player|pf_limit_members, no_menu, pt_none,fac_player_faction,0,ai_bhvr_hold,0,(110, -130),[(trp_player,1,0),(trp_zunwangzhishi,30,30)]),
   ("temp_party","{!}temp_party",pf_disabled, no_menu, pt_none, fac_commoners,0,ai_bhvr_hold,0,(120,-120),[]),
   ("camp_bandits","{!}camp_bandits",pf_disabled, no_menu, pt_none, fac_outlaws,0,ai_bhvr_hold,0,(120,-120),[(trp_temp_troop,3,0)]),
 #parties before this point are hardwired. Their order should not be changed.
@@ -74,7 +74,7 @@ parties = [
   ("town_1", "town_1", icon_town|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (116, -134.5), [], 195),
   ("town_2", "town_2", icon_town|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (152, -92), [], 90),
   ("town_3", "town_3", icon_town|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (169, 173), [], 120),
-  ("town_4", "town_4", icon_town|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-82, -171), [], 240),
+  ("town_4", "town_4", icon_town|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-82, -171), [(trp_gekokujo_shimazu_veteran_skirmisher,230,230),(trp_gekokujo_mori_elite_spearman,130,130),(trp_gekokujo_chosokabe_veteran_skirmisher,130,130)], 240),
   ("town_5", "town_5", icon_town|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-104, -195), [], 60),
   ("town_6", "town_6", icon_town|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-42, -184), [], 75),
   ("town_7", "town_7", icon_town|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-132, -177.5), [], 165),

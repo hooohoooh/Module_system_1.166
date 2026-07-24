@@ -5,6 +5,7 @@ from header_operations import *
 from header_triggers import *
 from header_sounds import *
 from module_constants import *
+from ym_gatling import *
 import string
 
 ####################################################################################################################
@@ -1327,11 +1328,11 @@ scene_props = [
   ("banner_j04", 0, "banner_j04", "0", []),
   ("banner_j05", 0, "banner_j05", "0", []),
   ("banner_j06", 0, "banner_j06", "0", []),
-  #("banner_j07", 0, "banner_j07", "0", []),
-  #("banner_j08", 0, "banner_j08", "0", []),
-  #("banner_j09", 0, "banner_j09", "0", []),
-  #("banner_j10", 0, "banner_j10", "0", []),
-  #("banner_j11", 0, "banner_j11", "0", []),
+  ("banner_j07", 0, "banner_j07", "0", []),
+  ("banner_fj", 0, "banner_j08", "0", []),
+  ("banner_j09", 0, "banner_j09", "0", []),
+  ("banner_j10", 0, "banner_j10", "0", []),
+  ("banner_j11", 0, "banner_j11", "0", []),
   #("banner_j12", 0, "banner_j12", "0", []),
   #("banner_j13", 0, "banner_j13", "0", []),
   #("banner_j14", 0, "banner_j14", "0", []),
@@ -3254,6 +3255,7 @@ scene_props = [
   
   #llf
   ("cannon", sokf_type_barrier3d|sokf_moveable, "cannon_12lb", 0, []),#|sokf_show_hit_point_bar|sokf_destructible
+  ("coreyna_gatling", sokf_type_barrier3d|sokf_moveable, "gatling", 0, ym_25),#|sokf_show_hit_point_bar|sokf_destructible
   #llf end
   ("head_dynamic_male", sokf_moveable|sokf_dynamic_physics, "cut_off_head_male_dynamic", "bo_cut_off_head_dynamic", []),
   ("head_dynamic_female", sokf_moveable|sokf_dynamic_physics, "cut_off_head_female_dynamic", "bo_cut_off_head_dynamic", []),

@@ -56,10 +56,10 @@ forest_extra_large = "0x300028000007D1F40000034e00004b34000059be"     #  500*500
 
 scenes = [
     ## CC
-  ("random_scene_small",sf_generate|sf_randomize|sf_auto_entry_points,"none", "none", (0,0),(240,240),-0.5,forest_small, [],[]),
-  ("random_scene",sf_generate|sf_randomize|sf_auto_entry_points,"none", "none", (0,0),(240,240),-0.5, forest_normal, [],[]),
-  ("random_scene_large",sf_generate|sf_randomize|sf_auto_entry_points,"none", "none", (0,0),(240,240),-0.5, forest_large, [],[]), 
-  ("random_scene_extra_large",sf_generate|sf_randomize|sf_auto_entry_points,"none", "none", (0,0),(240,240),-0.5, forest_extra_large, [],[]), 
+  ("random_scene_small",sf_generate|sf_randomize|sf_auto_entry_points,"none", "none", (0,0),(240,240),-0.5,forest_small, [],[], "outer_terrain_plain"),
+  ("random_scene",sf_generate|sf_randomize|sf_auto_entry_points,"none", "none", (0,0),(240,240),-0.5, forest_normal, [],[], "outer_terrain_plain"),
+  ("random_scene_large",sf_generate|sf_randomize|sf_auto_entry_points,"none", "none", (0,0),(240,240),-0.5, forest_large, [],[], "outer_terrain_plain"), 
+  ("random_scene_extra_large",sf_generate|sf_randomize|sf_auto_entry_points,"none", "none", (0,0),(240,240),-0.5, forest_extra_large, [],[], "outer_terrain_plain"), 
   ## CC
   ("conversation_scene",0,"encounter_spot", "bo_encounter_spot", (-40,-40),(40,40),-100,"0",
     [],[]),

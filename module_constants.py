@@ -1540,7 +1540,7 @@ heroes_begin = active_npcs_begin
 heroes_end = kingdom_ladies_end
 
 soldiers_begin = "trp_farmer"
-soldiers_end = "trp_town_walker_1"
+soldiers_end = "trp_gatling_gunner"
 
 #Rebellion changes
 

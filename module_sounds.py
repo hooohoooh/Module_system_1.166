@@ -140,7 +140,7 @@ sounds = [
 # ("bow_shoot_player",sf_priority_10|sf_vol_10, ["bow_shoot_4.ogg"]),
 # ("bow_shoot",sf_priority_4, ["bow_shoot_4.ogg"]),
 # ("crossbow_shoot",sf_priority_4, ["bow_shoot_2.ogg"]),
- ("arrow_hit_body",sf_priority_4, ["arrow_hit_body_1.ogg","arrow_hit_body_2.ogg","arrow_hit_body_3.ogg"]),
+ ("arrow_hit_body",sf_priority_4, ["arrow_hit_body_1.wav","arrow_hit_body_2.wav","arrow_hit_body_3.ogg"]),
  ("metal_hit_low_armor_low_damage",sf_priority_5|sf_vol_9, ["sword_hit_lo_armor_lo_dmg_1.ogg","sword_hit_lo_armor_lo_dmg_2.ogg","sword_hit_lo_armor_lo_dmg_3.ogg"]),
  ("metal_hit_low_armor_high_damage",sf_priority_5|sf_vol_9, ["sword_hit_lo_armor_hi_dmg_1.ogg","sword_hit_lo_armor_hi_dmg_2.ogg","sword_hit_lo_armor_hi_dmg_3.ogg"]),
  ("metal_hit_high_armor_low_damage",sf_priority_5|sf_vol_9, ["metal_hit_high_armor_low_damage.ogg","metal_hit_high_armor_low_damage_2.ogg","metal_hit_high_armor_low_damage_3.ogg"]),
@@ -160,8 +160,7 @@ sounds = [
  ("man_breath_hard",sf_priority_3|sf_vol_8, ["man_ugh_1.ogg","man_ugh_2.ogg","man_ugh_4.ogg","man_ugh_7.ogg","man_ugh_12.ogg","man_ugh_13.ogg","man_ugh_17.ogg"]),
  ("man_stun",sf_priority_3|sf_vol_8, ["man_stun_1.ogg"]),
  ("man_grunt_long",sf_priority_6|sf_vol_7, ["man_grunt_1.ogg","man_grunt_2.ogg","man_grunt_3.ogg","man_grunt_5.ogg","man_grunt_13.ogg","man_grunt_14.ogg"]),
- ("man_yell",sf_priority_5|sf_vol_8, ["man_yell_4.ogg","man_yell_4_2.ogg","man_yell_7.ogg","man_yell_9.ogg","man_yell_11.ogg","man_yell_13.ogg","man_yell_15.ogg","man_yell_16.ogg","man_yell_17.ogg","man_yell_20.ogg","man_shortyell_4.ogg","man_shortyell_5.ogg","man_shortyell_6.ogg","man_shortyell_9.ogg","man_shortyell_11.ogg","man_shortyell_11b.ogg",
-                        "man_yell_b_18.ogg","man_yell_22.ogg", "man_yell_c_20.ogg"]),
+ ("man_yell",sf_priority_5|sf_vol_8, ["man_yell_4.ogg","man_yell_4_2.ogg","man_yell_7.ogg","man_yell_9.ogg","man_yell_11.ogg","man_yell_13.ogg","man_yell_15.ogg","man_yell_16.ogg","man_yell_17.ogg","man_yell_20.ogg","man_yell_22.ogg","man_yell_b_18.ogg","man_shortyell_6.ogg","man_yell_c_20.ogg"]),
 ## not adequate, removed: "man_yell_b_21.ogg","man_yell_b_22.ogg","man_yell_b_23.ogg"]),
 #TODONOW:
  ("man_warcry",sf_priority_5, ["man_insult_2.ogg","man_insult_3.ogg","man_insult_7.ogg","man_insult_9.ogg","man_insult_13.ogg","man_insult_15.ogg","man_insult_16.ogg"]),
@@ -191,7 +190,7 @@ sounds = [
  ("man_hit_pierce_strong",sf_priority_5|sf_vol_10, ["man_hit_13.ogg","man_hit_29.ogg","man_hit_32.ogg","man_hit_47.ogg","man_hit_57.ogg"]),
  ("man_hit_cut_weak",sf_priority_5|sf_vol_10, ["man_hit_13.ogg","man_hit_29.ogg","man_hit_32.ogg","man_hit_47.ogg","man_hit_57.ogg"]),
  ("man_hit_cut_strong",sf_priority_5|sf_vol_10, ["man_hit_13.ogg","man_hit_29.ogg","man_hit_32.ogg","man_hit_47.ogg","man_hit_57.ogg"]),
- ("man_victory",sf_priority_5|sf_vol_10, ["man_victory_3.ogg","man_victory_4.ogg","man_victory_5.ogg","man_victory_8.ogg","man_victory_15.ogg","man_victory_49.ogg","man_victory_52.ogg","man_victory_54.ogg","man_victory_57.ogg","man_victory_71.ogg"]),
+ ("man_victory",sf_priority_5|sf_vol_10, ["man_victory_5.wav","man_victory_57.wav","man_victory_71.wav","man_victory_54.wav","man_victory_52.wav","man_victory_49.wav","man_victory_8.wav","man_victory_4.wav","man_victory_3.wav"]),
  ("fire_loop",sf_priority_9|sf_vol_4|sf_looping|sf_start_at_random_pos, ["Fire_Torch_Loop3.ogg"]),
  ("torch_loop",sf_priority_9|sf_vol_4|sf_looping|sf_start_at_random_pos, ["Fire_Torch_Loop3.ogg"]),
  ("dummy_hit",sf_priority_9, ["shield_hit_cut_3.ogg","shield_hit_cut_5.ogg"]),
@@ -218,6 +217,7 @@ sounds = [
  ("rifle_shot3_02",sf_priority_10|sf_vol_10, ["rifle_shot3_02.wav"]),
  ("minigun",sf_priority_10|sf_vol_10, ["minigun.wav"]),
  ("enfield53",sf_priority_10|sf_vol_10, ["Enfield53.wav"]),
+ ("miyasan1", sf_2d|sf_vol_15, ["miyasan1.mp3"]),
  #llf
  ("mortar_hit2", sf_2d|sf_priority_10|sf_vol_15, ["mortar_hit2.wav"]),
  #llf end

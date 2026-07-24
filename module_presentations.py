@@ -17670,6 +17670,11 @@ presentations = [
         (try_begin),
           (eq, ":object", "$g_presentation_obj_1"),
           (presentation_set_duration, 0),
+        (else_try),
+          # Check if clicked object is a troop avatar button
+          (troop_get_slot, ":troop_no", "trp_temp_array_c", ":object"),
+          (gt, ":troop_no", 0),
+          (call_script, "script_show_troop_detail", ":troop_no", ":troop_no"), # pass same as root for single troop tree
         (try_end),
       ]),
     ]),
@@ -17734,6 +17739,7 @@ presentations = [
         (set_container_overlay, reg1),
         
         (assign, reg2, 100),
+        (assign, "$g_troop_tree_overlay_count", 0),
         # find all root troops of selected faction
         (try_for_range, ":cur_troop", soldiers_begin, soldiers_end),
           (neg|troop_is_hero, ":cur_troop"),
@@ -17747,14 +17753,11 @@ presentations = [
             (is_between, ":cur_troop", soldiers_begin, mercenary_troops_end),
             (assign, ":troop_dest_faction", "fac_kingdoms_end"), # Mercenary
           (else_try),
-            (eq, ":troop_faction", "fac_kingdom_25"), 
+            (is_between, ":troop_faction", npc_kingdoms_begin, npc_kingdoms_end),
             (assign, ":troop_dest_faction", ":troop_faction"),
           (else_try),
             (is_between, ":cur_troop", "trp_looter", bandits_end),
             (assign, ":troop_dest_faction", "fac_robber_knights"), # Outlaws
-          (else_try),
-            (is_between, ":troop_faction", npc_kingdoms_begin, npc_kingdoms_end),
-            (assign, ":troop_dest_faction", ":troop_faction"),
           (try_end),
           (eq, ":troop_dest_faction", ":selected_faction"),
           # can't be upgraded from other troops
@@ -17806,6 +17809,21 @@ presentations = [
         (else_try),
           (eq, ":object", "$g_presentation_obj_2"),
           (presentation_set_duration, 0),
+        (else_try),
+          # Check if clicked object is a troop avatar button
+          (troop_get_slot, ":troop_no", "trp_temp_array_c", ":object"),
+          (gt, ":troop_no", 0),
+          # Find root troop by traversing backwards
+          (assign, ":root_troop", ":troop_no"),
+          (try_for_range, ":search_troop", soldiers_begin, soldiers_end),
+            (neg|troop_is_hero, ":search_troop"),
+            (troop_get_upgrade_troop, ":upgrade_1", ":search_troop", 0),
+            (troop_get_upgrade_troop, ":upgrade_2", ":search_troop", 1),
+            (this_or_next|eq, ":upgrade_1", ":root_troop"),
+            (eq, ":upgrade_2", ":root_troop"),
+            (assign, ":root_troop", ":search_troop"),
+          (try_end),
+          (call_script, "script_show_troop_detail", ":troop_no", ":root_troop"),
         (try_end),
       ]),
   ]),

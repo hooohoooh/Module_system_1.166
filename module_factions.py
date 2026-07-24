@@ -56,6 +56,7 @@ factions = [
   ("culture_25",  "{!}culture_25", 0, 0.9, [], []),
   ("culture_26",  "{!}culture_26", 0, 0.9, [], []),
   ("culture_27",  "{!}culture_27", 0, 0.9, [], []),
+  ("culture_28",  "{!}culture_28", 0, 0.9, [], []),
   ("culture_player",  "{!}culture_player", 0, 0.9, [], []),
   ("culture_dark_knights",  "{!}culture_dark_knights", 0, 0.9, [], []), ## Tocan Invasion ##
 
@@ -91,7 +92,7 @@ factions = [
   ("kingdom_25",  "ceshifan5",	    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x408080), #from 0xeeeeee
   ("kingdom_26",  "ceshifan6",	    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x8000FF), #from 0xeeeeee
   ("kingdom_27",  "ceshifan7",	    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x390000), #from 0xeeeeee
-
+  ("kingdom_28",  "ceshifan7",	    0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0x0000FF), #from 0xeeeeee
   ("dark_knights","The Great Ming Army", max_player_rating(-40), 0.5,[("player_faction",-0.1),("outlaws",-0.05),("shinano_rebels",-0.1),("deserters",-0.05),("woku_pirates",-0.05),("commoners",-0.9),("player_faction",-0.4),("player_supporters_faction",-0.4)], [], 0xFF033E), ## Tocan Invasion ##
 
 ##  ("kingdom_1_rebels",  "Swadian rebels", 0, 0.9, [("outlaws",-0.05),("shinano_rebels", -0.1),("deserters", -0.02),("woku_pirates", -0.05),("shinano_rebels", -0.05)], [], 0xCC2211),

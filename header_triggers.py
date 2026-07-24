@@ -32,7 +32,7 @@ ti_on_agent_hit          = -28.0 #can only be used in module_mission_templates t
 # Position Register 0: position of the blow
 #                      rotation gives the direction of the blow
 # Trigger result: if returned result is greater than or equal to zero, inflicted damage is set to the value specified by the module.
-
+ti_ai_updated            = 0
 ti_on_player_exit        = -29.0 #can only be used in module_mission_templates triggers
 # Trigger Param 1: player_id
 

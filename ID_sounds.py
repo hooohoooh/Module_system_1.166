@@ -183,6 +183,7 @@ snd_spring = 181
 snd_rifle_shot3_02 = 182
 snd_minigun = 183
 snd_enfield53 = 184
-snd_mortar_hit2 = 185
+snd_miyasan1 = 185
+snd_mortar_hit2 = 186
 
 

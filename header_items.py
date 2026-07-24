@@ -144,7 +144,7 @@ ibf_10bit_mask           = 0x00000000000000000000003ff
 ibf_head_armor_bits      = 0
 ibf_body_armor_bits      = 8
 ibf_leg_armor_bits       = 16
-ibf_weight_bits          = 16
+ibf_weight_bits          = 8
 ibf_difficulty_bits      = 32
 
 ibf_hitpoints_mask       = 0x0000ffff

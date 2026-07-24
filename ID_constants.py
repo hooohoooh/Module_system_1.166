@@ -587,12 +587,12 @@ secret_signs_begin =  322 # =  str_secret_sign_1
 secret_signs_end =  326 # =  str_countersign_1
 kingdom_titles_male_begin =  3190 # =  str_faction_title_male_player
 kingdom_titles_female_begin =  3210 # =  str_faction_title_female_player
-cultures_begin =  7 # =  fac_culture_1
-cultures_end =  28 # =  fac_player_faction
-kingdoms_begin =  29 # =  fac_player_supporters_faction
-kingdoms_end =  50 # =  fac_kingdoms_end
-npc_kingdoms_begin =  30 # =  fac_kingdom_1
-npc_kingdoms_end =  50 # =  fac_kingdoms_end
+cultures_begin =  6 # =  fac_culture_1
+cultures_end =  36 # =  fac_culture_dark_knights
+kingdoms_begin =  37 # =  fac_player_supporters_faction
+kingdoms_end =  67 # =  fac_kingdoms_end
+npc_kingdoms_begin =  38 # =  fac_kingdom_1
+npc_kingdoms_end =  67 # =  fac_kingdoms_end
 bandits_begin =  508 # =  trp_bandit
 bandits_end =  516 # =  trp_black_khergit_horseman
 kingdom_ladies_begin =  802 # =  trp_knight_1_1_wife
@@ -614,7 +614,7 @@ original_kingdom_heroes_begin =  630 # =  trp_kingdom_1_lord
 heroes_begin =  608 # =  trp_npc1
 heroes_end =  949 # =  trp_heroes_end
 soldiers_begin =  25 # =  trp_farmer
-soldiers_end =  530 # =  trp_town_walker_1
+soldiers_end =  2011 # =  trp_gatling_gunner
 pretenders_begin =  796 # =  trp_kingdom_1_pretender
 pretenders_end =  802 # =  trp_knight_1_1_wife
 tavern_minstrels_begin =  602 # =  trp_tavern_minstrel_1

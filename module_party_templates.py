@@ -42,19 +42,21 @@ party_templates = [
 # Ryan BEGIN
   ("looters","Looters",icon_axeman|carries_goods(8),0,fac_outlaws,bandit_personality,[(trp_looter,3,45)]),
 # Ryan END
-  ("manhunters","Ronin",icon_gray_knight,0,fac_manhunters,soldier_personality,[(trp_ronin,9,40)]),
+  ("manhunters","Ronin",icon_gray_knight,0,fac_kingdom_6,soldier_personality,[(trp_jianhuizu,50,150),(trp_jianhuizu_jr,40,120),(trp_jianhuizu_zt,5,12),(trp_jianhuizu,7,30)]),
 ##  ("peasant","Peasant",icon_peasant,0,fac_commoners,merchant_personality,[(trp_farmer,1,6),(trp_peasant_woman,0,7)]),
 
 #  ("black_khergit_raiders","Black Khergit Raiders",icon_khergit_horseman_b|carries_goods(2),0,fac_black_khergits,bandit_personality,[(trp_black_khergit_guard,1,10),(trp_northern_warlord,5,5)]),
-  ("seto_pirates","Seto Pirates",icon_axeman|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_bandit,16,48),(trp_xiudaozhe,12,40),(trp_xiudaozhe_shooter,12,45)]),
-  ("kanto_rebels","Kanto Rebels",icon_axeman|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_kanto_rebel,4,58),(trp_looter,14,58),(trp_brigand,14,58),(trp_woku_pirate,14,58),(trp_seto_pirate,14,58)]),
+  ("seto_pirates","Seto Pirates",icon_axeman|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_bandit,6,48),(trp_xiudaozhe,2,40),(trp_xiudaozhe_shooter,2,45)]),
+  ("kanto_rebels","Kanto Rebels",icon_axeman|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_kanto_rebel,4,58),(trp_looter,14,58),(trp_brigand,14,58),(trp_woku_pirate,4,58),(trp_seto_pirate,4,58)]),
   ("northern_raiders","Ezo Warriors",icon_axeman|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_northern_raider,4,58)]),
-  ("shinano_rebels","Shinano Rebels",icon_axeman|carries_goods(2),0,fac_shinano_rebels,bandit_personality,[(trp_shinano_rebel,4,52)]),
-  ("woku_pirates","Woku Pirates",icon_axeman|carries_goods(2),0,fac_woku_pirates,bandit_personality,[(trp_woku_pirate,7,30),(trp_looter,7,60),(trp_brigand,7,30),(trp_nobushi_shooter,7,30),(trp_nobushi,7,30)]),
-  ("kinai_rebels","Kinai Rebels",icon_axeman|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_kinai_rebel,25,80)]),
+  ("shinano_rebels","Shinano Rebels",icon_axeman|carries_goods(2),0,fac_kingdom_6,0,[(trp_jianhuizu,10,50),(trp_jianhuizu_jr,12,30),(trp_jianhuizu_zt,4,10),(trp_jianhuizu,7,30)]),
+  ("woku_pirates","Woku Pirates",icon_axeman|carries_goods(2),0,fac_woku_pirates,bandit_personality,[(trp_woku_pirate,7,30),(trp_looter,7,60),(trp_brigand,7,30),(trp_nobushi_shooter,7,30),(trp_nobushi,7,30),(trp_buli,2,4,1)]),
+  ("kinai_rebels","Kinai Rebels",icon_axeman|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_kinai_rebel,25,80),(trp_jianhuizu,3,6,1)]),
   
   #gekokujo 3.0 new bandit types
-  ("monk_rebels","Monk Rebels",icon_axeman|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_monk_rebel,25,50),(trp_looter,17,60),(trp_looter,17,80),(trp_brigand,7,30)]),
+  ("monk_rebels","Monk Rebels",icon_axeman|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_monk_rebel,5,40),(trp_looter,12,30),(trp_looter,12,50),(trp_brigand,7,30),(trp_buli,3,8,1)]),
+  
+  ("jianhuizu","jianhuizu",icon_axeman|carries_goods(2),0,fac_kingdom_6,bandit_personality,[(trp_jianhuizu,10,50),(trp_jianhuizu_jr,12,30),(trp_jianhuizu_zt,4,10),(trp_jianhuizu,7,30)]),
 
   ("deserters","Deserters",icon_vaegir_knight|carries_goods(3),0,fac_deserters,bandit_personality,[]),
     
@@ -99,25 +101,25 @@ party_templates = [
   # med-modernised templates are generally includes 5-10 troops in total, 
   # high-modernised templates are generally includes 3-5 troops in total
 
-  ("kingdom_1_reinforcements_a", "{!}kingdom_1_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_uesugi_spearman,4,8),(trp_gekokujo_uesugi_skirmisher,3,6),(trp_gekokujo_uesugi_jizamurai,1,2),(trp_gekokujo_uesugi_retainer,2,4)]), #10-20
+  ("kingdom_1_reinforcements_a", "{!}kingdom_1_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_uesugi_spearman,4,8),(trp_gekokujo_uesugi_skirmisher,3,6),(trp_gekokujo_uesugi_jizamurai,1,2),(trp_gekokujo_uesugi_retainer,2,4),(trp_gekokujo_fanneiweidui,1,2)]), #10-20
   ("kingdom_1_reinforcements_b", "{!}kingdom_1_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_uesugi_trained_spearman,3,5),(trp_gekokujo_uesugi_trained_skirmisher,2,4),(trp_gekokujo_uesugi_veteran_retainer,1,3),(trp_gekokujo_uesugi_mounted_retainer,1,2)]), #7-14
   ("kingdom_1_reinforcements_c", "{!}kingdom_1_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_uesugi_veteran_skirmisher,3,6),(trp_gekokujo_uesugi_officer,2,4)]), #5-10
 
-  ("kingdom_2_reinforcements_a", "{!}kingdom_2_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_date_spearman,4,8),(trp_gekokujo_date_skirmisher,3,6),(trp_gekokujo_date_jizamurai,1,2),(trp_gekokujo_date_retainer,2,4)]),
+  ("kingdom_2_reinforcements_a", "{!}kingdom_2_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_date_spearman,4,8),(trp_gekokujo_date_skirmisher,3,6),(trp_gekokujo_date_jizamurai,1,2),(trp_gekokujo_date_retainer,2,4),(trp_gekokujo_fanneiweidui,1,2)]),
   ("kingdom_2_reinforcements_b", "{!}kingdom_2_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_date_trained_spearman,3,5),(trp_gekokujo_date_trained_skirmisher,2,4),(trp_gekokujo_date_veteran_retainer,1,3),(trp_gekokujo_date_mounted_retainer,1,2)]),
   ("kingdom_2_reinforcements_c", "{!}kingdom_2_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_date_veteran_spearman,3,6),(trp_gekokujo_date_officer,2,4),(trp_gekokujo_zunwang_veteran_gunner,0,1)]),
 
   ("kingdom_3_reinforcements_a", "{!}kingdom_3_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_oda_spearman,4,8),(trp_gekokujo_oda_skirmisher,3,6),(trp_gekokujo_oda_jizamurai,1,2),(trp_gekokujo_oda_retainer,2,4)]),
-  ("kingdom_3_reinforcements_b", "{!}kingdom_3_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_oda_trained_spearman,3,5),(trp_gekokujo_oda_trained_skirmisher,2,4),(trp_gekokujo_oda_mounted_retainer,1,3),(trp_gekokujo_oda_samurai_gunner,1,2)]),
+  ("kingdom_3_reinforcements_b", "{!}kingdom_3_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_oda_trained_spearman,3,5),(trp_gekokujo_oda_trained_skirmisher,2,4),(trp_gekokujo_oda_mounted_retainer,1,3),(trp_gekokujo_oda_samurai_gunner,1,2),(trp_gekokujo_fanneiweidui,1,2)]),
   ("kingdom_3_reinforcements_c", "{!}kingdom_3_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_oda_veteran_skirmisher,3,6),(trp_gekokujo_oda_mounted_officer,2,4)]),
 
   ("kingdom_4_reinforcements_a", "{!}kingdom_4_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_mori_veteran_skirmisher,14,18),(trp_gekokujo_mori_elite_spearman,13,16),(trp_gekokujo_mori_jizamurai,1,2),(trp_gekokujo_mori_retainer,2,4)]),
   ("kingdom_4_reinforcements_b", "{!}kingdom_4_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_mori_trained_spearman,3,5),(trp_gekokujo_mori_trained_skirmisher,2,4),(trp_gekokujo_mori_veteran_retainer,1,3),(trp_gekokujo_mori_mounted_retainer,1,2)]),
-  ("kingdom_4_reinforcements_c", "{!}kingdom_4_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_mori_veteran_spearman,3,6),(trp_gekokujo_mori_officer,2,4),(trp_gekokujo_zunwang_veteran_gunner,1,1)]),
+  ("kingdom_4_reinforcements_c", "{!}kingdom_4_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_mori_veteran_spearman,3,6),(trp_gekokujo_mori_officer,2,4),(trp_gekokujo_zunwang_veteran_gunner,1,1),(trp_gekokujo_fanneiweidui,1,2)]),
 
   ("kingdom_5_reinforcements_a", "{!}kingdom_5_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_takeda_spearman,4,8),(trp_gekokujo_takeda_skirmisher,3,6),(trp_gekokujo_takeda_jizamurai,1,2),(trp_gekokujo_takeda_retainer,2,4)]),
   ("kingdom_5_reinforcements_b", "{!}kingdom_5_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_takeda_trained_spearman,3,5),(trp_gekokujo_takeda_trained_skirmisher,2,4),(trp_gekokujo_takeda_mounted_retainer,1,3),(trp_gekokujo_takeda_samurai_archer,1,2)]),
-  ("kingdom_5_reinforcements_c", "{!}kingdom_5_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_takeda_veteran_spearman,3,6),(trp_gekokujo_takeda_mounted_officer,2,4)]),
+  ("kingdom_5_reinforcements_c", "{!}kingdom_5_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_takeda_veteran_spearman,3,6),(trp_gekokujo_takeda_mounted_officer,2,4),(trp_gekokujo_fanneiweidui,1,2)]),
 
   ("kingdom_6_reinforcements_a", "{!}kingdom_6_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_tokugawa_spearman,4,8),(trp_gekokujo_tokugawa_elite_skirmisher,6,12),(trp_gekokujo_tokugawa_jizamurai,3,5),(trp_gekokujo_tokugawa_retainer,4,5)]),
   ("kingdom_6_reinforcements_b", "{!}kingdom_6_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_tokugawa_trained_spearman,3,5),(trp_gekokujo_tokugawa_trained_skirmisher,2,4),(trp_gekokujo_tokugawa_veteran_retainer,1,3),(trp_gekokujo_tokugawa_master_gunner,4,5)]),
@@ -125,87 +127,91 @@ party_templates = [
 
   ("kingdom_7_reinforcements_a", "{!}kingdom_7_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_miyoshi_spearman,4,8),(trp_gekokujo_miyoshi_skirmisher,3,6),(trp_gekokujo_miyoshi_jizamurai,1,2),(trp_gekokujo_miyoshi_retainer,2,4)]),
   ("kingdom_7_reinforcements_b", "{!}kingdom_7_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_miyoshi_trained_spearman,3,5),(trp_gekokujo_miyoshi_trained_skirmisher,2,4),(trp_gekokujo_miyoshi_veteran_retainer,1,3),(trp_gekokujo_miyoshi_samurai_gunner,1,2)]),
-  ("kingdom_7_reinforcements_c", "{!}kingdom_7_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_miyoshi_veteran_spearman,3,6),(trp_gekokujo_miyoshi_officer,2,4)]),
+  ("kingdom_7_reinforcements_c", "{!}kingdom_7_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_miyoshi_veteran_spearman,3,6),(trp_gekokujo_miyoshi_officer,2,4),(trp_gekokujo_fanneiweidui,1,2)]),
 
-  ("kingdom_8_reinforcements_a", "{!}kingdom_8_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_amako_spearman,4,8),(trp_gekokujo_amako_skirmisher,3,6),(trp_gekokujo_amako_jizamurai,1,2),(trp_gekokujo_amako_retainer,2,4)]),
+  ("kingdom_8_reinforcements_a", "{!}kingdom_8_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_amako_spearman,4,8),(trp_gekokujo_amako_skirmisher,3,6),(trp_gekokujo_amako_jizamurai,1,2),(trp_gekokujo_amako_retainer,2,4),(trp_gekokujo_fanneiweidui,1,2)]),
   ("kingdom_8_reinforcements_b", "{!}kingdom_8_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_amako_trained_spearman,3,5),(trp_gekokujo_amako_trained_skirmisher,2,4),(trp_gekokujo_amako_veteran_retainer,1,3),(trp_gekokujo_amako_mounted_retainer,1,2)]),
-  ("kingdom_8_reinforcements_c", "{!}kingdom_8_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_amako_veteran_skirmisher,3,6),(trp_gekokujo_amako_officer,2,4)]),
+  ("kingdom_8_reinforcements_c", "{!}kingdom_8_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_amako_veteran_skirmisher,3,6),(trp_gekokujo_amako_officer,2,4),(trp_gekokujo_fanneiweidui,1,2)]),
 
   ("kingdom_9_reinforcements_a", "{!}kingdom_9_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_otomo_spearman,4,8),(trp_gekokujo_otomo_skirmisher,3,6),(trp_gekokujo_otomo_jizamurai,1,2),(trp_gekokujo_otomo_retainer,2,4)]),
   ("kingdom_9_reinforcements_b", "{!}kingdom_9_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_otomo_trained_spearman,3,5),(trp_gekokujo_otomo_trained_skirmisher,2,4),(trp_gekokujo_otomo_mounted_retainer,1,3),(trp_gekokujo_otomo_samurai_archer,1,2)]),
-  ("kingdom_9_reinforcements_c", "{!}kingdom_9_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_otomo_veteran_spearman,3,6),(trp_gekokujo_otomo_mounted_officer,2,4)]),
+  ("kingdom_9_reinforcements_c", "{!}kingdom_9_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_otomo_veteran_spearman,3,6),(trp_gekokujo_otomo_mounted_officer,2,4),(trp_gekokujo_fanneiweidui,1,2)]),
 
-  ("kingdom_10_reinforcements_a", "{!}kingdom_10_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_nanbu_spearman,4,8),(trp_gekokujo_nanbu_skirmisher,3,6),(trp_gekokujo_nanbu_jizamurai,1,2),(trp_gekokujo_nanbu_retainer,2,4)]),
+  ("kingdom_10_reinforcements_a", "{!}kingdom_10_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_nanbu_spearman,4,8),(trp_gekokujo_nanbu_skirmisher,3,6),(trp_gekokujo_nanbu_jizamurai,1,2),(trp_gekokujo_nanbu_retainer,2,4),(trp_gekokujo_fanneiweidui,1,2)]),
   ("kingdom_10_reinforcements_b", "{!}kingdom_10_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_nanbu_trained_spearman,3,5),(trp_gekokujo_nanbu_trained_skirmisher,2,4),(trp_gekokujo_nanbu_mounted_retainer,1,3),(trp_gekokujo_nanbu_samurai_gunner,1,2)]),
   ("kingdom_10_reinforcements_c", "{!}kingdom_10_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_nanbu_veteran_skirmisher,3,6),(trp_gekokujo_nanbu_mounted_officer,2,4)]),
 
   ("kingdom_11_reinforcements_a", "{!}kingdom_11_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_asakura_spearman,4,8),(trp_gekokujo_asakura_skirmisher,3,6),(trp_gekokujo_asakura_jizamurai,1,2),(trp_gekokujo_asakura_retainer,2,4)]),
   ("kingdom_11_reinforcements_b", "{!}kingdom_11_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_asakura_trained_spearman,3,5),(trp_gekokujo_asakura_trained_skirmisher,2,4),(trp_gekokujo_asakura_mounted_retainer,1,3),(trp_gekokujo_asakura_samurai_gunner,1,2)]),
-  ("kingdom_11_reinforcements_c", "{!}kingdom_11_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_asakura_veteran_spearman,3,6),(trp_gekokujo_asakura_officer,2,4)]),
+  ("kingdom_11_reinforcements_c", "{!}kingdom_11_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_asakura_veteran_spearman,3,6),(trp_gekokujo_asakura_officer,2,4),(trp_gekokujo_fanneiweidui,1,2)]),
 
-  ("kingdom_12_reinforcements_a", "{!}kingdom_12_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_chosokabe_spearman,4,8),(trp_gekokujo_chosokabe_skirmisher,3,6),(trp_gekokujo_chosokabe_jizamurai,1,2),(trp_gekokujo_chosokabe_retainer,2,4)]),
+  ("kingdom_12_reinforcements_a", "{!}kingdom_12_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_chosokabe_spearman,4,8),(trp_gekokujo_chosokabe_skirmisher,13,16),(trp_gekokujo_chosokabe_jizamurai,1,2),(trp_gekokujo_chosokabe_retainer,2,4)]),
   ("kingdom_12_reinforcements_b", "{!}kingdom_12_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_chosokabe_trained_spearman,3,5),(trp_gekokujo_chosokabe_trained_skirmisher,2,4),(trp_gekokujo_chosokabe_veteran_retainer,1,3),(trp_gekokujo_chosokabe_samurai_archer,1,2)]),
-  ("kingdom_12_reinforcements_c", "{!}kingdom_12_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_chosokabe_veteran_skirmisher,13,16),(trp_gekokujo_chosokabe_officer,2,4),(trp_gekokujo_zunwang_veteran_gunner,4,6)]),
+  ("kingdom_12_reinforcements_c", "{!}kingdom_12_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_chosokabe_veteran_skirmisher,13,16),(trp_gekokujo_chosokabe_officer,2,4),(trp_gekokujo_zunwang_veteran_gunner,1,1),(trp_gekokujo_fanneiweidui,1,2)]),
 
   ("kingdom_13_reinforcements_a", "{!}kingdom_13_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_hojo_spearman,4,8),(trp_gekokujo_hojo_skirmisher,3,6),(trp_gekokujo_hojo_jizamurai,1,2),(trp_gekokujo_hojo_retainer,2,4)]),
   ("kingdom_13_reinforcements_b", "{!}kingdom_13_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_hojo_trained_spearman,3,5),(trp_gekokujo_hojo_trained_skirmisher,2,4),(trp_gekokujo_hojo_mounted_retainer,1,3),(trp_gekokujo_hojo_samurai_archer,1,2)]),
-  ("kingdom_13_reinforcements_c", "{!}kingdom_13_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_hojo_veteran_spearman,3,6),(trp_gekokujo_hojo_mounted_officer,2,4)]),
+  ("kingdom_13_reinforcements_c", "{!}kingdom_13_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_hojo_veteran_spearman,3,6),(trp_gekokujo_hojo_mounted_officer,2,4),(trp_gekokujo_fanneiweidui,1,2)]),
 
   ("kingdom_14_reinforcements_a", "{!}kingdom_14_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_mogami_spearman,4,8),(trp_gekokujo_mogami_skirmisher,3,6),(trp_gekokujo_mogami_jizamurai,1,2),(trp_gekokujo_mogami_retainer,2,4)]),
   ("kingdom_14_reinforcements_b", "{!}kingdom_14_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_mogami_trained_spearman,3,5),(trp_gekokujo_mogami_trained_skirmisher,2,4),(trp_gekokujo_mogami_mounted_retainer,1,3),(trp_gekokujo_mogami_samurai_gunner,1,2)]),
-  ("kingdom_14_reinforcements_c", "{!}kingdom_14_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_mogami_veteran_skirmisher,3,6),(trp_gekokujo_mogami_mounted_officer,2,4)]),
+  ("kingdom_14_reinforcements_c", "{!}kingdom_14_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_mogami_veteran_skirmisher,3,6),(trp_gekokujo_mogami_mounted_officer,2,4),(trp_gekokujo_fanneiweidui,1,2)]),
 
   ("kingdom_15_reinforcements_a", "{!}kingdom_15_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_shimazu_trained_skirmisher,4,8),(trp_gekokujo_shimazu_veteran_skirmisher,8,16),(trp_gekokujo_shimazu_trained_spearman,4,5),(trp_gekokujo_shimazu_elite_spearman,2,4)]),
   ("kingdom_15_reinforcements_b", "{!}kingdom_15_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_shimazu_marksman,3,5),(trp_gekokujo_shimazu_samurai_gunner,2,4),(trp_gekokujo_shimazu_master_gunner,2,3),(trp_gekokujo_shimazu_hatamoto_guard,1,2)]),
-  ("kingdom_15_reinforcements_c", "{!}kingdom_15_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_shimazu_hatamoto_gunner,2,4),(trp_gekokujo_shimazu_veteran_skirmisher,12,14),(trp_gekokujo_zunwang_veteran_gunner,1,1)]),
+  ("kingdom_15_reinforcements_c", "{!}kingdom_15_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_shimazu_hatamoto_gunner,2,4),(trp_gekokujo_shimazu_veteran_skirmisher,12,14),(trp_gekokujo_zunwang_veteran_gunner,1,1),(trp_gekokujo_fanneiweidui,1,2)]),
 
   ("kingdom_16_reinforcements_a", "{!}kingdom_16_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_ryuzoji_spearman,4,8),(trp_gekokujo_ryuzoji_skirmisher,3,6),(trp_gekokujo_ryuzoji_jizamurai,1,2),(trp_gekokujo_ryuzoji_retainer,2,4)]),
   ("kingdom_16_reinforcements_b", "{!}kingdom_16_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_ryuzoji_trained_spearman,3,5),(trp_gekokujo_ryuzoji_trained_skirmisher,2,4),(trp_gekokujo_ryuzoji_veteran_retainer,1,3),(trp_gekokujo_ryuzoji_samurai_archer,1,2)]),
-  ("kingdom_16_reinforcements_c", "{!}kingdom_16_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_ryuzoji_veteran_skirmisher,3,6),(trp_gekokujo_ryuzoji_officer,2,4),(trp_gekokujo_zunwang_veteran_gunner,1,1)]),
+  ("kingdom_16_reinforcements_c", "{!}kingdom_16_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_ryuzoji_veteran_skirmisher,3,6),(trp_gekokujo_ryuzoji_officer,2,4),(trp_gekokujo_zunwang_veteran_gunner,1,1),(trp_gekokujo_fanneiweidui,1,2)]),
 
   ("kingdom_17_reinforcements_a", "{!}kingdom_17_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_satake_spearman,4,8),(trp_gekokujo_satake_skirmisher,3,6),(trp_gekokujo_satake_jizamurai,1,2),(trp_gekokujo_satake_retainer,2,4)]),
   ("kingdom_17_reinforcements_b", "{!}kingdom_17_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_satake_trained_spearman,3,5),(trp_gekokujo_satake_trained_skirmisher,2,4),(trp_gekokujo_satake_samurai_gunner,1,3),(trp_gekokujo_satake_samurai_archer,1,2)]),
-  ("kingdom_17_reinforcements_c", "{!}kingdom_17_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_satake_veteran_spearman,3,6),(trp_gekokujo_satake_master_gunner,2,4)]),
+  ("kingdom_17_reinforcements_c", "{!}kingdom_17_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_satake_veteran_spearman,3,6),(trp_gekokujo_satake_master_gunner,2,4),(trp_gekokujo_fanneiweidui,1,2)]),
 
   ("kingdom_18_reinforcements_a", "{!}kingdom_18_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_satomi_spearman,4,8),(trp_gekokujo_satomi_skirmisher,3,6),(trp_gekokujo_satomi_trained_skirmisher,3,4),(trp_gekokujo_satomi_veteran_skirmisher,2,4)]),
   ("kingdom_18_reinforcements_b", "{!}kingdom_18_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_satomi_jizamurai,3,5),(trp_gekokujo_satomi_trained_skirmisher,2,4),(trp_gekokujo_satomi_samurai_gunner,1,3),(trp_gekokujo_satomi_elite_skirmisher,1,2)]),
-  ("kingdom_18_reinforcements_c", "{!}kingdom_18_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_satomi_master_gunner,3,6),(trp_gekokujo_satomi_master_archer,2,4),(trp_gekokujo_satomi_samurai_archer,1,2),(trp_gekokujo_zunwang_veteran_gunner,1,1)]),
+  ("kingdom_18_reinforcements_c", "{!}kingdom_18_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_satomi_master_gunner,3,6),(trp_gekokujo_satomi_master_archer,2,4),(trp_gekokujo_satomi_samurai_archer,1,2),(trp_gekokujo_zunwang_veteran_gunner,1,1),(trp_gekokujo_fanneiweidui,1,2)]),
   
   ("kingdom_19_reinforcements_a", "{!}kingdom_19_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_ukita_spearman,4,8),(trp_gekokujo_ukita_skirmisher,3,6),(trp_gekokujo_ukita_jizamurai,1,2),(trp_gekokujo_ukita_retainer,2,4)]),
   ("kingdom_19_reinforcements_b", "{!}kingdom_19_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_ukita_trained_spearman,3,5),(trp_gekokujo_ukita_trained_skirmisher,2,4),(trp_gekokujo_ukita_veteran_retainer,1,3),(trp_gekokujo_ukita_samurai_gunner,1,2)]),
-  ("kingdom_19_reinforcements_c", "{!}kingdom_19_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_ukita_veteran_spearman,3,6),(trp_gekokujo_ukita_officer,2,4)]),
+  ("kingdom_19_reinforcements_c", "{!}kingdom_19_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_ukita_veteran_spearman,3,6),(trp_gekokujo_ukita_officer,2,4),(trp_gekokujo_fanneiweidui,1,2)]),
 
   ("kingdom_20_reinforcements_a", "{!}kingdom_20_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_ikko_spearman,4,8),(trp_gekokujo_ikko_skirmisher,3,6),(trp_gekokujo_ikko_monk,3,5),(trp_gekokujo_ikko_jizamurai,1,3),(trp_gekokujo_ikko_veteran_yari_monk,1,3)]),
   ("kingdom_20_reinforcements_b", "{!}kingdom_20_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_ikko_trained_spearman,1,3),(trp_gekokujo_ikko_trained_skirmisher,0,1),(trp_gekokujo_ikko_veteran_retainer,1,2),(trp_gekokujo_ikko_samurai_archer,0,1),(trp_gekokujo_ikko_retainer,3,4),(trp_gekokujo_ikko_marksman,2,3)]),
-  ("kingdom_20_reinforcements_c", "{!}kingdom_20_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_ikko_veteran_spearman,1,2),(trp_gekokujo_ikko_officer,1,3),(trp_gekokujo_ikko_veteran_arquebus_monk,3,5)]),
+  ("kingdom_20_reinforcements_c", "{!}kingdom_20_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_ikko_veteran_spearman,1,2),(trp_gekokujo_ikko_officer,1,3),(trp_gekokujo_ikko_veteran_arquebus_monk,3,5),(trp_gekokujo_fanneiweidui,1,2)]),
   
-  ("kingdom_21_reinforcements_a", "{!}kingdom_21_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_xb_veteran_spearman,4,8),(trp_gekokujo_xb_veteran_skirmisher,3,6),(trp_gekokujo_xb_elite_spearman,3,5),(trp_gekokujo_xb_retainer,1,3)]),
+  ("kingdom_21_reinforcements_a", "{!}kingdom_21_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_xb_veteran_spearman,4,8),(trp_gekokujo_xb_veteran_skirmisher,3,6),(trp_gekokujo_xb_elite_spearman,3,5),(trp_gekokujo_xb_retainer,1,3),(trp_gekokujo_fanneiweidui,1,2)]),
   ("kingdom_21_reinforcements_b", "{!}kingdom_21_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_xb_marksman,1,3),(trp_gekokujo_ikko_trained_skirmisher,0,1),(trp_gekokujo_ikko_veteran_retainer,1,2),(trp_gekokujo_xb_master_gunner,0,1),(trp_gekokujo_xb_samurai_archer,3,4),(trp_gekokujo_xb_veteran_retainer,2,3)]),
   ("kingdom_21_reinforcements_c", "{!}kingdom_21_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_xb_hatamoto_archer,1,2),(trp_gekokujo_xb_hatamoto_cavalry,1,3),(trp_gekokujo_xb_mounted_retainer,3,5)]),
   
   ("kingdom_22_reinforcements_a", "{!}kingdom_22_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_ss_spearman,4,8),(trp_gekokujo_ss_skirmisher,3,6),(trp_ceshi12_messenger,3,5),(trp_gekokujo_ss_retainer,1,3)]),
   ("kingdom_22_reinforcements_b", "{!}kingdom_22_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_ss_trained_spearman,1,3),(trp_gekokujo_ikko_trained_skirmisher,0,1),(trp_gekokujo_ikko_veteran_retainer,1,2),(trp_gekokujo_ikko_samurai_archer,0,1),(trp_gekokujo_ss_trained_skirmisher,3,4),(trp_gekokujo_ss_veteran_spearman,2,3)]),
-  ("kingdom_22_reinforcements_c", "{!}kingdom_22_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_ss_veteran_skirmisher,1,2),(trp_gekokujo_ss_veteran_retainer,1,3),(trp_gekokujo_ss_samurai_gunner,3,5)]),
+  ("kingdom_22_reinforcements_c", "{!}kingdom_22_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_ss_veteran_skirmisher,1,2),(trp_gekokujo_ss_veteran_retainer,1,3),(trp_gekokujo_ss_samurai_gunner,3,5),(trp_gekokujo_fanneiweidui,1,2)]),
   
   ("kingdom_23_reinforcements_a", "{!}kingdom_23_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_wz_veteran_spearman,4,8),(trp_gekokujo_wz_veteran_skirmisher,3,6),(trp_gekokujo_wz_elite_skirmisher,3,5),(trp_gekokujo_wz_trained_spearman,1,3)]),
   ("kingdom_23_reinforcements_b", "{!}kingdom_23_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_wz_marksman,1,3),(trp_gekokujo_wz_mounted_retainer,2,3),(trp_gekokujo_wz_samurai_gunner,1,2),(trp_gekokujo_wz_samurai_archer,2,3),(trp_gekokujo_wz_trained_spearman,3,4),(trp_gekokujo_wz_master_gunner,2,3)]),
-  ("kingdom_23_reinforcements_c", "{!}kingdom_23_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_wz_mounted_officer,1,2),(trp_gekokujo_wz_master_archer,1,2),(trp_gekokujo_wz_marksman,3,5)]),
+  ("kingdom_23_reinforcements_c", "{!}kingdom_23_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_wz_mounted_officer,1,2),(trp_gekokujo_wz_master_archer,1,2),(trp_gekokujo_wz_marksman,3,5),(trp_gekokujo_fanneiweidui,1,2)]),
   
   ("kingdom_24_reinforcements_a", "{!}kingdom_24_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_dd_retainer,4,8),(trp_gekokujo_dd_marksman,3,6),(trp_gekokujo_dd_elite_spearman,3,5),(trp_ceshi14_messenger,1,3)]),
   ("kingdom_24_reinforcements_b", "{!}kingdom_24_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_dd_trained_skirmisher,1,3),(trp_gekokujo_dd_veteran_skirmisher,0,1),(trp_gekokujo_dd_veteran_retainer,1,2),(trp_gekokujo_dd_mounted_retainer,0,1),(trp_gekokujo_dd_trained_spearman,3,4),(trp_gekokujo_dd_veteran_spearman,2,3)]),
-  ("kingdom_24_reinforcements_c", "{!}kingdom_24_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_dd_master_gunner,1,2),(trp_gekokujo_dd_master_archer,1,3),(trp_gekokujo_dd_officer,3,5)]),
+  ("kingdom_24_reinforcements_c", "{!}kingdom_24_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_dd_master_gunner,1,2),(trp_gekokujo_dd_master_archer,1,3),(trp_gekokujo_dd_officer,3,5),(trp_gekokujo_fanneiweidui,1,2)]),
   
   ("kingdom_25_reinforcements_a", "{!}kingdom_25_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_ceshi15,4,8),(trp_gekokujo_zhuangnei_master_gunner,4,8),(trp_gekokujo_zhuangnei_elite_spearman,3,6),(trp_gekokujo_zhuangnei_master_gunner,3,5),(trp_gekokujo_zhuangnei_master_archer,1,3)]),
   ("kingdom_25_reinforcements_b", "{!}kingdom_25_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_zhuangnei_elite_spearman,3,6),(trp_gekokujo_zhuangnei_hatamoto_cavalry,1,3),(trp_gekokujo_zhuangnei_hatamoto_archer,0,1),(trp_gekokujo_zhuangnei_elite_spearman,1,2),(trp_gekokujo_zhuangnei_veteran_skirmisher,3,4),(trp_gekokujo_zhuangnei_veteran_spearman,2,3)]),
-  ("kingdom_25_reinforcements_c", "{!}kingdom_25_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_zhuangnei_mounted_retainer,1,2),(trp_gekokujo_zhuangnei_samurai_gunner,4,6),(trp_gekokujo_zhuangnei_mounted_officer,1,2),(trp_ceshi15_messenger,4,5),(trp_ceshi15_messenger,0,1)]),
+  ("kingdom_25_reinforcements_c", "{!}kingdom_25_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_zhuangnei_mounted_retainer,1,2),(trp_gekokujo_zhuangnei_samurai_gunner,4,6),(trp_gekokujo_zhuangnei_mounted_officer,1,2),(trp_ceshi15_messenger,4,5),(trp_ceshi15_messenger,0,1),(trp_gekokujo_fanneiweidui,1,2)]),
   
-  ("kingdom_26_reinforcements_a", "{!}kingdom_26_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_qt_spearman,4,8),(trp_gekokujo_qt_skirmisher,3,6),(trp_gekokujo_qt_monk,1,2),(trp_gekokujo_qt_master_archer,1,3)]),
+  ("kingdom_26_reinforcements_a", "{!}kingdom_26_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_qt_spearman,4,8),(trp_gekokujo_qt_skirmisher,3,6),(trp_gekokujo_qt_monk,1,2),(trp_gekokujo_qt_master_archer,1,3),(trp_gekokujo_fanneiweidui,1,2)]),
   ("kingdom_26_reinforcements_b", "{!}kingdom_26_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_qt_elite_spearman,1,3),(trp_gekokujo_qt_retainer,2,3),(trp_gekokujo_qt_marksman,1,2),(trp_gekokujo_qt_veteran_retainer,2,3),(trp_gekokujo_qt_samurai_archer,2,3),(trp_gekokujo_qt_officer,2,3)]),
   ("kingdom_26_reinforcements_c", "{!}kingdom_26_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_qt_veteran_spearman,2,3),(trp_gekokujo_qt_trained_skirmisher,3,4),(trp_gekokujo_qt_master_archer,3,5)]),
   
   ("kingdom_27_reinforcements_a", "{!}kingdom_27_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_yg_spearman,4,8),(trp_gekokujo_yg_trained_skirmisher,3,6),(trp_gekokujo_yg_retainer,3,5),(trp_gekokujo_yg_veteran_retainer,1,3)]),
   ("kingdom_27_reinforcements_b", "{!}kingdom_27_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_yg_trained_spearman,1,3),(trp_gekokujo_yg_trained_skirmisher,2,3),(trp_gekokujo_yg_officer,1,2),(trp_gekokujo_yg_samurai_gunner,0,1),(trp_gekokujo_yg_hatamoto_archer,2,2),(trp_gekokujo_yg_elite_skirmisher,2,3)]),
-  ("kingdom_27_reinforcements_c", "{!}kingdom_27_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_yg_mounted_retainer,3,4),(trp_gekokujo_yg_mounted_officer,2,3),(trp_gekokujo_yg_hatamoto_cavalry,3,5)]),
+  ("kingdom_27_reinforcements_c", "{!}kingdom_27_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_yg_mounted_retainer,3,4),(trp_gekokujo_yg_mounted_officer,2,3),(trp_gekokujo_yg_hatamoto_cavalry,3,5),(trp_gekokujo_fanneiweidui,1,2)]),
+
+  ("kingdom_28_reinforcements_a", "{!}kingdom_28_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_shimazu_spearman,4,8),(trp_gekokujo_shimazu_trained_skirmisher,3,6),(trp_gekokujo_shimazu_retainer,3,5),(trp_gekokujo_shimazu_veteran_retainer,1,3)]),
+  ("kingdom_28_reinforcements_b", "{!}kingdom_28_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_shimazu_trained_spearman,1,3),(trp_gekokujo_shimazu_trained_skirmisher,2,3),(trp_gekokujo_shimazu_officer,1,2),(trp_gekokujo_shimazu_samurai_gunner,0,1),(trp_gekokujo_shimazu_hatamoto_guard,2,2),(trp_gekokujo_shimazu_veteran_skirmisher,2,3)]),
+  ("kingdom_28_reinforcements_c", "{!}kingdom_28_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_shimazu_mounted_retainer,3,4),(trp_gekokujo_shimazu_mounted_officer,2,3),(trp_gekokujo_shimazu_hatamoto_gunner,3,5)]),
 
   #gekokujo 3.0 get rid of player culture start
   ##geokokujo player reinforcements
@@ -229,9 +235,9 @@ party_templates = [
 
   ("leaded_looters","Samurai Travelling Party",icon_axeman|carries_goods(8)|pf_quest_party,0,fac_neutral,bandit_personality,[(trp_looter_leader,1,1),(trp_generic_ashigaru,3,3)]),
 
-  ("dark_knights_reinforcements_a", "{!}dark_knights_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_gekokujo_qt_spearman,5000,6000)] ),
-  ("dark_knights_reinforcements_b", "{!}dark_knights_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_gekokujo_qt_spearman,5000,6000)] ),
-  ("dark_knights_reinforcements_c", "{!}dark_knights_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_gekokujo_qt_spearman,5000,6000)] ),
+  ("dark_knights_reinforcements_a", "{!}dark_knights_reinforcements_a", 0, 0, fac_commoners, 0, [(trp_rus_ally,10,20),(trp_rus_cavalry,7,13),(trp_rus_commander,6,12)]),
+  ("dark_knights_reinforcements_b", "{!}dark_knights_reinforcements_b", 0, 0, fac_commoners, 0, [(trp_rus_gunner,10,20),(trp_rus_mounted,3,5),(trp_rus_mounted_officer,2,3)] ),
+  ("dark_knights_reinforcements_c", "{!}dark_knights_reinforcements_c", 0, 0, fac_commoners, 0, [(trp_rus_infantry,10,20)] ),
 
    ##diplomacy begin
   ("dplmc_spouse","Your Spouse",icon_woman|pf_civilian|pf_show_faction,0,fac_neutral,merchant_personality,[]),

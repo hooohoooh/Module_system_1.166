@@ -7,6 +7,7 @@ from header_music import *
 from header_terrain_types import *
 
 from module_constants import *
+from ym_gatling_shop import *
 
 ####################################################################################################################
 #  (menu-id, menu-flags, menu_text, mesh-name, [<operations>], [<options>]),
@@ -1336,26 +1337,54 @@ game_menus = [
     [],
     [
       ("revenge",[],"Personal revenge.",[
+      (assign, "$zuomu", 1),
         (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_15", 0),
         (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_4", 0),
         (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_12", 0),
         (jump_to_menu,"mnu_choose_skill"),
         ]),
       ("death",[],"The loss of a loved one.",[
+        (assign, "$daomu", 1),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_6", 0),
+        (jump_to_menu,"mnu_choose_skill"),
+        ]),
+      ("wanderlust",[],"Wanderlust.",[
+        (assign, "$gonghe", 1),
         (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_1", 0),
         (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_2", 0),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_3", 0),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_4", 0), 
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_5", 0), 
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_7", 0), 
         (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_6", 0),
         (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_10", 0),
         (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_11", 0),
         (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_18", 0),
         (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_25", 0),
         (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_player_faction", "fac_kingdom_27", 0),
+      (troop_clear_inventory, "$g_player_troop"),
+        (troop_add_item, "$g_player_troop", "itm_ghgwaitao", 0),
+        (troop_add_item, "$g_player_troop", "itm_heisexiaku", 0),
+        (troop_add_item, "$g_player_troop", "itm_colt_army2", 0),
+        (troop_add_item, "$g_player_troop", "itm_gekokujo_bullets_1", 0),
+        (troop_add_item, "$g_player_troop", "itm_ghgcap", 0),
         (jump_to_menu,"mnu_choose_skill"),
         ]),
-      ("wanderlust",[],"Wanderlust.",[
-        (assign, "$gonghe", 1),
-        (jump_to_menu,"mnu_choose_skill"),
-        ]),
+     ("disown", [],
+    "Being forced out of your home.",
+    [
+        (assign, "$background_answer_4", 5),
+          (assign, "$players_kingdom", "fac_kingdom_6"),
+          (assign, "$player_has_homage", 1),
+        (call_script, "script_give_center_to_lord", "p_fort_4", "trp_player", 1),
+        (party_set_slot, "p_fort_4", slot_fort_captured, 1),
+      (troop_clear_inventory, "$g_player_troop"),
+        (troop_add_item, "$g_player_troop", "itm_jintengyong", 0),
+        (troop_add_item, "$g_player_troop", "itm_gekokujo_tsubo_suneate_1", 0),
+        (troop_add_item, "$g_player_troop", "itm_gekokujo_katana_9", 0),
+        (troop_add_item, "$g_player_troop", "itm_fanshizhenli", 0),
+        (jump_to_menu, "mnu_choose_skill"),
+     ]),
       ("go_back",[],"Go back.",
        [(jump_to_menu,"mnu_start_character_3"),
         ]
@@ -2535,8 +2564,6 @@ game_menus = [
         ]
        ),
 	   
-	   
-	   
       ("go_back_dot",[],"{!}Go back.",
        [(jump_to_menu, "mnu_reports"),
         ]
@@ -2544,7 +2571,6 @@ game_menus = [
       ]
   ),
 
-  
   ("character_report",0,
    "{s9}",
    "none",
@@ -4704,6 +4730,33 @@ game_menus = [
 		  (else_try),
 			(eq, ":leader_troop_faction", fac_kingdom_20),
             (set_background_mesh, "mesh_gekokujo_pic_arms_ikko"),
+          (else_try),
+			(eq, ":leader_troop_faction", fac_kingdom_21),
+            (set_background_mesh, "mesh_gekokujo_pic_arms_xb"),
+          (else_try),
+			(eq, ":leader_troop_faction", fac_kingdom_22),
+            (set_background_mesh, "mesh_gekokujo_pic_arms_ss"),
+          (else_try),
+			(eq, ":leader_troop_faction", fac_kingdom_23),
+            (set_background_mesh, "mesh_gekokujo_pic_arms_wz"),
+          (else_try),
+			(eq, ":leader_troop_faction", fac_kingdom_24),
+            (set_background_mesh, "mesh_gekokujo_pic_arms_dedao"),
+          (else_try),
+			(eq, ":leader_troop_faction", fac_kingdom_25),
+            (set_background_mesh, "mesh_gekokujo_pic_arms_zhuangnei"),
+          (else_try),
+			(eq, ":leader_troop_faction", fac_kingdom_26),
+            (set_background_mesh, "mesh_gekokujo_pic_arms_jiubaotian"), 
+          (else_try),
+			(eq, ":leader_troop_faction", fac_kingdom_27),
+            (set_background_mesh, "mesh_gekokujo_pic_arms_yangen"), 
+          (else_try),
+			(eq, ":leader_troop_faction", fac_kingdom_28),
+            (set_background_mesh, "mesh_gekokujo_pic_arms_xinzhengfu"), 
+          (else_try),
+			(eq, ":leader_troop_faction", fac_dark_knights),
+            (set_background_mesh, "mesh_gekokujo_pic_arms_rus"), 
 		  (else_try),
             (set_background_mesh, "mesh_gekokujo_pic_arms_other"),
 		  (try_end),
@@ -4885,7 +4938,7 @@ game_menus = [
         # (change_screen_mission),
       # ]),
 ## PreBattle Orders End
-       ("change_battlefield_size",
+    ("change_battlefield_size",
         [
           (eq, "$g_encounter_type", 0),
           (eq, "$encountered_party_friendly", 0),
@@ -4896,7 +4949,7 @@ game_menus = [
         "改 变 你 的 战 场 规 模 ，他 会 是 一 个({s3}).",
         [
         (val_add, "$g_random_scene_size", 1),
-        (val_mod, "$g_random_scene_size", 4),
+        (val_mod, "$g_random_scene_size", 3),
         (jump_to_menu, "mnu_simple_encounter"),
         ]),
 
@@ -14438,9 +14491,28 @@ game_menus = [
          "招 募 共 和 志 士！",
      [
         (jump_to_menu,"mnu_zhaobing2"),
+
     ]),
-		
-      ("trade_with_merchants",
+    
+  ("ceshi2", 
+     [(eq, "$daomu", 1),
+	  ],
+         "招 募 尊 王 志 士！",
+     [
+        (jump_to_menu,"mnu_zhaobing3"),	
+  ]),
+            
+      
+          
+   ("ceshi3", 
+     [(eq, "$zuomu", 1),
+	  ],
+         "招 募 佐 幕 志 士！",
+     [
+        (jump_to_menu,"mnu_zhaobing4"),	
+  ]),
+            
+        ("trade_with_merchants",
        [
            (party_slot_eq,"$current_town",slot_party_type, spt_town)
         ],
@@ -14453,18 +14525,7 @@ game_menus = [
            (try_end),
           ]),
           
-           ("trade_with_merchants",
-       [
-           (party_slot_eq,"$current_town",slot_party_type, spt_town)
-        ],
-         "Go to the marketplace.",
-         [
-           (try_begin),
-             (call_script, "script_cf_enter_center_location_bandit_check"),
-           (else_try),
-             (jump_to_menu,"mnu_town_trade"),
-           (try_end),
-          ]),
+          
        
 
       ("walled_center_manage",
@@ -14634,6 +14695,18 @@ game_menus = [
         (try_end),  
 
         (rest_for_hours_interactive, 24 * 7, 5, 0), #rest while not attackable
+        (change_screen_return),
+      ]),
+
+      ("buy_gatling",
+      [
+        (party_slot_eq,"$current_town",slot_party_type, spt_town),
+        (this_or_next|ge, "$g_encountered_party_relation", 0),
+        (eq,"$castle_undefended",1),
+      ],
+      "Purchase Gatling Gun (50000 gold, max 2).",
+      [
+        (call_script, "script_try_buy_gatling"),
         (change_screen_return),
       ]),
 
@@ -22231,18 +22304,18 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     "none",   
     [],
     [
-     ("buy_munitions",[
+     ("buy_munitions1",[
 		(store_free_inventory_capacity,":num","trp_player"),
 		(store_troop_gold,":gold","trp_player"),
 		(try_begin),
 			(ge,":num",1),
-			(ge,":gold",100),
+			(ge,":gold",30),
 		(else_try),
 			(disable_menu_option),
 		(try_end),
-	 ],"购 买 一 个 共 和 国 卫 队 ，花 费 一 百",
+	 ],"购 买 一 个 共 和 国 卫 队 ，花 费 三 十 ",
        [
-		(troop_remove_gold,"trp_player",100),
+		(troop_remove_gold,"trp_player",30),
 		(party_add_members, "p_main_party", "trp_republic_citizen", 1),
        ]),
        
@@ -22251,13 +22324,13 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 		(store_troop_gold,":gold","trp_player"),
 		(try_begin),
 			(ge,":num",1),
-			(ge,":gold",1000),
+			(ge,":gold",300),
 		(else_try),
 			(disable_menu_option),
 		(try_end),
-	 ],"购 买 十 个 共 和 国 卫 队 ，花 费 一 千",
+	 ],"购 买 十 个 共 和 国 卫 队 ，花 费 三 百",
        [
-		(troop_remove_gold,"trp_player",1001),
+		(troop_remove_gold,"trp_player",301),
 		(party_add_members, "p_main_party", "trp_republic_citizen", 10),
        ]),
        
@@ -22266,13 +22339,13 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 		(store_troop_gold,":gold","trp_player"),
 		(try_begin),
 			(ge,":num",1),
-			(ge,":gold",10000),
+			(ge,":gold",3000),
 		(else_try),
 			(disable_menu_option),
 		(try_end),
-	 ],"购 买 一百 个 共 和 国 卫 队 ，花 费 一 万",
+	 ],"购 买 一百 个 共 和 国 卫 队 ，花 费 三 千",
        [
-		(troop_remove_gold,"trp_player",10000),
+		(troop_remove_gold,"trp_player",3000),
 		(party_add_members, "p_main_party", "trp_republic_citizen", 100),
        ]),
      ("go_back",[],"Go back",
@@ -22280,10 +22353,150 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (jump_to_menu, "mnu_town"),
        ]),
     ]
+
   ),
-  
-  
-  
+  ("zhaobing3",mnf_disable_all_keys,
+    "倒 幕 志 士，欢 迎 来 到 招 募 界 面",
+    "none",   
+    [],
+    [
+     ("buy_munitions4",[
+		(store_free_inventory_capacity,":num","trp_player"),
+		(store_troop_gold,":gold","trp_player"),
+		(try_begin),
+			(ge,":num",1),
+			(ge,":gold",100),
+		(else_try),
+			(disable_menu_option),
+		(try_end),
+	 ],"招 募 一 个 倒 幕 志 士 ，花 费 一 百",
+       [
+		(troop_remove_gold,"trp_player",100),
+		(party_add_members, "p_main_party", "trp_zunwangzhishi", 1),
+       ]),
+       
+     ("buy_munitions5",[
+		(store_free_inventory_capacity,":num","trp_player"),
+		(store_troop_gold,":gold","trp_player"),
+		(try_begin),
+			(ge,":num",1),
+			(ge,":gold",1000),
+		(else_try),
+			(disable_menu_option),
+		(try_end),
+	 ],"招 募 十 个 倒 幕 志 士 ，花 费 一 千",
+       [
+		(troop_remove_gold,"trp_player",1001),
+		(party_add_members, "p_main_party", "trp_zunwangzhishi", 10),
+       ]),
+       
+     ("buy_munitions6",[
+		(store_free_inventory_capacity,":num","trp_player"),
+		(store_troop_gold,":gold","trp_player"),
+		(try_begin),
+			(ge,":num",1),
+			(ge,":gold",10000),
+		(else_try),
+			(disable_menu_option),
+		(try_end),
+	 ],"招 募 一 百 个 倒 幕 志 士 ，花 费 一 万",
+       [
+		(troop_remove_gold,"trp_player",10000),
+		(party_add_members, "p_main_party", "trp_zunwangzhishi", 100),
+       ]),
+     ("go_back",[],"Go back",
+       [
+        (jump_to_menu, "mnu_town"),
+       ]),
+    ]
+    ),
+    
+    ("zhaobing4",mnf_disable_all_keys,
+    "佐 幕 志 士，欢 迎 来 到 招 募 界 面",
+    "none",   
+    [],
+    [
+     ("buy_munitions6",[
+		(store_free_inventory_capacity,":num","trp_player"),
+		(store_troop_gold,":gold","trp_player"),
+		(try_begin),
+			(ge,":num",1),
+			(ge,":gold",100),
+		(else_try),
+			(disable_menu_option),
+		(try_end),
+	 ],"招 募 一 个 佐 幕 志 士 ，花 费 一 百",
+       [
+		(troop_remove_gold,"trp_player",100),
+		(party_add_members, "p_main_party", "trp_zuomuzhishi", 1),
+       ]),
+       
+     ("buy_munitions6",[
+		(store_free_inventory_capacity,":num","trp_player"),
+		(store_troop_gold,":gold","trp_player"),
+		(try_begin),
+			(ge,":num",1),
+			(ge,":gold",1000),
+		(else_try),
+			(disable_menu_option),
+		(try_end),
+	 ],"招 募 十 个 佐 幕 志 士 ，花 费 一 千",
+       [
+		(troop_remove_gold,"trp_player",1001),
+		(party_add_members, "p_main_party", "trp_zuomuzhishi", 10),
+       ]),
+       
+     ("buy_munitions6",[
+		(store_free_inventory_capacity,":num","trp_player"),
+		(store_troop_gold,":gold","trp_player"),
+		(try_begin),
+			(ge,":num",1),
+			(ge,":gold",10000),
+		(else_try),
+			(disable_menu_option),
+		(try_end),
+	 ],"招 募 一 百 个 佐 幕 志 士 ，花 费 一 万",
+       [
+		(troop_remove_gold,"trp_player",10000),
+		(party_add_members, "p_main_party", "trp_zuomuzhishi", 100),
+       ]),
+     ("go_back",[],"Go back",
+       [
+        (jump_to_menu, "mnu_town"),
+       ]),
+    ]
+    ),
+    ("xinzhengfuchengli",mnf_scale_picture,
+    "王 政 复 古 大 号 令 颁 布，新 政 府 宣 告 成 立!",
+    "none",
+    [
+		(set_background_mesh, "mesh_dazhengfenghuan"),   
+       (try_end),
+        ],
+    [
+		("continue",[],"Continue...",
+			[
+			(change_screen_return),
+			],
+		),
+	]
+),
+
+ ("niaoyufujianzhizhan",mnf_scale_picture,
+    "鸟 羽 伏  见  之  战                                                                                                                                   ；自 大 政 奉 还 以 来 ，幕 府 与 新 政 府 的 对 峙 彻 底 破 裂 。 德 川 庆 喜 拒 不 接 受 新 政 府 剥 夺 幕 府 实 权 的 政 令 ， 集 结 幕 府 直 属 精 锐 、 会 津 藩 、 桑 名 藩 等 亲 幕 诸 藩 大 军 ， 自 大 阪 北 上 ， 意 欲 武 力 入 京 、 清 剿 萨 长 倒 幕 势 力 .",
+    "none",
+    [
+		(set_background_mesh, "mesh_niaoyufujian"),   
+       (try_end),
+        ],
+    [
+		("continue",[],"Continue...",
+			[
+			(change_screen_return),
+			],
+		),
+	]
+),
   
   ## Tocan Invasion+ ##
   (
@@ -22296,7 +22509,7 @@ After catching his breath, the messenger hands you a slip of paper. 'War has com
 With that, the boy rides off, shouting to any who will listen.",
     "none",
     [
-		(set_background_mesh, "mesh_pic_messenger"),
+		(set_background_mesh, "mesh_rus_army"),
                 (try_begin),
                    (troop_get_type, ":is_female", "trp_player"),
                    (eq, ":is_female", 1),

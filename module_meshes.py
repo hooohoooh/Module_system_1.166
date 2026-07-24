@@ -65,6 +65,15 @@ meshes = [
   ("gekokujo_pic_arms_satomi", 0, "gekokujo_pic_arms_satomi", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("gekokujo_pic_arms_ukita", 0, "gekokujo_pic_arms_ukita", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("gekokujo_pic_arms_ikko", 0, "gekokujo_pic_arms_ikko", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("gekokujo_pic_arms_xb", 0, "gekokujo_pic_arms_xb", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("gekokujo_pic_arms_ss", 0, "gekokujo_pic_arms_ss", 0, 0, 0, 0, 0, 0, 1, 1, 1),  
+  ("gekokujo_pic_arms_wz", 0, "gekokujo_pic_arms_wz", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("gekokujo_pic_arms_dedao", 0, "gekokujo_pic_arms_dedao", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("gekokujo_pic_arms_zhuangnei", 0, "gekokujo_pic_arms_zhuangnei", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("gekokujo_pic_arms_jiubaotian", 0, "gekokujo_pic_arms_jiubaotian", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("gekokujo_pic_arms_yangen", 0, "gekokujo_pic_arms_yangen", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("gekokujo_pic_arms_xinzhengfu", 0, "gekokujo_pic_arms_xinzhengfu", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("gekokujo_pic_arms_rus", 0, "gekokujo_pic_arms_rus", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("gekokujo_pic_arms_other", 0, "gekokujo_pic_arms_other", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_castle1", 0, "pic_castle1", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_castledes", 0, "pic_castledes", 0, 0, 0, 0, 0, 0, 1, 1, 1),
@@ -818,6 +827,9 @@ meshes = [
   ("drop_button_child_down", 0, "button_drop_child_clicked", 0, 0, 0, 0, 0, 0, 1.0, 0.5, 0.5),
   ("drop_button_child_hl", 0, "button_drop_child_hl", 0, 0, 0, 0, 0, 0, 1.0, 0.5, 0.5),
   ("status_troop_ratio_bar", 0, "slider_hor", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("rus_army", 0, "rus_army", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("dazhengfenghuan", 0, "dazhengfenghuan", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("niaoyufujian", 0, "niaoyufujian", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 ##diplomacy start+
 
 ]

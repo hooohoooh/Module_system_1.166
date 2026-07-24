@@ -23,7 +23,7 @@ options={
 # for example, the mod content corresponding to "items", for mod "fc" should be in the file "fc_items.py"
 
 mods_active = [
-    #"trees",
+    "trees",
     "freelancer",
 	#"formations",
 	#"formAI",

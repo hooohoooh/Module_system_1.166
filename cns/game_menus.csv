@@ -760,8 +760,9 @@ menu_dplmc_economic_report|{s0}
 menu_zhaobing|你 想 要 什 么 
 mno_buy_munitions|购 买 一 组 炮 兵 ， 花 费 一 万 
 menu_zhaobing2|民 主 人 士 ， 欢 迎 来 到 招 募 界 面 
-mno_buy_munitions2|购 买 十 个 共 和 国 卫 队 ， 花 费 一 千 
-mno_buy_munitions3|购 买 一 百 个 共 和 国 卫 队 ， 花 费 一 万 
+mno_buy_munitions1|招 募 一 个 共 和 国 卫 队 ， 花 费 一 百
+mno_buy_munitions2|招 募 十 个 共 和 国 卫 队 ， 花 费 一 千 
+mno_buy_munitions3|招 募 一 百 个 共 和 国 卫 队 ， 花 费 一 万 
 menu_world_map_soldier|战 士 ， 你 想 怎 么 做 ？ 
 mno_join_commander_battle|跟 随 指 挥 官 加 入 战 斗 。 
 mno_enter_town|进 入 镇 守 的 城 。 

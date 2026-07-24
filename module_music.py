@@ -26,9 +26,11 @@ tracks = [
   ("victorious_swadian", "gekokujo_victorious_evil.ogg", mtf_culture_2|mtf_sit_victorious, 0),
   ("victorious_vaegir", "gekokujo_victorious_evil.ogg",mtf_culture_2|mtf_sit_victorious, 0),
   ("victorious_vaegir_2", "gekokujo_victorious_evil.ogg",mtf_culture_2|mtf_sit_victorious, 0),
-  ("victorious", "victories_bgmmiyasan.mp3", mtf_persist_until_finished|mtf_culture_6|mtf_sit_victorious, 0),
+  ("victorious", "gekokujo_victorious_evil.ogg", mtf_persist_until_finished|mtf_culture_6|mtf_sit_victorious, 0),
+  ("victories_bgmmiyasan", "victories_bgmmiyasan.mp3",mtf_culture_6|mtf_sit_victorious, 0),
   ("wedding", "wedding.ogg", mtf_persist_until_finished, 0),
-
+   ("miyasan1", "miyasan1.mp3", mtf_persist_until_finished, 0),
+  ("miyasansong", "miyasansong.mp3", mtf_persist_until_finished, 0),
   ("coronation", "coronation.ogg", mtf_persist_until_finished, 0),
 
   #gekokujo main menu

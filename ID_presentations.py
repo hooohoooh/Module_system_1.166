@@ -57,4 +57,5 @@ prsnt_upgrade_tree = 55
 prsnt_faction_upgrade_trees = 56
 prsnt_mini_map = 57
 prsnt_fade_from_black = 58
-prsnt_taragoth_lords_report = 59
+prsnt_troop_detail_view = 59
+prsnt_taragoth_lords_report = 60

@@ -13,6 +13,9 @@ from header_terrain_types import *
 from header_music import *
 from header_map_icons import *
 from ID_animations import *
+from ym_gatling import *
+from ym_gatling_shop import *
+from zhenyinghebing import *
 ##diplomacy start+
 from module_factions import dplmc_factions_begin, dplmc_factions_end, dplmc_non_generic_factions_begin
 ##diplomacy end+
@@ -72,6 +75,7 @@ scripts = [
    [
       (assign, "$gonghe", 0),
       (assign, "$cut_body", 1),
+      (assign, "$ym_gatling_purchased", 0),
       (faction_set_slot, "fac_player_supporters_faction", slot_faction_state, sfs_inactive),
       (assign, "$g_player_luck", 200),
       (assign, "$g_player_luck", 200),
@@ -207,6 +211,8 @@ scripts = [
       (faction_set_slot, "fac_culture_25", slot_faction_tier_0_troop, "trp_ceshi15"),
       (faction_set_slot, "fac_culture_26", slot_faction_tier_0_troop, "trp_ceshi16"),
       (faction_set_slot, "fac_culture_27", slot_faction_tier_0_troop, "trp_ceshi17"),
+      (faction_set_slot, "fac_culture_28", slot_faction_tier_0_troop, "trp_zunwangzhishi"),
+      (faction_set_slot, "fac_culture_dark_knights", slot_faction_tier_0_troop, "trp_rus_ally"),
 	  #gekokujo 3.0 get rid of player culture start
 	  ##gekokujo player culture
       #(faction_set_slot, "fac_culture_player", slot_faction_tier_0_troop, "trp_gekokujo_player_villager"),
@@ -373,13 +379,20 @@ scripts = [
       (faction_set_slot, "fac_culture_27", slot_faction_tier_3_troop, "trp_gekokujo_yg_samurai_gunner"),
       (faction_set_slot, "fac_culture_27", slot_faction_tier_4_troop, "trp_gekokujo_yg_officer"),
       (faction_set_slot, "fac_culture_27", slot_faction_tier_5_troop, "trp_gekokujo_yg_elite_skirmisher"),
+      
+    
+      (faction_set_slot, "fac_culture_28", slot_faction_tier_1_troop, "trp_gekokujo_shimazu_trained_spearman"),
+      (faction_set_slot, "fac_culture_28", slot_faction_tier_2_troop, "trp_gekokujo_shimazu_veteran_skirmisher"),
+      (faction_set_slot, "fac_culture_28", slot_faction_tier_3_troop, "trp_gekokujo_shimazu_elite_spearman"),
+      (faction_set_slot, "fac_culture_28", slot_faction_tier_4_troop, "trp_gekokujo_shimazu_samurai_gunner"),
+      (faction_set_slot, "fac_culture_28", slot_faction_tier_5_troop, "trp_gekokujo_shimazu_master_gunner"),
 
 ## Tocan Invasion+ ##		  
-      (faction_set_slot, "fac_culture_dark_knights", slot_faction_tier_1_troop, "trp_gekokujo_yg_veteran_retainer"),
-      (faction_set_slot, "fac_culture_dark_knights", slot_faction_tier_2_troop, "trp_gekokujo_yg_mounted_retainer"),
-      (faction_set_slot, "fac_culture_dark_knights", slot_faction_tier_3_troop, "trp_gekokujo_yg_samurai_gunner"),
-      (faction_set_slot, "fac_culture_dark_knights", slot_faction_tier_4_troop, "trp_gekokujo_yg_officer"),
-      (faction_set_slot, "fac_culture_dark_knights", slot_faction_tier_5_troop, "trp_gekokujo_yg_elite_skirmisher"),	  
+      (faction_set_slot, "fac_culture_dark_knights", slot_faction_tier_1_troop, "trp_rus_ally"),
+      (faction_set_slot, "fac_culture_dark_knights", slot_faction_tier_2_troop, "trp_rus_ally"),
+      (faction_set_slot, "fac_culture_dark_knights", slot_faction_tier_3_troop, "trp_rus_ally"),
+      (faction_set_slot, "fac_culture_dark_knights", slot_faction_tier_4_troop, "trp_rus_ally"),
+      (faction_set_slot, "fac_culture_dark_knights", slot_faction_tier_5_troop, "trp_rus_ally"),	  
 ## Tocan Invasion- ##	   
 
 	  #gekokujo 3.0 get rid of player culture start
@@ -583,6 +596,12 @@ scripts = [
       (faction_set_slot, "fac_culture_27", slot_faction_town_spy_male_troop, "trp_spy_walker_1"),
       (faction_set_slot, "fac_culture_27", slot_faction_town_spy_female_troop, "trp_spy_walker_2"),
 
+      (faction_set_slot, "fac_culture_28", slot_faction_town_walker_male_troop, "trp_town_walker_1"),
+      (faction_set_slot, "fac_culture_28", slot_faction_town_walker_female_troop, "trp_town_walker_2"),
+      (faction_set_slot, "fac_culture_28", slot_faction_village_walker_male_troop, "trp_village_walker_1"),
+      (faction_set_slot, "fac_culture_28", slot_faction_village_walker_female_troop, "trp_village_walker_2"),
+      (faction_set_slot, "fac_culture_28", slot_faction_town_spy_male_troop, "trp_spy_walker_1"),
+      (faction_set_slot, "fac_culture_28", slot_faction_town_spy_female_troop, "trp_spy_walker_2"),
 ## Tocan Invasion+ ##
       (faction_set_slot, "fac_culture_dark_knights", slot_faction_town_walker_male_troop, "trp_town_walker_1"),
       (faction_set_slot, "fac_culture_dark_knights", slot_faction_town_walker_female_troop, "trp_town_walker_2"),
@@ -715,6 +734,12 @@ scripts = [
       (faction_set_slot, "fac_kingdom_27",  slot_faction_culture, "fac_culture_27"),
       (faction_set_slot, "fac_kingdom_27",  slot_faction_leader, "trp_kingdom_27_lord"),
 	  (troop_set_slot, "trp_kingdom_27_lord", slot_troop_renown, 1000),
+      
+      
+      (faction_set_slot, "fac_kingdom_28",  slot_faction_culture, "fac_culture_28"),
+      (faction_set_slot, "fac_kingdom_28",  slot_faction_leader, "trp_kingdom_28_lord"),
+      (faction_set_slot, "fac_kingdom_28",  slot_faction_state, sfs_defeated),
+	  (troop_set_slot, "trp_kingdom_28_lord", slot_troop_renown, 1000),
       
 ## Tocan Invasion+ ##	  	  
       (faction_set_slot, "fac_dark_knights",  slot_faction_culture, "fac_culture_dark_knights"),
@@ -1162,7 +1187,11 @@ scripts = [
         (add_faction_note_tableau_mesh, ":faction_no", "tableau_faction_note_mesh_banner"),
       (try_end),
 	  
+      
+
+   
 	  #gekokujo 2.1 manual banner exchanges
+   
 	    #(troop_set_slot, "trp_knight_1_2", slot_troop_banner_scene_prop, "spr_banner_g01"), #honjo shigenaga gets the 'dragon' banner
       #(troop_set_slot, "trp_knight_1_6", slot_troop_banner_scene_prop, "spr_banner_g07"), #naoe kagetsuna gets 'love' even though it's kanetsugu's helmet date
       #(troop_set_slot, "trp_knight_1_7", slot_troop_banner_scene_prop, "spr_banner_h18"), #suda chikamitsu gets his irl swastika *gulp* (not mon)
@@ -1190,8 +1219,7 @@ scripts = [
       #(troop_set_slot, "trp_knight_11_3", slot_troop_banner_scene_prop, "spr_banner_i"), #ishida masatsugu gets his irl banner
 	    #(troop_set_slot, "trp_knight_19_6", slot_troop_banner_scene_prop, "spr_banner_ci"), #urakami munekage gets his irl banner
       #(troop_set_slot, "trp_kingdom_5_pretender", slot_troop_banner_scene_prop, "spr_banner_g13"), #takeda yoshinobu gets the head of takeda's irl mon
-	    #(troop_set_slot, "trp_kingdom_6_pretender", slot_troop_banner_scene_prop, "spr_banner_g12"), #this fake jukeini gets the imagawa banner
-
+	    #(troop_set_slot, "trp_kingdom_6_pretender", slot_troop_banner_scene_prop, "spr_banner_g12"), #this fake jukeini gets the imagawa banner        
 	  #the following lords get their auto-assigned banners taken away in exchange with the lords and factions above
 	  #i could have just ordered the banners correctly, but i didn't. no take-backs. R.I.P.
   	  #(troop_set_slot, "trp_knight_2_1", slot_troop_banner_scene_prop, "spr_banner_g"), #endo exchanges away his banner
@@ -1225,6 +1253,239 @@ scripts = [
   	  #(troop_set_slot, "trp_knight_18_4", slot_troop_banner_scene_prop, "spr_banner_i08"), #yuki exchanges away his banner
   	  #(troop_set_slot, "trp_knight_18_5", slot_troop_banner_scene_prop, "spr_banner_i09"), #chiba exchanges away his banner
   	  #(troop_set_slot, "trp_knight_18_6", slot_troop_banner_scene_prop, "spr_banner_i10"), #takagi exchanges away his banner  
+      
+     (troop_set_slot, "trp_kingdom_1_lord", slot_troop_banner_scene_prop, "spr_banner_g07"),
+     (troop_set_slot, "trp_knight_1_1", slot_troop_banner_scene_prop, "spr_banner_g07"),
+     (troop_set_slot, "trp_knight_1_2", slot_troop_banner_scene_prop, "spr_banner_g07"),
+     (troop_set_slot, "trp_knight_1_3", slot_troop_banner_scene_prop, "spr_banner_g07"),
+     (troop_set_slot, "trp_knight_1_4", slot_troop_banner_scene_prop, "spr_banner_g07"),
+     (troop_set_slot, "trp_knight_1_5", slot_troop_banner_scene_prop, "spr_banner_g07"),
+     (troop_set_slot, "trp_knight_1_6", slot_troop_banner_scene_prop, "spr_banner_g07"),
+     (troop_set_slot, "trp_knight_1_7", slot_troop_banner_scene_prop, "spr_banner_g07"),
+     (troop_set_slot, "trp_knight_1_8", slot_troop_banner_scene_prop, "spr_banner_g07"),
+     (troop_set_slot, "trp_knight_1_9", slot_troop_banner_scene_prop, "spr_banner_g07"),
+     (troop_set_slot, "trp_knight_1_10", slot_troop_banner_scene_prop, "spr_banner_g07"),
+     
+     (troop_set_slot, "trp_kingdom_2_lord", slot_troop_banner_scene_prop, "spr_banner_bs"),
+     (troop_set_slot, "trp_knight_2_1", slot_troop_banner_scene_prop, "spr_banner_bs"),
+     (troop_set_slot, "trp_knight_2_2", slot_troop_banner_scene_prop, "spr_banner_bs"),
+     (troop_set_slot, "trp_knight_2_3", slot_troop_banner_scene_prop, "spr_banner_bs"),
+     (troop_set_slot, "trp_knight_2_4", slot_troop_banner_scene_prop, "spr_banner_bs"),
+     (troop_set_slot, "trp_knight_2_5", slot_troop_banner_scene_prop, "spr_banner_bs"),
+
+
+     (troop_set_slot, "trp_kingdom_3_lord", slot_troop_banner_scene_prop, "spr_banner_f04"),
+     (troop_set_slot, "trp_knight_3_1", slot_troop_banner_scene_prop, "spr_banner_f04"),
+     (troop_set_slot, "trp_knight_3_2", slot_troop_banner_scene_prop, "spr_banner_f04"),
+     (troop_set_slot, "trp_knight_3_3", slot_troop_banner_scene_prop, "spr_banner_f04"),
+     (troop_set_slot, "trp_knight_3_4", slot_troop_banner_scene_prop, "spr_banner_f04"),
+     (troop_set_slot, "trp_knight_3_5", slot_troop_banner_scene_prop, "spr_banner_f04"),
+     
+     (troop_set_slot, "trp_kingdom_4_lord", slot_troop_banner_scene_prop, "spr_banner_bd"),
+     (troop_set_slot, "trp_knight_4_1", slot_troop_banner_scene_prop, "spr_banner_bd"),
+     (troop_set_slot, "trp_knight_4_2", slot_troop_banner_scene_prop, "spr_banner_bd"),
+     (troop_set_slot, "trp_knight_4_3", slot_troop_banner_scene_prop, "spr_banner_bd"),
+     (troop_set_slot, "trp_knight_4_4", slot_troop_banner_scene_prop, "spr_banner_bd"),
+     (troop_set_slot, "trp_knight_4_5", slot_troop_banner_scene_prop, "spr_banner_bd"),
+     (troop_set_slot, "trp_knight_4_6", slot_troop_banner_scene_prop, "spr_banner_bd"),
+     (troop_set_slot, "trp_knight_4_7", slot_troop_banner_scene_prop, "spr_banner_bd"),
+     (troop_set_slot, "trp_knight_4_8", slot_troop_banner_scene_prop, "spr_banner_bd"),
+     (troop_set_slot, "trp_knight_4_9", slot_troop_banner_scene_prop, "spr_banner_bd"),
+     (troop_set_slot, "trp_knight_4_10", slot_troop_banner_scene_prop, "spr_banner_bd"),
+     
+     (troop_set_slot, "trp_kingdom_5_lord", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_5_1", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_5_2", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_5_3", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_5_4", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_5_5", slot_troop_banner_scene_prop, "spr_banner_h08"),
+
+     (troop_set_slot, "trp_kingdom_7_lord", slot_troop_banner_scene_prop, "spr_banner_h11"),
+     (troop_set_slot, "trp_knight_7_1", slot_troop_banner_scene_prop, "spr_banner_h11"),
+     (troop_set_slot, "trp_knight_7_2", slot_troop_banner_scene_prop, "spr_banner_h11"),
+     (troop_set_slot, "trp_knight_7_3", slot_troop_banner_scene_prop, "spr_banner_h11"),
+     (troop_set_slot, "trp_knight_7_4", slot_troop_banner_scene_prop, "spr_banner_h11"),
+     (troop_set_slot, "trp_knight_7_5", slot_troop_banner_scene_prop, "spr_banner_h11"),
+     
+     (troop_set_slot, "trp_kingdom_8_lord", slot_troop_banner_scene_prop, "spr_banner_ck"),
+     (troop_set_slot, "trp_knight_8_1", slot_troop_banner_scene_prop, "spr_banner_ck"),
+     (troop_set_slot, "trp_knight_8_2", slot_troop_banner_scene_prop, "spr_banner_ck"),
+     (troop_set_slot, "trp_knight_8_3", slot_troop_banner_scene_prop, "spr_banner_ck"),
+     (troop_set_slot, "trp_knight_8_4", slot_troop_banner_scene_prop, "spr_banner_ck"),
+     (troop_set_slot, "trp_knight_8_5", slot_troop_banner_scene_prop, "spr_banner_ck"),
+   
+     (troop_set_slot, "trp_kingdom_9_lord", slot_troop_banner_scene_prop, "spr_banner_f14"),
+     (troop_set_slot, "trp_knight_9_1", slot_troop_banner_scene_prop, "spr_banner_f14"),
+     (troop_set_slot, "trp_knight_9_2", slot_troop_banner_scene_prop, "spr_banner_f14"),
+     (troop_set_slot, "trp_knight_9_3", slot_troop_banner_scene_prop, "spr_banner_f14"),
+     (troop_set_slot, "trp_knight_9_4", slot_troop_banner_scene_prop, "spr_banner_f14"),
+     (troop_set_slot, "trp_knight_9_5", slot_troop_banner_scene_prop, "spr_banner_f14"),
+     
+     (troop_set_slot, "trp_kingdom_10_lord", slot_troop_banner_scene_prop, "spr_banner_o"),
+     (troop_set_slot, "trp_knight_10_1", slot_troop_banner_scene_prop, "spr_banner_o"),
+     (troop_set_slot, "trp_knight_10_2", slot_troop_banner_scene_prop, "spr_banner_o"),
+     (troop_set_slot, "trp_knight_10_3", slot_troop_banner_scene_prop, "spr_banner_o"),
+     (troop_set_slot, "trp_knight_10_4", slot_troop_banner_scene_prop, "spr_banner_o"),
+     (troop_set_slot, "trp_knight_10_5", slot_troop_banner_scene_prop, "spr_banner_o"),
+     
+    (troop_set_slot, "trp_kingdom_11_lord", slot_troop_banner_scene_prop, "spr_banner_bu"),
+     (troop_set_slot, "trp_knight_11_1", slot_troop_banner_scene_prop, "spr_banner_bu"),
+     (troop_set_slot, "trp_knight_11_2", slot_troop_banner_scene_prop, "spr_banner_bu"),
+     
+     (troop_set_slot, "trp_kingdom_12_lord", slot_troop_banner_scene_prop, "spr_banner_bm"),
+     (troop_set_slot, "trp_knight_12_1", slot_troop_banner_scene_prop, "spr_banner_bm"),
+     (troop_set_slot, "trp_knight_12_2", slot_troop_banner_scene_prop, "spr_banner_bm"),
+     (troop_set_slot, "trp_knight_12_3", slot_troop_banner_scene_prop, "spr_banner_bm"),
+     (troop_set_slot, "trp_knight_12_4", slot_troop_banner_scene_prop, "spr_banner_bm"),
+     (troop_set_slot, "trp_knight_12_5", slot_troop_banner_scene_prop, "spr_banner_bm"),
+     (troop_set_slot, "trp_knight_12_6", slot_troop_banner_scene_prop, "spr_banner_bm"),
+     (troop_set_slot, "trp_knight_12_7", slot_troop_banner_scene_prop, "spr_banner_bm"),
+     (troop_set_slot, "trp_knight_12_8", slot_troop_banner_scene_prop, "spr_banner_bm"),
+     (troop_set_slot, "trp_knight_12_9", slot_troop_banner_scene_prop, "spr_banner_bm"),
+     (troop_set_slot, "trp_knight_12_10", slot_troop_banner_scene_prop, "spr_banner_bm"),
+     
+     (troop_set_slot, "trp_kingdom_13_lord", slot_troop_banner_scene_prop, "spr_banner_bi"),
+     (troop_set_slot, "trp_knight_13_1", slot_troop_banner_scene_prop, "spr_banner_bi"),
+     (troop_set_slot, "trp_knight_13_2", slot_troop_banner_scene_prop, "spr_banner_bi"),
+     (troop_set_slot, "trp_knight_13_3", slot_troop_banner_scene_prop, "spr_banner_bi"),
+     (troop_set_slot, "trp_knight_13_4", slot_troop_banner_scene_prop, "spr_banner_bi"),
+     (troop_set_slot, "trp_knight_13_5", slot_troop_banner_scene_prop, "spr_banner_bi"),
+     (troop_set_slot, "trp_knight_13_6", slot_troop_banner_scene_prop, "spr_banner_bi"),
+     
+     (troop_set_slot, "trp_kingdom_14_lord", slot_troop_banner_scene_prop, "spr_banner_h06"),
+     (troop_set_slot, "trp_knight_14_1", slot_troop_banner_scene_prop, "spr_banner_h06"),
+     (troop_set_slot, "trp_knight_14_2", slot_troop_banner_scene_prop, "spr_banner_h06"),
+     (troop_set_slot, "trp_knight_14_3", slot_troop_banner_scene_prop, "spr_banner_h06"),
+     (troop_set_slot, "trp_knight_14_4", slot_troop_banner_scene_prop, "spr_banner_h06"),
+     (troop_set_slot, "trp_knight_14_5", slot_troop_banner_scene_prop, "spr_banner_h06"),
+     (troop_set_slot, "trp_knight_14_6", slot_troop_banner_scene_prop, "spr_banner_h06"),
+     
+     (troop_set_slot, "trp_kingdom_15_lord", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     (troop_set_slot, "trp_knight_15_1", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     (troop_set_slot, "trp_knight_15_2", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     (troop_set_slot, "trp_knight_15_3", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     (troop_set_slot, "trp_knight_15_4", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     (troop_set_slot, "trp_knight_15_5", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     (troop_set_slot, "trp_knight_15_6", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     (troop_set_slot, "trp_knight_15_7", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     (troop_set_slot, "trp_knight_15_8", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     (troop_set_slot, "trp_knight_15_9", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     (troop_set_slot, "trp_knight_15_10", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     (troop_set_slot, "trp_knight_15_11", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     (troop_set_slot, "trp_knight_15_12", slot_troop_banner_scene_prop, "spr_banner_ce"),
+     
+     (troop_set_slot, "trp_kingdom_16_lord", slot_troop_banner_scene_prop, "spr_banner_cc"),
+     (troop_set_slot, "trp_knight_16_1", slot_troop_banner_scene_prop, "spr_banner_cc"),
+     (troop_set_slot, "trp_knight_16_2", slot_troop_banner_scene_prop, "spr_banner_cc"),
+     (troop_set_slot, "trp_knight_16_3", slot_troop_banner_scene_prop, "spr_banner_cc"),
+     (troop_set_slot, "trp_knight_16_4", slot_troop_banner_scene_prop, "spr_banner_cc"),
+     (troop_set_slot, "trp_knight_16_5", slot_troop_banner_scene_prop, "spr_banner_cc"),
+     (troop_set_slot, "trp_knight_16_6", slot_troop_banner_scene_prop, "spr_banner_cc"),
+     (troop_set_slot, "trp_knight_16_7", slot_troop_banner_scene_prop, "spr_banner_cc"),
+     (troop_set_slot, "trp_knight_16_8", slot_troop_banner_scene_prop, "spr_banner_cc"),
+     
+     (troop_set_slot, "trp_kingdom_17_lord", slot_troop_banner_scene_prop, "spr_banner_j06"),
+     (troop_set_slot, "trp_knight_17_1", slot_troop_banner_scene_prop, "spr_banner_j06"),
+     (troop_set_slot, "trp_knight_17_2", slot_troop_banner_scene_prop, "spr_banner_j06"),
+     (troop_set_slot, "trp_knight_17_3", slot_troop_banner_scene_prop, "spr_banner_j06"),
+     (troop_set_slot, "trp_knight_17_4", slot_troop_banner_scene_prop, "spr_banner_j06"),
+     (troop_set_slot, "trp_knight_17_5", slot_troop_banner_scene_prop, "spr_banner_j06"),
+     
+     (troop_set_slot, "trp_kingdom_18_lord", slot_troop_banner_scene_prop, "spr_banner_bf"),
+     (troop_set_slot, "trp_knight_18_1", slot_troop_banner_scene_prop, "spr_banner_bf"),
+     (troop_set_slot, "trp_knight_18_2", slot_troop_banner_scene_prop, "spr_banner_bf"),
+     
+    (troop_set_slot, "trp_kingdom_19_lord", slot_troop_banner_scene_prop, "spr_banner_do"),
+     (troop_set_slot, "trp_knight_19_1", slot_troop_banner_scene_prop, "spr_banner_do"),
+     (troop_set_slot, "trp_knight_19_2", slot_troop_banner_scene_prop, "spr_banner_do"),
+     (troop_set_slot, "trp_knight_19_3", slot_troop_banner_scene_prop, "spr_banner_do"),
+     (troop_set_slot, "trp_knight_19_4", slot_troop_banner_scene_prop, "spr_banner_do"),
+     (troop_set_slot, "trp_knight_19_5", slot_troop_banner_scene_prop, "spr_banner_do"),
+     (troop_set_slot, "trp_knight_19_6", slot_troop_banner_scene_prop, "spr_banner_do"),
+     
+     (troop_set_slot, "trp_kingdom_20_lord", slot_troop_banner_scene_prop, "spr_banner_dj"),
+     (troop_set_slot, "trp_knight_20_1", slot_troop_banner_scene_prop, "spr_banner_dj"),
+     (troop_set_slot, "trp_knight_20_2", slot_troop_banner_scene_prop, "spr_banner_dj"),
+     (troop_set_slot, "trp_knight_20_3", slot_troop_banner_scene_prop, "spr_banner_dj"),
+     (troop_set_slot, "trp_knight_20_4", slot_troop_banner_scene_prop, "spr_banner_dj"),
+     (troop_set_slot, "trp_knight_20_5", slot_troop_banner_scene_prop, "spr_banner_dj"),
+     (troop_set_slot, "trp_knight_20_6", slot_troop_banner_scene_prop, "spr_banner_dj"),
+     
+     (troop_set_slot, "trp_kingdom_21_lord", slot_troop_banner_scene_prop, "spr_banner_o"),
+     (troop_set_slot, "trp_knight_21_1", slot_troop_banner_scene_prop, "spr_banner_o"),
+     (troop_set_slot, "trp_knight_21_2", slot_troop_banner_scene_prop, "spr_banner_o"),
+     (troop_set_slot, "trp_knight_21_3", slot_troop_banner_scene_prop, "spr_banner_o"),
+     (troop_set_slot, "trp_knight_21_4", slot_troop_banner_scene_prop, "spr_banner_o"),
+     (troop_set_slot, "trp_knight_21_5", slot_troop_banner_scene_prop, "spr_banner_o"),
+     (troop_set_slot, "trp_knight_21_6", slot_troop_banner_scene_prop, "spr_banner_o"),
+     
+     (troop_set_slot, "trp_kingdom_22_lord", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_22_1", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_22_2", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_22_3", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_22_4", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     
+     (troop_set_slot, "trp_kingdom_23_lord", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_23_1", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_23_2", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_23_3", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_23_4", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_23_5", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     (troop_set_slot, "trp_knight_23_6", slot_troop_banner_scene_prop, "spr_banner_h08"),
+     
+     (troop_set_slot, "trp_kingdom_24_lord", slot_troop_banner_scene_prop, "spr_banner_d"),
+     (troop_set_slot, "trp_knight_24_1", slot_troop_banner_scene_prop, "spr_banner_d"),
+     (troop_set_slot, "trp_knight_24_2", slot_troop_banner_scene_prop, "spr_banner_d"),
+     (troop_set_slot, "trp_knight_24_3", slot_troop_banner_scene_prop, "spr_banner_d"),
+     (troop_set_slot, "trp_knight_24_4", slot_troop_banner_scene_prop, "spr_banner_d"),
+     
+     (troop_set_slot, "trp_kingdom_25_lord", slot_troop_banner_scene_prop, "spr_banner_j"),
+     (troop_set_slot, "trp_knight_25_1", slot_troop_banner_scene_prop, "spr_banner_j"),
+     (troop_set_slot, "trp_knight_25_2", slot_troop_banner_scene_prop, "spr_banner_j"),
+     (troop_set_slot, "trp_knight_25_3", slot_troop_banner_scene_prop, "spr_banner_j"),
+     
+     (troop_set_slot, "trp_kingdom_26_lord", slot_troop_banner_scene_prop, "spr_banner_cg"),
+     (troop_set_slot, "trp_knight_26_1", slot_troop_banner_scene_prop, "spr_banner_cg"),
+     (troop_set_slot, "trp_knight_26_2", slot_troop_banner_scene_prop, "spr_banner_cg"),
+     (troop_set_slot, "trp_knight_26_3", slot_troop_banner_scene_prop, "spr_banner_cg"),
+     (troop_set_slot, "trp_knight_26_4", slot_troop_banner_scene_prop, "spr_banner_cg"),
+     
+     (troop_set_slot, "trp_kingdom_27_lord", slot_troop_banner_scene_prop, "spr_banner_ba"),
+     (troop_set_slot, "trp_knight_27_1", slot_troop_banner_scene_prop, "spr_banner_ba"),
+     (troop_set_slot, "trp_knight_27_2", slot_troop_banner_scene_prop, "spr_banner_ba"),
+     (troop_set_slot, "trp_knight_27_3", slot_troop_banner_scene_prop, "spr_banner_ba"),
+     (troop_set_slot, "trp_knight_27_4", slot_troop_banner_scene_prop, "spr_banner_ba"),
+     
+     (troop_set_slot, "trp_kingdom_6_lord", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_1", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_2", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_3", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_4", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_5", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_6", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_7", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_8", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_9", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_10", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_11", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_12", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_13", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_14", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_15", slot_troop_banner_scene_prop, "spr_banner_m"), 
+     (troop_set_slot, "trp_knight_6_16", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_17", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_18", slot_troop_banner_scene_prop, "spr_banner_m"),
+     (troop_set_slot, "trp_knight_6_19", slot_troop_banner_scene_prop, "spr_banner_m"),
+     
+     
+     
+     
+     
+     
+     (troop_set_slot, "trp_kingdom_28_lord", slot_troop_banner_scene_prop, "spr_banner_g01"),
+     (troop_set_slot, "trp_knight_28_1", slot_troop_banner_scene_prop, "spr_banner_g01"),
+     (troop_set_slot, "trp_knight_28_2", slot_troop_banner_scene_prop, "spr_banner_g01"),
+     (troop_set_slot, "trp_knight_28_3", slot_troop_banner_scene_prop, "spr_banner_g01"),
 
 	  #Give centers to factions first, to ensure more equal distributions
     # Generated from CSV data
@@ -1234,8 +1495,7 @@ scripts = [
     (call_script, "script_give_center_to_lord", "p_town_2", "trp_kingdom_17_lord", 0),
     (call_script, "script_give_center_to_faction_aux", "p_town_3", "fac_kingdom_6"),
     (call_script, "script_give_center_to_lord", "p_town_3", "trp_knight_6_4", 0),
-    (call_script, "script_give_center_to_faction_aux", "p_town_4", "fac_kingdom_6"),
-    (call_script, "script_give_center_to_lord", "p_town_4", "trp_knight_6_1", 0),
+    (call_script, "script_give_center_to_faction_aux", "p_town_4", "fac_commoners"),
     (call_script, "script_give_center_to_faction_aux", "p_town_5", "fac_kingdom_6"),
     (call_script, "script_give_center_to_lord", "p_town_5", "trp_knight_6_2", 0),
     (call_script, "script_give_center_to_faction_aux", "p_town_6", "fac_kingdom_3"),
@@ -1457,7 +1717,7 @@ scripts = [
       (troop_set_slot, "trp_kingdom_3_pretender", slot_troop_home, "p_town_9"),#Lord Saito - Kiyosu
       (troop_set_slot, "trp_kingdom_4_pretender", slot_troop_home, "p_town_27"),#Lord Ouchi - Yamaguchi
       (troop_set_slot, "trp_kingdom_5_pretender", slot_troop_home, "p_town_11"),#Lord Takeda - Kofu
-      (troop_set_slot, "trp_kingdom_6_pretender", slot_troop_home, "p_town_25"),#Lady Imagawa - Hamamatsu
+      (troop_set_slot, "trp_kingdom_6_pretender", slot_troop_home, "p_town_4"),#Lady Imagawa - Hamamatsu
     #Also the primary six towns:
       #(troop_set_slot, "trp_kingdom_1_lord", slot_troop_home, "p_town_12"),#Kenshin to #Kasugayama
       #(troop_set_slot, "trp_kingdom_2_lord", slot_troop_home, "p_town_15"),#Masamune to Sendai
@@ -8153,6 +8413,19 @@ scripts = [
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_a, "pt_kingdom_27_reinforcements_a"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_27_reinforcements_b"),
           (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_27_reinforcements_c"),
+          
+          
+       (else_try),
+          (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_28"),
+      
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_gekokujo_shimazu_deserter"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_gekokujo_shimazu_hatamoto_gunner"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_gekokujo_shimazu_hatamoto_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_gekokujo_shimazu_elite_spearman"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_gekokujo_shimazu_samurai_gunner"),
+          (faction_set_slot, ":faction_no", slot_faction_reinforcements_a, "pt_kingdom_28_reinforcements_a"),
+          (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_28_reinforcements_b"),
+          (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_28_reinforcements_c"),
           
         # NE dk
         (else_try),
@@ -30648,8 +30921,7 @@ scripts = [
         #  (assign, ":scene_to_use", "scn_gekokujo_road_3"),
 		#(try_end),
 		#gekokujo 3.0 road battles end
-		(assign, ":scene_to_use", "scn_gekokujo_road_1"), #this is so rare anyway
-      (else_try),
+
         (eq, ":terrain_type", rt_plain),
         (assign, ":scene_to_use", "scn_random_scene_plain"),
       (else_try),
@@ -30669,7 +30941,7 @@ scripts = [
 		#(else_try),
         #  (assign, ":scene_to_use", "scn_gekokujo_bridge_3"),
 		#(try_end),
-		(assign, ":scene_to_use", "scn_gekokujo_bridge_1"), #gosh dang it
+		(assign, ":scene_to_use", "scn_random_scene_plain_small"), #gosh dang it
 		#gekokujo 3.0 bridge battles end
       (else_try),
         (eq, ":terrain_type", rt_steppe_forest),
@@ -39566,22 +39838,19 @@ scripts = [
 	 (party_template_set_slot, "pt_woku_pirates", slot_party_template_lair_type, "pt_woku_pirate_lair"),
 	 (party_template_set_slot, "pt_shinano_rebels", slot_party_template_lair_type, "pt_shinano_rebel_lair"),
 	 (party_template_set_slot, "pt_kinai_rebels", slot_party_template_lair_type, "pt_kinai_rebel_lair"),
-	 (party_template_set_slot, "pt_northern_raiders", slot_party_template_lair_type, "pt_northern_raider_lair"),
+	 (party_template_set_slot, "pt_northern_raiders", slot_party_template_lair_type, "pt_kinai_rebel_lair"),
 	 #gekokujo 3.0 new bandit types
+     (party_template_set_slot, "pt_manhunters", slot_party_template_lair_type, "pt_kinai_rebel_lair"),
 	 (party_template_set_slot, "pt_monk_rebels", slot_party_template_lair_type, "pt_monk_rebel_lair"),
-	
+     (party_template_set_slot, "pt_manhunters", slot_party_template_lair_spawnpoint, "p_kinai_osaka_spawn_point"),
 	 (party_template_set_slot, "pt_seto_pirates", slot_party_template_lair_spawnpoint, "p_kinai_osaka_spawn_point"),
 	 (party_template_set_slot, "pt_kanto_rebels", slot_party_template_lair_spawnpoint, "p_kanto_rebel_spawn_point"),
-	 (party_template_set_slot, "pt_woku_pirates", slot_party_template_lair_spawnpoint, "p_kanto_rebel_spawn_point"),
-   	 (party_template_set_slot, "pt_woku_pirates", slot_party_template_lair_spawnpoint, "p_shinano_rebel_spawn_point"),
-   	 (party_template_set_slot, "pt_kanto_rebels", slot_party_template_lair_spawnpoint, "p_shinano_rebel_spawn_point"),
-     (party_template_set_slot, "pt_seto_pirates", slot_party_template_lair_spawnpoint, "p_shinano_rebel_spawn_point"),
      (party_template_set_slot, "pt_woku_pirates", slot_party_template_lair_spawnpoint, "p_monk_rebel_spawn_point"),
-     (party_template_set_slot, "pt_kanto_rebels", slot_party_template_lair_spawnpoint, "p_monk_rebel_spawn_point"),
-     (party_template_set_slot, "pt_seto_pirates", slot_party_template_lair_spawnpoint, "p_monk_rebel_spawn_point"),
-	 (party_template_set_slot, "pt_shinano_rebels", slot_party_template_lair_spawnpoint, "p_shinano_rebel_spawn_point"),
+	 (party_template_set_slot, "pt_shinano_rebels", slot_party_template_lair_spawnpoint, "p_kinai_rebel_spawn_point"),
+     (party_template_set_slot, "pt_shinano_rebels", slot_party_template_lair_spawnpoint, "p_kinai_osaka_spawn_point"),
 	 (party_template_set_slot, "pt_kinai_rebels", slot_party_template_lair_spawnpoint, "p_kinai_rebel_spawn_point"),
 	 (party_template_set_slot, "pt_northern_raiders", slot_party_template_lair_spawnpoint, "p_northern_raider_spawn_point"),
+
 	 #gekokujo 3.0 new bandit types
 	 (party_template_set_slot, "pt_monk_rebels", slot_party_template_lair_spawnpoint, "p_monk_rebel_spawn_point"),
      
@@ -39914,7 +40183,7 @@ scripts = [
 			(this_or_next|eq, ":bandit_template", "pt_kanto_rebels"),
 			(this_or_next|eq, ":bandit_template", "pt_shinano_rebels"),
 			(this_or_next|eq, ":bandit_template", "pt_monk_rebels"),
-			
+			(this_or_next|eq, ":bandit_template", "pt_jianhuizu"),
 			(this_or_next|eq, ":new_camp_terrain", 3), #plains		
 			(this_or_next|eq, ":new_camp_terrain", 4), #snow
 			(this_or_next|eq, ":new_camp_terrain", 11), #forest
@@ -69104,7 +69373,6 @@ Born at {s43}^Contact in {s44} of the {s45}.^\
     (store_script_param_1, ":ordertype"),
 	(get_player_agent_no, ":player"),
     (agent_get_team, ":playerteam", ":player"),
-	
 	(assign, ":group0_in_battle", 0),
 	(assign, ":group1_in_battle", 0),
 	(assign, ":group2_in_battle", 0),
@@ -69123,7 +69391,6 @@ Born at {s43}^Contact in {s44} of the {s45}.^\
 	(assign, ":group6_is_selected", 0),
 	(assign, ":group7_is_selected", 0),
 	(assign, ":group8_is_selected", 0),	
-	
 	(party_get_num_companion_stacks, ":num_of_stacks", "p_main_party"),  #This doesn't mean that type of troop is actually present in the battle...
 	(try_for_range, ":i", 0, ":num_of_stacks"),
 		(party_stack_get_troop_id, ":troop", "p_main_party", ":i"),
@@ -69186,8 +69453,7 @@ Born at {s43}^Contact in {s44} of the {s45}.^\
              (eq, ":class", 8),
              (assign, ":group8_is_selected", 1),                       
          (try_end),
-	(try_end), #Stack Loop
-	
+	(try_end), #Stack Loop	
 	(try_begin),
 	    (eq, ":ordertype", ranged),
         (str_store_string, s1, "@ready bows and missiles"),
@@ -69216,7 +69482,7 @@ Born at {s43}^Contact in {s44} of the {s45}.^\
 	    (eq, ":ordertype", 8),
 		(str_store_string, s1, "@stand and fight"),
 	(try_end), 
-		 
+ (try_begin),		 
 	(str_clear, s2),
     (str_clear, s3),
     (assign, ":count_possible", 0),
@@ -70085,7 +70351,7 @@ Born at {s43}^Contact in {s44} of the {s45}.^\
       (position_set_y, pos1, 800),
       (overlay_set_size, reg1, pos1),
       
-      # troop avatar
+      # troop avatar (clickable button)
       (store_sub, ":avatar_x", ":cur_x", 75),
       (store_sub, ":avatar_y", reg0, 75),
       (store_mul, ":cur_troop", ":troop_no", 2), #with weapons
@@ -70096,6 +70362,9 @@ Born at {s43}^Contact in {s44} of the {s45}.^\
       (position_set_x, pos1, ":avatar_x"),
       (position_set_y, pos1, ":avatar_y"),
       (overlay_set_position, reg1, pos1),
+      
+      # Store overlay ID and troop_no mapping for click handling
+      (troop_set_slot, "trp_temp_array_c", reg1, ":troop_no"),
     ]),
 
   ("prsnt_line",
@@ -73512,7 +73781,8 @@ Born at {s43}^Contact in {s44} of the {s45}.^\
 
 
 
-]
+
+] + ym_27 + gatling_shop_scripts + zhenyinghebing_scripts
 
 # modmerger_start version=201 type=2
 try:
