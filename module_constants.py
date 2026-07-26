@@ -2404,6 +2404,14 @@ def _validate_constants(verbose=False):
         elif verbose:
             print "%s <= %s [%s <= %s]" % (from_key, to_key, str(from_value), str(to_value))
 
+# LAV MODIFICATIONS START (COMPANIONS OVERSEER MOD)
+lco_storage = "trp_companions_overview"
+lco_garbage = "trp_companions_discard"
+lco_run_presentation = 1
+lco_view_character = 2
+lco_upgrade_template = "trp_companions_upgrade_template"
+# LAV MODIFICATIONS END (COMPANIONS OVERSEER MOD)
+
 #Automatically run this on module import, so errors are detected
 #during building.
 _validate_constants(verbose=(__name__=="__main__"))

@@ -682,8 +682,18 @@ mesh_status_troop_ratio_bar = 680
 mesh_rus_army = 681
 mesh_dazhengfenghuan = 682
 mesh_niaoyufujian = 683
-mesh_pic_soldier_world_map = 684
-mesh_pic_soldier_rebel = 685
-mesh_pic_soldier_desert = 686
+mesh_lco_background = 684
+mesh_lco_background_split = 685
+mesh_lco_panel = 686
+mesh_lco_panel_down = 687
+mesh_lco_garbage_area = 688
+mesh_lco_sort_inventory = 689
+mesh_lco_sort_inventory_down = 690
+mesh_lco_gold_icon = 691
+mesh_lco_square_button_up = 692
+mesh_lco_square_button_down = 693
+mesh_pic_soldier_world_map = 694
+mesh_pic_soldier_rebel = 695
+mesh_pic_soldier_desert = 696
 
 

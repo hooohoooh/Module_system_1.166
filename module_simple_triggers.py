@@ -8428,6 +8428,28 @@ simple_triggers = [
        (play_cue_track, "track_miyasan1"),
      (try_end),
    ]),
+
+####################################################################################################################
+# LAV MODIFICATIONS START (COMPANIONS OVERSEER MOD)
+    (0,
+        [
+            (map_free),
+            (this_or_next|key_clicked, key_o),
+            (neq, "$g_lco_operation", 0),
+            (try_begin),
+                (this_or_next|key_clicked, key_o),
+                (eq, "$g_lco_operation", lco_run_presentation),
+                (assign, "$g_lco_operation", 0),
+                (jump_to_menu, "mnu_lco_presentation"),
+            (else_try),
+                (eq, "$g_lco_operation", lco_view_character),
+                (jump_to_menu, "mnu_lco_view_character"),
+            (try_end),
+        ]
+    ),
+# LAV MODIFICATIONS END (COMPANIONS OVERSEER MOD)
+####################################################################################################################
+
 ]
 # modmerger_start version=201 type=2
 try:

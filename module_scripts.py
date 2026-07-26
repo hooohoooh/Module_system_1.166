@@ -16,6 +16,8 @@ from ID_animations import *
 from ym_gatling import *
 from ym_gatling_shop import *
 from zhenyinghebing import *
+from lco_scripts import lco_scripts
+from upgrade_scripts import upgrade_scripts
 ##diplomacy start+
 from module_factions import dplmc_factions_begin, dplmc_factions_end, dplmc_non_generic_factions_begin
 ##diplomacy end+
@@ -73782,7 +73784,7 @@ Born at {s43}^Contact in {s44} of the {s45}.^\
 
 
 
-] + ym_27 + gatling_shop_scripts + zhenyinghebing_scripts
+] + ym_27 + gatling_shop_scripts + zhenyinghebing_scripts + lco_scripts + upgrade_scripts
 
 # modmerger_start version=201 type=2
 try:

@@ -3594,6 +3594,14 @@ upgrade(troops,"rus_mounted","rus_mounted_officer")
 # upgrade(troops,"dark_marksman","dark_sharpshooter")
 # upgrade(troops,"dark_sharpshooter","dark_ranger")
 
+####################################################################################################################
+# LAV MODIFICATIONS START (COMPANIONS OVERSEER MOD)
+["companions_overview", "{!}Hidden", "{!}Hidden",tf_hero,0,0,0,[],def_attrib|level(1),wp(100),knows_inventory_management_10,0],
+["companions_discard", "{!}Hidden", "{!}Hidden",tf_hero,0,0,0,[],def_attrib|level(1),wp(100),knows_inventory_management_10,0],
+["companions_upgrade_template", "{!}Hidden", "{!}Hidden",tf_hero,0,0,0,[],def_attrib|level(1),wp(100),knows_inventory_management_10,0],
+# LAV MODIFICATIONS END (COMPANIONS OVERSEER MOD)
+####################################################################################################################
+
 # modmerger_start version=201 type=2
 try:
     component_name = "troops"
