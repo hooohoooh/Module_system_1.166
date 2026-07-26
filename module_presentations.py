@@ -19098,7 +19098,7 @@ presentations = [
                         # Upgrade template button
                         (eq, ":overlay_id", "$g_upgrade_template_btn"),
                         (jump_to_menu, "mnu_lco_auto_return"),
-                        (assign, "$g_lco_auto_menu", "menu_upgrade_template"),
+                        (assign, "$g_lco_auto_menu", "mnu_upgrade_template"),
                         (presentation_set_duration, 0),
                     (else_try),
                         (eq, ":overlay_id", "$g_lco_inc_0"),

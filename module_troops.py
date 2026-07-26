@@ -3069,6 +3069,13 @@ troops = [
     ["gekokujo_fanneiweidui", "fanneiweidui", "fanneiweidui", tf_guarantee_ranged|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_mounted|tf_guarantee_gloves, no_scene, reserved, fac_kingdom_26, [itm_gekokujo_katana_1, itm_snider, itm_gekokujo_bullets_2, itm_jinweimianjia, itm_jinweimianjia1, itm_gekokujo_kebiki_16, itm_gekokujo_kebiki_20, itm_gekokujo_tekko_4_1, itm_gekokujo_kebiki_5, itm_huali_dakailan2, itm_gekokujo_jinbaori_1, itm_gekokujo_jinbaori_2, itm_gekokujo_jinbaori_8, itm_gekokujo_jinbaori_9], knight_attrib_2|level(31), wp_firearm(150)|wp(190), knows_common|knows_athletics_4|knows_ironflesh_4|knows_power_draw_4, samurai_face_1, samurai_face_2],
     ["gatling_gunner", "Gatling Gunner", "Gatling Gunners", tf_guarantee_ranged|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet, 0, 0, fac_player_faction, [itm_colt_army, itm_gekokujo_katana_1], str_14|agi_10|int_8|cha_5|level(40), wp_one_handed(80)|wp_two_handed(100)|wp_archery(120)|wp_crossbow(100)|wp_throwing(80), knows_power_draw_3|knows_power_strike_2|knows_athletics_3|knows_shield_2|knows_riding_3, 0, 0, 0],
   #llf end
+####################################################################################################################
+# LAV MODIFICATIONS START (COMPANIONS OVERSEER MOD)
+  ["companions_overview", "{!}Hidden", "{!}Hidden",tf_hero,0,0,0,[],def_attrib|level(1),wp(100),knows_inventory_management_10,0],
+  ["companions_discard", "{!}Hidden", "{!}Hidden",tf_hero,0,0,0,[],def_attrib|level(1),wp(100),knows_inventory_management_10,0],
+  ["companions_upgrade_template", "{!}Hidden", "{!}Hidden",tf_hero,0,0,0,[],def_attrib|level(1),wp(100),knows_inventory_management_10,0],
+# LAV MODIFICATIONS END (COMPANIONS OVERSEER MOD)
+####################################################################################################################
 ]
 
 
@@ -3593,14 +3600,6 @@ upgrade(troops,"rus_mounted","rus_mounted_officer")
 # upgrade(troops,"dark_archer","dark_marksman")
 # upgrade(troops,"dark_marksman","dark_sharpshooter")
 # upgrade(troops,"dark_sharpshooter","dark_ranger")
-
-####################################################################################################################
-# LAV MODIFICATIONS START (COMPANIONS OVERSEER MOD)
-["companions_overview", "{!}Hidden", "{!}Hidden",tf_hero,0,0,0,[],def_attrib|level(1),wp(100),knows_inventory_management_10,0],
-["companions_discard", "{!}Hidden", "{!}Hidden",tf_hero,0,0,0,[],def_attrib|level(1),wp(100),knows_inventory_management_10,0],
-["companions_upgrade_template", "{!}Hidden", "{!}Hidden",tf_hero,0,0,0,[],def_attrib|level(1),wp(100),knows_inventory_management_10,0],
-# LAV MODIFICATIONS END (COMPANIONS OVERSEER MOD)
-####################################################################################################################
 
 # modmerger_start version=201 type=2
 try:

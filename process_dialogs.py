@@ -65,8 +65,8 @@ def save_triggers(variable_list,variable_uses,triggers,tag_uses,quick_strings):
 def compile_sentence_tokens(sentences):
   input_tokens = []
   output_tokens = []
-  dialog_states = ["start","party_encounter","prisoner_liberated","enemy_defeated","party_relieved","event_triggered","close_window","trade","exchange_members", "trade_prisoners","buy_mercenaries","view_char","training","member_chat","prisoner_chat"]
-  dialog_state_usages = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  dialog_states = ["start","party_encounter","prisoner_liberated","enemy_defeated","party_relieved","event_triggered","close_window","trade","exchange_members", "trade_prisoners","buy_mercenaries","view_char","training","member_chat","prisoner_chat","lco_conversation_end"]
+  dialog_state_usages = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   for sentence in sentences:
     output_token_id = -1
     output_token = sentence[opt_token_pos]

@@ -2010,3 +2010,6 @@ trp_tongxin = 2008
 trp_yuli = 2009
 trp_gekokujo_fanneiweidui = 2010
 trp_gatling_gunner = 2011
+trp_companions_overview = 2012
+trp_companions_discard = 2013
+trp_companions_upgrade_template = 2014
