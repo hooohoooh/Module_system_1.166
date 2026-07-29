@@ -14471,13 +14471,13 @@ game_menus = [
       
       ("zhaobing", 
       [
-		(ge,"$player_honor",10),
+		(ge,"$player_honor",0),
         (this_or_next|eq, "$current_town", "p_town_10"),
         (this_or_next|eq, "$current_town", "p_town_31"),
         (this_or_next|eq, "$current_town", "p_town_30"),
         (this_or_next|eq, "$current_town", "p_town_21"),
         (eq, "$current_town", "p_town_1"),
-		(troop_slot_ge,"trp_player",slot_troop_renown,200),	
+		(troop_slot_ge,"trp_player",slot_troop_renown,0),	
 	  ],
          "Go to zhaobing",
      [
@@ -22624,6 +22624,7 @@ With that, the boy rides off, shouting to any who will listen.",
 
     ("lco_view_character",0,"Hidden Text","none",
         [
+            (assign, "$g_lco_operation", 0),  # Reset operation flag before conversation
             (modify_visitors_at_site,"scn_conversation_scene"),
             (reset_visitors),
             (set_visitor,0,"trp_player"),
@@ -22656,6 +22657,17 @@ With that, the boy rides off, shouting to any who will listen.",
     ),
 
 # LAV MODIFICATIONS END (COMPANIONS OVERSEER MOD)
+####################################################################################################################
+
+####################################################################################################################
+# TROOPS OVERVIEW MOD - P key for regular troops upgrade
+    ("troops_overview",0,"Hidden Text","none",
+        [
+            (start_presentation, "prsnt_troops_overview"),
+        ],
+        [("troops_overview_back",[],"{!}Return",[])]
+    ),
+# TROOPS OVERVIEW MOD END
 ####################################################################################################################
 
  ]

@@ -5554,6 +5554,9 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("lco_c_bows", "Archery"),
   ("lco_c_xbows", "Crossbows"),
   ("lco_c_throwing", "Throwing"),
+  ("lco_s1", "{s1}"),
+  ("troops_overview_title", "Troops Overview"),
+  ("troops_list_entry", "{s1} ({reg60}/{reg61})"),
 # LAV MODIFICATIONS END (COMPANIONS OVERSEER MOD)
 ]
 # modmerger_start version=201 type=2

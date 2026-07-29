@@ -8443,11 +8443,24 @@ simple_triggers = [
                 (jump_to_menu, "mnu_lco_presentation"),
             (else_try),
                 (eq, "$g_lco_operation", lco_view_character),
+                (assign, "$g_lco_operation", 0),
                 (jump_to_menu, "mnu_lco_view_character"),
             (try_end),
         ]
     ),
 # LAV MODIFICATIONS END (COMPANIONS OVERSEER MOD)
+####################################################################################################################
+
+####################################################################################################################
+# TROOPS OVERVIEW MOD - P key for regular troops upgrade
+    (0,
+        [
+            (map_free),
+            (key_clicked, key_p),
+            (jump_to_menu, "mnu_troops_overview"),
+        ]
+    ),
+# TROOPS OVERVIEW MOD END
 ####################################################################################################################
 
 ]

@@ -681,8 +681,10 @@ anim_Yuri_CannonEarsPlugging_Left = 679
 anim_Yuri_CannonEarsPlugging_Right = 680
 anim_Yuri_CannonEarsPlugging_Left_Shot = 681
 anim_Yuri_CannonEarsPlugging_Right_Shot = 682
-anim_Yuri_CannonLighting = 683
-anim_Yuri_CannonLighting_Shot = 684
-anim_banner_staff = 685
+anim_Yuri_CannonEarsPlugging_Right_fire = 683
+anim_Yuri_CannonLighting = 684
+anim_Yuri_CannonLighting_Shot = 685
+anim_Yuri_CannonLighting_fire = 686
+anim_banner_staff = 687
 
 

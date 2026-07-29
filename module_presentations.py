@@ -17953,6 +17953,14 @@ presentations = [
                     (call_script, "script_lco_create_button", "str_lco_i_ae_everyone", 355, 25, 190, 42),
                     (assign, "$g_lco_auto_equip_all", reg0),
 
+                    # INCLUSION FILTER CHECKBOXES (only in equipment overview)
+                    (call_script, "script_lco_create_checkbox", "str_lco_i_list_companions",  25, 75, "$g_lco_include_companions"),
+                    (assign, "$g_lco_inc_0", reg0),
+                    (call_script, "script_lco_create_checkbox", "str_lco_i_list_lords",  25, 50, "$g_lco_include_lords"),
+                    (assign, "$g_lco_inc_1", reg0),
+                    (call_script, "script_lco_create_checkbox", "str_lco_i_list_regulars",  25, 25, "$g_lco_include_regulars"),
+                    (assign, "$g_lco_inc_2", reg0),
+
                     # GENERATING HERO NAME PANELS
 
                     (call_script, "script_lco_create_label", "str_lco_i_hero_panel_title", 25, 652, 750, 0),
@@ -18160,7 +18168,6 @@ presentations = [
                     (call_script, "script_lco_create_label", "str_lco_i_discard", 512, 275, 750, 0),
                     (call_script, "script_lco_create_label", "str_lco_i_discard", 512, 275, 750, 0),
                     (call_script, "script_lco_create_button", "str_lco_i_retrieve", 605, 25, 190, 42),
-                    (assign, "$g_lco_retrieve", reg0),
                     (call_script, "script_lco_create_container", 515, 75, 200, 200+2, 1),
                     (store_mul, ":top", "$g_lco_garb_slots", 25),
                     (val_sub, ":top", 25),
@@ -18239,16 +18246,6 @@ presentations = [
                             (jump_to_menu, "mnu_lco_auto_return"),
                             (presentation_set_duration, 0),
                         (try_end),
-                    (else_try),
-                        (eq, ":overlay_id", "$g_lco_retrieve"),
-                        (try_begin),
-                            (this_or_next|key_is_down, key_left_control),
-                            (key_is_down, key_right_control),
-                            (call_script, "script_lco_retrieve_discarded_best"),
-                        (else_try),
-                            (call_script, "script_lco_retrieve_discarded"),
-                        (try_end),
-                        (call_script, "script_lco_fill_player_panels"),
                     (else_try),
                         (eq, ":overlay_id", "$g_lco_sort_inventory"),
                         (call_script, "script_lco_sort_player_inventory"),
@@ -18689,23 +18686,13 @@ presentations = [
 
                     # PRESENTATION INITIALIZATION
 
+                    # Force companions-only: exclude lords and regular troops
+                    (assign, "$g_lco_include_lords", 0),
+                    (assign, "$g_lco_include_regulars", 0),
+
                     (call_script, "script_lco_initialize_presentation"),
 
                     (call_script, "script_lco_create_mesh", "mesh_pic_camp", 0, 0, 1000, 1000),
-
-                    (call_script, "script_lco_create_button", "str_lco_i_character", 355, 25, 190, 42),
-                    (assign, "$g_lco_dialog", reg0),
-
-                    # One-click upgrade buttons
-                    (call_script, "script_lco_create_button", "str_upgrade_all", 555, 25, 190, 42),
-                    (assign, "$g_upgrade_all_btn", reg0),
-                    (call_script, "script_lco_create_button", "str_upgrade_template_btn", 555, 75, 190, 42),
-                    (assign, "$g_upgrade_template_btn", reg0),
-                    # Cost display label
-                    (call_script, "script_calculate_upgrade_cost"),
-                    (assign, reg60, reg0),
-                    (call_script, "script_lco_create_label", "str_upgrade_cost", 560, 90, 750, 0),
-                    (assign, "$g_upgrade_cost_label", reg0),
 
                     # GENERATING CONTAINERS HIERARCHY AND MAJOR CONTROLS
 
@@ -18753,16 +18740,6 @@ presentations = [
                         (store_sub, ":y", ":top_y", ":y"),
                         (call_script, "script_lco_troop_name_to_s40", ":troop_id"),
                         (call_script, "script_lco_create_label", "str_lco_s40", 5, ":y", 750, 0),
-
-                        # Generating per-NPC "Skills" and "Equipment" buttons
-                        (store_mul, ":btn_skills", ":index", 2),
-                        (store_mul, ":btn_base", "$g_lco_heroes", 2),
-                        (store_add, ":btn_skills", ":btn_skills", ":btn_base"),
-                        (call_script, "script_lco_create_button", "str_lco_i_skills", 195, ":y", 50, 18),
-                        (troop_set_slot, lco_storage, ":btn_skills", reg0),
-                        (val_add, ":btn_skills", 1),
-                        (call_script, "script_lco_create_button", "str_lco_i_equipment", 250, ":y", 50, 18),
-                        (troop_set_slot, lco_storage, ":btn_skills", reg0),
                     (try_end),
 
                     # GENERATING CONTENT CONTAINERS
@@ -19031,86 +19008,11 @@ presentations = [
             (ti_on_presentation_event_state_change,
                 [
                     (store_trigger_param_1, ":overlay_id"),
-                    (store_trigger_param_2, ":value"),
                     (try_begin),
                         (eq, ":overlay_id", "$g_lco_return"),
                         (call_script, "script_lco_clear_all_items", "$g_lco_garbage_troop"),
                         (assign, "$g_lco_garbage_troop", lco_garbage),
                         (jump_to_menu, "mnu_lco_auto_return"),
-                        (presentation_set_duration, 0),
-                    (else_try),
-                        (eq, ":overlay_id", "$g_lco_dialog"),
-                        (try_begin),
-                            (gt, "$g_lco_heroes", 0), # Safety check
-                            (store_add, ":hero_offset", "$g_lco_heroes", "$g_lco_active_hero"),
-                            (troop_get_slot, "$g_lco_target", lco_storage, ":hero_offset"),
-                            (assign, "$g_lco_operation", lco_view_character),
-                            (jump_to_menu, "mnu_lco_auto_return"),
-                            (presentation_set_duration, 0),
-                        (try_end),
-                    (else_try),
-                        # Per-NPC "Skills" / "Equipment" button handlers
-                        (store_mul, ":btn_base", "$g_lco_heroes", 2),
-                        (try_for_range, ":index", 0, "$g_lco_heroes"),
-                            (store_mul, ":btn_skills", ":index", 2),
-                            (store_add, ":btn_skills", ":btn_skills", ":btn_base"),
-                            (try_begin),
-                                (troop_slot_eq, lco_storage, ":btn_skills", ":overlay_id"),
-                                (assign, "$g_lco_active_hero", ":index"),
-                                (assign, "$g_lco_page", 0),
-                                (presentation_set_duration, 0),
-                            (else_try),
-                                (val_add, ":btn_skills", 1),
-                                (troop_slot_eq, lco_storage, ":btn_skills", ":overlay_id"),
-                                (assign, "$g_lco_active_hero", ":index"),
-                                (assign, "$g_lco_page", 2),
-                                (presentation_set_duration, 0),
-                            (try_end),
-                        (try_end),
-                    (else_try),
-                        # One-click upgrade button
-                        (eq, ":overlay_id", "$g_upgrade_all_btn"),
-                        (call_script, "script_count_upgradable_troops"),
-                        (assign, ":count", reg0),
-                        (try_begin),
-                            (gt, ":count", 0),
-                            (call_script, "script_upgrade_all_troops"),
-                            (assign, ":upgraded", reg0),
-                            (assign, ":all_done", reg1),
-                            (try_begin),
-                                (eq, ":all_done", 1),
-                                (display_message, "str_upgrade_complete", 0x40FF40),
-                            (else_try),
-                                (display_message, "str_upgrade_insufficient", 0xFFFF40),
-                            (try_end),
-                            # Refresh cost display
-                            (call_script, "script_calculate_upgrade_cost"),
-                            (assign, reg60, reg0),
-                            (overlay_set_display, "$g_upgrade_cost_label", 0),
-                            (call_script, "script_lco_create_label", "str_upgrade_cost", 560, 90, 750, 0),
-                            (assign, "$g_upgrade_cost_label", reg0),
-                            (call_script, "script_lco_fill_hero_panels"),
-                            (call_script, "script_lco_fill_player_panels"),
-                        (else_try),
-                            (display_message, "str_upgrade_no_troops", 0xFF4040),
-                        (try_end),
-                    (else_try),
-                        # Upgrade template button
-                        (eq, ":overlay_id", "$g_upgrade_template_btn"),
-                        (jump_to_menu, "mnu_lco_auto_return"),
-                        (assign, "$g_lco_auto_menu", "mnu_upgrade_template"),
-                        (presentation_set_duration, 0),
-                    (else_try),
-                        (eq, ":overlay_id", "$g_lco_inc_0"),
-                        (assign, "$g_lco_include_companions", ":value"),
-                        (presentation_set_duration, 0),
-                    (else_try),
-                        (eq, ":overlay_id", "$g_lco_inc_1"),
-                        (assign, "$g_lco_include_lords", ":value"),
-                        (presentation_set_duration, 0),
-                    (else_try),
-                        (eq, ":overlay_id", "$g_lco_inc_2"),
-                        (assign, "$g_lco_include_regulars", ":value"),
                         (presentation_set_duration, 0),
                     (else_try),
                         (eq, ":overlay_id", "$g_lco_switch_page_0"),
@@ -19429,6 +19331,131 @@ presentations = [
         (try_end),
       ]),
   ]),
+
+####################################################################################################################
+# TROOPS OVERVIEW MOD - P key for regular troops upgrade
+    ("troops_overview", 0, mesh_lco_background,
+        [
+            (ti_on_presentation_load,
+                [
+                    (presentation_set_duration, 999999),
+
+                    # Title
+                    (call_script, "script_lco_create_label", "str_troops_overview_title", 500, 720, 750, tf_center_justify),
+
+                    # Return button
+                    (call_script, "script_lco_create_button", "str_lco_i_return", 855, 25, 190, 42),
+                    (assign, "$g_troops_return", reg0),
+
+                    # One-click upgrade button
+                    (call_script, "script_lco_create_button", "str_upgrade_all", 555, 25, 190, 42),
+                    (assign, "$g_troops_upgrade_all_btn", reg0),
+
+                    # Upgrade template button
+                    (call_script, "script_lco_create_button", "str_upgrade_template_btn", 555, 75, 190, 42),
+                    (assign, "$g_troops_upgrade_template_btn", reg0),
+
+                    # Cost display label
+                    (call_script, "script_calculate_upgrade_cost"),
+                    (assign, reg60, reg0),
+                    (call_script, "script_lco_create_label", "str_upgrade_cost", 560, 90, 750, 0),
+                    (assign, "$g_troops_upgrade_cost_label", reg0),
+
+                    # Count up regular troops
+                    (assign, "$g_troops_count", 0),
+                    (party_get_num_companion_stacks, ":num_troops", "p_main_party"),
+                    (try_for_range, ":slot", 0, ":num_troops"),
+                        (party_stack_get_troop_id, ":troop_id", "p_main_party", ":slot"),
+                        (try_begin),
+                            (neg|troop_is_hero, ":troop_id"),
+                            (val_add, "$g_troops_count", 1),
+                        (try_end),
+                    (try_end),
+
+                    # Troop list container
+                    (call_script, "script_lco_create_container", 25, 125, 925, 525, 1),
+                    (assign, "$g_troops_container", reg0),
+                    (set_container_overlay, "$g_troops_container"),
+
+                    # Display troops
+                    (assign, ":display_index", 0),
+                    (try_for_range, ":slot", 0, ":num_troops"),
+                        (party_stack_get_troop_id, ":troop_id", "p_main_party", ":slot"),
+                        (try_begin),
+                            (neg|troop_is_hero, ":troop_id"),
+                            (party_stack_get_size, ":stack_size", "p_main_party", ":slot"),
+                            (party_stack_get_num_wounded, ":num_wounded", "p_main_party", ":slot"),
+                            # Troop name with count
+                            (str_store_troop_name_plural, s1, ":troop_id"),
+                            (assign, reg60, ":stack_size"),
+                            (assign, reg61, ":num_wounded"),
+                            (str_store_string, s1, "str_troops_list_entry"),
+                            (store_mul, ":y", ":display_index", 25),
+                            (call_script, "script_lco_create_label", "str_lco_s1", 5, ":y", 750, 0),
+                            # Store troop_id for later reference
+                            (store_add, ":troop_offset", "$g_troops_count", ":display_index"),
+                            (troop_set_slot, lco_storage, ":troop_offset", ":troop_id"),
+                            (val_add, ":display_index", 1),
+                        (try_end),
+                    (try_end),
+                ]
+            ),
+
+            (ti_on_presentation_event_state_change,
+                [
+                    (store_trigger_param_1, ":object"),
+                    (try_begin),
+                        (eq, ":object", "$g_troops_return"),
+                        (presentation_set_duration, 0),
+                    (else_try),
+                        # One-click upgrade button
+                        (eq, ":object", "$g_troops_upgrade_all_btn"),
+                        (call_script, "script_count_upgradable_troops"),
+                        (assign, ":count", reg0),
+                        (try_begin),
+                            (gt, ":count", 0),
+                            (call_script, "script_upgrade_all_troops"),
+                            (assign, ":all_done", reg1),
+                            (try_begin),
+                                (eq, ":all_done", 1),
+                                (display_message, "str_upgrade_complete", 0x40FF40),
+                            (else_try),
+                                (display_message, "str_upgrade_insufficient", 0xFFFF40),
+                            (try_end),
+                            # Refresh cost
+                            (call_script, "script_calculate_upgrade_cost"),
+                            (assign, reg60, reg0),
+                            (overlay_set_display, "$g_troops_upgrade_cost_label", 0),
+                            (call_script, "script_lco_create_label", "str_upgrade_cost", 560, 90, 750, 0),
+                            (assign, "$g_troops_upgrade_cost_label", reg0),
+                            # Refresh presentation
+                            (presentation_set_duration, 0),
+                        (else_try),
+                            (display_message, "str_upgrade_no_troops", 0xFF4040),
+                        (try_end),
+                    (else_try),
+                        # Upgrade template button
+                        (eq, ":object", "$g_troops_upgrade_template_btn"),
+                        (jump_to_menu, "mnu_lco_auto_return"),
+                        (assign, "$g_lco_auto_menu", "mnu_upgrade_template"),
+                        (presentation_set_duration, 0),
+                    (try_end),
+                ]
+            ),
+
+            (ti_on_presentation_run,
+                [
+                    # ESC quits the presentation
+                    (try_begin),
+                        (key_clicked, key_escape),
+                        (presentation_set_duration, 0),
+                    (try_end),
+                ]
+            ),
+        ]
+    ),
+# TROOPS OVERVIEW MOD END
+####################################################################################################################
 
   ]
 # modmerger_start version=201 type=2

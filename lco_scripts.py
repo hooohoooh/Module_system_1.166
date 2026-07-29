@@ -1102,16 +1102,10 @@ lco_scripts = [
             (troop_set_auto_equip, "$g_lco_garbage_troop", 0),
             # We do not clear garbage troop because it may be used for looting
 
-            # PRESENTATION SHARED BUTTONS AND INCLUSION FORM
+            # PRESENTATION SHARED BUTTONS
 
             (call_script, "script_lco_create_button", "str_lco_i_return", 855, 25, 190, 42),
             (assign, "$g_lco_return", reg0),
-            (call_script, "script_lco_create_checkbox", "str_lco_i_list_companions",  25, 75, "$g_lco_include_companions"),
-            (assign, "$g_lco_inc_0", reg0),
-            (call_script, "script_lco_create_checkbox", "str_lco_i_list_lords",  25, 50, "$g_lco_include_lords"),
-            (assign, "$g_lco_inc_1", reg0),
-            (call_script, "script_lco_create_checkbox", "str_lco_i_list_regulars",  25, 25, "$g_lco_include_regulars"),
-            (assign, "$g_lco_inc_2", reg0),
 
             (call_script, "script_lco_create_image_button", "mesh_lco_square_button_up", "mesh_lco_square_button_down", 25, 685, 333, 400),
             (assign, "$g_lco_switch_page_0", reg0),
@@ -1430,6 +1424,7 @@ lco_scripts = [
             (position_set_x, pos61, ":x_size"),
             (position_set_y, pos61, ":y_size"),
             (overlay_set_size, reg0, pos61),
+            (overlay_set_area_size, reg0, pos61),
         ]
     ),
 
@@ -1449,6 +1444,7 @@ lco_scripts = [
             (position_set_x, pos61, ":x_scale"),
             (position_set_y, pos61, ":y_scale"),
             (overlay_set_size, reg0, pos61),
+            (overlay_set_area_size, reg0, pos61),
         ]
     ),
 

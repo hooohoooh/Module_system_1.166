@@ -4309,5 +4309,8 @@ str_lco_c_polearms = 4307
 str_lco_c_bows = 4308
 str_lco_c_xbows = 4309
 str_lco_c_throwing = 4310
+str_lco_s1 = 4311
+str_troops_overview_title = 4312
+str_troops_list_entry = 4313
 
 

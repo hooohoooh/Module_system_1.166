@@ -464,6 +464,28 @@ def save_statement_block(ofile,statement_name,can_fail_statement,statement_block
 def compile_global_vars(statement_block,variable_list, variable_uses):
   for statement in statement_block:
     compile_global_vars_in_statement(statement, variable_list, variable_uses)
+    # Recursively process nested try_begin blocks
+    if isinstance(statement, (list, tuple)) and len(statement) > 0:
+      if statement[0] in [try_begin, try_for_range, try_for_range_backwards,
+                          try_for_parties, try_for_agents, try_for_prop_instances, try_for_players]:
+        # Find the matching try_end and process all statements in between
+        depth = 1
+        nested_block = []
+        idx = statement_block.index(statement) + 1
+        while idx < len(statement_block) and depth > 0:
+          nested_stmt = statement_block[idx]
+          if isinstance(nested_stmt, (list, tuple)) and len(nested_stmt) > 0:
+            if nested_stmt[0] in [try_begin, try_for_range, try_for_range_backwards,
+                                  try_for_parties, try_for_agents, try_for_prop_instances, try_for_players]:
+              depth += 1
+            elif nested_stmt[0] == try_end:
+              depth -= 1
+              if depth == 0:
+                compile_global_vars(nested_block, variable_list, variable_uses)
+                break
+          if depth > 0:
+            nested_block.append(nested_stmt)
+          idx += 1
 
 
 def save_simple_triggers(ofile,triggers,variable_list, variable_uses,tag_uses,quick_strings):
