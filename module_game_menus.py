@@ -1809,7 +1809,6 @@ game_menus = [
         (troop_raise_skill, "trp_player","skl_looting",1),
       (try_end),
 
-
            (try_begin),
              (eq, "$background_type", cb_noble),
              (jump_to_menu, "mnu_auto_return"),

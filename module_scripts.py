@@ -78,6 +78,19 @@ scripts = [
       (assign, "$gonghe", 0),
       (assign, "$cut_body", 1),
       (assign, "$ym_gatling_purchased", 0),
+      (assign, "$g_pending_points_granted", 0),
+      # Freeze the point pools before character creation begins: save the
+      # remaining attrs/skills/proficiencies and zero them so the creation
+      # flow never forces the player to spend all points (the "Done" button
+      # stays available even with leftover points). These pools are granted
+      # back the first time the campaign map loads (in prsnt_world_map), so
+      # the player can allocate them after entering the game.
+      (troop_get_attribute_points,   "$g_pending_attr_points",   "trp_player"),
+      (troop_get_skill_points,       "$g_pending_skill_points",  "trp_player"),
+      (troop_get_proficiency_points, "$g_pending_prof_points",   "trp_player"),
+      (troop_set_attribute_points,   "trp_player", 0),
+      (troop_set_skill_points,       "trp_player", 0),
+      (troop_set_proficiency_points, "trp_player", 0),
       (faction_set_slot, "fac_player_supporters_faction", slot_faction_state, sfs_inactive),
       (assign, "$g_player_luck", 200),
       (assign, "$g_player_luck", 200),
@@ -3183,6 +3196,19 @@ scripts = [
       #(assign, ":player_faction_culture", "fac_culture_player"),
       (faction_set_slot, "fac_player_supporters_faction",  slot_faction_culture, ":player_faction_culture"),
       (faction_set_slot, "fac_player_faction",  slot_faction_culture, ":player_faction_culture"),
+      # Grant the point pools that were frozen at game_start the moment the
+      # player picks a destination. This is called by each starting-destination
+      # option, so the player can immediately allocate their remaining
+      # attribute/skill/proficiency points after entering the game.
+      (try_begin),
+        (lt, "$g_pending_points_granted", 1),
+        (troop_get_attribute_points, ":cur_attr_pts", "trp_player"),
+        (eq, ":cur_attr_pts", 0),
+        (troop_set_attribute_points,   "trp_player", "$g_pending_attr_points"),
+        (troop_set_skill_points,       "trp_player", "$g_pending_skill_points"),
+        (troop_set_proficiency_points, "trp_player", "$g_pending_prof_points"),
+        (assign, "$g_pending_points_granted", 1),
+      (try_end),
 	]),
 
 
