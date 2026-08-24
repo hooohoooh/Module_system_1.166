@@ -79,18 +79,6 @@ scripts = [
       (assign, "$cut_body", 1),
       (assign, "$ym_gatling_purchased", 0),
       (assign, "$g_pending_points_granted", 0),
-      # Freeze the point pools before character creation begins: save the
-      # remaining attrs/skills/proficiencies and zero them so the creation
-      # flow never forces the player to spend all points (the "Done" button
-      # stays available even with leftover points). These pools are granted
-      # back the first time the campaign map loads (in prsnt_world_map), so
-      # the player can allocate them after entering the game.
-      (troop_get_attribute_points,   "$g_pending_attr_points",   "trp_player"),
-      (troop_get_skill_points,       "$g_pending_skill_points",  "trp_player"),
-      (troop_get_proficiency_points, "$g_pending_prof_points",   "trp_player"),
-      (troop_set_attribute_points,   "trp_player", 0),
-      (troop_set_skill_points,       "trp_player", 0),
-      (troop_set_proficiency_points, "trp_player", 0),
       (faction_set_slot, "fac_player_supporters_faction", slot_faction_state, sfs_inactive),
       (assign, "$g_player_luck", 200),
       (assign, "$g_player_luck", 200),

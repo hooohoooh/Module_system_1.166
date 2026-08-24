@@ -1809,6 +1809,18 @@ game_menus = [
         (troop_raise_skill, "trp_player","skl_looting",1),
       (try_end),
 
+      # Character creation done (player clicked "Done"): capture whatever
+      # attribute/skill/proficiency points are left unspent and zero the
+      # pools so nothing below is forced to spend them. The leftover is
+      # granted back (in script_player_arrived) once the player picks a
+      # starting region, so the player can allocate it after entering game.
+      (troop_get_attribute_points,   "$g_pending_attr_points",   "trp_player"),
+      (troop_get_skill_points,       "$g_pending_skill_points",  "trp_player"),
+      (troop_get_proficiency_points, "$g_pending_prof_points",   "trp_player"),
+      (troop_set_attribute_points,   "trp_player", 0),
+      (troop_set_skill_points,       "trp_player", 0),
+      (troop_set_proficiency_points, "trp_player", 0),
+
            (try_begin),
              (eq, "$background_type", cb_noble),
              (jump_to_menu, "mnu_auto_return"),
