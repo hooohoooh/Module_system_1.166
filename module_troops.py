@@ -298,7 +298,7 @@ tf_guarantee_all_wo_ranged = tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_
 troops = [
   ["player","Player","Player",tf_hero|tf_unmoveable_in_party_window,no_scene,reserved,fac_player_faction,
    [itm_tushifu,itm_fanshizhenli_tongyong,itm_gekokujo_katana_1],
-   str_8|agi_8|int_8|cha_8,wp(85),0,
+   str_8|agi_8|int_8|cha_8,wp(30),0,
    0x000000018000700a36db6db6db6db6db00000000001db6db0000000000000000],
   ["multiplayer_profile_troop_male","multiplayer_profile_troop_male","multiplayer_profile_troop_male", tf_hero|tf_guarantee_all, 0, 0,fac_commoners,
    [itm_gekokujo_hakama_1, itm_gekokujo_sandal_1],
