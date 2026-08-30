@@ -1,4 +1,4 @@
-fac_no_faction|No Faction
+﻿fac_no_faction|No Faction
 fac_commoners|平 民 
 fac_outlaws|不 法 之 徒 
 fac_neutral|中 立 者 
@@ -33,6 +33,8 @@ fac_kingdom_24|德 岛 藩
 fac_kingdom_25|庄 内 藩 
 fac_kingdom_26|久 保 田 藩 
 fac_kingdom_27|彦 根 藩 
+fac_kingdom_28|新 政 府
+fac_dark_knights|沙 俄 远 东 军  
 fac_manhunters|赏 金 猎 人 
 fac_deserters|乱 军 
 fac_woku_pirates|山 匪 

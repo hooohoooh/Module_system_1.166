@@ -83,8 +83,8 @@ qstr_Serfdom:|征 召 制 度 :
 qstr_Troop_quality:|兵 农 分 离 : 
 qstr_Mercantilism:|重 商 主 义 : 
 qstr_High_centralization_|高 度 的 集 权 会 减 少 领 地 内 的 税 收 ， 但 提 高 了 家 臣 们 的 税 收 效 率 。 这 会 影 响 统 治 者 和 封 臣 之 间 的 关 系 。 
-qstr_High_aristocracy_wil|武 家 统 治 会 提 高 武 士 阶 级 的 权 力 ， 改 善 王 国 和 他 的 家 臣 之 间 的 关 系 ， 他 们 将 能 够 组 建 更 强 大 的 军 队 ， 但 会 减 少 领 国 贸 易 。 
-qstr_High_serfdom_reduces|过 度 的 征 召 制 度 会 减 少 王 国 的 税 收 ， 他 的 家 臣 团 们 可 以 维 持 更 大 的 军 队 ， 但 是 军 队 会 降 低 士 气 。 
+qstr_High_aristocracy_wil|武 家 统 治 会 提 高 武 士 阶 级 的 权 力 ， 改 善 大 名 和 他 的 家 臣 之 间 的 关 系 ， 他 们 将 能 够 组 建 更 强 大 的 军 队 ， 但 会 减 少 领 国 贸 易 。 
+qstr_High_serfdom_reduces|过 度 的 征 召 制 度 会 减 少 大 名 的 税 收 ， 他 的 家 臣 团 们 可 以 维 持 更 大 的 军 队 ， 但 是 军 队 会 降 低 士 气 。 
 qstr_High_troop_quality_i|兵 农 分 离 增 加 部 队 的 战 斗 力 ， 但 军 队 规 模 会 减 少 。 
 qstr_Mercantilistic_polic|重 商 主 义 政 策 最 大 限 度 地 提 高 出 口 量 ， 同 时 最 大 限 度 地 减 少 进 口 ， 并 增 加 政 府 对 工 业 的 监 管 。 
 qstr_Cancel|取 消 
@@ -95,7 +95,7 @@ qstr__Faction_Relations_R| 派 别 关 系 报 告
 qstr__Prev_| 上 一 页 
 qstr__Next_| 下 一 页 
 qstr__Return_to_menu_| 返 回 到 菜 单 
-qstr_Your_kingdom|你 的 派 系 
+qstr_Your_kingdom|你 的 王 国 
 qstr_Player^Relation|玩 家 ^ 关 系 
 qstr_War|战 争 
 qstr_Casus_Belli|开 战 的 原 因 
@@ -437,7 +437,7 @@ qstr_swing_my_naginata|挥 舞 我 的 薙 刀
 qstr_lift_my_spear|举 起 我 的 矛 
 qstr_loose_my_arrows|射 出 我 的 箭 
 qstr_swing_my_sword|挥 舞 我 的 剑 
-qstr_great_lords|王 国 
+qstr_great_lords|大 名 
 qstr_lord|领 主 
 qstr_lords|领 主 们 
 qstr_goatherd|牧 羊 童 
@@ -592,7 +592,7 @@ qstr_{s5}_and_{s6}|{s5}和 {s6}
 qstr_Your_estates_are:_{s|你 的 封 地 在 ： {s8}。 ^{s9}
 qstr_^Samurai_Penalty:__{|^武 士 惩 罚 : -{reg5} (仆 人 占 1人 数 ){s5}
 qstr_^Clan_Strategist:_+2|^总 大 将 : +20{s5}
-qstr_^Clan_Leader:_+20{s5|^王 国 : +20{s5}
+qstr_^Clan_Leader:_+20{s5|^大 名 : +20{s5}
 qstr_^Walled_Fief:_+{reg5|^城 池 : +{reg5}{s5}
 qstr_^Walled_Fiefs:_+{reg|^城 池 : +{reg5}{s5}
 qstr_Current_prisoner_lim|当 前 的 囚 犯 限 制 为 {reg8}。 ^^狱 卒 ： {s6} {reg6} ^政 党 人 数 修 饰 符 ： {s7} {reg7} 
@@ -623,13 +623,13 @@ qstr_{s1}_apprenticed_und|{s1}在 商 人 的 陪 练 下 ， 直 到 {reg3?她 
 qstr_{s1}_lived_on_the_st|{s1}生 活 在 街 头 ， 靠 乞 讨 和 偷 窃 生 存 。 
 qstr_{s1}_lived_deep_in_t|{s1}生 活 在 山 区 深 处 ， 学 习 如 何 生 存 。 
 qstr_{s1}^^After_{reg3?sh|{s1} ^^ {reg3?她 :他 }成 年 后 ， {reg3?她 :他 } 
-qstr_{s1}_swore_fealty_to|{s1}宣 誓 效 忠 一 名 王 国 ， 守 护 他 的 城 堡 并 进 行 战 斗 。 
+qstr_{s1}_swore_fealty_to|{s1}宣 誓 效 忠 一 名 大 名 ， 守 护 他 的 城 堡 并 进 行 战 斗 。 
 qstr_{s1}_joined_the_Empe|{s1}加 入 了 京 都 天 皇 宫 廷 队 ， 帮 助 维 护 了 其 古 老 的 习 俗 和 少 有 的 威 望 。 
 qstr_{s1}_wandered_across|{s1}在 全 国 各 地 徘 徊 ， 演 奏 音 乐 和 娱 乐 ， 赚 取 的 钱 足 以 维 持 另 一 天 的 生 活 。 
 qstr_{s1}_joined_a_Buddhi|{s1}加 入 了 佛 教 寺 院 ， 训 练 他 的 身 体 和 精 神 ， 增 强 他 的 信 仰 和 宗 派 的 力 量 。 
 qstr_{s1}_became_a_Miko_a|{s1}在 神 社 中 成 为 了 巫 女 ， 使 她 所 在 社 区 的 人 们 与 众 神 世 界 建 立 了 联 系 。 
 qstr_{s1}_peddled_trinket|{s1}在 全 国 各 地 的 村 庄 贩 售 小 饰 品 和 商 品 。 
-qstr_{s1}_set_up_shop_as_|{s1}在 一 个 街 道 里 开 了 一 家 铁 匠 铺 ， 为 其 他 工 匠 锻 造 和 修 理 工 具 ， 并 为 当 地 王 国 提 供 武 器 和 具 足 。 
+qstr_{s1}_set_up_shop_as_|{s1}在 一 个 街 道 里 开 了 一 家 铁 匠 铺 ， 为 其 他 工 匠 锻 造 和 修 理 工 具 ， 并 为 当 地 大 名 提 供 武 器 和 具 足 。 
 qstr_{s1}_lived_off_the_l|{s1}像 隐 士 一 样 生 活 在 陆 地 上 ， 只 是 偶 尔 回 到 镇 上 来 出 售 游 戏 动 物 的 毛 皮 和 肉 食 。 
 qstr_{s1}^^But_it_was_not|{s1} ^^但 这 并 没 有 持 续 。 
 qstr_{s1}_A_great_wrong_w|{s1} {playername}犯 了 一 个 大 错 误 ， {reg3?她 :他 }不 得 不 抛 弃 {reg3?她 :他 }的 生 活 ， 直 到 {reg3?她 :他 }强 大 到 可 以 纠 正 为 止 … …  
@@ -951,7 +951,7 @@ qstr_Imagawa_Messengers|Imagawa Messengers
 qstr_Imagawa_Deserters|Imagawa Deserters
 qstr_Imagawa_Prison_Guards|Imagawa Prison Guards
 qstr_Imagawa_Castle_Guards|Imagawa Castle Guards
-qstr_Great_Lord_{s9}|王 国 {s9}
+qstr_Great_Lord_{s9}|大 名 {s9}
 qstr_^^Note_that_so_long_|^^注 意 只 要 你 还 在 做 元 帅 ， 这 个 国 家 的 领 主 们 都 会 等 着 让 你 率 领 他 们 进 行 战 役 。 所 以 ， 如 果 你 正 在 准 备 一 场 宴 会 ， 或 者 是 婚 礼 以 及 其 它 活 动 ， 你 也 许 要 去 和 你 的 领 主 谈 谈 来 辞 去 元 帅 的 职 务 。 
 qstr_Try_as_you_might_you_|尽 你 所 能 ， 你 无 法 击 败 叛 乱 村 庄 。 
 qstr_{reg0}|{reg0}
@@ -1118,7 +1118,7 @@ qstr_So_be_it._We_are_hon|随 它 吧 。 我 们 很 荣 幸 接 受 您 加 �
 qstr__I_will_appreciate_y|我 会 谦 卑 的 像 后 辈 一 样 感 谢 您 。 
 qstr_I_accept_your_reques|我 接 受 你 的 要 求 。 如 果 您 支 持 我 的 家 族 ， 我 们 将 为 您 提 供 支 持 。 
 qstr_Since_you_have_turne|由 于 您 原 来 是 个 值 得 的 人 ， 所 以 您 应 该 对 我 们 整 个 家 族 都 值 得 。 
-qstr_Your_leader_is_not_e|您 的 领 导 者 甚 至 都 不 是 王 国 ， 我 会 加 入 您 的 行 列 吗 ？ 
+qstr_Your_leader_is_not_e|您 的 领 导 者 甚 至 都 不 是 大 名 ， 我 会 加 入 您 的 行 列 吗 ？ 
 qstr_{s40}_I_would_never_|{s40}我 永 远 也 不 会 加 入 没 有 城 镇 或 城 堡 的 人 。 
 qstr_{s40}_I_know_too_lit|{s40}我 对 您 的 领 导 者 了 解 得 很 少 。 
 qstr_{s40}_I_found_your_m|{s40}我 发 现 您 的 使 者 令 人 信 服 。 
@@ -1211,7 +1211,7 @@ qstr_Another_fool_come_to|又 一 个 傻 瓜 过 来 把 {他 的 /她 的 } �
 qstr_We_re_not_afraid_of_|我 们 不 怕 你 ， {小 子 /小 妞 }。 是 时 候 打 暴 某 些 人 的 头 了 ！ 
 qstr_That_was_a_mistake._|那 是 一 个 错 误 。 现 在 我 将 慢 慢 把 你 折 磨 到 死 。 
 qstr_Brave_words._Let_s_s|豪 言 壮 语 ， 让 我 看 看 你 怎 么 用 行 动 来 支 持 它 ， 坏 蛋 ！ 
-qstr_your_lordship|你 的 王 国 之 位 
+qstr_your_lordship|你 的 大 名 之 位 
 qstr_A_{s5}?_Well..._Yes_|{s5}？ 呃 …… 是 的 ， 我 想 是 这 样 。 问 了 一 个 多 么 奇 怪 的 问 题 啊 。 
 qstr_Eh?_No_it_most_certa|是 吗 ？ 基 本 可 以 肯 定 那 不 是 一 个 {s5}。 如 果 我 是 你 的 话 ， 我 就 开 始 怀 疑 自 己 的 视 力 是 否 有 问 题 。 
 qstr_This_is_the_{reg4?to|这 里 是 {s5}{reg4?镇 :村 }， {先 生 /夫 人 }。 
@@ -1228,3 +1228,9 @@ qstr_You_are_relieved_of_|您 可 以 放 心 了 。
 qstr_For_your_time_in_my_|对 于 你 为 我 们 你 的 工 作 ， 我 为 您 祈 福 {s13}。 
 qstr_For_your_time_in_my_s|对 于 你 为 我 的 服 务 ， 我 授 予 您 {s13}。 
 qstr_You_weren_t_with_me_|你 不 在 我 身 边 很 久 了 ， 对 吗 ？ 
+qstr_are_not_allowed_to_i|不 允 许 侵 入 。
+qstr_are_set_to_invade_at|被 设 置 为 在 未 知 日 期 侵 入 。
+qstr_have_already_invaded|已 经 入 侵 。
+qstr_The_the_Great_Ming_a|沙 俄 远 征 军 将 永 不 入 侵 。
+qstr_The_the_Great_Ming_ar|沙 俄 远 征 军 将 很 快 开 始 入 侵 。
+qstr_The_the_Great_Ming_arm|沙 俄 远 征 军 将 在 未 来 的 某 个 时 候 入 侵 。

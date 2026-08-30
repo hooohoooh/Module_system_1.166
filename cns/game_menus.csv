@@ -40,7 +40,7 @@ mno_start_forester|一 位 弓 术 师 。
 mno_start_thief|一 位 贼 盗 。 
 menu_start_character_2|{s10}^^ 后 来 ， 你 在 少 年 时 期 做 过 …… 
 mno_kosho|武 士 陪 臣 
-mno_handmaiden|一 位 王 国 的 婢 女 。 
+mno_handmaiden|一 位 大 名 的 婢 女 。 
 mno_apprentice|刀 匠 的 学 徒 
 mno_stocker|游 商 
 mno_urchin|村 里 的 顽 童 
@@ -58,6 +58,7 @@ menu_start_character_4|{s12}^^ 不 过 在 一 段 时 间 以 后 ， 一 切 �
 mno_revenge|佐 幕 派 志 士 。 
 mno_death|倒 幕 派 志 士 。 
 mno_wanderlust|共 和 斗 士 。 
+mno_disown|新 选 组 局 长
 menu_choose_skill|{s13}
 mno_begin_adventuring|赴 世 ！ 自 掌 己 命 ！ 
 menu_past_life_explanation|{s3}
@@ -599,7 +600,7 @@ menu_notification_casus_belli_expired|王 国 没 有 回 应 ^^{s1}没 有 回 
 menu_notification_lord_defects|背 叛 ： {s4}已 经 抛 弃 了 {s5}并 且 加 入 了 {s7}， 带 着 {reg4?她 :他 }的 封 地 一 起 
 menu_notification_treason_indictment|叛 国 控 告 ^^{s9}
 menu_notification_border_incident|边 界 冲 突 ^^ 有 消 息 传 来 ， {s9}。 虽 然 传 言 真 假 未 知 ， 但 有 件 事 是 确 定 的 —— 这 件 看 来 很 小 的 事 件 在 {s4}内 部 已 经 掀 起 轩 然 大 波 ， 使 得 与 {s3}的 战 争 一 触 即 发 …… 
-menu_notification_player_faction_active|现 在 ， 这 片 土 地 被 冠 以 你 的 名 字 ， 而 不 跟 其 他 藩 国 有 任 何 关 系 。 你 成 为 了 一 位 能 独 立 行 使 权 力 的 君 主 ， 你 的 宅 邸 暂 时 坐 落 在 {s12}。 然 而 ， 日 本 诸 侯 的 第 一 反 应 ， 是 把 你 当 做 一 个 威 胁 ， 因 为 ， 如 果 每 一 个 强 势 的 军 阀 ， 都 可 以 成 为 王 国 ， 那 么 诸 侯 的 权 威 无 疑 会 受 到 质 疑 。 ^^你 可 能 觉 得 这 个 时 候 宣 誓 效 忠 于 一 个 现 有 的 国 家 ， 是 个 非 常 不 错 的 选 择 。 如 果 你 想 继 续 当 一 个 拥 有 主 权 的 君 主 ， 那 么 首 先 你 必 须 建 立 自 己 独 立 的 统 治 权 。 这 可 以 通 过 多 个 办 法 进 行 ， 比 如 与 出 身 高 贵 的 家 族 联 姻 ， 吸 纳 新 的 家 臣 ， 管 理 你 的 领 地 ， 应 付 其 他 家 督 ， 以 及 派 遣 你 的 盟 友 去 执 行 任 务 。 ^^无 论 如 何 ， 你 首 先 要 从 你 的 盟 友 当 中 ， 任 命 一 位 家 老 笔 头 ， 来 处 理 各 种 事 务 。 不 同 的 盟 友 有 不 同 的 才 能 。 ^你 可 以 不 时 地 更 换 你 的 家 老 人 选 ， 还 可 以 通 过 与 家 臣 对 话 ， 改 变 你 的 宅 邸 的 所 在 地 。 
+menu_notification_player_faction_active|现 在 ， 这 片 土 地 被 冠 以 你 的 名 字 ， 而 不 跟 其 他 藩 国 有 任 何 关 系 。 你 成 为 了 一 位 能 独 立 行 使 权 力 的 君 主 ， 你 的 宅 邸 暂 时 坐 落 在 {s12}。 然 而 ， 日 本 诸 侯 的 第 一 反 应 ， 是 把 你 当 做 一 个 威 胁 ， 因 为 ， 如 果 每 一 个 强 势 的 军 阀 ， 都 可 以 成 为 大 名 ， 那 么 诸 侯 的 权 威 无 疑 会 受 到 质 疑 。 ^^你 可 能 觉 得 这 个 时 候 宣 誓 效 忠 于 一 个 现 有 的 国 家 ， 是 个 非 常 不 错 的 选 择 。 如 果 你 想 继 续 当 一 个 拥 有 主 权 的 君 主 ， 那 么 首 先 你 必 须 建 立 自 己 独 立 的 统 治 权 。 这 可 以 通 过 多 个 办 法 进 行 ， 比 如 与 出 身 高 贵 的 家 族 联 姻 ， 吸 纳 新 的 家 臣 ， 管 理 你 的 领 地 ， 应 付 其 他 家 督 ， 以 及 派 遣 你 的 盟 友 去 执 行 任 务 。 ^^无 论 如 何 ， 你 首 先 要 从 你 的 盟 友 当 中 ， 任 命 一 位 家 老 笔 头 ， 来 处 理 各 种 事 务 。 不 同 的 盟 友 有 不 同 的 才 能 。 ^你 可 以 不 时 地 更 换 你 的 家 老 人 选 ， 还 可 以 通 过 与 家 臣 对 话 ， 改 变 你 的 宅 邸 的 所 在 地 。 
 mno_appoint_spouse|任 命 你 的 夫 人 ， {s10}…… 
 mno_dplmc_appoint_spouse_plus_1|任 命 你 的 {reg0?夫 人 :丈 夫 }, {s10}...
 mno_appoint_npc1|任 命 {s10}
@@ -760,9 +761,8 @@ menu_dplmc_economic_report|{s0}
 menu_zhaobing|你 想 要 什 么 
 mno_buy_munitions|购 买 一 组 炮 兵 ， 花 费 一 万 
 menu_zhaobing2|民 主 人 士 ， 欢 迎 来 到 招 募 界 面 
-mno_buy_munitions1|招 募 一 个 共 和 国 卫 队 ， 花 费 一 百
-mno_buy_munitions2|招 募 十 个 共 和 国 卫 队 ， 花 费 一 千 
-mno_buy_munitions3|招 募 一 百 个 共 和 国 卫 队 ， 花 费 一 万 
+mno_buy_munitions2|购 买 十 个 共 和 国 卫 队 ， 花 费 一 千 
+mno_buy_munitions3|购 买 一 百 个 共 和 国 卫 队 ， 花 费 一 万 
 menu_world_map_soldier|战 士 ， 你 想 怎 么 做 ？ 
 mno_join_commander_battle|跟 随 指 挥 官 加 入 战 斗 。 
 mno_enter_town|进 入 镇 守 的 城 。 
@@ -788,4 +788,11 @@ mno_desert_alone|不 ， 单 独 行 动 可 能 更 好 。
 menu_upgrade_path|你 的 卓 越 贡 献 被 认 可 了 ， 你 获 得 了 晋 升 。 
 mno_upgrade_path_1|{s66} 
 mno_upgrade_path_2|{s67} 
-menu_gekokujo_notification_defeated|随 着 你 的 指 挥 官 的 战 败 ， 他 的 军 队 已 经 各 散 四 方 。 你 被 俘 虏 后 他 们 剥 夺 了 你 所 分 配 的 武 器 和 盔 甲 ， 但 是 你 藏 起 了 一 大 堆 战 利 品 。 如 果 你 能 回 到 你 的 领 主 ， 你 很 可 能 会 被 重 新 装 备 。 
+menu_gekokujo_notification_defeated|随 着 你 的 指 挥 官 的 战 败 ， 他 的 军 队 已 经 各 散 四 方 。 你 被 俘 虏 后 他 们 剥 夺 了 你 所 分 配 的 武 器 和 盔 甲 ， 但 是 你 藏 起 了 一 大 堆 战 利 品 。 如 果 你 能 回 到 你 的 领 主 ， 你 很 可 能 会 被 重 新 装 备 。
+menu_set_invasion|是 否 允 许 沙 俄 远 征 军 入 侵 ？^这 个 功 能 还 处 于 早 期 的 发 展 阶 段 ，没 有 真 正 测 试 。如 果 你 想 开 启 ，请 在 你 让 他 们 入 侵 之 前 保 存 ！^外 交 选 项 “自 动 校 准 战 斗 中 的 地 形 优 势 ”将 被 禁 用 。^目 前 ，他 们 在 {s1}
+mno_never|不 让 他 们 入 侵 。
+mno_now|马 上 入 侵 。 
+mno_unknown|未 知 的 日 期 。
+mno_return|保 持 设 置 不 变 。 
+mno_tc_set_invasion|当 沙 俄 入 侵 开 始 时 设 置
+menu_dk_invasion_start_warning|大 人 ， 快 走 ！ 俄 国 人 已 入 侵 北 方 之 地 ！ 他 们 身 披 漆 黑 军 服 、 携 铁 炮 而 来 ， 正 欲 蹂 躏 我 邦 国 土 ！ 一 刻 也 不 能 耽 搁 ， 速 速 逃 离 ！

@@ -1,4 +1,4 @@
-itm_no_item|无 效 项 目 
+﻿itm_no_item|无 效 项 目 
 itm_no_item_pl|INVALID ITEM
 itm_tutorial_spear|矛 
 itm_tutorial_spear_pl|矛 
@@ -732,18 +732,18 @@ itm_gekokujo_kebiki_20|胴 丸 铠
 itm_gekokujo_kebiki_20_pl|胴 丸 铠 
 itm_gekokujo_kebiki_21|胴 丸 铠 
 itm_gekokujo_kebiki_21_pl|胴 丸 铠 
-itm_gekokujo_nanban_1|南 蛮 胴 
-itm_gekokujo_nanban_1_pl|南 蛮 胴 
-itm_gekokujo_nanban_2|南 蛮 胴 
-itm_gekokujo_nanban_2_pl|南 蛮 胴 
-itm_gekokujo_nanban_3|南 蛮 胴 
-itm_gekokujo_nanban_3_pl|南 蛮 胴 
-itm_gekokujo_nanban_4|南 蛮 胴 
-itm_gekokujo_nanban_4_pl|南 蛮 胴 
-itm_gekokujo_nanban_5|南 蛮 胴 
-itm_gekokujo_nanban_5_pl|南 蛮 胴 
-itm_gekokujo_nanban_6|南 蛮 胴 
-itm_gekokujo_nanban_6_pl|南 蛮 胴 
+itm_gekokujo_nanban_1|仿 古 胴 
+itm_gekokujo_nanban_1_pl|仿 古 胴 
+itm_gekokujo_nanban_2|仿 古 胴 
+itm_gekokujo_nanban_2_pl|仿 古 胴 
+itm_gekokujo_nanban_3|仿 古 胴 
+itm_gekokujo_nanban_3_pl|仿 古 胴 
+itm_gekokujo_nanban_4|仿 古 胴 
+itm_gekokujo_nanban_4_pl|仿 古 胴 
+itm_gekokujo_nanban_5|仿 古 胴 
+itm_gekokujo_nanban_5_pl|仿 古 胴 
+itm_gekokujo_nanban_6|仿 古 胴 
+itm_gekokujo_nanban_6_pl|仿 古 胴 
 itm_gekokujo_sugegasa_1|伊 予 盔 
 itm_gekokujo_sugegasa_1_pl|伊 予 盔 
 itm_gekokujo_monk_headwrap|白 头 巾 
@@ -826,12 +826,12 @@ itm_gekokujo_shinomi_o_2|御 贷 阿 古 陀 兜
 itm_gekokujo_shinomi_o_2_pl|御 贷 阿 古 陀 兜 
 itm_gekokujo_shinomi_o_3|御 贷 阿 古 陀 兜 
 itm_gekokujo_shinomi_o_3_pl|御 贷 阿 古 陀 兜 
-itm_gekokujo_zunari_o_1|御 贷 日 根 野 型 兜 
-itm_gekokujo_zunari_o_1_pl|御 贷 日 根 野 型 兜 
-itm_gekokujo_zunari_o_2|御 贷 日 根 野 型 兜 
-itm_gekokujo_zunari_o_2_pl|御 贷 日 根 野 型 兜 
-itm_gekokujo_zunari_o_3|御 贷 日 根 野 型 兜 
-itm_gekokujo_zunari_o_3_pl|御 贷 日 根 野 型 兜 
+itm_gekokujo_zunari_o_1|御 贷 桃 型 兜 
+itm_gekokujo_zunari_o_1_pl|御 贷 桃 型 兜 
+itm_gekokujo_zunari_o_2|御 贷 桃 型 兜 
+itm_gekokujo_zunari_o_2_pl|御 贷 桃 型 兜 
+itm_gekokujo_zunari_o_3|御 贷 桃 型 兜 
+itm_gekokujo_zunari_o_3_pl|御 贷 桃 型 兜 
 itm_gekokujo_kabuto3_o_1|御 贷 阿 古 陀 兜 
 itm_gekokujo_kabuto3_o_1_pl|御 贷 阿 古 陀 兜 
 itm_gekokujo_kabuto3_o_2|御 贷 阿 古 陀 兜 
@@ -844,12 +844,12 @@ itm_gekokujo_shinomi_o_h_2|御 贷 阿 古 陀 兜
 itm_gekokujo_shinomi_o_h_2_pl|御 贷 阿 古 陀 兜 
 itm_gekokujo_shinomi_o_h_3|御 贷 阿 古 陀 兜 
 itm_gekokujo_shinomi_o_h_3_pl|御 贷 阿 古 陀 兜 
-itm_gekokujo_zunari_o_h_1|御 贷 日 根 野 形 兜 
-itm_gekokujo_zunari_o_h_1_pl|御 贷 日 根 野 形 兜 
-itm_gekokujo_zunari_o_h_2|御 贷 日 根 野 形 兜 
-itm_gekokujo_zunari_o_h_2_pl|御 贷 日 根 野 形 兜 
-itm_gekokujo_zunari_o_h_3|御 贷 日 根 野 形 兜 
-itm_gekokujo_zunari_o_h_3_pl|御 贷 日 根 野 形 兜 
+itm_gekokujo_zunari_o_h_1|提 笼 兜
+itm_gekokujo_zunari_o_h_1_pl|提 笼 兜
+itm_gekokujo_zunari_o_h_2|提 笼 兜
+itm_gekokujo_zunari_o_h_2_pl|提 笼 兜
+itm_gekokujo_zunari_o_h_3|提 笼 兜
+itm_gekokujo_zunari_o_h_3_pl|提 笼 兜
 itm_gekokujo_kabuto3_o_h_1|御 贷 阿 古 陀 兜 
 itm_gekokujo_kabuto3_o_h_1_pl|御 贷 阿 古 陀 兜 
 itm_gekokujo_kabuto3_o_h_2|御 贷 阿 古 陀 兜 
@@ -874,12 +874,12 @@ itm_gekokujo_zunari_h_2|日 根 野 型 兜
 itm_gekokujo_zunari_h_2_pl|日 根 野 型 兜 
 itm_gekokujo_zunari_h_3|日 根 野 型 兜 
 itm_gekokujo_zunari_h_3_pl|日 根 野 型 兜 
-itm_gekokujo_eboshi_m_1|官 帽 型 兜 
-itm_gekokujo_eboshi_m_1_pl|官 帽 型 兜 
-itm_gekokujo_eboshi_m_2|官 帽 型 兜 
-itm_gekokujo_eboshi_m_2_pl|官 帽 型 兜 
-itm_gekokujo_eboshi_m_3|官 帽 型 兜 
-itm_gekokujo_eboshi_m_3_pl|官 帽 型 兜 
+itm_gekokujo_eboshi_m_1|仿 古 星 兜 
+itm_gekokujo_eboshi_m_1_pl|仿 古 星 兜 
+itm_gekokujo_eboshi_m_2|仿 古 星 兜 
+itm_gekokujo_eboshi_m_2_pl|仿 古 星 兜 
+itm_gekokujo_eboshi_m_3|仿 古 严 星 兜 
+itm_gekokujo_eboshi_m_3_pl|仿 古 严 星 兜 
 itm_gekokujo_shinomi_m_1|阿 古 陀 兜 
 itm_gekokujo_shinomi_m_1_pl|阿 古 陀 兜 
 itm_gekokujo_shinomi_m_2|阿 古 陀 兜 
@@ -968,8 +968,8 @@ itm_gekokujo_kabuto_unique_7|将 军 的 官 帽 型 兜
 itm_gekokujo_kabuto_unique_7_pl|将 军 的 官 帽 型 兜 
 itm_gekokujo_kabuto_unique_8|将 军 的 筋 兜 
 itm_gekokujo_kabuto_unique_8_pl|将 军 的 筋 兜 
-itm_gekokujo_kabuto_unique_9|将 军 的 筋 兜 
-itm_gekokujo_kabuto_unique_9_pl|将 军 的 筋 兜 
+itm_gekokujo_kabuto_unique_9|复 古 筋 兜 
+itm_gekokujo_kabuto_unique_9_pl|复 古 筋 兜 
 itm_gekokujo_kabuto_unique_10|将 军 的 阿 古 坨 兜 
 itm_gekokujo_kabuto_unique_10_pl|将 军 的 阿 古 坨 兜 
 itm_gekokujo_kabuto_unique_11|将 军 的 阿 古 坨 兜 
@@ -988,14 +988,14 @@ itm_gekokujo_kabuto_unique_17|将 军 的 阿 古 坨 兜
 itm_gekokujo_kabuto_unique_17_pl|将 军 的 阿 古 坨 兜 
 itm_gekokujo_kabuto_unique_18|将 军 的 阿 古 坨 兜 
 itm_gekokujo_kabuto_unique_18_pl|将 军 的 阿 古 坨 兜 
-itm_gekokujo_kabuto_unique_19|将 军 的 官 帽 型 兜 
-itm_gekokujo_kabuto_unique_19_pl|将 军 的 官 帽 型 兜 
-itm_gekokujo_kabuto_unique_20|将 军 的 筋 兜 
-itm_gekokujo_kabuto_unique_20_pl|将 军 的 筋 兜 
-itm_gekokujo_kabuto_unique_21|将 军 的 阿 古 坨 兜 
-itm_gekokujo_kabuto_unique_21_pl|将 军 的 阿 古 坨 兜 
-itm_gekokujo_kabuto_unique_22|将 军 的 阿 古 坨 兜 
-itm_gekokujo_kabuto_unique_22_pl|将 军 的 阿 古 坨 兜 
+itm_gekokujo_kabuto_unique_19|复 古 星 兜 
+itm_gekokujo_kabuto_unique_19_pl|复 古 星 兜 
+itm_gekokujo_kabuto_unique_20|复 古 星 兜 
+itm_gekokujo_kabuto_unique_20_pl|复 古 星 兜 
+itm_gekokujo_kabuto_unique_21|复 古 星 兜 
+itm_gekokujo_kabuto_unique_21_pl|复 古 星 兜 
+itm_gekokujo_kabuto_unique_22|复 古 星 兜 
+itm_gekokujo_kabuto_unique_22_pl|复 古 星 兜 
 itm_gekokujo_kabuto_unique_23|将 军 的 阿 古 坨 兜 
 itm_gekokujo_kabuto_unique_23_pl|将 军 的 阿 古 坨 兜 
 itm_gekokujo_kabuto_unique_24|将 军 的 阿 古 坨 兜 
@@ -1264,6 +1264,8 @@ itm_baixiong|白 熊
 itm_baixiong_pl|白 熊 
 itm_jptoujin|头 巾 
 itm_jptoujin_pl|头 巾 
+itm_heixiongjunguan|黑 熊 军 官 
+itm_heixiongjunguan_pl|黑 熊 军 官 
 itm_edo_civil_03|江 户 便 服 
 itm_edo_civil_03_pl|江 户 便 服 
 itm_fanbingfu|藩 兵 服 
@@ -1422,6 +1424,8 @@ itm_changzhoujrbb|长 州 精 锐 步 兵 服
 itm_changzhoujrbb_pl|长 州 精 锐 步 兵 服 
 itm_changzhoujrbbkuzi|长 州 精 锐 步 兵 裤 
 itm_changzhoujrbbkuzi_pl|长 州 精 锐 步 兵 裤 
+itm_baixiong|白 熊 
+itm_baixiong_pl|白 熊 
 itm_czqbd|奇 兵 队 服 
 itm_czqbd_pl|奇 兵 队 服 
 itm_qbdkz|奇 兵 队 裤 
@@ -1512,8 +1516,8 @@ itm_jinweimianjia1|近 卫 面 甲
 itm_jinweimianjia1_pl|近 卫 面 甲 
 itm_jdssddong|京 都 所 司 代 胴 
 itm_jdssddong_pl|京 都 所 司 代 胴 
-itm_smleishendui|萨 摩 雷 神 队 服 
-itm_smleishendui_pl|萨 摩 雷 神 队 服 
+itm_smleishendui|雷 神 队 服 
+itm_smleishendui_pl|雷 神 队 服 
 itm_samoinfantry2|萨 摩 步 兵 服 
 itm_samoinfantry2_pl|萨 摩 步 兵 服 
 itm_shinsengumi2|新 选 组 服 
@@ -1544,6 +1548,8 @@ itm_nninja_headwrap1|忍 者 护 面
 itm_nninja_headwrap1_pl|忍 者 护 面 
 itm_nninja_etie|忍 者 额 铁 
 itm_nninja_etie_pl|忍 者 额 铁 
+itm_gekokujo_tekko_2|皮 手 套 
+itm_gekokujo_tekko_2_pl|皮 手 套 
 itm_beiqian|备 前 军 裤 
 itm_beiqian_pl|备 前 军 裤 
 itm_beiqian_suneate|备 前 臑 当 
@@ -1672,8 +1678,8 @@ itm_civilian_hat4c|便 帽
 itm_civilian_hat4c_pl|便 帽 
 itm_civilian_hat4d|便 帽 
 itm_civilian_hat4d_pl|便 帽 
-itm_heisexiaku||黑 色 军 裤 
-itm_heisexiaku_pl||黑 色 军 裤 
+itm_heisexiaku|黑 色 下 裤 
+itm_heisexiaku_pl|黑 色 下 裤 
 itm_ghgcap|共 和 军 帽 
 itm_ghgcap_pl|共 和 军 帽 
 itm_ghgdayi|共 和 军 大 衣 
@@ -1722,5 +1728,173 @@ itm_mufbb2p|幕 府 步 兵 服
 itm_mufbb2p_pl|幕 府 步 兵 服 
 itm_mufbbkuzip|幕 府 步 兵 裤 
 itm_mufbbkuzip_pl|幕 府 步 兵 裤 
+itm_civilian_hat4d|便 帽 
+itm_civilian_hat4d_pl|便 帽 
+itm_mianshouzong|面 首
+itm_mianshouzong_pl|面 首
+itm_mianshouhong|面 首
+itm_mianshouhong_pl|面 首
+itm_mianshouhei|面 首
+itm_mianshouhei_pl|面 首
+itm_sam_pesant_jap3|野 外 服 装
+itm_sam_pesant_jap3_pl|野 外 服 装
+itm_sam_pesant_jap2|野 外 服 装
+itm_sam_pesant_jap2_pl|野 外 服 装
+itm_sam_pesant_jap1|野 外 服 装
+itm_sam_pesant_jap1_pl|野 外 服 装
+itm_sam_pesant_jap|野 外 服 装
+itm_sam_pesant_jap_pl|野 外 服 装
+itm_luota2|裸 体 着 甲
+itm_luota2_pl|裸 体 着 甲
+itm_luota|裸 体 着 甲
+itm_luota_pl|裸 体 着 甲
+itm_luojia|裸 体 着 甲
+itm_luojia_pl|裸 体 着 甲
+itm_luojia2|裸 体 叠 胴 丸 
+itm_luojia2_pl|裸 体 叠 胴 丸 
+itm_luojia3|裸 体 叠 胴 丸 
+itm_luojia3_pl|裸 体 叠 胴 丸 
+itm_luojia4|裸 体 叠 胴 丸 
+itm_luojia4_pl|裸 体 叠 胴 丸 
+itm_sam_ronin_gasa|浪 人 笠 
+itm_sam_ronin_gasa_pl|浪 人 笠  
+itm_ronin_half|浪 人 甲 
+itm_ronin_half_pl|浪 人 甲 
+itm_ronin_half2|浪 人 甲 
+itm_ronin_half2_pl|浪 人 甲 
+itm_ronin_half3|浪 人 甲 
+itm_ronin_half3_pl|浪 人 甲 
+itm_ronin_half4|浪 人 甲 
+itm_ronin_half4_pl|浪 人 甲 
+itm_gekokujo_ronin_short_1|浪 人 甲 
+itm_gekokujo_ronin_short_1_pl|浪 人 甲 
+itm_gekokujo_ronin_short_2|浪 人 甲 
+itm_gekokujo_ronin_short_2_pl|浪 人 甲 
+itm_gekokujo_ronin_short_3|浪 人 甲 
+itm_gekokujo_ronin_short_3_pl|浪 人 甲 
+itm_gekokujo_ronin_short_4|浪 人 甲 
+itm_gekokujo_ronin_short_4_pl|浪 人 甲 
+itm_shanfu2|山 伏 服 装  
+itm_shanfu2_pl|山 伏 服 装  
+itm_gekokujo_shanfu|山 伏 着 甲  
+itm_gekokujo_shanfu_pl|山 伏 着 甲  
+itm_sam_yamabushi_hat|山 伏 
+itm_sam_yamabushi_hat_pl|山 伏 
+itm_shanfumianshou|山 伏 面 首
+itm_shanfumianshou_pl|山 伏 面 首
+itm_shanfumianshou2|山 伏 面 首
+itm_shanfumianshou2_pl|山 伏 面 首
+itm_shanfumianshou3|山 伏 面 首
+itm_shanfumianshou3_pl|山 伏 面 首
+itm_shanfu3|山 伏 着 甲  
+itm_shanfu3_pl|山 伏 着 甲  
+itm_huali_dakai2|华 丽 大 铠 
+itm_huali_dakai2_pl|华 丽 大 铠 
+itm_huali_dou2|华 丽 兜 
+itm_huali_dou2_pl|华 丽 兜 
+itm_edo_samurai_armor_01|华 丽 胴 丸
+itm_edo_samurai_armor_01_pl|华 丽 胴 丸
+itm_edo_samurai_armor_02|华 丽 胴 丸
+itm_edo_samurai_armor_02_pl|华 丽 胴 丸
+itm_huali_dakai3|华 丽 大 铠 
+itm_huali_dakai3_pl|华 丽 大 铠 
+itm_huali_dou3|华 丽 兜
+itm_huali_dou3_pl|华 丽 兜
+itm_huali_dakailan2|华 丽 大 铠 蓝 
+itm_huali_dakailan2_pl|华 丽 大 铠 蓝 
+itm_colt_army_1861|柯 尔 特 1861 左 轮 
+itm_colt_army_1861_pl|柯 尔 特 1861 左 轮 
+itm_smithwesson2|斯 密 斯 左 轮 
+itm_smithwesson2_pl|斯 密 斯 左 轮 
+itm_colt_army2|柯 尔 特 陆 军 左 轮
+itm_colt_army2_pl|柯 尔 特 陆 军 左 轮
+itm_zzidao_m|种 子 岛 手 枪
+itm_zzidao_m_pl|种 子 岛 手 枪
+itm_qingxizhenli2|庆 喜 阵 笠
+itm_qingxizhenli2_pl|庆 喜 阵 笠
+itm_qingxi|庆 喜 上 装
+itm_qingxi_pl|庆 喜 上 装
+itm_ronnin_zhuojia|浪 人 着 甲 
+itm_ronnin_zhuojia_pl|浪 人 着 甲 
+itm_ronnin_zhuojia2|浪 人 着 甲 
+itm_ronnin_zhuojia2_pl|浪 人 着 甲 
+itm_russian_m1845|沙 俄 m1845 步 枪
+itm_russian_m1845_pl|沙 俄 m1845 步 枪
+itm_russian_m1856|沙 俄 m1856 步 枪
+itm_russian_m1856_pl|沙 俄 m1856 步 枪
+itm_russian_m1867|沙 俄 m1 8 6 7 步 枪
+itm_russian_m1867_pl|沙 俄 m1 8 6 7 步 枪
+itm_russian_m1856_carbine|沙 俄 m1856 卡 宾 枪
+itm_russian_m1856_carbine_pl|沙 俄 m1856 卡 宾 枪
+itm_rus_chevalier_hat|俄 罗 斯 头 盔 
+itm_rus_chevalier_hat_pl|俄 罗 斯 头 盔 
+itm_qsk|哥 萨 克 毛 盔
+itm_qsk_pl|哥 萨 克 毛 盔
+itm_barbuta1|沙 俄 羽 饰 头 盔 
+itm_barbuta1_pl|沙 俄 羽 饰 头 盔
+itm_rus_militia_ranker|沙 俄 大 衣  
+itm_rus_militia_ranker_pl|沙 俄 大 衣  
+itm_rus_militia_off|沙 俄 制 服 
+itm_rus_militia_off_pl|沙 俄 制 服 
+itm_rus_cossack_off|沙 俄 军 官 大 衣 
+itm_rus_cossack_off_pl|沙 俄 军 官 大 衣 
+itm_rus_infantry_ranker|沙 俄 军 服
+itm_rus_infantry_ranker_pl|沙 俄 军 服
+itm_rus_pants_grey|沙 俄 下 装 
+itm_rus_pants_grey_pl|沙 俄 下 装 
+itm_rus_militia_ranker_pants|沙 俄 下 装 
+itm_rus_militia_ranker_pants_pl|沙 俄 下 装 
+itm_rus_militia_off_pants|沙 俄 下 装  
+itm_rus_militia_off_pants_pl|沙 俄 下 装  
+itm_russian_chevalier_guard_horse|沙 俄 军 马 
+itm_russian_chevalier_guard_horse_pl|沙 俄 军 马 
+itm_russian_cossack_horse1|沙 俄 军 马 
+itm_russian_cossack_horse1_pl|沙 俄 军 马 
+itm_russian_cossack_horse2|沙 俄 军 马 
+itm_russian_cossack_horse2_pl|沙 俄 军 马 
+itm_russian_sabre_1798|沙 俄 马 刀 
+itm_russian_sabre_1798_pl|沙 俄 马 刀 
+itm_tianhuangjinwei|御 亲 兵 军 帽 
+itm_tianhuangjinwei_pl|御 亲 兵 军 帽 
+itm_tianhuangjinweicloth|御 亲 兵 军 装 
+itm_tianhuangjinweicloth_pl|御 亲 兵 军 装 
+itm_tianhuangjinweiykuzi|御 亲 兵 下 装 
+itm_tianhuangjinweiykuzi_pl|御 亲 兵 下 装 
+itm_tianzhu|天 诛 组 胴 丸 披 羽 织
+itm_tianzhu_pl|天 诛 组 胴 丸 披 羽 织
+itm_tianzhu2|天 诛 组 胴 丸 披 羽 织
+itm_tianzhu2_pl|天 诛 组 胴 丸 披 羽 织
+itm_dayi|大 衣 
+itm_dayi_pl|大 衣 
+itm_heisekuzi1|黑 色 裤 子 
+itm_heisekuzi1_pl|黑 色 裤 子 
+itm_jp_hat_8|黑 色 新 军 帽
+itm_jp_hat_8_pl|黑 色 新 军 帽
+itm_zhentai|镇 台 步 兵 帽
+itm_zhentai_pl|镇 台 步 兵 帽
+itm_xinjundao1|新 军 打 刀
+itm_xinjundao1_pl|新 军 打 刀
+itm_xinjundao2|新 军 打 刀
+itm_xinjundao2_pl|新 军 打 刀
+itm_xinjundao3|新 军 打 刀
+itm_xinjundao3_pl|新 军 打 刀
+itm_badaoduu|西 服 
+itm_badaoduu_pl|西 服 
+itm_zhentaibb|镇 台 步 兵
+itm_zhentaibb_pl|镇 台 步 兵
+itm_zhentai_trousers|镇 台 新 军 裤
+itm_zhentai_trousers_pl|镇 台 新 军 裤
+itm_sharps_rifle|夏 普 斯 来 福 枪 
+itm_sharps_rifle_pl|夏 普 斯 来 福 枪 
+itm_jintengyong|近 藤 勇
+itm_jintengyong_pl|近 藤 勇
+itm_gothic_lance|刺 股 
+itm_gothic_lance_pl|刺 股 
+itm_gekokujo_yuli|锁 胴 丸
+itm_gekokujo_yuli_pl|锁 胴 丸
+itm_gekokujo_yuli2|锁 胴 丸2
+itm_gekokujo_yuli2_pl|锁 胴 丸2
+itm_lianjiatou|锁 头 巾
+itm_lianjiatou_pl|锁 头 巾
 itm_items_end|Items End 
 itm_items_end_pl|Items End 
