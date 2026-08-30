@@ -1406,7 +1406,7 @@ simple_triggers = [
 	
     #Individual lord political calculations
     #Check for lords without fiefs, auto-defections, etc
-   (0.5,
+   (100,
     [
 	##diplomacy start+
 	#This is fairly complicated, and it was getting nearly unreadable so I reformatted it.
@@ -1535,7 +1535,7 @@ simple_triggers = [
 			(call_script, "script_troop_get_relation_with_troop", ":troop_no", ":faction_leader"),
 			#gekokujo 3.0 forgot to integrate start
 			#(le, reg0, -50), #was -75
-			(this_or_next|le, reg0, -50), #was -75
+			(this_or_next|le, reg0, -90), #was -75
 			(eq, ":num_centers", 0), #if there is no walled centers that faction has defection happens 100%.
 			#gekokujo 3.0 forgot to integrate end
 
@@ -1551,7 +1551,7 @@ simple_triggers = [
 			#Random >= 5: The liege indicts the lord for treason
 
 			(try_begin),
-				(lt, ":random", 5),
+				(lt, ":random", 1),
 				(neq, ":troop_no", "trp_player"),
 				#do a defection
 				#gekokujo 3.0 forgot to integrate start
@@ -1590,7 +1590,7 @@ simple_triggers = [
                 (call_script, "script_troop_get_relation_with_troop", ":troop_no", ":faction_leader"),
 				#gekokujo 3.0 forgot to integrate
                 #(le, reg0, -75),
-				(le, reg0, -50), #was -75
+				(le, reg0, -90), #was -75
 				#gekokujo 3.0 forgot to integrate
 				#do an indictment
 				(call_script, "script_indict_lord_for_treason", ":troop_no", ":faction"),
