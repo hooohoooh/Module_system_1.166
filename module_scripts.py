@@ -1524,6 +1524,7 @@ scripts = [
     (call_script, "script_give_center_to_lord", "p_town_19", "trp_kingdom_9_lord", 0),
     (call_script, "script_give_center_to_faction_aux", "p_town_20", "fac_kingdom_15"),
     (call_script, "script_give_center_to_lord", "p_town_20", "trp_kingdom_15_lord", 0),
+    (call_script, "script_give_center_to_lord", "p_town_4", "trp_kingdom_28_lord", 0),
     (call_script, "script_give_center_to_faction_aux", "p_town_21", "fac_kingdom_6"),
     (call_script, "script_give_center_to_lord", "p_town_21", "trp_knight_6_19", 0),
     (call_script, "script_give_center_to_faction_aux", "p_town_22", "fac_kingdom_22"),
