@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from ID_items import *
 from ID_quests import *
 from ID_factions import *
@@ -1235,6 +1236,12 @@ scene_prop_target                = 11
 scene_prop_explosion             = 12
 #llf end
 scene_prop_assistant             = 15
+scene_prop_fire_state            = 16
+scene_prop_fire_timer            = 17
+scene_prop_fire_target           = 18
+scene_prop_assistant_spawned     = 19  # 0=从未生成(开局), 1=已生成过(重生时从后方来)
+scene_prop_fire_cooldown         = 20  # 下次可开火的时间戳（避免所有火炮同步开火）
+slot_party_cannons               = 321 # 玩家party持有的火炮数量（避开PBO的250-319）
 ########################################################
 rel_enemy   = 0
 rel_neutral = 1

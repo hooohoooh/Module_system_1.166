@@ -548,28 +548,28 @@ items = [
  
  ["gekokujo_yukinoshita_short_date", "Date Retainer Armor", [("gekokujo_yukinoshita_short_date",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1200 , weight(18)|abundance(100)|head_armor(0)|body_armor(41)|leg_armor(11)|difficulty(8) ,imodbits_plate ],
  
- ["gekokujo_okegawa_long_1", "Okegawa Armor", [("daxiudangshijuzu11",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1325 , weight(18)|abundance(100)|head_armor(0)|body_armor(41)|leg_armor(14)|difficulty(9) ,imodbits_armor ],
- ["gekokujo_okegawa_long_2", "Okegawa Armor", [("daxiudangshijuzu14",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1325 , weight(18)|abundance(100)|head_armor(0)|body_armor(42)|leg_armor(13)|difficulty(9) ,imodbits_armor ],
- ["gekokujo_okegawa_long_3", "Okegawa Armor", [("daxiudangshijuzu13",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1325 , weight(18)|abundance(100)|head_armor(0)|body_armor(43)|leg_armor(12)|difficulty(9) ,imodbits_armor ],
- ["gekokujo_okegawa_long_4", "Okegawa Armor", [("daxiudangshijuzu12",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1325 , weight(18)|abundance(100)|head_armor(0)|body_armor(41)|leg_armor(14)|difficulty(9) ,imodbits_armor ],
- ["gekokujo_okegawa_long_5", "Okegawa Armor", [("daxiudangshijuzu30",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1325 , weight(18)|abundance(100)|head_armor(0)|body_armor(42)|leg_armor(13)|difficulty(9) ,imodbits_armor ],
- ["gekokujo_okegawa_long_6", "Okegawa Armor", [("daxiudangshijuzu26",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1325 , weight(18)|abundance(100)|head_armor(0)|body_armor(43)|leg_armor(12)|difficulty(9) ,imodbits_armor ],
+ ["gekokujo_okegawa_long_1", "Okegawa Armor", [("gekokujo_okegawa_long_1",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1325 , weight(18)|abundance(100)|head_armor(0)|body_armor(41)|leg_armor(14)|difficulty(9) ,imodbits_armor ],
+ ["gekokujo_okegawa_long_2", "Okegawa Armor", [("gekokujo_okegawa_long_2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1325 , weight(18)|abundance(100)|head_armor(0)|body_armor(42)|leg_armor(13)|difficulty(9) ,imodbits_armor ],
+ ["gekokujo_okegawa_long_3", "Okegawa Armor", [("gekokujo_okegawa_long_3",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1325 , weight(18)|abundance(100)|head_armor(0)|body_armor(43)|leg_armor(12)|difficulty(9) ,imodbits_armor ],
+ ["gekokujo_okegawa_long_4", "Okegawa Armor", [("gekokujo_okegawa_long_4",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1325 , weight(18)|abundance(100)|head_armor(0)|body_armor(41)|leg_armor(14)|difficulty(9) ,imodbits_armor ],
+ ["gekokujo_okegawa_long_5", "Okegawa Armor", [("gekokujo_okegawa_long_5",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1325 , weight(18)|abundance(100)|head_armor(0)|body_armor(42)|leg_armor(13)|difficulty(9) ,imodbits_armor ],
+ ["gekokujo_okegawa_long_6", "Okegawa Armor", [("gekokujo_okegawa_long_6",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1325 , weight(18)|abundance(100)|head_armor(0)|body_armor(43)|leg_armor(12)|difficulty(9) ,imodbits_armor ],
  
- ["gekokujo_mogami_long_1", "Mogami Armor", [("daxiudangshijuzu31",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1400 , weight(19)|abundance(100)|head_armor(0)|body_armor(45)|leg_armor(15)|difficulty(9) ,imodbits_armor ],
- ["gekokujo_mogami_long_2", "Mogami Armor", [("daxiudangshijuzu34",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1400 , weight(19)|abundance(100)|head_armor(0)|body_armor(46)|leg_armor(14)|difficulty(9) ,imodbits_armor ],
- ["gekokujo_mogami_long_3", "Mogami Armor", [("daxiudangshijuzu22",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1400 , weight(19)|abundance(100)|head_armor(0)|body_armor(47)|leg_armor(13)|difficulty(9) ,imodbits_armor ],
+ ["gekokujo_mogami_long_1", "Mogami Armor", [("gekokujo_mogami_long_1",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1400 , weight(19)|abundance(100)|head_armor(0)|body_armor(45)|leg_armor(15)|difficulty(9) ,imodbits_armor ],
+ ["gekokujo_mogami_long_2", "Mogami Armor", [("gekokujo_mogami_long_2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1400 , weight(19)|abundance(100)|head_armor(0)|body_armor(46)|leg_armor(14)|difficulty(9) ,imodbits_armor ],
+ ["gekokujo_mogami_long_3", "Mogami Armor", [("gekokujo_mogami_long_3",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1400 , weight(19)|abundance(100)|head_armor(0)|body_armor(47)|leg_armor(13)|difficulty(9) ,imodbits_armor ],
  
  ["gekokujo_nuinobe_long_1", "Nuinobe Armor", [("gekokujo_nuinobe_long_1",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1525 , weight(19)|abundance(100)|head_armor(0)|body_armor(46)|leg_armor(16)|difficulty(9) ,imodbits_armor ],
  ["gekokujo_nuinobe_long_2", "Nuinobe Armor", [("gekokujo_nuinobe_long_2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1525 , weight(19)|abundance(100)|head_armor(0)|body_armor(47)|leg_armor(15)|difficulty(9) ,imodbits_armor ],
  ["gekokujo_nuinobe_long_3", "Nuinobe Armor", [("gekokujo_nuinobe_long_3",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1525 , weight(19)|abundance(100)|head_armor(0)|body_armor(48)|leg_armor(14)|difficulty(9) ,imodbits_armor ],
  
  ["gekokujo_hishinui_long_1", "Hishinui Armor", [("gekokujo_hishinui_long_1",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1525 , weight(19)|abundance(100)|head_armor(0)|body_armor(47)|leg_armor(15)|difficulty(9) ,imodbits_armor ],
- ["gekokujo_hishinui_long_2", "Hishinui Armor", [("daxiudangshijuzu20",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1525 , weight(19)|abundance(100)|head_armor(0)|body_armor(48)|leg_armor(14)|difficulty(9) ,imodbits_armor ],
- ["gekokujo_hishinui_long_3", "Hishinui Armor", [("daxiudangshijuzu26",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1525 , weight(19)|abundance(100)|head_armor(0)|body_armor(46)|leg_armor(16)|difficulty(9) ,imodbits_armor ],
+ ["gekokujo_hishinui_long_2", "Hishinui Armor", [("gekokujo_hishinui_long_2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1525 , weight(19)|abundance(100)|head_armor(0)|body_armor(48)|leg_armor(14)|difficulty(9) ,imodbits_armor ],
+ ["gekokujo_hishinui_long_3", "Hishinui Armor", [("gekokujo_hishinui_long_3",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1525 , weight(19)|abundance(100)|head_armor(0)|body_armor(46)|leg_armor(16)|difficulty(9) ,imodbits_armor ],
  
- ["gekokujo_yukinoshita_long_1", "Yukinoshita Armor", [("daxiudangshijuzu35",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1675 , weight(21)|abundance(60)|head_armor(0)|body_armor(51)|leg_armor(14)|difficulty(9) ,imodbits_plate ],
- ["gekokujo_yukinoshita_long_2", "Yukinoshita Armor", [("daxiudangshijuzu33",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1675 , weight(21)|abundance(60)|head_armor(0)|body_armor(52)|leg_armor(13)|difficulty(9) ,imodbits_plate ],
- ["gekokujo_yukinoshita_long_3", "Yukinoshita Armor", [("daxiudangshijuzu37",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1675 , weight(21)|abundance(60)|head_armor(0)|body_armor(53)|leg_armor(12)|difficulty(9) ,imodbits_plate ],
+ ["gekokujo_yukinoshita_long_1", "Yukinoshita Armor", [("gekokujo_yukinoshita_long_1",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1675 , weight(21)|abundance(60)|head_armor(0)|body_armor(51)|leg_armor(14)|difficulty(9) ,imodbits_plate ],
+ ["gekokujo_yukinoshita_long_2", "Yukinoshita Armor", [("gekokujo_yukinoshita_long_2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1675 , weight(21)|abundance(60)|head_armor(0)|body_armor(52)|leg_armor(13)|difficulty(9) ,imodbits_plate ],
+ ["gekokujo_yukinoshita_long_3", "Yukinoshita Armor", [("gekokujo_yukinoshita_long_3",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1675 , weight(21)|abundance(60)|head_armor(0)|body_armor(53)|leg_armor(12)|difficulty(9) ,imodbits_plate ],
  
  ["gekokujo_kebiki_1", "Kozane Armor", [("huali_dakai_blue",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1650 , weight(20)|abundance(80)|head_armor(0)|body_armor(48)|leg_armor(17)|difficulty(9) ,imodbits_armor ],
  ["gekokujo_kebiki_2", "Kozane Armor", [("gekokujo_kebiki_2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0, 1650 , weight(20)|abundance(80)|head_armor(0)|body_armor(49)|leg_armor(16)|difficulty(9) ,imodbits_armor ],
@@ -638,27 +638,27 @@ items = [
 
  ["gekokujo_hari_o_1", "Okashi Hari-Bachi Kabuto", [("samurai_kabuto_7",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
  ["gekokujo_hari_o_2", "Okashi Hari-Bachi Kabuto", [("samurai_kabuto_6",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
- ["gekokujo_hari_o_3", "Okashi Hari-Bachi Kabuto", [("shierjianjindou26", 0)], itp_type_head_armor|itp_merchandise, 0, 2170, weight(6)|abundance(50)|head_armor(36)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
+ ["gekokujo_hari_o_3", "Okashi Hari-Bachi Kabuto", [("samurai_kabuto_8",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
  
  ["gekokujo_suji_o_1", "Okashi Suji-Bachi Kabuto", [("edo_helmet3",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
- ["gekokujo_suji_o_2", "Okashi Suji-Bachi Kabuto", [("shierjianjindou14", 0)], itp_type_head_armor|itp_merchandise, 0, 2170, weight(6)|abundance(50)|head_armor(36)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
- ["gekokujo_suji_o_3", "Okashi Suji-Bachi Kabuto", [("shierjianjindou26", 0)], itp_type_head_armor|itp_merchandise, 0, 2170, weight(6)|abundance(50)|head_armor(46)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
+ ["gekokujo_suji_o_2", "Okashi Suji-Bachi Kabuto", [("samurai_kabuto_1",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
+ ["gekokujo_suji_o_3", "Okashi Suji-Bachi Kabuto", [("samurai_kabuto_2",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
 
- ["gekokujo_shinomi_o_1", "Okashi Shinominari Kabuto", [("shierjianjindou16", 0)], itp_type_head_armor|itp_merchandise, 0, 2170, weight(6)|abundance(50)|head_armor(36)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
- ["gekokujo_shinomi_o_2", "Okashi Shinominari Kabuto", [("shierjianjindou17", 0)], itp_type_head_armor|itp_merchandise, 0, 2170, weight(6)|abundance(50)|head_armor(36)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
- ["gekokujo_shinomi_o_3", "Okashi Shinominari Kabuto", [("shierjianjindou18", 0)], itp_type_head_armor|itp_merchandise, 0, 2170, weight(6)|abundance(50)|head_armor(36)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
+ ["gekokujo_shinomi_o_1", "Okashi Shinominari Kabuto", [("samurai_kabuto_3",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
+ ["gekokujo_shinomi_o_2", "Okashi Shinominari Kabuto", [("samurai_kabuto_4",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
+ ["gekokujo_shinomi_o_3", "Okashi Shinominari Kabuto", [("samurai_kabuto_5",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
  
  ["gekokujo_zunari_o_1", "Okashi Zunari Kabuto", [("gekokujo_taoxingdou1",0)], itp_merchandise|itp_type_head_armor   ,0, 600 , weight(2.5)|abundance(100)|head_armor(35)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
  ["gekokujo_zunari_o_2", "Okashi Zunari Kabuto", [("gekokujo_taoxingdou2",0)], itp_merchandise|itp_type_head_armor   ,0, 600 , weight(2.5)|abundance(100)|head_armor(35)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
  ["gekokujo_zunari_o_3", "Okashi Zunari Kabuto", [("gekokujo_taoxingdou3",0)], itp_merchandise|itp_type_head_armor   ,0, 600 , weight(2.5)|abundance(100)|head_armor(35)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
  
- ["gekokujo_kabuto3_o_1", "Okashi Shinominari Kabuto", [("shierjianjindou15", 0)], itp_type_head_armor|itp_merchandise, 0, 2170, weight(6)|abundance(50)|head_armor(36)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
- ["gekokujo_kabuto3_o_2", "Okashi Shinominari Kabuto",  [("shierjianjindou27", 0)], itp_type_head_armor|itp_merchandise, 0, 2170, weight(6)|abundance(50)|head_armor(36)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
- ["gekokujo_kabuto3_o_3", "Okashi Shinominari Kabuto",  [("shierjianjindou18", 0)], itp_type_head_armor|itp_merchandise, 0, 2170, weight(6)|abundance(50)|head_armor(36)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
+ ["gekokujo_kabuto3_o_1", "Okashi Shinominari Kabuto", [("samurai_kabuto_9",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
+ ["gekokujo_kabuto3_o_2", "Okashi Shinominari Kabuto", [("samurai_kabuto_10",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
+ ["gekokujo_kabuto3_o_3", "Okashi Shinominari Kabuto", [("samurai_kabuto_11",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
 
- ["gekokujo_shinomi_o_h_1", "Okashi Shinominari Kabuto",   [("shierjianjindou", 0)], itp_type_head_armor|itp_merchandise, 0, 2170, weight(6)|abundance(50)|head_armor(46)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
- ["gekokujo_shinomi_o_h_2", "Okashi Shinominari Kabuto", [("shierjianjindou29", 0)], itp_type_head_armor|itp_merchandise, 0, 2170, weight(6)|abundance(50)|head_armor(46)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
- ["gekokujo_shinomi_o_h_3", "Okashi Shinominari Kabuto", [("shierjianjindou11", 0)], itp_type_head_armor|itp_merchandise, 0, 2170, weight(6)|abundance(50)|head_armor(46)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
+ ["gekokujo_shinomi_o_h_1", "Okashi Shinominari Kabuto", [("samurai_kabuto_18",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
+ ["gekokujo_shinomi_o_h_2", "Okashi Shinominari Kabuto", [("samurai_kabuto_19",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
+ ["gekokujo_shinomi_o_h_3", "Okashi Shinominari Kabuto", [("samurai_kabuto_20",0)], itp_type_head_armor|itp_attach_armature|itp_merchandise|itp_fit_to_head, 0, 1000, weight(1)|abundance(100)|difficulty(7)|head_armor(37)|body_armor(0)|leg_armor(0), imodbits_plate, [] ],
  
  ["gekokujo_zunari_o_h_1", "Okashi Zunari Kabuto", [("kabuto_tilong",0)], itp_merchandise|itp_type_head_armor   ,0, 750 , weight(3.5)|abundance(100)|head_armor(38)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
  ["gekokujo_zunari_o_h_2", "Okashi Zunari Kabuto", [("kabuto_tilong3",0)], itp_merchandise|itp_type_head_armor   ,0, 750 , weight(3.5)|abundance(100)|head_armor(38)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],

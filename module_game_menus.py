@@ -22277,19 +22277,31 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     "none",   
     [(eq, "$current_town", "p_town_1", "p_town_5", "p_town_4", "p_town_10", "p_town_21"),],
     [
-     ("buy_munitions",[
-		(store_free_inventory_capacity,":num","trp_player"),
+     ("buy_cannon",[
 		(store_troop_gold,":gold","trp_player"),
+		(party_get_slot,":num_cannons","p_main_party",slot_party_cannons),
 		(try_begin),
-			(ge,":num",1),
-			(ge,":gold",10000),
+			(ge,":gold",15000),
+			(lt,":num_cannons",10),
 		(else_try),
 			(disable_menu_option),
 		(try_end),
-	 ],"购 买 一 组 炮 兵 ，花 费 一 万",
+	 ],"购 买 一 门 火 炮 ，花 费 一 万 五 （ 炮 兵 随 炮 自 动 配 备 ）",
        [
-		(troop_remove_gold,"trp_player",10000),
-		(party_add_members, "p_main_party", "trp_gekokujo_zunwang_veteran_gunner", 1),
+		(troop_remove_gold,"trp_player",15000),
+		(party_get_slot,":num_cannons","p_main_party",slot_party_cannons),
+		(val_add,":num_cannons",1),
+		(party_set_slot,"p_main_party",slot_party_cannons,":num_cannons"),
+		(assign,reg0,":num_cannons"),
+		(display_message,"@你购买了一门火炮，当前共有{reg0}门火炮。"),
+       ]),
+
+     ("view_cannon_info",[],
+       "查 看 当 前 火 炮 数 量",
+       [
+		(party_get_slot,":num_cannons","p_main_party",slot_party_cannons),
+		(assign,reg0,":num_cannons"),
+		(display_message,"@当前火炮：{reg0}门。"),
        ]),
        
      ("go_back",[],"Go back",
