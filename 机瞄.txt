@@ -1,0 +1,1286 @@
+1.mission:
+common_timeticker = (
+	0.03, 0, 0,[],[
+		(val_sub,reg105,1),
+	]
+)
+common_spawn = (
+	0, 0, ti_once, [],[
+		(spawn_scene_prop, "spr_mosin_nagant_aim"),
+		(scene_prop_set_visibility, reg0, 0),
+		(spawn_scene_prop, "spr_100_aim"),
+        (scene_prop_set_visibility, reg0, 0),
+        (spawn_scene_prop, "spr_tmx"),
+        (scene_prop_set_visibility, reg0, 0),
+        (spawn_scene_prop, "spr_chuntianbuqiang"),
+        (scene_prop_set_visibility, reg0, 0),
+        (spawn_scene_prop, "spr_hanyangzao"),
+        (scene_prop_set_visibility, reg0, 0),
+        (spawn_scene_prop, "spr_zhongzhengshi"),
+        (scene_prop_set_visibility, reg0, 0),
+        (spawn_scene_prop, "spr_zb26"),
+        (scene_prop_set_visibility, reg0, 0),
+        (spawn_scene_prop, "spr_99shijiqiangjimiao"),
+        (scene_prop_set_visibility, reg0, 0),
+	]
+)
+#
+common_init = (
+	ti_before_mission_start, 0, 0, [], [
+		(assign,reg102,0),
+		(set_zoom_amount,0),
+		(assign,reg103,0),
+		(assign,reg104,0),
+		(assign,reg105,0),
+	]
+)
+#
+
+common_zoom = (
+	0, 0, 0, [], [
+		(set_fixed_point_multiplier,100),#llf
+		(get_player_agent_no,":agent_id"),
+		(agent_get_animation, ":anim_id", ":agent_id",1),
+		(agent_get_wielded_item,":item_id",":agent_id"),
+		(try_begin),
+			(eq,reg102,0),#is close mirror
+			(try_begin),
+				(agent_is_alive,":agent_id"), 
+				(game_key_is_down,gk_zoom),
+				(set_zoom_amount,100),
+			(else_try),
+				(set_zoom_amount,0),
+			(try_end),
+		(else_try),
+			(eq,reg102,1),#zoom mirror
+			(eq,":anim_id","anim_release_musket"),
+			#(this_or_next|eq,":item_id","itm_mosin_nagant_sniper_rifle_New"),
+			(eq,":item_id","itm_97shibuqiang"),
+			(try_begin),
+				(neg|game_key_is_down,gk_view_char),
+				(try_begin),
+					(game_key_is_down,gk_zoom),
+					(set_zoom_amount,190),
+				(else_try),
+					(neg|game_key_is_down,gk_zoom),
+					(set_zoom_amount,150),
+				(try_end),
+			(else_try),
+				(game_key_is_down,gk_view_char),
+				(try_begin),
+					(game_key_is_down,gk_zoom),
+					(set_zoom_amount,100),
+				(else_try),
+					(neg|game_key_is_down,gk_zoom),
+					(set_zoom_amount,0),
+				(try_end),
+			(try_end),
+		(else_try),
+			(eq,reg102,1),#zoom mirror
+			(this_or_next|eq,":anim_id","anim_release_musket"),
+			(eq,":anim_id","anim_ready_musket"),
+			(this_or_next|eq,":item_id","itm_type_38_c_qizi"),
+            (this_or_next|eq,":item_id","itm_type_38_c_qizirijunzhuanyong"),
+            (this_or_next|eq,":item_id","itm_type_38_c_qizirijunzhuanyong1"),
+            (this_or_next|eq,":item_id","itm_38shibuqiang"),
+            (this_or_next|eq,":item_id","itm_hanyang_881111"),
+            (this_or_next|eq,":item_id","itm_zhongzhenshimx"),
+            (this_or_next|eq,":item_id","itm_thompsonm1928a1"),
+            (this_or_next|eq,":item_id","itm_chi_zb26"),
+            (this_or_next|eq,":item_id","itm_hym_with_bayonet_gun"),
+            (this_or_next|eq,":item_id","itm_jap_typ_type96"),
+            (this_or_next|eq,":item_id","itm_hym_with_bayonet_gun01"),
+            (this_or_next|eq,":item_id","itm_garand"),
+			(eq,":item_id","itm_type_11_mg"),#itm_100
+			#手枪不用管会放大的，因为是改变视角的方式
+			(try_begin),
+				(try_begin),
+					(game_key_is_down,gk_zoom),
+					(set_zoom_amount,100),
+				(else_try),
+					(neg|game_key_is_down,gk_zoom),
+					(set_zoom_amount,0),
+				(try_end),
+			(try_end),
+		(try_end),
+	]
+)
+
+
+#
+common_sniper = (
+	0, 0, 0, [], [#0, 0, 0,
+		(try_begin),
+			(is_camera_in_first_person),###第一人称
+			(get_player_agent_no,":agent_id"), 
+			(agent_is_alive,":agent_id"), 
+			(agent_get_animation, ":anim_id", ":agent_id",1),
+			(agent_get_wielded_item,":item_id",":agent_id"),
+			(assign,":jixu",0),#llf
+			(try_for_range,":cur_item_slot",0,4),
+                (agent_get_item_slot, ":item_no", ":agent_id", ":cur_item_slot"),
+                (eq,":item_no",":item_id"),
+				(agent_get_item_cur_ammo, ":cur_ammo", ":agent_id",":cur_item_slot"),
+				#llf
+				(ge,":item_no",0),#add
+				(val_add,":jixu",1),
+				(gt,":jixu",1),
+				(store_add,":jixu",":cur_item_slot",1),
+				(agent_unequip_item,":agent_id",":item_no",":jixu"),
+				#end
+            (try_end),
+			(gt,":cur_ammo",0),	
+			(try_begin),
+				(key_clicked,key_right_mouse_button),
+				(try_begin),
+					(eq,reg102,0),
+					(assign,reg102,1),
+				(else_try),
+					(eq,reg102,1),
+					(assign,reg102,0),
+				(try_end),
+			(try_end),
+			(eq,reg102,1),#is open mirror
+			(try_begin),
+				(game_key_clicked, gk_view_char),
+				(this_or_next|is_presentation_active,"prsnt_mosin_nagant_sniper_rifle_mirror"),
+				(this_or_next|is_presentation_active,"prsnt_m1t_mirror"),
+				(this_or_next|is_presentation_active,"prsnt_mosin_nagant_aim"),
+				#(this_or_next|is_presentation_active,"prsnt_100_aim"),#itm_100
+				(is_presentation_active,"prsnt_100_aim"),
+				(mission_cam_get_position, pos26),
+				(agent_get_bone_position, pos27, ":agent_id", 19, 1),
+				(assign,reg103,1),#gk_view_char pos_exist
+			(try_end),
+			#case:1-sniper,3-rifle,5-musket,7-pistol,9-cannon
+			(try_begin),
+				(eq,":item_id","itm_97shibuqiang"),##狙击枪
+				(assign,":case",1),
+				(assign,":snd","snd_moxinnagan_shot"),
+				(assign,":prsnt","prsnt_mosin_nagant_sniper_rifle_mirror"),
+			(else_try),
+				(eq,":item_id","itm_97shibuqiang2"),##狙击枪
+				(assign,":case",1),
+				(assign,":snd","snd_moxinnagan_shot"),
+				(assign,":prsnt","prsnt_m1t_mirror"),
+			(else_try),
+				(eq,":item_id","itm_type_38_c_qizi"),##三八步枪
+				(assign,":case",3),
+				(assign,":snd","snd_type_38_shot"),
+				(assign,":prsnt","prsnt_mosin_nagant_aim"),
+            (else_try),
+				(eq,":item_id","itm_type_38_c_qizirijunzhuanyong"),##三八步枪
+				(assign,":case",3),
+				(assign,":snd","snd_type_38_shot"),
+				(assign,":prsnt","prsnt_mosin_nagant_aim"),
+            (else_try),
+				(eq,":item_id","itm_type_38_c_qizirijunzhuanyong1"),##三八步枪
+				(assign,":case",3),
+				(assign,":snd","snd_type_38_shot"),
+				(assign,":prsnt","prsnt_mosin_nagant_aim"),
+            (else_try),
+				(eq,":item_id","itm_38shibuqiang"),##三八步枪
+				(assign,":case",3),
+				(assign,":snd","snd_type_38_shot"),
+				(assign,":prsnt","prsnt_mosin_nagant_aim"),
+            (else_try),
+				(eq,":item_id","itm_hanyang_881111"),##汉阳造
+				(assign,":case",3),
+				(assign,":snd","snd_mosin_nagant_shot"),
+				(assign,":prsnt","prsnt_hanyangzao"),
+            (else_try),
+				(eq,":item_id","itm_hym_with_bayonet_gun01"),##汉阳造
+				(assign,":case",3),
+				(assign,":snd","snd_mosin_nagant_shot"),
+				(assign,":prsnt","prsnt_hanyangzao"),
+            (else_try),
+				(eq,":item_id","itm_garand"),##春田步枪
+				(assign,":case",3),
+				(assign,":snd","snd_misschuntian"),
+				(assign,":prsnt","prsnt_chuntianbuqiang"),
+            (else_try),
+				(eq,":item_id","itm_zhongzhenshimx"),##中正式步枪
+				(assign,":case",3),
+				(assign,":snd","snd_type_zz_shot"),
+				(assign,":prsnt","prsnt_zhongzhengshi"),
+            (else_try),
+				(eq,":item_id","itm_hym_with_bayonet_gun"),##汉阳造
+				(assign,":case",3),
+				(assign,":snd","snd_mosin_nagant_shot"),
+				(assign,":prsnt","prsnt_hanyangzao"),
+			(else_try),
+				(eq,":item_id","itm_type_11_mg"),##歪把子机枪
+				(assign,":case",5),
+				(assign,":snd","snd_type11_single_shoot"),
+				(assign,":prsnt","prsnt_100_aim"),
+				(assign,":timeticker",7),
+            (else_try),
+				(eq,":item_id","itm_thompsonm1928a1"),##汤姆逊机枪
+				(assign,":case",5), 
+				(assign,":snd","snd_thompson_3_shot"),
+				(assign,":prsnt","prsnt_tmx"),
+				(assign,":timeticker",7),
+			(else_try),
+				(eq,":item_id","itm_chi_zb26"),##zb26机枪
+				(assign,":case",5),
+				(assign,":snd","snd_zb26_single_shot"),
+				(assign,":prsnt","prsnt_zb26"),
+				(assign,":timeticker",7),
+            (else_try),
+				(eq,":item_id","itm_jap_typ_type96"),##99式机枪
+				(assign,":case",5),   
+				(assign,":snd","snd_type11_single_shoot"),
+				(assign,":prsnt","prsnt_99shi"),
+				(assign,":timeticker",7),##射速
+			# (else_try),
+				# (eq,":item_id","itm_chi_mauser_c96_10xiang_1wanjia"),##手枪
+				# (assign,":case",7),
+			(try_end),
+			(try_begin),#sniper_aim
+				(eq,":case",1),
+				(try_begin),
+					(game_key_is_down,gk_view_char),
+					(agent_set_visibility, ":agent_id", 1),
+					(eq,reg103,1),
+					(try_begin),
+						(this_or_next|eq,":anim_id",-1),
+						(this_or_next|eq,":anim_id","anim_release_musket"),
+						(this_or_next|eq,":anim_id","anim_ready_crossbow"),
+						(eq,":anim_id","anim_crouch_crossbow"),
+						(agent_set_animation, ":agent_id", "anim_release_musket", 1),
+						(agent_set_attack_action, ":agent_id", 0, 0),
+					(try_end),
+					(try_begin),
+						(key_clicked,key_left_mouse_button),
+						(eq,":anim_id","anim_release_musket"),
+						#calculate pos26:x/y/z
+						(agent_get_bone_position, pos28, ":agent_id", 19, 1),
+						(position_get_x,":x1",pos27),
+						(position_get_x,":x2",pos28),
+						(val_sub,":x2",":x1"),
+						(position_get_y,":y1",pos27),
+						(position_get_y,":y2",pos28),
+						(val_sub,":y2",":y1"),
+						(position_get_z,":z1",pos27),
+						(position_get_z,":z2",pos28),
+						(val_sub,":z2",":z1"),
+						(copy_position,pos29,pos26),
+						(position_move_x, pos29, ":x2",1),
+						(position_move_y, pos29, ":y2",1),
+						(position_move_z, pos29, ":z2",1),
+						#end
+						(set_fixed_point_multiplier, 100),  
+						(add_missile, ":agent_id", pos29,100000, ":item_id", 0, "itm_15fa",0),
+						(val_sub, ":cur_ammo", 1),
+						(agent_set_ammo, ":agent_id", ":item_id",":cur_ammo"),
+						(play_sound_at_position, ":snd", pos29),#sound need normal
+						#calculate pos29
+						(agent_get_look_position,pos29,":agent_id"),
+						(position_copy_origin,pos29,pos28),
+						(position_copy_rotation,pos29,pos29),
+						(position_move_z,pos29,10,0),
+						(position_move_y,pos29,400,0),#400=40?
+						#end
+						(particle_system_burst, "psys_rifle_smoke", pos29, 1),
+						(particle_system_burst, "psys_gun_fire", pos29, 1),
+						(agent_set_animation, ":agent_id", "anim_ready_crossbow", 1),
+						(agent_set_attack_action, ":agent_id", 0, 0),
+					(try_end),
+				(else_try),
+					(neg|game_key_is_down,gk_view_char),
+					(assign,reg103,0),
+					(try_begin),
+						(this_or_next|eq,":anim_id",-1),
+						(this_or_next|eq,":anim_id","anim_release_musket"),
+						(this_or_next|eq,":anim_id","anim_ready_crossbow"),
+						(eq,":anim_id","anim_crouch_crossbow"),
+						(agent_set_animation, ":agent_id", "anim_release_musket", 1),
+						(agent_set_attack_action, ":agent_id", 0, 0),
+					(try_end),
+					(try_begin),
+						(agent_get_animation, ":anim_id", ":agent_id",1),
+						(eq,":anim_id","anim_release_musket"),
+						(neg|is_presentation_active,":prsnt"),#
+						(start_presentation,":prsnt"), #
+					(try_end),
+					(try_begin),
+						(key_clicked,key_left_mouse_button),
+						(eq,":anim_id","anim_release_musket"),
+						(mission_cam_get_position, pos26),
+						(set_fixed_point_multiplier, 100),  
+						(add_missile, ":agent_id", pos26,100000, ":item_id", 0, "itm_15fa",0),
+						(val_sub, ":cur_ammo", 1),
+						(agent_set_ammo, ":agent_id", ":item_id",":cur_ammo"),
+						(play_sound_at_position, ":snd", pos26),
+						(particle_system_burst, "psys_rifle_smoke", pos26, 1),
+						(particle_system_burst, "psys_gun_fire", pos26, 1),
+						(agent_set_animation, ":agent_id", "anim_ready_crossbow", 1),
+						(agent_set_attack_action, ":agent_id", 0, 0),
+					(try_end),
+				(try_end),
+			(else_try),#rifle_aim
+				(eq,":case",3),
+				(try_begin),
+					(game_key_is_down,gk_view_char),
+					(agent_set_visibility, ":agent_id", 1),
+					(eq,reg103,1),
+					(try_begin),
+						(this_or_next|eq,":anim_id",-1),
+						(this_or_next|eq,":anim_id","anim_release_musket"),
+						(this_or_next|eq,":anim_id","anim_ready_crossbow"),
+						(eq,":anim_id","anim_crouch_crossbow"),
+						(agent_set_animation, ":agent_id", "anim_release_musket", 1),
+						(agent_set_attack_action, ":agent_id", 0, 0),
+					(try_end),
+					(try_begin),
+						(key_clicked,key_left_mouse_button),
+						(eq,":anim_id","anim_release_musket"),
+						#calculate pos26:x/y/z
+						(agent_get_bone_position, pos28, ":agent_id", 19, 1),
+						(position_get_x,":x1",pos27),
+						(position_get_x,":x2",pos28),
+						(val_sub,":x2",":x1"),
+						(position_get_y,":y1",pos27),
+						(position_get_y,":y2",pos28),
+						(val_sub,":y2",":y1"),
+						(position_get_z,":z1",pos27),
+						(position_get_z,":z2",pos28),
+						(val_sub,":z2",":z1"),
+						(copy_position,pos29,pos26),
+						(position_move_x, pos29, ":x2",1),
+						(position_move_y, pos29, ":y2",1),
+						(position_move_z, pos29, ":z2",1),
+						#end
+						(set_fixed_point_multiplier, 100),  
+						(add_missile, ":agent_id", pos29,100000, ":item_id", 0, "itm_100fa_0",0),
+						(val_sub, ":cur_ammo", 1),
+						(agent_set_ammo, ":agent_id", ":item_id",":cur_ammo"),
+						(play_sound_at_position, ":snd", pos29),#sound need normal
+						#calculate pos29
+						(agent_get_look_position,pos29,":agent_id"),
+						(position_copy_origin,pos29,pos28),
+						(position_copy_rotation,pos29,pos29),
+						(position_move_z,pos29,10,0),
+						(position_move_y,pos29,400,0),#400=40?
+						#end
+						(particle_system_burst, "psys_rifle_smoke", pos29, 1),
+						(particle_system_burst, "psys_gun_fire", pos29, 1),
+						(agent_set_animation, ":agent_id", "anim_load_rifle", 1),
+						(agent_set_attack_action, ":agent_id", 0, 0),
+					(try_end),
+				(else_try),
+					(neg|game_key_is_down,gk_view_char),
+					(assign,reg103,0),
+					(try_begin),
+						(this_or_next|eq,":anim_id",-1),
+						(this_or_next|eq,":anim_id","anim_release_musket"),
+						(this_or_next|eq,":anim_id","anim_ready_crossbow"),
+						(eq,":anim_id","anim_crouch_crossbow"),
+						(agent_set_animation, ":agent_id", "anim_release_musket", 1),
+						(agent_set_attack_action, ":agent_id", 0, 0),
+					(try_end),
+					(try_begin),
+						(agent_get_animation, ":anim_id", ":agent_id",1),
+						(eq,":anim_id","anim_release_musket"),
+						#(neg|is_presentation_active,"prsnt_mosin_nagant_aim"),
+						(start_presentation,":prsnt"), 
+					(try_end),
+					(try_begin),
+						(key_clicked,key_left_mouse_button),
+						(eq,":anim_id","anim_release_musket"),
+						(mission_cam_get_position, pos26),
+						(set_fixed_point_multiplier, 100),  
+						(add_missile, ":agent_id", pos26,100000, ":item_id", 0, "itm_100fa_0",0),
+						(val_sub, ":cur_ammo", 1),
+						(agent_set_ammo, ":agent_id", ":item_id",":cur_ammo"),
+						(play_sound_at_position, ":snd", pos26),
+						#calculate pos29
+						(agent_get_look_position,pos26,":agent_id"),
+						(agent_get_bone_position, pos27, ":agent_id", 19, 1),
+						(position_copy_origin,pos26,pos27),
+						(position_copy_rotation,pos26,pos26),
+						(position_move_z,pos26,10,0),
+						(position_move_y,pos26,400,0),#400=40?
+						#end
+						(particle_system_burst, "psys_rifle_smoke", pos26, 1),
+						(particle_system_burst, "psys_gun_fire", pos26, 1),
+						(agent_set_animation, ":agent_id", "anim_load_rifle", 1),
+						(agent_set_attack_action, ":agent_id", 0, 0),
+					(try_end),
+				(try_end),
+			(else_try),#musket_aim
+            
+				(eq,":case",5),
+				(try_begin),
+					(game_key_is_down,gk_view_char),
+					(agent_set_visibility, ":agent_id", 1),
+					(eq,reg103,1),
+					(try_begin),
+						(this_or_next|eq,":anim_id",-1),
+						(this_or_next|eq,":anim_id","anim_release_musket"),
+						(this_or_next|eq,":anim_id","anim_ready_musket"),
+						(eq,":anim_id","anim_crouch_staff"),
+						(agent_set_animation, ":agent_id", "anim_release_musket", 1),
+						(agent_set_attack_action, ":agent_id", 0, 0),
+					(try_end),
+					(try_begin),
+						(key_is_down,key_left_mouse_button),
+						(eq,":anim_id","anim_release_musket"),
+						(le,reg105,0),
+						#calculate pos26:x/y/z
+						(agent_get_bone_position, pos28, ":agent_id", 19, 1),
+						(position_get_x,":x1",pos27),
+						(position_get_x,":x2",pos28),
+						(val_sub,":x2",":x1"),
+						(position_get_y,":y1",pos27),
+						(position_get_y,":y2",pos28),
+						(val_sub,":y2",":y1"),
+						(position_get_z,":z1",pos27),
+						(position_get_z,":z2",pos28),
+						(val_sub,":z2",":z1"),
+						(copy_position,pos29,pos26),
+						(position_move_x, pos29, ":x2",1),
+						(position_move_y, pos29, ":y2",1),
+						(position_move_z, pos29, ":z2",1),
+						#end
+						(set_fixed_point_multiplier, 100),  
+						(add_missile, ":agent_id", pos29,100000, ":item_id", 0, "itm_100fa_0",0),
+						(assign,reg105,5),#12
+						(val_sub, ":cur_ammo", 1),
+						(agent_set_ammo, ":agent_id", ":item_id",":cur_ammo"),
+						(play_sound_at_position, ":snd", pos29),#sound need normal
+						#calculate pos29
+						(agent_get_look_position,pos29,":agent_id"),
+						(position_copy_origin,pos29,pos28),
+						(position_copy_rotation,pos29,pos29),
+						(position_move_z,pos29,10,0),
+						(position_move_y,pos29,80,0),#400=40?
+						(position_move_x,pos29,-10,0),#add=right
+						#end
+						(particle_system_burst, "psys_rifle_smoke", pos29, 10),
+						(particle_system_burst, "psys_gun_fire", pos29, 20),
+					(try_end),
+				(else_try),
+					(neg|game_key_is_down,gk_view_char),
+					(assign,reg103,0),
+					# (assign,reg0,":anim_id"),
+					# (display_message,"@dongzuo:{reg0}"),
+					(try_begin),
+						(this_or_next|eq,":anim_id",-1),
+						(this_or_next|eq,":anim_id","anim_release_musket"),
+						(this_or_next|eq,":anim_id","anim_ready_musket"),
+						(eq,":anim_id","anim_crouch_staff"),
+						(agent_set_animation, ":agent_id", "anim_release_musket", 1),
+						(agent_set_attack_action, ":agent_id", 0, 0),
+					(try_end),
+					(try_begin),
+						(agent_get_animation, ":anim_id", ":agent_id",1),
+						(this_or_next|eq,":anim_id","anim_ready_musket"),
+						(eq,":anim_id","anim_release_musket"),
+						#(neg|is_presentation_active,"prsnt_mosin_nagant_aim"),
+						(start_presentation,":prsnt"),#itm_100
+					(try_end),
+					(try_begin),
+						(key_is_down,key_left_mouse_button),
+						(this_or_next|eq,":anim_id","anim_ready_musket"),
+						(eq,":anim_id","anim_release_musket"),#3-jiqiang use ready
+						(le,reg105,0),
+						(mission_cam_get_position, pos26),
+						(set_fixed_point_multiplier, 100),  
+						(add_missile, ":agent_id", pos26,100000, ":item_id", 0, "itm_100fa_0",0),
+						(assign,reg105,":timeticker"),#12
+						(val_sub, ":cur_ammo", 1),
+						(agent_set_ammo, ":agent_id", ":item_id",":cur_ammo"),
+						(play_sound_at_position, ":snd", pos26),
+						#calculate pos29
+						(agent_get_look_position,pos26,":agent_id"),
+						(agent_get_bone_position, pos27, ":agent_id", 19, 1),
+						(position_copy_origin,pos26,pos27),
+						(position_copy_rotation,pos26,pos26),
+						(position_move_z,pos26,10,0),
+						(position_move_y,pos26,160,0),#400=40? 160 is good
+						(position_move_x,pos26,-10,0),#add=right
+						#end
+						(particle_system_burst, "psys_rifle_smoke", pos26, 10),
+						(particle_system_burst, "psys_gun_fire", pos26, 20),
+						# (agent_set_animation, ":agent_id", "anim_ready_crossbow", 1),
+						# (agent_set_attack_action, ":agent_id", 0, 0),
+					(try_end), 
+				(try_end),
+			(else_try),
+				(assign,reg102,0),#switch weapon
+				(assign,reg103,0),
+			(try_end),
+		(else_try),
+			(assign,reg102,0),#Unqualified
+			(agent_set_visibility, ":agent_id", 1),
+			(assign,reg103,0),
+		(try_end),
+	]
+)
+
+2.scene_prop
+   ##rifle   ##三八
+   ("mosin_nagant_aim", sokf_moveable, "sanbashi", "0", []),
+   ##musket   大正
+   ("100_aim", sokf_moveable, "jimiaowaibazi", "0", []),#itm_100
+    ####汤姆逊
+   ("tmx", sokf_moveable, "jimiaotmx", "0", []),
+   ###春田步枪
+   ("chuntianbuqiang", sokf_moveable, "chuntianbuqiangjimiao", "0", []),
+   ###手枪
+   ("m1911_aim", sokf_moveable, "chi_mauser_c96_10xiang_1wanjia", "0", []),##废弃
+   ###汉阳造步枪
+   ("hanyangzao", sokf_moveable, "hanyzaojimiao", "0", []),
+   ###中正式步枪
+   ("zhongzhengshi", sokf_moveable, "zhongzhengshijimiao2", "0", []),
+   ###zb26
+   ("zb26", sokf_moveable, "zb26", "0", []),
+    ####99式
+   ("99shijiqiangjimiao", sokf_moveable, "99shijiqiangjimiao", "0", []),
+   
+3.presetation:
+  ("mosin_nagant_sniper_rifle_mirror", prsntf_read_only|prsntf_manual_end_only, 0, [
+			(ti_on_presentation_load, [#open prsnt
+				(is_camera_in_first_person),
+				(eq,reg102,1),#is open mirror
+				(get_player_agent_no,":agent_id"),  
+				(agent_is_alive,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(eq,":anim_id","anim_release_musket"),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(eq,":item_id","itm_97shibuqiang"),
+				(neg|game_key_is_down,gk_view_char),
+				(set_fixed_point_multiplier, 100),  
+				(set_zoom_amount,150),#150
+				(create_mesh_overlay, reg101, "mesh_mosin_nagant_sniper_rifle_mirror"),
+				(position_set_x, pos26, 50), 
+				(position_set_y, pos26, 37), 
+				(overlay_set_position, reg101, pos26),
+				(position_set_x, pos26, 101), 
+				(position_set_y, pos26, 100), 
+				(overlay_set_size, reg101, pos26),
+				(agent_set_visibility, ":agent_id", 0),#0
+				(presentation_set_duration, 999999),
+			]),
+			(ti_on_presentation_run, [#close prsnt
+				(get_player_agent_no,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(try_begin),
+					(agent_is_alive,":agent_id"), 
+					(is_camera_in_first_person),
+					(eq,reg102,1),#is open mirror
+					(this_or_next|eq,":anim_id","anim_ready_crossbow"),
+					(eq,":anim_id","anim_release_musket"),
+					(eq,":item_id","itm_97shibuqiang"),
+					(neg|game_key_is_down,gk_view_char),
+					#do nothing,keep running
+				(else_try),
+					(agent_set_visibility, ":agent_id", 1),
+					(set_zoom_amount,0),
+					(presentation_set_duration,0),
+				(try_end),
+			]),
+		]),
+
+		("m1t_mirror", prsntf_read_only|prsntf_manual_end_only, 0, [
+			(ti_on_presentation_load, [#open prsnt
+				(is_camera_in_first_person),
+				(eq,reg102,1),#is open mirror
+				(get_player_agent_no,":agent_id"),  
+				(agent_is_alive,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(eq,":anim_id","anim_release_musket"),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(eq,":item_id","itm_97shibuqiang2"),
+				(neg|game_key_is_down,gk_view_char),
+				(set_fixed_point_multiplier, 100),  
+				(set_zoom_amount,150),				
+				(create_mesh_overlay, reg101, "mesh_m1t_mirror"),
+				(position_set_x, pos26, 50), 
+				(position_set_y, pos26, 37), 
+				(overlay_set_position, reg101, pos26),
+				(position_set_x, pos26, 101), 
+				(position_set_y, pos26, 100), 
+				(overlay_set_size, reg101, pos26),
+				(agent_set_visibility, ":agent_id", 0),
+				(presentation_set_duration, 999999),
+			]),
+			(ti_on_presentation_run, [#close prsnt
+				(get_player_agent_no,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(try_begin),
+					(agent_is_alive,":agent_id"), 
+					(is_camera_in_first_person),
+					(eq,reg102,1),#is open mirror
+					(this_or_next|eq,":anim_id","anim_ready_crossbow"),
+					(eq,":anim_id","anim_release_musket"),
+					(eq,":item_id","itm_97shibuqiang2"),
+					(neg|game_key_is_down,gk_view_char),
+					#do nothing,keep running
+				(else_try),
+					(agent_set_visibility, ":agent_id", 1),
+					(set_zoom_amount,0), 
+					(presentation_set_duration,0),
+				(try_end),
+			]),
+		]),
+		#####三八
+		("mosin_nagant_aim", prsntf_read_only|prsntf_manual_end_only, 0, [
+			(ti_on_presentation_load, [#open prsnt
+				(is_camera_in_first_person),
+				(eq,reg102,1),#is open mirror
+				(get_player_agent_no,":agent_id"),  
+				(agent_is_alive,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(eq,":anim_id","anim_release_musket"),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+                (this_or_next|eq,":item_id","itm_type_38_c_qizirijunzhuanyong"),
+                (this_or_next|eq,":item_id","itm_type_38_c_qizirijunzhuanyong1"),
+                (this_or_next|eq,":item_id","itm_38shibuqiang"),
+				(eq,":item_id","itm_type_38_c_qizi"),
+				(neg|game_key_is_down,gk_view_char),
+				(set_fixed_point_multiplier, 100),  
+				#(set_zoom_amount,150),				
+				#(create_mesh_overlay, reg101, "mesh_mosin_nagant_aim"),
+				#(spawn_scene_prop, "spr_mosin_nagant_aim"),
+				#(assign,reg104,reg0),
+				#(scene_prop_set_visibility, reg104, 1),
+				(scene_prop_get_instance, reg104, "spr_mosin_nagant_aim", 0),
+				#(display_message,"@start_prsnt"),
+				#(position_set_x, pos26, 50), 
+				#(position_set_y, pos26, 37), 
+				(mission_cam_get_position, pos26),
+				#(overlay_set_position, reg101, pos26),
+				#(position_set_x, pos26, 101), 
+				#(position_set_y, pos26, 100), 
+				#(overlay_set_size, reg101, pos26),
+				(position_rotate_y,pos26,90,0),#xuanzhuanjiaodu-wanmei
+				(position_move_y,pos26,10,0),#changdu-hege
+				(position_move_x,pos26,8,0),#gaodu-hege(fududa),add=low
+				(position_move_z,pos26,-1,0),#zuoyou-wanmei,add=left
+				(position_rotate_z,pos26,6,0),#qiangkoujiaodu-wanmei,add=high
+				(position_rotate_x,pos26,-1,0),#qiangkouzuoyou-wanmei,add=left
+				(prop_instance_set_position, reg104, pos26),
+				(position_get_x,reg1,pos26),
+				(position_get_y,reg2,pos26),
+				(position_get_z,reg3,pos26),
+				#(display_message,"@weizhi:{reg1},{reg2},{reg3}"),
+				#(scene_prop_set_visibility, reg104,0),
+				#(scene_prop_set_prune_time,reg104,0),
+				#(assign,reg104,0), 
+				(prop_instance_set_scale,reg104,100,100,-100),
+				# (prop_instance_get_scale,pos1,reg104),
+				# (position_get_scale_x,reg1,pos1),
+				# (position_get_scale_y,reg2,pos1),
+				# (position_get_scale_z,reg3,pos1),
+				# (display_message,"@bili:{reg1},{reg2},{reg3}"),
+				(scene_prop_set_visibility, reg104, 1),
+				(agent_set_visibility, ":agent_id", 0),
+				(presentation_set_duration, 999999),
+			]),
+			(ti_on_presentation_run, [#close prsnt
+				(get_player_agent_no,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(try_begin),
+					(agent_is_alive,":agent_id"), 
+					(is_camera_in_first_person),
+					(eq,reg102,1),#is open mirror
+					(this_or_next|eq,":anim_id","anim_ready_crossbow"),
+					(eq,":anim_id","anim_release_musket"),
+					(this_or_next|eq,":item_id","itm_type_38_c_qizirijunzhuanyong"),
+                    (this_or_next|eq,":item_id","itm_type_38_c_qizirijunzhuanyong1"),
+                    (this_or_next|eq,":item_id","itm_38shibuqiang"),
+                    (eq,":item_id","itm_type_38_c_qizi"),
+					(neg|game_key_is_down,gk_view_char),
+					#do nothing,keep running
+				(else_try),
+                    ###解决bug1:机瞄开枪城门消失    24024 9.26
+                    (prop_instance_get_scene_prop_kind,":scene_prop", reg104),
+                    (eq,":scene_prop","spr_mosin_nagant_aim"),
+                    ###解决bug1:机瞄开枪城门消失
+					(scene_prop_set_visibility, reg104,0),
+					#(scene_prop_set_prune_time,reg104,0),#can't run
+					(assign,reg104,0),
+					(agent_set_visibility, ":agent_id", 1),
+					(set_zoom_amount,0),
+					(presentation_set_duration,0),
+				(try_end),
+			]),
+		]),
+        
+		###大正
+		("100_aim", prsntf_read_only|prsntf_manual_end_only, 0, [#itm_100
+			(ti_on_presentation_load, [#open prsnt
+				(is_camera_in_first_person),
+				(eq,reg102,1),#is open mirror
+				(get_player_agent_no,":agent_id"),  
+				(agent_is_alive,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(this_or_next|eq,":anim_id","anim_ready_musket"),
+				(eq,":anim_id","anim_release_musket"),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(eq,":item_id","itm_type_11_mg"),#itm_100
+				(neg|game_key_is_down,gk_view_char),
+				(set_fixed_point_multiplier, 100),  
+				#(set_zoom_amount,150),				
+				#(create_mesh_overlay, reg101, "mesh_mosin_nagant_aim"),
+				#(spawn_scene_prop, "spr_mosin_nagant_aim"),
+				#(assign,reg104,reg0),
+				#(scene_prop_set_visibility, reg104, 1),
+				(scene_prop_get_instance, reg104, "spr_100_aim", 0),#itm_100
+				#(display_message,"@start_prsnt"),
+				#(position_set_x, pos26, 50), 
+				#(position_set_y, pos26, 37), 
+				(mission_cam_get_position, pos26),
+				#(overlay_set_position, reg101, pos26),
+				#(position_set_x, pos26, 101), 
+				#(position_set_y, pos26, 100), 
+				#(overlay_set_size, reg101, pos26),
+				(position_rotate_y,pos26,90,0),#xuanzhuanjiaodu-wanmei
+				(position_move_y,pos26,10,0),#changdu-hege
+				(position_move_x,pos26,12,0),#gaodu-wanmei(fuduzhenda),add=low
+				#(position_move_z,pos26,-1,0),#zuoyou-shanchu,add=left
+				(position_rotate_z,pos26,3,0),#qiangkoujiaodu-wanmei,add=high
+				(position_rotate_z_floating,pos26,35),#weitiao-qiangkou,add=high,wanmei
+				#(position_rotate_x,pos26,1,0),#qiangkouzuoyou-wanmei,add=left
+				(prop_instance_set_position, reg104, pos26),
+				(position_get_x,reg1,pos26),
+				(position_get_y,reg2,pos26),
+				(position_get_z,reg3,pos26),
+				#(display_message,"@weizhi:{reg1},{reg2},{reg3}"),
+				#(scene_prop_set_visibility, reg104,0),
+				#(scene_prop_set_prune_time,reg104,0),
+				#(assign,reg104,0), 
+				(prop_instance_set_scale,reg104,100,100,-100),
+				# (prop_instance_get_scale,pos1,reg104),
+				# (position_get_scale_x,reg1,pos1),
+				# (position_get_scale_y,reg2,pos1),
+				# (position_get_scale_z,reg3,pos1),
+				# (display_message,"@bili:{reg1},{reg2},{reg3}"),
+				(scene_prop_set_visibility, reg104, 1),
+				(agent_set_visibility, ":agent_id", 0),
+				(presentation_set_duration, 999999),
+			]),
+			(ti_on_presentation_run, [#close prsnt
+				(get_player_agent_no,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(try_begin),
+					(agent_is_alive,":agent_id"), 
+					(is_camera_in_first_person),
+					(eq,reg102,1),#is open mirror
+					(this_or_next|eq,":anim_id","anim_ready_musket"),
+					(eq,":anim_id","anim_release_musket"),
+					(eq,":item_id","itm_type_11_mg"),#itm_100
+					(neg|game_key_is_down,gk_view_char),
+					#do nothing,keep running
+				(else_try),
+                    ###解决bug1:机瞄开枪城门消失    24024 9.26
+                    (prop_instance_get_scene_prop_kind,":scene_prop", reg104),
+                    (eq,":scene_prop","spr_100_aim"),
+                    ###解决bug1:机瞄开枪城门消失
+					(scene_prop_set_visibility, reg104,0),
+					#(scene_prop_set_prune_time,reg104,0),#can't run
+					(assign,reg104,0),
+					(agent_set_visibility, ":agent_id", 1),
+					(set_zoom_amount,0),
+					(presentation_set_duration,0),
+				(try_end),
+			]),
+		]),
+		#################mp18
+        ("tmx", prsntf_read_only|prsntf_manual_end_only, 0, [#itm_100
+			(ti_on_presentation_load, [#open prsnt
+				(is_camera_in_first_person),
+				(eq,reg102,1),#is open mirror
+				(get_player_agent_no,":agent_id"),  
+				(agent_is_alive,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(this_or_next|eq,":anim_id","anim_ready_musket"),
+				(eq,":anim_id","anim_release_musket"),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(eq,":item_id","itm_thompsonm1928a1"),#itm_100
+				(neg|game_key_is_down,gk_view_char),
+				(set_fixed_point_multiplier, 100),  
+				#(set_zoom_amount,150),				
+				#(create_mesh_overlay, reg101, "mesh_mosin_nagant_aim"),
+				#(spawn_scene_prop, "spr_mosin_nagant_aim"),
+				#(assign,reg104,reg0),
+				#(scene_prop_set_visibility, reg104, 1),
+				(scene_prop_get_instance, reg104, "spr_tmx", 0),#itm_100
+				#(display_message,"@start_prsnt"),
+				#(position_set_x, pos26, 50), 
+				#(position_set_y, pos26, 37), 
+				(mission_cam_get_position, pos26),
+				#(overlay_set_position, reg101, pos26),
+				#(position_set_x, pos26, 101), 
+				#(position_set_y, pos26, 100), 
+				#(overlay_set_size, reg101, pos26),
+				(position_rotate_y,pos26,90,0),#xuanzhuanjiaodu-wanmei
+				(position_move_y,pos26,10,0),#changdu-hege
+				(position_move_x,pos26,12,0),#gaodu-wanmei(fuduzhenda),add=low
+				#(position_move_z,pos26,-1,0),#zuoyou-shanchu,add=left
+				(position_rotate_z,pos26,3,0),#qiangkoujiaodu-wanmei,add=high
+				(position_rotate_z_floating,pos26,35),#weitiao-qiangkou,add=high,wanmei
+				#(position_rotate_x,pos26,1,0),#qiangkouzuoyou-wanmei,add=left
+				(prop_instance_set_position, reg104, pos26),
+				(position_get_x,reg1,pos26),
+				(position_get_y,reg2,pos26),
+				(position_get_z,reg3,pos26),
+				#(display_message,"@weizhi:{reg1},{reg2},{reg3}"),
+				#(scene_prop_set_visibility, reg104,0),
+				#(scene_prop_set_prune_time,reg104,0),
+				#(assign,reg104,0), 
+				(prop_instance_set_scale,reg104,100,100,-100),
+				# (prop_instance_get_scale,pos1,reg104),
+				# (position_get_scale_x,reg1,pos1),
+				# (position_get_scale_y,reg2,pos1),
+				# (position_get_scale_z,reg3,pos1),
+				# (display_message,"@bili:{reg1},{reg2},{reg3}"),
+				(scene_prop_set_visibility, reg104, 1),
+				(agent_set_visibility, ":agent_id", 0),
+				(presentation_set_duration, 999999),
+			]),
+			(ti_on_presentation_run, [#close prsnt
+				(get_player_agent_no,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(try_begin),
+					(agent_is_alive,":agent_id"), 
+					(is_camera_in_first_person),
+					(eq,reg102,1),#is open mirror
+					(this_or_next|eq,":anim_id","anim_ready_musket"),
+					(eq,":anim_id","anim_release_musket"),
+					(eq,":item_id","itm_thompsonm1928a1"),#itm_100
+					(neg|game_key_is_down,gk_view_char),
+					#do nothing,keep running
+				(else_try),
+                    ###解决bug1:机瞄开枪城门消失    24024 9.26
+                    (prop_instance_get_scene_prop_kind,":scene_prop", reg104),
+                    (eq,":scene_prop","spr_tmx"),
+                    ###解决bug1:机瞄开枪城门消失
+					(scene_prop_set_visibility, reg104,0),
+					#(scene_prop_set_prune_time,reg104,0),#can't run
+					(assign,reg104,0),
+					(agent_set_visibility, ":agent_id", 1),
+					(set_zoom_amount,0),
+					(presentation_set_duration,0),
+				(try_end),
+			]),
+		]),
+        
+		
+  
+  ###春田步枪
+		("chuntianbuqiang", prsntf_read_only|prsntf_manual_end_only, 0, [
+			(ti_on_presentation_load, [#open prsnt
+				(is_camera_in_first_person),
+				(eq,reg102,1),#is open mirror
+				(get_player_agent_no,":agent_id"),  
+				(agent_is_alive,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(eq,":anim_id","anim_release_musket"),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(eq,":item_id","itm_garand"),
+				(neg|game_key_is_down,gk_view_char),
+				(set_fixed_point_multiplier, 100),  
+				#(set_zoom_amount,150),				
+				#(create_mesh_overlay, reg101, "mesh_mosin_nagant_aim"),
+				#(spawn_scene_prop, "spr_mosin_nagant_aim"),
+				#(assign,reg104,reg0),
+				#(scene_prop_set_visibility, reg104, 1),
+				(scene_prop_get_instance, reg104, "spr_chuntianbuqiang", 0),
+				#(display_message,"@start_prsnt"),
+				#(position_set_x, pos26, 50), 
+				#(position_set_y, pos26, 37), 
+				(mission_cam_get_position, pos26),
+				#(overlay_set_position, reg101, pos26),
+				#(position_set_x, pos26, 101), 
+				#(position_set_y, pos26, 100), 
+				#(overlay_set_size, reg101, pos26),
+				(position_rotate_y,pos26,90,0),#xuanzhuanjiaodu-wanmei
+				(position_move_y,pos26,10,0),#changdu-hege
+				(position_move_x,pos26,9,0),#gaodu-hege(fududa),add=low
+				(position_move_z,pos26,-1,0),#zuoyou-wanmei,add=left
+				(position_rotate_z,pos26,6,0),#qiangkoujiaodu-wanmei,add=high
+				(position_rotate_x,pos26,-1,0),#qiangkouzuoyou-wanmei,add=left
+				(prop_instance_set_position, reg104, pos26),
+				(position_get_x,reg1,pos26),
+				(position_get_y,reg2,pos26),
+				(position_get_z,reg3,pos26),
+				#(display_message,"@weizhi:{reg1},{reg2},{reg3}"),
+				#(scene_prop_set_visibility, reg104,0),
+				#(scene_prop_set_prune_time,reg104,0),
+				#(assign,reg104,0), 
+				(prop_instance_set_scale,reg104,100,100,-100),
+				# (prop_instance_get_scale,pos1,reg104),
+				# (position_get_scale_x,reg1,pos1),
+				# (position_get_scale_y,reg2,pos1),
+				# (position_get_scale_z,reg3,pos1),
+				# (display_message,"@bili:{reg1},{reg2},{reg3}"),
+				(scene_prop_set_visibility, reg104, 1),
+				(agent_set_visibility, ":agent_id", 0),
+				(presentation_set_duration, 999999),
+			]),
+			(ti_on_presentation_run, [#close prsnt
+				(get_player_agent_no,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(try_begin),
+					(agent_is_alive,":agent_id"), 
+					(is_camera_in_first_person),
+					(eq,reg102,1),#is open mirror
+					(this_or_next|eq,":anim_id","anim_ready_crossbow"),
+					(eq,":anim_id","anim_release_musket"),
+					(eq,":item_id","itm_garand"),
+					(neg|game_key_is_down,gk_view_char),
+					#do nothing,keep running
+				(else_try),
+                    ###解决bug1:机瞄开枪城门消失    24024 9.26
+                    (prop_instance_get_scene_prop_kind,":scene_prop", reg104),
+                    (eq,":scene_prop","spr_chuntianbuqiang"),
+                    ###解决bug1:机瞄开枪城门消失
+					(scene_prop_set_visibility, reg104,0),
+					#(scene_prop_set_prune_time,reg104,0),#can't run
+					(assign,reg104,0),
+					(agent_set_visibility, ":agent_id", 1),
+					(set_zoom_amount,0),
+					(presentation_set_duration,0),
+				(try_end),
+			]),
+		]),
+        ###春田步枪
+        ######汉阳造
+        ("hanyangzao", prsntf_read_only|prsntf_manual_end_only, 0, [
+			(ti_on_presentation_load, [#open prsnt
+				(is_camera_in_first_person),
+				(eq,reg102,1),#is open mirror
+				(get_player_agent_no,":agent_id"),  
+				(agent_is_alive,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(eq,":anim_id","anim_release_musket"),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+                (this_or_next|eq,":item_id","itm_hym_with_bayonet_gun"),
+                (this_or_next|eq,":item_id","itm_hym_with_bayonet_gun01"),
+				(eq,":item_id","itm_hanyang_881111"),
+				(neg|game_key_is_down,gk_view_char),
+				(set_fixed_point_multiplier, 100),  
+				#(set_zoom_amount,150),				
+				#(create_mesh_overlay, reg101, "mesh_mosin_nagant_aim"),
+				#(spawn_scene_prop, "spr_mosin_nagant_aim"),
+				#(assign,reg104,reg0),
+				#(scene_prop_set_visibility, reg104, 1),
+				(scene_prop_get_instance, reg104, "spr_hanyangzao", 0),
+				#(display_message,"@start_prsnt"),
+				#(position_set_x, pos26, 50), 
+				#(position_set_y, pos26, 37), 
+				(mission_cam_get_position, pos26),
+				#(overlay_set_position, reg101, pos26),
+				#(position_set_x, pos26, 101), 
+				#(position_set_y, pos26, 100), 
+				#(overlay_set_size, reg101, pos26),
+				(position_rotate_y,pos26,90,0),#xuanzhuanjiaodu-wanmei
+				(position_move_y,pos26,10,0),#changdu-hege
+				(position_move_x,pos26,9,0),#gaodu-hege(fududa),add=low
+				(position_move_z,pos26,-1,0),#zuoyou-wanmei,add=left
+				(position_rotate_z,pos26,6,0),#qiangkoujiaodu-wanmei,add=high
+				(position_rotate_x,pos26,-1,0),#qiangkouzuoyou-wanmei,add=left
+				(prop_instance_set_position, reg104, pos26),
+				(position_get_x,reg1,pos26),
+				(position_get_y,reg2,pos26),
+				(position_get_z,reg3,pos26),
+				#(display_message,"@weizhi:{reg1},{reg2},{reg3}"),
+				#(scene_prop_set_visibility, reg104,0),
+				#(scene_prop_set_prune_time,reg104,0),
+				#(assign,reg104,0), 
+				(prop_instance_set_scale,reg104,100,100,-100),
+				# (prop_instance_get_scale,pos1,reg104),
+				# (position_get_scale_x,reg1,pos1),
+				# (position_get_scale_y,reg2,pos1),
+				# (position_get_scale_z,reg3,pos1),
+				# (display_message,"@bili:{reg1},{reg2},{reg3}"),
+				(scene_prop_set_visibility, reg104, 1),
+				(agent_set_visibility, ":agent_id", 0),
+				(presentation_set_duration, 999999),
+			]),
+			(ti_on_presentation_run, [#close prsnt
+				(get_player_agent_no,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(try_begin),
+					(agent_is_alive,":agent_id"), 
+					(is_camera_in_first_person),
+					(eq,reg102,1),#is open mirror
+					(this_or_next|eq,":anim_id","anim_ready_crossbow"),
+					(eq,":anim_id","anim_release_musket"),
+                    (this_or_next|eq,":item_id","itm_hym_with_bayonet_gun"),
+                    (this_or_next|eq,":item_id","itm_hym_with_bayonet_gun01"),
+					(eq,":item_id","itm_hanyang_881111"),
+					(neg|game_key_is_down,gk_view_char),
+					#do nothing,keep running
+				(else_try),
+                    ###解决bug1:机瞄开枪城门消失    24024 9.26
+                    (prop_instance_get_scene_prop_kind,":scene_prop", reg104),
+                    (eq,":scene_prop","spr_hanyangzao"),
+                    ###解决bug1:机瞄开枪城门消失
+					(scene_prop_set_visibility, reg104,0),
+					#(scene_prop_set_prune_time,reg104,0),#can't run
+					(assign,reg104,0),
+					(agent_set_visibility, ":agent_id", 1),
+					(set_zoom_amount,0),
+					(presentation_set_duration,0),
+				(try_end),
+			]),
+		]),
+        ########汉阳造
+        ######中正式
+        ("zhongzhengshi", prsntf_read_only|prsntf_manual_end_only, 0, [
+			(ti_on_presentation_load, [#open prsnt
+				(is_camera_in_first_person),
+				(eq,reg102,1),#is open mirror
+				(get_player_agent_no,":agent_id"),  
+				(agent_is_alive,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(eq,":anim_id","anim_release_musket"),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(eq,":item_id","itm_zhongzhenshimx"),
+				(neg|game_key_is_down,gk_view_char),
+				(set_fixed_point_multiplier, 100),  
+				#(set_zoom_amount,150),				
+				#(create_mesh_overlay, reg101, "mesh_mosin_nagant_aim"),
+				#(spawn_scene_prop, "spr_mosin_nagant_aim"),
+				#(assign,reg104,reg0),
+				#(scene_prop_set_visibility, reg104, 1),
+				(scene_prop_get_instance, reg104, "spr_zhongzhengshi", 0),
+				#(display_message,"@start_prsnt"),
+				#(position_set_x, pos26, 50), 
+				#(position_set_y, pos26, 37), 
+				(mission_cam_get_position, pos26),
+				#(overlay_set_position, reg101, pos26),
+				#(position_set_x, pos26, 101), 
+				#(position_set_y, pos26, 100), 
+				#(overlay_set_size, reg101, pos26),
+				(position_rotate_y,pos26,90,0),#xuanzhuanjiaodu-wanmei
+				(position_move_y,pos26,10,0),#changdu-hege
+				(position_move_x,pos26,10,0),#gaodu-hege(fududa),add=low
+				(position_move_z,pos26,-1,0),#zuoyou-wanmei,add=left
+				(position_rotate_z,pos26,6,0),#qiangkoujiaodu-wanmei,add=high
+				(position_rotate_x,pos26,-1,0),#qiangkouzuoyou-wanmei,add=left
+				(prop_instance_set_position, reg104, pos26),
+				(position_get_x,reg1,pos26),
+				(position_get_y,reg2,pos26),
+				(position_get_z,reg3,pos26),
+				#(display_message,"@weizhi:{reg1},{reg2},{reg3}"),
+				#(scene_prop_set_visibility, reg104,0),
+				#(scene_prop_set_prune_time,reg104,0),
+				#(assign,reg104,0), 
+				(prop_instance_set_scale,reg104,100,100,-100),
+				# (prop_instance_get_scale,pos1,reg104),
+				# (position_get_scale_x,reg1,pos1),
+				# (position_get_scale_y,reg2,pos1),
+				# (position_get_scale_z,reg3,pos1),
+				# (display_message,"@bili:{reg1},{reg2},{reg3}"),
+				(scene_prop_set_visibility, reg104, 1),
+				(agent_set_visibility, ":agent_id", 0),
+				(presentation_set_duration, 999999),
+			]),
+			(ti_on_presentation_run, [#close prsnt
+				(get_player_agent_no,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(try_begin),
+					(agent_is_alive,":agent_id"), 
+					(is_camera_in_first_person),
+					(eq,reg102,1),#is open mirror
+					(this_or_next|eq,":anim_id","anim_ready_crossbow"),
+					(eq,":anim_id","anim_release_musket"),
+					(eq,":item_id","itm_zhongzhenshimx"),
+					(neg|game_key_is_down,gk_view_char),
+					#do nothing,keep running
+				(else_try),
+                    ###解决bug1:机瞄开枪城门消失    24024 9.26
+                    (prop_instance_get_scene_prop_kind,":scene_prop", reg104),
+                    (eq,":scene_prop","spr_zhongzhengshi"),
+                    ###解决bug1:机瞄开枪城门消失
+					(scene_prop_set_visibility, reg104,0),
+					#(scene_prop_set_prune_time,reg104,0),#can't run
+					(assign,reg104,0),
+					(agent_set_visibility, ":agent_id", 1),
+					(set_zoom_amount,0),
+					(presentation_set_duration,0),
+				(try_end),
+			]),
+		]),
+        ########中正式
+        
+        #################zb26
+        ("zb26", prsntf_read_only|prsntf_manual_end_only, 0, [#itm_100
+			(ti_on_presentation_load, [#open prsnt
+				(is_camera_in_first_person),
+				(eq,reg102,1),#is open mirror
+				(get_player_agent_no,":agent_id"),  
+				(agent_is_alive,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(this_or_next|eq,":anim_id","anim_ready_musket"),
+				(eq,":anim_id","anim_release_musket"),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(eq,":item_id","itm_chi_zb26"),#itm_100
+				(neg|game_key_is_down,gk_view_char),
+				(set_fixed_point_multiplier, 100),  
+				#(set_zoom_amount,150),				
+				#(create_mesh_overlay, reg101, "mesh_mosin_nagant_aim"),
+				#(spawn_scene_prop, "spr_mosin_nagant_aim"),
+				#(assign,reg104,reg0),
+				#(scene_prop_set_visibility, reg104, 1),
+				(scene_prop_get_instance, reg104, "spr_zb26", 0),#itm_100
+				#(display_message,"@start_prsnt"),
+				#(position_set_x, pos26, 50), 
+				#(position_set_y, pos26, 37), 
+				(mission_cam_get_position, pos26),
+				#(overlay_set_position, reg101, pos26),
+				#(position_set_x, pos26, 101), 
+				#(position_set_y, pos26, 100), 
+				#(overlay_set_size, reg101, pos26),
+				(position_rotate_y,pos26,90,0),#xuanzhuanjiaodu-wanmei
+				(position_move_y,pos26,10,0),#changdu-hege
+				(position_move_x,pos26,10,0),#gaodu-wanmei(fuduzhenda),add=low
+				#(position_move_z,pos26,-1,0),#zuoyou-shanchu,add=left
+				(position_rotate_z,pos26,3,0),#qiangkoujiaodu-wanmei,add=high
+				(position_rotate_z_floating,pos26,35),#weitiao-qiangkou,add=high,wanmei
+				#(position_rotate_x,pos26,1,0),#qiangkouzuoyou-wanmei,add=left
+				(prop_instance_set_position, reg104, pos26),
+				(position_get_x,reg1,pos26),
+				(position_get_y,reg2,pos26),
+				(position_get_z,reg3,pos26),
+				#(display_message,"@weizhi:{reg1},{reg2},{reg3}"),
+				#(scene_prop_set_visibility, reg104,0),
+				#(scene_prop_set_prune_time,reg104,0),
+				#(assign,reg104,0), 
+				(prop_instance_set_scale,reg104,100,100,-100),
+				# (prop_instance_get_scale,pos1,reg104),
+				# (position_get_scale_x,reg1,pos1),
+				# (position_get_scale_y,reg2,pos1),
+				# (position_get_scale_z,reg3,pos1),
+				# (display_message,"@bili:{reg1},{reg2},{reg3}"),
+				(scene_prop_set_visibility, reg104, 1),
+				(agent_set_visibility, ":agent_id", 0),
+				(presentation_set_duration, 999999),
+			]),
+			(ti_on_presentation_run, [#close prsnt
+				(get_player_agent_no,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(try_begin),
+					(agent_is_alive,":agent_id"), 
+					(is_camera_in_first_person),
+					(eq,reg102,1),#is open mirror
+					(this_or_next|eq,":anim_id","anim_ready_musket"),
+					(eq,":anim_id","anim_release_musket"),
+					(eq,":item_id","itm_chi_zb26"),#itm_100
+					(neg|game_key_is_down,gk_view_char),
+					#do nothing,keep running
+				(else_try),
+                    ###解决bug1:机瞄开枪城门消失    24024 9.26
+                    (prop_instance_get_scene_prop_kind,":scene_prop", reg104),
+                    (eq,":scene_prop","spr_zb26"),
+                    ###解决bug1:机瞄开枪城门消失
+					(scene_prop_set_visibility, reg104,0),
+					#(scene_prop_set_prune_time,reg104,0),#can't run
+					(assign,reg104,0),
+					(agent_set_visibility, ":agent_id", 1),
+					(set_zoom_amount,0),
+					(presentation_set_duration,0),
+				(try_end),
+			]),
+		]),
+        ########zb26
+        ########99式
+        ("99shi", prsntf_read_only|prsntf_manual_end_only, 0, [#itm_100
+			(ti_on_presentation_load, [#open prsnt
+				(is_camera_in_first_person),
+				(eq,reg102,1),#is open mirror
+				(get_player_agent_no,":agent_id"),  
+				(agent_is_alive,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(this_or_next|eq,":anim_id","anim_ready_musket"),
+				(eq,":anim_id","anim_release_musket"),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(eq,":item_id","itm_jap_typ_type96"),#itm_100
+				(neg|game_key_is_down,gk_view_char),
+				(set_fixed_point_multiplier, 100),  
+				#(set_zoom_amount,150),				
+				#(create_mesh_overlay, reg101, "mesh_mosin_nagant_aim"),
+				#(spawn_scene_prop, "spr_mosin_nagant_aim"),
+				#(assign,reg104,reg0),
+				#(scene_prop_set_visibility, reg104, 1),
+				(scene_prop_get_instance, reg104, "spr_99shijiqiangjimiao", 0),#itm_100
+				#(display_message,"@start_prsnt"),
+				#(position_set_x, pos26, 50), 
+				#(position_set_y, pos26, 37), 
+				(mission_cam_get_position, pos26),
+				#(overlay_set_position, reg101, pos26),
+				#(position_set_x, pos26, 101), 
+				#(position_set_y, pos26, 100), 
+				#(overlay_set_size, reg101, pos26),
+				(position_rotate_y,pos26,90,0),#xuanzhuanjiaodu-wanmei
+				(position_move_y,pos26,10,0),#changdu-hege
+				(position_move_x,pos26,10,0),#gaodu-wanmei(fuduzhenda),add=low
+				#(position_move_z,pos26,-1,0),#zuoyou-shanchu,add=left
+				(position_rotate_z,pos26,3,0),#qiangkoujiaodu-wanmei,add=high
+				(position_rotate_z_floating,pos26,35),#weitiao-qiangkou,add=high,wanmei
+				#(position_rotate_x,pos26,1,0),#qiangkouzuoyou-wanmei,add=left
+				(prop_instance_set_position, reg104, pos26),
+				(position_get_x,reg1,pos26),
+				(position_get_y,reg2,pos26),
+				(position_get_z,reg3,pos26),
+				#(display_message,"@weizhi:{reg1},{reg2},{reg3}"),
+				#(scene_prop_set_visibility, reg104,0),
+				#(scene_prop_set_prune_time,reg104,0),
+				#(assign,reg104,0), 
+				(prop_instance_set_scale,reg104,100,100,-100),
+				# (prop_instance_get_scale,pos1,reg104),
+				# (position_get_scale_x,reg1,pos1),
+				# (position_get_scale_y,reg2,pos1),
+				# (position_get_scale_z,reg3,pos1),
+				# (display_message,"@bili:{reg1},{reg2},{reg3}"),
+				(scene_prop_set_visibility, reg104, 1),
+				(agent_set_visibility, ":agent_id", 0),
+				(presentation_set_duration, 999999),
+			]),
+			(ti_on_presentation_run, [#close prsnt
+				(get_player_agent_no,":agent_id"), 
+				(agent_get_animation, ":anim_id", ":agent_id",1),
+				(agent_get_wielded_item,":item_id",":agent_id"), 
+				(try_begin),
+					(agent_is_alive,":agent_id"), 
+					(is_camera_in_first_person),
+					(eq,reg102,1),#is open mirror
+					(this_or_next|eq,":anim_id","anim_ready_musket"),
+					(eq,":anim_id","anim_release_musket"),
+					(eq,":item_id","itm_jap_typ_type96"),#itm_100
+					(neg|game_key_is_down,gk_view_char),
+					#do nothing,keep running
+				(else_try),
+                    ###解决bug1:机瞄开枪城门消失    24024 9.26
+                    (prop_instance_get_scene_prop_kind,":scene_prop", reg104),
+                    (eq,":scene_prop","spr_99shijiqiangjimiao"),
+                    ###解决bug1:机瞄开枪城门消失
+					(scene_prop_set_visibility, reg104,0),
+					#(scene_prop_set_prune_time,reg104,0),#can't run
+					(assign,reg104,0),
+					(agent_set_visibility, ":agent_id", 1),
+					(set_zoom_amount,0),
+					(presentation_set_duration,0),
+				(try_end),
+			]),
+		]),
+        ########99式
+		
+4.mesh:
+########机瞄
+  ("mosin_nagant_sniper_rifle_mirror", 0, "mosin_nagant_sniper_rifle_mirror", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("m1t_mirror", 0, "m1t_mirror", 0, 0, 0, 0, 0, 0, 1, 1, 1),

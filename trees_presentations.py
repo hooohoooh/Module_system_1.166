@@ -67,6 +67,7 @@ presentations = [
           (position_set_x, pos1, 53),
           (position_set_y, pos1, 576),
           (overlay_set_position, ":icon", pos1),
+          (assign, "$g_troop_detail_overlay_0", ":icon"),
         (else_try),
           (create_image_button_overlay, ":btn", "mesh_mp_inventory_slot_helmet", "mesh_mp_inventory_slot_helmet"),
           (position_set_x, pos1, 800),
@@ -75,7 +76,9 @@ presentations = [
           (position_set_x, pos1, 2),
           (position_set_y, pos1, 525),
           (overlay_set_position, ":btn", pos1),
+          (assign, "$g_troop_detail_overlay_0", ":btn"),
         (try_end),
+        (assign, "$g_troop_detail_item_0", ":item"),
 
         # Armor slot (inventory slot 5)
         (troop_get_inventory_slot, ":item", ":troop_no", 5),
@@ -592,7 +595,7 @@ presentations = [
         (try_begin),
           (eq, ":object", "$g_presentation_obj_troop_detail_back"),
           (close_item_details),
-          (call_script, "script_cf_return_to_troop_tree"),
+          (call_script, "script_return_to_troop_tree"),
         (try_end),
       ]),
 
@@ -608,13 +611,13 @@ presentations = [
         (try_begin),
           (key_clicked, key_enter),
           (close_item_details),
-          (call_script, "script_cf_return_to_troop_tree"),
+          (call_script, "script_return_to_troop_tree"),
         (try_end),
         # Backspace key - return to troop tree
         (try_begin),
           (key_clicked, key_back_space),
           (close_item_details),
-          (call_script, "script_cf_return_to_troop_tree"),
+          (call_script, "script_return_to_troop_tree"),
         (try_end),
       ]),
     ]),

@@ -20,7 +20,7 @@ scripts = [
       (start_presentation, "prsnt_troop_detail_view"),
     ]),
 
-  ("cf_return_to_troop_tree",
+  ("return_to_troop_tree",
     [
       # Get stored faction ID and restart faction troop tree presentation
       (troop_get_slot, ":faction_no", "trp_temp_array_c", 98),

@@ -1406,7 +1406,7 @@ simple_triggers = [
 	
     #Individual lord political calculations
     #Check for lords without fiefs, auto-defections, etc
-   (100,
+   (0.5,
     [
 	##diplomacy start+
 	#This is fairly complicated, and it was getting nearly unreadable so I reformatted it.
@@ -1535,7 +1535,7 @@ simple_triggers = [
 			(call_script, "script_troop_get_relation_with_troop", ":troop_no", ":faction_leader"),
 			#gekokujo 3.0 forgot to integrate start
 			#(le, reg0, -50), #was -75
-			(this_or_next|le, reg0, -90), #was -75
+			(this_or_next|le, reg0, -50), #was -75
 			(eq, ":num_centers", 0), #if there is no walled centers that faction has defection happens 100%.
 			#gekokujo 3.0 forgot to integrate end
 
@@ -1551,7 +1551,7 @@ simple_triggers = [
 			#Random >= 5: The liege indicts the lord for treason
 
 			(try_begin),
-				(lt, ":random", 1),
+				(lt, ":random", 5),
 				(neq, ":troop_no", "trp_player"),
 				#do a defection
 				#gekokujo 3.0 forgot to integrate start
@@ -1590,7 +1590,7 @@ simple_triggers = [
                 (call_script, "script_troop_get_relation_with_troop", ":troop_no", ":faction_leader"),
 				#gekokujo 3.0 forgot to integrate
                 #(le, reg0, -75),
-				(le, reg0, -90), #was -75
+				(le, reg0, -50), #was -75
 				#gekokujo 3.0 forgot to integrate
 				#do an indictment
 				(call_script, "script_indict_lord_for_treason", ":troop_no", ":faction"),
@@ -4046,11 +4046,6 @@ simple_triggers = [
       (try_for_range, ":cur_kingdom", kingdoms_begin, kingdoms_end),
         (faction_slot_eq, ":cur_kingdom", slot_faction_state, sfs_active),
         (call_script, "script_add_notification_menu", "mnu_notification_one_faction_left", ":cur_kingdom", 0),
-        (try_begin),
-          (eq, ":cur_kingdom", "fac_kingdom_28"),
-          (faction_set_slot, "fac_kingdom_28", slot_faction_leader, "trp_kingdom_28_lord2"),
-          (call_script, "script_add_notification_menu", "mnu_xinzhengfuchengli", ":cur_kingdom", 0),
-        (try_end),
       (try_end),
     (try_end),
     ]),
@@ -8433,41 +8428,6 @@ simple_triggers = [
        (play_cue_track, "track_miyasan1"),
      (try_end),
    ]),
-
-####################################################################################################################
-# LAV MODIFICATIONS START (COMPANIONS OVERSEER MOD)
-    (0,
-        [
-            (map_free),
-            (this_or_next|key_clicked, key_o),
-            (neq, "$g_lco_operation", 0),
-            (try_begin),
-                (this_or_next|key_clicked, key_o),
-                (eq, "$g_lco_operation", lco_run_presentation),
-                (assign, "$g_lco_operation", 0),
-                (jump_to_menu, "mnu_lco_presentation"),
-            (else_try),
-                (eq, "$g_lco_operation", lco_view_character),
-                (assign, "$g_lco_operation", 0),
-                (jump_to_menu, "mnu_lco_view_character"),
-            (try_end),
-        ]
-    ),
-# LAV MODIFICATIONS END (COMPANIONS OVERSEER MOD)
-####################################################################################################################
-
-####################################################################################################################
-# TROOPS OVERVIEW MOD - P key for regular troops upgrade
-    (0,
-        [
-            (map_free),
-            (key_clicked, key_p),
-            (jump_to_menu, "mnu_troops_overview"),
-        ]
-    ),
-# TROOPS OVERVIEW MOD END
-####################################################################################################################
-
 ]
 # modmerger_start version=201 type=2
 try:

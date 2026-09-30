@@ -213,51 +213,6 @@ common_cannon_release_dead=(
 		(try_end),
 	])
 #
-common_cannoneer_find_cannon=(
-	1, 0, 0, [],
-	[
-		(try_for_agents, ":cannoneer"),
-			(agent_is_alive, ":cannoneer"),
-			(agent_get_troop_id, ":troop", ":cannoneer"),
-			(eq, ":troop", "trp_gekokujo_zunwang_veteran_gunner"),
-			(agent_get_slot, ":cannon", ":cannoneer", slot_agent_cannon),
-			(lt, ":cannon", 0),
-			# 仅玩家方炮兵走认领逻辑
-			(agent_get_party_id, ":party", ":cannoneer"),
-			(eq, ":party", "p_main_party"),
-			# 寻找最近的无主火炮（scene_prop_driver < 0）
-			(agent_get_position, pos30, ":cannoneer"),
-			(assign, ":nearest", -1),
-			(assign, ":nearest_dist", 100000),
-			(scene_prop_get_num_instances, ":total", "spr_cannon"),
-			(try_for_range, ":j", 0, ":total"),
-				(scene_prop_get_instance, ":sp", "spr_cannon", ":j"),
-				(scene_prop_get_slot, ":drv", ":sp", scene_prop_driver),
-				(lt, ":drv", 0),
-				(prop_instance_get_position, pos31, ":sp"),
-				(get_distance_between_positions, ":dist", pos30, pos31),
-				(lt, ":dist", ":nearest_dist"),
-				(assign, ":nearest", ":sp"),
-				(assign, ":nearest_dist", ":dist"),
-				(position_copy_origin, pos32, pos31),
-			(try_end),
-			(try_begin),
-				(ge, ":nearest", 0),
-				(le, ":nearest_dist", 200),
-				# 距离≤200：直接认领
-				(agent_set_slot, ":cannoneer", slot_agent_cannon, ":nearest"),
-				(scene_prop_set_slot, ":nearest", scene_prop_driver, ":cannoneer"),
-			(else_try),
-				(ge, ":nearest", 0),
-				# 距离>200：walk过去
-				(agent_set_scripted_destination, ":cannoneer", pos32),
-			(else_try),
-				# 找不到无主火炮：清除scripted destination，作为步兵参战
-				(agent_clear_scripted_mode, ":cannoneer"),
-			(try_end),
-		(try_end),
-	])
-
 common_init_assistant=(
 	1,0,0,
 	[],
@@ -560,7 +515,6 @@ trigger_cannon=[
 	common_init_cannon,
 	common_spawn_party_cannons,
 	common_cannon_release_dead,
-	common_cannoneer_find_cannon,
 	common_init_assistant,
 	common_move_assistant,
 	common_move_cannon,
@@ -5687,12 +5641,14 @@ mission_templates = [
          #llf
 		 (neq,":troop_id","trp_assistant_gunner"),
 		 #llf end
-         (agent_get_party_id, ":agent_party", ":agent_no"),         
-         (party_get_morale, ":cur_morale", ":agent_party"),
-         
-         (store_sub, ":morale_effect_on_courage", ":cur_morale", 70),
-         (val_mul, ":morale_effect_on_courage", 30), #this can effect morale with -2100..900
-         (val_add, ":initial_courage_score", ":morale_effect_on_courage"), 
+         (agent_get_party_id, ":agent_party", ":agent_no"),
+         (try_begin),
+           (ge, ":agent_party", 0),
+           (party_get_morale, ":cur_morale", ":agent_party"),
+           (store_sub, ":morale_effect_on_courage", ":cur_morale", 70),
+           (val_mul, ":morale_effect_on_courage", 30), #this can effect morale with -2100..900
+           (val_add, ":initial_courage_score", ":morale_effect_on_courage"), 
+         (try_end),
          
          #average = 5000 + 700 + 1500 = 7200; min : 5700, max : 8700
          #morale effect = min : -2100(party morale is 0), average : 0(party morale is 70), max : 900(party morale is 100)

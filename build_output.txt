@@ -1,0 +1,371 @@
+﻿=== process_strings.py ===
+Exporting strings...
+
+=== process_skills.py ===
+Exporting skills...
+
+=== process_music.py ===
+Exporting tracks...
+
+=== process_animations.py ===
+Exporting animations...
+
+=== process_meshes.py ===
+Exporting meshes...
+
+=== process_sounds.py ===
+Exporting sounds...
+
+=== process_skins.py ===
+Exporting skins...
+
+=== process_map_icons.py ===
+Exporting map icons...
+Creating new tag_uses.txt file...
+Creating new quick_strings.txt file...
+
+=== process_factions.py ===
+Exporting faction data...
+
+=== process_items.py ===
+Exporting item data...
+
+=== process_scenes.py ===
+Exporting scene data...
+
+=== process_troops.py ===
+Exporting troops data
+
+=== process_particle_sys.py ===
+Exporting particle data...
+
+=== process_scene_props.py ===
+Exporting scene props...
+
+=== process_tableau_materials.py ===
+Exporting tableau materials data...
+
+=== process_presentations.py ===
+Exporting presentations...
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_discard
+ERROR: Illegal Identifier:trp_companions_discard
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_discard
+ERROR: Illegal Identifier:trp_companions_discard
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_discard
+ERROR: Illegal Identifier:trp_companions_discard
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unrecognized tag:menuin object:menu_upgrade_template
+ERROR: Illegal Identifier:menu_upgrade_template
+WARNING: Local variable never used: upgraded, at: 0
+Error: Unable to find object:trp_companions_discard
+ERROR: Illegal Identifier:trp_companions_discard
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+
+=== process_party_tmps.py ===
+Exporting party_template data...
+
+=== process_parties.py ===
+Exporting parties
+
+=== process_quests.py ===
+Exporting quest data...
+
+=== process_info_pages.py ===
+Exporting info_page data...
+
+=== process_scripts.py ===
+Exporting scripts...
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_discard
+ERROR: Illegal Identifier:trp_companions_discard
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_overview
+ERROR: Illegal Identifier:trp_companions_overview
+Error: Unable to find object:trp_companions_discard
+ERROR: Illegal Identifier:trp_companions_discard
+Error: Unable to find object:trp_companions_discard
+ERROR: Illegal Identifier:trp_companions_discard
+Error: Unable to find object:trp_companions_discard
+ERROR: Illegal Identifier:trp_companions_discard
+Error: Unable to find object:trp_companions_upgrade_template
+ERROR: Illegal Identifier:trp_companions_upgrade_template
+Error: Unable to find object:trp_companions_upgrade_template
+ERROR: Illegal Identifier:trp_companions_upgrade_template
+Error: Unable to find object:trp_companions_upgrade_template
+ERROR: Illegal Identifier:trp_companions_upgrade_template
+Error: Unable to find object:trp_companions_upgrade_template
+ERROR: Illegal Identifier:trp_companions_upgrade_template
+Error: Unable to find object:trp_companions_upgrade_template
+ERROR: Illegal Identifier:trp_companions_upgrade_template
+WARNING: Script can fail at operation #1. Use cf_ at the beginning of its name: return_to_troop_tree
+
+=== process_mission_tmps.py ===
+Exporting mission_template data...
+
+=== process_game_menus.py ===
+Exporting game menus data...
+
+=== process_simple_triggers.py ===
+exporting simple triggers...
+
+=== process_dialogs.py ===
+exporting triggers...
+exporting dialogs...
+lco_conversation_end
+Nice to know you are not forgetting me!
+close_window
+**********************************************************************************
+ERROR: INPUT TOKEN NOT FOUND:lco_conversation_end
+**********************************************************************************
+**********************************************************************************
+lco_conversation_end
+It's a honor to serve you, {sir/my lady}!
+close_window
+**********************************************************************************
+ERROR: INPUT TOKEN NOT FOUND:lco_conversation_end
+**********************************************************************************
+**********************************************************************************
+
+=== process_global_variables_unused.py ===
+Checking global variable usages...
+WARNING: Global variable never used: ym_56
+WARNING: Global variable never used: ym_44
+WARNING: Global variable never used: g_faction_merge_done
+WARNING: Global variable never used: g_troop_detail_overlay_0
+WARNING: Global variable never used: g_troop_detail_item_0
+
+=== process_postfx.py ===
+Exporting postfx_params...
+python : Traceback (most recent call last):
+所在位置 行:1 字符: 722
++ ... = ""; foreach ($step in $steps) { $output = python $step 2>&1 | Out-S ...
++                                                 ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last) 
+   ::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "process_postfx.py", line 27, in <module>
+    write_postfx_params(postfx_params)
+  File "process_postfx.py", line 13, in write_postfx_params
+    ofile = open(export_dir + "postfx.txt","w")
+IOError: [Errno 13] Permission denied: 'C:/Program Files (x86)/Steam/steamapps/
+common/MountBlade Warband/Modules/Gekokujo - Ishin no Arashi/postfx.txt'
+
+ERROR: process_postfx.py failed with exit code 1
+

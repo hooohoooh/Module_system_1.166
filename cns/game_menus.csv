@@ -58,7 +58,6 @@ menu_start_character_4|{s12}^^ 不 过 在 一 段 时 间 以 后 ， 一 切 �
 mno_revenge|佐 幕 派 志 士 。 
 mno_death|倒 幕 派 志 士 。 
 mno_wanderlust|共 和 斗 士 。 
-mno_disown|新 选 组 局 长
 menu_choose_skill|{s13}
 mno_begin_adventuring|赴 世 ！ 自 掌 己 命 ！ 
 menu_past_life_explanation|{s3}
@@ -761,8 +760,9 @@ menu_dplmc_economic_report|{s0}
 menu_zhaobing|你 想 要 什 么 
 mno_buy_munitions|购 买 一 组 炮 兵 ， 花 费 一 万 
 menu_zhaobing2|民 主 人 士 ， 欢 迎 来 到 招 募 界 面 
-mno_buy_munitions2|购 买 十 个 共 和 国 卫 队 ， 花 费 一 千 
-mno_buy_munitions3|购 买 一 百 个 共 和 国 卫 队 ， 花 费 一 万 
+mno_buy_munitions1|招 募 一 个 共 和 国 卫 队 ， 花 费 一 百
+mno_buy_munitions2|招 募 十 个 共 和 国 卫 队 ， 花 费 一 千 
+mno_buy_munitions3|招 募 一 百 个 共 和 国 卫 队 ， 花 费 一 万 
 menu_world_map_soldier|战 士 ， 你 想 怎 么 做 ？ 
 mno_join_commander_battle|跟 随 指 挥 官 加 入 战 斗 。 
 mno_enter_town|进 入 镇 守 的 城 。 
@@ -788,11 +788,4 @@ mno_desert_alone|不 ， 单 独 行 动 可 能 更 好 。
 menu_upgrade_path|你 的 卓 越 贡 献 被 认 可 了 ， 你 获 得 了 晋 升 。 
 mno_upgrade_path_1|{s66} 
 mno_upgrade_path_2|{s67} 
-menu_gekokujo_notification_defeated|随 着 你 的 指 挥 官 的 战 败 ， 他 的 军 队 已 经 各 散 四 方 。 你 被 俘 虏 后 他 们 剥 夺 了 你 所 分 配 的 武 器 和 盔 甲 ， 但 是 你 藏 起 了 一 大 堆 战 利 品 。 如 果 你 能 回 到 你 的 领 主 ， 你 很 可 能 会 被 重 新 装 备 。
-menu_set_invasion|是 否 允 许 沙 俄 远 征 军 入 侵 ？^这 个 功 能 还 处 于 早 期 的 发 展 阶 段 ，没 有 真 正 测 试 。如 果 你 想 开 启 ，请 在 你 让 他 们 入 侵 之 前 保 存 ！^外 交 选 项 “自 动 校 准 战 斗 中 的 地 形 优 势 ”将 被 禁 用 。^目 前 ，他 们 在 {s1}
-mno_never|不 让 他 们 入 侵 。
-mno_now|马 上 入 侵 。 
-mno_unknown|未 知 的 日 期 。
-mno_return|保 持 设 置 不 变 。 
-mno_tc_set_invasion|当 沙 俄 入 侵 开 始 时 设 置
-menu_dk_invasion_start_warning|大 人 ， 快 走 ！ 俄 国 人 已 入 侵 北 方 之 地 ！ 他 们 身 披 漆 黑 军 服 、 携 铁 炮 而 来 ， 正 欲 蹂 躏 我 邦 国 土 ！ 一 刻 也 不 能 耽 搁 ， 速 速 逃 离 ！
+menu_gekokujo_notification_defeated|随 着 你 的 指 挥 官 的 战 败 ， 他 的 军 队 已 经 各 散 四 方 。 你 被 俘 虏 后 他 们 剥 夺 了 你 所 分 配 的 武 器 和 盔 甲 ， 但 是 你 藏 起 了 一 大 堆 战 利 品 。 如 果 你 能 回 到 你 的 领 主 ， 你 很 可 能 会 被 重 新 装 备 。 
