@@ -3296,7 +3296,7 @@ dlga_town_merchant_talk:trade_requested_armor|我 想 弄 点 新 装 备 。 �
 dlga_town_merchant_talk:trade_requested_horse|我 想 挑 匹 好 马 。 
 dlga_town_merchant_talk:dplmc_trade_autosell_1|我 想 卖 一 些 武 器 。 
 dlga_town_merchant_talk:dplmc_trade_autosell_1.1|我 想 卖 一 些 盔 甲 。 
-dlga_town_merchant_talk:dplmc_trade_autosell_1.2||我 想 卖 一 些 马 给 你 。 
+dlga_town_merchant_talk:dplmc_trade_autosell_1.2|我 想 卖 一 些 马 给 你 。 
 dlga_dplmc_trade_autosell_1:dplmc_trade_autosell_2a|让 我 们 来 看 看 ， 除 了 你 的 个 人 商 品 之 外 ， 我 还 看 到 {reg1} {reg3?东 西 :东 西 } 我 会 买 {reg0} {reg2?mon:mon}. 怎 么 样 ？ 
 dlga_dplmc_trade_autosell_2a:merchant_trade|当 然 。 很 高 兴 与 你 合 作 。 
 dlga_dplmc_trade_autosell_2a:merchant_trade.1|不 完 全 是 。 让 我 告 诉 你 我 的 意 思 。 
