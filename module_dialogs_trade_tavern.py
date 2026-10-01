@@ -996,31 +996,31 @@ dialogs_trade_tavern = [
  Come back when you can pay the {reg1} mon.\
  And know that we'll be charging an interest to your debt.\
  So the sooner you pay it, the better.", "close_window",[]],
-  [anyone|plyr,"investment_choose_enterprise",[], "A mill, to polish rice", "investment_summary",[
+  [anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_bread", "$g_encountered_party")], "A mill, to polish rice ({reg0} mon/week)", "investment_summary",[
   (assign, "$enterprise_production", "itm_bread"),
   ]],
-  [anyone|plyr,"investment_choose_enterprise",[], "A brewery, to make sake from rice", "investment_summary",[
+  [anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_ale", "$g_encountered_party")], "A brewery, to make sake from rice ({reg0} mon/week)", "investment_summary",[
   (assign, "$enterprise_production", "itm_ale"),
   ]],
-  [anyone|plyr,"investment_choose_enterprise",[], "A lacquerworks, to make lacquer ware from urushi sap", "investment_summary",[
+  [anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_leatherwork", "$g_encountered_party")], "A lacquerworks, to make lacquer ware from urushi sap ({reg0} mon/week)", "investment_summary",[
   (assign, "$enterprise_production", "itm_leatherwork"),
   ]],
-  [anyone|plyr,"investment_choose_enterprise",[], "A brewery, to make soy sauce from soybeans", "investment_summary",[
+  [anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_wine", "$g_encountered_party")], "A brewery, to make soy sauce from soybeans ({reg0} mon/week)", "investment_summary",[
   (assign, "$enterprise_production", "itm_wine"),
   ]],
-  [anyone|plyr,"investment_choose_enterprise",[], "A fish press, to make fish sauce from offal", "investment_summary",[
+  [anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_oil", "$g_encountered_party")], "A fish press, to make fish sauce from offal ({reg0} mon/week)", "investment_summary",[
   (assign, "$enterprise_production", "itm_oil"),
   ]],
-  [anyone|plyr,"investment_choose_enterprise",[], "An smithy, to make tools from iron", "investment_summary",[
+  [anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_tools", "$g_encountered_party")], "An smithy, to make tools from iron ({reg0} mon/week)", "investment_summary",[
   (assign, "$enterprise_production", "itm_tools"),
   ]],
-  [anyone|plyr,"investment_choose_enterprise",[], "A weavery and dyeworks, to make silk cloth from raw silk and dye", "investment_summary",[
+  [anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_velvet", "$g_encountered_party")], "A weavery and dyeworks, to make silk cloth from raw silk and dye ({reg0} mon/week)", "investment_summary",[
   (assign, "$enterprise_production", "itm_velvet"),
   ]],
-  [anyone|plyr,"investment_choose_enterprise",[], "A weavery, to make hemp cloth from hemp fiber", "investment_summary",[
+  [anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_wool_cloth", "$g_encountered_party")], "A weavery, to make hemp cloth from hemp fiber ({reg0} mon/week)", "investment_summary",[
   (assign, "$enterprise_production", "itm_wool_cloth"),
   ]],
-  [anyone|plyr,"investment_choose_enterprise",[], "A weavery, to make linen from flax", "investment_summary",[
+  [anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_linen", "$g_encountered_party")], "A weavery, to make linen from flax ({reg0} mon/week)", "investment_summary",[
   (assign, "$enterprise_production", "itm_linen"),
   ]],
   [anyone|plyr,"investment_choose_enterprise",[], "Never mind", "mayor_pretalk",[

@@ -2931,15 +2931,15 @@ dlga_mayor_investment_possible:mayor_investment|好 吧 …… 鉴 于 你 和 �
 dlga_mayor_investment_possible:mayor_pretalk.2|好 吧 …… 说 实 话 ， 我 想 我 们 行 会 的 人 不 大 会 上 你 的 当 。 我 们 会 非 常 留 意 外 人 到 这 里 来 以 及 买 地 。 
 dlga_mayor_investment_possible:mayor_investment_advice.2|很 好 ， {先 生 /尊 敬 的 女 士 }。 我 们 工 会 的 人 认 识 并 且 相 信 你 ， 而 我 想 我 能 找 到 人 卖 给 你 所 需 要 的 地 。 
 dlga_mayor_investment_advice:investment_choose_enterprise|有 一 些 事 情 你 要 记 到 脑 子 里 —— 熟 练 的 壮 工 总 是 需 要 额 外 的 费 用 ， 所 以 我 怀 疑 你 是 不 是 能 在 这 儿 开 一 个 以 上 的 工 厂 。 为 了 你 的 利 润 ， 你 应 该 选 择 一 种 相 对 供 应 不 足 的 日 用 品 ， 但 是 其 原 材 料 得 便 宜 。 你 打 算 开 展 哪 种 生 意 ？ 
-dlga_investment_choose_enterprise:investment_summary|一 个 米 屋 ， 用 来 卖 精 米 和 糙 米 
-dlga_investment_choose_enterprise:investment_summary.1|一 个 清 酒 坊 ， 用 谷 物 来 做 清 酒 
-dlga_investment_choose_enterprise:investment_summary.2|一 个 制 革 坊 ， 用 兽 皮 来 做 皮 革 
-dlga_investment_choose_enterprise:investment_summary.3|一 台 酱 油 坊 ， 用 黄 豆 酿 酱 油 
-dlga_investment_choose_enterprise:investment_summary.4|一 台 榨 油 坊 ， 用 菜 籽 制 油 
-dlga_investment_choose_enterprise:investment_summary.5|一 个 铁 器 坊 ， 用 生 铁 制 造 工 具 
-dlga_investment_choose_enterprise:investment_summary.6|一 个 染 织 坊 ， 用 生 丝 和 染 料 来 做 丝 绸 
-dlga_investment_choose_enterprise:investment_summary.7|一 个 织 布 坊 ， 用 羊 毛 来 做 羊 毛 制 品 
-dlga_investment_choose_enterprise:investment_summary.8|一 个 织 布 坊 ， 用 麻 来 做 麻 布 制 品 
+dlga_investment_choose_enterprise:investment_summary|一 个 米 屋 ， 用 来 卖 精 米 和 糙 米 （ 每 周 利 润 {reg0} 文 钱 ） 
+dlga_investment_choose_enterprise:investment_summary.1|一 个 清 酒 坊 ， 用 谷 物 来 做 清 酒 （ 每 周 利 润 {reg0} 文 钱 ） 
+dlga_investment_choose_enterprise:investment_summary.2|一 个 制 革 坊 ， 用 兽 皮 来 做 皮 革 （ 每 周 利 润 {reg0} 文 钱 ） 
+dlga_investment_choose_enterprise:investment_summary.3|一 台 酱 油 坊 ， 用 黄 豆 酿 酱 油 （ 每 周 利 润 {reg0} 文 钱 ） 
+dlga_investment_choose_enterprise:investment_summary.4|一 台 榨 油 坊 ， 用 菜 籽 制 油 （ 每 周 利 润 {reg0} 文 钱 ） 
+dlga_investment_choose_enterprise:investment_summary.5|一 个 铁 器 坊 ， 用 生 铁 制 造 工 具 （ 每 周 利 润 {reg0} 文 钱 ） 
+dlga_investment_choose_enterprise:investment_summary.6|一 个 染 织 坊 ， 用 生 丝 和 染 料 来 做 丝 绸 （ 每 周 利 润 {reg0} 文 钱 ） 
+dlga_investment_choose_enterprise:investment_summary.7|一 个 织 布 坊 ， 用 羊 毛 来 做 羊 毛 制 品 （ 每 周 利 润 {reg0} 文 钱 ） 
+dlga_investment_choose_enterprise:investment_summary.8|一 个 织 布 坊 ， 用 麻 来 做 麻 布 制 品 （ 每 周 利 润 {reg0} 文 钱 ） 
 dlga_investment_choose_enterprise:mayor_pretalk|没 事 
 dlga_investment_summary:mayor_investment_confirm|很 好 ， 先 生 。 你 可 以 用 来 建 造 你 的 {s3}的 用 地 和 原 料 一 共 要 花 {reg7}文 钱 。 眼 下 ， 你 的 {s3}每 周 出 产 的 {s4}的 价 值 是 {reg1}文 钱 ， 而 需 要 用 来 制 造 那 批 货 的 {s6}是 {reg2}同 时 人 工 和 维 护 需 要 {reg3}。 {s9}我 估 计 你 的 收 益 为 {reg0}文 钱 每 周 。 当 然 ， 这 些 首 先 得 假 设 价 格 能 保 持 不 变 ， 实 际 上 我 能 向 你 保 证 ， 价 格 是 不 会 变 的 。 你 打 算 开 工 吗 ？ 
 dlga_mayor_investment_confirm:mayor_investment_purchase|是 。 给 你 这 是 买 地 的 钱 。 
