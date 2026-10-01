@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from header_skins import *
 from ID_particle_systems import *
 ####################################################################################################################
@@ -139,7 +140,8 @@ skins = [
 	#["man_hair_s","man_hair_m","man_hair_n","man_hair_o", "man_hair_y10", "man_hair_y12","man_hair_p","man_hair_r","man_hair_q","man_hair_t","man_hair_y6","man_hair_y3","man_hair_y7","man_hair_y9","man_hair_y11","man_hair_u","man_hair_y","man_hair_y2","man_hair_y4","man_hair_v","gekokujo_man_hair_1_chonmage","gekokujo_man_hair_2_chonmage"],
 	#["man_hair_s","man_hair_m","man_hair_n","man_hair_o", "man_hair_y10", "man_hair_y12","man_hair_p","man_hair_r","man_hair_q","gekokujo_man_hair_y8","gekokujo_man_hair_y5","man_hair_y7","man_hair_y9","man_hair_y11","man_hair_u","man_hair_y","man_hair_y2","man_hair_y4","gekokujo_man_hair_ponytail","man_hair_v","gekokujo_man_hair_1_chonmage","gekokujo_man_hair_2_chonmage"],
 	#gekokujo 3.0 new hairs (24 total)
-	["man_hair_y7","gekokujo_man_hair_y5","gekokujo_man_hair_y8","man_hair_y10","man_hair_y12","man_hair_o","man_hair_y4","man_hair_r","man_hair_p","gekokujo_man_hair_3","gekokujo_man_hair_1","gekokujo_man_hair_2","gekokujo_man_hair_4","gekokujo_man_hair_5","gekokujo_man_hair_6","gekokujo_man_hair_7","gekokujo_man_hair_8","gekokujo_man_hair_9","gekokujo_man_hair_10","gekokujo_man_hair_11","gekokujo_man_hair_12","gekokujo_man_hair_13","gekokujo_man_hair_14","gekokujo_man_hair_15","hair_beethoven"],
+	["man_hair_y7","gekokujo_man_hair_y5","gekokujo_man_hair_y8","man_hair_y10","man_hair_y12","man_hair_o","man_hair_y4","man_hair_r","man_hair_p","gekokujo_man_hair_3","gekokujo_man_hair_1","gekokujo_man_hair_2","gekokujo_man_hair_4","gekokujo_man_hair_5","gekokujo_man_hair_6","gekokujo_man_hair_7","gekokujo_man_hair_8","gekokujo_man_hair_9","gekokujo_man_hair_10","gekokujo_man_hair_11","gekokujo_man_hair_12","gekokujo_man_hair_13","gekokujo_man_hair_14","gekokujo_man_hair_15" #,"hair_beethoven" #COYG 引入但缺模型(brf)，暂时屏蔽，待补资源后恢复
+	],
     ["beard_e"], #beard meshes ,"beard_q"
     ["hair_blonde", "hair_red", "hair_brunette", "hair_black", "hair_white"], #hair textures
     ["beard_blonde","beard_red","beard_brunette","beard_black","beard_white"], #beard_materials
