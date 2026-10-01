@@ -14,32 +14,8 @@ from header_terrain_types import *
 from header_items import * #For ek_food, and so forth
 from module_constants import *
 
+
 dialogs_artillery_lco = [
-  
-[anyone|plyr, "gekokujo_encounter_reply_1", 
-  [
-    (str_store_string, s6, "$gekokujo_encounter_reply_1"),
-  ],
-  "{s6}",
-  "gekokujo_encounter_reply_2", []],
-  
-[anyone|plyr, "gekokujo_encounter_reply_1", 
-  [
-    (str_store_string, s7, "$gekokujo_encounter_reply_2"),
-  ],
-  "{s7}",
-  "gekokujo_encounter_reply_2", []],
-  
-[anyone|plyr, "gekokujo_encounter_reply_2", 
-  [
-    (store_random_in_range, ":offset", 0, 10),
-    (val_add, ":offset", "str_gekokujo_encounter_reply_1"),
-    (str_store_string, s8, ":offset"),
-  ],
-  "{s8}",
-  "close_window", 
-  [
-    (jump_to_menu, "mnu_encounter_setup"),
-  ]],
-  [anyone, "lco_conversation_end", [(assign,"$g_lco_operation",lco_run_presentation)], "It's a honor to serve you, {sir/my lady}!", "close_window", [(change_screen_return)]],
+[anyone, "lco_conversation_end", [(troop_is_hero,"$g_lco_target"),(assign,"$g_lco_operation",lco_run_presentation)], "Nice to know you are not forgetting me!", "close_window", [(change_screen_return)]],
+[anyone, "lco_conversation_end", [(assign,"$g_lco_operation",lco_run_presentation)], "It's a honor to serve you, {sir/my lady}!", "close_window", [(change_screen_return)]],
 ]

@@ -14,6 +14,7 @@ from header_terrain_types import *
 from header_items import * #For ek_food, and so forth
 from module_constants import *
 
+
 dialogs_dplmc = [
 [anyone, "dplmc_drunk_attempt_placate", [
 (neq, "$g_talk_troop", "trp_hired_assassin"),
@@ -35,7 +36,6 @@ dialogs_dplmc = [
 "I'll wipe that smirk right off your face!", "close_window", [
 (troop_set_slot, "trp_belligerent_drunk", slot_troop_cur_center, 0),
 ]],
-##diplomacy end+
 [trp_dplmc_recruiter|plyr, "dplmc_recruiter_talk", [], "Ok, keep going.", "close_window",[(assign, "$g_leave_encounter",1)]],
 [trp_dplmc_recruiter|plyr, "dplmc_recruiter_talk", [], "I want you to recruit different troops.", "dplmc_recruiter_talk_2",[]],
 [trp_dplmc_recruiter, "dplmc_recruiter_talk_2", [
@@ -72,14 +72,11 @@ dialogs_dplmc = [
 ], "Sure {s0}. I will. Anything else you want?", "dplmc_recruiter_talk",[]],
 [trp_dplmc_messenger|plyr, "dplmc_messenger_talk", [], "Alright, I don't want to delay you. Godspeed!", "dplmc_messenger_talk_farewell",[]],
 [trp_dplmc_messenger, "dplmc_messenger_talk_farewell", [], "Thank you. Farewell!", "close_window", [(assign, "$g_leave_encounter", 1),]],
-##nested diplomacy start+ Replace "Sire" with {s0}
-#[anyone, "dplmc_patrol_pretalk", [], "Greetings, Sire. Do you have new orders?", "dplmc_patrol_talk",
 [anyone, "dplmc_patrol_pretalk", [
 (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
 ], "Greetings, {s0}. Do you have new orders?", "dplmc_patrol_talk",
 ##nested diplomacy end+
 []],
-##patrol new area
 [anyone|plyr, "dplmc_patrol_talk", [], "Please patrol a new area.", "dplmc_patrol_orders_area_ask",
 []],
 [anyone, "dplmc_patrol_orders_area_ask", [], "Where should we go?", "dplmc_patrol_orders_area",
@@ -115,7 +112,6 @@ dialogs_dplmc = [
 ]],
 [anyone|plyr, "dplmc_patrol_confirm", [], "Wait, I changed my mind.", "dplmc_patrol_pretalk",
 []],
-##reinforce garrison
 [anyone|plyr, "dplmc_patrol_talk", [], "I need you to reinforce a garrison.", "dplmc_patrol_orders_garrison_ask",
 []],
 [anyone, "dplmc_patrol_orders_garrison_ask", [], "Where should we go?", "dplmc_patrol_garrison_target",
@@ -151,7 +147,6 @@ dialogs_dplmc = [
 ]],
 [anyone|plyr, "dplmc_patrol_garrison_confirm", [], "Wait, I changed my mind.", "dplmc_patrol_pretalk",
 []],
-##give troops
 [anyone|plyr,"dplmc_patrol_talk", [],
 "I want to give some troops to you.", "dplmc_patrol_give_troops",[]],
 [anyone,"dplmc_patrol_give_troops", [],
@@ -160,7 +155,6 @@ dialogs_dplmc = [
 (change_screen_give_members, "$g_talk_troop_party"),
 (change_screen_exchange_members,0),
 ]],
-##disband
 [anyone|plyr, "dplmc_patrol_talk", [], "I don't need you any longer. Please disband.", "close_window",
 [
 (remove_party, "$g_encountered_party"),
@@ -197,7 +191,6 @@ dialogs_dplmc = [
 [],
 "As you wish, my {lord/lady}.", "dplmc_chancellor_domestic_policy_options",[
 ]],
-##select kingdom culture
 [anyone|plyr, "dplmc_chancellor_domestic_policy_options",
 [
 (is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),
@@ -206,8 +199,6 @@ dialogs_dplmc = [
 "I wish to select the kingdom's culture.", "dplmc_chancellor_kingdom_culture_ask",
 ##diplomacy end+
 []],
-##diplomacy start+
-#Don't enable this when the player is co-ruler of one of the original kingdoms.
 [anyone, "dplmc_chancellor_kingdom_culture_ask",
 [
 (is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
@@ -223,7 +214,6 @@ dialogs_dplmc = [
 (call_script, "script_dplmc_print_cultural_word_to_sreg", ":end_cond", DPLMC_CULTURAL_TERM_LORD_PLURAL,0),
 ], "The {s0} of the {s11} would be unlikely to accept the imposition of other culture.", "dplmc_chancellor_talk",
 []],
-##diplomacy end+
 [anyone, "dplmc_chancellor_kingdom_culture_ask",
 [
 (try_begin),
@@ -301,7 +291,6 @@ dialogs_dplmc = [
 (try_end),
 (display_message, "@{s11}")
 ]],
-##select kingdom culture
 [anyone|plyr, "dplmc_chancellor_kingdom_culture_select",
 [],
 ##diplomacy start+ Reword
@@ -310,13 +299,10 @@ dialogs_dplmc = [
 ##diplomacy end+
 [(assign, "$g_player_culture", 0),
 ]],
-##diplomacy start+
 [anyone|plyr, "dplmc_chancellor_kingdom_culture_select",
 [],
 "Make no change.", "dplmc_chancellor_pretalk",
 []],
-##diplomacy end+
-
 [anyone|plyr,"dplmc_chancellor_domestic_policy_options",[
 (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
 ],
@@ -372,8 +358,6 @@ dialogs_dplmc = [
 ],
 "{s4} {s5} {s6} {s7} {s0}", "dplmc_chancellor_domestic_policy_info_ask",[#<- dplmc+ added {s0}
 ]],
-##nested diplomacy end+
-
 [anyone|plyr,"dplmc_chancellor_domestic_policy_options",[
 (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
 ],
@@ -428,9 +412,6 @@ dialogs_dplmc = [
 ],
 "{s4} {s5} {s6} {s7} {s0} What do you want to change?", "dplmc_chancellor_domestic_policy",#<- dplmc+ added {s0}
 []],
-##nested diplomacy end+
-
-
 [anyone,"dplmc_chancellor_domestic_policy_ask",[
 (assign, ":string", "str_dplmc_neither_centralize_nor_decentralized"),
 (faction_get_slot, ":centralization", "fac_player_supporters_faction", dplmc_slot_faction_centralization),
@@ -484,8 +465,6 @@ dialogs_dplmc = [
 ##nested diplomacy start+
 "{s4} {s5} {s6} {s7} {s0} We can only change the policy every {reg1} days, the people have to get used to it. We have to wait {reg0} days.",#<- dplmc+ added {s0}
  "dplmc_chancellor_pretalk",[]],
-##nested diplomacy end+
-
 [anyone|plyr,"dplmc_chancellor_domestic_policy",
 [
 (faction_get_slot, ":serfdom", "fac_player_supporters_faction", dplmc_slot_faction_serfdom),
@@ -581,7 +560,6 @@ dialogs_dplmc = [
 (val_sub, ":aristocraty", 1),
 (faction_set_slot, "fac_player_supporters_faction", dplmc_slot_faction_aristocracy,  ":aristocraty"),
 ]],
-##diplomacy start+ add mercantilism
 [anyone|plyr,"dplmc_chancellor_domestic_policy",
 [
 (faction_get_slot, ":mercantilism", "fac_player_supporters_faction", dplmc_slot_faction_mercantilism),
@@ -604,8 +582,6 @@ dialogs_dplmc = [
 (val_sub, ":mercantilism", 1),
 (faction_set_slot, "fac_player_supporters_faction", dplmc_slot_faction_mercantilism,  ":mercantilism"),
 ]],
-##diplomacy end+
-
 [anyone|plyr,"dplmc_chancellor_domestic_policy",
 [],
 "Never mind.", "dplmc_chancellor_pretalk",
@@ -752,7 +728,6 @@ dialogs_dplmc = [
 ],
 "{s10}", "dplmc_chancellor_pretalk",[
 ]],
-##send messenger to another lord
 [anyone|plyr, "dplmc_chancellor_talk",
 [],
 "Please send a message to another lord.", "dplmc_chancellor_message_ask_type",
@@ -762,7 +737,6 @@ dialogs_dplmc = [
 ],
 "To whom do you like to send the message?", "dplmc_chancellor_message_lord_select",[
 ]],
-##select the lord who shall receive the message to hand over
 [anyone|plyr|repeat_for_troops, "dplmc_chancellor_message_lord_select",
 [
 (store_repeat_object, ":troop_no"),
@@ -799,7 +773,6 @@ dialogs_dplmc = [
 ],
 "What do you want to tell {s6}?", "dplmc_chancellor_message_select",[
 ]],
-##ask to accompany to another lord
 [anyone|plyr, "dplmc_chancellor_message_select",
 [
 ],
@@ -810,7 +783,6 @@ dialogs_dplmc = [
 (assign, "$temp", spai_accompanying_army),
 (assign, "$temp_2", "p_main_party"),
 ]],
-##ask to goto a center
 [anyone|plyr, "dplmc_chancellor_message_select",
 [
 ],
@@ -820,7 +792,6 @@ dialogs_dplmc = [
 [
 (assign, "$temp", spai_holding_center),
 ]],
-##ask to patrol a center
 [anyone|plyr, "dplmc_chancellor_message_select",
 [
 ],
@@ -830,7 +801,6 @@ dialogs_dplmc = [
 [
 (assign, "$temp", spai_patrolling_around_center),
 ]],
-##ask to flee to a center
 [anyone|plyr, "dplmc_chancellor_message_select",
 [
 ],
@@ -840,7 +810,6 @@ dialogs_dplmc = [
 [
 (assign, "$temp", spai_retreating_to_center),
 ]],
-##ask to besiege a center
 [anyone|plyr, "dplmc_chancellor_message_select",
 [
 ],
@@ -850,7 +819,6 @@ dialogs_dplmc = [
 [
 (assign, "$temp", spai_besieging_center),
 ]],
-##ask to besiege a center
 [anyone|plyr, "dplmc_chancellor_message_select",
 [
 ],
@@ -868,8 +836,6 @@ dialogs_dplmc = [
 [anyone,"dplmc_chancellor_message_goto_lord_ask", [],
 ##diplomacy start+ make gender correct using reg4 (set above)
 "Where do you order {reg4?her:him}?", "dplmc_chancellor_message_order_details",[]],
-##diplomacy end+
-
 [anyone|plyr|repeat_for_parties, "dplmc_chancellor_message_order_details",
 [
 (store_repeat_object, ":party_no"),
@@ -1013,7 +979,6 @@ dialogs_dplmc = [
 ],
 "I changed my mind.", "dplmc_chancellor_pretalk",[
 ]],
-##send gift
 [anyone|plyr, "dplmc_chancellor_talk",
 [],
 "Please send a gift.", "dplmc_chancellor_gift_ask_where",
@@ -1049,7 +1014,6 @@ dialogs_dplmc = [
 ],
 "I recommend to send 300 units of sea fish, tofu, or natto. If we have enough in our household I will induce a servant to deliver it.", "dplmc_chancellor_center_gift_select",[
 ]],
-##send fish
 [anyone|plyr, "dplmc_chancellor_center_gift_select",
 [
 (troop_get_inventory_capacity, ":capacity", "trp_household_possessions"),
@@ -1066,7 +1030,6 @@ dialogs_dplmc = [
 (assign, "$diplomacy_var", "itm_smoked_fish"),
 (assign, "$diplomacy_var2", 300),
 ]],
-##send cheese
 [anyone|plyr, "dplmc_chancellor_center_gift_select",
 [
 (troop_get_inventory_capacity, ":capacity", "trp_household_possessions"),
@@ -1083,7 +1046,6 @@ dialogs_dplmc = [
 (assign, "$diplomacy_var", "itm_cheese"),
 (assign, "$diplomacy_var2", 300),
 ]],
-##send honey
 [anyone|plyr, "dplmc_chancellor_center_gift_select",
 [
 (troop_get_inventory_capacity, ":capacity", "trp_household_possessions"),
@@ -1126,7 +1088,6 @@ dialogs_dplmc = [
 ],
 "Never mind.", "dplmc_chancellor_pretalk",[
 ]],
-##nested diplomacy start+ Disable gift-sending during a war with a nation that doesn't recognize you
 [anyone, "dplmc_chancellor_center_gift_lord_ask",
 [
 (is_between, "$g_faction_selected", npc_kingdoms_begin, npc_kingdoms_end),
@@ -1137,14 +1098,11 @@ dialogs_dplmc = [
 ],
 "Given that we are currently at war with the {s11} and they do not officially recognize your legitimacy, any messengers we sent would run the risk of being hanged as bandits.", "dplmc_chancellor_pretalk",[
 ]],
-##nested diplomacy end+
-
 [anyone, "dplmc_chancellor_center_gift_lord_ask",
 [
 ],
 "To which settlement do you like to send the gift?", "dplmc_chancellor_center_gift_lord_select",[
 ]],
-##select the lord who shall receive the gift to hand over
 [anyone|plyr|repeat_for_parties, "dplmc_chancellor_center_gift_lord_select",
 [
 (store_repeat_object, ":party_no"),
@@ -1182,12 +1140,10 @@ dialogs_dplmc = [
 ],
 "Never mind.", "dplmc_chancellor_pretalk",[
 ]],
-##send gift to person
 [anyone, "dplmc_chancellor_gift_ask_person",
 [],
 "Do you want to send your gift to a lady or to a lord?.", "dplmc_chancellor_gift_lady_or_lord",
 []],
-##send gift to a lord
 [anyone|plyr, "dplmc_chancellor_gift_lady_or_lord",
 [],
 "Please send a gift to a lord.", "dplmc_chancellor_gift_ask_type",
@@ -1197,7 +1153,6 @@ dialogs_dplmc = [
 ],
 "I recommend to send 150 units of Sake, Soy Sauce or Fish Sauce. If we have enough in our household I will induce a servant to deliver it.", "dplmc_chancellor_gift_select",[
 ]],
-##send ale
 [anyone|plyr, "dplmc_chancellor_gift_select",
 [
 (troop_get_inventory_capacity, ":capacity", "trp_household_possessions"),
@@ -1214,7 +1169,6 @@ dialogs_dplmc = [
 (assign, "$diplomacy_var", "itm_ale"),
 (assign, "$diplomacy_var2", 150),
 ]],
-##send wine
 [anyone|plyr, "dplmc_chancellor_gift_select",
 [
 (troop_get_inventory_capacity, ":capacity", "trp_household_possessions"),
@@ -1231,7 +1185,6 @@ dialogs_dplmc = [
 (assign, "$diplomacy_var", "itm_wine"),
 (assign, "$diplomacy_var2", 150),
 ]],
-##send oil
 [anyone|plyr, "dplmc_chancellor_gift_select",
 [
 (troop_get_inventory_capacity, ":capacity", "trp_household_possessions"),
@@ -1274,7 +1227,6 @@ dialogs_dplmc = [
 ],
 "Never mind.", "dplmc_chancellor_pretalk",[
 ]],
-##nested diplomacy start+ Disable gift-sending during a war with a nation that doesn't recognize you
 [anyone, "dplmc_chancellor_gift_lord_ask",
 [
 (is_between, "$g_faction_selected", npc_kingdoms_begin, npc_kingdoms_end),
@@ -1285,14 +1237,11 @@ dialogs_dplmc = [
 ],
 "Given that we are currently at war with the {s11} but they do not officially recognize your legitimacy, any messengers we sent would run the risk of being hanged as bandits.", "dplmc_chancellor_pretalk",[
 ]],
-##nested diplomacy end+
-
 [anyone, "dplmc_chancellor_gift_lord_ask",
 [
 ],
 "To whom do you like to send the gift?", "dplmc_chancellor_gift_lord_select",[
 ]],
-##select the lord who shall receive the gift to hand over
 [anyone|plyr|repeat_for_troops, "dplmc_chancellor_gift_lord_select",
 [
 (store_repeat_object, ":troop_no"),
@@ -1334,7 +1283,6 @@ dialogs_dplmc = [
 ],
 "Never mind.", "dplmc_chancellor_pretalk",[
 ]],
-##send gift to a lady
 [anyone|plyr, "dplmc_chancellor_gift_lady_or_lord",
 [],
 "Please send a gift to a lady.", "dplmc_chancellor_lady_gift_ask_type",
@@ -1348,7 +1296,6 @@ dialogs_dplmc = [
 ],
 "I recommend to send dyes, raw silk, or finished silk. If we have enough in our household I will induce a servant to deliver it.", "dplmc_chancellor_lady_gift_select",[
 ]],
-##send ale
 [anyone|plyr, "dplmc_chancellor_lady_gift_select",
 [
 (troop_get_inventory_capacity, ":capacity", "trp_household_possessions"),
@@ -1364,7 +1311,6 @@ dialogs_dplmc = [
 (assign, "$diplomacy_var", "itm_raw_dyes"),
 (assign, "$diplomacy_var2", 1),
 ]],
-##send wine
 [anyone|plyr, "dplmc_chancellor_lady_gift_select",
 [
 (troop_get_inventory_capacity, ":capacity", "trp_household_possessions"),
@@ -1380,7 +1326,6 @@ dialogs_dplmc = [
 (assign, "$diplomacy_var", "itm_raw_silk"),
 (assign, "$diplomacy_var2", 1),
 ]],
-##send velvet
 [anyone|plyr, "dplmc_chancellor_lady_gift_select",
 [
 (troop_get_inventory_capacity, ":capacity", "trp_household_possessions"),
@@ -1422,7 +1367,6 @@ dialogs_dplmc = [
 ],
 "Never mind.", "dplmc_chancellor_pretalk",[
 ]],
-##nested diplomacy start+ Disable gift-sending during a war with a nation that doesn't recognize you
 [anyone, "dplmc_chancellor_lady_gift_lady_ask",
 [
 (is_between, "$g_faction_selected", npc_kingdoms_begin, npc_kingdoms_end),
@@ -1433,14 +1377,11 @@ dialogs_dplmc = [
 ],
 "Given that we are currently at war with the {s11} but they do not officially recognize your legitimacy, any messengers we sent would run the risk of being hanged as bandits.", "dplmc_chancellor_pretalk",[
 ]],
-##nested diplomacy end+
-
 [anyone, "dplmc_chancellor_lady_gift_lady_ask",
 [
 ],
 "Which lady should receive the gift?", "dplmc_chancellor_lady_gift_lady_select",[
 ]],
-##select the lord who shall receive the gift to hand over
 [anyone|plyr|repeat_for_troops, "dplmc_chancellor_lady_gift_lady_select",
 [
 (store_repeat_object, ":troop_no"),
@@ -1480,7 +1421,6 @@ dialogs_dplmc = [
 ],
 "Never mind.", "dplmc_chancellor_pretalk",[
 ]],
-##chancellor household
 [anyone|plyr, "dplmc_chancellor_talk",
 [
 ],
@@ -1492,15 +1432,10 @@ dialogs_dplmc = [
 ],
 "You should store all important things in the household.", "dplmc_chancellor_pretalk",[
 ]],
-##diplomacy start+
 [anyone|plyr, "dplmc_chancellor_talk",
 [(eq, 0, 1),],
 "I would like to take a look through the items in my secondary storage houses.", "dplmc_chancellor_pretalk",
 [(change_screen_loot, "trp_dplmc_chancellor"),]],
-##diplomacy end+
-
-##zerilius changes begin
-#dismiss chancellor
 [anyone|plyr, "dplmc_chancellor_talk",
 [],
 "I no longer need your services.", "dplmc_chancellor_dismiss_confirm_ask",
@@ -1527,8 +1462,6 @@ dialogs_dplmc = [
 ],
 "No I am not.", "dplmc_chancellor_pretalk",
 []],
-##zerilius changes end
-
 [anyone|plyr, "dplmc_chancellor_talk",
 [],
 "Farewell!", "close_window",
@@ -1542,7 +1475,6 @@ dialogs_dplmc = [
 "Do you need anything else, {s0}?", "dplmc_constable_talk",[
 ##diplomacy end+
 ]],
-##ask about war
 [anyone|plyr,"dplmc_constable_talk", [],
 "How goes the war?", "dplmc_constable_talk_ask_war",[]],
 [anyone,"dplmc_constable_talk_ask_war", [],
@@ -1647,7 +1579,6 @@ dialogs_dplmc = [
    (str_store_string, s9, "str_s9_s14"),
   (try_end),
 ]],
-##send scout
 [anyone|plyr, "dplmc_constable_talk",
 [],
 "I want information about a settlement.", "dplmc_constable_scout_ask",
@@ -1712,14 +1643,12 @@ dialogs_dplmc = [
 [],
 "Hold on!", "dplmc_constable_pretalk",
 []],
-##release prisoner
 [anyone|plyr,"dplmc_constable_talk", [],
 "I want to release a prisoner.", "dplmc_constable_talk_ask_prisoner",[]],
 [anyone,"dplmc_constable_talk_ask_prisoner",
 [],
 "Alright, which prisoner do you want to release?", "dplmc_constable_talk_prisoner_select",[
 ]],
-##select enemy prisoner
 [anyone|plyr|repeat_for_troops, "dplmc_constable_talk_prisoner_select",
 [
 (store_repeat_object, ":troop_no"),
@@ -2066,7 +1995,6 @@ dialogs_dplmc = [
 ],
 "{!}{s52}", "dplmc_constable_lord",
 []],
-##garrison status
 [anyone|plyr, "dplmc_constable_reports",
 [
 ],
@@ -2176,13 +2104,10 @@ dialogs_dplmc = [
 ],
 "Thank you, that's all for now.", "dplmc_constable_pretalk",
 []],
-##diplomacy start+
 [anyone|plyr, "dplmc_constable_talk",
 [],
 "I would like to take a look at the armory.", "dplmc_constable_pretalk",
 [(change_screen_loot, "trp_dplmc_constable"),]],
-##diplomacy end+
-
 [anyone|plyr, "dplmc_constable_talk",
 [],
 "Let's talk about recruits and training.", "dplmc_constable_recruits_and_training_ask",
@@ -2191,7 +2116,6 @@ dialogs_dplmc = [
 [],
 "Of course.", "dplmc_constable_recruits_and_training",
 []],
-##train recruits
 [anyone|plyr, "dplmc_constable_recruits_and_training",
 [
 (neg|is_between, "$g_constable_training_center", walled_centers_begin, walled_centers_end),
@@ -2434,7 +2358,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 "I changed my mind.", "dplmc_constable_pretalk",
 []
 ],
-##talk about security
 [anyone|plyr, "dplmc_constable_talk",
 [
 ],
@@ -2445,7 +2368,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "Of course.", "dplmc_constable_security",
 []],
-##move tropps
 [anyone|plyr, "dplmc_constable_security",
 [],
 "I want to move troops to another location.", "dplmc_constable_move_troops",
@@ -2574,7 +2496,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 (call_script, "script_party_add_party", "$current_town", "p_temp_party_2"),
 (party_clear, "p_temp_party_2"),
 ]],
-##send patrol
 [anyone|plyr, "dplmc_constable_security",
 [],
 "I want to enlist a patrol.", "dplmc_constable_patrol_size_ask",
@@ -2620,7 +2541,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 
 (change_screen_exchange_members, 1),
 ]],
-#zerilius changes begin
 [anyone, "dplmc_constable_patrol_garrison",
 [
  (store_party_size_wo_prisoners, ":garrison_size", "$current_town"),
@@ -2644,8 +2564,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 (call_script, "script_party_add_party", "p_main_party", "p_temp_party"),
 (assign, "$g_move_heroes", 0),
 ]],
-#zerilius changes end
-
 [anyone, "dplmc_constable_patrol_garrison_2",
 [
 ],
@@ -2821,7 +2739,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [],
 "No.", "dplmc_constable_pretalk",
 []],
-##change patrol target
 [anyone|plyr, "dplmc_constable_security",
 [],
 "I want to change the target of a patrol.", "dplmc_constable_patrol_change_ask",
@@ -2883,7 +2800,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [],
 "Oh maybe not.", "dplmc_constable_security_ask",
 []],
-##move patrol to center
 [anyone|plyr, "dplmc_constable_security",
 [],
 "I want a patrol to return to a center.", "dplmc_constable_patrol_to_center_ask",
@@ -2945,7 +2861,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [],
 "Oh maybe not.", "dplmc_constable_security_ask",
 []],
-##disband patrol
 [anyone|plyr, "dplmc_constable_security",
 [],
 "I want to disband a patrol.", "dplmc_constable_patrol_disband_ask",
@@ -2995,14 +2910,12 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [],
 "Nevermind.", "dplmc_constable_pretalk",
 []],
-##prisoner
 [anyone|plyr,"dplmc_constable_talk",
 [(store_num_regular_prisoners,reg0),(ge,reg0,1)],
 "I have some prisoners can you sell them for me?", "dplmc_constable_prisoner",[]],
 [anyone,"dplmc_constable_prisoner", [],
 "Of course, my {lord/lady}", "dplmc_constable_pretalk",
 [[change_screen_trade_prisoners]]],
-##dismiss constable
 [anyone|plyr, "dplmc_constable_talk",
 [
 ],
@@ -3430,7 +3343,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "{!}{s51}", "dplmc_chamberlain_status",
 []],
-##set taxes
 [anyone|plyr, "dplmc_chamberlain_talk",
 [
 ],
@@ -3537,7 +3449,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 "No I changed, my mind.", "dplmc_chamberlain_pretalk",
 [
 ]],
-##buildings
 [anyone|plyr, "dplmc_chamberlain_talk",
 [
 ],
@@ -3836,7 +3747,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [],
 "No, I don't have the money.", "dplmc_chamberlain_pretalk",
 []],
-##manage pools
 [anyone|plyr, "dplmc_chamberlain_talk",
 [
 ##diplomacy start+
@@ -3874,7 +3784,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "What do you want to do?", "dplmc_chamberlain_pools",
 []],
-##item pool
 [anyone|plyr, "dplmc_chamberlain_pools",
 ##diplomacy start+
 [
@@ -3904,8 +3813,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 #"I would like to manage the item pool.", "dplmc_chamberlain_pretalk",
 "I would like to manage the goods in secondary storage.", "dplmc_chamberlain_pretalk",
 [(change_screen_loot, "trp_dplmc_chamberlain"),]],
-##diplomacy end+
-
 [anyone|plyr, "dplmc_chamberlain_pools",
 [
 ##diplomacy start+
@@ -3939,7 +3846,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 "No I changed, my mind.", "dplmc_chamberlain_pretalk",
 [
 ]],
-##household
 [anyone|plyr, "dplmc_chamberlain_pools",
 [
 ],
@@ -3991,7 +3897,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 "What sort of staff member would you like to hire?", "dplmc_talk_staff",
 ##diplomacy end+
 []],
-##appoint constable
 [anyone|plyr, "dplmc_talk_staff",
 [
 (le, "$g_player_constable", 0),
@@ -4008,22 +3913,16 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "I want to appoint an army inspector.", "dplmc_talk_appoint_constable",
 []],
-##diplomacy start+
-#Variant: rehiring your constable
 [anyone, "dplmc_talk_appoint_constable",
 [(troop_slot_ge, "trp_dplmc_constable", slot_troop_met, 1),
 ],
 "I assume you will want to rehire your former army inspector Terumoto?  His rate is still 15 mon each week, and the appointment will cost us 20 mon.", "dplmc_talk_appoint_constable_confirm", []],
-#Variant: Don't give the "friend of the family" description if it is not appropriate
-#(it might be for some companions in some mods, but by default it probably isn't)
 [anyone, "dplmc_talk_appoint_constable", [
 	#gekokujo 3.0 microfactions! include fort companions start
     #(is_between, "$g_talk_troop", companions_begin, companions_end),
     (is_between, "$g_talk_troop", companions_begin, fort_companions_end),
 	#gekokujo 3.0 microfactions! include fort companions end
   ], "I have heard good things about a local samurai by the name of Terumoto, and I believe he would be well-suited for the job. He demands 15 mon each week, though. The appointment will cost us 20 mon.", "dplmc_talk_appoint_constable_confirm", []],
-##diplomacy end+
-
 [anyone, "dplmc_talk_appoint_constable",
 [
 ],
@@ -4081,7 +3980,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "I will send him a letter he should arrive at the palace soon.", "minister_pretalk",
 []],
-##appoint chamberlain
 [anyone|plyr, "dplmc_talk_staff",
 [
 (le, "$g_player_chamberlain", 0),
@@ -4098,21 +3996,16 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "I want to appoint a treasurer to handle financial affairs.", "dplmc_talk_appoint_chamberlain",
 []],
-##diplomacy start+
-#Variant: rehiring a former employee
 [anyone, "dplmc_talk_appoint_chamberlain",
 [(troop_slot_ge, "trp_dplmc_chamberlain", slot_troop_met, 1),
 ],
 "I assume you will want to rehire your former treasurer Rikyu?  His rate is still 15 mon each week, and the appointment will cost us 20 mon.", "dplmc_talk_appoint_chamberlain_confirm", []],
-#Variant: Don't give the "friend of the family" description if it is not appropriate
-#(it might be for some companions in some mods, but by default it probably isn't)
 [anyone, "dplmc_talk_appoint_chamberlain", [
 	#gekokujo 3.0 microfactions! include fort companions start
     #(is_between, "$g_talk_troop", companions_begin, companions_end),
     (is_between, "$g_talk_troop", companions_begin, fort_companions_end),
 	#gekokujo 3.0 microfactions! include fort companions end
   ], "I have heard good things about a local nobleman by the name of Rikyu, and I believe he would be well-suited for the job. He demands 15 mon each week, though. The appointment will cost us 20 mon.", "dplmc_talk_appoint_chamberlain_confirm", []],
-##diplomacy end+
 [anyone, "dplmc_talk_appoint_chamberlain",
 [
 ],
@@ -4152,7 +4045,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "Maybe later.", "minister_pretalk",
 []],
-##appoint chancellor
 [anyone|plyr, "dplmc_talk_staff",
 [
 (le, "$g_player_chancellor", 0),
@@ -4165,21 +4057,16 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "I want to appoint an administrator.", "dplmc_talk_appoint_chancellor",
 []],
-##diplomacy start+
-#Variant: rehiring a former employee
 [anyone, "dplmc_talk_appoint_chancellor",
 [(troop_slot_ge, "trp_dplmc_chamberlain", slot_troop_met, 1),
 ],
 "I assume you will want to rehire your former administrator Mitsunari?  His rate is still 20 mon each week, and the appointment will cost us 20 mon.", "dplmc_talk_appoint_chancellor_confirm", []],
-#Variant: Don't give the "friend of the family" description if it is not appropriate
-#(it might be for some companions in some mods, but by default it probably isn't)
 [anyone, "dplmc_talk_appoint_chancellor", [
     #gekokujo 3.0 microfactions! include fort companions start
     #(is_between, "$g_talk_troop", companions_begin, companions_end),
     (is_between, "$g_talk_troop", companions_begin, fort_companions_end),
 	#gekokujo 3.0 microfactions! include fort companions end
   ], "I have heard good things about a local samurai by the name of Mitsunari, and I believe he would be well-suited for the job. He demands 20 mon each week, though. The appointment will cost us 20 mon.", "dplmc_talk_appoint_chancellor_confirm", []],
-##diplomacy end+
 [anyone, "dplmc_talk_appoint_chancellor",
 [
 ],
@@ -4347,7 +4234,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "Currently no merchant has enough bread. We have to wait.", "spouse_pretalk",
 []],
-##confirm spouse buy food
 [anyone|plyr, "dplmc_spouse_talk_buy_food_confirm",
 [
 (store_troop_gold, ":gold", "trp_player"),
@@ -4468,7 +4354,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [anyone, "dplmc_lord_declare_war",
 [], "Against whom?", "dplmc_lord_declare_war_kingdoms_select",
 []],
-##select war target
 [anyone|plyr|repeat_for_factions, "dplmc_lord_declare_war_kingdoms_select",
 [
 (store_repeat_object, ":faction_no"),
@@ -4878,7 +4763,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "{!}{s10}", "dplmc_lord_family_affiliate_response",[
 ]],
-##diplomacy start+ Give a less confusing error message when the lord likes the player
 [anyone, "dplmc_lord_family_affiliate",
 [(ge, "$g_talk_troop_relation", 0),
 (assign, reg0, 0),
@@ -4889,8 +4773,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "I {reg0?like you well enough:have nothing against you}, but I just don't think it would work out, so I will not sponsor you.", "lord_pretalk",[
 ]],
-##diplomacy end+
-
 [anyone, "dplmc_lord_family_affiliate",
 [
 ],
@@ -5080,7 +4962,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [],
 "As you wish, I will move the residence to {s6}.", "spouse_pretalk",[
 ]],
-##response to threaten request
 [anyone, "dplmc_companion_threaten_request_response", [
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
 (gt, "$g_player_chamberlain", 0),
@@ -5100,7 +4981,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
 (call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "fac_player_supporters_faction", 1),
 ]],
-##response to threaten request
 [anyone, "dplmc_companion_threaten_request_response", [
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
 (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "$players_kingdom", ":mission_object"),
@@ -5111,7 +4991,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
 (call_script, "script_diplomacy_start_war_between_kingdoms", ":mission_object", "fac_player_supporters_faction", 1),
 ]],
-##response to threaten request
 [anyone, "dplmc_companion_threaten_request_response", [
 ],
 "They are not willing to fold facing your threats.","companion_rejoin_response", [
@@ -5147,7 +5026,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "We currently only have the option to hand over a fief since we don't have a treasurer.", "dplmc_minister_gift_type_select",
 []],
-##send few horses
 [anyone|plyr, "dplmc_minister_gift_type_select",
 [
 (gt, "$g_player_chamberlain", 0),
@@ -5163,7 +5041,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 (assign, "$g_initiative_selected", dplmc_npc_mission_gift_horses_request),
 (assign, "$diplomacy_var", 3000), # 6000 mon
 ]],
-##send many horses
 [anyone|plyr, "dplmc_minister_gift_type_select",
 [
 (gt, "$g_player_chamberlain", 0),
@@ -5179,25 +5056,21 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 (assign, "$g_initiative_selected", dplmc_npc_mission_gift_horses_request),
 (assign, "$diplomacy_var", 6000), # 6000 mon
 ]],
-##hand over a fief
 [anyone|plyr, "dplmc_minister_gift_type_select",
 [
 ],
 "Hand over a fief", "dplmc_minister_gift_fief",
 []],
-##never mind
 [anyone|plyr, "dplmc_minister_gift_type_select",
 [
 ],
 "Never mind.", "minister_pretalk",
 []],
-##ask which fief to hand over
 [anyone, "dplmc_minister_gift_fief",
 [
 ],
 "Which fief do you want to hand over?", "dplmc_minister_gift_fief_select",
 []],
-##select the fief to hand over
 [anyone|plyr|repeat_for_parties, "dplmc_minister_gift_fief_select",
 [
 (store_repeat_object, ":center_no"),
@@ -5218,7 +5091,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 (store_repeat_object, "$diplomacy_var"),
 (assign, "$g_initiative_selected", dplmc_npc_mission_gift_fief_request),
 ]],
-## ask for prisoner
 [anyone, "dplmc_minister_exchange_prisoner_ask",
 [
 (assign, ":companion_found", 0),
@@ -5239,7 +5111,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "Unfortunately, there is no one to send right now.", "minister_pretalk",
 []],
-##select enemy prisoner
 [anyone|plyr|repeat_for_troops, "dplmc_minister_exchange_prisoner_select",
 [
 (store_repeat_object, ":troop_no"),
@@ -5266,7 +5137,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "Which of our lords do you like to you want to set free?", "dplmc_minister_exchange_prisoner_lord_select",
 []],
-##select own prisoner
 [anyone|plyr|repeat_for_troops, "dplmc_minister_exchange_prisoner_lord_select",
 [
 (store_repeat_object, ":troop_no"),
@@ -5296,9 +5166,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [anyone, "dplmc_minister_prisoner_emissary",
 [], "Who shall negotiate the exchange?", "minister_emissary_select",
 []],
-##diplomacy end+
-
-
 [anyone|plyr, "dplmc_companion_prisoner_exchange_confirm",
 [],
 ##diplomacy start+ correct pronount using reg4
@@ -5429,7 +5296,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [anyone, "dplmc_minister_persuasion_emissary",
 [], "Who shall I send? You should choose one who has skills in persuasion!", "minister_emissary_select",
 []],
-## ask for spy target
 [anyone, "dplmc_minister_spy_kingdoms",
 [
 (assign, ":companion_found", 0),
@@ -5450,7 +5316,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "Unfortunately, there is no one to send right now.", "minister_pretalk",
 []],
-##select spy target
 [anyone|plyr|repeat_for_factions, "dplmc_minister_spy_kingdoms_select",
 [
 (store_repeat_object, ":faction_no"),
@@ -5513,7 +5378,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [anyone|plyr, "dplmc_companion_spy_request_select_center", [
 ],  "Never mind.", "companion_rejoin_response", [
     ]],
-##response to alliance request success
 [anyone, "dplmc_companion_alliance_request_response", [
 (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_alliance_request),
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
@@ -5545,7 +5409,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [anyone|plyr, "dplmc_companion_alliance_confirm", [],
 "On second thought, perhaps this is not now in our interests.","companion_rejoin_response", [
          ]],
-##response to alliance request failed
 [anyone, "dplmc_companion_alliance_request_response", [
 (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_alliance_request),
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
@@ -5554,7 +5417,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "{s4} is not willing to form an alliance with you.","companion_rejoin_response", [
          ]],
-##response to defensive request success
 [anyone, "dplmc_companion_defensive_request_response", [
 (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_defensive_request),
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
@@ -5586,7 +5448,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [anyone|plyr, "dplmc_companion_defensive_confirm", [],
 "On second thought, perhaps this is not now in our interests.","companion_rejoin_response", [
          ]],
-##response to defensive request failed
 [anyone, "dplmc_companion_defensive_request_response", [
 (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_defensive_request),
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
@@ -5595,7 +5456,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "{s4} is not willing to conclude a defensive pact with you.","companion_rejoin_response", [
          ]],
-##response to trade request success
 [anyone, "dplmc_companion_trade_request_response", [
 (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_trade_request),
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
@@ -5627,7 +5487,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [anyone|plyr, "dplmc_companion_trade_confirm", [],
 "On second thought, perhaps this is not now in our interests.","companion_rejoin_response", [
          ]],
-##response to trade request failed
 [anyone, "dplmc_companion_trade_request_response", [
 (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_trade_request),
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
@@ -5636,7 +5495,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "{s4} is not willing to sign a trade agreement.","companion_rejoin_response", [
          ]],
-##response to nonaggression request success
 [anyone, "dplmc_companion_nonaggression_request_response", [
 (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_nonaggression_request),
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
@@ -5668,7 +5526,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [anyone|plyr, "dplmc_companion_nonaggression_confirm", [],
 "On second thought, perhaps this is not now in our interests.","companion_rejoin_response", [
          ]],
-##response to nonaggression request failed
 [anyone, "dplmc_companion_nonaggression_request_response", [
 (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_nonaggression_request),
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
@@ -5677,7 +5534,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "{s4} is not willing to conclude a non-aggression treaty with you.","companion_rejoin_response", [
          ]],
-##response to war request success
 [anyone, "dplmc_companion_war_request_response", [
 (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_war_request),
 (lt, "$g_mission_result_with_target", 0), #<0 want's war with target
@@ -5705,7 +5561,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 (troop_get_slot, ":war_target_faction", "$g_talk_troop", dplmc_slot_troop_mission_diplomacy),
 (call_script, "script_diplomacy_start_war_between_kingdoms",  ":mission_object", ":war_target_faction", 1)
          ]],
-##response to war request success
 [anyone, "dplmc_companion_war_request_response", [
 (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_war_request),
 ##diplomacy start+
@@ -5786,9 +5641,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 #"{s4} is willing to start a war with {s31} but needs 5000 mon to prepare his army.","dplmc_companion_war_pay", [
 "{s4} is willing to start a war with {s31} but needs {reg1} mon to prepare {reg0?her:his} army.","dplmc_companion_war_pay", [
          ]],
-##diplomacy end+
-
-##option to pay for war
 [anyone|plyr, "dplmc_companion_war_pay", [
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
 (str_store_faction_name, s4, ":mission_object"),
@@ -5816,7 +5668,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [anyone|plyr, "dplmc_companion_war_pay", [],
 "On second thought, I don't think we can take so much money from the treasury.","companion_rejoin_response", [
          ]],
-##response to war request failed
 [anyone, "dplmc_companion_war_request_response", [
 (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_war_request),
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
@@ -5827,7 +5678,24 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ],
 "{s4} is not willing to start a war with {s31}.","companion_rejoin_response", [
          ]],
-##option to pay him and give him a center
+[anyone|plyr, "dplmc_companion_truce_pay", [
+(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+(str_store_faction_name, s4, ":mission_object"),
+(store_troop_gold, ":gold", "trp_player"),#
+##diplomacy start+
+(assign, reg0, "$temp"),
+(gt, reg0, 0),
+(ge, ":gold", reg0),
+],
+"Pay {reg0} mon and let the truce with the {s4} be concluded","companion_rejoin_response", [
+(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+(troop_remove_gold, "trp_player", "$temp"),#todo change amount
+#actually give gold to other kingdom
+(call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", "$temp"),
+##diplomacy end+
+(call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "$players_kingdom", 1),
+(str_store_faction_name, s4, ":mission_object"),
+]],
 [anyone|plyr, "dplmc_companion_truce_pay", [
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
 (str_store_faction_name, s4, ":mission_object"),
@@ -5853,7 +5721,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 (call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "$players_kingdom", 1),
 (str_store_faction_name, s4, ":mission_object"),
 ]],
-##option to give him a center
 [anyone|plyr, "dplmc_companion_truce_pay", [
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
 (str_store_faction_name, s4, ":mission_object"),
@@ -5900,12 +5767,12 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
           (val_div, ":personalityclash_penalties", 2),
           (troop_set_slot, "$map_talk_troop", slot_troop_personalityclash_penalties, ":personalityclash_penalties"),
  ]],
- [anyone, "dplmc_companion_quitting_lord_persuasion", [
+[anyone, "dplmc_companion_quitting_lord_persuasion", [
                ],
 "I'm sorry, but I can't put it off any longer.", "dplmc_companion_quitting_lord_1",
 [
  ]],
- [anyone|plyr, "dplmc_companion_quitting_lord_2", [
+[anyone|plyr, "dplmc_companion_quitting_lord_2", [
 ], "Farewell, then.", "lord_leave", [#Jump to standard lord farewell dialog
 	(try_begin),
 		(this_or_next|troop_slot_eq, "$map_talk_troop", slot_troop_playerparty_history, dplmc_pp_history_granted_fief),
@@ -5918,7 +5785,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 	(troop_set_slot, "$map_talk_troop", slot_troop_personalityclash_penalties, 0),
 	(troop_set_slot, "$map_talk_troop", slot_troop_morality_penalties, 0),
 ]],
-##diplomacy start+
 [anyone, "dplmc_companion_quitting_persuasion_start", [
 	#First line, respond in slightly-more-formal diction.
 	(troop_get_slot, ":personality", "$map_talk_troop", slot_lord_reputation_type),
@@ -5956,11 +5822,9 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [anyone, "dplmc_companion_quitting_persuasion_start", [#Less-formal response
 ], "I'm listening.", "dplmc_companion_quitting_persuasion_1", [
 ]],
-#This goes to the standard persuasion dialog.
 [anyone|plyr, "dplmc_companion_quitting_persuasion_1", [
 ], "We've had some good times.  Things might not be going to your liking now, but stay with me a while longer and the situation will turn around.", "companion_quitting_persuasion", [
 ]],
-#This removes money if successful.
 [anyone|plyr, "dplmc_companion_quitting_persuasion_1", [
 	#The same calculation as ransoming a companion from a ransom broker.
 	#(From a game balance perspective, the effect is similar: you are
@@ -6001,7 +5865,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 ], "Would {reg0} mon convince you to remain a while longer?", "dplmc_companion_quitting_persuasion_bribe", [
       (assign, "$player_can_persuade_npc", 0),
     ]],
-#Return to previous
 [anyone|plyr, "dplmc_companion_quitting_persuasion_1", [
 ], "Actually, nevermind.  I meant to say something else.", "companion_quitting_response", [
 	(assign, "$player_can_persuade_npc", 1),#revert
@@ -6069,8 +5932,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 "Never mind.", "lord_pretalk",
 [
 ]],
-#dplmc_lord_internal_politics_plyr_request_support_2: lord answers
-
 [anyone, "dplmc_lord_internal_politics_plyr_request_support_2", [
 #fail if relation with player is too low
 (lt, "$g_talk_troop_effective_relation", -5),#-5 for most troops
@@ -6392,16 +6253,12 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 	"In that case, the war will continue.", "lord_pretalk",[]],
 [anyone|plyr,"dplmc_lord_ask_pardon_ruler_1",
 [], "On second thought, such an accord would not be in my interests.", "lord_pretalk",[]],
-#Refusal
-#TODO: Customize based on lord personality, and give a separate version depending
-#on the lord/vassal relationship of the player and the lord
 [anyone, "dplmc_lord_ask_exchange_fief_1",
  [(lt, "$g_talk_troop_effective_relation", 0),
   (str_store_string, s19, "str_dplmc_fief_exchange_not_interested"),
   ],
  "{s19}", "lord_pretalk", [],
  ],
-#NPC king to vassal player
 [anyone, "dplmc_lord_ask_exchange_fief_1",
    [#(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
   	 (call_script, "script_dplmc_get_troop_standing_in_faction", "$g_talk_troop", "$g_talk_troop_faction"),
@@ -6410,14 +6267,12 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
    "{s19}", "dplmc_lord_exchange_fief_select_1",
    [],
 ],
-#NPC vassal to player king
 [anyone, "dplmc_lord_ask_exchange_fief_1",
    [(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "trp_player"),
     (str_store_string, s19, "str_dplmc_fief_exchange_listen_player_approval"),],
     "{s19}", "dplmc_lord_exchange_fief_select_1",
     [],
 ],
-#NPC vassal to player fellow vassal
 [anyone, "dplmc_lord_ask_exchange_fief_1",
    [#(eq, "$g_talk_troop_faction", "$players_kingdom"),
     #load name of king
@@ -6428,7 +6283,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
    "{s19}", "dplmc_lord_exchange_fief_select_1",
    [],
 ],
-#Choosing the NPC fief to ask for
 [anyone|plyr|repeat_for_parties, "dplmc_lord_exchange_fief_select_1",
 [
 (store_repeat_object, ":center_no"),
@@ -6445,14 +6299,12 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [
 ],"Never mind", "lord_pretalk",
 []],
-#Now the NPC has to be offered a fief in exchange
 [anyone, "dplmc_lord_exchange_fief_select_2", [
    (str_store_string, s19, "str_dplmc_fief_exchange_listen_2"),
     ],
    "{s19}", "dplmc_lord_exchange_fief_select_2",
    [],
 ],
-#Choosing the NPC fief to offer
 [anyone|plyr|repeat_for_parties, "dplmc_lord_exchange_fief_select_2",
 [
 (store_repeat_object, ":center_no"),
@@ -6469,7 +6321,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 [
 ],"Never mind", "lord_pretalk",
 []],
-#NPC considers offer.  Acceptance:
 [anyone, "dplmc_lord_exchange_fief_select_3", [
     (call_script, "script_dplmc_evaluate_fief_exchange", "$g_talk_troop","$fief_selected","trp_player","$diplomacy_var"),
     #Result stored in reg0, reason string stored in s14
@@ -6479,7 +6330,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
    "{s14}", "dplmc_lord_exchange_fief_confirm",
    [],
 ],
-#NPC considers offer.  Refusal:
 [anyone, "dplmc_lord_exchange_fief_select_3", [
     #Call this again to make sure s14 and reg0 have the right values,
     #but don't actually use reg0 for anything (if it is non-negative, that means
@@ -6489,7 +6339,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
    "{s14}", "lord_pretalk",
    [],
 ],
-#Player confirms fief exchange.
 [anyone|plyr,"dplmc_lord_exchange_fief_confirm", [
     #Call this again to make sure s14 and reg0 have the right values
     (call_script, "script_dplmc_evaluate_fief_exchange", "$g_talk_troop","$fief_selected","trp_player","$diplomacy_var"),
@@ -6642,7 +6491,6 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 (assign, "$g_move_heroes", ":push_g_move_heroes"),#revert this at the end of the script
  ],
 ],
-#Player cancels fief exchange.
 [anyone|plyr, "dplmc_lord_exchange_fief_confirm",
 [
 ],"Actually, forget about this for now.", "lord_pretalk",
@@ -6702,14 +6550,12 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 	(try_end),
 	(lt, reg0, 1),
 ], "{s14}", "lord_pretalk", []],
-#answer was either "no" or "not now", jump back to pretalk
-
 [anyone,"dplmc_claimant_marriage_proposal_pc_reax", [
 ],
 "{s14}",
 "lord_marriage_proposal_female_pc_confirm_engagement",#jump to confirm engagement dialogue (despite the name, it is now unisex)
 []],
-   [anyone,"dplmc_prisoner_chat_let_go", [],
+[anyone,"dplmc_prisoner_chat_let_go", [],
   "{s43}", "close_window", [
    (call_script, "script_lord_comment_to_s43", "$g_talk_troop", "str_prisoner_released_default"),
    (party_remove_prisoners, "$current_town", "$g_talk_troop",1),
@@ -6736,14 +6582,14 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 	(str_store_troop_name, s7, "$g_talk_troop"),
 	(display_message, "str_dplmc_has_been_set_free"),
       ]],
-  [anyone,"dplmc_spouse_tournament_dedication_reaction", [],
+[anyone,"dplmc_spouse_tournament_dedication_reaction", [],
    "{s9}", "spouse_pretalk",
    []],
-  [anyone,"dplmc_lady_relations2",
+[anyone,"dplmc_lady_relations2",
    [],
    "About which lord do you want information?", "dplmc_lady_info_relative_select",[
  ]],
-   [anyone|plyr|repeat_for_troops, "dplmc_lady_info_relative_select",
+[anyone|plyr|repeat_for_troops, "dplmc_lady_info_relative_select",
    [
     (store_repeat_object, ":troop_no"),
     (neq, "$g_talk_troop", ":troop_no"),
@@ -6762,7 +6608,7 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
    [
       (store_repeat_object, "$lord_selected"),
    ]],
-  [anyone|plyr, "dplmc_lady_info_relative_select",
+[anyone|plyr, "dplmc_lady_info_relative_select",
    [
    ],
    "Never mind.", "lady_pretalk",[
@@ -6772,14 +6618,12 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
        ],
    "Pardon, but I do not feel comfortable discussing such personal matters with you.", "lady_pretalk",[
  ]],
-#Info 1
-  [anyone,"dplmc_lady_info_relative_1",
+[anyone,"dplmc_lady_info_relative_1",
    [
     (call_script, "script_dplmc_troop_political_notes_to_s47", "$lord_selected"),
    ],
    "{s47}", "dplmc_lady_info_relative_2",[
  ]],
-#Info 2a: If an unmarried lady, show rumor (betrothal)
 [anyone,"dplmc_lady_info_relative_1",
    [
     (is_between,"$lord_selected",kingdom_ladies_begin,kingdom_ladies_end),
@@ -6799,8 +6643,7 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
    ],
    "{12}", "lady_pretalk",[
  ]],
-#Info 2b: If a lady, show rumor (other)
-     [anyone,"dplmc_lady_info_relative_2",
+[anyone,"dplmc_lady_info_relative_2",
    [
     (is_between,"$lord_selected",kingdom_ladies_begin,kingdom_ladies_end),
     (assign, "$lady_selected", "$lord_selected"),
@@ -6964,14 +6807,13 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
    ],
    "{s12}.",
    "lady_pretalk", []],
-#Info 2: If a lord, show location
-  [anyone,"dplmc_lady_info_relative_2",
+[anyone,"dplmc_lady_info_relative_2",
    [
      (call_script, "script_update_troop_location_notes", "$lord_selected", 1),
      (call_script, "script_get_information_about_troops_position", "$lord_selected", 0),
      ],
    "{s1}", "lady_pretalk",[]],
-  [anyone, "dplmc_lady_feasts", [
+[anyone, "dplmc_lady_feasts", [
 
   (str_clear, s12),
   (assign, ":feast_found", 0),
@@ -7013,12 +6855,11 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
   ],
    "{s12}",
 "lady_pretalk", []],
-  [anyone,"dplmc_prison_guard_talk_ask_prisoner",
+[anyone,"dplmc_prison_guard_talk_ask_prisoner",
    [],
    "Alright, which prisoner shall I set free?", "dplmc_prison_guard_talk_prisoner_select",[
  ]],
-  ##select enemy prisoner
- [anyone|plyr|repeat_for_troops, "dplmc_prison_guard_talk_prisoner_select",
+[anyone|plyr|repeat_for_troops, "dplmc_prison_guard_talk_prisoner_select",
    [
      (store_repeat_object, ":troop_no"),
      (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
@@ -7033,11 +6874,11 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
      (store_repeat_object, "$diplomacy_var"),
      (store_faction_of_troop, "$g_faction_selected", "$diplomacy_var"),
      ]],
-  [anyone|plyr,"dplmc_prison_guard_talk_prisoner_select", [],
+[anyone|plyr,"dplmc_prison_guard_talk_prisoner_select", [],
    "No one.", "close_window",
    [
    ]],
-  [anyone,"dplmc_prison_guard_exchange_prisoner_ask_confirm",
+[anyone,"dplmc_prison_guard_exchange_prisoner_ask_confirm",
    [
      (str_store_troop_name, s10, "$diplomacy_var"),
      (store_faction_of_troop, ":faction_no", "$diplomacy_var"),
@@ -7045,7 +6886,7 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
    ],
    "As you wish, I will release {s10} of {s11}.", "dplmc_prison_guard_exchange_prisoner_confirm",[
  ]],
-  [anyone|plyr,"dplmc_prison_guard_exchange_prisoner_confirm", [],
+[anyone|plyr,"dplmc_prison_guard_exchange_prisoner_confirm", [],
    "Very well.", "close_window",
    [
       (party_remove_prisoners, "$g_encountered_party", "$diplomacy_var", 1),
@@ -7056,9 +6897,9 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
       (call_script, "script_change_player_honor", 1),
       (call_script, "script_update_troop_notes", "$diplomacy_var"),
    ]],
-  [anyone|plyr,"dplmc_prison_guard_exchange_prisoner_confirm", [],
+[anyone|plyr,"dplmc_prison_guard_exchange_prisoner_confirm", [],
    "No, I changed my mind.", "close_window",[]],
-  [anyone, "dplmc_tavern_traveler_employee_1", [], "Maybe I can help you. Who are you looking for?", "dplmc_tavern_traveler_employee_2", []],
+[anyone, "dplmc_tavern_traveler_employee_1", [], "Maybe I can help you. Who are you looking for?", "dplmc_tavern_traveler_employee_2", []],
 [anyone|plyr, "dplmc_tavern_traveler_employee_2",
 [
 #Check is chamberlain dismissed
@@ -7131,10 +6972,9 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 (call_script, "script_dplmc_store_troop_is_female", "$temp"),
 ], "I will send word to {reg0?her:him} that you are looking for {reg0?her:him}.",
 "tavern_traveler_pretalk", []],
-#Catch any errors.
 [anyone|plyr, "dplmc_tavern_traveler_employee_3",
    [],  "I am afraid I'm not able to help you.", "tavern_traveler_pretalk", []],
-  [anyone, "dplmc_trade_autosell_1", [
+[anyone, "dplmc_trade_autosell_1", [
     (call_script, "script_dplmc_initialize_autoloot", 0),#0 means only run if uninitialized
     (call_script, "script_dplmc_auto_sell", "trp_player", "$g_talk_troop", "$g_dplmc_auto_sell_price_limit", "$temp", "$temp_2", 0),
 	 #reg0 = mon, reg1 = number of items
@@ -7144,21 +6984,21 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
      (store_sub, reg3, reg1, 1),
 	 ], "Let's see, aside from your personal equipment, I see {reg1} {reg3?things:thing} that I would buy for {reg0} {reg2?mon:mon}.  Do we have a deal?", "dplmc_trade_autosell_2a",
 	 []],
-   [anyone|plyr, "dplmc_trade_autosell_2a", [
+[anyone|plyr, "dplmc_trade_autosell_2a", [
 	], "Sure.  Pleasure doing business with you.", "merchant_trade",
 	[
       (call_script, "script_dplmc_auto_sell", "trp_player", "$g_talk_troop", "$g_dplmc_auto_sell_price_limit", "$temp", "$temp_2", 2),
 	]],
-	[anyone|plyr, "dplmc_trade_autosell_2a", [], "Not exactly.  Let me show you what I meant.", "merchant_trade",
+[anyone|plyr, "dplmc_trade_autosell_2a", [], "Not exactly.  Let me show you what I meant.", "merchant_trade",
       [(change_screen_trade),]],
-	[anyone|plyr, "dplmc_trade_autosell_2a", [], "Nevermind.", "merchant_trade", []],
-   [anyone|plyr, "dplmc_trade_autosell_1", [],
+[anyone|plyr, "dplmc_trade_autosell_2a", [], "Nevermind.", "merchant_trade", []],
+[anyone|plyr, "dplmc_trade_autosell_1", [],
    "Aside from what I presume is your personal equipment, I don't see anything that I would be interested in buying.", "dplmc_trade_autosell_2b",
 	[]],
-	[anyone|plyr, "dplmc_trade_autosell_2b", [], "Let me show you what I meant.", "merchant_trade",
+[anyone|plyr, "dplmc_trade_autosell_2b", [], "Let me show you what I meant.", "merchant_trade",
       [(change_screen_trade),]],
-	[anyone|plyr, "dplmc_trade_autosell_2b", [], "Nevermind then.", "merchant_trade", []],
-  [anyone,"dplmc_view_regular_inventory",
+[anyone|plyr, "dplmc_trade_autosell_2b", [], "Nevermind then.", "merchant_trade", []],
+[anyone,"dplmc_view_regular_inventory",
     [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),], "Very well {s0}, here is what I am using...", "dplmc_do_view_regular_inventory",#Use {s0} instead of {sir/madam}
     [
       (call_script, "script_dplmc_copy_inventory", "$g_player_troop", "trp_temp_array_a"),
@@ -7174,16 +7014,16 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 
       (change_screen_loot, "trp_temp_array_b"),
     ]],
-  [anyone,"dplmc_do_view_regular_inventory", [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
+[anyone,"dplmc_do_view_regular_inventory", [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
    "Is that satisfactory, {s0}?", "dplmc_do_view_regular_inventory_2", []#Use {s0} instead of {sir/madam}
   ],
-  [anyone|plyr,"dplmc_do_view_regular_inventory_2",
+[anyone|plyr,"dplmc_do_view_regular_inventory_2",
     [
       (call_script, "script_dplmc_copy_inventory", "trp_temp_array_a", "$g_player_troop"),
     ],
    "Indeed.", "do_regular_member_view_char", []
   ],
-  [anyone,"dplmc_devel_merchant_quest_skip",
+[anyone,"dplmc_devel_merchant_quest_skip",
   [],
   "{!}Okay.  I'll just give you the reward, and we can assume that all of this already happened.", "close_window",
   [
@@ -7230,16 +7070,16 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 	(neg|is_between, "$g_encountered_party_faction", npc_kingdoms_begin, npc_kingdoms_end),
 	(store_faction_of_party, "$g_encountered_party_faction", "$g_starting_town"),
   ]],
-   [anyone,"dplmc_lord_ask_leave_service_rebellion", [
+[anyone,"dplmc_lord_ask_leave_service_rebellion", [
 	(ge, "$g_talk_troop_relation", 15)],
 	"Hrmph. Now do not be hasty with such words, {playername}. I deserve more respect than that, I think. Those lands belong to me and my heirs as you swore. If you continue down this route you will do me great offense, and there is no need for this to come to blows.",
 		"dplmc_lord_ask_leave_service_rebellion_verify",[]],
-  [anyone,"dplmc_lord_ask_leave_service_rebellion", [
+[anyone,"dplmc_lord_ask_leave_service_rebellion", [
   ],
   "You've grown rash, {playername}. Your oath binds you to me and you govern what you do at my will. Think about what it is you are saying, as it is far from wise and will end poorly for you. You'd do well to reconsider.",
 	"dplmc_lord_ask_leave_service_rebellion_verify",[]],
-   [anyone|plyr ,"dplmc_lord_ask_leave_service_rebellion_verify", [], "You are right, {s65}. The lands are yours, but still I must go.", "lord_ask_leave_service_3",[]],
-   [anyone|plyr ,"dplmc_lord_ask_leave_service_rebellion_verify", [], "My blood and sweat earned those lands, not yours. They are mine.", "dplmc_lord_ask_leave_rebellion_confirm",[
+[anyone|plyr ,"dplmc_lord_ask_leave_service_rebellion_verify", [], "You are right, {s65}. The lands are yours, but still I must go.", "lord_ask_leave_service_3",[]],
+[anyone|plyr ,"dplmc_lord_ask_leave_service_rebellion_verify", [], "My blood and sweat earned those lands, not yours. They are mine.", "dplmc_lord_ask_leave_rebellion_confirm",[
    ##diplomacy start+
 	#The relation change with the liege is exacerbated by the number of fiefs
 	#lost.  The "-10" figure is the previous relation hit for defecting; this now
@@ -7432,27 +7272,27 @@ What kind of recruits do you want?", "dplmc_constable_recruit_select",
 	(try_end),
 	##diplomacy end+
 	]],
-   [anyone, "dplmc_lord_ask_leave_rebellion_confirm", [
+[anyone, "dplmc_lord_ask_leave_rebellion_confirm", [
 	(ge, "$g_talk_troop_relation", 25)],
 	"You disappoint me greatly, {playername}. You may have once had my confidence, but this is beyond reason. Do not doubt that I will defend my house's honor from your insult. This is war between us.", "dplmc_lord_ask_leave_rebellion_confirm_final", [
 	(call_script, "script_player_leave_faction", 0), #"1" would mean give back fiefs
     (call_script, "script_activate_player_faction", "trp_player"),]],
-   [anyone, "dplmc_lord_ask_leave_rebellion_confirm", [
+[anyone, "dplmc_lord_ask_leave_rebellion_confirm", [
    ], "I should have seen your treachery coming. I must be growing soft to have been fool enough to miss your schemes. No matter. Your time will yet come, {playername}. Justice is switftest on a field of battle.", "dplmc_lord_ask_leave_rebellion_confirm_final", [
     (call_script, "script_player_leave_faction", 0), #"1" would mean give back fiefs
     (call_script, "script_activate_player_faction", "trp_player")]],
-   [anyone|plyr, "dplmc_lord_ask_leave_rebellion_confirm_final", [
+[anyone|plyr, "dplmc_lord_ask_leave_rebellion_confirm_final", [
    ], "I hold you in no ill-esteem, {s65}. I do only what is just.", "dplmc_lord_ask_leave_rebellion_end", []],
-   [anyone|plyr, "dplmc_lord_ask_leave_rebellion_confirm_final", [
+[anyone|plyr, "dplmc_lord_ask_leave_rebellion_confirm_final", [
    ], "We all do what we must. Good bye.", "dplmc_lord_ask_leave_rebellion_end", []],
-   [anyone|plyr, "dplmc_lord_ask_leave_rebellion_confirm_final", [
+[anyone|plyr, "dplmc_lord_ask_leave_rebellion_confirm_final", [
    ], "Then I await the day we meet in battle.", "dplmc_lord_ask_leave_rebellion_end", []],
-   [anyone, "dplmc_lord_ask_leave_rebellion_end", [
+[anyone, "dplmc_lord_ask_leave_rebellion_end", [
 	(ge, "$g_talk_troop_relation", 25),
 	(str_store_faction_name, s1, "$g_talk_troop_faction")
 	],
 	"This is a dark day, {playername}. It will be marked and rued throughout the {s1}. Your treachery will not be soon forgotten. It would be best if you left quickly.", "close_window", [
 	(assign, "$g_leave_encounter", 1)]],
-   [anyone, "dplmc_lord_ask_leave_rebellion_end", [
+[anyone, "dplmc_lord_ask_leave_rebellion_end", [
    ], "You are not the same {man/woman} I took as my vassal, {playername}. Be gone from my sight before I end this now.", "close_window", [(assign, "$g_leave_encounter", 1)]],
 ]

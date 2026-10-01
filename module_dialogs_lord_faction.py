@@ -14,728 +14,8 @@ from header_terrain_types import *
 from header_items import * #For ek_food, and so forth
 from module_constants import *
 
+
 dialogs_lord_faction = [
-[anyone|plyr, "award_fief_to_vassal",
-[
-(is_between, "$g_player_court", centers_begin, centers_end),
-(store_faction_of_party, ":player_court_faction", "$g_player_court"),
-##diplomacy start+ Handle player is co-ruler of kingdom
-(assign, ":is_coruler", 0),
-(try_begin),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":is_coruler", 1),
-(try_end),
-(this_or_next|eq, ":is_coruler", 1),
-##diplomacy end+
-(eq, ":player_court_faction", "fac_player_supporters_faction"),
-],
-"I wish to defer the appointment of a lord, until I take the counsel of my vassals", "award_fief_to_vassal_defer",
-[
-]],
-[anyone, "award_fief_to_vassal_defer",
-[
-],
-"As you wish, tono. You may decide this matter at a later date.", "close_window",
-[
-(try_begin),
-(faction_slot_eq, "$players_kingdom", slot_faction_political_issue, -1),
-(faction_set_slot, "$players_kingdom", slot_faction_political_issue, "$g_center_taken_by_player_faction"),
-(try_end),
-(call_script, "script_give_center_to_lord", "$g_center_taken_by_player_faction", -1, 0), #-1 for the faction lord in this script is used exclusively in this context
-#It is only used because script_give_center_to_faction does not reset the town lord if fac_player_supporters_faction is the attacker
-
-(assign, "$g_center_taken_by_player_faction", -1),
-
-#new start
-(try_begin),
- (eq, "$g_next_menu", "mnu_castle_taken"),
- (jump_to_menu, "$g_next_menu"),
-(try_end),
-#new end
-
-]],
-[anyone|plyr|repeat_for_troops,"award_fief_to_vassal",
-[
-(store_repeat_object, ":troop_no"),
-(troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-(neq, "trp_player", ":troop_no"),
-(store_troop_faction, ":faction_no", ":troop_no"),
-##diplomacy start+ Handle player is co-ruler of kingdom
-(assign, ":alt_faction", "fac_player_supporters_faction"),
-(try_begin),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":alt_faction", "$players_kingdom"),
-(try_end),
-(this_or_next|eq, ":faction_no", ":alt_faction"),
-##diplomacy end+
-(eq, ":faction_no", "fac_player_supporters_faction"),
-(str_store_troop_name, s11, ":troop_no"),
-(call_script, "script_print_troop_owned_centers_in_numbers_to_s0", ":troop_no"),
-
-(try_begin),
-##diplomacy start+ fixed bug that was preventing "promised fief" from appearing
-(troop_slot_eq, ":troop_no", slot_lord_recruitment_argument, argument_benefit),
-##diplomacy end+
-(str_store_string, s12, "str__promised_fief"),
-(else_try),
-(str_clear, s12),
-(try_end),
-
-(try_begin),
- (eq, reg0, 0),
-  ##diplomacy start+ write to s0 instead of s1
- (str_store_string, s0, "str_no_fiefss12"),
- ##diplomacy end+
-(else_try),
- ##diplomacy start+ write to s0 instead of s1
- (str_store_string, s0, "str_fiefs_s0s12"),
- ##diplomacy end+
-(try_end),
-
-##diplomacy start+ add relation to list of lords
-#add relation string
-(str_store_string_reg, s12, s63),#save s63, clobbering s12 (overwritten earlier)
-(call_script, "script_troop_get_player_relation", ":troop_no"),
-(call_script, "script_describe_relation_to_s63", reg0),
-(str_store_string_reg, s1, s63),#clobber s1
-(str_store_string_reg, s63, s12),#revert s63
-(str_store_string, s1, "str_dplmc_s0_comma_s1"),#write to s1
-##diplomacy end+
-],
-"{!}{s11} {s1}.", "award_fief_to_vassal_2",[(store_repeat_object, "$temp")]],
-[anyone|plyr, "award_fief_to_vassal",
-[
-(call_script, "script_print_troop_owned_centers_in_numbers_to_s0", "trp_player"),
-(str_store_party_name, s1, "$g_center_taken_by_player_faction"),
-
-(try_begin),
-(is_between, "$g_talk_troop", pretenders_begin, pretenders_end),
-(str_store_string, s12, "str_please_s65_"),
-(else_try),
-(str_clear, s12),
-(try_end),
-
-(assign, ":there_are_vassals", 0),
-##diplomacy start+
-#Support promoted ladies
-#(assign, ":end_cond", active_npcs_end),
-(assign, ":end_cond", heroes_end),
-#Handle player is co-ruler of kingdom
-(assign, ":alt_faction", "fac_player_supporters_faction"),
-(try_begin),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":alt_faction", "$players_kingdom"),
-(try_end),
-##diplomacy end+
-(try_for_range, ":troop_no", active_npcs_begin, ":end_cond"),
- (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
- (neq, "trp_player", ":troop_no"),
- (store_troop_faction, ":faction_no", ":troop_no"),
- ##diplomacy start+
- (this_or_next|eq, ":faction_no", ":alt_faction"),
- ##diplomacy end+
- (eq, ":faction_no", "fac_player_supporters_faction"),
- (val_add, ":there_are_vassals", 1),
- (assign, ":end_cond", 0),
-(try_end),
-
-(try_begin),
- (gt, ":there_are_vassals", 0),
-(str_store_string, s2, "str_fiefs_s0"),
-(else_try),
-(str_clear, s2),
-(try_end),
-
-(str_store_string, s5, "str_s12i_want_to_have_s1_for_myself"),
-],
-"{!}{s5}", "award_fief_to_vassal_2",
-[
-(assign, "$temp", "trp_player"),
-]],
-[anyone, "award_fief_to_vassal_2",
-[
-],
-"As you wish, tono. {reg6?I:{reg7?You:{s11}}} will be the new {reg3?lady:lord} of {s1}.", "close_window",
-[
-(assign, ":new_owner", "$temp"),
-
-(call_script, "script_give_center_to_lord", "$g_center_taken_by_player_faction", ":new_owner", 0),
-(try_begin),
-(faction_slot_eq, "$players_kingdom", slot_faction_political_issue, "$g_center_taken_by_player_faction"),
-(faction_set_slot, "$players_kingdom", slot_faction_political_issue, -1),
-(try_end),
-
-(assign, reg6, 0),
-(assign, reg7, 0),
-(try_begin),
- (eq, ":new_owner", "$g_talk_troop"),
- (assign, reg6, 1),
-(else_try),
- (eq, ":new_owner", "trp_player"),
- (assign, reg7, 1),
-(else_try),
- (str_store_troop_name, s11, ":new_owner"),
-(try_end),
-(str_store_party_name, s1, "$g_center_taken_by_player_faction"),
-##diplomacy start+
-##OLD: #(troop_get_type, reg3, ":new_owner"),
-##NEW:
-(assign, reg3, 0),
-(try_begin),
-	(call_script, "script_cf_dplmc_troop_is_female", ":new_owner"),
-	(assign, reg3, 1),
-(try_end),
-##diplomacy end+
-
-(assign, "$g_center_taken_by_player_faction", -1),
-
-#new start
-(try_begin),
- (eq, "$g_next_menu", "mnu_castle_taken"),
- (jump_to_menu, "$g_next_menu"),
-(try_end),
-#new end
-]],
-[anyone|plyr|repeat_for_troops, "center_captured_rebellion",
-[
-(store_repeat_object, ":troop_no"),
-(troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-(neq, "$g_talk_troop", ":troop_no"),
-(neq, "trp_player", ":troop_no"),
-(store_troop_faction, ":faction_no", ":troop_no"),
-##diplomacy start+ Handle player is co-ruler of kingdom
-(assign, ":alt_faction", "fac_player_supporters_faction"),
-(try_begin),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":alt_faction", "$players_kingdom"),
-(try_end),
-(this_or_next|eq, ":faction_no", ":alt_faction"),
-##diplomacy end+
-(eq, ":faction_no", "fac_player_supporters_faction"),
-(str_store_troop_name, s11, ":troop_no"),
-(call_script, "script_print_troop_owned_centers_in_numbers_to_s0", ":troop_no"),
-(try_begin),
- (eq, reg0, 0),
- (str_store_string, s1, "@(no fiefs)"),
-(else_try),
- (str_store_string, s1, "@(fiefs: {s0})"),
-(try_end),
-],
-"{s11}. {s1}", "center_captured_rebellion_2",
-[
-(store_repeat_object, "$temp"),
-]],
-[anyone|plyr, "center_captured_rebellion",
-[
-(call_script, "script_print_troop_owned_centers_in_numbers_to_s0", "trp_player"),
-(str_store_party_name, s1, "$g_center_taken_by_player_faction"),
-##diplomacy start+
-#Remove the "please" if the player is co-ruler
-(assign, reg0, 0),
-(try_begin),
-	(this_or_next|troop_slot_eq, "trp_player", slot_troop_spouse, "$g_talk_troop"),
-	(troop_slot_eq, "$g_talk_troop", slot_troop_spouse, "trp_player"),
-(try_end),
-],
-#"Please {s65}, I want to have {s1} for myself. (fiefs: {s0})", "center_captured_rebellion_2",
-"{reg0?{s65}:Please {s65}}, I want to have {s1} for myself. (fiefs: {s0})", "center_captured_rebellion_2",
-##diplomacy end+
-[
-(assign, "$temp", "trp_player"),
-]],
-[anyone|plyr, "center_captured_rebellion",
-[
-(call_script, "script_print_troop_owned_centers_in_numbers_to_s0", "$g_talk_troop"),
-(str_store_party_name, s1, "$g_center_taken_by_player_faction"),
-],
-"{s66}, you should have {s1} for yourself. (fiefs: {s0})", "center_captured_rebellion_2",
-[
-(assign, "$temp", "$g_talk_troop"),
-]],
-##diplomacy start+ allow not assigning newly-captured territories in a claimant quest
-[anyone|plyr, "center_captured_rebellion",
-[
-(str_store_party_name, s1, "$g_center_taken_by_player_faction"),
-],
-"You should appoint no one yet, and decide later.",
- "center_captured_rebellion_2_defer",
-[
-]],
-[anyone, "center_captured_rebellion_2_defer",
-[
-],
-"Hmmm. All right, {playername}. I value your counsel highly.  I shall defer appointment of a lord for {s1} for the time.", "close_window",
-[
- (call_script, "script_give_center_to_lord", "$g_center_taken_by_player_faction", -1, 0),
- (try_begin),
-          (faction_slot_eq, "$players_kingdom", slot_faction_political_issue, "$g_center_taken_by_player_faction"),
-(faction_set_slot, "$players_kingdom", slot_faction_political_issue, -1),
-(try_end),
- (str_store_party_name, s1, "$g_center_taken_by_player_faction"),
- (assign, "$g_center_taken_by_player_faction", -1),
- #new start
- (try_begin),
-    (eq, "$g_next_menu", "mnu_castle_taken"),
-    (jump_to_menu, "$g_next_menu"),
- (try_end),
-],
-],
-##diplomacy end+
-
-[anyone, "center_captured_rebellion_2",
-[
-#     (faction_slot_eq, "fac_player_supporters_faction", slot_faction_leader, "$g_talk_troop"),
-#     (ge, "$g_center_taken_by_player_faction", 0),
-],
-"Hmmm. All right, {playername}. I value your counsel highly. {reg6?I:{reg7?You:{s11}}} will be the new {reg3?lady:lord} of {s1}.", "close_window",
-[
-(assign, ":new_owner", "$temp"),
-(call_script, "script_calculate_troop_score_for_center", ":new_owner", "$g_center_taken_by_player_faction"),
-(assign, ":new_owner_score", reg0),
-##diplomacy start+
-#(assign, ":total_negative_effect"),
-(assign, ":total_negative_effect", 0),
-##Handle player is co-ruler of kingdom
-(assign, ":alt_faction", "fac_player_supporters_faction"),
-(try_begin),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":alt_faction", "$players_kingdom"),
-(try_end),
-##Change next line to support promoted kingdom ladies:
-#(try_for_range, ":cur_troop", active_npcs_begin, active_npcs_end),
-(try_for_range, ":cur_troop", heroes_begin, heroes_end),
-##diplomacy end+
-(troop_slot_eq, ":cur_troop", slot_troop_occupation, slto_kingdom_hero),
- (store_troop_faction, ":cur_faction", ":cur_troop"),
- ##diplomacy start+
- (this_or_next|eq, ":cur_faction", ":alt_faction"),
- ##diplomacy end+
- (eq, ":cur_faction", "fac_player_supporters_faction"),
- (neq, ":cur_troop", ":new_owner"),
-(neg|troop_slot_eq, ":cur_troop", slot_troop_stance_on_faction_issue, ":new_owner"),
-(call_script, "script_troop_get_relation_with_troop", ":cur_troop", ":new_owner"),
-(lt, reg0, 25),
-
-
- (call_script, "script_calculate_troop_score_for_center", ":cur_troop", "$g_center_taken_by_player_faction"),
- (assign, ":cur_troop_score", reg0),
- (gt, ":cur_troop_score", ":new_owner_score"),
- (store_sub, ":difference", ":cur_troop_score", ":new_owner_score"),
- (store_random_in_range, ":random_dif", 0, ":difference"),
- (val_div, ":random_dif", 1000),
- (gt, ":random_dif", 0),
- (val_add, ":total_negative_effect", ":random_dif"),
- (val_mul, ":random_dif", -1),
- (call_script, "script_change_player_relation_with_troop", ":cur_troop", ":random_dif"),
-(try_end),
-(val_mul, ":total_negative_effect", 2),
-(val_div, ":total_negative_effect", 3),
-(val_add, ":total_negative_effect", 5),
-(try_begin),
- (neq, ":new_owner", "trp_player"),
- (val_min, ":total_negative_effect", 30),
- (call_script, "script_change_player_relation_with_troop", ":new_owner", ":total_negative_effect"),
-(try_end),
-
-(call_script, "script_give_center_to_lord", "$g_center_taken_by_player_faction", ":new_owner", 0),
-(try_begin),
-(faction_slot_eq, "$players_kingdom", slot_faction_political_issue, "$g_center_taken_by_player_faction"),
-(faction_set_slot, "$players_kingdom", slot_faction_political_issue, -1),
-(try_end),
-
-(assign, reg6, 0),
-(assign, reg7, 0),
-(try_begin),
- (eq, ":new_owner", "$g_talk_troop"),
- (assign, reg6, 1),
-(else_try),
- (eq, ":new_owner", "trp_player"),
- (assign, reg7, 1),
-(else_try),
- (str_store_troop_name, s11, ":new_owner"),
-(try_end),
-(str_store_party_name, s1, "$g_center_taken_by_player_faction"),
-##diplomacy start+
-##OLD:
-#(troop_get_type, reg3, ":new_owner"),
-##NEW:
-(assign, reg3, 0),
-(try_begin),
-	(call_script, "script_cf_dplmc_troop_is_female", ":new_owner"),
-	(assign, reg3, 1),
-(try_end),
-##diplomacy end+
-
-(assign, "$g_center_taken_by_player_faction", -1),
-
-#new start
-(try_begin),
- (eq, "$g_next_menu", "mnu_castle_taken"),
- (jump_to_menu, "$g_next_menu"),
-(try_end),
-#new end
-]],
-#Ministerial issues
-
-
-
-
-[anyone, "minister_issues",
-[
-(check_quest_active, "qst_consult_with_minister"),
-(eq, "$g_minister_notification_quest", "qst_resolve_dispute"),
-
-(setup_quest_text,"qst_resolve_dispute"),
-
-(quest_get_slot, ":lord_1", "qst_resolve_dispute", slot_quest_target_troop),
-(str_store_troop_name, s11, ":lord_1"),
-
-(quest_get_slot, ":lord_2", "qst_resolve_dispute", slot_quest_object_troop),
-(str_store_troop_name, s12, ":lord_2"),
-
-(str_store_string, s2, "str_resolve_the_dispute_between_s11_and_s12"),
-(call_script, "script_start_quest", "qst_resolve_dispute", -1),
-(quest_set_slot, "qst_resolve_dispute", slot_quest_expiration_days, 30),
-(quest_set_slot, "qst_resolve_dispute", slot_quest_giver_troop, "$g_player_minister"),
-(quest_set_slot, "qst_resolve_dispute", slot_quest_target_state, 0),
-(quest_set_slot, "qst_resolve_dispute", slot_quest_object_state, 0),
-
-(quest_get_slot, ":lord_1", "qst_resolve_dispute", slot_quest_target_troop), #this block just to check if the slots work
-(str_store_troop_name, s11, ":lord_1"),
-(quest_get_slot, ":lord_2", "qst_resolve_dispute", slot_quest_object_troop),
-(str_store_troop_name, s12, ":lord_2"),
-
-],
-"There is a matter which needs your attention. The quarrel between {s11} and {s12} has esclatated to a point where it has become unseemly. If you do intervene, you risk offending one of the lords. However, if you do nothing, you risk appearing weak. Such are the burdens of lordship, my {lord/lady}.", "minister_pretalk",
-[
-(call_script, "script_end_quest", "qst_consult_with_minister"),
-]],
-[anyone, "minister_issues",
-[
-(assign, "$g_center_taken_by_player_faction", -1),
-(try_for_range, ":center_no", centers_begin, centers_end),
-(eq, "$g_center_taken_by_player_faction", -1),
-(store_faction_of_party, ":center_faction", ":center_no"),
-##diplomacy start+ Handle player is co-ruler of kingdom
-(assign, ":alt_faction", 0),
-(try_begin),
-	(eq, ":center_faction", "$players_kingdom"),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":alt_faction", 1),
-(try_end),
-(this_or_next|eq, ":alt_faction",  1),
-##diplomacy end+
-(eq, ":center_faction", "fac_player_supporters_faction"),
-(neg|party_slot_ge, ":center_no", slot_town_lord, 0),
-(assign, "$g_center_taken_by_player_faction", ":center_no"),
-(try_end),
-(is_between, "$g_center_taken_by_player_faction", centers_begin, centers_end),
-(str_store_party_name, s1, "$g_center_taken_by_player_faction"),
-],
-"{s1} currently does not have a lord. You may wish to keep it this way, as lords will sometimes gravitate towards daimyo who have land to offer, but for the time being, no one is collecting any of its rents.", "minister_talk",
-[]],
-[anyone, "minister_issues",
-[
-(neg|is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),
-],
-"At this point, there are no particularly urgent matters which need your attention. I should point out though, that I am not very skilled in the ways of politics, and that I am anxious to return to private life. If you wish to issue any but the most basic directives, I suggest appointing a trusted companion in my stead. In the meantime, is there anything you wish done?", "minister_talk",[]],
-[anyone, "minister_issues",
-[
-(eq, 1, 0),
-],
-"{!}[Should not appear - there to prevent error related to center_captured_lord_advice]", "center_captured_lord_advice",[]],
-[anyone, "minister_issues",
-[
-(lt, "$player_right_to_rule", 30),
-],
-"If I may offer you a world of advice, my {lord/lady}, it seems that your right to rule as an independent daimyo is not sufficiently recognized, and this may bring us problems further down the road. It may be advisable to find another clan with whom you have shared interests and seek its recognition, to establish yourself as an equal with Japan's other daimyo.", "minister_talk",[]],
-[anyone, "minister_issues",
-[],
-"At this point, there are no particularly urgent matters which need your attention. Is there anything you wish done?", "minister_talk",[]],
-[anyone, "minister_pretalk",
-[],
-"Is there anything you wish done?", "minister_talk",
-[]],
-[anyone|plyr,"minister_talk",
-[
-(is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),
-],
-"Do you have any ideas to strengthen our kingdom's unity?", "combined_political_quests",[
-(call_script, "script_get_political_quest", "$g_talk_troop"),
-(assign, "$political_quest_found", reg0),
-(assign, "$political_quest_target_troop", reg1),
-(assign, "$political_quest_object_troop", reg2),
-
-]],
-#gekokujo 3.0 integrating 1.158 change start
-[anyone|plyr,"minister_talk", [
-	(check_quest_active, "qst_offer_gift"),
-    (quest_slot_eq, "qst_offer_gift", slot_quest_giver_troop, "$g_talk_troop"),
-	
-    (quest_get_slot, ":target_troop", "qst_offer_gift", slot_quest_target_troop),
-	(str_store_troop_name, s4, ":target_troop"),
-	(player_has_item, "itm_furs"),
-	(player_has_item, "itm_velvet"),
-   ],
-   "I have the materials for {s4}'s gift.", "offer_gift_quest_complete",[
-   ]],
-#gekokujo 3.0 integrating 1.158 change end
-
-[anyone|plyr,"minister_talk",
-[
-(assign, "$political_quest_to_cancel", -1),
-(try_begin),
-(check_quest_active, "qst_offer_gift"),
-(quest_slot_eq, "qst_offer_gift", slot_quest_giver_troop, "$g_talk_troop"),
-(assign, "$political_quest_to_cancel", "qst_offer_gift"),
-(str_store_string, s10, "str_offer_gift_description"),
-(else_try),
-(check_quest_active, "qst_resolve_dispute"),
-(quest_slot_eq, "qst_resolve_dispute", slot_quest_giver_troop, "$g_talk_troop"),
-(assign, "$political_quest_to_cancel", "qst_resolve_dispute"),
-(str_store_string, s10, "str_resolve_dispute_description"),
-(try_end),
-(gt, "$political_quest_to_cancel", 0),
-],
-"Let's abandon our plan to {s10}.", "minister_cancel_political_quest",[
-]],
-[anyone,"minister_cancel_political_quest",
-[],
-"Are you sure you want to drop that idea?", "minister_cancel_political_quest_confirm",[
-]],
-[anyone|plyr,"minister_cancel_political_quest_confirm",
-[],
-"Yes, I am sure. Let's abandon that idea.", "minister_pretalk",[
-(call_script, "script_abort_quest", "$political_quest_to_cancel", 1),
-]],
-[anyone|plyr,"minister_cancel_political_quest_confirm",
-[],
-"Actually, never mind.", "minister_pretalk",[
-]],
-[anyone|plyr, "minister_talk",
-[
-(is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),
-],
-"I wish to dispatch an emissary.", "minister_diplomatic_kingdoms",
-[]],
-[anyone|plyr, "minister_talk",
-[
-(is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),
-],
-"I wish to indict a disloyal vassal for treason.", "minister_indict",
-[]],
-[anyone|plyr, "minister_talk",
-[
-(faction_get_slot, ":current_marshal", "$players_kingdom", slot_faction_marshall),
-(ge, ":current_marshal", 0),
-(try_begin),
-(gt, ":current_marshal", 0),
-(str_store_troop_name, s4, ":current_marshal"),
-(else_try),
-(str_store_string, s4, "str_myself"),
-(try_end),
-],
-"I wish to replace {s4} as strategist.", "minister_change_marshal",
-[]],
-[anyone|plyr, "minister_talk",
-[
-(faction_slot_eq,  "$players_kingdom", slot_faction_marshall, -1),
-],
-"I wish to appoint a new strategist.", "minister_change_marshal",
-[]],
-[anyone, "minister_change_marshal",
-[
-(store_current_hours, ":hours"),
-(val_sub, ":hours", "$g_player_faction_last_marshal_appointment"),
-##diplomacy start+ Change based on centralization
-#(lt, ":hours", 48), (Standard 48 hours, minimum 24 hours, maximum 72 hours)
-(faction_get_slot, ":centralization", "fac_player_supporters_faction", dplmc_slot_faction_centralization),
-(val_clamp, ":centralization", -3, 4),
-(store_mul, ":reset_time", ":centralization", 8),
-(val_add, ":reset_time", 48),
-(lt, ":hours", ":reset_time"),
-##diplomacy end+
-],
-"You have just made such an appointment, my {lord/lady}. If you countermand your decree so soon, there will be great confusion. We will need to wait a few days.", "minister_pretalk",
-[]],
-[anyone|plyr, "minister_talk",
-[
-(neg|is_between, "$g_player_minister", active_npcs_begin, active_npcs_end),
-],
-"I wish for you to retire as minister.", "minister_replace",
-[]],
-[anyone|plyr, "minister_talk",
-[
-(is_between, "$g_player_minister", active_npcs_begin, active_npcs_end),
-(neg|troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero),
-
-],
-"I wish you to rejoin my party.", "minister_replace",
-[]],
-[anyone|plyr, "minister_talk",
-[
-(is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),
-],
-"I wish you to grant one of my vassals a fief.", "minister_grant_fief",
-[]],
-[anyone|plyr, "minister_talk",
-[
-(is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),
-(assign, ":fief_found", -1),
-##diplomacy start+ Handle player is co-ruler of kingdom
-(assign, ":alt_faction", "fac_player_supporters_faction"),
-(try_begin),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":alt_faction", "$players_kingdom"),
-(try_end),
-##diplomacy end+
-(try_for_range, ":center", centers_begin, centers_end),
-(eq, ":fief_found", -1),
-(store_faction_of_party, ":center_faction", ":center"),
-##diplomacy start+ Handle player is co-ruler of kingdom
-(this_or_next|eq, ":center_faction", ":alt_faction"),
-##diploamcy end+
-(eq, ":center_faction", "fac_player_supporters_faction"),
-(party_get_slot, ":town_lord", ":center", slot_town_lord),
-(try_begin),
-(ge, ":town_lord", active_npcs_begin),
-(store_faction_of_troop, ":town_lord_faction", ":town_lord"),
-##diplomacy start+ Handle player is co-ruler of kingdom
-(neq, ":town_lord_faction", ":alt_faction"),
-##diplomacy end+
-(neq, ":town_lord_faction", "fac_player_supporters_faction"),
-(assign, ":town_lord", -1),
-(try_end),
-(lt, ":town_lord", 0),
-(assign, ":fief_found", ":center"),
-(try_end),
-(gt, ":fief_found", -1),
-(str_store_party_name, s4, ":fief_found"),
-],
-"I wish to make myself lord of {s4}.", "minister_grant_self_fief",
-[]],
-[anyone, "minister_grant_self_fief",
-[
-],
-"As you wish. You shall be lord of {s4}.", "minister_pretalk",
-[
-(assign, ":fief_found", -1),
-##diplomacy start+ Handle player is co-ruler of kingdom
-(assign, ":alt_faction", "fac_player_supporters_faction"),
-(try_begin),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":alt_faction", "$players_kingdom"),
-(try_end),
-##diplomacy end+
-(try_for_range, ":center", centers_begin, centers_end),
-(eq, ":fief_found", -1),
-(store_faction_of_party, ":center_faction", ":center"),
-##diplomacy start+ Handle player is co-ruler of kingdom
-(this_or_next|eq, ":center_faction", ":alt_faction"),
-##diplomacy end+
-(eq, ":center_faction", "fac_player_supporters_faction"),
-(party_get_slot, ":town_lord", ":center", slot_town_lord),
-(try_begin),
-(ge, ":town_lord", active_npcs_begin),
-(store_faction_of_troop, ":town_lord_faction", ":town_lord"),
-##diplomacy start+ Handle player is co-ruler of kingdom
-(neq, ":town_lord_faction", ":alt_faction"),
-##diplomacy end+
-(neq, ":town_lord_faction", "fac_player_supporters_faction"),
-(assign, ":town_lord", -1),
-(try_end),
-(lt, ":town_lord", 0),
-(assign, ":fief_found", ":center"),
-(try_end),
-
-
-(call_script, "script_give_center_to_lord", ":fief_found", "trp_player", 0),
-(try_begin),
-(faction_slot_eq, "$players_kingdom", slot_faction_political_issue, ":fief_found"),
-(faction_set_slot, "$players_kingdom", slot_faction_political_issue, -1),
-(try_end),
-(str_store_party_name, s4, ":fief_found"),
-
-]],
-##hire staff
-[anyone|plyr, "spouse_talk",
-[
-(assign, ":has_fief", 0),
-(try_for_range, ":center_no", centers_begin, centers_end),
-(party_get_slot,  ":lord_troop_id", ":center_no", slot_town_lord),
-(eq, ":lord_troop_id", "trp_player"),
-(assign, ":has_fief", 1),
-(try_end),
-##diplomacy start+ remove superfluous
-#(try_begin),
-##diplomacy end+
-(eq, ":has_fief", 1),
-],
-"I want to hire a new staff member.", "dplmc_spouse_staff_talk_ask",
-[]],
-##buy food
-[anyone|plyr, "spouse_talk",
-[ ##diplomacy start+
-#
-##OLD:
-#(troop_get_slot, ":player_spouse", "trp_player", slot_troop_spouse),
-#(troop_slot_ge, ":player_spouse", slot_troop_cur_center, -1),
-##NEW:
-(assign, ":player_spouse", "$g_talk_troop"),
-(troop_slot_ge, ":player_spouse", slot_troop_cur_center, -1),#what is the point of this?
-##Also, to avoid strange bugs, do not enable this for heroes or ministers
-(neg|troop_slot_eq, ":player_spouse", slot_troop_occupation, slto_kingdom_hero),
-(neq, "$g_talk_troop", "$g_player_minister"),
-(neg|troop_slot_ge, ":player_spouse", slot_troop_leaded_party, 1),
-(neg|troop_slot_ge, ":player_spouse", slot_troop_prisoner_of_party, 0),
-##diplomacy end+
-
-#make sure no spouse party exists
-(assign, ":spouse_party_exists", 0),
-(try_for_parties, ":spouse_party"),
-  (party_slot_eq, ":spouse_party", slot_party_type, dplmc_spt_spouse),
-  (assign, ":spouse_party_exists", 1),
-(try_end),
-(neq, ":spouse_party_exists", 1),
-
-],
-"Can you please buy some bread?", "dplmc_spouse_talk_buy_food_amount_ask",
-[]],
-##hire staff
-[anyone|plyr, "minister_talk",
-[
-(troop_get_slot, ":player_spouse", "trp_player", slot_troop_spouse),
-(neq,"$g_talk_troop",":player_spouse"), #only if spouse != minister
-(assign, ":has_fief", 0),
-(try_for_range, ":center_no", centers_begin, centers_end),
-(party_get_slot,  ":lord_troop_id", ":center_no", slot_town_lord),
-(eq, ":lord_troop_id", "trp_player"),
-(assign, ":has_fief", 1),
-(try_end),
-##diplomacy start+ remove superfluous
-#(try_begin),
-##diplomacy end+
-(eq, ":has_fief", 1),
-],
-"I want to hire a new staff member.", "dplmc_minister_staff_talk_ask",
-[]],
-##return fief to king
 [anyone|plyr,"lord_talk", [
 (le,"$talk_context", tc_party_encounter),
 (ge, "$g_talk_troop_faction_relation", 0),
@@ -747,7 +27,6 @@ dialogs_lord_faction = [
 ],
 "{s66}, I want to give up a fief you enfeoffed to me.", "dplmc_lord_give_back_fief",[
 ]],
-##persuade king to declare war
 [anyone|plyr,"lord_talk", [(le,"$talk_context", tc_party_encounter),
                        (ge, "$g_talk_troop_faction_relation", 0),
                        #(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
@@ -758,14 +37,11 @@ dialogs_lord_faction = [
                       ],
 "{s66}, you should declare war on a clan.", "dplmc_lord_declare_war",[
 ]],
-##affiliate to family
-#leave
 [anyone|plyr,"lord_talk_ask_something_2", [
  (call_script, "script_dplmc_is_affiliated_family_member", "$g_talk_troop"),
  (eq, reg0, 1),],
 "I have done my share with your family, I want to be discharged of my pledge.", "dplmc_lord_family_affiliate_end",[
 ]],
-#join
 [anyone|plyr,"lord_talk_ask_something_2", [
 (store_current_hours, ":current_hours"),
 (val_sub, ":current_hours", 24 * 6),
@@ -787,1219 +63,6 @@ dialogs_lord_faction = [
                       ],
 "I have great respect for your lineage, I wish to be affiliated to your family.", "dplmc_lord_family_affiliate",[
 ]],
-##move court
-[anyone|plyr, "spouse_talk",
-[
-(assign, ":has_fief", 0),
-(try_for_range, ":center_no", walled_centers_begin, walled_centers_end),
-(party_get_slot,  ":lord_troop_id", ":center_no", slot_town_lord),
-(eq, ":lord_troop_id", "trp_player"),
-(val_add, ":has_fief", 1),
-(try_end),
-(gt, ":has_fief", 1),
-],
-"I want to move our residence.", "dplmc_spouse_move_residence_ask",[
-]],
-##threaten with war
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "$players_kingdom", "$g_faction_selected"),
-(is_between, reg0, -1, 1), #no war, no truce
-(gt, "$g_player_chamberlain", 0),
-],
-"Threaten them with war and see what you can squeeze out of them.", "minister_diplomatic_emissary",
-[(assign, "$g_initiative_selected", dplmc_npc_mission_threaten_request)]],
-##send a gift to another kingdom
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[],
-"I want to send a gift.", "dplmc_minister_gift_type",
-[(assign, "$g_initiative_selected", npc_mission_peace_request)]],
-##dispatch emissary to bring gift
-[anyone, "minister_emissary_dispatch",
-[
-(str_store_troop_name, s11, "$g_emissary_selected"),
-(str_store_faction_name, s12, "$g_faction_selected"),
-(this_or_next|eq, "$g_initiative_selected", dplmc_npc_mission_gift_fief_request),
-(eq, "$g_initiative_selected", dplmc_npc_mission_gift_horses_request),
-(str_store_string, s14, "str_dplmc_bring_gift"),
-], "Very well -- I shall send {s11} to the {s12} to {s14}.", "minister_diplomatic_dispatch_confirm",[
-]],
-##prisoner exchange mission
-[anyone|plyr, "minister_talk",
-[
-(is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),
-],
-"I wish to exchange a prisoner.", "dplmc_minister_exchange_prisoner_ask",
-[]],
-##exchange prisoner
-[anyone, "minister_emissary_dispatch",
-[
-(str_store_troop_name, s11, "$g_emissary_selected"),
-(str_store_faction_name, s12, "$g_faction_selected"),
-(eq, "$g_initiative_selected", dplmc_npc_mission_prisoner_exchange),
-(str_store_troop_name, s10, "$diplomacy_var"),
-(str_store_troop_name, s11, "$diplomacy_var2"),
-(str_store_string, s14, "str_dplmc_exchange_prisoner"),
-], "Very well -- I shall send {s11} to the {s12} to {s14}.", "minister_diplomatic_dispatch_confirm",[]],
-			  ##diplomacy end+
-
-##persuasion mission
-[anyone|plyr, "minister_talk",
-[
-(is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),
-(faction_get_slot, ":faction_leader", "fac_player_supporters_faction", slot_faction_leader),
-##diplomacy start+ Handle player is co-ruler of kingdom
-(assign, ":is_coruler", 0),
-(try_begin),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":is_coruler", 1),
-(try_end),
-(this_or_next|eq, ":is_coruler", 1),
-##diplomacy end+
-(eq, ":faction_leader", "trp_player"),
-],
-"I want to persuade a lord of joining our clan.", "dplmc_minister_persuasion_fief_ask",
-[]],
-##dispatch emissary to persuade
-[anyone, "minister_emissary_dispatch",
-[
-(str_store_troop_name, s11, "$g_emissary_selected"),
-(str_store_faction_name, s12, "$g_faction_selected"),
-(eq, "$g_initiative_selected", dplmc_npc_mission_persuasion),
-(str_store_troop_name, s13, "$diplomacy_var"),
-(str_store_party_name, s14, "$diplomacy_var2"),
-##diplomacy start+ Use correct pronoun
-(call_script, "script_dplmc_store_troop_is_female", "$diplomacy_var"),
-(assign, reg4, reg0),#Next line, "him" -> {reg4?her:him}
-], "Very well -- I shall send {s11} to {s12} to persuade {s13} and offer {reg4?her:him} {s14}.", "minister_diplomatic_dispatch_confirm",[
-##diplomacy end+
-]],
-##spy mission
-[anyone|plyr, "minister_talk",
-[
-(is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),
-],
-"I wish to spy out another clan.", "dplmc_minister_spy_kingdoms",
-[]],
-##dispatch spy
-[anyone, "minister_emissary_dispatch",
-[
-(str_store_troop_name, s11, "$g_emissary_selected"),
-(str_store_faction_name, s12, "$g_faction_selected"),
-(eq, "$g_initiative_selected", dplmc_npc_mission_spy_request),
-(str_store_string, s14, "str_dplmc_gather_information"),
-(store_skill_level, ":emissary_spotting", "skl_spotting", "$g_emissary_selected"),
-(val_mul, ":emissary_spotting", 5),
-(val_add, ":emissary_spotting", 65),
-(val_min, ":emissary_spotting", 95),
-(store_random_in_range, ":random", 0, 100),
-
-(try_begin),#debug
-(eq, "$cheat_mode", 1),
-(assign, reg0, ":emissary_spotting"),
-(display_message, "@{!}DEBUG : emissary_spotting: {reg0}"),
-(assign, reg0, ":random"),
-(display_message, "@{!}DEBUG : random: {reg0}"),
-(try_end),
-
-(try_begin),
-(ge, ":emissary_spotting", ":random"),
-(assign, "$diplomacy_var", 0), # not caught
-(else_try),
- (lt, ":emissary_spotting", ":random"),
- (assign, "$diplomacy_var", 1), # caught
-(try_end),
-], "Very well -- I shall send {s11} to the {s12} to {s14}.", "minister_diplomatic_dispatch_confirm",[]],
-##alliance request
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
-(eq, reg0, 1),  #player is at truce with the mission_faction
-
-(assign, ":proceed", 0),
-(try_begin),
-(store_add, ":slot_truce_days", "$g_faction_selected", slot_faction_truce_days_with_factions_begin),
-(val_sub, ":slot_truce_days", kingdoms_begin),
-(faction_get_slot, ":truce_days", "fac_player_supporters_faction", ":slot_truce_days"),
-(is_between, ":truce_days", 20, 50), #you need a trade aggreement or defensive pact for an alliance
-(assign, ":proceed", 1),
-(try_end),
-(eq, ":proceed", 1),
-
-(faction_slot_eq, "$g_faction_selected", slot_faction_recognized_player, 1), #recognized us
-(faction_slot_eq, "$g_faction_selected", slot_faction_state, sfs_active),
-(faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),
-
-(str_store_troop_name, s10, ":leader_no"),
-(str_store_faction_name, s11, "$g_faction_selected"),
-(str_clear, s14),
-],
-"Tell {s10} that I want to form an alliance with him.", "minister_diplomatic_emissary",
-[ (assign, "$g_initiative_selected", dplmc_npc_mission_alliance_request),
-]],
-##defensive request
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
-(eq, reg0, 1),  #player is at truce with the mission_faction
-
-(assign, ":proceed", 0),
-(try_begin),
-(store_add, ":slot_truce_days", "$g_faction_selected", slot_faction_truce_days_with_factions_begin),
-(val_sub, ":slot_truce_days", kingdoms_begin),
-(faction_get_slot, ":truce_days", "fac_player_supporters_faction", ":slot_truce_days"),
-#(gt, ":truce_days", 20), #if we have more than 20 truce days left don't proceed
-(is_between, ":truce_days", 0, 30), #you need a non-aggression or trade aggreement for an defensive pact
-(assign, ":proceed", 1),
-(try_end),
-(eq, ":proceed", 1),
-
-(faction_slot_eq, "$g_faction_selected", slot_faction_recognized_player, 1), #recognized us
-(faction_slot_eq, "$g_faction_selected", slot_faction_state, sfs_active),
-(faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),
-
-(str_store_troop_name, s10, ":leader_no"),
-(str_store_faction_name, s11, "$g_faction_selected"),
-(str_clear, s14),
-###diplomacy start+ Use reg0 for gender
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
-],#Next line "him" to {reg0?her:him}
-"Tell {s10} that I want to conclude a defensive pact with {reg0?her:him}.", "minister_diplomatic_emissary",
-##diplomacy end+
-[ (assign, "$g_initiative_selected", dplmc_npc_mission_defensive_request),
-]],
-##trade request
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
-(ge, reg0, 0),  #player is at peace or truce with the mission_faction
-
-(assign, ":proceed", 0),
-(try_begin),
-(store_add, ":slot_truce_days", "$g_faction_selected", slot_faction_truce_days_with_factions_begin),
-(val_sub, ":slot_truce_days", kingdoms_begin),
-(faction_get_slot, ":truce_days", "fac_player_supporters_faction", ":slot_truce_days"),
-(lt, ":truce_days", 10), #you need a non-aggression or peace for a trade pact
-(assign, ":proceed", 1),
-(try_end),
-(eq, ":proceed", 1),
-
-(faction_slot_eq, "$g_faction_selected", slot_faction_recognized_player, 1), #recognized us
-(faction_slot_eq, "$g_faction_selected", slot_faction_state, sfs_active),
-(faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),
-
-(str_store_troop_name, s10, ":leader_no"),
-(str_store_faction_name, s11, "$g_faction_selected"),
-(str_clear, s14),
-##diplomacy start+ correct pronouns
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
-],
-"Tell {s10} that I want to sign a trade agreement with {reg0?her:him}.", "minister_diplomatic_emissary",
-##diplomacy end+
-[ (assign, "$g_initiative_selected", dplmc_npc_mission_trade_request),
-]],
-##nonaggression request
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
-(eq, reg0, 0),  #player is at peace
-
-(faction_slot_eq, "$g_faction_selected", slot_faction_state, sfs_active),
-(faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),
-
-(str_store_troop_name, s10, ":leader_no"),
-(str_store_faction_name, s11, "$g_faction_selected"),
-(str_clear, s14),
-###diplomacy start+ Use reg0 for gender
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
-],#next line "him" to {reg0?her:him}
-"Tell {s10} that I want to conclude a non-aggression treaty with {reg0?her:him}.", "minister_diplomatic_emissary",
-##diplomacy end+
-[ (assign, "$g_initiative_selected", dplmc_npc_mission_nonaggression_request),
-]],
-##war request
-[anyone|plyr|repeat_for_factions, "minister_diplomatic_initiative_type_select",
-[
-(assign, ":proceed", 1),
-(try_begin),
-(eq, reg0, 2), #truce
-(store_add, ":slot_truce_days", "$g_faction_selected", slot_faction_truce_days_with_factions_begin),
-(val_sub, ":slot_truce_days", kingdoms_begin),
-(faction_get_slot, ":truce_days", "fac_player_supporters_faction", ":slot_truce_days"),
-(gt, ":truce_days", 0), #you need at least a non-aggression pact
-(assign, ":proceed", 0),
-(try_end),
-(eq, ":proceed", 1),
-
-(store_repeat_object, ":faction_no"),
-(is_between, ":faction_no", kingdoms_begin, kingdoms_end),
-(neq, ":faction_no", "fac_player_supporters_faction"),
-(neq, ":faction_no", "$g_faction_selected"),
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":faction_no"),
-(eq, reg0, -2), #player is at war with the target faction
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
-(ge, reg0, 0),  #player is at peace or truce with the mission_faction
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "$g_faction_selected", ":faction_no"),
-(is_between, reg0, -1, 1),  #mission_faction provocated or peace with target_faction
-(faction_slot_eq, "$g_faction_selected", slot_faction_recognized_player, 1), #recognized us
-(faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
-(faction_get_slot, ":leader_no", ":faction_no", slot_faction_leader),
-(str_store_troop_name, s10, ":leader_no"),
-(str_store_faction_name, s11, ":faction_no"),
-(str_clear, s14),
-###diplomacy start+ Use reg0 for gender
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
-],#next line "him" to {reg0?her:him}
-"That I want {reg0?her:him} to help me and attack {s11}{s14}.", "minister_diplomatic_emissary",
-##diplomacy end+
-[ (assign, "$g_initiative_selected", dplmc_npc_mission_war_request),
-(store_repeat_object, "$diplomacy_var"),
-]],
-##diplomacy end
-
-
-
-[anyone|plyr, "minister_talk",
-[],
-"That is all for now.", "close_window",
-[]],
-[anyone, "minister_change_marshal",
-[],
-"Who should be the new strategist?", "minister_change_marshal_choose",
-[]],
-[anyone|plyr, "minister_change_marshal_choose",
-[],
-"I shall be the strategist", "minister_pretalk",
-[
-(call_script, "script_appoint_faction_marshall", "fac_player_supporters_faction", "trp_player"),
-(store_current_hours, ":hours"),
-(assign, "$g_recalculate_ais", 1),
-(assign, "$g_player_faction_last_marshal_appointment", ":hours"),
-
-##diplomacy start+ Handle player is co-ruler of NPC kingdom
-#Added section begin
-(assign, ":ruled_faction", "fac_player_supporters_faction"),
-(try_begin),
-	(neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":ruled_faction", "$players_kingdom"),
-(try_end),
-#Added section end
-#In the following section, replace references to "fac_player_supporter_faction" with ":ruled_faction"
-(try_begin),
-	#(faction_slot_eq, "fac_player_supporters_faction", slot_faction_political_issue, 1),
-	#(faction_set_slot, "fac_player_supporters_faction", slot_faction_political_issue, 0),
-	(faction_slot_eq, ":ruled_faction", slot_faction_political_issue, 1),
-	(faction_set_slot, ":ruled_faction", slot_faction_political_issue, 0),
-	(faction_set_slot, "fac_player_supporters_faction", slot_faction_political_issue, 0),
-
-	(troop_set_slot, "trp_player",  slot_troop_stance_on_faction_issue, -1),
-	#Also change to support promoted kingdom ladies
-	#(try_for_range, ":active_npc", active_npcs_begin, active_npcs_end),
-	(try_for_range, ":active_npc", heroes_begin, heroes_end),
-	   (this_or_next|is_between, ":active_npc", active_npcs_begin, active_npcs_end),
-	      (troop_slot_eq, ":active_npc", slot_troop_occupation, slto_kingdom_hero),
-	   (store_faction_of_troop, ":active_npc_faction", ":active_npc"),
-	   (eq, ":active_npc_faction", ":ruled_faction"),
-	   (troop_set_slot, ":active_npc", slot_troop_stance_on_faction_issue, -1),
-	(try_end),
-(try_end),
-##diplomacy end+
-]],
-[anyone|plyr, "minister_change_marshal_choose",
-[],
-"For a short while, we should have no strategist", "minister_pretalk",
-[
-##diplomacy start+ Handle player is co-ruler of NPC kingdom
-#Added section begin
-(assign, ":ruled_faction", "fac_player_supporters_faction"),
-(try_begin),
-	(neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":ruled_faction", "$players_kingdom"),
-(try_end),
-#Added section end
-#In the following section, replace references to "fac_player_supporter_faction" with ":ruled_faction"
-(call_script, "script_appoint_faction_marshall", ":ruled_faction", -1),
-(try_begin),
-	(faction_slot_eq, ":ruled_faction", slot_faction_political_issue, 1),
-	(faction_set_slot, ":ruled_faction", slot_faction_political_issue, 0),
-	(faction_set_slot, "fac_player_supporters_faction", slot_faction_political_issue, 0),#if not the same as ruled faction
-
-	(troop_set_slot, "trp_player",  slot_troop_stance_on_faction_issue, -1),
-	(try_for_range, ":active_npc", heroes_begin, heroes_end),#Also change this to support all herose
-	   (this_or_next|is_between, ":active_npc", active_npcs_begin, active_npcs_end),
-	      (troop_slot_eq, ":active_npc", slot_troop_occupation, slto_kingdom_hero),
-	   (store_faction_of_troop, ":active_npc_faction", ":active_npc"),
-	   (eq, ":active_npc_faction", ":ruled_faction"),
-	   (troop_set_slot, ":active_npc", slot_troop_stance_on_faction_issue, -1),
-	(try_end),
-(try_end),
-##diplomacy end+ (replacing fac_player_supporters_faction with :ruled_faction)
-(assign, "$g_recalculate_ais", 1),
-
-]],
-[anyone|plyr|repeat_for_troops, "minister_change_marshal_choose",
-[
-(store_repeat_object, ":lord"),
-##diplomacy start+ support promoted ladies
-#(is_between, ":lord", active_npcs_begin, active_npcs_end),
-(is_between, ":lord", heroes_begin, heroes_end),
-##diplomacy end+
-(troop_slot_eq, ":lord", slot_troop_occupation, slto_kingdom_hero),
-(store_faction_of_troop, ":lord_faction", ":lord"),
-##diplomacy start+ Handle player is co-ruler of NPC kingdom
-(assign, ":is_faction_member", 0),
-(try_begin),
-	(eq, ":lord_faction", "$players_kingdom"),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":is_faction_member", 1),
-(try_end),
-(this_or_next|eq, ":is_faction_member", 1),
-##diplomacy end+
-(eq, ":lord_faction", "fac_player_supporters_faction"),
-(str_store_troop_name, s4, ":lord"),
-],
-"{s4}", "minister_pretalk",
-[
-(store_repeat_object, ":lord"),
-##diplomacy start+ Handle player is co-ruler of NPC kingdom
-#Added section begin
-(assign, ":ruled_faction", "fac_player_supporters_faction"),
-(try_begin),
-	(neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
-	(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-	(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-	(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-	(assign, ":ruled_faction", "$players_kingdom"),
-(try_end),
-#Added section end
-#In the following section, replace references to "fac_player_supporter_faction" with ":ruled_faction"
-(call_script, "script_appoint_faction_marshall", ":ruled_faction", ":lord"),#dplmc+ changed
-(store_current_hours, ":hours"),
-(assign, "$g_player_faction_last_marshal_appointment", ":hours"),
-#xxx TODO: Modify both fac_player_supporters_faction and players_kingdom in parallel
-(try_begin),
-	(faction_slot_eq, ":ruled_faction", slot_faction_political_issue, 1),#dplmc+ changed
-	(faction_set_slot, ":ruled_faction", slot_faction_political_issue, 0),#dplmc+ changed
-	(faction_set_slot, "fac_player_supporters_faction", slot_faction_political_issue, 0),#dplmc+ added
-
-	(troop_set_slot, "trp_player",  slot_troop_stance_on_faction_issue, -1),
-	#(try_for_range, ":active_npc", active_npcs_begin, active_npcs_end),#Changed this to support promoted kingdom ladies
-	(try_for_range, ":active_npc", heroes_begin, heroes_end),
-		(this_or_next|is_between, ":active_npc", active_npcs_begin, active_npcs_end),
-			(troop_slot_eq, ":active_npc", slot_troop_occupation, slto_kingdom_hero),
-	   (store_faction_of_troop, ":active_npc_faction", ":active_npc"),
-	   (eq, ":active_npc_faction", ":ruled_faction"),#dplmc+ changed
-	   (troop_set_slot, ":active_npc", slot_troop_stance_on_faction_issue, -1),
-	(try_end),
-(try_end),
-##diplomacy end+
-(assign, "$g_recalculate_ais", 1),
-]],
-[anyone|plyr, "minister_change_marshal_choose",
-[],
-"Never mind", "minister_pretalk",
-[]],
-[anyone, "minister_diplomatic_kingdoms",
-[
-##diplomacy start+
-#Speed up, and also support non-traditional companions.
-##OLD:
-#(assign, ":companion_found", 0),
-#(try_for_range, ":emissary", companions_begin, companions_end),
-#(main_party_has_troop, ":emissary"),
-#(assign, ":companion_found", 1),
-#(try_end),
-#(eq, ":companion_found", 1),
-(assign, ":end_cond", heroes_end),
-(try_for_range, ":emissary", heroes_begin, ":end_cond"),
-	#gekokujo 3.0 microfactions! include fort companions start
-	#(this_or_next|is_between, ":emissary", companions_begin, companions_end),
-	(this_or_next|is_between, ":emissary", companions_begin, fort_companions_end),
-	#gekokujo 3.0 microfactions! include fort companions end
-		(troop_slot_eq, ":emissary", slot_troop_occupation, slto_player_companion),
-	(main_party_has_troop, ":emissary"),
-	(assign, ":end_cond", ":emissary"),
-(try_end),
-(lt, ":end_cond", heroes_end),
-],
-"To whom do you wish to send this emissary?", "minister_diplomatic_kingdoms_select",
-[]],
-[anyone, "minister_diplomatic_kingdoms",
-[
-],
-"Unfortunately, there is no one to send right now.", "minister_pretalk",
-[]],
-[anyone, "minister_diplomatic_kingdoms",
-[],
-"To whom do you wish to send this emissary?", "minister_diplomatic_kingdoms_select",
-[]],
-[anyone|plyr|repeat_for_factions, "minister_diplomatic_kingdoms_select",
-[
-(store_repeat_object, ":faction_no"),
-(is_between, ":faction_no", kingdoms_begin, kingdoms_end),
-##diplomacy start+ Required if the player can be ruler or co-ruler of another faction
-(neg|faction_slot_eq, ":faction_no", slot_faction_leader, "trp_player"),
-(neq, ":faction_no", "$players_kingdom"),
-##diplomacy end+
-(neq, ":faction_no", "fac_player_supporters_faction"),
-(faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
-(faction_get_slot, ":leader_no", ":faction_no", slot_faction_leader),
-(str_store_troop_name, s10, ":leader_no"),
-(str_store_faction_name, s11, ":faction_no"),
-(str_clear, s14),
-#Has/has not recognized us a monarch
-],
-"{s10} of the {s11}{s14}", "minister_diplomatic_initiative_type",
-[
-(store_repeat_object, "$g_faction_selected"),
-]],
-[anyone|plyr, "minister_diplomatic_kingdoms_select",
-[],
-"Never mind", "minister_pretalk",
-[]],
-[anyone, "minister_diplomatic_initiative_type",
-##diplomacy start+
-#[],
-[
-(faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),#Use reg0 for gender
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
-],#next line "him" to {reg0?her:him}
-"What do you wish to tell {reg0?her:him}?", "minister_diplomatic_initiative_type_select",
-[]],
-##diplomacy end+
-
-
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[(store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
-(lt, ":relation", 0),],
-"That our two domains should enter into truce.", "minister_diplomatic_emissary",
-[(assign, "$g_initiative_selected", npc_mission_peace_request)]],
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-##diplomacy start+
-#[],
-[
-#Disable when the player is the ruler or co-ruler of an NPC kingdom.
-#Setting up a separate dialog for this is something to do later, but
-#not a high priority.
-#TODO: Consider if there should be an alternative when the player is married to a pretender.
-(neg|is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-(faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),#Use reg0 for gender
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
-],#next line "his" to {reg0?her:his}
-"That I wish to put myself under {reg0?her:his} protection, as {reg0?her:his} vassal.", "minister_diplomatic_emissary",
-##diplomacy end+
-[(assign, "$g_initiative_selected", npc_mission_pledge_vassal)]],
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[(store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
-(faction_slot_eq, "$g_faction_selected", slot_faction_recognized_player, 0),
-(ge, ":relation", 0),],
-"That I wish to express my goodwill, as one monarch to another.", "minister_diplomatic_emissary",
-[(assign, "$g_initiative_selected", npc_mission_seek_recognition),]],
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[(store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
-(ge, ":relation", 0),##diplomacy start+],
-#(neg|is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),#Disable when the player shares power
-(faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),#Use reg0 for gender
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
-],#next line "him" to {reg0?her:him}
-"That I declare war upon {reg0?her:him}.", "minister_declare_war",
-                     ##diplomacy end+
-[]],
-[anyone|plyr, "minister_diplomatic_initiative_type_select",[], "Never mind", "close_window",[]],
-##diplomacy start+
-##
-#Disable when the player is the ruler or co-ruler of an NPC kingdom.
-#Setting up a separate dialog for this is something to do later, but
-#not a high priority.
-#TODO: Consider if there should be an alternative when the player is married to a pretender.
-[anyone, "minister_declare_war",
-[
-   (assign, ":veto_troop", 0),
-   (try_begin),
-      (gt, "$players_kingdom", -1),
-      (faction_get_slot, reg0, "$players_kingdom", slot_faction_leader),
-      (gt, reg0, "trp_player"),
-      (assign, ":veto_troop", reg0),
-   (else_try),
-      (is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-      (troop_get_slot, reg0, "trp_player", slot_troop_spouse),
-	  (gt, reg0, 0),
-      (assign, ":veto_troop", reg0),
-   (try_end),
-   (gt, ":veto_troop", 0),
-   (str_store_troop_name, s0, ":veto_troop"),
-], "For that you should first speak to {s0}.", "dplmc_minister_nevermind", []],
-##diplomacy end+
-[anyone, "minister_declare_war",
-[(try_begin),
-   (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
-(eq, reg0, 1),
-(str_store_string, s12, "str_in_doing_so_you_will_be_in_violation_of_your_truce_is_that_what_you_want"),
-(else_try),
-   (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
-(neq, reg0, -1),
-(str_store_string, s12, "str_if_you_attack_without_provocation_some_of_your_vassals_may_consider_you_to_be_too_warlike_is_that_what_you_want"),
-(else_try),
-(str_store_string, s12, "str_our_men_are_ready_to_ride_forth_at_your_bidding_are_you_sure_this_is_what_you_want"),
-(try_end),
-], "{s12}", "minister_declare_war_confirm",
-[]],
-[anyone|plyr, "minister_declare_war_confirm",
-[(str_store_faction_name, s12, "$g_faction_selected"),
-],
-"It is. I wish to make war on {s12}.", "minister_declare_war_confirm_yes",
-[
-(call_script, "script_diplomacy_start_war_between_kingdoms",  "fac_player_supporters_faction", "$g_faction_selected", 1),
-]],
-[anyone|plyr, "minister_declare_war_confirm",
-[(str_store_faction_name, s12, "$g_faction_selected"),
-],
-"Hmm. Perhaps not.", "minister_pretalk",
-[
-]],
-[anyone, "minister_declare_war_confirm_yes",
-[(str_store_faction_name, s12, "$g_faction_selected"),
-],
-"As you command. We are now at war with the {s12}. May the heavens grant us victory.", "minister_pretalk",
-[
-]],
-[anyone, "minister_diplomatic_emissary",
-[], "Who shall be your emissary? You should choose one whom you trust, but who is also persuasive -- one who can negotiate without giving offense.", "minister_emissary_select",
-[]],
-[anyone|plyr|repeat_for_troops, "minister_emissary_select",[
-(store_repeat_object, ":emissary"),
-(main_party_has_troop, ":emissary"),
-##diplomacy start+
-##OLD:
-#(is_between, ":emissary", companions_begin, companions_end),
-#(troop_slot_eq, ":emissary", slot_troop_prisoner_of_party, -1),
-#(is_between, ":emissary", active_npcs_begin, active_npcs_end),
-##NEW:
-# Support alternate possible companions
-(is_between, ":emissary", heroes_begin, heroes_end),
-(troop_slot_eq, ":emissary", slot_troop_prisoner_of_party, -1),
-#gekokujo 3.0 microfactions! include fort companions start
-#(this_or_next|is_between, ":emissary", companions_begin, companions_end),
-(this_or_next|is_between, ":emissary", companions_begin, fort_companions_end),
-#gekokujo 3.0 microfactions! include fort companions end
-	(troop_slot_eq, ":emissary", slot_troop_occupation, slto_player_companion),
-##diplomacy end+
-(str_store_troop_name, s11, ":emissary"),
-], "{s11}", "minister_emissary_dispatch",[
-(store_repeat_object, "$g_emissary_selected"),
-]],
-[anyone|plyr, "minister_emissary_select",[
-], "Actually, I can't think of anyone.", "minister_pretalk",[]],
-[anyone, "minister_emissary_dispatch",
-[
-(str_store_troop_name, s11, "$g_emissary_selected"),
-(str_store_faction_name, s12, "$g_faction_selected"),
-(try_begin),
-(eq, "$g_initiative_selected", npc_mission_seek_recognition),
-(str_store_string, s14, "str_seek_recognition"),
-(else_try),
-(eq, "$g_initiative_selected", npc_mission_pledge_vassal),
-(str_store_string, s14, "str_seek_vassalhood"),
-(else_try),
-(eq, "$g_initiative_selected", npc_mission_peace_request),
-(str_store_string, s14, "str_seek_a_truce"),
-##diplomacy begin
-(else_try),
-(eq, "$g_initiative_selected", dplmc_npc_mission_nonaggression_request),
-(str_store_string, s14, "str_dplmc_conclude_non_agression"),
-##diplomacy end
-(try_end),
-], "Very well -- I shall send {s11} to the {s12} to {s14}.", "minister_diplomatic_dispatch_confirm",[]],
-[anyone|plyr, "minister_diplomatic_dispatch_confirm",[], "Yes, do that", "minister_pretalk",[
-(troop_set_slot, "$g_emissary_selected", slot_troop_days_on_mission, 3),
-(troop_set_slot, "$g_emissary_selected", slot_troop_current_mission, "$g_initiative_selected"),
-(troop_set_slot, "$g_emissary_selected", slot_troop_mission_object, "$g_faction_selected"),
-##diplomacy begin
-(try_begin),
-    (eq, "$g_initiative_selected", dplmc_npc_mission_gift_horses_request),
-    (call_script, "script_dplmc_withdraw_from_treasury", "$diplomacy_var"),
-(try_end),
-
-(troop_set_slot, "$g_emissary_selected", dplmc_slot_troop_mission_diplomacy, "$diplomacy_var"),
-(troop_set_slot, "$g_emissary_selected", dplmc_slot_troop_mission_diplomacy2, "$diplomacy_var2"),
-##diplomacy end
-
-(remove_member_from_party, "$g_emissary_selected", "p_main_party"),
-]],
-[anyone|plyr, "minister_diplomatic_dispatch_confirm",[], "Actually, hold off on that", "minister_pretalk",[]],
-[anyone, "minister_replace",
-[], "Very good. Whom will you appoint in my stead?", "minister_replace_select",
-[]],
-[anyone|plyr|repeat_for_troops, "minister_replace_select",
-[
-(store_repeat_object, ":troop_no"),
-#gekokujo 3.0 microfactions! include fort companions start
-#(is_between, ":troop_no", companions_begin, companions_end),
-(is_between, ":troop_no", companions_begin, fort_companions_end),
-#gekokujo 3.0 microfactions! include fort companions end
-(main_party_has_troop, ":troop_no"),
-(troop_slot_eq, ":troop_no", slot_troop_prisoner_of_party, -1),
-##diplomacy start+
-##OLD:
-#(str_store_troop_name, s4, ":troop_no"),
-##NEW:
-(call_script, "script_dplmc_cap_troop_describes_troop_to_troop_s1", 1, "trp_player", ":troop_no", "$g_talk_troop"),
-(str_store_string_reg, s4, s1),
-##diplomacy end+
-], "{s4}", "minister_replace_confirm",
-[
-(store_repeat_object, "$g_player_minister"),
-]],
-[anyone|plyr, "minister_replace_select",
-[
-(troop_get_slot, ":spouse", "trp_player", slot_troop_spouse),
-(gt, ":spouse", 0),
-##diplomacy start+
-##OLD:
-#(troop_get_type, ":is_female", ":spouse"),
-#(neg|troop_slot_eq, ":spouse", slot_troop_occupation, slto_kingdom_hero),
-#(eq, ":is_female", 1),
-##NEW:
-#Most of this logic has been moved to the next dialog.  Use this solely for handling
-#spouses outside the normal hero range.
-(neg|is_between, ":spouse", heroes_begin, heroes_end),
-(troop_slot_eq, ":spouse", slot_troop_occupation, slto_kingdom_hero),
-(neg|troop_slot_ge, ":spouse", slot_troop_occupation, slto_retirement),#not retired, in exile, or dead
-(call_script, "script_dplmc_store_troop_is_female", ":spouse"),
-##diplomacy end+
-
-(str_store_troop_name, s4, ":spouse"),
-(neq, ":spouse", "$g_talk_troop"),
-##diplomacy start+
-##OLD:
-#], "My wife, {s4}.", "minister_replace_confirm", #husband disabled, as he's an active lord
-##NEW:
-], "My {reg0?wife:husband}, {s4}.", "minister_replace_confirm", #Gender assumptions like that aren't useful
-##diplomacy end+
-[
-(troop_get_slot, "$g_player_minister", "trp_player", slot_troop_spouse),
-]],
-##diplomacy start+
-#Support for multiple spouses, or for other dependents.
-[anyone|plyr|repeat_for_troops, "minister_replace_select",
-[
-(store_repeat_object, ":troop_no"),
-(is_between, ":troop_no", heroes_begin, heroes_end),#is a valid hero
-(this_or_next|is_between, ":troop_no", kingdom_ladies_begin, kingdom_ladies_end),#is a kingdom lady
-	(troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_lady),
-(neg|troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),#Not a promoted kingdom lady
-(neg|troop_slot_ge, ":troop_no", slot_troop_occupation, slto_retirement),#Not retired, dead, exiled, etc.
-(neg|troop_slot_ge, ":troop_no", slot_troop_prisoner_of_party, 0),#Not a prisoner
-#gekokujo 3.0 microfactions! include fort companions start
-#(this_or_next|neg|is_between, ":troop_no", companions_begin, companions_end),#Don't double-list companions
-(this_or_next|neg|is_between, ":troop_no", companions_begin, fort_companions_end),
-#gekokujo 3.0 microfactions! include fort companions end
-	(neg|main_party_has_troop, ":troop_no"),
-
-(neq, ":troop_no", "$g_talk_troop"),
-
-(call_script, "script_dplmc_troop_get_family_relation_to_troop", ":troop_no", "trp_player"),
-(gt, reg0, 0),#Related
-#(assign, ":relation_string_index", reg1),
-
-(try_begin),
-	(this_or_next|ge, reg0, 15),#Spouse, child, parent
-	(this_or_next|eq, reg1, "str_dplmc_sister_wife"),
-		(eq, reg1, "str_dplmc_co_husband"),
-(else_try),
-	#Otherwise, disallow if the troop has a (valid) guardian who is not the
-	#player or themself
-	(call_script, "script_get_kingdom_lady_social_determinants", ":troop_no"),
-	(try_begin),
-		(this_or_next|le, reg0, "trp_player"),#the player or a negative value
-			(eq, reg0, ":troop_no"),
-		(assign, reg0, 1),
-	(else_try),
-		(assign, reg0, 0),
-	(try_end),
-(try_end),
-(ge, reg0, 0),
-#(str_store_string, s11, ":relation_string_index"),
-#(str_store_troop_name, s4, ":troop_no"),
-(call_script, "script_dplmc_cap_troop_describes_troop_to_troop_s1", 1, "trp_player", ":troop_no", "$g_talk_troop"),
-(str_store_string_reg, s4, s1),
-], "{s4}.", "minister_replace_confirm", #husband disabled, as he's an active lord
-[
-(store_repeat_object, "$g_player_minister"),
-]],
-##diplomacy end+
-
-[anyone|plyr, "minister_replace_select",
-[], "Actually, hold off on that.", "minister_pretalk",
-[]],
-[anyone, "minister_replace_confirm",
-[
-(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_player_companion),
-], "Very good. {s9} is your new minister. I shall make ready to rejoin you.", "close_window",
-[
-(str_store_troop_name, s9, "$g_player_minister"),
-(party_add_members, "p_main_party", "$g_talk_troop", 1),
-(assign, "$g_leave_encounter", 1),
-(try_begin),
-(main_party_has_troop, "$g_player_minister"),
-(party_remove_members, "p_main_party", "$g_player_minister", 1),
-(try_end),
-
-(try_for_range, ":minister_quest", all_quests_begin, all_quests_end),
-(quest_slot_eq, ":minister_quest", slot_quest_giver_troop, "$g_talk_troop"),
-(call_script, "script_abort_quest", ":minister_quest", 0),
-(try_end),
-]],
-[anyone, "minister_replace_confirm",
-[
-], "Very good. {s9} is your new minister. It has been an honor to serve you.", "close_window",
-[
-(str_store_troop_name, s9, "$g_player_minister"),
-(try_begin),
-(main_party_has_troop, "$g_player_minister"),
-(party_remove_members, "p_main_party", "$g_player_minister", 1),
-(try_end),
-##diplomacy start+ Occupation cleanup
-(try_begin),
-	#Nothing needs to be done for non-heroes, or if the occupation is already kingdom hero or kingdom lady.
-	(this_or_next|neg|is_between, "$g_talk_troop", heroes_begin, heroes_end),
-	(this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero),
-		(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
-(else_try),
-	(is_between, "$g_talk_troop", kingdom_ladies_begin, kingdom_ladies_end),
-	(neg|troop_slot_eq, "$g_talk_troop", slot_troop_playerparty_history, dplmc_pp_history_granted_fief),
-	(neg|troop_slot_eq, "$g_talk_troop", slot_troop_playerparty_history, dplmc_pp_history_lord_rejoined),
-	(troop_set_slot, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
-(else_try),
-	#This can't be reached right now, but if it is, make sure that the companion goes
-	#back to the taverns instead of suddenly becoming a hero.
-	#gekokujo 3.0 microfactions! include fort companions start (just in case)
-	#(is_between, "$g_talk_troop", companions_begin, companions_end),
-	(is_between, "$g_talk_troop", companions_begin, fort_companions_end),
-	#gekokujo 3.0 microfactions! include fort companions end
-	(neg|troop_slot_eq, "$g_talk_troop", slot_troop_playerparty_history, dplmc_pp_history_granted_fief),
-	(neg|troop_slot_eq, "$g_talk_troop", slot_troop_playerparty_history, dplmc_pp_history_lord_rejoined),
-	(neg|troop_slot_eq, "$g_talk_troop", slot_troop_playerparty_history, dplmc_pp_history_nonplayer_entry),
-	(troop_set_slot, "$g_talk_troop", slot_troop_occupation, slto_inactive),
-(else_try),
-	(troop_set_slot, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero),
-(else_try),
-
-(try_end),
-##diplomacy end+
-]],
-[anyone, "minister_grant_fief", [
-    (faction_get_slot, ":fief_on_agenda", "$players_kingdom", slot_faction_political_issue),
-    (str_clear, s12),
-    (try_begin),
-      (is_between, ":fief_on_agenda", centers_begin, centers_end),
-      (str_store_party_name, s4, ":fief_on_agenda"),
-      (str_store_string, s12, "str_minister_advice_select_fief"),
-    (else_try),
-      (eq, ":fief_on_agenda", 1),
-      (str_store_string, s12, "str_minister_advice_select_fief_wait"),
-    (try_end),
-  ], "Which of your fiefs did you wish to grant?{s12} I would also like to remind you that if you wish to elevate one of your companions to a vassal with a fief, you should talk directly with them about it.", "minister_grant_fief_select", []],
-[anyone|plyr|repeat_for_parties, "minister_grant_fief_select",
-[
-(store_repeat_object, ":center_no"),
-(is_between, ":center_no", centers_begin, centers_end),
-(store_faction_of_party, ":center_faction", ":center_no"),
-(eq, ":center_faction", "fac_player_supporters_faction"),
-##diplomacy begin
-(neg|party_slot_eq, ":center_no", slot_village_infested_by_bandits, "trp_peasant_woman"),
-##diplomacy end
-(neq, ":center_no", "$g_player_court"),
-(party_get_slot, ":town_lord", ":center_no", slot_town_lord),
-(try_begin),
-(ge, ":town_lord", active_npcs_begin),
-(store_faction_of_troop, ":town_lord_faction", ":town_lord"),
-(neq, ":town_lord_faction", "fac_player_supporters_faction"),
-(assign, ":town_lord", -1),
-(try_end),
-(le, ":town_lord", 0),
-
-(str_store_party_name, s1, ":center_no"),
-(str_clear, s12),
-(try_begin),
-(party_slot_eq, ":center_no", slot_town_lord, -1),
-(str_store_string, s12, "str_unassigned_center"),
-(try_end),
-
-],"{s1}{s12}", "minister_grant_fief_select_recipient",
-[
-(store_repeat_object, "$fief_selected"),
-]],
-[anyone|plyr, "minister_grant_fief_select",
-[
-],"Never mind", "minister_pretalk",
-[]],
-[anyone, "minister_grant_fief_select_recipient",
-[
-(str_clear, s12),
-(try_begin),
-(faction_slot_eq, "$players_kingdom", slot_faction_political_issue, "$fief_selected"),
-
-##diplomacy start+ support promoted ladies
-#(try_for_range, ":active_npc", active_npcs_begin, active_npcs_end),
-(try_for_range, ":active_npc", heroes_begin, heroes_end),
-##diplomacy end+
-(troop_set_slot, ":active_npc", slot_troop_temp_slot, 0),
-(try_end),
-
-(assign, ":popular_favorite", -1),
-(assign, ":votes_for_popular_favorite", 0),
-##diplomacy start+
-(troop_set_slot, "trp_player", slot_troop_temp_slot, 0),
-#support promoted ladies
-#(try_for_range, ":active_npc", active_npcs_begin, active_npcs_end),
-(try_for_range, ":active_npc", heroes_begin, heroes_end),
-    (this_or_next|is_between, ":active_npc", active_npcs_begin, active_npcs_end),
-       (troop_slot_eq, ":active_npc", slot_troop_occupation, slto_kingdom_hero),
-##dipolomacy end+
-(store_faction_of_troop, ":active_npc_faction", ":active_npc"),
-(eq, ":active_npc_faction", "fac_player_supporters_faction"),
-(troop_get_slot, ":selected_npc", ":active_npc", slot_troop_stance_on_faction_issue),
-(ge, ":selected_npc", 0),
-
-(troop_get_slot, ":votes_accumulated", ":selected_npc", slot_troop_temp_slot),
-(val_add, ":votes_accumulated", 1),
-(troop_set_slot, ":selected_npc", slot_troop_temp_slot, ":votes_accumulated"),
-
-(gt, ":votes_accumulated", ":votes_for_popular_favorite"),
-(assign,  ":votes_for_popular_favorite", ":votes_accumulated"),
-(assign, ":popular_favorite", ":selected_npc"),
-(try_end),
-
-##diplomacy start+ support promoted ladies
-#(is_between, ":popular_favorite", active_npcs_begin, active_npcs_end),
-(is_between, ":popular_favorite", heroes_begin, heroes_end),
-##diplomacy end+
-(str_store_troop_name, s4, ":popular_favorite"),
-(assign, reg4, ":votes_for_popular_favorite"),
-
-(str_store_string, s12, "str_minister_advice_fief_leading_vassal"),
-(try_end),
-
-],"And who will you choose to receive the fief?{s12}", "minister_grant_fief_select_recipient_choice",
-[]],
-[anyone|plyr|repeat_for_troops, "minister_grant_fief_select_recipient_choice",
-[
-(store_repeat_object, ":troop_no"),
-(troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-##diplomacy start+ add support for promoted ladies
-#(is_between, ":troop_no", active_npcs_begin, active_npcs_end),
-(is_between, ":troop_no", heroes_begin, heroes_end),
-##diplomacy end+
-(store_faction_of_troop, ":troop_faction", ":troop_no"),
-##diplomacy start+ add support for player is ruler/co-ruler of NPC kingdom
-(is_between, ":troop_faction", kingdoms_begin, kingdoms_end),
-(this_or_next|eq, ":troop_faction", "$players_kingdom"),
-##diplomacy end+
-(eq, ":troop_faction", "fac_player_supporters_faction"),
-##diplomacy start+ show number of fiefs
-#(str_store_troop_name, s1, ":troop_no"),
-(str_store_troop_name, s11, ":troop_no"),
-(call_script, "script_print_troop_owned_centers_in_numbers_to_s0", ":troop_no"),
-(try_begin),
-	(troop_slot_eq, "$g_talk_troop", slot_lord_recruitment_argument, argument_benefit),
-	(str_store_string, s12, "str__promised_fief"),
-(else_try),
-	(str_clear, s12),
-(try_end),
-(try_begin),
-	(eq, reg0, 0),
-	(str_store_string, s0, "str_no_fiefss12"),
-(else_try),
-	(str_store_string, s0, "str_fiefs_s0s12"),
-(try_end),
-#add relation string
-(str_store_string_reg, s12, s63),#save s63, clobbering s12 (perhaps already overwritten)
-(call_script, "script_troop_get_player_relation", ":troop_no"),
-(call_script, "script_describe_relation_to_s63", reg0),
-(str_store_string_reg, s1, s63),#clobber s1
-(str_store_string_reg, s63, s12),#revert s63
-(str_store_string, s1, "str_dplmc_s0_comma_s1"),#write to s1
-
-#(try_end),
-##diplomacy end+
-
-],"{!}{s11} {s1}.", "minister_grant_fief_complete",
-[
-(store_repeat_object, "$lord_selected"),
-]],
-[anyone|plyr, "minister_grant_fief_select_recipient_choice",
-[
-],"Never mind", "minister_pretalk",
-[]],
-[anyone, "minister_grant_fief_complete",
-[
-],"Very well - {s2} shall receive {s1}.", "minister_pretalk",
-[
-(call_script, "script_give_center_to_lord", "$fief_selected", "$lord_selected", 0),
-(str_store_party_name, s1, "$fief_selected"),
-(str_store_troop_name, s2, "$lord_selected"),
-
-(try_begin),
-(faction_slot_eq, "$players_kingdom", slot_faction_political_issue, "$fief_selected"),
-(faction_set_slot, "$players_kingdom", slot_faction_political_issue, -1),
-(try_end),
-
-(call_script, "script_add_log_entry", logent_castle_given_to_lord_by_player, "trp_player", "$fief_selected", "$lord_selected", "$g_encountered_party_faction"),
-]],
-[anyone, "minister_indict",
-[], "Grim news, my {lord/lady}. Who do you believe is planning to betray you?", "minister_indict_select",
-[]],
-[anyone|plyr|repeat_for_troops, "minister_indict_select",
-[
-(store_repeat_object, ":troop_no"),
-(troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-(store_faction_of_troop, ":faction", ":troop_no"),
-##diplomacy start+
-(troop_is_hero, ":troop_no"),
-(neq, ":troop_no", "trp_player"),
-#Prevent problems when the player is co-ruler of a kingdom.
-(neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_leader, ":troop_no"),
-(neg|faction_slot_eq, "$players_kingdom", slot_faction_leader, ":troop_no"),
-##diplomacy end+
-(eq, ":faction", "fac_player_supporters_faction"),
-(str_store_troop_name, s11, ":troop_no"),
-], "{s11}", "minister_indict_confirm",
-[
-(store_repeat_object, "$lord_selected"),
-]],
-[anyone|plyr, "minister_indict_select",
-[], "Never mind.", "minister_pretalk",
-[]],
-[anyone, "minister_indict_confirm",
-[
-(str_store_troop_name, s4, "$lord_selected"),
-##diplomacy start+
-##OLD:
-#(troop_get_type, reg4, "$lord_selected"),
-##NEW:
-(assign, reg4, 0),
-(try_begin),
-	(call_script, "script_cf_dplmc_troop_is_female", "$lord_selected"),
-	(assign, reg4, 1),
-(try_end),
-##diplomacy end+
-], "Think carefully on this, my {lord/lady}. If you indict {s4} for treason unjustly, you may find that others become nervous about serving you. On the other hand, if you truly believe that {reg4?she:he} is about to betray you, then perhaps it is best to move first, to secure control of {reg4?her:his} fortresses.", "minister_indict_confirm_answer",
-[]],
-[anyone|plyr, "minister_indict_confirm_answer",[], "I have thought long enough. Issue the indictment!", "minister_indict_conclude",[]],
-[anyone|plyr, "minister_indict_confirm_answer",[], "Perhaps I should wait a little while longer..", "minister_pretalk",[]],
-[anyone, "minister_indict_conclude",
-[], "It has been sent, my {lord/lady}.", "minister_pretalk",
-[
-(call_script, "script_indict_lord_for_treason", "$lord_selected", "fac_player_supporters_faction"),
-]],
-[anyone|plyr|repeat_for_troops, "center_captured_lord_advice",
-[
-(store_repeat_object, ":troop_no"),
-(troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-(neq, "$g_talk_troop", ":troop_no"),
-(neq, "trp_player", ":troop_no"),
-(store_troop_faction, ":faction_no", ":troop_no"),
-##diplomacy start+ Handle player is co-ruler of kingdom
-(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", ":faction_no"),
-(this_or_next|ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-##diplomacy end+
-(eq, ":faction_no", "fac_player_supporters_faction"),
-(str_store_troop_name, s11, ":troop_no"),
-(call_script, "script_print_troop_owned_centers_in_numbers_to_s0", ":troop_no"),
-
-(try_begin),
-##diplomacy start+ fixed bug that was preventing "promised fief" from appearing
-(troop_slot_eq, ":troop_no", slot_lord_recruitment_argument, argument_benefit),#changed "$g_talk_troop" to ":troop_no"
-##diplomacy end+
-(str_store_string, s12, "str__promised_fief"),
-(else_try),
-(str_clear, s12),
-(try_end),
-
-(try_begin),
- (eq, reg0, 0),
- ##diplomacy start+ write to s0 instead of s1
- (str_store_string, s0, "str_no_fiefss12"),
- ##diplomacy end_
-(else_try),
- ##diplomacy start+ write to s0 instead of s1
- (str_store_string, s0, "str_fiefs_s0s12"),
- ##diplomacy end+
-(try_end),
-##diplomacy start+ add relation to list of lords
-#add relation string
-(str_store_string_reg, s12, s63),#save s63, clobbering s12 (perhaps overwritten earlier)
-(call_script, "script_troop_get_player_relation", ":troop_no"),
-(call_script, "script_describe_relation_to_s63", reg0),
-(str_store_string_reg, s1, s63),#clobber s1
-(str_store_string_reg, s63, s12),#revert s63
-(str_store_string, s1, "str_dplmc_s0_comma_s1"),#write to s1
-##diplomacy end+
-],
-"{s11}. {s1}", "center_captured_lord_advice_2",
-[
-(store_repeat_object, "$temp"),
-]],
-[anyone|plyr, "center_captured_lord_advice",
-[
-(call_script, "script_print_troop_owned_centers_in_numbers_to_s0", "trp_player"),
-(str_store_party_name, s1, "$g_center_taken_by_player_faction"),
-
-(try_begin),
-(is_between, "$g_talk_troop", pretenders_begin, pretenders_end),
-(str_store_string, s12, "str_please_s65_"),
-(else_try),
-(str_clear, s12),
-(try_end),
-],
-"{s12}I want to have {s1} for myself. (fiefs: {s0})", "center_captured_lord_advice_2",
-[
-(assign, "$temp", "trp_player"),
-]],
-[anyone|plyr, "center_captured_lord_advice",
-[
-(call_script, "script_print_troop_owned_centers_in_numbers_to_s0", "$g_talk_troop"),
-(str_store_party_name, s1, "$g_center_taken_by_player_faction"),
-(is_between, "$g_talk_troop", pretenders_begin, pretenders_end),
-],
-"{s66}, you should have {s1} for yourself. (fiefs: {s0})", "center_captured_lord_advice_2",
-[
-(assign, "$temp", "$g_talk_troop"),
-]],
-[anyone, "center_captured_lord_advice_2",
-[
-(eq, "$g_talk_troop", "$g_player_minister"),
-],
-"As you wish, my {lord/lady}. {reg6?I:{reg7?You:{s11}}} will be the new {reg3?lady:lord} of {s1}.", "minister_issues",
-[
-(assign, ":new_owner", "$temp"),
-
-(call_script, "script_give_center_to_lord", "$g_center_taken_by_player_faction", ":new_owner", 0),
-
-(try_begin),
-(faction_slot_eq, "$players_kingdom", slot_faction_political_issue, "$g_center_taken_by_player_faction"),
-(faction_set_slot, "$players_kingdom", slot_faction_political_issue, -1),
-(try_end),
-
-(try_begin),
- (neq, ":new_owner", "trp_player"),
- (try_for_range, ":unused", 0, 4),
-   (call_script, "script_cf_reinforce_party", "$g_center_taken_by_player_faction"),
- (try_end),
-(try_end),
-
-(assign, reg6, 0),
-(assign, reg7, 0),
-(try_begin),
- (eq, ":new_owner", "$g_talk_troop"),
- (assign, reg6, 1),
-(else_try),
- (eq, ":new_owner", "trp_player"),
- (assign, reg7, 1),
-(else_try),
- (str_store_troop_name, s11, ":new_owner"),
-(try_end),
-(str_store_party_name, s1, "$g_center_taken_by_player_faction"),
-##diplomacy start+
-##OLD:
-#(troop_get_type, reg3, ":new_owner"),
-##NEW:
-(assign, reg3, 0),
-(try_begin),
-	(call_script, "script_cf_dplmc_troop_is_female", ":new_owner"),
-	(assign, reg3, 1),
-(try_end),
-##diplomacy end+
-(assign, "$g_center_taken_by_player_faction", -1),
-]],
-[anyone, "center_captured_lord_advice_2",
-[
-],
-"Hmmm. All right, {playername}. I value your counsel highly. {reg6?I:{reg7?You:{s11}}} will be the new {reg3?lady:lord} of {s1}.", "close_window",
-[
-(assign, ":new_owner", "$temp"),
-
-(troop_set_slot, ":new_owner", slot_lord_recruitment_argument, 0),
-
-(call_script, "script_give_center_to_lord", "$g_center_taken_by_player_faction", ":new_owner", 0),
-(try_begin),
-(faction_slot_eq, "$players_kingdom", slot_faction_political_issue, "$g_center_taken_by_player_faction"),
-(faction_set_slot, "$players_kingdom", slot_faction_political_issue, -1),
-(try_end),
-
-(try_begin),
- (neq, ":new_owner", "trp_player"),
- (try_for_range, ":unused", 0, 4),
-   (call_script, "script_cf_reinforce_party", "$g_center_taken_by_player_faction"),
- (try_end),
-(try_end),
-
-(assign, reg6, 0),
-(assign, reg7, 0),
-(try_begin),
- (eq, ":new_owner", "$g_talk_troop"),
- (assign, reg6, 1),
-(else_try),
- (eq, ":new_owner", "trp_player"),
- (assign, reg7, 1),
-(else_try),
- (str_store_troop_name, s11, ":new_owner"),
-(try_end),
-(str_store_party_name, s1, "$g_center_taken_by_player_faction"),
-##diplomacy start+
-##OLD:
-#(troop_get_type, reg3, ":new_owner"),
-##NEW:
-(assign, reg3, 0),
-(try_begin),
-	(call_script, "script_cf_dplmc_troop_is_female", ":new_owner"),
-	(assign, reg3, 1),
-(try_end),
-##diplomacy end+
-(assign, "$g_center_taken_by_player_faction", -1),
-]],
-##diplomacy end+
-
-[anyone|plyr, "vassalage_offer_confirm", [],
-##diplomacy start+ next line "him" to {reg0?her:him}
-"Tell {reg0?her:him} that I accept {reg0?her:his} terms...", "companion_rejoin_response", [
-##diplomacy end+
-
-(troop_get_slot, "$g_invite_faction", "$g_talk_troop", slot_troop_mission_object),
-(faction_get_slot, "$g_invite_faction_lord", "$g_invite_faction", slot_faction_leader),
-
-(str_store_troop_name,s1,"$g_invite_faction_lord"),
-  (setup_quest_text,"qst_join_faction"),
-
-  (str_store_troop_name_link, s3, "$g_invite_faction_lord"),
-  (str_store_faction_name_link, s4, "$g_invite_faction"),
-  (quest_set_slot, "qst_join_faction", slot_quest_giver_troop, "$g_invite_faction_lord"),
-  ##diplomacy start
-  (quest_set_slot, "qst_join_faction", slot_quest_expiration_days, 20),
-  ##diplomacy end
-
-(try_begin),
-   (store_relation, ":relation", "$g_invite_faction", "fac_player_supporters_faction"),
-   (lt, ":relation", 0),
-   (call_script, "script_diplomacy_start_peace_between_kingdoms", "$g_invite_faction", "fac_player_supporters_faction", 0),
-   (quest_set_slot, "qst_join_faction", slot_quest_failure_consequence, 1),
-(try_end),
-
-  (str_store_string, s2, "@Find and speak with {s3} of {s4} to give him your oath of loyalty."),
-  (call_script, "script_start_quest", "qst_join_faction", "$g_invite_faction_lord"),
-  (call_script, "script_report_quest_troop_positions", "qst_join_faction", "$g_invite_faction_lord", 3),
-]],
 [anyone, "lord_groom_vows", [
 ],
 #diplomacy start+ gender-correct language
@@ -2010,8 +73,6 @@ dialogs_lord_faction = [
 ],
 "We are now husband and wife. Let the festivities commence!", "close_window",
 []],
-#Prison break
-
 [anyone|plyr,"lord_prison_break", [],
 "I've come to get you out of here", "lord_prison_break_confirm",
 []],
@@ -2219,8 +280,6 @@ If you do encounter {s6}, be on your guard and don't believe a word.", "lord_pre
 ]],
 [anyone ,"lord_event_choose_friend_defend", [],  "As you like, {playername}.\
 A fool you might be, but a loyal fool at the least. {s6}'s loyalty may not be so steadfast, however...", "lord_pretalk", []],
-#Post 0907 changes end
-
 [anyone|plyr ,"lord_event_choose_friend", [],  "I don't want to be involved in your quarrel with {s6}.", "lord_event_choose_friend_neutral", [
 (call_script, "script_change_player_relation_with_troop","$g_talk_troop",-2),
 (call_script, "script_change_player_relation_with_troop","$temp",-3),
@@ -2237,14 +296,8 @@ Just remember that a {man/woman} needs friends in this world, and you'll never m
 [anyone|plyr ,"lord_female_pc_marriage_proposal", [],  "Yes. I would.", "lord_marriage_proposal_female_pc_next_step",  []],
 [anyone|plyr ,"lord_female_pc_marriage_proposal", [],  "Let me think about this some more.", "lord_female_pc_marriage_proposal_postponed",  []],
 [anyone|plyr ,"lord_female_pc_marriage_proposal", [],  "No. I have decided that it would not be appropriate", "lord_female_pc_marriage_proposal_rejected",  []],
-#diplomacy start+ gender-correct language
 [anyone ,"lord_female_pc_marriage_proposal_postponed", [],  "Of course, my {lord/lady}. Take all the time you need.", "lord_start",  []],
-#diplomacy end+
-
-#diplomacy start+ gender-correct language
 [anyone ,"lord_female_pc_marriage_proposal_rejected", [],  "Do you mean to reject my suit outright, my {lord/lady}?", "lord_female_pc_marriage_proposal_rejected_confirm",  []],
-#diplomacy end+
-
 [anyone|plyr ,"lord_female_pc_marriage_proposal_rejected_confirm", [],  "Yes. I do.", "lord_female_pc_marriage_proposal_rejected_confirm_yes",  []],
 [anyone|plyr ,"lord_female_pc_marriage_proposal_rejected_confirm", [],  "No, you misunderstand. I just need some more time to think", "lord_female_pc_marriage_proposal_postponed",  []],
 [anyone ,"lord_female_pc_marriage_proposal_rejected_confirm_yes", [
@@ -2258,7 +311,6 @@ Just remember that a {man/woman} needs friends in this world, and you'll never m
 (troop_set_slot, "$g_talk_troop", slot_troop_met, 4),
 (assign, "$g_leave_encounter", 1),
 ]],
-#diplomacy start+ gender-correct language
 [anyone ,"lord_female_pc_marriage_proposal_rejected_confirm_yes", [],  "Such is your right, my {lord/lady}. If you ever wished to reconsider, I would be overwhelmed with joy.", "close_window",  [
 #diplomacy end+
 (call_script, "script_troop_change_relation_with_troop", "$g_talk_troop", "trp_player", -5),
@@ -2269,8 +321,6 @@ Just remember that a {man/woman} needs friends in this world, and you'll never m
 [anyone|plyr ,"lord_meet_neutral", [
 ##diplomacy start+ use correct gender
 ],  "My name is {playername}. At your service {reg65?madame:sir}.", "lord_intro", []],
-##diplomacy end+
-
 [anyone ,"lord_intro", [],
 "{s11}", "lord_start", [(faction_get_slot, ":faction_leader", "$g_talk_troop_faction", slot_faction_leader),
                     (str_store_faction_name, s6, "$g_talk_troop_faction"),
@@ -2326,34 +376,7 @@ Just remember that a {man/woman} needs friends in this world, and you'll never m
                     (str_store_string, s11, "@{s9}{reg5? and the lord of {s8}.:.", 0),
                     ]],
 [anyone|plyr ,"lord_meet_enemy", [],  "I am {playername}, {s65}.", "lord_intro", []],
-  #A warrior of {s4}.
 [anyone|plyr ,"lord_meet_enemy", [],  "They know me as {playername}. Mark it down, you shall be hearing of me a lot.", "lord_intro", []],
-#  [anyone, "lord_meet_enemy_2", [],  "{playername} eh? Never heard of you. What do want?", "lord_talk", []],
-
-
-
-
-
-
-[anyone ,"start", [(troop_slot_eq,"$g_talk_troop",slot_troop_occupation, slto_kingdom_hero),
-               (le,"$talk_context",tc_siege_commander),
-          (try_begin),
-             ##diplomacy start+ Add commoner personalities
-             (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_roguish),
-             ##diplomacy end+
-             (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_debauched),
-               (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_quarrelsome),
-             (lt, "$g_talk_troop_relation", -15),
-            (str_store_string, s8, "str_playername_come_to_plague_me_some_more_have_you"),
-          (else_try),
-             (lt, "$g_talk_troop_relation", -5),
-            (str_store_string, s8, "str_ah_it_is_you_again"),
-          (else_try),
-            (str_store_string, s8, "str_well_playername"),
-          (try_end),
-               ],
-"{s8}", "lord_start",
-[]],
 [anyone,"lord_start", [(gt, "$g_comment_found", 0), #changed to s32 from s62 because overlaps with setup_talk_info strings
              (str_store_string, s1, "$g_last_comment_copied_to_s42"),
              (try_begin),
@@ -2408,51 +431,6 @@ Anyway, I thank you for lending your surgeon to me {sir/madam}. You have a noble
 (call_script, "script_finish_quest", "qst_lend_surgeon", 100),
 (troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1),
 ]],
-##### TODO: QUESTS COMMENT OUT BEGIN
-
-##
-##  [anyone,"lord_start", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                         (store_partner_quest,":lords_quest"),
-##                         (eq,":lords_quest","qst_bring_prisoners_to_enemy"),
-##                         (quest_slot_eq, "qst_bring_prisoners_to_enemy", slot_quest_current_state, 0),
-##                         (check_quest_succeeded, "qst_bring_prisoners_to_enemy"),
-##                         (quest_get_slot, ":quest_target_amount", "qst_bring_prisoners_to_enemy", slot_quest_target_amount),
-##                         (assign, reg1, ":quest_target_amount")],
-##   "TODO: You have brought the prisoners and received {reg1} mon. Give me the money now.", "lord_bring_prisoners_complete_2",[]],
-##
-##  [anyone,"lord_start", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                         (store_partner_quest,":lords_quest"),
-##                         (eq,":lords_quest","qst_bring_prisoners_to_enemy"),
-##                         (quest_slot_eq, "qst_bring_prisoners_to_enemy", slot_quest_current_state, 1),#Some of them were brought only
-##                         (check_quest_succeeded, "qst_bring_prisoners_to_enemy"),
-##                         (quest_get_slot, ":quest_target_amount", "qst_bring_prisoners_to_enemy", slot_quest_target_amount),
-##                         (assign, reg1, ":quest_target_amount")],
-##   "TODO: You have brought the prisoners but some of them died during your expedition. Give me the full money of {reg1} mon.", "lord_bring_prisoners_complete_2",[]],
-##
-##
-##  [anyone|plyr,"lord_bring_prisoners_complete_2", [(store_troop_gold, ":cur_gold", "trp_player"),
-##                                                   (quest_get_slot, ":quest_target_amount", "qst_bring_prisoners_to_enemy", slot_quest_target_amount),
-##                                                   (ge, ":cur_gold", ":quest_target_amount")],
-##   "TODO: Here it is.", "lord_generic_mission_thank", [(quest_get_slot, ":quest_target_amount", "qst_bring_prisoners_to_enemy", slot_quest_target_amount),
-##                                                  (troop_remove_gold, "trp_player", ":quest_target_amount"),
-##                                                  (call_script, "script_finish_quest", "qst_bring_prisoners_to_enemy", 100)]],
-##
-##  [anyone|plyr,"lord_bring_prisoners_complete_2", [(store_troop_gold, ":cur_gold", "trp_player"),
-##                                                   (quest_get_slot, ":quest_target_amount", "qst_bring_prisoners_to_enemy", slot_quest_target_amount),
-##                                                   (lt, ":cur_gold", ":quest_target_amount")],
-##   "TODO: I'm afraid I spent some of it, I don't have that much money with me.", "lord_bring_prisoners_no_money", [(quest_get_slot, ":quest_target_amount", "qst_bring_prisoners_to_enemy", slot_quest_target_amount),
-##                                                                                                                   (call_script, "script_change_debt_to_troop", "$g_talk_troop", ":quest_target_amount"),#Adding the taken money as a debt
-##                                                                                                                   (call_script, "script_finish_quest", "qst_bring_prisoners_to_enemy", 100)]],
-##
-##  [anyone,"lord_bring_prisoners_no_money", [],
-##   "TODO: You owe me that money!", "lord_pretalk", []],
-##
-##
-
-
-
-#MALE PLAYER CHARACTER WEDDING
-#wedding allowed
 [anyone ,"lord_start", [(troop_slot_eq,"$g_talk_troop",slot_troop_occupation, slto_kingdom_hero),
               (check_quest_active, "qst_wed_betrothed"),
 
@@ -2539,9 +517,6 @@ But no, you were too damned honorable, weren't you?", "close_window",[
 (call_script, "script_change_player_relation_with_troop","$g_talk_troop",-5),
 (call_script, "script_change_player_honor", 3),
 ]],
-#TODO: NO GENERIC MISSION FAILED ANYMORE!!!!
-
-
 [anyone,"lord_start", [(store_partner_quest,":lords_quest"),
                    (eq,":lords_quest","qst_meet_spy_in_enemy_town"),
                    (check_quest_succeeded, "qst_meet_spy_in_enemy_town"),
@@ -2573,19 +548,6 @@ This war is going to make us rich, mark my words!", "lord_pretalk",
 (call_script, "script_change_player_honor", -5),
 (call_script, "script_end_quest", "qst_cause_provocation")
 ]],
-#  [anyone,"lord_start", [(store_partner_quest, ":lords_quest"),
-#                        (eq, ":lords_quest", "qst_raid_caravan_to_start_war"),
-#                       (check_quest_failed, "qst_raid_caravan_to_start_war"),
-#                      ],
-#"You incompetent buffoon!\
-#What in Hell made you think that getting yourself captured while trying to start a war was a good idea?\
-#These plans took months to prepare, and now everything's been ruined! I will not forget this, {playername}.\
-#Oh, be assured that I will not.", "lord_pretalk",
-#  [
-#  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -10),
-#  (call_script, "script_end_quest", "qst_raid_caravan_to_start_war")
-#  ]],
-
 [anyone,"lord_start", [(store_partner_quest,":lords_quest"),
                    (eq,":lords_quest","qst_collect_debt"),
                    (quest_slot_eq, "qst_collect_debt", slot_quest_current_state, 1),
@@ -2664,128 +626,6 @@ I have little use for {men/women} who cannot follow orders.", "lord_pretalk",
 (call_script, "script_end_quest", "qst_kill_local_merchant"),
 (assign, "$g_leave_encounter", 1)
 ]],
-##  [anyone,"lord_start", [(store_partner_quest,":lords_quest"),
-##                         (eq,":lords_quest","qst_hunt_down_raiders"),
-##                         (check_quest_failed, "qst_hunt_down_raiders")],
-##   "I heard that those raiders you were after have got away. Do you have an explanation?", "quest_hunt_down_raiders_failed",[]],
-##  [anyone|plyr,"quest_hunt_down_raiders_failed", [],  "They were too quick for us my lord. But next time we'll get them", "quest_hunt_down_raiders_failed_2",[]],
-##  [anyone|plyr,"quest_hunt_down_raiders_failed", [],  "They were too strong and well armed my lord. But we'll be ready for them next time.", "quest_hunt_down_raiders_failed_2",[]],
-##
-##  [anyone|plyr,"quest_hunt_down_raiders_failed", [],  "Well, it was a long call anyway. Next time do make sure that you are better prepared.",
-##   "lord_pretalk",[(call_script, "script_end_quest", "qst_hunt_down_raiders")]],
-##
-##
-##
-##  [anyone,"lord_start", [(store_partner_quest,":lords_quest"),
-##                         (eq,":lords_quest","qst_hunt_down_raiders"),
-##                         (check_quest_succeeded, "qst_hunt_down_raiders")],
-##   "I heard that you have given those raiders the punishment they deserved. Well done {playername}.\
-## ", "lord_generic_mission_completed",[(call_script, "script_finish_quest", "qst_hunt_down_raiders", 100),
-##                                      (call_script, "script_change_player_relation_with_troop","$g_talk_troop",3)]],
-##
-
-
-##  [anyone,"lord_start", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                         (store_partner_quest,":lords_quest"),
-##                         (eq,":lords_quest","qst_defend_nobles_against_peasants"),
-##                         (this_or_next|check_quest_succeeded, "qst_defend_nobles_against_peasants"),
-##                         (check_quest_failed, "qst_defend_nobles_against_peasants"),
-##                         (assign, ":num_saved", "$qst_defend_nobles_against_peasants_num_nobles_saved"),
-##                         (party_count_companions_of_type, ":num_nobles", "p_main_party", "trp_noble_refugee"),
-##                         (val_add, ":num_saved", ":num_nobles"),
-##                         (party_count_companions_of_type, ":num_nobles", "p_main_party", "trp_noble_refugee_woman"),
-##                         (val_add, ":num_saved", ":num_nobles"),
-##                         (assign, "$qst_defend_nobles_against_peasants_num_nobles_saved", ":num_saved"),
-##                         (eq, ":num_saved", "$qst_defend_nobles_against_peasants_num_nobles_to_save")],
-##   "TODO: You have saved all of them. Good boy.", "lord_generic_mission_completed",
-##   [(party_remove_members, "p_main_party", "trp_noble_refugee", "$qst_defend_nobles_against_peasants_num_nobles_saved"),
-##    (party_remove_members, "p_main_party", "trp_noble_refugee_woman", "$qst_defend_nobles_against_peasants_num_nobles_saved"),
-##    (call_script, "script_finish_quest", "qst_defend_nobles_against_peasants", 100)]],
-##
-##  [anyone,"lord_start", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                         (store_partner_quest,":lords_quest"),
-##                         (eq,":lords_quest","qst_defend_nobles_against_peasants"),
-##                         (this_or_next|check_quest_succeeded, "qst_defend_nobles_against_peasants"),
-##                         (check_quest_failed, "qst_defend_nobles_against_peasants"),
-##                         (assign, ":num_saved", "$qst_defend_nobles_against_peasants_num_nobles_saved"),
-##                         (party_count_companions_of_type, ":num_nobles", "p_main_party", "trp_noble_refugee"),
-##                         (val_add, ":num_saved", ":num_nobles"),
-##                         (party_count_companions_of_type, ":num_nobles", "p_main_party", "trp_noble_refugee_woman"),
-##                         (val_add, ":num_saved", ":num_nobles"),
-##                         (assign, "$qst_defend_nobles_against_peasants_num_nobles_saved", ":num_saved"),
-##                         (lt, ":num_saved", "$qst_defend_nobles_against_peasants_num_nobles_to_save"),
-##                         (gt, "$qst_defend_nobles_against_peasants_num_nobles_saved", 0)],
-##   "TODO: You have saved some of them. Half good boy.", "lord_capture_conspirators_half_completed",
-##   [(party_remove_members, "p_main_party", "trp_noble_refugee", "$qst_defend_nobles_against_peasants_num_nobles_saved"),
-##    (party_remove_members, "p_main_party", "trp_noble_refugee_woman", "$qst_defend_nobles_against_peasants_num_nobles_saved"),
-##    (assign, ":ratio", 100),
-##    (val_mul, ":ratio", "$qst_defend_nobles_against_peasants_num_nobles_saved"),
-##    (val_div, ":ratio", "$qst_defend_nobles_against_peasants_num_nobles_to_save"),
-##    (call_script, "script_finish_quest", "qst_defend_nobles_against_peasants", ":ratio")]],
-##
-##  [anyone,"lord_start", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                         (store_partner_quest,":lords_quest"),
-##                         (eq,":lords_quest","qst_defend_nobles_against_peasants"),
-##                         (this_or_next|check_quest_succeeded, "qst_defend_nobles_against_peasants"),
-##                         (check_quest_failed, "qst_defend_nobles_against_peasants"),
-##                         (assign, ":num_saved", "$qst_defend_nobles_against_peasants_num_nobles_saved"),
-##                         (party_count_companions_of_type, ":num_nobles", "p_main_party", "trp_noble_refugee"),
-##                         (val_add, ":num_saved", ":num_nobles"),
-##                         (party_count_companions_of_type, ":num_nobles", "p_main_party", "trp_noble_refugee_woman"),
-##                         (val_add, ":num_saved", ":num_nobles"),
-##                         (eq, ":num_saved", 0)],
-##   "TODO: You have saved none of them. Bad boy.", "lord_generic_mission_failed", []],
-##
-##
-##  [anyone,"lord_start", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                         (store_partner_quest,":lords_quest"),
-##                         (eq,":lords_quest","qst_capture_conspirators"),
-##                         (this_or_next|check_quest_succeeded, "qst_capture_conspirators"),
-##                         (check_quest_failed, "qst_capture_conspirators"),
-##                         (party_count_prisoners_of_type, ":num_conspirators", "p_main_party", "trp_conspirator"),
-##                         (party_count_prisoners_of_type, ":num_conspirator_leaders", "p_main_party", "trp_conspirator_leader"),
-##                         (store_add, ":sum_captured", ":num_conspirators", ":num_conspirator_leaders"),
-##                         (ge, ":sum_captured", "$qst_capture_conspirators_num_troops_to_capture")],
-##   "TODO: You have captured all of them. Good boy.", "lord_generic_mission_completed",
-##   [(party_remove_prisoners, "p_main_party", "trp_conspirator_leader", "$qst_capture_conspirators_num_troops_to_capture"),
-##    (party_remove_prisoners, "p_main_party", "trp_spy_partner", "$qst_capture_conspirators_num_troops_to_capture"),
-##    (call_script, "script_finish_quest", "qst_capture_conspirators", 100)]],
-##
-##  [anyone,"lord_start", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                         (store_partner_quest,":lords_quest"),
-##                         (eq,":lords_quest","qst_capture_conspirators"),
-##                         (this_or_next|check_quest_succeeded, "qst_capture_conspirators"),
-##                         (check_quest_failed, "qst_capture_conspirators"),
-##                         (party_count_prisoners_of_type, ":num_conspirators", "p_main_party", "trp_conspirator"),
-##                         (party_count_prisoners_of_type, ":num_conspirator_leaders", "p_main_party", "trp_conspirator_leader"),
-##                         (store_add, ":sum_captured", ":num_conspirators", ":num_conspirator_leaders"),
-##                         (lt, ":sum_captured", "$qst_capture_conspirators_num_troops_to_capture"),
-##                         (gt, ":sum_captured", 0)],
-##   "TODO: You have captured some of them. Half good boy.", "lord_capture_conspirators_half_completed",
-##   [(assign, ":sum_removed", 0),
-##    (party_remove_prisoners, "p_main_party", "trp_conspirator_leader", "$qst_capture_conspirators_num_troops_to_capture"),
-##    (val_add, ":sum_removed", reg0),
-##    (party_remove_prisoners, "p_main_party", "trp_conspirator", "$qst_capture_conspirators_num_troops_to_capture"),
-##    (val_add, ":sum_removed", reg0),
-##    (val_mul, ":sum_removed", 100),
-##    (val_div, ":sum_removed", "$qst_capture_conspirators_num_troops_to_capture"),
-##    (call_script, "script_finish_quest", "qst_capture_conspirators", ":sum_removed")]],
-##
-##  [anyone,"lord_start", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                         (store_partner_quest,":lords_quest"),
-##                         (eq,":lords_quest","qst_capture_conspirators"),
-##                         (this_or_next|check_quest_succeeded, "qst_capture_conspirators"),
-##                         (check_quest_failed, "qst_capture_conspirators"),
-##                         (party_count_prisoners_of_type, ":num_conspirators", "p_main_party", "trp_conspirator"),
-##                         (party_count_prisoners_of_type, ":num_conspirator_leaders", "p_main_party", "trp_conspirator_leader"),
-##                         (store_add, ":sum_captured", ":num_conspirators", ":num_conspirator_leaders"),
-##                         (eq, ":sum_captured", 0)],
-##   "TODO: You have captured none of them. Bad boy.", "lord_generic_mission_failed", []],
-##
-##  [anyone|plyr,"lord_capture_conspirators_half_completed", [],
-##   "TODO: That's all I can do.", "lord_pretalk", []],
-
-
 [anyone,"lord_start", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
              (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
                    (store_partner_quest,":lords_quest"),
@@ -2967,37 +807,6 @@ Everyone said that you were a capable warrior, but appearently, they were wrong.
  (quest_get_slot, ":village", "qst_deal_with_bandits_at_lords_village", slot_quest_target_center),
  (str_store_party_name, s5, ":village"),
  ]],
-#gekokujo deliver_cattle_to_army changed
-#[anyone,"lord_start", [(store_partner_quest,":lords_quest"),
-#                   (eq, ":lords_quest", "qst_deliver_cattle_to_army"),
-#                   (check_quest_succeeded, "qst_deliver_cattle_to_army"),
-#                   (quest_get_slot, reg13, "qst_deliver_cattle_to_army", slot_quest_target_amount),
-#                   ],
-#"Ah, {playername}. My quartermaster has informed me of your delivery, {reg13} heads of cattle, as I requested. I'm impressed.", "lord_deliver_cattle_to_army_thank",
-#[
-#(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
-#(quest_get_slot, ":quest_target_amount", "qst_deliver_cattle_to_army", slot_quest_target_amount),
-##TODO: Change reward
-#(store_mul, ":reward", ":quest_target_amount", 100),
-#(call_script, "script_troop_add_gold", "trp_player", ":reward"),
-#(val_div, ":reward", 5),
-#(add_xp_as_reward, ":reward"),
-#(call_script, "script_end_quest", "qst_deliver_cattle_to_army"),
-##Reactivating follow army quest
-#(str_store_troop_name_link, s9, "$g_talk_troop"),
-#(setup_quest_text, "qst_follow_army"),
-#(str_store_string, s2, "str_follow_army_quest_brief_2"),
-#(call_script, "script_start_quest", "qst_follow_army", "$g_talk_troop"),
-#(assign, "$g_player_follow_army_warnings", 0),
-#]],
-
-#[anyone|plyr, "lord_deliver_cattle_to_army_thank", [],
-#"Not a problem, {s65}.", "lord_pretalk",[]],
-#[anyone|plyr, "lord_deliver_cattle_to_army_thank", [],
-#"Glad to be of service.", "lord_pretalk",[]],
-#[anyone|plyr, "lord_deliver_cattle_to_army_thank", [],
-#"Mere child's play.", "lord_pretalk",[]],
-
 [anyone,"lord_start", [(store_partner_quest,":lords_quest"),
                    (eq, ":lords_quest", "qst_scout_waypoints"),
                    (check_quest_succeeded, "qst_scout_waypoints"),
@@ -3136,39 +945,10 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
 ]],
 [anyone,"lord_mission_told_scout_waypoints_rejected", [], "Hm. I'm disappointed, {playername}. Very disappointed. We'll talk later, I need to go and find somebody to scout for us.", "lord_pretalk",
 [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-##
-##  [anyone,"lord_start",[(check_quest_active,"qst_rescue_lady_under_siege"),
-##                        (quest_slot_eq, "qst_rescue_lady_under_siege", slot_quest_target_troop, "$g_talk_troop"),
-##                        (quest_slot_eq, "qst_rescue_lady_under_siege", slot_quest_current_state, 1)],
-##   "I heard that you have rescued my {s7} from the siege of {s5} and brought her to safety.\
-## I am in your debt for this {playername}. Thank you.", "lord_generic_mission_completed",
-##   [(quest_get_slot, ":quest_object_troop", "qst_rescue_lady_under_siege", slot_quest_object_troop),
-##    (try_begin),
-##      (troop_slot_eq, "$g_talk_troop", slot_troop_daughter, ":quest_object_troop"),
-##      (str_store_string, s7, "str_daughter"),
-##    (else_try),
-##      (str_store_string, s7, "str_wife"),
-##    (try_end),
-##    (remove_member_from_party, ":quest_object_troop"),
-##    (try_begin),
-##      (is_between, "$g_encountered_party", centers_begin, centers_end),#Lord might be in wilderness
-##      (troop_set_slot, ":quest_object_troop", slot_troop_cur_center, "$g_encountered_party"),
-##    (try_end),
-##    (call_script, "script_finish_quest", "qst_rescue_lady_under_siege", 100),
-##    (call_script, "script_change_player_relation_with_troop","$g_talk_troop", 4),
-##    ]],
-##
-##### TODO: QUESTS COMMENT OUT END
 [anyone,"lord_generic_mission_thank", [],
 "You have been most helpful, {playername}. My thanks.", "lord_generic_mission_completed",[]],
 [anyone|plyr,"lord_generic_mission_completed", [],
 "It was an honour to serve.", "lord_pretalk",[]],
-##  [anyone|plyr,"lord_generic_mission_failed", [],
-##   "I'm sorry I failed you sir. It won't happen again.", "lord_pretalk",
-##   [(store_partner_quest,":lords_quest"),
-##    (call_script, "script_finish_quest", ":lords_quest"),
-##    ]],
-
 [anyone,"lord_start", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
                    (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
                    (troop_get_slot, ":cur_debt", "$g_talk_troop", slot_troop_player_debt),
@@ -3190,91 +970,6 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
 "Ah, excellent. You are a {man/woman} of honour, {playername}. I am satisfied. Your debt to me has been paid in full.", "lord_pretalk", []],
 [anyone, "lord_pay_debt_3_2", [],
 "Well, don't keep me waiting much longer.", "lord_pretalk", []],
-##  [anyone,"lord_start", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                         (is_between,"$g_talk_troop_faction_relation",0,3),
-###                         (eq,"$players_kingdom",0),
-##                         ],
-##   "Why don't you join us in our cause? You seem to be an able fighter.\
-## We need {men/people} like you who will take part in our glory and share the spoils of our victory.", "lord_talk",[]],
-
-
-#Claim center begin
-##  [anyone,"lord_start", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                         (eq,"$g_talk_troop_faction","$players_kingdom"),
-##                         (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
-##                         (call_script, "script_get_number_of_unclaimed_centers_by_player"),
-##                         (gt, reg1, 0),
-##                         (assign, "$center_to_be_claimed", reg1),
-##                         (str_store_party_name, s4, "$center_to_be_claimed"),
-##                         ],
-##   "I heard that your forces have taken {s4}. I commend you for your victory {playername}.\
-## But we need to decide what to do with this new castle now.", "lord_claim_center_begin", []],
-
-
-##  [anyone,"lord_start", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                         (ge,"$g_talk_troop_faction_relation",0),
-##                         (call_script, "script_get_number_of_unclaimed_centers_by_player"),
-##                         (gt, reg1, 0),
-##                         (assign, "$center_wanted_to_be_bought", reg1),
-##                         (str_store_party_name, s4, "$center_wanted_to_be_bought"),
-##                         (call_script, "script_get_number_of_hero_centers", "$g_talk_troop"),
-##                         (assign, ":no_of_owned_centers", reg0),
-##                         (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
-##                         (lt, ":no_of_owned_centers", 2),
-##                         (troop_get_slot, ":wealth", "$g_talk_troop", slot_troop_wealth),
-##                         (ge, ":wealth", 6000)],
-##   "I heard that your forces have taken {s4}. I applaud your victory {playername}, but you know as well as I do that\
-## as a person of low rank and status you cannot be permitted to hold that castle for yourself.\
-## It is to your benefit to sell it to a Lord like myself who can hold and protect the castle and the surrounding estates.\
-## Anyway, I am ready to make you an offer of 5000 mon, should you decide to sell that castle.", "lord_buy_center", []],
-##
-##
-##  [anyone|plyr,"lord_buy_center", [],
-##   "I accept your offer sir. The castle is yours for 5000 mon.", "lord_buy_center_accept", []],
-##  [anyone|plyr,"lord_buy_center", [],
-##   "I am afraid I can't accept that offer.", "lord_buy_center_deny", []],
-##
-##  [anyone,"lord_buy_center_accept", [],
-##   "Excellent, {playername}! You have decided wisely.\
-## Why bother yourself with the necessities of keeping a castle while you can leave all those boring details to noble Lords like me?\
-## I am sure money will be much more useful to you than a castle would.", "lord_buy_center_accept_2", []],
-##
-##  [anyone|plyr,"lord_buy_center_accept_2", [],
-##   "One day sir, one day I'll have my own castle.", "lord_buy_center_accept_3", []],
-##  [anyone|plyr,"lord_buy_center_accept_2", [],
-##   "Everyone needs money sir. I can take another castle anytime.", "lord_buy_center_accept_3", []],
-##
-##  [anyone,"lord_buy_center_accept_3", [],
-##   "Of course, of course, {playername}.  Then let us conclude our deal. Here's the 5000 mon I offered you.\
-## I'll have my clerk handle the necessary details.\
-## I guess from now on, {s4} belongs to me. Well, that worked very well for both of us, I guess.", "lord_pretalk",
-##   [(troop_get_slot, ":wealth", "$g_talk_troop", slot_troop_wealth),
-##    (val_sub, ":wealth", 6000),
-##    (troop_set_slot, "$g_talk_troop", slot_troop_wealth, ":wealth"),
-##    (call_script, "script_troop_add_gold", "trp_player", 5000),
-##    (party_set_slot, "$center_wanted_to_be_bought", slot_town_lord, "$g_talk_troop"),
-##    #Changing center faction
-##    (party_set_faction, "$center_wanted_to_be_bought", "$g_talk_troop_faction"),
-##    (set_spawn_radius, 1),
-##    (spawn_around_party, "$center_wanted_to_be_bought", "pt_old_garrison"),
-##    (assign, ":new_party", reg0),
-##    (party_set_ai_behavior, ":new_party", ai_bhvr_attack_party),
-##    (party_set_ai_object, ":new_party", "p_main_party"),
-##    (party_set_flags, ":new_party", pf_default_behavior, 0),
-##    (call_script, "script_party_copy", ":new_party", "$center_wanted_to_be_bought"),
-##    (party_clear, "$center_wanted_to_be_bought"),
-##
-##    (faction_get_slot, ":reinforcement_template_archers", "$g_talk_troop_faction", slot_faction_reinforcements_archers),
-##    (faction_get_slot, ":reinforcement_template_infantry", "$g_talk_troop_faction", slot_faction_reinforcements_infantry),
-##    (party_add_template, "$center_wanted_to_be_bought", ":reinforcement_template_archers"),
-##    (party_add_template, "$center_wanted_to_be_bought", ":reinforcement_template_infantry"),
-##    ]],
-##
-##  [anyone,"lord_buy_center_deny", [],
-##   "As you wish {playername}. But don't forget, the great lords of the country won't like a low born {man/woman} like you holding such an estate without their consent.\
-## It is the nature of this world {playername}. Everyone should know their place.", "lord_pretalk", []],
-
-
 [anyone,"lord_start",[
             (eq, "$g_romantic_comment_made", 0),
             (ge, "$g_talk_troop_relation", 20),
@@ -3408,7 +1103,7 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
 (assign, "$g_romantic_comment_made", 1),
 
 ]],
-  [anyone,"lord_start", [(party_slot_eq, "$g_encountered_party",slot_town_lord, "$g_talk_troop"),#we are talking to Town's Lord.
+[anyone,"lord_start", [(party_slot_eq, "$g_encountered_party",slot_town_lord, "$g_talk_troop"),#we are talking to Town's Lord.
                    (ge,"$g_talk_troop_faction_relation",0),
                    (neq, "$g_ransom_offer_rejected", 1),
                    (lt, "$g_encountered_party_2", 0), #town is not under siege
@@ -3448,8 +1143,6 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
 I can pay you {reg6} mon for {reg0?her:him} if you want to get rid of {reg0?her:him}.\
 You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, but there is no telling how long that will take, eh?\
 ", "lord_buy_prisoner", []],
-##diplomacy end+
-
 [anyone|plyr,"lord_buy_prisoner", [],
 "I accept your offer. I'll leave {s3} to you for {reg6} mon.", "lord_buy_prisoner_accept", []],
 [anyone|plyr,"lord_buy_prisoner", [],
@@ -3585,13 +1278,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 
 ],
 "Let us lift a {s5} to the health of our host, {s4}. Now, what is it?", "lord_talk",[]],
-#  [anyone,"lord_start_2", [],
-#   "Yes?", "lord_talk",[]],
-
-
-#Player lord_talk responses begin
-
-#Political quests begin
 [anyone|plyr,"lord_talk", [
 (check_quest_active, "qst_offer_gift"),
 (quest_slot_eq, "qst_offer_gift", slot_quest_giver_troop, "$g_talk_troop"),
@@ -3764,23 +1450,13 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 (unlock_achievement, ACHIEVEMENT_SASSY),
         (try_end),
 ]],
-#lord recruitment changes begin
 [anyone,"lord_pretalk", [
 (lt, "$g_encountered_party_relation", 0),
 (encountered_party_is_attacker),
 ],
 "But enough talking - yield or fight!", "party_encounter_lord_hostile_attacker_2",[]],
-#lord recruitment changes end
-
-
-
-
 [anyone,"lord_pretalk", [],
 "Anything else?", "lord_talk",[]],
-##### TODO: QUESTS COMMENT OUT BEGIN
-
-
-#lord recruitment changes begin
 [anyone|plyr,"lord_talk",[
                       (check_quest_active, "qst_resolve_dispute"),
                (quest_get_slot, ":lord_1", "qst_resolve_dispute", slot_quest_target_troop),
@@ -3900,8 +1576,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 "Ask me again when we are outside of these walls, {s0}.", "lord_pretalk",
 ##diplomacy end+
 []],
-##diplomacy start+  Do not always accept
-#(The spouse almost always should, but refuse in edge cases)
 [anyone,"lord_husband_auto_recruit",[
 	#Don't apply it to former comrades under arms
 	#gekokujo 3.0 microfactions! include fort companions start
@@ -3998,8 +1672,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 #TODO: customize message by personality
 ], "I must remain loyal to {s14}. I am sorry.", "lord_pretalk",
 []],
-##diplomacy end+
-
 [anyone,"lord_husband_auto_recruit",
 [
 ##either gender PC can marry opposite-gender lords
@@ -4086,7 +1758,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 "CHEAT -- Let's duel (insult)", "lord_respond_to_insult_challenge_duel",
 [
 ]],
-#Respond to insult
 [anyone,"lord_respond_to_insult", [
 (eq, "$g_last_comment_copied_to_s42", "str_comment_intro_female_sadistic_admiring"),
 ], "Hah! I admire a quick tongue. Perhaps some day I shall remove it, with tongs, to admire it at greater leisure, but today, at least, I shall salute your wit and courage.", "lord_pretalk", [
@@ -4418,7 +2089,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 "I had already made up my mind to support you.", "lord_internal_politics_cur_stance_plyr_response",
 [
 ]],
-##diplomacy start+ add case for when player supports another lord, and other lord supports that one
 [anyone,"lord_internal_politics_cur_stance", [
 (troop_get_slot, ":player_choice", "trp_player", slot_troop_stance_on_faction_issue),
 (troop_slot_eq, "$g_talk_troop", slot_troop_stance_on_faction_issue, ":player_choice"),
@@ -4432,8 +2102,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 "I had already made up my mind to support {s4}.", "lord_internal_politics_cur_stance_plyr_response",
 [
 ]],
-##diplomacy end+
-
 [anyone,"lord_internal_politics_cur_stance", [
 (call_script, "script_npc_decision_checklist_take_stand_on_issue", "$g_talk_troop"),
 (eq, reg0, -1),
@@ -4666,8 +2334,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 "Can I convince you to support me instead?", "lord_internal_politics_plyr_request_support",
 [
 ]],
-##diplomacy start+ add option to ask for support for another lord
-#undeclared: pick any lord
 [anyone|plyr,"lord_internal_politics_cur_stance_plyr_response", [
 (this_or_next|faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
 (eq, "$player_has_homage" ,1),
@@ -4680,7 +2346,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 "Can I convince you to support someone else?", "dplmc_lord_internal_politics_plyr_request_support_1",
 [
 ]],
-#already declared: can ask for support for player's pick
 [anyone|plyr,"lord_internal_politics_cur_stance_plyr_response", [
 (this_or_next|faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
    (eq, "$player_has_homage" ,1),
@@ -4715,8 +2380,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 [
 (troop_set_slot, "trp_player", slot_troop_stance_on_faction_issue, -1),
 ]],
-##diplomacy end+
-
 [anyone|plyr,"lord_internal_politics_cur_stance_plyr_response", [
 ],
 "Anyway, enough of politics for the time being.", "lord_pretalk",
@@ -4832,7 +2495,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 "I think you would need to prove yourself further before you are eligible for that position.", "lord_pretalk",
 [
 ]],
-#You already have too many holdings
 [anyone,"lord_internal_politics_plyr_request_support", [
 (lt, "$g_talk_troop_effective_relation", 10),
 ],
@@ -4861,7 +2523,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 (display_message, "str_intrigue_impatience=_reg3_must_be_less_than_100"),
 (try_end),
 ]],
-#lord proximity
 [anyone,"lord_recruit_1_relation", [ #can't use the nearby scripts, because it would include the player party
 (assign, ":continue", 1),
 (try_begin),
@@ -4913,7 +2574,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 "No, that's not it. There's another issue I wish to discuss.", "lord_recruit_1_relation",[
 (assign, "$skip_lord_assumes_argument", 1),
 ]],
-#relation
 [anyone,"lord_recruit_1_relation",
 [
 (try_begin),
@@ -5050,8 +2710,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 "{s12}", "lord_pretalk",[]],
 [anyone,"lord_recruit_1_relation", [],
 "{s12}", "lord_recruit_2",[]],
-#check for discontent
-
 [anyone|plyr,"lord_recruit_2", [
 ],
 "What do you think, in general terms, about kings, lords, and politics?", "lord_recruit_2_philosophy",[
@@ -5110,10 +2768,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 (str_store_troop_name, s9, ":faction_liege"),
 ],
 "Yes -- as a great lord, {s9} is a great disappointment. What do you suggest we do?", "lord_spouse_leave_faction_2",[]],
-#  [anyone|plyr,"lord_spouse_leave_faction_2", [
-#  ],
-#   "Perhaps we should find another liege", "lord_spouse_leave_faction_other_liege",[]],
-
 [anyone|plyr,"lord_spouse_leave_faction_2", [
 ##diplomacy start+ use culturally-appropriate term, and check gender of spouse
 (try_begin),
@@ -5125,8 +2779,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 ],
 #either gender PC can marry opposite-gender lords
 "I believe you should be {s1}, my {reg65?wife:husband}!", "lord_spouse_leave_faction_husband_king",[]],
-#diplomacy end+
-
 [anyone|plyr,"lord_spouse_leave_faction_2", [
 #diplomacy start+ either gender PC can marry opposite-gender lords;
 #also use culturally-appropriate word for "king/queen"
@@ -5138,14 +2790,9 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 (try_end),
 ],
 "I am the rightful {s0} of Japan", "lord_spouse_leave_faction_proclaim_queen",[]],
-#diplomacy end+
-
 [anyone|plyr,"lord_spouse_leave_faction_2", [
 ],
 "Never mind", "lord_pretalk",[]],
-##diplomacy start+
-##Before, Upstanding and Martial lords never married the player.  This check has been
-##added because it is now possible to marry them.
 [anyone,"lord_spouse_leave_faction_proclaim_queen", [
    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),#for promoted ladies
    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_upstanding),
@@ -5185,7 +2832,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 		#(try_end),
 		(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),
 	]],
-##Not all lords are especially keen to betray.
 [anyone,"lord_spouse_leave_faction_proclaim_queen", [
 	(this_or_next|is_between, "$g_talk_troop", active_npcs_begin, active_npcs_end),
 		(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero),
@@ -5258,8 +2904,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 	(str_store_troop_name, s11, ":faction_liege"),
 	], "I see no reason to turn my back on {s11} now.",
 		"lord_pretalk", []],
-##diplomacy end+
-
 [anyone,"lord_spouse_leave_faction_husband_king", [
 (assign, ":lord_has_fortress", 0),
 (try_for_range, ":walled_center", walled_centers_begin, walled_centers_end),
@@ -5290,9 +2934,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 ],
 ##diplomacy start+ either gender PC can marry opposite-gender lords
 "While I do not contest your claim, {s0}, I should like for one of us to hold a fortress which could serve as our court before we declare ourselves publically.", "lord_pretalk",[]],
-##diplomacy end+
-
-#Proclaim yourself queen
 [anyone,"lord_spouse_leave_faction_proclaim_queen", [
 (assign, ":player_has_enough_right", 0),
 (try_begin),
@@ -5555,7 +3196,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 [anyone|plyr,"lord_spouse_leave_faction_proclaim_queen_confirm", [
 ],
 "Perhaps I am not yet ready.", "lord_pretalk",[]],
-#Declare husband as pretender
 [anyone,"lord_spouse_leave_faction_husband_king", [
 (eq, "$players_kingdom", "fac_player_supporters_faction"),
 (gt, "$supported_pretender", 0),
@@ -5570,8 +3210,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_talk_troop", DPLMC_CULTURAL_TERM_KING, 0),
 ],
 "Most of the great families of this land have a claim to power... Given the recent issues with the succession, I should be as legitimate a {s0} as {s4}. ", "lord_spouse_leave_faction_husband_king_2",[]],
-##diplomacy end+
-
 [anyone,"lord_spouse_leave_faction_husband_king_2", [
 ##diplomacy start+
 #Replace {queen/king} with {s0}
@@ -5584,8 +3222,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 ],
 #next line replace {queen/king} with {s0}
 "While {s0}, I will defer to your judgment in the appointment of ministers, the conduct of diplomacy, and other such matters.", "lord_spouse_leave_faction_husband_king_3",[]],
-#diplomacy end+
-
 [anyone|plyr,"lord_spouse_leave_faction_husband_king_3", [
 ],
 #diplomacy start+ either gender PC can marry opposite-gender lords
@@ -6149,7 +3785,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 [
 (assign, "$opposed_arguments_made", -1),
 ]],
-#Is the candidate  worthy of being king?
 [anyone,"lord_recruit_3_claim", [
 
 (assign, "$g_persuasion_trump_used", 0),
@@ -6282,7 +3917,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 ],
 "{s12}", "lord_recruit_4",[
 ]],
-#the lord refuses. s12 is set by the previous
 [anyone,"lord_recruit_3_claim",  [
                   ],
 "{s12}", "lord_pretalk",[
@@ -6440,12 +4074,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 ],
 "{s31}", "lord_recruit_5_ideological",
 []],
-#    [anyone,"lord_recruit_5_material",  [
-
-#	],
-#	"{!}[Anticipated material gains currently not counted]", "lord_recruit_5_ideological",
-#	[]],
-
 [anyone,"lord_recruit_5_ideological",  [
 ],
 "{s33}", "lord_recruit_5_change_sides",
@@ -6656,10 +4284,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
 ],
 "Now... It is a momentous step I have taken. I will take my leave, as I may need some time prepare myself for what comes next.", "close_window",
 []],
-#lord recruitment changes end
-
-
-#POLITICAL QUESTS RESOLUTIONS
 [anyone, "lord_start",   [
 
 (check_quest_active, "qst_offer_gift"),
@@ -6840,12 +4464,6 @@ I'll send some men to take him to our prison with due haste.", "lord_pretalk", [
                       (str_store_troop_name,1,":quest_giver_troop")],
 "I've come to collect the debt you owe to {s1}.", "lord_ask_to_collect_debt",
 [(assign, "$g_convince_quest", "qst_collect_debt")]],
-##diplomacy start+ Make gender correct
-##OLD:
-#[anyone,"lord_ask_to_collect_debt", [],  "Oh. Well, {s1} did lend me some silver a ways back,\
-#but I've done him many favours in the past and I consider that money as my due payment.", "lord_ask_to_collect_debt_2",[]],
-#[anyone|plyr,"lord_ask_to_collect_debt_2", [],  "{s1} considers it a debt. He asked me to speak to you on his behalf.", "convince_begin",[]],
-##NEW:
 [anyone,"lord_ask_to_collect_debt", [
    (quest_get_slot, ":quest_giver_troop", "qst_collect_debt", slot_quest_giver_troop),
    (call_script, "script_dplmc_store_troop_is_female", ":quest_giver_troop"),
@@ -6855,7 +4473,6 @@ but I've done {reg0?her:him} many favours in the past and I consider that money 
    (quest_get_slot, ":quest_giver_troop", "qst_collect_debt", slot_quest_giver_troop),
    (call_script, "script_dplmc_store_troop_is_female", ":quest_giver_troop"),
 ],  "{s1} considers it a debt. {reg0?She:He} asked me to speak to you on {reg0?her:his} behalf.", "convince_begin",[]],
-##diplomacy end+
 [anyone|plyr,"lord_ask_to_collect_debt_2", [],  "Then I will not press the matter any further.", "lord_pretalk",[]],
 [anyone|plyr,"lord_talk",[(check_quest_active,"qst_persuade_lords_to_make_peace"),
                       (quest_get_slot, ":quest_target_troop", "qst_persuade_lords_to_make_peace", slot_quest_target_troop),
@@ -6874,59 +4491,6 @@ War is not easily forgotten by either side of the conflict, and I have a very lo
 Why should I take any interest in brokering peace with those dogs?", "lord_ask_to_make_peace_2",[]],
 [anyone|plyr,"lord_ask_to_make_peace_2", [],  "Perhaps I can talk you into it...", "convince_begin",[]],
 [anyone|plyr,"lord_ask_to_make_peace_2", [],  "Never mind, peace can wait for now.", "lord_pretalk",[]],
-##
-##
-##  [anyone|plyr,"lord_talk",[(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                            (check_quest_active,"qst_bring_reinforcements_to_siege"),
-##                             (quest_get_slot, ":quest_target_troop", "qst_bring_reinforcements_to_siege", slot_quest_target_troop),
-##                             (eq,"$g_talk_troop",":quest_target_troop"),
-##                             (quest_get_slot, ":quest_giver_troop", "qst_bring_reinforcements_to_siege", slot_quest_giver_troop),
-##                             (quest_get_slot, ":quest_target_amount", "qst_bring_reinforcements_to_siege", slot_quest_target_amount),
-##                             (quest_get_slot, ":quest_object_troop", "qst_bring_reinforcements_to_siege", slot_quest_object_troop),
-##                             (party_count_companions_of_type, ":num_companions", "p_main_party", ":quest_object_troop"),
-##                             (ge, ":num_companions", ":quest_target_amount"),
-##                             (str_store_troop_name,1,":quest_giver_troop"),
-##                             (assign, reg1, ":quest_target_amount"),
-##                             (str_store_troop_name,2,":quest_object_troop")],
-##   "Sir, {s1} ordered me to bring {reg1} {s2} to reinforce your siege.", "lord_reinforcement_brought",
-##   [(quest_get_slot, ":quest_target_amount", "qst_bring_reinforcements_to_siege", slot_quest_target_amount),
-##    (quest_get_slot, ":quest_target_party", "qst_bring_reinforcements_to_siege", slot_quest_target_party),
-##    (quest_get_slot, ":quest_object_troop", "qst_bring_reinforcements_to_siege", slot_quest_object_troop),
-##    (party_remove_members, "p_main_party", ":quest_object_troop", ":quest_target_amount"),
-##    (party_add_members, ":quest_target_party", ":quest_object_troop", ":quest_target_amount"),
-##    (call_script, "script_finish_quest", "qst_bring_reinforcements_to_siege", 100),
-##    ]],
-##
-##  [anyone|plyr,"lord_talk",[(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                            (check_quest_active,"qst_bring_reinforcements_to_siege"),
-##                             (quest_get_slot, ":quest_target_troop", "qst_bring_reinforcements_to_siege", slot_quest_target_troop),
-##                             (eq,"$g_talk_troop",":quest_target_troop"),
-##                             (quest_get_slot, ":quest_giver_troop", "qst_bring_reinforcements_to_siege", slot_quest_giver_troop),
-##                             (quest_get_slot, ":quest_target_amount", "qst_bring_reinforcements_to_siege", slot_quest_target_amount),
-##                             (quest_get_slot, ":quest_object_troop", "qst_bring_reinforcements_to_siege", slot_quest_object_troop),
-##                             (party_count_companions_of_type, ":num_companions", "p_main_party", ":quest_object_troop"),
-##                             (lt, ":num_companions", ":quest_target_amount"),
-##                             (gt, ":num_companions", 0),
-##                             (str_store_troop_name,1,":quest_giver_troop"),
-##                             (assign, reg1, ":quest_target_amount"),
-##                             (str_store_troop_name,2,":quest_object_troop")],
-##   "Sir, {s1} ordered me to bring {reg1} {s2} as a reinforcement to your siege, but unfortunately I lost some of them during my expedition.", "lord_reinforcement_brought_some",
-##   [(quest_get_slot, ":quest_target_amount", "qst_bring_reinforcements_to_siege", slot_quest_target_amount),
-##    (quest_get_slot, ":quest_target_party", "qst_bring_reinforcements_to_siege", slot_quest_target_party),
-##    (quest_get_slot, ":quest_object_troop", "qst_bring_reinforcements_to_siege", slot_quest_object_troop),
-##    (party_count_companions_of_type, ":num_companions", "p_main_party", ":quest_object_troop"),
-##    (party_remove_members, "p_main_party", ":quest_object_troop", ":num_companions"),
-##    (party_add_members, ":quest_target_party", ":quest_object_troop", ":num_companions"),
-##    (assign, ":percentage_completed", 100),
-##    (val_mul, ":percentage_completed", ":num_companions"),
-##    (val_div, ":percentage_completed", ":quest_target_amount"),
-##    (call_script, "script_finish_quest", "qst_bring_reinforcements_to_siege", ":percentage_completed"),
-##     ]],
-##
-##  [anyone,"lord_reinforcement_brought", [], "Well done {playername}. These men will no doubt be very useful. I will speak to {s1} of your help.", "lord_pretalk",[]],
-##  [anyone,"lord_reinforcement_brought_some", [], "That's not quite good enough {playername}. But I suppose it is better than no reinforcements at all. Whatever, I'll tell {s1} you tried your best.", "lord_pretalk",[]],
-##
-
 [anyone|plyr,"lord_talk",
 [
 (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
@@ -6940,15 +4504,10 @@ Why should I take any interest in brokering peace with those dogs?", "lord_ask_t
 [anyone,"lord_challenge_duel_for_lady", [], "What accusations?\
 Everyone knows that she beds her stable boys and anyone else she can lay hands on while her husband is away.\
 I merely repeat the words of many.", "lord_challenge_duel_for_lady_2",[]],
-##diplomacy start+
-##OLD:
-#[anyone|plyr,"lord_challenge_duel_for_lady_2", [], "You will recant these lies, sirrah, or prove them against my sword!", "lord_challenge_duel",[]],
-##NEW:
 [anyone|plyr,"lord_challenge_duel_for_lady_2", [
 #Add gender alternative, and cultural alternative to "sword"
 (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_talk_troop", DPLMC_CULTURAL_TERM_WEAPON, 0),
 ], "You will recant these lies, {sirrah/miss}, or prove them against my {s0}!", "lord_challenge_duel",[]],
-##diplomacy end+
 [anyone|plyr,"lord_challenge_duel_for_lady_2", [], "If you say so...", "lord_pretalk",[]],
 [anyone,"lord_challenge_duel",
 [
@@ -7078,58 +4637,6 @@ and perhaps I shall be able to repay the debt I owe you.", "lord_rescue_by_repla
 (jump_to_menu, "mnu_captivity_rescue_lord_taken_prisoner"),
 (finish_mission),
 ]],
-##
-##  [anyone|plyr,"lord_talk", [(check_quest_active, "qst_deliver_message_to_lover"),
-##                             (troop_get_slot, ":cur_daughter", "$g_talk_troop", slot_troop_daughter),
-##                             (quest_slot_eq, "qst_deliver_message_to_lover", slot_quest_target_troop, ":cur_daughter"),
-##                             (quest_get_slot, ":troop_no", "qst_deliver_message_to_lover", slot_quest_giver_troop),
-##                             (str_store_troop_name, 3, ":troop_no"),
-##                             (str_store_troop_name, 4, ":cur_daughter")],
-##   "My lord, {s3} asked me to give this letter to your daughter, but I think you should read it first.", "lord_deliver_message_to_lover_tell_father",[]],
-##
-##  [anyone,"lord_deliver_message_to_lover_tell_father", [],
-##   "That swine called {s3} is trying to approach my daughter eh? You have made the right decision by bringing this letter to me. I'll have a long talk with {s4} about it.", "lord_pretalk",
-##   [(add_xp_as_reward, 200),
-##    (call_script, "script_troop_add_gold", "trp_player", 1000),
-##    (quest_get_slot, ":quest_giver", "qst_deliver_message_to_lover", slot_quest_giver_troop),
-##    (quest_get_slot, ":target_troop", "qst_deliver_message_to_lover", slot_quest_target_troop),
-##    (call_script, "script_change_player_relation_with_troop", ":quest_giver", -20),
-##    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),
-##    (call_script, "script_change_player_relation_with_troop", ":target_troop", -10),
-##    (call_script, "script_end_quest", "qst_deliver_message_to_lover"),
-##    #Adding betrayal to the quest giver
-##    (troop_set_slot, ":quest_giver", slot_troop_last_quest, "qst_deliver_message_to_lover"),
-##    (troop_set_slot, ":quest_giver", slot_troop_last_quest_betrayed, 1)]],
-##
-##
-##### TODO: QUESTS COMMENT OUT END
-
-
-
-##  [anyone|plyr,"lord_talk", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                             (ge,"$g_talk_troop_faction_relation",0),
-##                             (party_slot_eq, "$g_encountered_party", slot_party_type, spt_castle),
-##                             (party_slot_eq, "$g_encountered_party", slot_town_lord, "$g_talk_troop"),
-##                             (eq, "$g_permitted_to_center",0),
-##                             (party_get_num_companions, reg7, "p_main_party"),
-##                             (val_sub, reg7, 1),
-##                             ],
-##   "{reg7?Me and my men:I} need shelter for the night my lord. Can we rest in your castle for a while?", "lord_castle_let_in",[]],
-##
-##  [anyone, "lord_castle_let_in", [(lt,"$g_talk_troop_relation",-10)],
-##   "What? Do I look like I am running an inn here? I have no place here for {reg7?you and your lot:you}. Now get off my lands...", "close_window",[(assign, "$g_permitted_to_center",1)]],
-##  [anyone, "lord_castle_let_in", [(lt,"$g_talk_troop_relation",2), (lt, "$g_talk_troop_faction_relation", 10),(assign, reg6, 100)],
-##   "I'll give you shelter if you pay a toll of {reg6} mon.", "lord_castle_let_in_toll",[]],
-##  [anyone|plyr,"lord_castle_let_in_toll", [(store_troop_gold, ":gold", "trp_player"),(gt,":gold",reg6)], "Of course sir. I'll pay the toll.", "lord_castle_let_in_toll_pay",
-##   [(troop_remove_gold, "trp_player",reg6)]],
-##  [anyone, "lord_castle_let_in_toll_pay", [(str_store_party_name, s1, "$g_encountered_party")],
-##   "Then you are welcome to {s1}.", "close_window",[(assign, "$g_permitted_to_center",1),(jump_to_menu, "mnu_town")]],
-##  [anyone|plyr,"lord_castle_let_in_toll", [], "I can't pay that sum sir.", "lord_castle_let_in_toll_nopay",[]],
-##  [anyone,"lord_castle_let_in_toll_nopay", [], "Then you are out of luck, I guess.", "lord_pretalk",[]],
-##
-##  [anyone, "lord_castle_let_in", [(str_store_party_name, s1, "$g_encountered_party")],
-##   "Of course {playername}. You are welcome here. You may rest at {s1} as long as you wish.", "close_window",[(assign, "$g_permitted_to_center",1)]],
-
 [anyone|plyr,"lord_talk", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
                 (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
                        (eq, "$players_oath_renounced_against_kingdom", "$g_talk_troop_faction"),
@@ -7144,8 +4651,6 @@ and perhaps I shall be able to repay the debt I owe you.", "lord_rescue_by_repla
 #Replace "his" with "{reg0?hers:his}"
 (call_script, "script_dplmc_store_troop_is_female", ":faction_leader"),
 ], "That is too great a matter for me to decide, {playername}. You should seek out {s4}. Such clemency is {reg0?hers:his} alone to grant or deny.", "lord_pretalk",[]],
-##diplomacy end+
-
 [anyone,"lord_ask_pardon_after_oath_renounced",
 [
 ##diplomacy start+ Assign zero (don't use implicit arguments)
@@ -7348,7 +4853,6 @@ No samurai in Japan would accept a lasting peace with you.", "lord_pretalk",[]],
 (encountered_party_is_attacker),
 
 ], "Make peace when I have you at an advantage? I think not.", "lord_pretalk",[]],
-#If the player faction is active
 [anyone,"lord_ask_pardon",
 [
 (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
@@ -7372,9 +4876,6 @@ No samurai in Japan would accept a lasting peace with you.", "lord_pretalk",[]],
 #Changed this line to make it clearer that negotiation isn't going to happen.
 #], "I do not see it as being in my current interest to make peace.", "lord_pretalk",[]],
 ], "I do not see it as being in my current interest to make peace, and have no interest in negotiations.", "lord_pretalk",[]],
-##diplomacy end+
-
-##diplomacy start+ offer the player terms (similar to through a minister)
 [anyone,"lord_ask_pardon",
 [
 (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
@@ -7447,8 +4948,6 @@ No samurai in Japan would accept a lasting peace with you.", "lord_pretalk",[]],
 ], "As things stand I do not see it as being in my current interest to make peace, but if you "+\
 	"were to hand over {s0} I would be willing to agree to a truce of twenty days.",
 "dplmc_lord_ask_pardon_ruler_1",[]],
-##diplomacy end+
-
 [anyone,"lord_ask_pardon",
 [
 (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
@@ -7474,8 +4973,6 @@ No samurai in Japan would accept a lasting peace with you.", "lord_pretalk",[]],
 (eq, ":has_center", 1),
 ##diplomacy begin
 ], "Yes... I am weary of fighting you. I could offer you a truce of twenty days. If you keep your word and do not molest my lands and subjects, we may talk again...", "lord_truce_offer",[]],
-##diplomacy end
-
 [anyone|plyr,"lord_truce_offer",
 [
 ##zerilius changes begin
@@ -7486,8 +4983,6 @@ No samurai in Japan would accept a lasting peace with you.", "lord_pretalk",[]],
 (eq,"$talk_context",tc_party_encounter),
 (assign, "$g_leave_encounter", 1),
 ]],
-##zerilius changes end
-
 [anyone|plyr,"lord_truce_offer",
 [], "On second thought, such an accord would not be in my interests.", "lord_pretalk",[]],
 [anyone,"lord_ask_pardon", [
@@ -7541,19 +5036,11 @@ All in all, you'd need to bring no less than {reg16} mon to make any friends in 
        (neq, "$g_talk_troop_faction", "fac_dark_knights"), ## Tocan Invasion ##
 ], "I am sorry. I am in no position to offer you a pardon", "lord_pretalk",[
 ]],
-## Tocan Invasion+ ##
 [anyone,"lord_ask_pardon",
 [
        (eq, "$g_talk_troop_faction", "fac_dark_knights"), 
 ], "Peace? Maybe after we grind you into a fine dust, burn your chattels, and hear the lamentation of your kinsfolk. Then we will give you peace.", "lord_pretalk",[
 	]],
- 
-## Tocan Invasion- ##
-
-
-
-
-
 [anyone|plyr,"lord_ask_pardon_2", [(store_troop_gold, ":gold","trp_player"),(ge, ":gold", reg16)], "I have the money here. {reg16} mon.", "lord_ask_pardon_tribue_accept",[]],
 [anyone|plyr,"lord_ask_pardon_2", [], "I fear I cannot pay that much.", "lord_ask_pardon_tribue_deny",[]],
 [anyone,"lord_ask_pardon_tribue_accept", [
@@ -7618,21 +5105,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
                        (ge,":lords_quest",0),
                        ],
 "About the task you gave me...", "lord_active_mission_1",[]],
-# This is done automatically now.
-##  [anyone|plyr,"lord_talk", [(faction_slot_eq,"$g_talk_troop_faction",slot_faction_leader, "$g_talk_troop"),
-##                             (eq, "$players_kingdom", "$g_talk_troop_faction"),
-##                             (eq, "$player_has_homage", 0),
-##                             (gt, "$mercenary_service_accumulated_pay", 0),
-##                             ],
-##   "{s67}, I humbly request the weekly payment for my service.", "lord_pay_mercenary",[]],
-##
-##  [anyone,"lord_pay_mercenary", [(assign, reg8, "$mercenary_service_accumulated_pay")],
-##   "Hmm, let me see... According to my ledgers, we owe you {reg8} mon for your work. Here you are.", "lord_pay_mercenary_2",
-##   [(troop_add_gold, "trp_player", "$mercenary_service_accumulated_pay"),
-##    (assign, "$mercenary_service_accumulated_pay", 0)]],
-##
-##  [anyone|plyr,"lord_pay_mercenary_2", [], "Thank you, sir.", "lord_pretalk", []],
-
 [anyone|plyr,"lord_talk", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
                        ##diplomacy start+
 					   (neg|troop_slot_eq, "trp_player", slot_troop_spouse, -1),
@@ -7672,17 +5144,12 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 ],
 #diplomacy start+ either gender PC can marry opposite-gender lords
 "Let us wait until we are in a hall, {s0}, as it is difficult to deal with household inventories and such matters in the field.", "lord_pretalk",[]],
-#diplomacy end+
 [anyone,"lord_switch_to_spouse", #Ediplomacy start+[],
 [#load relation text into s0
 (call_script, "script_dplmc_print_player_spouse_says_my_husband_wife_to_s0", "$g_talk_troop", 0),
 ],
 #either gender PC can marry opposite-gender lords
 "Certainly, {s0}", "spouse_talk",[]],
-#diplomacy end+
-
-
-
 [anyone|plyr,"lord_talk", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
                        (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
                        (ge, "$g_talk_troop_faction_relation", 0),
@@ -7706,42 +5173,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 (assign, "$political_quest_found", reg0),
 (assign, "$political_quest_target_troop", reg1),
 (assign, "$political_quest_object_troop", reg2),
-]],
-[anyone,"combined_political_quests", [
-(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero),
-(lt, "$g_talk_troop_effective_relation", -5),
-##diplomacy start+
-#For affiliated family members, increase willingness to intrigue
-(call_script, "script_dplmc_is_affiliated_family_member", "$g_talk_troop"),
-(lt, reg0, 1),
-##diplomacy end+
-],
-"I do not imagine that you and I have many mutual interests.", "lord_pretalk",[
-]],
-[anyone,"combined_political_quests", [
-(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero),
-(gt, "$political_quest_found", 0),
-(assign, ":continue", 1),
-(try_begin),
-(call_script, "script_cf_troop_can_intrigue", "$g_talk_troop", 1),
-(assign, ":continue", 0),
-(try_end),
-(eq, ":continue", 1),
-],
-"Hmm.. Perhaps we can discuss this matter in a more private setting, at a later date.", "lord_pretalk",[
-]],
-[anyone,"combined_political_quests", [
-(this_or_next|eq, "$political_quest_found", "qst_intrigue_against_lord"),
-(eq, "$political_quest_found", "qst_denounce_lord"),
-
-(troop_slot_ge, "trp_player", slot_troop_controversy, 30),
-
-##diplomacy start+ Use culturally-appropriate term
-(call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_talk_troop", DPLMC_CULTURAL_TERM_LORD_PLURAL,0),
-],
-##Next line, replace "lords" with {s0}
-"Hmm.. I do have an idea, but it would require you that you be free of controversy. If you were to wait some time without getting into any arguments with the other {s0} of our domain, perhaps we could proceed further.", "lord_pretalk",[
-##diplomacy end+
 ]],
 [anyone|plyr,"lord_talk", [(le,"$talk_context", tc_party_encounter),
                        (faction_slot_eq, "$players_kingdom", slot_faction_leader, "$g_talk_troop"),
@@ -7812,14 +5243,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
                        ##diplomacy end+
                       ],
 "{s66}, I wish to be released from my oath to you.", "lord_ask_leave_service",[]],
-##  [anyone|plyr,"lord_talk", [(le,"$talk_context", tc_party_encounter),
-##                             (ge, "$g_talk_troop_faction_relation", 0),
-##                             (troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                             (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
-##                             (eq, "$players_kingdom", 0),
-##                             (eq,1,0)],
-##   "TODO2:I want to fight alongside you against your enemies.", "close_window",[]],
-
 [anyone|plyr,"lord_talk", [(eq, 1, 0),(le,"$talk_context", tc_party_encounter),(ge, "$g_talk_troop_faction_relation", 0)],
 "I have an offer for you.", "lord_talk_preoffer",[]],
 [anyone|plyr,"lord_talk", [##diplomacy start+
@@ -7843,9 +5266,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
                     ##diplomacy end+
                        ],
 "I want to give some troops to you.", "lord_give_troops",[]],
-##diplomacy start+
-#Lords will not accept troops when they are at twice their ordinary capacity
-#(on Medium; value is higher or lower depending on difficulty setting).
 [anyone,"lord_give_troops", [
 	(call_script, "script_party_get_ideal_size", "$g_talk_troop_party"),
 	(assign, ":limit", reg0),
@@ -7884,8 +5304,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 [
 (change_screen_give_members, "$g_talk_troop_party"),
 ]],
-##diplomacy end+
-
 [anyone,"lord_give_troops", [],
 "Well, I could use some good soldiers. Thank you.", "lord_pretalk",
 [
@@ -7994,7 +5412,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 [
   (assign, "$temp", spai_patrolling_around_center),
   ]],
-#only as suggestion
 [anyone|plyr,"lord_give_order", [
     (party_slot_eq, "$g_talk_troop_party", slot_party_ai_state, spai_besieging_center),
      (party_get_slot, ":ai_object", "$g_talk_troop_party", slot_party_ai_object),
@@ -8007,7 +5424,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
  #for this one and another one, if the $g_talk_troop is a _t
 #     (assign, "$temp", spai_patrolling_around_center),
   ]],
-#only as suggestion
 [anyone|plyr,"lord_give_order", [
  (neg|faction_slot_eq, "$players_kingdom", slot_faction_marshall, "trp_player"), #not an order,  only a suggestion
 
@@ -8016,7 +5432,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 [
   (assign, "$temp", spai_patrolling_around_center),
   ]],
-#only as suggestion
 [anyone|plyr,"lord_give_order", [
  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_marshall, "$g_talk_troop"),
 
@@ -8075,8 +5490,7 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
  (assign, "$g_leave_encounter", 1),
 
   ]],
-#only as suggestion
-   [anyone|plyr,"lord_give_order", [
+[anyone|plyr,"lord_give_order", [
  (neg|faction_slot_eq, "$players_kingdom", slot_faction_marshall, "trp_player"), #not an order,  only a suggestion
 ],
 "There is a fortress which can easily be taken. Go to..", "lord_give_order_details_ask",
@@ -8186,7 +5600,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 ]],
 [anyone|plyr, "lord_give_order_details",
 [], "Never mind.", "lord_pretalk",[]],
-#Simple stop order
 [anyone,"lord_give_order_stop", [],
 "All right. I will stop here.", "lord_pretalk",
 [
@@ -8267,7 +5680,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
   (party_set_slot, "$g_talk_troop_party", slot_party_orders_object, 0),
   (party_set_slot, "$g_talk_troop_party", slot_party_orders_time, 0),
 ]],
-#More complicated order
 [anyone,"lord_give_order_answer",
 [
  (call_script, "script_npc_decision_checklist_party_ai", "$g_talk_troop"),
@@ -8294,14 +5706,12 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
   #Set courage and aggressiveness in party_set_ai_astate
   (assign, "$g_leave_encounter", 1),
 ]],
-#Recalculated orders do not match
 [anyone,"lord_give_order_answer", [],
 "I am sorry. I need to attend my own business at the moment.", "lord_pretalk",
 [
   (call_script, "script_npc_decision_checklist_party_ai", "$g_talk_troop"),
   (call_script, "script_party_set_ai_state", "$g_talk_troop_party", reg0, reg1),
 ]],
-#generic lord comments - must be far down
 [anyone,"lord_start", [],
 "What is it?", "lord_talk",[]],
 [anyone|plyr,"lord_talk",
@@ -8358,9 +5768,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 "I wish to ask you something.", "lord_talk_ask_something",[]],
 [anyone,"lord_talk_ask_something", [],
 "Aye? What is it?", "lord_talk_ask_something_2",[]],
-##diplomacy start+
-#Allow updating skills of former companions, including claimants.
-#Modified from rubik's Custom Commander code.
 [anyone|plyr,"lord_talk_ask_something_2",
     [(neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
 	 (ge, "$g_talk_troop_effective_relation", 0),
@@ -8373,8 +5780,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 ],
 "Have your skills increased since the days when we were travelling companions?", "lord_talk_ask_skill",[]],
 [anyone,"lord_talk_ask_skill", [], "Let me show you...", "lord_pretalk",[(change_screen_view_character)]],
-##diplomacy end+
-
 [anyone,"lord_talk_ask_something_again", [],
 "Is there anything else?", "lord_talk_ask_something_2",[]],
 [anyone|plyr,"lord_talk_ask_something_2", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
@@ -8428,7 +5833,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
                                (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
 ],
 "How goes the war?", "lord_talk_ask_about_war",[]],
-#Marriage proposal
 [anyone|plyr,"lord_talk_ask_something_2",[
 (check_quest_active, "qst_formal_marriage_proposal"),
 (neg|check_quest_failed, "qst_formal_marriage_proposal"),
@@ -8456,8 +5860,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 [
 
 ]],
-##diplomacy start+
-#Proposal to exchange fiefs
 [anyone|plyr,"lord_talk_ask_something_2",
    [(le,"$talk_context", tc_party_encounter),
     #(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
@@ -8470,9 +5872,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
      "{s19}", "dplmc_lord_ask_exchange_fief_1",
     [],
 ],
-##diplomacy end+
-
-#no permission
 [anyone,"lord_marriage_permission", [
 (neg|troop_slot_eq, "$g_talk_troop", slot_lord_granted_courtship_permission, 1),
 ],
@@ -8480,7 +5879,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 (call_script, "script_fail_quest", "qst_formal_marriage_proposal"),
 (call_script, "script_end_quest", "qst_formal_marriage_proposal"),
 ]],
-#unwilling bride -- failed due to lord personality
 [anyone,"lord_marriage_permission", [
 (troop_slot_eq, "$g_talk_troop", slot_lord_granted_courtship_permission, 1),
 (quest_get_slot, ":bride", "qst_formal_marriage_proposal", slot_quest_giver_troop),
@@ -8497,7 +5895,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 (call_script, "script_end_quest", "qst_formal_marriage_proposal"),
 
 ]],
-#unwilling bride -- failed due to competitor
 [anyone,"lord_marriage_permission", [
 (troop_slot_eq, "$g_talk_troop", slot_lord_granted_courtship_permission, 1),
 (quest_get_slot, ":bride", "qst_formal_marriage_proposal", slot_quest_giver_troop),
@@ -8522,7 +5919,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 (call_script, "script_fail_quest", "qst_formal_marriage_proposal"),
 (call_script, "script_end_quest", "qst_formal_marriage_proposal"),
 ]],
-#Permission granted
 [anyone,"lord_marriage_permission", [
 (quest_get_slot, ":bride", "qst_formal_marriage_proposal", slot_quest_giver_troop),
 (str_store_troop_name, s11, ":bride"),
@@ -8615,7 +6011,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 (call_script, "script_fail_quest", "qst_formal_marriage_proposal"),
 (call_script, "script_end_quest", "qst_formal_marriage_proposal"),
 ]],
-#courtship
 [anyone|plyr,"lord_talk_ask_something_2",[
 (neg|troop_slot_eq, "$g_talk_troop", slot_lord_granted_courtship_permission, 1),
 
@@ -8648,7 +6043,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 ],
  "{s10} I have the honor of visiting with {s14}{s12}?", "lord_courtship_permission",
 []],
-##diplomacy begin
 [anyone,"lord_courtship_permission", [
 (call_script, "script_dplmc_is_affiliated_family_member", "$g_talk_troop"),
 (eq, reg0, 1),
@@ -8668,9 +6062,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 [
 (troop_set_slot, "$g_talk_troop", slot_lord_granted_courtship_permission, 1),
 ]],
-##diplomacy end
-
-
 [anyone,"lord_courtship_permission", [
  (troop_slot_ge, "$marriage_candidate", slot_troop_met, 2),
 (neg|troop_slot_eq, "$marriage_candidate", slot_troop_met, 4),
@@ -8713,8 +6104,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 [
 (troop_set_slot, "$g_talk_troop", slot_lord_granted_courtship_permission, 1),
 ]],
-#Ask for marriage, following courtship, both with or against lady's wishes
-
 [anyone|plyr,"lord_talk_ask_something_2", [
 (neg|troop_slot_eq, "$g_talk_troop", slot_lord_granted_courtship_permission, 1),
 (neg|troop_slot_ge, "trp_player", slot_troop_spouse, active_npcs_begin),
@@ -8758,8 +6147,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 "What would it take to cement a lasting alliance with your house?", "lord_talk_ask_marriage_1",[]],
 [anyone|plyr,"lord_talk_ask_something_2", [],
 "Never mind.", "lord_pretalk",[]],
-##diplomacy start+
-#People who dislike the character might not answer location requests.
 [anyone,"lord_talk_ask_location",
 	[
 	(lt, "$g_talk_troop_effective_relation", 0),
@@ -8811,7 +6198,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 	(call_script, "script_dplmc_player_can_give_troops_to_troop", "$g_talk_troop"),
 	(lt, reg0, 1),
 	],"I am afraid you will have to ask someone else.", "lady_pretalk", []],
-##diplomacy end+
 [anyone,"lord_talk_ask_location", [],
 "Very well, I may or may not have an answer for you. About whom do you wish to hear?", "lord_talk_ask_location_2",[]],
 [anyone|plyr|repeat_for_troops,"lord_talk_ask_location_2", [(store_repeat_object, ":troop_no"),
@@ -9121,25 +6507,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 (assign, "$g_talk_troop_disagrees_with_marshal", 1),
 
 ]],
-#To Steve - Why we need this dialog? It already included in below lord_strategy_follow_evaluation dialogs
-#[anyone, "lord_strategy_follow_evaluation",
-#[
-#  (this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_ai_state, sfai_attacking_center),
-#  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_ai_state, sfai_raiding_village),
-#
-#  (faction_get_slot, ":cur_object", "$g_talk_troop_faction", slot_faction_ai_object),
-#  (call_script, "script_npc_decision_checklist_evaluate_enemy_center_for_attack", "$g_talk_troop", ":cur_object", 1, 0),
-#  (lt, reg0, 0),
-#
-#  (str_store_string, s9, reg1),
-#  (str_store_party_name, s8, ":cur_object"),
-#],
-# "I disagree with the marshal's decision. I believe that {s8} {s9}",
-# "lord_strategy_why_not",[
-# ]],
-
-#This dialog appears when lord disagrees with marshal about the selected faction ai (attack/defend/gather/other).
-#To Steve - I took that dialog upper from below one. Lord should compare his faction ai choice with marshal's one before comparing preffered ai objects.
 [anyone, "lord_strategy_follow_evaluation",
 [
  (call_script, "script_npc_decision_checklist_faction_ai_alt", "$g_talk_troop"),
@@ -9179,7 +6546,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
  (assign, "$g_talk_troop_disagrees_with_marshal", 1),
 
 ]],
-#This dialog appears when lord disagrees with marshal about the city will be attacked.
 [anyone, "lord_strategy_follow_evaluation",
 [
  (this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_ai_state, sfai_attacking_center),
@@ -9218,7 +6584,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
  (assign, "$g_talk_troop_disagrees_with_marshal", 1),
 
 ]],
-#This dialog appears when lord disagrees with marshal about the city will be defended.
 [anyone, "lord_strategy_follow_evaluation",
 [
  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_ai_state, sfai_attacking_enemies_around_center),
@@ -9605,9 +6970,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 "Did you have any similar questions? Why we are not...",
 "lord_strategy_why_not_select",[
 ]],
-##diplomacy start+
-#Form a familial alliance with a faction leader!
-
 [anyone, "lord_talk_ask_marriage_1", [
 	(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
 	(is_between, "$g_talk_troop", pretenders_begin, pretenders_end),
@@ -9616,7 +6978,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 	(this_or_next|troop_slot_eq,"$g_talk_troop", slot_troop_betrothed, "trp_player"),
 	(troop_slot_eq, "trp_player", slot_troop_betrothed, "$g_talk_troop"),
 ], "Have no fear, I have no intention of changing my mind.  We will be married as soon as there is an opportunity worthy of the august event.", "lord_pretalk", []],
-## Propose marriage to claimant: Arwa version
 [anyone,"lord_talk_ask_marriage_1", [
 (eq, "$g_talk_troop", "trp_kingdom_6_pretender"),#is Arwa
 (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
@@ -9634,7 +6995,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 (try_end),
 ],
 "I do not forget that it was your strong right arm that placed me in my position.  Do you aim to take my {husband/wife}'s place, to rule the {s0} with me as Commander of the Armies even as I am Mother of the Domain?", "dplmc_claimant_marriage_proposal_pc_confirm", []],
-## Propose marriage to claimant: general version A
 [anyone,"lord_talk_ask_marriage_1", [
 (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
 (is_between, "$g_talk_troop", pretenders_begin, pretenders_end),
@@ -9652,8 +7012,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 ],
 "Are you proposing to rule the {s0} alongside me as my {husband/wife}?",
 "dplmc_claimant_marriage_proposal_pc_confirm", []],
-##Non-claimant faction leader:
-##Give a more ego-soothing turn-down if the character meets certain criteria.
 [anyone,"lord_talk_ask_marriage_1", [
 (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
 (ge, "$g_talk_troop_relation", 50),#enough for the "brave champion" message
@@ -9664,8 +7022,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 "It is our custom to seal any such alliances with marriage.  You have made quite a few waves since your arrival, and I might be willing to consider such an arrangement, but unfortunately no one in my household is eligible to wed.",
 "lord_pretalk",[
 ]],
-##diplomacy end+
-
 [anyone,"lord_talk_ask_marriage_1", [
 (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
 ##diplomacy start+ Use an alternative word for king
@@ -9802,7 +7158,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 "No, I think you have misunderstood me.",
 "lord_pretalk",[
 ]],
-##diplomacy start+ #Ordinarily this can't appear; it's possible the player did not intend this
 [anyone|plyr,"lord_marriage_proposal_female_pc_confirm", [
 (lt, "$g_disable_condescending_comments", 2),
 (eq, reg65, "$character_gender"),
@@ -9810,8 +7165,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 "Oh, HELL no!  No, you totally have the wrong idea... forget I said anything.",
 "lord_pretalk",[
 ]],
-##diplomacy end+
-
 [anyone,"lord_marriage_proposal_female_pc_reax", [
 (call_script, "script_npc_decision_checklist_marry_female_pc", "$g_talk_troop"),
 (le, reg0, 0),
@@ -9832,9 +7185,7 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 "{s14}",
 "lord_marriage_proposal_female_pc_next_step",[
 ]],
-##diplomacy start+
-#Re-enable this if enhanced prejudice mode is on
-  [anyone,"lord_marriage_proposal_female_pc_next_step", [
+[anyone,"lord_marriage_proposal_female_pc_next_step", [
 	(lt, "$g_disable_condescending_comments", 2),#Never say this with bias disabled
 	(neq, reg65, "$character_gender"),
 	#Not some non-noble promoted troop
@@ -9865,14 +7216,12 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
    "I must say, though. You live your life like a {woman/man}, riding where you will, with the company you choose. This will not make it easy for the other {s0} to accept our marriage. I don't suppose that you would give up adventuring, for the sake of our marriage?",
    "lord_marriage_proposal_female_pc_next_step_2",[
    ]],
-#end changed
-
-   [anyone|plyr,"lord_marriage_proposal_female_pc_next_step_2", [
+[anyone|plyr,"lord_marriage_proposal_female_pc_next_step_2", [
   ],
    "I think not!",
    "lord_marriage_proposal_female_pc_next_step_5",[
    ]],
-   [anyone|plyr,"lord_marriage_proposal_female_pc_next_step_2", [
+[anyone|plyr,"lord_marriage_proposal_female_pc_next_step_2", [
 	#It might be a bit disappointing to be able to agree to this with no lasting effect
 	#(the NPC will not even appear to remember it), so I was on the fence as to whether
 	#to put this in or not without a fuller implementation.
@@ -9881,8 +7230,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
    "Very well.",
    "lord_marriage_proposal_female_pc_next_step_5",[
    ]],
-##diplomacy end+
-
 [anyone,"lord_marriage_proposal_female_pc_next_step", [
 ],
 "I suppose the next step would be for me to send a message to your family, asking for their permission to marry you, but I suppose that you make your own decisions.",
@@ -9954,8 +7301,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 "close_window",[
 (assign, "$g_leave_encounter", 1),
 ]],
-#continue marriage talks here
-
 [anyone|plyr,"lord_talk", [(eq,"$talk_context",tc_party_encounter),
                           (lt, "$g_encountered_party_relation", 0),
                           (str_store_troop_name,s4,"$g_talk_troop")],
@@ -9967,7 +7312,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 [anyone,"lord_predemand", [], "Eh? What do you want?", "lord_demand",[]],
 [anyone|plyr,"lord_demand", [(neq,"$g_encountered_party_faction","$players_kingdom"),
                             (ge, "$g_encountered_party_relation", 0),], "I offer you one chance to surrender or die.", "lord_ultimatum_surrender",[]],
-#Neutral attack on lord
 [anyone,"lord_ultimatum_surrender", [(ge, "$g_encountered_party_relation", 0)], "{s43}", "lord_attack_verify",[#originally, speak you rascal
      (call_script, "script_lord_comment_to_s43", "$g_talk_troop", "str_unprovoked_attack_default"),
     (try_begin),
@@ -9993,7 +7337,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 [anyone,"lord_attack_verify_cancel", [], "Be gone, then.", "close_window",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),(assign, "$g_leave_encounter",1)]],
 [anyone|plyr,"lord_attack_verify", [], "That is none of your business. Prepare to fight!", "lord_attack_verify_commit",[
 ]],
-#The kingdoms are already at war
 [anyone,"lord_ultimatum_surrender", [], "{s43}", "lord_attack_verify_b", #originally, you will not survive this
 [
  (call_script, "script_lord_comment_to_s43", "$g_talk_troop", "str_unnecessary_attack_default"),
@@ -10041,16 +7384,7 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 (assign,"$encountered_party_friendly",0),
  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -30),
  ]],
-#Post 0907 changes end
-
 [anyone|plyr,"lord_demand", [], "Forgive me. It's nothing.", "lord_pretalk",[]],
-##  [anyone|plyr,"lord_talk", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                             (ge, "$g_talk_troop_faction_relation", 0),
-##                             ],
-##   "I wish to ask for a favor.", "lord_ask_for_favor_ask",[]],
-
-
-
 [anyone|plyr,"lord_talk", [
                          (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
                          (troop_slot_eq, "$g_talk_troop", slot_troop_discussed_rebellion, 0),
@@ -10076,20 +7410,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
                           ],
 "I have met in my travels one who calls {reg3?herself:himself} {s45}...", "liege_defends_claim_1",[
     ]],
-#Rebellion changes begin
-#  [anyone|plyr,"lord_talk", [
-#                             (gt, "$supported_pretender", 0),
-#                             (eq, "$supported_pretender_old_faction", "$g_talk_troop_faction"),
-#                             (troop_slot_eq, "$g_talk_troop", slot_troop_discussed_rebellion, 0),
-#                             (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
-#                             (troop_slot_ge, "$g_talk_troop", slot_troop_leaded_party, 1),
-#                             (str_store_troop_name, s12, "$supported_pretender"),
-#                             (str_store_faction_name, s14, "$supported_pretender_old_faction"),
-#                             (faction_get_slot, ":old_faction_lord", "$supported_pretender_old_faction", slot_faction_leader),
-#                             (str_store_troop_name, s15, ":old_faction_lord"),
-#                             ],
-#   "{s12} is the rightful ruler of {s14}. Join our cause against the usurper, {s15}!", "lord_join_rebellion_suggest",[]],
-
 [anyone|plyr,"lord_talk",
 [
   (eq, "$cheat_mode", 2),
@@ -10107,6 +7427,14 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
   (call_script, "script_change_troop_faction", "$g_talk_troop", "$players_kingdom"),
   (assign, "$g_leave_encounter", 1),
   ]],
+[anyone|plyr,"lord_talk",
+[
+ (troop_get_slot, ":prison_location", "$g_talk_troop", slot_troop_prisoner_of_party),
+ (is_between, ":prison_location", centers_begin, centers_end),
+ (neg|party_slot_eq, ":prison_location", slot_town_lord, "trp_player"),
+ (neq, "$talk_context", tc_prison_break),
+],
+"I've come to break you out of here.", "lord_prison_break_chains",[]],
 [anyone,"lord_prison_break_chains", [],
 "Thank the heavens you came! However, I'm not going anywhere with these chains on my legs. You'll need to get the key away from the guard somehow.", "close_window",[]],
 [anyone|plyr,"lord_talk",
@@ -10125,11 +7453,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
  (troop_slot_eq, "$g_talk_troop", slot_troop_leaded_party, -1)
 ],##diplomacy start+ "men" to {reg65?soldiers:men}
 "I am not commanding any {reg65?soldiers:men} at the moment.", "lord_pretalk",[]],
-##diplomacy end+
-
-
-
-
 [anyone,"lord_tell_objective", [
 (party_slot_eq, "$g_talk_troop_party", slot_party_ai_state, spai_holding_center),
 (party_get_attached_to, ":cur_center_no", "$g_talk_troop_party"),
@@ -10153,7 +7476,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 (party_slot_eq, "$g_talk_troop_party", slot_party_ai_state, spai_visiting_village)],
 "{!}Warning: This line should never display.", "lord_tell_objective_2",
 []],
-#fix for translation variable changes
 [anyone,"lord_tell_objective_2", [],
 "I am heading to the vicinity of {s1}. {s14}{s15}", "lord_pretalk",
 [(party_get_slot, ":ai_object", "$g_talk_troop_party", slot_party_ai_object),
@@ -10168,10 +7490,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 [(party_get_slot, ":ai_object", "$g_talk_troop_party", slot_party_ai_object),
  (str_store_party_name, s1, ":ai_object"),
 ]],
-#  [anyone,"lord_tell_objective", [(party_slot_eq, "$g_talk_troop_party", slot_party_ai_state, spai_raiding_around_center)],
-#   "We ride out to lay waste to village of {s1} to punish the foe for his misdeeds.", "lord_pretalk",[(party_get_slot, ":ai_object", "$g_talk_troop_party", slot_party_ai_object),
-#                                                               (str_store_party_name, s1, ":ai_object")]],
-
 [anyone,"lord_tell_objective", [
 (party_slot_eq, "$g_talk_troop_party", slot_party_ai_state, spai_raiding_around_center),
 (party_get_slot, ":ai_object", "$g_talk_troop_party", slot_party_ai_object),
@@ -10256,8 +7574,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
 [
     (call_script, "script_lord_comment_to_s43", "$g_talk_troop", "str_lord_follow_refusal_default"),
     (assign, "$g_leave_encounter",1)]],
-#Post 0907 changes end
-
 [anyone,"lord_ask_follow", [],
 "Lead the way, {playername}! Let us bring death and defeat to all our enemies.", "close_window",
 [(party_set_slot, "$g_talk_troop_party", slot_party_commander_party, "p_main_party"),
@@ -10273,15 +7589,6 @@ I'll use the coin to smooth the feathers of those that can oppose your pardon, a
  (party_set_slot, "$g_encountered_party", slot_party_following_player, 1),
  (assign, "$g_leave_encounter",1)]],
 [anyone,"lord_talk_preoffer", [], "Yes?", "lord_talk_offer",[]],
-##  [anyone|plyr,"lord_talk_offer", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                             (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"), #he is not a faction leader!
-##                             (call_script, "script_get_number_of_hero_centers", "$g_talk_troop"),
-##                             (eq, reg0, 0), #he has no castles or towns
-##                             (hero_can_join),
-##                             ],
-##   "I need capable men like you. Will you join me?", "knight_offer_join",[
-##       ]],
-
 [anyone|plyr,"lord_talk_offer", [(eq,1,0)],
 "I wish to ransom one of your prisoners.", "knight_offer_join",[
     ]],
@@ -10350,8 +7657,6 @@ And to think I would offer you a place among my hereditary vassals. Begone, begg
 (try_end),
 ],#next line, replace king with {s0} and gendered words with either-way equivalent
 "However, I have never heard of a {s0} who granted a fief to a {man/woman}, no matter how valorous, simply because {reg65?she:he} needed an extra vassal. Were I to do such a thing, I would raise eyebrows across Japan. {People/Men} would say that I was besotted or bewitched, or that I aimed to overturn the natural order of things. As much as I regret it, I cannot afford to grant you a fief.", "lord_ask_enter_service_female_response",[]],
-##diplomacy end+
-
 [anyone|plyr, "lord_ask_enter_service_female_response", [],
 "What if I were to take one of your enemy's castles by force?", "lord_ask_enter_service_female_solution_capture", []],
 [anyone|plyr, "lord_ask_enter_service_female_response", [
@@ -10367,13 +7672,11 @@ And to think I would offer you a place among my hereditary vassals. Begone, begg
 [anyone,"lord_ask_enter_service_female_solution_marriage", [
 ##diplomacy start+ husband -> {wife/husband}
 ], "Well, I still would not be willing to grant you any fiefs. However, you would no doubt have the use of your {wife/husband}'s properties, which would allow you to act as one of my vassals in all but name. Did you have an other questions?", "lord_ask_enter_service_female_response",[]],
-##diplomacy end+
-
 [anyone,"lord_ask_enter_service_female_solution_competitor", [
 ], "Oh, perhaps you might find someone who was truly desperate -- but then, I would think, they would not have many fiefs to bestow. Did you have an other questions?", "lord_ask_enter_service_female_response",[]],
- [anyone,"lord_ask_enter_service_female_solution_capture", [
+[anyone,"lord_ask_enter_service_female_solution_capture", [
 ], "Well, in that case, depending on the circumstances, I might be inclined to let you keep it. Did you have an other questions?", "lord_ask_enter_service_female_response",[]],
- [anyone,"lord_ask_enter_service",
+[anyone,"lord_ask_enter_service",
 [
   (assign, "$g_invite_offered_center", -1),
   (troop_get_slot, ":renown", "trp_player", slot_troop_renown),
@@ -10412,14 +7715,11 @@ And to think I would offer you a place among my hereditary vassals. Begone, begg
 "You are known as a brave {man-at-arms/warrior} and a fine leader of men, {playername}.\
 I shall be pleased to accept your {s0} into my service and bestow vassalage upon you,\
 if you are ready to swear loyalty to me.", "lord_give_oath_1",[]],
-##Replace "sword" with cultural equivalent
 [anyone,"lord_ask_enter_service", [
 (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_talk_troop", DPLMC_CULTURAL_TERM_WEAPON, 0),
 ], "You've yet to show yourself as a competent commander, {playername}.\
 Take your {s0} to my enemies and prove to me that you are worthy of becoming my vassal.\
 Then we may speak more of this.", "lord_pretalk",[]],
-##diplomacy end+
-
 [anyone|plyr,"lord_give_oath_1", [],  "I am ready, {s65}.", "lord_give_oath_2", []],
 [anyone|plyr,"lord_give_oath_1", [],  "Forgive me, {s65}, I must give the matter more thought first...", "lord_give_oath_give_up", []],
 [anyone,"lord_give_oath_give_up", [
@@ -10480,77 +7780,6 @@ I give you my protection and grant you the right to bear arms in my name, and I 
   ],
 
 "You have done a wise thing, {playername}. Serve me well and I promise, you will rise high.", "lord_give_conclude", []],
-##  [anyone,"lord_give_oath_go_on_2", [],  "Then let it be know that from now on, you are my sworn {man/follower}.\
-## I give you my protection and grant you the right to bear arms in my name.\
-## You have done wisely {playername}. Serve me well and I promise, you will rise high.", "lord_give_oath_5", []],
-
-#  [anyone,"lord_ask_enter_service", [(lt, "$g_talk_troop_relation", 10),
-#                                     (store_character_level, ":player_level", "trp_player"),
-#                                     (lt, ":player_level", 10),
-#                                     ], "I know not much about you. Keep serving me {playername}. Prove your loyality, then I will know I can trust you and accept your oath.", "lord_pretalk",[]],
-
-##  [anyone,"lord_ask_enter_service", [], "What kind of oath are you willing to make?", "lord_oath_what_kind",[]],
-##
-##  [anyone|plyr ,"lord_oath_what_kind", [], "I will give you my oath to serve you for two months.", "lord_oath_what_kind_2",[(assign, "$temp", 60)]],
-##  [anyone|plyr ,"lord_oath_what_kind", [], "I will give you my oath to serve you for three months.", "lord_oath_what_kind_2",[(assign, "$temp", 90)]],
-##  [anyone|plyr ,"lord_oath_what_kind", [], "I will give you my oath to serve you for six months.", "lord_oath_what_kind_2",[(assign, "$temp", 180)]],
-##  [anyone|plyr ,"lord_oath_what_kind", [], "I will give you my oath to serve you indefinitely.", "lord_oath_what_kind_2",[(assign, "$temp", 720)]],
-##  [anyone|plyr ,"lord_oath_what_kind", [], "Maybe I should give more thought to this, my lord.", "lord_oath_what_kind_cancel",[]],
-##  [anyone ,"lord_oath_what_kind_cancel", [], "What nonsense is this? Now go make up your mind and stop wasting my time.", "close_window",[]],
-##
-##  [anyone, "lord_oath_what_kind_2", [], "Hmmm. Do you ask for anything in return?", "lord_oath_what_do_you_want",[]],
-##
-##  [anyone|plyr, "lord_oath_what_do_you_want", [], "I ask for nothing but your blessing, my lord.", "lord_oath_consider",[(assign,"$temp2",0)]],
-##  [anyone|plyr, "lord_oath_what_do_you_want", [], "I only ask for the right to have my own banner, my lord.", "lord_oath_consider",[(assign,"$temp2",1)]],
-##  [anyone|plyr, "lord_oath_what_do_you_want", [], "I just ask for the right to hold one castle, my lord.", "lord_oath_consider",[(assign,"$temp2",2)]],
-##  [anyone|plyr, "lord_oath_what_do_you_want", [], "I ask for the right to hold two castles, my lord.", "lord_oath_consider",[(assign,"$temp2",4)]],
-##  [anyone|plyr, "lord_oath_what_do_you_want", [], "I ask for the right to hold three castles, my lord.", "lord_oath_consider",[(assign,"$temp2",6)]],
-##  [anyone|plyr ,"lord_oath_what_do_you_want", [], "Maybe I should give more thought to this, my lord.", "lord_oath_what_kind_cancel",[]],
-##
-##  [anyone ,"lord_oath_consider", [
-##      (store_character_level, ":player_level", "trp_player"),
-##      (store_mul, ":benefit", ":player_level", 5),
-##      (val_add, ":benefit", "$temp"),
-##      (val_add, ":benefit", "$g_talk_troop_relation"),
-##
-##      (store_mul, ":cost", "$temp2", 100),
-##      (lt, ":cost", ":benefit"),
-##      ], "That is agreeable {playername}. Give me your oath now and I will accept you as my follower and offer you my protection.", "lord_give_oath_go_on",[]],
-##
-##  [anyone ,"lord_oath_consider", [], "Hmmm. What you ask for is not acceptible {playername}.", "close_window",[]],
-##
-##  [anyone|plyr,"lord_give_oath_go_on", [(eq, "$temp", 60)],  "I give you my oath lord, that I will remain in your service for two months.\
-## During this time, I will be faithful to you,\
-## I will not act in a way to cause you harm, and I will be at your side to fight your enemies should you need my sword.", "lord_give_oath_go_on_2", []],
-##  [anyone|plyr,"lord_give_oath_go_on", [(eq, "$temp", 90)],  "I give you my oath lord, that I will remain in your service for three months.\
-## During this time, I will be faithful to you,\
-## I will not act in a way to cause you harm, and I will be at your side to fight your enemies should you need my sword.", "lord_give_oath_go_on_2", []],
-##  [anyone|plyr,"lord_give_oath_go_on", [(eq, "$temp", 180)],  "I give you my oath lord, that I will remain in your service for six months.\
-## During this time, I will be faithful to you,\
-## I will not act in a way to cause you harm, and I will be at your side to fight your enemies should you need my sword.", "lord_give_oath_go_on_2", []],
-##  [anyone|plyr,"lord_give_oath_go_on", [(gt, "$temp", 700)],  "I give you my oath lord, that I will remain as your loyal and devoted {man/follower} as long as my breath remains.\
-## I will never act in a way to cause you harm, and I will be at your side to fight your enemies should you need my sword.", "lord_give_oath_go_on_2", []],
-##
-##  [anyone,"lord_give_oath_go_on_2", [(eq,"$temp2",0)],  "Then let it be know that from now on, you are my sworn {man/follower}.\
-## I give you my protection and grant you the right to bear arms in my name.\
-## You have done wisely {playername}. Serve me well and I promise, you will rise high.", "lord_give_oath_5", []],
-##
-##  [anyone,"lord_give_oath_go_on_2", [(eq,"$temp2",1)],  "Then let it be know that from now on, you are my sworn {man/follower}.\
-## I give you my protection and grant you the right to hold your own banner.\
-## You have done wisely {playername}. Serve me well and I promise, you will rise high.", "lord_give_oath_5", []],
-##
-##  [anyone,"lord_give_oath_go_on_2", [(eq,"$temp2",2)],  "Then let it be know that from now on, you are my sworn {man/follower} and vassal.\
-## I give you my protection and grant you the right to hold a castle.\
-## You have done wisely {playername}. Serve me well and I promise, you will rise high.", "lord_give_oath_5", []],
-##
-##  [anyone,"lord_give_oath_go_on_2", [(eq,"$temp2",4)],  "Then let it be know that from now on, you are my sworn {man/follower} and vassal.\
-## I give you my protection and grant you the right to hold two castles.\
-## You have done wisely {playername}. Serve me well and I promise, you will rise high.", "lord_give_oath_5", []],
-##
-##  [anyone,"lord_give_oath_go_on_2", [],  "Then let it be know that from now on, you are my sworn {man/follower} and vassal.\
-## I give you my protection and grant you the right to hold three castles.\
-## You have done wisely {playername}. Serve me well and I promise, you will rise high.", "lord_give_oath_5", []],
-
 [anyone|plyr,"lord_give_conclude",
 [
 ##diplomacy start+ Get gender from script
@@ -10664,8 +7893,6 @@ I give you my protection and grant you the right to bear arms in my name, and I 
 #load relation text into s0
 (call_script, "script_dplmc_print_player_spouse_says_my_husband_wife_to_s0", "$g_talk_troop", 0),
 ],  "So be it, {s0}. May all my vassals be as valiant and loyal as you.", "close_window", [(assign, "$g_leave_encounter",1)]],
-#diplomacy end+
-
 [anyone,"lord_give_conclude_2", [],  "I have great hopes for you {playername}.\
 I know you shall prove yourself worthy of the trust I have placed in you.", "close_window", [(assign, "$g_leave_encounter",1)]],
 [anyone,"lord_ask_enter_service", [(str_store_faction_name,5,"$g_talk_troop_faction")], "Heh, a wise move,\
@@ -10711,9 +7938,6 @@ You are free, {playername}.", "lord_ask_leave_service_end",
 [anyone|plyr ,"lord_ask_leave_service_end", [], "My thanks. It feels good to be {a free man/free} once again.", "lord_ask_leave_service_end_2",[]],
 [anyone ,"lord_ask_leave_service_end_2", [], "Farewell then, {playername}, and good luck go with you.", "close_window",
 [(assign, "$g_leave_encounter", 1)]],
-#Active quests
-##### TODO: QUESTS COMMENT OUT BEGIN
-
 [anyone,"lord_active_mission_1", [(store_partner_quest,":lords_quest"),
                                  (eq,":lords_quest","qst_lend_companion"),
                                  #(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
@@ -10731,7 +7955,6 @@ You are free, {playername}.", "lord_ask_leave_service_end",
 [anyone,"lord_active_mission_1", [(store_partner_quest,":lords_quest"),
                         (eq,":lords_quest","qst_lend_companion")],
 "{playername}, I must beg your patience, I still have need of your companion. Please return later when things have settled.", "lord_pretalk",[]],
-#default
 [anyone,"lord_active_mission_1", [], "Yes, have you made any progress on it?", "lord_active_mission_2",[]],
 [anyone|plyr,"lord_active_mission_2",[#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
                          (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
@@ -10772,24 +7995,7 @@ You are free, {playername}.", "lord_ask_leave_service_end",
   ],
 "Oh, indeed. I've captured a lord from {s13} for you.", "capture_enemy_hero_thank",
 []],
-##
-##  [anyone|plyr,"lord_active_mission_2", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                                         (store_partner_quest,":lords_quest"),
-##                                         (eq,":lords_quest","qst_capture_messenger"),
-##                                         (quest_get_slot, ":quest_target_troop", ":lords_quest", slot_quest_target_troop),
-##                                         (quest_get_slot, ":quest_target_amount", ":lords_quest", slot_quest_target_amount),
-##                                         (store_num_parties_destroyed_by_player, ":num_destroyed", "pt_messenger_party"),
-##                                         (gt, ":num_destroyed", ":quest_target_amount"),
-##                                         (party_count_prisoners_of_type, ":num_prisoners", "p_main_party", ":quest_target_troop"),
-##                                         (ge, ":num_prisoners", 1),
-##                                         (str_store_troop_name, 3, ":quest_target_troop")],
-##   "Indeed sir. I have captured a {s3} my lord.", "lord_generic_mission_thank",[(quest_get_slot, ":quest_target_troop", "qst_capture_messenger", slot_quest_target_troop),
-##                                                                     (party_remove_prisoners, "p_main_party", ":quest_target_troop", 1),
-##                                                                     (party_add_prisoners, "$g_encountered_party", ":quest_target_troop", 1),#Adding him to the dungeon
-##                                                                     (call_script, "script_finish_quest", "qst_capture_messenger", 100)]],
-##
-##
-  [anyone|plyr,"lord_active_mission_2", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
+[anyone|plyr,"lord_active_mission_2", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
 										 (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
                                          (store_partner_quest,":lords_quest"),
                                          (eq,":lords_quest","qst_raise_troops"),
@@ -10808,11 +8014,11 @@ You are free, {playername}.", "lord_ask_leave_service_end",
                                                                                          (gt, ":cur_lords_party", 0),
                                                                                          (party_add_members, ":cur_lords_party", ":quest_target_troop", ":quest_target_amount"),
                                                                                          ]],
-  [anyone,"lord_raise_troops_thank", [],
+[anyone,"lord_raise_troops_thank", [],
    "These men may well turn the tide in my plans, {playername}. I am confident you've trained them well. My thanks and my compliments to you.", "lord_raise_troops_thank_2",[]],
-  [anyone|plyr,"lord_raise_troops_thank_2", [],
+[anyone|plyr,"lord_raise_troops_thank_2", [],
    "Well, the men are at your command now, sir. I am sure you will take good care of them.", "lord_pretalk",[]],
-  [anyone|plyr,"lord_active_mission_2", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
+[anyone|plyr,"lord_active_mission_2", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
 									     (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
 
 #                                         (store_partner_quest,":lords_quest"),
@@ -10833,7 +8039,7 @@ You are free, {playername}.", "lord_ask_leave_service_end",
                                          ],
    "Here are all the taxes from {s3}. It comes up to {reg19} mon.", "lord_collect_taxes_success",
    []],
-  [anyone|plyr,"lord_active_mission_2", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
+[anyone|plyr,"lord_active_mission_2", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
                                          (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
 										  (check_quest_active, "qst_collect_taxes"),
 										  (quest_slot_eq, "qst_collect_taxes", slot_quest_giver_troop, "$g_talk_troop"),
@@ -10853,7 +8059,7 @@ You are free, {playername}.", "lord_ask_leave_service_end",
                                          ],
    "Here are the taxes from {s3}. It comes up to {reg19} mon.", "lord_collect_taxes_half_success",
    []],
-  [anyone|plyr,"lord_active_mission_2", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
+[anyone|plyr,"lord_active_mission_2", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
 										 (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
 										  (check_quest_active, "qst_collect_taxes"),
 										  (quest_slot_eq, "qst_collect_taxes", slot_quest_giver_troop, "$g_talk_troop"),
@@ -10871,7 +8077,7 @@ You are free, {playername}.", "lord_ask_leave_service_end",
    "Unfortunately, a revolt broke up while I was collecting the taxes.\
  I could only collect {reg19} mon.", "lord_collect_taxes_fail",
    []],
-  [anyone,"lord_collect_taxes_success", [(quest_get_slot, ":total_revenue", "qst_collect_taxes", slot_quest_gold_reward),
+[anyone,"lord_collect_taxes_success", [(quest_get_slot, ":total_revenue", "qst_collect_taxes", slot_quest_gold_reward),
                                          (store_mul, ":owner_share", ":total_revenue", 8),
                                          (val_div, ":owner_share", 10),
                                          (assign, reg20, ":owner_share"),
@@ -10889,7 +8095,7 @@ You are free, {playername}.", "lord_ask_leave_service_end",
     (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
     (call_script, "script_end_quest", "qst_collect_taxes"),
     ]],
-  [anyone,"lord_collect_taxes_half_success", [(quest_get_slot, ":gold_reward", "qst_collect_taxes", slot_quest_gold_reward),
+[anyone,"lord_collect_taxes_half_success", [(quest_get_slot, ":gold_reward", "qst_collect_taxes", slot_quest_gold_reward),
                                          (val_mul, ":gold_reward", 95),
                                          (val_div, ":gold_reward", 100),
                                          (assign, reg20, ":gold_reward")],
@@ -10904,7 +8110,7 @@ You are free, {playername}.", "lord_ask_leave_service_end",
     (quest_set_slot, "qst_collect_taxes", slot_quest_gold_reward, 0),
     (call_script, "script_end_quest", "qst_collect_taxes"),
     ]],
-  [anyone,"lord_collect_taxes_fail", [],
+[anyone,"lord_collect_taxes_fail", [],
    "God, what a bloody mess you've gotten us into, {playername}.\
 This could turn very ugly if I do not take immediate action.\
 I certainly hope you're not here expecting to be paid for failure.\
@@ -10918,7 +8124,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
     (quest_set_slot, "qst_collect_taxes", slot_quest_gold_reward, 0),
     (call_script, "script_end_quest", "qst_collect_taxes"),
     ]],
-  [anyone|plyr,"lord_active_mission_2", [ (check_quest_active, "qst_hunt_down_fugitive"),
+[anyone|plyr,"lord_active_mission_2", [ (check_quest_active, "qst_hunt_down_fugitive"),
 										  (quest_slot_eq, "qst_hunt_down_fugitive", slot_quest_giver_troop, "$g_talk_troop"),
 
                                          (check_quest_succeeded, "qst_hunt_down_fugitive"),
@@ -10929,7 +8135,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
                                          (str_store_string, s4, s50),],
    "I found {s4} hiding at {s3} and gave him his punishment.", "lord_hunt_down_fugitive_success",
    []],
-  [anyone|plyr,"lord_active_mission_2", [
+[anyone|plyr,"lord_active_mission_2", [
 										(check_quest_active, "qst_hunt_down_fugitive"),
 										(quest_slot_eq, "qst_hunt_down_fugitive", slot_quest_giver_troop, "$g_talk_troop"),
 
@@ -10937,7 +8143,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
                                          ],
    "I'm afraid he got away.", "lord_hunt_down_fugitive_fail",
    []],
-  [anyone,"lord_hunt_down_fugitive_success", [],
+[anyone,"lord_hunt_down_fugitive_success", [],
    "And we'll all be a lot better off without him! Thank you, {playername},\
  for removing this long-festering thorn from my side. 'Tis good to know you can be trusted to handle things\
  with an appropriate level of tactfulness.\
@@ -10945,12 +8151,11 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
    [
      (add_xp_as_reward, 300),
     ]],
-  [anyone|plyr,"lord_hunt_down_fugitive_success_2", [],
+[anyone|plyr,"lord_hunt_down_fugitive_success_2", [],
    "Let me take the money, {s65}. Thank you.", "lord_hunt_down_fugitive_reward_accept",[]],
-  [anyone|plyr,"lord_hunt_down_fugitive_success_2", [],
+[anyone|plyr,"lord_hunt_down_fugitive_success_2", [],
    "This is blood money. I can't accept it.", "lord_hunt_down_fugitive_reward_reject",[]],
-#Post 0907 changes begin
-  [anyone,"lord_hunt_down_fugitive_reward_accept", [],
+[anyone,"lord_hunt_down_fugitive_reward_accept", [],
    "Of course, {playername}. Here you are. Once again, you've my thanks for ridding me of that {s43}.", "lord_pretalk",[
 		(call_script, "script_lord_comment_to_s43", "$g_talk_troop", "str_lord_insult_default"),
 
@@ -10958,7 +8163,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
 		(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
 		(call_script, "script_end_quest", "qst_hunt_down_fugitive"),
 		]],
-  [anyone,"lord_hunt_down_fugitive_reward_reject", [],
+[anyone,"lord_hunt_down_fugitive_reward_reject", [],
    "You are a {man/woman} for whom justice is its own reward, eh? As you wish it, {playername}, as you wish it.\
  An honourable sentiment, to be true. Regardless, you've my thanks for ridding me of that {s43}.", "lord_pretalk",[
 
@@ -10969,7 +8174,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
        (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
        (call_script, "script_end_quest", "qst_hunt_down_fugitive"),
        ]],
-  [anyone,"lord_hunt_down_fugitive_fail", [],
+[anyone,"lord_hunt_down_fugitive_fail", [],
    "It is a sad day when that {s43} manages to avoid the hand of justice yet again.\
  I thought you would be able to do this, {playername}. Clearly I was wrong.", "lord_pretalk",
    [
@@ -10978,37 +8183,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
     (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),
     (call_script, "script_end_quest", "qst_hunt_down_fugitive"),
     ]],
-#Post 0907 changes end
-
-
-
-##
-##
-##  [anyone|plyr,"lord_active_mission_2", [(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-##                                         (store_partner_quest,":lords_quest"),
-##                                         (eq,":lords_quest","qst_bring_back_deserters"),
-##                                         (quest_get_slot, ":quest_target_troop", ":lords_quest", slot_quest_target_troop),
-##                                         (quest_get_slot, ":quest_target_amount", ":lords_quest", slot_quest_target_amount),
-##                                         (party_count_prisoners_of_type, ":num_prisoners", "p_main_party", ":quest_target_troop"),
-##                                         (ge, ":num_prisoners", ":quest_target_amount"),
-##                                         (assign, reg1, ":quest_target_amount")],
-##   "Yes sir. I have brought {reg1} deserters as you asked me to.", "lord_generic_mission_thank",[(quest_get_slot, ":quest_target_troop", "qst_bring_back_deserters", slot_quest_target_troop),
-##                                                                                     (quest_get_slot, ":quest_target_amount", "qst_bring_back_deserters", slot_quest_target_amount),
-##                                                                                     (party_remove_prisoners, "p_main_party", ":quest_target_troop", ":quest_target_amount"),
-##                                                                                     (faction_get_slot, ":faction_tier_2_troop", "$g_talk_troop_faction", slot_faction_tier_2_troop),
-##                                                                                     (try_begin),
-##                                                                                       (gt, ":faction_tier_2_troop", 0),
-##                                                                                       (troop_get_slot, ":cur_lords_party", "$g_talk_troop", slot_troop_leaded_party),
-##                                                                                       (gt, ":cur_lords_party", 0),
-##                                                                                       (party_add_members, ":cur_lords_party", ":faction_tier_2_troop", ":quest_target_amount"),
-##                                                                                     (try_end),
-##                                                                                     (call_script, "script_finish_quest", "qst_bring_back_deserters", 100)]],
-##
-##
-##### TODO: QUESTS COMMENT OUT END
-
-#gekokujo new deliver RICE to army quest start
-  [anyone|plyr,"lord_active_mission_2",[(store_partner_quest,":lords_quest"),
+[anyone|plyr,"lord_active_mission_2",[(store_partner_quest,":lords_quest"),
                                         (eq, ":lords_quest", "qst_deliver_cattle_to_army"),
                                         (quest_get_slot, ":quest_target_amount", "qst_deliver_cattle_to_army", slot_quest_target_amount),
                                         (call_script, "script_get_troop_item_amount", "trp_player", "itm_bread"),
@@ -11018,7 +8193,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
                                         ],
    "Indeed. I brought you {reg5} sacks of white rice.", "lord_deliver_cattle_to_army_thank",
    []],
-  [anyone,"lord_deliver_cattle_to_army_thank", [],
+[anyone,"lord_deliver_cattle_to_army_thank", [],
    "Ah, {playername}. My quartermaster will take your delivery right away. I'm impressed.", "lord_deliver_cattle_to_army_thank_2",
    [(quest_get_slot, ":quest_target_amount", "qst_deliver_cattle_to_army", slot_quest_target_amount),
     (troop_remove_items, "trp_player", "itm_bread", ":quest_target_amount"),
@@ -11035,179 +8210,39 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
 	(call_script, "script_start_quest", "qst_follow_army", "$g_talk_troop"),
 	(assign, "$g_player_follow_army_warnings", 0),
    ]],
-  [anyone|plyr, "lord_deliver_cattle_to_army_thank_2", [],
+[anyone|plyr, "lord_deliver_cattle_to_army_thank_2", [],
    "Not a problem, {s65}.", "lord_pretalk",[]],
-  [anyone|plyr, "lord_deliver_cattle_to_army_thank_2", [],
+[anyone|plyr, "lord_deliver_cattle_to_army_thank_2", [],
    "Glad to be of service.", "lord_pretalk",[]],
-  [anyone|plyr, "lord_deliver_cattle_to_army_thank_2", [],
+[anyone|plyr, "lord_deliver_cattle_to_army_thank_2", [],
    "Mere child's play.", "lord_pretalk",[]],
-#gekokujo new deliver RICE to army quest end
-
-  [anyone|plyr,"lord_active_mission_2", [], "I am still working on it.", "lord_active_mission_3",[]],
-  [anyone|plyr,"lord_active_mission_2", [], "I am afraid I won't be able to do this quest.", "lord_mission_failed",[]],
-  [anyone,"lord_active_mission_3", [], "Good. Remember, I am counting on you.", "lord_pretalk",[]],
-#gekokujo deliver_cattle_to_army changed
-#[anyone,"lord_start", [(store_partner_quest,":lords_quest"),
-#                   (eq, ":lords_quest", "qst_deliver_cattle_to_army"),
-#                   (check_quest_succeeded, "qst_deliver_cattle_to_army"),
-#                   (quest_get_slot, reg13, "qst_deliver_cattle_to_army", slot_quest_target_amount),
-#                   ],
-#"Ah, {playername}. My quartermaster has informed me of your delivery, {reg13} heads of cattle, as I requested. I'm impressed.", "lord_deliver_cattle_to_army_thank",
-#[
-#(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
-#(quest_get_slot, ":quest_target_amount", "qst_deliver_cattle_to_army", slot_quest_target_amount),
-##TODO: Change reward
-#(store_mul, ":reward", ":quest_target_amount", 100),
-#(call_script, "script_troop_add_gold", "trp_player", ":reward"),
-#(val_div, ":reward", 5),
-#(add_xp_as_reward, ":reward"),
-#(call_script, "script_end_quest", "qst_deliver_cattle_to_army"),
-##Reactivating follow army quest
-#(str_store_troop_name_link, s9, "$g_talk_troop"),
-#(setup_quest_text, "qst_follow_army"),
-#(str_store_string, s2, "str_follow_army_quest_brief_2"),
-#(call_script, "script_start_quest", "qst_follow_army", "$g_talk_troop"),
-#(assign, "$g_player_follow_army_warnings", 0),
-#]],
-
-
-#Post 0907 changes begin
-  [anyone,"lord_mission_failed", [], "{s43}", "lord_pretalk",
+[anyone|plyr,"lord_active_mission_2", [], "I am still working on it.", "lord_active_mission_3",[]],
+[anyone|plyr,"lord_active_mission_2", [], "I am afraid I won't be able to do this quest.", "lord_mission_failed",[]],
+[anyone,"lord_active_mission_3", [], "Good. Remember, I am counting on you.", "lord_pretalk",[]],
+[anyone,"lord_mission_failed", [], "{s43}", "lord_pretalk",
    [
     (call_script, "script_lord_comment_to_s43", "$g_talk_troop", "str_lord_mission_failed_default"),
     (store_partner_quest,":lords_quest"),
     (call_script, "script_abort_quest", ":lords_quest", 1)]],
-#Post 0907 changes end
-
-
-#Claim center
-##  [anyone,"lord_claim_center_begin", [],
-##   "What do you want to do with {s4}?", "lord_claim_center_ask",[]],
-##
-##  [anyone|plyr,"lord_claim_center_ask", [],
-##   "I want to claim it for myself.", "lord_claim_center_2",[]],
-##  [anyone|plyr,"lord_claim_center_ask", [],
-##   "I will leave it to you my lord. I have no interest in holding {s4}.", "lord_claim_center_leave_to_lord",[]],
-
-
-##  [anyone,"lord_claim_center_2", [(eq, "$g_player_permitted_castles", 0),],
-##   "You are an able warrior {playername} and there is no question of your bravery.\
-## Alas, you are not noble born, and there are those who will be upset if I allow you to hold a castle.\
-## So, it saddens me but I must decline your request.", "lord_claim_center_deny", []],
-##
-##  [anyone|plyr,"lord_claim_center_deny", [],
-##   "This is not fair my lord. I shed my blood to take {s4}. Now another {man/master} will rule over it.", "lord_claim_center_deny_2", []],
-##  [anyone|plyr,"lord_claim_center_deny", [],
-##   "I understand sir. Do as you will.", "lord_claim_center_leave_to_lord", []],
-##  [anyone,"lord_claim_center_deny_2", [],
-##   "Remember that you gave me your oath {playername}. And you agreed to do as told.", "lord_claim_center_deny_3", []],
-##  [anyone,"lord_claim_center_deny_3", [],
-##   "Yes sir.", "lord_claim_center_leave_to_lord", []],
-##
-##  [anyone,"lord_claim_center_leave_to_lord", [],
-##   "Very well.  Then I will find a suitable master for {s4}.\
-## In recognition of your bravery and service, I give you these 5000 mon.", "lord_pretalk",
-##   [(troop_get_slot, ":wealth", "$g_talk_troop", slot_troop_wealth),
-##    (val_sub, ":wealth", 6000),
-##    (troop_set_slot, "$g_talk_troop", slot_troop_wealth, ":wealth"),
-##    (call_script, "script_troop_add_gold", "trp_player", 5000),
-##
-##    (assign, ":new_master", "$g_talk_troop"),
-##    (assign, ":max_wealth", 0),
-##
-##    (try_for_range, ":hero_no", kingdom_heroes_begin, kingdom_heroes_end),
-##      (troop_slot_eq, ":hero_no", slot_troop_is_prisoner, 0),
-##      (troop_slot_eq, ":hero_no", slot_troop_occupation, slto_kingdom_hero),
-##      (store_troop_faction, ":hero_faction", ":hero_no"),
-##      (eq, ":hero_faction", "$players_kingdom"),
-##      (call_script, "script_get_number_of_hero_centers", "$g_talk_troop"),
-##      (assign, ":no_of_owned_centers", reg0),
-##      (neg|faction_slot_eq, "$players_kingdom", slot_faction_leader, ":hero_no"),
-##      (lt, ":no_of_owned_centers", 2),
-##      (troop_get_slot, ":wealth", "$g_talk_troop", slot_troop_wealth),
-##      (ge, ":wealth", ":max_wealth"),
-##      (assign, ":new_master", ":hero_no"),
-##      (assign, ":max_wealth", ":wealth"),
-##    (try_end),
-##
-##    (call_script, "script_give_center_to_lord", "$center_to_be_claimed", ":new_master"),
-##    (set_spawn_radius, 1),
-##    (spawn_around_party, "$center_to_be_claimed", "pt_old_garrison"),
-##    (assign, ":new_party", reg0),
-##    (party_set_ai_behavior, ":new_party", ai_bhvr_attack_party),
-##    (party_set_ai_object, ":new_party", "p_main_party"),
-##    (party_set_flags, ":new_party", pf_default_behavior, 0),
-##    (call_script, "script_party_copy", ":new_party", "$center_to_be_claimed"),
-##    (party_clear, "$center_to_be_claimed"),
-##
-##    (faction_get_slot, ":reinforcement_template_a", "$g_talk_troop_faction", slot_faction_reinforcements_a),
-##    (faction_get_slot, ":reinforcement_template_b", "$g_talk_troop_faction", slot_faction_reinforcements_b),
-##    (party_add_template, "$center_to_be_claimed", ":reinforcement_template_a"),
-##    (party_add_template, "$center_to_be_claimed", ":reinforcement_template_b"),
-##    ]],
-##
-##
-##  [anyone,"lord_claim_center_2", [(assign, ":number_of_claimed_centers", 0),
-##                                  (try_for_range, ":center_no", centers_begin, centers_end),
-##                                    (party_slot_eq, ":center_no", slot_party_type, spt_castle),
-##                                    (store_faction_of_party, ":faction_no", ":center_no"),
-##                                    (eq, ":faction_no", "fac_player_supporters_faction"),
-##                                    (party_slot_eq, ":center_no", slot_town_claimed_by_player, 1),
-##                                    (val_add, ":number_of_claimed_centers", 1),
-##                                  (try_end),
-##                                  (lt, ":number_of_claimed_centers", "$g_player_permitted_castles"),
-##                                  (assign, reg7, ":number_of_claimed_centers"),
-##                                  ],
-##   "I had promised you to defend your right to hold {reg7?a:another} castle {playername}. Now I honor that promise.\
-## I can think of {no man finer than you/no one better than you} to be the {lord/lady} of {s4}.\
-## Renew your oath to me now. Then I will be your liege,\
-## and I'll support you and protect you against all those who oppose your claim.",
-##  "lord_claim_center_give_oath",[]],
-##
-##
-##  [anyone|plyr,"lord_claim_center_give_oath", [],  "I give you my oath lord, I will forever be faithful to you,\
-## I will never act in a way to cause you harm, and I will be at your side to fight your enemies should you need my sword.", "lord_claim_center_direct_3", []],
-##  [anyone,"lord_claim_center_direct_3", [],  "You have given your oath of fealty {playername}. I accept your oath and give you the fief of {s4}.\
-## Rule it wisely and protect it against our enemies.", "lord_claim_center_direct_4", [
-##     (party_set_slot, "$center_to_be_claimed", slot_town_claimed_by_player, 1),
-##     (call_script, "script_give_center_to_lord", "$center_to_be_claimed", "trp_player")]],
-##  [anyone|plyr,"lord_claim_center_direct_4", [],  "I thank you lord.", "close_window", [(assign, "$g_leave_encounter",1)]],
-
-#Ask for favor
-##  [anyone,"lord_ask_for_favor_ask", [],
-##   "What is it? I don't have time for personal requests.", "lord_ask_for_favor",[]],
-##  [anyone,"lord_ask_for_favor_ask", [],
-##   "Say it then. If it's something possible...", "lord_ask_for_favor",[]],
-##
-##  [anyone|plyr,"lord_ask_for_favor", [],
-##   "Nothing my lord. It's not important.", "lord_pretalk",[]],
-#Suggest action
-  [anyone,"lord_suggest_action_ask", [],
+[anyone,"lord_suggest_action_ask", [],
    "{!}What do you suggest?", "lord_suggest_action",[]],
-##  [anyone|plyr,"lord_suggest_action",
-##   [(troop_get_type, ":is_female", "trp_player"),
-##    (eq, ":is_female", 1),
-##    (lt, "$talk_context", tc_siege_commander),
-##    ],
-##   "{!}CHEAT: I want to marry you! (1)", "lord_groom_vows",[]],
-
-  [anyone|plyr,"lord_suggest_action", [],
+[anyone|plyr,"lord_suggest_action", [],
    "{!}CHEAT: I want to join your faction.", "lord_suggest_join_faction",[]],
-  [anyone,"lord_suggest_join_faction", [],
+[anyone,"lord_suggest_join_faction", [],
    "{!}Alright then.", "lord_give_oath_5",[]],
-  [anyone|plyr,"lord_suggest_action", [],
+[anyone|plyr,"lord_suggest_action", [],
    "{!}CHEAT: I want to know your leaded party ID.", "lord_suggest_learn_party_id",[]],
-  [anyone,"lord_suggest_learn_party_id", [
+[anyone,"lord_suggest_learn_party_id", [
   (assign, reg1, "$g_encountered_party"),
   (troop_get_slot, reg0, "$g_talk_troop", slot_troop_leaded_party)],
    "{!}It is {reg0}. Encountered party is {reg1}", "lord_pretalk",[]],
-  [anyone|plyr,"lord_suggest_action", [],
+[anyone|plyr,"lord_suggest_action", [],
    "{!}CHEAT: I want to know your AI initiative.", "lord_suggest_learn_ai_initiative",[]],
-  [anyone,"lord_suggest_learn_ai_initiative", [(party_get_ai_initiative, reg0, "$g_encountered_party")],
+[anyone,"lord_suggest_learn_ai_initiative", [(party_get_ai_initiative, reg0, "$g_encountered_party")],
    "{!}It is {reg0}.", "lord_pretalk",[]],
-  [anyone|plyr,"lord_suggest_action", [(eq, "$players_kingdom", "$g_talk_troop_faction"),],
+[anyone|plyr,"lord_suggest_action", [(eq, "$players_kingdom", "$g_talk_troop_faction"),],
    "{!}CHEAT: I want to be your clan's strategist.", "lord_suggest_become_marshall",[]],
-  [anyone,"lord_suggest_become_marshall", [],
+[anyone,"lord_suggest_become_marshall", [],
    "{!}Alright then.", "lord_pretalk",
    [
      (faction_get_slot, ":old_marshall", "$g_talk_troop_faction", slot_faction_marshall),
@@ -11222,29 +8257,29 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
      (faction_set_slot, "$g_talk_troop_faction", slot_faction_ai_state, sfai_default),
      (assign, "$g_recalculate_ais", 1),
    ]],
-  [anyone|plyr,"lord_suggest_action", [(neq, "$talk_context", tc_siege_commander)],
+[anyone|plyr,"lord_suggest_action", [(neq, "$talk_context", tc_siege_commander)],
    "{!}CHEAT: Let us attack an enemy town or castle.", "lord_suggest_attack_enemy_castle",[]],
-  [anyone|plyr,"lord_suggest_action", [(neq, "$talk_context", tc_siege_commander)],
+[anyone|plyr,"lord_suggest_action", [(neq, "$talk_context", tc_siege_commander)],
    "{!}CHEAT: Let us return back to a friendly town.", "lord_suggest_go_to_friendly_town",[]],
-  [anyone|plyr,"lord_suggest_action", [(neq, "$talk_context", tc_siege_commander)],
+[anyone|plyr,"lord_suggest_action", [(neq, "$talk_context", tc_siege_commander)],
    "{!}CHEAT: Let us attack an enemy war party.", "lord_suggest_attack_enemy_party",[]],
-  [anyone|plyr,"lord_suggest_action", [(eq, "$talk_context", tc_siege_commander)],
+[anyone|plyr,"lord_suggest_action", [(eq, "$talk_context", tc_siege_commander)],
    "{!}CHEAT: Let us lift this siege.", "lord_suggest_lift_siege",[]],
-  [anyone|plyr,"lord_suggest_action", [(neq, "$talk_context", tc_siege_commander)],
+[anyone|plyr,"lord_suggest_action", [(neq, "$talk_context", tc_siege_commander)],
    "{!}CHEAT: Follow me.", "lord_suggest_follow_me",[]],
-  [anyone|plyr,"lord_suggest_action", [(neq, "$talk_context", tc_siege_commander)],
+[anyone|plyr,"lord_suggest_action", [(neq, "$talk_context", tc_siege_commander)],
    "{!}CHEAT: Follow someone.", "lord_suggest_follow_other",[]],
-  [anyone|plyr,"lord_suggest_action", [(neq, "$talk_context", tc_siege_commander)],
+[anyone|plyr,"lord_suggest_action", [(neq, "$talk_context", tc_siege_commander)],
    "{!}CHEAT: Raid a village.", "lord_suggest_raid_village",[]],
-  [anyone|plyr,"lord_suggest_action", [],
+[anyone|plyr,"lord_suggest_action", [],
    "{!}CHEAT: Like me.", "lord_pretalk",[(call_script,"script_change_player_relation_with_troop","$g_talk_troop",20)]],
-  [anyone,"lord_suggest_lift_siege", [],
+[anyone,"lord_suggest_lift_siege", [],
    "{!}As you wish, {playername}.", "close_window",[(call_script, "script_party_set_ai_state", "$g_talk_troop_party", spai_undefined),
                                            (party_leave_cur_battle, "$g_talk_troop_party"),
                                            (assign, "$g_leave_encounter", 1)]],
-  [anyone,"lord_suggest_go_to_friendly_town", [],
+[anyone,"lord_suggest_go_to_friendly_town", [],
    "{!}Hmm. Which town or castle do you suggest we go to?", "lord_suggest_go_to_friendly_town2",[]],
-  [anyone|plyr|repeat_for_parties,"lord_suggest_go_to_friendly_town2", [
+[anyone|plyr|repeat_for_parties,"lord_suggest_go_to_friendly_town2", [
                                                                        (store_repeat_object, ":center_no"),
                                                                        (this_or_next|party_slot_eq,":center_no",slot_party_type, spt_castle),
                                                                        (party_slot_eq,":center_no",slot_party_type, spt_town),
@@ -11253,16 +8288,16 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
                                                                        (eq, ":town_faction", "$g_talk_troop_faction"),
                                                                        (str_store_party_name, s1, ":center_no")],
    "{!}CHEAT: {s1}", "lord_suggest_go_to_friendly_town3",[(store_repeat_object, "$town_suggested_to_go_to")]],
-  [anyone|plyr,"lord_suggest_go_to_friendly_town2", [],
+[anyone|plyr,"lord_suggest_go_to_friendly_town2", [],
    "{!}CHEAT: Never mind.", "lord_pretalk",[]],
-  [anyone,"lord_suggest_go_to_friendly_town3", [(str_store_party_name, 1, "$town_suggested_to_go_to")],
+[anyone,"lord_suggest_go_to_friendly_town3", [(str_store_party_name, 1, "$town_suggested_to_go_to")],
    "{!}Very well, we go to {s1}.", "lord_pretalk",
    [
        (call_script, "script_party_set_ai_state", "$g_talk_troop_party", spai_holding_center, "$town_suggested_to_go_to"),
        ]],
-  [anyone,"lord_suggest_attack_enemy_party", [],
+[anyone,"lord_suggest_attack_enemy_party", [],
    "{!}Hmm. Which party do you suggest we attack?", "lord_suggest_attack_enemy_party2",[]],
-  [anyone|plyr|repeat_for_parties,"lord_suggest_attack_enemy_party2", [
+[anyone|plyr|repeat_for_parties,"lord_suggest_attack_enemy_party2", [
                                                                        (store_repeat_object, ":party_no"),
                                                                        (party_slot_eq,":party_no",slot_party_type, spt_kingdom_hero_party),
                                                                        (party_is_active, ":party_no"),
@@ -11275,20 +8310,16 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
                                                                        (str_store_faction_name, s2, ":party_faction"),
                                                                        (str_store_party_name, s1, ":party_no")],
    "{!}CHEAT: {s1} of {s2} around {s3}", "lord_suggest_attack_enemy_party3",[(store_repeat_object, "$suggested_to_attack_party")]],
-  [anyone|plyr,"lord_suggest_attack_enemy_party2", [],
+[anyone|plyr,"lord_suggest_attack_enemy_party2", [],
    "{!}CHEAT: Never mind.", "lord_pretalk",[]],
-  [anyone,"lord_suggest_attack_enemy_party3", [(str_store_party_name, 1, "$suggested_to_attack_party")],
+[anyone,"lord_suggest_attack_enemy_party3", [(str_store_party_name, 1, "$suggested_to_attack_party")],
    "{!}As you wish, we will attack {s1}.", "lord_pretalk",
    [
        (call_script, "script_party_set_ai_state", "$g_talk_troop_party", spai_engaging_army, "$suggested_to_attack_party"),
        ]],
-##  [anyone,"lord_suggest_attack_enemy_castle", [(troop_get_slot, ":player_favor", "$g_talk_troop", slot_troop_player_favor),
-##                                               (lt, ":player_favor", 20)],
-##   "Hmm. No, I don't think that's a good idea.", "lord_pretalk",[]],
-
-  [anyone,"lord_suggest_attack_enemy_castle", [],
+[anyone,"lord_suggest_attack_enemy_castle", [],
    "{!}Hmm. Which one do you suggest we attack?", "lord_suggets_attack_enemy_castle2",[]],
-  [anyone|plyr|repeat_for_parties,"lord_suggets_attack_enemy_castle2", [
+[anyone|plyr|repeat_for_parties,"lord_suggets_attack_enemy_castle2", [
                                                                        (store_repeat_object, ":center_no"),
                                                                        (this_or_next|party_slot_eq,":center_no",slot_party_type, spt_castle),
                                                                        (party_slot_eq,":center_no",slot_party_type, spt_town),
@@ -11298,17 +8329,17 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
                                                                        (str_store_faction_name, s2, ":town_faction"),
                                                                        (str_store_party_name, s1, ":center_no")],
    "{!}CHEAT: {s1} of {s2}", "lord_suggets_attack_enemy_castle3",[(store_repeat_object, "$suggested_to_attack_center")]],
-  [anyone|plyr,"lord_suggets_attack_enemy_castle2", [],
+[anyone|plyr,"lord_suggets_attack_enemy_castle2", [],
    "{!}CHEAT: Never mind my lord.", "lord_pretalk",[]],
-  [anyone,"lord_suggets_attack_enemy_castle3", [(str_store_party_name, 1, "$suggested_to_attack_center")],
+[anyone,"lord_suggets_attack_enemy_castle3", [(str_store_party_name, 1, "$suggested_to_attack_center")],
    "That should be possible. Very well, we'll attack {s1}.", "lord_pretalk",
    [
        (call_script, "script_party_set_ai_state", "$g_talk_troop_party", spai_besieging_center, "$suggested_to_attack_center"),
 
        ]],
-  [anyone,"lord_suggest_raid_village", [],
+[anyone,"lord_suggest_raid_village", [],
    "{!}Hmm. Which village do you suggest we attack?", "lord_suggest_raid_village_2",[]],
-  [anyone|plyr|repeat_for_parties,"lord_suggest_raid_village_2", [
+[anyone|plyr|repeat_for_parties,"lord_suggest_raid_village_2", [
                                                                        (store_repeat_object, ":center_no"),
                                                                        (party_slot_eq,":center_no",slot_party_type, spt_village),
                                                                        (store_faction_of_party, ":town_faction", ":center_no"),
@@ -11317,14 +8348,14 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
                                                                        (str_store_faction_name, s2, ":town_faction"),
                                                                        (str_store_party_name, s1, ":center_no")],
    "{!}CHEAT: {s1} of {s2}", "lord_suggest_raid_village_3",[(store_repeat_object, "$suggested_to_attack_center")]],
-  [anyone|plyr,"lord_suggest_raid_village_2", [],
+[anyone|plyr,"lord_suggest_raid_village_2", [],
    "{!}CHEAT: Never mind.", "lord_pretalk",[]],
-  [anyone,"lord_suggest_raid_village_3", [(str_store_party_name, s1, "$suggested_to_attack_center")],
+[anyone,"lord_suggest_raid_village_3", [(str_store_party_name, s1, "$suggested_to_attack_center")],
    "{!}That should be possible. Very well, we'll attack {s1}.", "lord_pretalk",
    [
      (call_script, "script_party_set_ai_state", "$g_talk_troop_party", spai_raiding_around_center, "$suggested_to_attack_center"),
    ]],
-  [anyone,"lord_suggest_follow_me", [],
+[anyone,"lord_suggest_follow_me", [],
    "{!}Aye, I'll follow you.", "lord_pretalk",
    [
      (party_set_slot, "$g_talk_troop_party", slot_party_commander_party, "p_main_party"),
@@ -11332,9 +8363,9 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
      (call_script, "script_npc_decision_checklist_party_ai", "$g_talk_troop"),
 	 (call_script, "script_party_set_ai_state", "$g_talk_troop_party", reg0, reg1),
    ]],
-  [anyone,"lord_suggest_follow_other", [],
+[anyone,"lord_suggest_follow_other", [],
    "{!}Who do you want me to follow?", "lord_suggest_follow_other_2",[]],
-  [anyone|plyr|repeat_for_parties,"lord_suggest_follow_other_2", [
+[anyone|plyr|repeat_for_parties,"lord_suggest_follow_other_2", [
                                                                        (store_repeat_object, ":party_no"),
                                                                        (party_slot_eq,":party_no",slot_party_type, spt_kingdom_hero_party),
                                                                        (neq, ":party_no", "$g_talk_troop"),
@@ -11342,9 +8373,9 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
                                                                        (eq, ":party_faction", "$g_talk_troop_faction"),
                                                                        (str_store_party_name, s1, ":party_no")],
    "{!}CHEAT: {s1}", "lord_suggest_follow_other_3",[(store_repeat_object, "$town_suggested_to_go_to")]],
-  [anyone|plyr,"lord_suggest_follow_other_2", [],
+[anyone|plyr,"lord_suggest_follow_other_2", [],
    "{!}CHEAT: Never mind.", "lord_pretalk",[]],
-  [anyone,"lord_suggest_follow_other_3", [(str_store_party_name, 1, "$town_suggested_to_go_to")],
+[anyone,"lord_suggest_follow_other_3", [(str_store_party_name, 1, "$town_suggested_to_go_to")],
    "{!}As you wish, I shall be accompanying {s1}.", "lord_pretalk",
    [
      (party_set_slot, "$g_talk_troop_party", slot_party_commander_party, "$town_suggested_to_go_to"),
@@ -11352,12 +8383,9 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
      (call_script, "script_npc_decision_checklist_party_ai", "$g_talk_troop"),
      (call_script, "script_party_set_ai_state", "$g_talk_troop_party", reg0, reg1),
    ]],
-  [anyone|plyr,"lord_suggest_action", [],
+[anyone|plyr,"lord_suggest_action", [],
    "{!}CHEAT: Nothing, {s65}. It's not important.", "lord_pretalk",[]],
-##### TODO: QUESTS COMMENT OUT BEGIN
-#Request Mission
-
-  [anyone|auto_proceed,"lord_request_mission_ask",
+[anyone|auto_proceed,"lord_request_mission_ask",
    [(eq, "$players_kingdom", 0),
     (ge, "$g_talk_troop_faction_relation", 0),
     (ge, "$g_talk_troop_relation", 0),
@@ -11406,7 +8434,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
     ],
    "{!}Warning: This line should never display.", "lord_propose_mercenary",[(store_current_hours, ":cur_hours"),
                                   (faction_set_slot, "$g_talk_troop_faction", slot_faction_last_mercenary_offer_time,  ":cur_hours")]],
-  [anyone,"lord_propose_mercenary", [(call_script, "script_party_calculate_strength", "p_main_party", 0),
+[anyone,"lord_propose_mercenary", [(call_script, "script_party_calculate_strength", "p_main_party", 0),
                                      (assign, ":offer_value", reg0),
                                      (val_add, ":offer_value", 100),
                                      (call_script, "script_round_value", ":offer_value"),
@@ -11438,27 +8466,27 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
 
    "As it happens, {playername}, I promised {s10} that I would hire a company of ronin for an upcoming campaign.\
 ","lord_mercenary_service", []],
-  [anyone|plyr,"lord_mercenary_service", [], "I'm not interested, thank you.", "lord_mercenary_service_reject", []],
-  [anyone|plyr,"lord_mercenary_service", [], "Aye, I'll join {s9}.", "lord_mercenary_service_accept", []],
-  [anyone|plyr,"lord_mercenary_service", [], "I'm interested. Please tell me more.", "lord_mercenary_elaborate_pay", []],
-  [anyone,"lord_mercenary_service_accept", [(str_store_faction_name, s9, "$g_talk_troop_faction")],
+[anyone|plyr,"lord_mercenary_service", [], "I'm not interested, thank you.", "lord_mercenary_service_reject", []],
+[anyone|plyr,"lord_mercenary_service", [], "Aye, I'll join {s9}.", "lord_mercenary_service_accept", []],
+[anyone|plyr,"lord_mercenary_service", [], "I'm interested. Please tell me more.", "lord_mercenary_elaborate_pay", []],
+[anyone,"lord_mercenary_service_accept", [(str_store_faction_name, s9, "$g_talk_troop_faction")],
    "Perfect. Of course you shall have to make a formal declaration of allegiance,\
  and give your oath that you and your company will remain in service to {s9}\
  for a period of no less than one month.", "lord_mercenary_service_verify", []],
-  [anyone|plyr,"lord_mercenary_service_verify", [], "As you wish. Your enemies are my enemies.", "lord_mercenary_service_verify_2", []],
-  [anyone|plyr,"lord_mercenary_service_verify", [], "On second thought, forget it.", "lord_mercenary_service_reject", []],
-  [anyone,"lord_mercenary_service_verify_2", [], "That will do. You've made a wise choice, my friend.\
+[anyone|plyr,"lord_mercenary_service_verify", [], "As you wish. Your enemies are my enemies.", "lord_mercenary_service_verify_2", []],
+[anyone|plyr,"lord_mercenary_service_verify", [], "On second thought, forget it.", "lord_mercenary_service_reject", []],
+[anyone,"lord_mercenary_service_verify_2", [], "That will do. You've made a wise choice, my friend.\
  {s9} does well by its loyal fighters, you will receive many rewards for your service.", "lord_mercenary_service_accept_3", [
      (call_script, "script_troop_add_gold", "trp_player", "$temp"),
      (store_current_day, ":cur_day"),
      (store_add, "$mercenary_service_next_renew_day", ":cur_day", 30),
      (call_script, "script_player_join_faction", "$g_talk_troop_faction"),
      (str_store_faction_name, s9, "$g_talk_troop_faction"),]],
-  [anyone,"lord_mercenary_service_accept_3", [], "Now, I suggest you prepare for a serious campaign.\
+[anyone,"lord_mercenary_service_accept_3", [], "Now, I suggest you prepare for a serious campaign.\
  Train and equip your retainers as best you can in the meantime, and respond quickly when you are summoned for duty.", "lord_pretalk", []],
-  [anyone,"lord_mercenary_service_reject", [(str_store_faction_name, s9, "$g_talk_troop_faction")],
+[anyone,"lord_mercenary_service_reject", [(str_store_faction_name, s9, "$g_talk_troop_faction")],
    "I'm very sorry to hear that. You'll find no better place than {s9}, be sure of that.", "lord_pretalk", []],
-  [anyone,"lord_mercenary_elaborate_pay", [(assign, reg12, "$temp")],
+[anyone,"lord_mercenary_elaborate_pay", [(assign, reg12, "$temp")],
    "I can offer you a contract for one month. At the end of this period, it can be extended on a monthly basis.\
  An initial sum of {reg12} mon will be paid to you to seal the contract.\
  After that, you'll receive wages from {s10} each week, according to the number and quality of the soldiers in your company.\
@@ -11466,26 +8494,26 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
  War can be very profitable at times...", "lord_mercenary_elaborate_1",
    [(faction_get_slot, ":faction_leader", "$g_talk_troop_faction", slot_faction_leader),
     (str_store_troop_name, s10, ":faction_leader")]],
-  [anyone,"lord_mercenary_service_elaborate_duty", [],
+[anyone,"lord_mercenary_service_elaborate_duty", [],
    "Duties... There are only a few, none of them difficult. The very first thing is to declare your allegiance.\
  An oath of loyalty to our cause. Once that's done, you shall be required to fulfill certain responsibilities.\
  You'll participate in military campaigns, fulfill any duties given to you by your commanders,\
  and most of all you shall attack the enemies of our kingdom wherever you might find them.", "lord_mercenary_elaborate_1",
    [(faction_get_slot, ":faction_leader", "$g_talk_troop_faction", slot_faction_leader),
     (str_store_troop_name, s10, ":faction_leader")]],
-  [anyone|plyr,"lord_mercenary_elaborate_1", [], "And what about my duties?", "lord_mercenary_service_elaborate_duty", []],
-  [anyone|plyr,"lord_mercenary_elaborate_1", [], "Can I hold on to any castles I take?", "lord_mercenary_elaborate_castle", []],
-  [anyone|plyr,"lord_mercenary_elaborate_1",
+[anyone|plyr,"lord_mercenary_elaborate_1", [], "And what about my duties?", "lord_mercenary_service_elaborate_duty", []],
+[anyone|plyr,"lord_mercenary_elaborate_1", [], "Can I hold on to any castles I take?", "lord_mercenary_elaborate_castle", []],
+[anyone|plyr,"lord_mercenary_elaborate_1",
    [
      (neg|troop_slot_ge, "trp_player", slot_troop_banner_scene_prop, 1),
 #custom_banner begin
 ##    (eq, "trp_player", slot_troop_custom_banner_flag_type, -1),
 #custom_banner end
      ], "Can I fly my own banner?", "lord_mercenary_elaborate_banner", []],
-  [anyone|plyr,"lord_mercenary_elaborate_1", [], "How much will you pay me for my service?", "lord_mercenary_elaborate_pay", []],
-  [anyone|plyr,"lord_mercenary_elaborate_1", [], "Sounds good. I wish to enter your service as a ronin.", "lord_mercenary_service_accept", []],
-  [anyone|plyr,"lord_mercenary_elaborate_1", [], "Apologies, my sword is not for hire.", "lord_mercenary_service_reject", []],
-  [anyone,"lord_mercenary_elaborate_castle", [##diplomacy start+
+[anyone|plyr,"lord_mercenary_elaborate_1", [], "How much will you pay me for my service?", "lord_mercenary_elaborate_pay", []],
+[anyone|plyr,"lord_mercenary_elaborate_1", [], "Sounds good. I wish to enter your service as a ronin.", "lord_mercenary_service_accept", []],
+[anyone|plyr,"lord_mercenary_elaborate_1", [], "Apologies, my sword is not for hire.", "lord_mercenary_service_reject", []],
+[anyone,"lord_mercenary_elaborate_castle", [##diplomacy start+
   ##OLD:
   #(troop_get_type, ":type", "trp_player"),(eq, ":type", 1),
   #(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop")
@@ -11511,7 +8539,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
    "Only my loyal vassals can own lands and castles in my domain -- and all my vassals are {women/men}. I am not inclined to depart from this tradition without a very good reason. If you prove yourself in battle, you can swear an oath of loyalty to me and become my vassal. We may then discuss how you may obtain a castle.",
 ##diplomacy end+
    "lord_mercenary_elaborate_1", []],
-  [anyone,"lord_mercenary_elaborate_castle", [##diplomacy start+
+[anyone,"lord_mercenary_elaborate_castle", [##diplomacy start+
   ##OLD:
   #(troop_get_type, ":type", "trp_player"),(eq, ":type", 1),
   ##NEW:
@@ -11533,12 +8561,12 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
    "Hmm... Only loyal vassals of {s10} can own lands and castles. While {s0} will sometimes accept vassalage from {men/women} who prove themselves in battle, and grant them land, I have never heard of a {s1} who gave fiefs to {men/women}. You had best discuss that issue with {s10} {reg0?herself:himself}.",
 ##diplomacy end+
    "lord_mercenary_elaborate_1", []],
-  [anyone,"lord_mercenary_elaborate_castle", [(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop")],
+[anyone,"lord_mercenary_elaborate_castle", [(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop")],
    "Only my loyal vassals can own lands and castles in my domain.\
  A ronin can not be trusted with such a responsibility.\
  However, after serving for some time, I might retain you permanently to become become my vassal.\
  Then you will be rewarded with a fief.", "lord_mercenary_elaborate_1", []],
-  [anyone,"lord_mercenary_elaborate_castle", [##diplomacy start+ Make gender correct
+[anyone,"lord_mercenary_elaborate_castle", [##diplomacy start+ Make gender correct
   (faction_get_slot, reg0, "$g_talk_troop_faction", slot_faction_leader),
   (call_script, "script_dplmc_store_troop_is_female", reg0),
   ##Next line, replace "his" with {reg0?her:his}
@@ -11546,43 +8574,34 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
  You understand, a simple ronin cannot be trusted with such responsibility.\
  However, after serving for some time, you may earn the right to swear allegiance to {s10} and become {reg0?her:his} vassal.\
  Then you would be rewarded with a fief.", "lord_mercenary_elaborate_1", []],
- ##diplomacy end+
-
-  [anyone,"lord_mercenary_elaborate_banner", [(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop")],
+[anyone,"lord_mercenary_elaborate_banner", [(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop")],
    "Only my hereditary vassals have the honour of carrying their own banners.\
  However, after some time in service, you may earn the opportunity to become a hereditary vassal,\
  gaining the right to choose a kamon of your own and fight under it in battle.", "lord_mercenary_elaborate_1", []],
-  [anyone,"lord_mercenary_elaborate_banner", [##diplomacy start+ Use correct gender
+[anyone,"lord_mercenary_elaborate_banner", [##diplomacy start+ Use correct gender
    (faction_get_slot, reg0, "$g_talk_troop_faction", slot_faction_leader),
    (call_script, "script_dplmc_store_troop_is_female", reg0),
    #Next line "his" -> {reg0?her:his}
   ], "Only vassal retainers of {s10} have the honour of carrying their own banners.\
  However, after some time of service as a ronin, perhaps you can earn the opportunity to swear allegiance to {s10} and become {reg0?her:his} vassal,\
  gaining the right to choose a kamon of your own and fight under it in battle.", "lord_mercenary_elaborate_1", []],
- ##diplomacy end+
-
-  [anyone,"lord_request_mission_ask", [(store_partner_quest,":lords_quest"),(ge,":lords_quest",0)],
+[anyone,"lord_request_mission_ask", [(store_partner_quest,":lords_quest"),(ge,":lords_quest",0)],
    "You still haven't finished the last job I gave you, {playername}. You should be working on that, not asking me for other things to do.", "lord_pretalk",[]],
-  [anyone,"lord_request_mission_ask", [(troop_slot_eq, "$g_talk_troop", slot_troop_does_not_give_quest, 1)],
+[anyone,"lord_request_mission_ask", [(troop_slot_eq, "$g_talk_troop", slot_troop_does_not_give_quest, 1)],
    "I don't have any other jobs for you right now.", "lord_pretalk",[]],
-  [anyone|auto_proceed,"lord_request_mission_ask", [], "A task?", "lord_tell_mission",
+[anyone|auto_proceed,"lord_request_mission_ask", [], "A task?", "lord_tell_mission",
    [
        (call_script, "script_get_quest", "$g_talk_troop"),
        (assign, "$random_quest_no", reg0),
    ]],
-#check with armagan on this
-
-
-  [anyone,"lord_request_mission_ask", [
+[anyone,"lord_request_mission_ask", [
   (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_met, 2),
 	(troop_slot_eq, "trp_player", slot_troop_betrothed, "$g_talk_troop"),
   ##diplomacy start+ use gender script
   #(eq, "$character_gender", 1),#<- XXX TODO: Safe to remove?
   ],##Next line, "My lady" to "My {lord/lady}
    "My {lord/lady}, by the traditions of courtship, I should be offering my services to you. Unfortunately, I have little time right now, so I beg you to take this declaration of my esteem in its place.", "lord_pretalk",[]],
-  ##diplomacy end+
-
-  [anyone,"lord_tell_mission", [
+[anyone,"lord_tell_mission", [
   (eq, "$player_has_homage" ,1),
   (neq, "$random_quest_no", "qst_rescue_prisoner"),
   (neq, "$random_quest_no", "qst_destroy_bandit_lair"),
@@ -11700,11 +8719,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
   ],
   ##Allow this to also be used for liege, replaced "a sworn vassal of the realm" with "{reg0?my sworn liege:a sworn vassal of the realm}", "men" with {reg65?servants:men}
    "There are some minor errands which I need completed, but it would be more appropriate to give them to one of my own {reg65?servants:men}, not to my vassals.", "lord_tell_mission_sworn_vassal",[]],
-##diplomacy end+
-
-
-
-  [anyone,"lord_tell_mission_sworn_vassal", [
+[anyone,"lord_tell_mission_sworn_vassal", [
 	(this_or_next|party_slot_eq, "$g_talk_troop_party", slot_party_ai_state, spai_besieging_center),
 		(party_slot_eq, "$g_talk_troop_party", slot_party_ai_state, spai_raiding_around_center),
 
@@ -11713,10 +8728,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
 	(str_store_party_name, s4, ":cur_object"),
   ],##diplomacy start+ use gender-neutral term for soldiers in case it would be absurd
 	"If you are looking for action against our foes, you may join our attack on {s4}. The enemy may come in force to oppose us, so it is good to have as many {reg65?soldiers:{soldiers/men}} as possible.", "lord_pretalk",[]],
-##diplomacy end+
-
-
-  [anyone,"lord_tell_mission_sworn_vassal", [
+[anyone,"lord_tell_mission_sworn_vassal", [
     (eq, "$g_talk_troop_faction", "$players_kingdom"),
 
 	(party_get_slot, ":cur_object", "$g_talk_troop_party", slot_party_ai_object),
@@ -11733,7 +8745,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
 
   ],
 	"If you are looking for action against our foes, you may try venturing out to {s4}. We have received word that a force of the {s5} is in the area, and I am going there myself. I cannot guarantee you that our enemies will be there when you arrive, of course.", "lord_pretalk",[]],
-  [anyone,"lord_tell_mission_sworn_vassal", [
+[anyone,"lord_tell_mission_sworn_vassal", [
     (eq, "$g_talk_troop_faction", "$players_kingdom"),
 	(assign, ":alarmed_center_found", -1),
 	(assign, ":score_to_beat", 9999),
@@ -11760,9 +8772,9 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
 	(str_store_party_name, s4, ":alarmed_center_found"),
   ],
 	"If you are looking for action against our foes, you may try venturing out to {s4}. We have received word that a force of the {s5} is in the area. I am not currently headed that way, but others may be.  I cannot guarantee you that our enemies will be there when you arrive, of course.", "lord_pretalk",[]],
-  [anyone,"lord_tell_mission_sworn_vassal", [  ],
+[anyone,"lord_tell_mission_sworn_vassal", [  ],
 	"If a worthy task presents itself, however, I may have a favor to ask of you at a later date.", "lord_pretalk",[]],
-  [anyone,"lord_tell_mission", [
+[anyone,"lord_tell_mission", [
   (eq,"$random_quest_no", "qst_destroy_bandit_lair"),
   (quest_get_slot, ":bandit_lair", "qst_destroy_bandit_lair", slot_quest_target_party),
 
@@ -11771,7 +8783,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
 
   ], "Yes -- there is something you can do for us. We have heard reports that a group of {s4} have established a hideout in this area, and have been attacking travellers. If you could find their lair and destroy it, we would be very grateful.", "destroy_lair_quest_brief", #s48 is bandits, s42 is the road information
    []],
-  [anyone,"lord_tell_mission",
+[anyone,"lord_tell_mission",
   [(eq,"$random_quest_no","qst_rescue_prisoner"),
   ##diplomacy start+ Correct gender
   (assign, reg3, 0),
@@ -11808,50 +8820,50 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
 ##     (try_end),
      (str_store_string, s2, "str_s9_asked_you_to_rescue_s13_who_is_prisoner_at_s24"),
    ]],
-  [anyone,"lord_mission_rescue_prisoner", [],##diplomacy start+ next line, use reg4 for gender
+[anyone,"lord_mission_rescue_prisoner", [],##diplomacy start+ next line, use reg4 for gender
    "We need you to get my {s11} out of prison. You may be able to pay a ransom -- in which case we could cover your expenses, up to 5000 mon. If you have connections within {s24}, you may be able to use them to sneak {reg4?her:him} out. Or, you may try a more direct approach -- walk up to the gaoler, take the keys by force, and then fight your way out. Can you do this for us?", "lord_mission_rescue_prisoner_confirm",
    ##diplomacy end+
    [
    ]],
-  [anyone|plyr,"lord_mission_rescue_prisoner_confirm", [],
+[anyone|plyr,"lord_mission_rescue_prisoner_confirm", [],
   "I can try.", "lord_mission_rescue_prisoner_accepted",[]],
-  [anyone|plyr,"lord_mission_rescue_prisoner_confirm", [], "I don't think that I can help you.", "lord_mission_rescue_prisoner_rejected",[]],
-  [anyone,"lord_mission_rescue_prisoner_rejected", [], "It would not have been an easy task. Perhaps we will find another way.", "close_window",[
+[anyone|plyr,"lord_mission_rescue_prisoner_confirm", [], "I don't think that I can help you.", "lord_mission_rescue_prisoner_rejected",[]],
+[anyone,"lord_mission_rescue_prisoner_rejected", [], "It would not have been an easy task. Perhaps we will find another way.", "close_window",[
     (assign, "$g_leave_encounter",1),
   ]],
-  [anyone,"lord_mission_rescue_prisoner_accepted", [], "We are most grateful. Could I ask you how you were planning to proceed?", "lord_mission_rescue_prisoner_method",
+[anyone,"lord_mission_rescue_prisoner_accepted", [], "We are most grateful. Could I ask you how you were planning to proceed?", "lord_mission_rescue_prisoner_method",
    [(call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
     (call_script, "script_change_player_relation_with_troop","$g_talk_troop",1),
    ]],
-  [anyone,"lord_mission_rescue_other_ideas", [], "Did you have any other ideas which you wished to discuss?", "lord_mission_rescue_prisoner_method",
+[anyone,"lord_mission_rescue_other_ideas", [], "Did you have any other ideas which you wished to discuss?", "lord_mission_rescue_prisoner_method",
    []],
-  [anyone|plyr,"lord_mission_rescue_prisoner_method", [
+[anyone|plyr,"lord_mission_rescue_prisoner_method", [
   (eq, 1, 0),
   ], # unused
   "{!}I am thinking of paying the ransom.", "lord_mission_rescue_prisoner_method_ransom",[]],
-  [anyone|plyr,"lord_mission_rescue_prisoner_method", [
+[anyone|plyr,"lord_mission_rescue_prisoner_method", [
   (eq, 1, 0),
   ], # unused
   "{!}I am thinking of using my connections in {s24}.", "close_window",[]],
-  [anyone|plyr,"lord_mission_rescue_prisoner_method", [],
+[anyone|plyr,"lord_mission_rescue_prisoner_method", [],
   "I am thinking of breaking into the prison in {s24}, finding {s13}, and fighting my way out.", "lord_mission_rescue_prisoner_method_prisonbreak",[]],
-  [anyone|plyr,"lord_mission_rescue_prisoner_method", [],
+[anyone|plyr,"lord_mission_rescue_prisoner_method", [],
   "I am thinking of taking {s24} by storm.", "lord_mission_rescue_prisoner_method_siege",[]],
-  [anyone|plyr,"lord_mission_rescue_prisoner_method", [],
+[anyone|plyr,"lord_mission_rescue_prisoner_method", [],
   "I have done enough planning. Time to act!", "lord_mission_rescue_prisoner_planning_end",[]],
-  [anyone,"lord_mission_rescue_prisoner_planning_end", [],
+[anyone,"lord_mission_rescue_prisoner_planning_end", [],
   "May the heavens protect you.", "close_window",[
   (assign, "$g_leave_encounter", 1),
   ]],
-  [anyone,"lord_mission_rescue_prisoner_method_ransom", [],
+[anyone,"lord_mission_rescue_prisoner_method_ransom", [],
   "{!}[Ransom option not yet implemented]", "lord_mission_rescue_other_ideas",[]],
-  [anyone,"lord_mission_rescue_prisoner_method_prisonbreak", [],
+[anyone,"lord_mission_rescue_prisoner_method_prisonbreak", [],
   "I had discussed this idea with some of my men. One could enter {s24}, either in disguise or openly, then walk up to the prison guard and try to take the keys by force. However, getting out may be difficult. The garrison may be slow to react, but even so, you are likely to find yourself fighting a half dozen or more of the enemy at once, with limited space in which to maneuver. If you can fight your way past them, though, you can probably get out.", "lord_mission_rescue_prisoner_method_prisonbreak_2",[]],
-  [anyone,"lord_mission_rescue_prisoner_method_prisonbreak_2", [],
+[anyone,"lord_mission_rescue_prisoner_method_prisonbreak_2", [],
   "You may find it useful to create a distraction, to divert the attention of some of the garrison. If you have any connections in the villages near {s24}, this may be a time to put them to use.", "lord_mission_rescue_other_ideas",[]],
-  [anyone,"lord_mission_rescue_prisoner_method_siege", [],
+[anyone,"lord_mission_rescue_prisoner_method_siege", [],
   "Well, that is certainly the most direct approach.", "lord_mission_rescue_other_ideas",[]],
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_deliver_message"),
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_deliver_message"),
   ##diplomacy start+ fix pronoun
   (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
   (call_script, "script_dplmc_store_troop_is_female",  ":quest_target_troop"),
@@ -11875,14 +8887,12 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
 ##     (try_end),
      (str_store_string, s2, "@{s9} asked you to take a message to {s13}. {s13} was believed to be at {s4} when you were given this quest."),
    ]],
-  [anyone|plyr,"lord_mission_deliver_message", [], "Certainly, I intend to pass by {s4} and it would be no trouble.", "lord_mission_deliver_message_accepted",[]],
-  [anyone|plyr,"lord_mission_deliver_message", [], "I doubt I'll be seeing {s13} anytime soon, {s65}. You'd best send it with someone else.", "lord_mission_deliver_message_rejected",[]],
-  ##diplomacy start+ Fix gender
-  #[anyone|plyr,"lord_mission_deliver_message", [], "I am no errand boy, sir. Hire a courier for your trivialities.",
-  [anyone|plyr,"lord_mission_deliver_message", [], "I am no errand {boy/girl}, {reg65?my lady:sir}. Hire a courier for your trivialities.",
+[anyone|plyr,"lord_mission_deliver_message", [], "Certainly, I intend to pass by {s4} and it would be no trouble.", "lord_mission_deliver_message_accepted",[]],
+[anyone|plyr,"lord_mission_deliver_message", [], "I doubt I'll be seeing {s13} anytime soon, {s65}. You'd best send it with someone else.", "lord_mission_deliver_message_rejected",[]],
+[anyone|plyr,"lord_mission_deliver_message", [], "I am no errand {boy/girl}, {reg65?my lady:sir}. Hire a courier for your trivialities.",
   ##diplomacy end+
   "lord_mission_deliver_message_rejected_rudely",[]],
-  [anyone,"lord_mission_deliver_message_accepted", [##diplomacy start+ Fix gender
+[anyone,"lord_mission_deliver_message_accepted", [##diplomacy start+ Fix gender
   (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
   (call_script, "script_dplmc_store_troop_is_female", ":quest_target_troop"),
   ], "I appreciate it, {playername}. Here's the letter, and a small sum to cover your travel expenses. Give my regards to {s13} when you see {reg0?her:him}.", "close_window",
@@ -11890,21 +8900,19 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
    [(call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
     (call_script, "script_troop_add_gold", "trp_player", 30),    (assign, "$g_leave_encounter",1),
    ]],
-  [anyone,"lord_mission_deliver_message_rejected", [], "Ah, all right then. Well, I am sure I will find someone else.", "lord_pretalk",
+[anyone,"lord_mission_deliver_message_rejected", [], "Ah, all right then. Well, I am sure I will find someone else.", "lord_pretalk",
    [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-  [anyone,"lord_mission_deliver_message_rejected_rudely", [], "Hm, is this how you respond to a polite request\
+[anyone,"lord_mission_deliver_message_rejected_rudely", [], "Hm, is this how you respond to a polite request\
  for a small favor? A poor show, {playername}. I didn't know you would take offence.", "lord_mission_deliver_message_rejected_rudely_2",[]],
-  [anyone|plyr,"lord_mission_deliver_message_rejected_rudely_2", [], "Then you shall know better from now on.", "lord_mission_deliver_message_rejected_rudely_3",[]],
-  [anyone|plyr,"lord_mission_deliver_message_rejected_rudely_2", [], "Forgive my temper, {s65}. I'll deliver your letter.", "lord_mission_deliver_message_accepted",[]],
-  [anyone,"lord_mission_deliver_message_rejected_rudely_3", [], "All right. I will remember that.", "close_window",[
+[anyone|plyr,"lord_mission_deliver_message_rejected_rudely_2", [], "Then you shall know better from now on.", "lord_mission_deliver_message_rejected_rudely_3",[]],
+[anyone|plyr,"lord_mission_deliver_message_rejected_rudely_2", [], "Forgive my temper, {s65}. I'll deliver your letter.", "lord_mission_deliver_message_accepted",[]],
+[anyone,"lord_mission_deliver_message_rejected_rudely_3", [], "All right. I will remember that.", "close_window",[
     (call_script, "script_change_player_relation_with_troop","$g_talk_troop",-4),
     (quest_set_slot, "$random_quest_no", slot_quest_dont_give_again_remaining_days, 150),
     (troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1),
     (assign, "$g_leave_encounter",1),
       ]],
-##diplomacy start+
-#  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_deliver_message_to_enemy_lord")],
-  [anyone,"lord_tell_mission", [
+[anyone,"lord_tell_mission", [
 	(eq,"$random_quest_no","qst_deliver_message_to_enemy_lord"),
 	(quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
 	(call_script, "script_dplmc_store_troop_is_female", ":quest_target_troop"),
@@ -11932,29 +8940,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
 ##     (try_end),
      (str_store_string, s2, "@{s9} asked you to take a message to {s13} of {s15}. {s13} was believed to be at {s4} when you were given this quest."),
    ]],
-##
-##  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_deliver_message_to_lover")],
-##   "My dear friend, I have a deep affection for {s3} and I believe she feels the same way for me as well.\
-## Alas, her father {s5} finds me unsuitable for her and will do anything to prevent our union.\
-## I really need your help. Please, will you take this letter to her? She should be at {s4} at the moment.", "lord_mission_told",
-##   [
-##     (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
-##     (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-##     (str_store_troop_name_link,1,"$g_talk_troop"),
-##     (str_store_party_name_link,2,"$g_encountered_party"),
-##     (str_store_troop_name_link,3,":quest_target_troop"),
-##     (str_store_party_name_link,4,":quest_target_center"),
-##     (setup_quest_text,"$random_quest_no"),
-##     (try_begin),
-##       (is_between, "$g_encountered_party", centers_begin, centers_end),
-##       (setup_quest_giver, "$random_quest_no", "str_given_by_s1_at_s2"),
-##     (else_try),
-##       (setup_quest_giver,"$random_quest_no", "str_given_by_s1_in_wilderness"),
-##     (try_end),
-##   ]],
-##
-##diplomacy start+ Fix gender and relation of target.  Also replace "My {s17} {s13}" with {s0}
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_escort_lady")],
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_escort_lady")],
    "There is a small thing... My {s17} {s13} is due for a visit to {reg4?her:his} relatives at {s14}.\
  The visit has been postponed several times already with all the trouble on the roads,\
  but this time {reg4?he:she} is adamant about going. So, I want to at least make sure {reg4?she:he}'s well-guarded.\
@@ -11990,146 +8976,7 @@ Hand over my {reg19} mon, if you please, and end our business together.", "lord_
      (str_store_string, s2, "@{s11} asked you to escort {reg65?her:his} {s17} {s13} to {s14}."),
 	 ##diplomacy end+
    ]],
-##
-##  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_hunt_down_raiders")],
-## "A messenger came with important news a few hours ago.\
-## A group of enemy raiders have attacked a village near {s3}.\
-## They have murdered anyone who tried to resist, stolen everything they could carry and put the rest to fire.\
-## Now, they must be on their way back to their base at {s4}.\
-## You must catch them on the way and make them pay for their crimes.", "lord_mission_told",
-##   [
-##       (quest_get_slot, ":quest_object_center", "$random_quest_no", slot_quest_object_center),
-##       (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-##       (str_store_party_name_link,3,":quest_object_center"),
-##       (str_store_party_name_link,4,":quest_target_center"),
-##    ]],
-##
-##  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_bring_back_deserters")],
-## "I am worried about the growing number of deserters. If we don't do something about it, we may soon have noone left to fight in our wars.\
-## I want you to go now and bring back {reg1} {s3}. I would ask you to hang the bastards but we are short of men and we need them back in the ranks.", "lord_mission_told",
-##   [
-##       (quest_get_slot, ":quest_target_amount", "$random_quest_no", slot_quest_target_amount),
-##       (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
-##
-##       (str_store_troop_name_link,1,"$g_talk_troop"),
-##       (str_store_party_name_link,2,"$g_encountered_party"),
-##       (str_store_troop_name_plural,3,":quest_target_troop"),
-##       (assign, reg1, ":quest_target_amount"),
-##       (setup_quest_text,"$random_quest_no"),
-##       (try_begin),
-##         (is_between, "$g_encountered_party", centers_begin, centers_end),
-##         (setup_quest_giver, "$random_quest_no", "str_given_by_s1_at_s2"),
-##       (else_try),
-##         (setup_quest_giver,"$random_quest_no", "str_given_by_s1_in_wilderness"),
-##       (try_end),
-##    ]],
-##
-##  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_deliver_supply_to_center_under_siege")],
-## "The enemy has besieged {s5}. Our brothers there are doing their best to fend off attacks, but they can't hold for long without supplies.\
-## We need someone to take the supplies they need and make it into the town as soon as possible.\
-## It's a very dangerous job, but if there's one person who can do it, it's you {playername}.\
-## You can take the supplies from seneschal {s3}. When you arrive at {s5}, give them to the seneschal of that town.", "lord_mission_told",
-##   [
-##       (quest_get_slot, ":quest_target_amount", "$random_quest_no", slot_quest_target_amount),
-##       (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-##       (quest_get_slot, ":quest_object_troop", "$random_quest_no", slot_quest_object_troop),
-##       (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
-##
-##       (str_store_troop_name_link,1,"$g_talk_troop"),
-##       (str_store_party_name_link,2,"$g_encountered_party"),
-##       (str_store_troop_name_link,3,":quest_object_troop"),
-##       (str_store_troop_name,4,":quest_target_troop"),
-##       (str_store_party_name_link,5,":quest_target_center"),
-##       (assign, reg1, ":quest_target_amount"),
-##       (setup_quest_text,"$random_quest_no"),
-##       (try_begin),
-##         (is_between, "$g_encountered_party", centers_begin, centers_end),
-##         (setup_quest_giver, "$random_quest_no", "str_given_by_s1_at_s2"),
-##       (else_try),
-##         (setup_quest_giver,"$random_quest_no", "str_given_by_s1_in_wilderness"),
-##       (try_end),
-##    ]],
-##
-##  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_bring_reinforcements_to_siege")],
-## "{s4} has besieged {s5} and God willing, that town will not hold for long.\
-## Still I promised him to send {reg1} {s3} as reinforcements and I need someone to lead those men.\
-## Can you take them to {s4}?", "lord_mission_told",
-##   [
-##       (quest_get_slot, ":quest_target_amount", "$random_quest_no", slot_quest_target_amount),
-##       (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-##       (quest_get_slot, ":quest_object_troop", "$random_quest_no", slot_quest_object_troop),
-##       (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
-##
-##       (str_store_troop_name_link,1,"$g_talk_troop"),
-##       (str_store_party_name_link,2,"$g_encountered_party"),
-##       (str_store_troop_name_plural,3,":quest_object_troop"),
-##       (str_store_troop_name_link,4,":quest_target_troop"),
-##       (str_store_party_name_link,5,":quest_target_center"),
-##       (assign, reg1, ":quest_target_amount"),
-##       (setup_quest_text,"$random_quest_no"),
-##       (try_begin),
-##         (is_between, "$g_encountered_party", centers_begin, centers_end),
-##         (setup_quest_giver, "$random_quest_no", "str_given_by_s1_at_s2"),
-##       (else_try),
-##         (setup_quest_giver,"$random_quest_no", "str_given_by_s1_in_wilderness"),
-##       (try_end),
-##    ]],
-##
-##  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_rescue_lady_under_siege")],
-## "The enemy has besieged {s4} and my dear {s7} {s3} has been trapped within the town walls.\
-## As you may guess, I am greatly distressed by this. I need a very reliable commander, to rescue her from the town and bring her back to me.\
-## Will you do that {playername}?", "lord_mission_told",
-##   [
-##       (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-##       (quest_get_slot, ":quest_object_troop", "$random_quest_no", slot_quest_object_troop),
-##
-##       (try_begin),
-##         (troop_slot_eq, "$g_talk_troop", slot_troop_daughter, ":quest_object_troop"),
-##         (str_store_string, s7, "str_daughter"),
-##       (else_try),
-##         (str_store_string, s7, "str_wife"),
-##       (try_end),
-##
-##       (str_store_troop_name_link,1,"$g_talk_troop"),
-##       (str_store_party_name_link,2,"$g_encountered_party"),
-##       (str_store_troop_name_link,3,":quest_object_troop"),
-##       (str_store_party_name_link,4,":quest_target_center"),
-##       (setup_quest_text,"$random_quest_no"),
-##       (try_begin),
-##         (is_between, "$g_encountered_party", centers_begin, centers_end),
-##         (setup_quest_giver, "$random_quest_no", "str_given_by_s1_at_s2"),
-##       (else_try),
-##         (setup_quest_giver,"$random_quest_no", "str_given_by_s1_in_wilderness"),
-##       (try_end),
-##    ]],
-##
-##
-##  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_bring_prisoners_to_enemy")],
-##   "The enemy wants to ransom some of their soldiers that we captured at the last battle.\
-## They'll pay 100 mon in return for giving them back {reg1} {s3}.\
-## God knows I can use that money so I accepted their offer.\
-## Now, what I need is someone to take the prisoners to {s4} and come back with the money.", "lord_mission_told",
-##   [
-##     (quest_get_slot, ":quest_object_troop", "$random_quest_no", slot_quest_object_troop),
-##     (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-##     (quest_get_slot, reg1, "$random_quest_no", slot_quest_target_amount),
-##     (str_store_troop_name_link,1,"$g_talk_troop"),
-##     (str_store_party_name_link,2,"$g_encountered_party"),
-##     (str_store_troop_name_plural,3,":quest_object_troop"),
-##     (str_store_party_name_link,4,":quest_target_center"),
-##     (setup_quest_text,"$random_quest_no"),
-##     (try_begin),
-##       (is_between, "$g_encountered_party", centers_begin, centers_end),
-##       (setup_quest_giver, "$random_quest_no", "str_given_by_s1_at_s2"),
-##     (else_try),
-##       (setup_quest_giver,"$random_quest_no", "str_given_by_s1_in_wilderness"),
-##     (try_end),
-##   ]],
-##
-
-
-# Deal with bandits
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_deal_with_bandits_at_lords_village")],
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_deal_with_bandits_at_lords_village")],
    "A group of bandits have taken refuge in my village of {s15}.\
  They are plundering nearby farms, and getting rich and fat stealing my taxes and feasting on my cattle.\
 I'd like nothing better than to go out there and teach them a lesson,\
@@ -12144,10 +8991,10 @@ I'd like nothing better than to go out there and teach them a lesson,\
      (str_store_string, s2, "@{s13} asked you to deal with the bandits who are occupying the village of {s15} and then report back to {reg65?her:him."),
 	 ##diplomacy end+
    ]],
-  [anyone|plyr,"lord_mission_deal_with_bandits_told", [],
+[anyone|plyr,"lord_mission_deal_with_bandits_told", [],
    "Worry not, I can go to {s15} and deal with these scum for you.", "lord_mission_deal_with_bandits_accepted",[]],
-  [anyone|plyr,"lord_mission_deal_with_bandits_told", [], "You shall have to find help elsewhere, I am too busy.", "lord_mission_deal_with_bandits_rejected",[]],
-  [anyone,"lord_mission_deal_with_bandits_accepted", [], "Will you do that?\
+[anyone|plyr,"lord_mission_deal_with_bandits_told", [], "You shall have to find help elsewhere, I am too busy.", "lord_mission_deal_with_bandits_rejected",[]],
+[anyone,"lord_mission_deal_with_bandits_accepted", [], "Will you do that?\
  Know that, I will be grateful to you. Here is some money for the expenses of your campaign.\
  Make an example of those {s43}s.", "close_window",
    [
@@ -12159,10 +9006,9 @@ I'd like nothing better than to go out there and teach them a lesson,\
     (call_script, "script_change_player_relation_with_troop","$g_talk_troop",1),
     (assign, "$g_leave_encounter",1),
    ]],
-  [anyone,"lord_mission_deal_with_bandits_rejected", [], "Ah... Very well then, forget I brought it up.", "lord_pretalk",
+[anyone,"lord_mission_deal_with_bandits_rejected", [], "Ah... Very well then, forget I brought it up.", "lord_pretalk",
    [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-# Raise troops
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_raise_troops"),
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_raise_troops"),
   ##diplomacy start+ Change "sword" to another weapon if appropriate, and likewise for "men"
   (try_begin),
      (call_script, "script_cf_dplmc_faction_has_bias_against_gender", "$g_encountered_party_faction", 0),
@@ -12176,8 +9022,8 @@ I'd like nothing better than to go out there and teach them a lesson,\
  	(call_script, "script_lord_comment_to_s43", "$g_talk_troop", "str_troop_train_request_default"),
 
      ]],
-  [anyone|plyr,"lord_tell_mission_raise_troops", [], "How many men do you need?", "lord_tell_mission_raise_troops_2",[]],
-  [anyone,"lord_tell_mission_raise_troops_2", [], "If you can raise {reg1} {s14} and bring them to me, that will probably be enough.", "lord_mission_raise_troops_told",
+[anyone|plyr,"lord_tell_mission_raise_troops", [], "How many men do you need?", "lord_tell_mission_raise_troops_2",[]],
+[anyone,"lord_tell_mission_raise_troops_2", [], "If you can raise {reg1} {s14} and bring them to me, that will probably be enough.", "lord_mission_raise_troops_told",
    [
      (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
      (quest_get_slot, reg1, "$random_quest_no", slot_quest_target_amount),
@@ -12189,10 +9035,10 @@ I'd like nothing better than to go out there and teach them a lesson,\
      (str_store_string, s2, "@{s9} asked you to raise {reg1} {s14} and bring them to {reg65?her:him}."),
 	 ##diplomcay end+
    ]],
-  [anyone|plyr,"lord_mission_raise_troops_told", [(quest_get_slot, reg1, "$random_quest_no", slot_quest_target_amount)],
+[anyone|plyr,"lord_mission_raise_troops_told", [(quest_get_slot, reg1, "$random_quest_no", slot_quest_target_amount)],
    "Of course, {s65}. Give me {reg1} fresh recruits and I'll train them to be {s14}.", "lord_mission_raise_troops_accepted",[]],
-  [anyone|plyr,"lord_mission_raise_troops_told", [], "I am too busy these days to train anyone.", "lord_mission_raise_troops_rejected",[]],
-  [anyone,"lord_mission_raise_troops_accepted", [], "You've taken a weight off my shoulders, {playername}.\
+[anyone|plyr,"lord_mission_raise_troops_told", [], "I am too busy these days to train anyone.", "lord_mission_raise_troops_rejected",[]],
+[anyone,"lord_mission_raise_troops_accepted", [], "You've taken a weight off my shoulders, {playername}.\
  I shall tell my sergeants to send you the recruits and attach them to your command.\
  Also, I'll advance you some money to help with expenses. Here, this purse should do it.\
  Thank you for your help.", "close_window",
@@ -12204,10 +9050,9 @@ I'd like nothing better than to go out there and teach them a lesson,\
     (call_script, "script_change_player_relation_with_troop","$g_talk_troop",1),
     (assign, "$g_leave_encounter",1),
    ]],
-  [anyone,"lord_mission_raise_troops_rejected", [], "Oh, of course. I had expected as much. Well, good luck to you then.", "lord_pretalk",
+[anyone,"lord_mission_raise_troops_rejected", [], "Oh, of course. I had expected as much. Well, good luck to you then.", "lord_pretalk",
    [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-#Collect Taxes
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_collect_taxes"),
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_collect_taxes"),
                                 (assign, reg9, 0),
                                 (try_begin),
                                   (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
@@ -12229,10 +9074,10 @@ I'd like nothing better than to go out there and teach them a lesson,\
      (str_store_string, s2, "@{s9} asked you to collect taxes from {s3}. {reg65?She:He} offered to leave you one-fifth of all the money you collect there."),
 	 ##diplomacy end+
    ]],
-  [anyone|plyr,"lord_mission_collect_taxes_told", [],
+[anyone|plyr,"lord_mission_collect_taxes_told", [],
    "A fair offer, {s65}. We have an agreement.", "lord_mission_collect_taxes_accepted",[]],
-  [anyone|plyr,"lord_mission_collect_taxes_told", [], "Forgive me, I don't have the time.", "lord_mission_collect_taxes_rejected",[]],
-  [anyone,"lord_mission_collect_taxes_accepted", [], "Welcome news, {playername}.\
+[anyone|plyr,"lord_mission_collect_taxes_told", [], "Forgive me, I don't have the time.", "lord_mission_collect_taxes_rejected",[]],
+[anyone,"lord_mission_collect_taxes_accepted", [], "Welcome news, {playername}.\
  I will entrust this matter to you.\
  Remember, those {reg9?townsmen:peasants} are foxy beasts, they will make every excuse not to pay me my rightful incomes.\
  Do not let them fool you.", "close_window",
@@ -12246,10 +9091,9 @@ I'd like nothing better than to go out there and teach them a lesson,\
       (assign, reg9, 1),
     (try_end),
    ]],
-  [anyone,"lord_mission_collect_taxes_rejected", [], "Oh, yes. Well, good luck to you then.", "lord_pretalk",
+[anyone,"lord_mission_collect_taxes_rejected", [], "Oh, yes. Well, good luck to you then.", "lord_pretalk",
    [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-#Hunt down fugitive
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_hunt_down_fugitive")],
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_hunt_down_fugitive")],
    "I have something you could help with, an issue with the lawless villain known as {s4}. \
  He murdered one of my men and has been on the run from his judgment ever since.\
  I can't let him get away with avoiding justice, so I've put a bounty of 300 mon on his head.\
@@ -12265,10 +9109,10 @@ I'd like nothing better than to go out there and teach them a lesson,\
      (setup_quest_text, "$random_quest_no"),
      (str_store_string, s2, "@{s9} asked you to hunt down a fugitive named {s4}. He is currently believed to be at {s3}."),
    ]],
-  [anyone|plyr,"lord_mission_hunt_down_fugitive_told", [],
+[anyone|plyr,"lord_mission_hunt_down_fugitive_told", [],
    "Then I will hunt him down and execute the law.", "lord_mission_hunt_down_fugitive_accepted",[]],
-  [anyone|plyr,"lord_mission_hunt_down_fugitive_told", [], "I am too busy to go after him at the moment.", "lord_mission_hunt_down_fugitive_rejected",[]],
-  [anyone,"lord_mission_hunt_down_fugitive_accepted", [], "That's excellent, {playername}.\
+[anyone|plyr,"lord_mission_hunt_down_fugitive_told", [], "I am too busy to go after him at the moment.", "lord_mission_hunt_down_fugitive_rejected",[]],
+[anyone,"lord_mission_hunt_down_fugitive_accepted", [], "That's excellent, {playername}.\
  I will be grateful to you and so will the family of the man he murdered.\
  And of course the bounty on his head will be yours if you can get him.\
  Well, good hunting to you.", "close_window",
@@ -12276,28 +9120,10 @@ I'd like nothing better than to go out there and teach them a lesson,\
     (call_script, "script_change_player_relation_with_troop","$g_talk_troop",1),
     (assign, "$g_leave_encounter",1),
    ]],
-  [anyone,"lord_mission_hunt_down_fugitive_rejected", [], "As you wish, {playername}.\
+[anyone,"lord_mission_hunt_down_fugitive_rejected", [], "As you wish, {playername}.\
 I suppose there are plenty of bounty hunters around to get the job done . . .", "lord_pretalk",
    [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-##  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_capture_messenger")],
-##   "The enemy seems to be preparing for some kind of action and I want to know what their plans are.\
-## Capture one of their messengers and bring him to me.", "lord_mission_told",
-##   [
-##       (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
-##
-##       (str_store_troop_name_link,1,"$g_talk_troop"),
-##       (str_store_party_name_link,2,"$g_encountered_party"),
-##       (str_store_troop_name,3,":quest_target_troop"),
-##       (setup_quest_text,"$random_quest_no"),
-##       (try_begin),
-##         (is_between, "$g_encountered_party", centers_begin, centers_end),
-##         (setup_quest_giver, "$random_quest_no", "str_given_by_s1_at_s2"),
-##       (else_try),
-##         (setup_quest_giver,"$random_quest_no", "str_given_by_s1_in_wilderness"),
-##       (try_end),
-##   ]],
-##
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_kill_local_merchant")],
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_kill_local_merchant")],
    "The wretched truth is that I owe a considerable sum of money to one of the merchants here in {s3}.\
  I've no intention of paying it back, of course, but that loud-mouthed fool is making a terrible fuss about it.\
  He even had the audacity to come and threaten me -- me! --\
@@ -12309,9 +9135,9 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
        (setup_quest_text,"$random_quest_no"),
        (str_store_string, s2, "@{s9} asked you to assassinate a local merchant at {s3}."),
    ]],
-  [anyone|plyr,"lord_mission_told_kill_local_merchant", [], "Worry not, he shan't breathe a word.", "lord_mission_accepted_kill_local_merchant",[]],
-  [anyone|plyr,"lord_mission_told_kill_local_merchant", [], "I'm no common murderer, sir. Find someone else for your dirty job.", "lord_mission_rejected",[]],
-  [anyone,"lord_mission_accepted_kill_local_merchant", [], "Very good. I trust in your skill and discretion,\
+[anyone|plyr,"lord_mission_told_kill_local_merchant", [], "Worry not, he shan't breathe a word.", "lord_mission_accepted_kill_local_merchant",[]],
+[anyone|plyr,"lord_mission_told_kill_local_merchant", [], "I'm no common murderer, sir. Find someone else for your dirty job.", "lord_mission_rejected",[]],
+[anyone,"lord_mission_accepted_kill_local_merchant", [], "Very good. I trust in your skill and discretion,\
  {playername}. Do not disappoint me.\
  Go now and wait for my word, I'll send you a message telling when and where you can catch the merchant.\
  Dispose of him for me and I shall reward you generously.", "close_window",
@@ -12321,7 +9147,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     (rest_for_hours, 10, 4, 0),
     (finish_mission),
     ]],
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_meet_spy_in_enemy_town"),
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_meet_spy_in_enemy_town"),
                                 (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
                                 (str_store_party_name, s13, ":quest_target_center"),
                                 (store_faction_of_party,":quest_target_center_faction",),
@@ -12330,9 +9156,9 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    "I have a sensitive matter which needs tending to, {playername}, and no trustworthy retainers to take care of it. The fact is that I have a spy in {s13} to keep an eye on things for me, and report anything that might warrant my attention. Every week I send someone to collect the spy's reports and bring them back to me. The job's yours if you wish it.", "lord_mission_told_meet_spy_in_enemy_town",
    [
    ]],
-  [anyone|plyr,"lord_mission_told_meet_spy_in_enemy_town", [], "I don't mind a bit of skullduggery. Count me in.", "quest_meet_spy_in_enemy_town_accepted",[]],
-  [anyone|plyr,"lord_mission_told_meet_spy_in_enemy_town", [], "I must decline. This cloak-and-dagger work isn't fit for me.", "quest_meet_spy_in_enemy_town_rejected",[]],
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_cause_provocation"),
+[anyone|plyr,"lord_mission_told_meet_spy_in_enemy_town", [], "I don't mind a bit of skullduggery. Count me in.", "quest_meet_spy_in_enemy_town_accepted",[]],
+[anyone|plyr,"lord_mission_told_meet_spy_in_enemy_town", [], "I must decline. This cloak-and-dagger work isn't fit for me.", "quest_meet_spy_in_enemy_town_rejected",[]],
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_cause_provocation"),
                                 (quest_get_slot, ":quest_target_faction", "$random_quest_no", slot_quest_target_faction),
                                 (str_store_faction_name_link, s13, ":quest_target_faction")],
    "This peace with {s13} ill suits me, {playername}. We've let those swine have their way for far too long.\
@@ -12342,9 +9168,9 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
  Witless cowards with no stomach for blood.", "lord_mission_told_raid_caravan_to_start_war",
    [
    ]],
-  [anyone|plyr,"lord_mission_told_raid_caravan_to_start_war", [], "You are right, {s65}, but what can we do?", "lord_mission_tell_raid_caravan_to_start_war_2",[]],
-  [anyone|plyr,"lord_mission_told_raid_caravan_to_start_war", [], "I disagree, sir. It is better that there be peace.", "quest_raid_caravan_to_start_war_rejected_1",[]],
-  [anyone,"lord_mission_tell_raid_caravan_to_start_war_2", [(quest_get_slot, ":quest_target_faction", "$random_quest_no", slot_quest_target_faction),
+[anyone|plyr,"lord_mission_told_raid_caravan_to_start_war", [], "You are right, {s65}, but what can we do?", "lord_mission_tell_raid_caravan_to_start_war_2",[]],
+[anyone|plyr,"lord_mission_told_raid_caravan_to_start_war", [], "I disagree, sir. It is better that there be peace.", "quest_raid_caravan_to_start_war_rejected_1",[]],
+[anyone,"lord_mission_tell_raid_caravan_to_start_war_2", [(quest_get_slot, ":quest_target_faction", "$random_quest_no", slot_quest_target_faction),
                                                             (str_store_faction_name_link, s13, ":quest_target_faction"),
 															(str_store_faction_name, s14, "$g_talk_troop_faction")],
    "Ah, 'tis good to hear someone who understands!\
@@ -12354,18 +9180,18 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
  they would have ample cause to declare war on us.\
  And then, well, even the cowards among us must rise to defend themselves.\
  So what do you say? Are you interested?", "lord_mission_tell_raid_caravan_to_start_war_3",[]],
-  [anyone|plyr,"lord_mission_tell_raid_caravan_to_start_war_3", [], "An excellent plan. Count me in.", "quest_raid_caravan_to_start_war_accepted",[]],
-  [anyone|plyr,"lord_mission_tell_raid_caravan_to_start_war_3", [], "Why don't you do that yourself?", "lord_mission_tell_raid_caravan_to_start_war_4",[]],
-  [anyone,"lord_mission_tell_raid_caravan_to_start_war_4", [
+[anyone|plyr,"lord_mission_tell_raid_caravan_to_start_war_3", [], "An excellent plan. Count me in.", "quest_raid_caravan_to_start_war_accepted",[]],
+[anyone|plyr,"lord_mission_tell_raid_caravan_to_start_war_3", [], "Why don't you do that yourself?", "lord_mission_tell_raid_caravan_to_start_war_4",[]],
+[anyone,"lord_mission_tell_raid_caravan_to_start_war_4", [
   	], "Well, {playername}, some of the lords in our kingdom\
  won't like the idea of someone inciting a war without their consent.\
  They are already looking for an excuse to get at me, and if I did this they could make me pay for it dearly.\
  You, on the other hand, are young and well-liked and daring, so you might just get away with it.\
  And of course I will back you up and defend your actions against your opponents.\
  All in all, a few lords might be upset at your endeavour, but I am sure you won't be bothered with that.", "lord_mission_tell_raid_caravan_to_start_war_5",[]],
-  [anyone|plyr,"lord_mission_tell_raid_caravan_to_start_war_5", [], "That seems reasonable. I am willing to do this.", "quest_raid_caravan_to_start_war_accepted",[]],
-  [anyone|plyr,"lord_mission_tell_raid_caravan_to_start_war_5", [], "I don't like this. Find yourself someone else to take the blame for your schemes.", "quest_raid_caravan_to_start_war_rejected_2",[]],
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_bring_back_runaway_serfs")],
+[anyone|plyr,"lord_mission_tell_raid_caravan_to_start_war_5", [], "That seems reasonable. I am willing to do this.", "quest_raid_caravan_to_start_war_accepted",[]],
+[anyone|plyr,"lord_mission_tell_raid_caravan_to_start_war_5", [], "I don't like this. Find yourself someone else to take the blame for your schemes.", "quest_raid_caravan_to_start_war_rejected_2",[]],
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_bring_back_runaway_serfs")],
  "Well, some of the pesants working my fields in {s4} have run away. The ungrateful swine,\
  I let them plough my fields and rent my cottages, and this is how they repay me!\
  From what I've been hearing, they're running to {s3} as fast as they can,\
@@ -12383,25 +9209,25 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
        (setup_quest_text,"$random_quest_no"),
        (str_store_string, s2, "str_s9_asked_you_to_catch_the_three_groups_of_runaway_serfs_and_bring_them_back_to_s4_alive_and_breathing_he_said_that_all_three_groups_are_heading_towards_s3"),
     ]],
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_follow_spy")],
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_follow_spy")],
  "I have good information that a man in this very town is actually an enemy spy.\
  He should be seized and hanged for his impudence,\
  but we also believe that very soon he will leave town to meet with his master,\
  the man to whom the spy feeds all his little whispers.\
  The spy himself is of little import, but the master is a dangerous man, and could tell us a great deal\
  if we could only get our hands on him...", "lord_tell_mission_follow_spy",[]],
-  [anyone,"lord_tell_mission_follow_spy", [],
+[anyone,"lord_tell_mission_follow_spy", [],
  "I want you to wait here until the spy leaves town. Then you must follow him, stealthily, to the meeting place.\
  You must take absolute care not to be seen by the spy on your way, else he may suspect foul play and turn back.\
  When the master appears, you must ambush and arrest them and bring the pair back to me.\
  Alive, if you please.", "lord_tell_mission_follow_spy_2",
    [
     ]],
-  [anyone|plyr, "lord_tell_mission_follow_spy_2", [],
+[anyone|plyr, "lord_tell_mission_follow_spy_2", [],
  "I'll do it, {s65}.", "lord_tell_mission_follow_spy_accepted", []],
-  [anyone|plyr, "lord_tell_mission_follow_spy_2", [],
+[anyone|plyr, "lord_tell_mission_follow_spy_2", [],
  "No, this skulking is not for me.", "lord_tell_mission_follow_spy_rejected", []],
-  [anyone,"lord_tell_mission_follow_spy_accepted", [],
+[anyone,"lord_tell_mission_follow_spy_accepted", [],
    "Good, I'm sure you'll do a fine job of it. One of my men will point the spy out to you when he leaves,\
  so you will know the man to follow. Remember, I want them both, and I want them alive.", "close_window",
    [
@@ -12428,10 +9254,10 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
      (rest_for_hours, 2, 4, 0),
      #no need to set g_leave_encounter to 1 since this quest can only be given at a town
    ]],
-  [anyone,"lord_tell_mission_follow_spy_rejected", [],
+[anyone,"lord_tell_mission_follow_spy_rejected", [],
    "A shame. Well, carry on as you were, {playername}...", "lord_pretalk",
    [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_capture_enemy_hero")],
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_capture_enemy_hero")],
  "There is a difficult job I need done, {playername}, and you may be the {man/one} who can carry it off.\
  I need someone to capture one of the noble lords of {s13} and bring him to me.\
  Afterwards, I'll be able to exchange him in return for a relative of mine held by {s13}.\
@@ -12441,11 +9267,11 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
      (quest_get_slot, ":quest_target_faction", "$random_quest_no", slot_quest_target_faction),
      (str_store_faction_name, s13, ":quest_target_faction"),
     ]],
-  [anyone|plyr, "lord_tell_mission_capture_enemy_hero", [],
+[anyone|plyr, "lord_tell_mission_capture_enemy_hero", [],
  "Consider it done, {s65}.", "lord_tell_mission_capture_enemy_hero_accepted", []],
-  [anyone|plyr, "lord_tell_mission_capture_enemy_hero", [],
+[anyone|plyr, "lord_tell_mission_capture_enemy_hero", [],
  "I must refuse, {s65}. I am not a kidnapper.", "lord_tell_mission_capture_enemy_hero_rejected", []],
-  [anyone,"lord_tell_mission_capture_enemy_hero_accepted", [],
+[anyone,"lord_tell_mission_capture_enemy_hero_accepted", [],
    "I like your spirit! Go and bring me one of our enemies,\
  and I'll toast your name in my hall when you return! And reward you for your efforts, of course...", "close_window",
    [
@@ -12459,10 +9285,10 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
      (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
      (assign, "$g_leave_encounter",1),
    ]],
-  [anyone,"lord_tell_mission_capture_enemy_hero_rejected", [],
+[anyone,"lord_tell_mission_capture_enemy_hero_rejected", [],
    "Clearly you lack the mettle I had thought you possessed. Very well, {playername}, I will find someone else.", "lord_pretalk",
    [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_lend_companion")],
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_lend_companion")],
  "I don't have a job for you right now, but your companion {s3} is a skilled {reg3?lass:fellow}\
  and I need someone with {reg3?her:his} talents. Will you lend {reg3?her:him} to me for a while?", "lord_tell_mission_lend_companion",
    [
@@ -12478,17 +9304,17 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	   ##diplomacy end+
        (str_store_string, s2, "@{s9} asked you to lend your companion {s3} to him for a week."),
     ]],
-  [anyone|plyr,"lord_tell_mission_lend_companion", [],
+[anyone|plyr,"lord_tell_mission_lend_companion", [],
  "How long will you be needing {reg3?her:him}?", "lord_tell_mission_lend_companion_2", []],
-  [anyone,"lord_tell_mission_lend_companion_2", [],
+[anyone,"lord_tell_mission_lend_companion_2", [],
  "Just a few days, a week at most.", "lord_mission_lend_companion_told", []],
-  [anyone|plyr,"lord_mission_lend_companion_told",
+[anyone|plyr,"lord_mission_lend_companion_told",
    [(quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),(str_store_troop_name,s3,":quest_target_troop"),],
    "Then I will leave {s3} with you for one week.", "lord_tell_mission_lend_companion_accepted", []],
-  [anyone|plyr,"lord_mission_lend_companion_told", [(quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
+[anyone|plyr,"lord_mission_lend_companion_told", [(quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
                                                     (str_store_troop_name,s3,":quest_target_troop"),],
    "I am sorry, but I cannot do without {s3} for a whole week.", "lord_tell_mission_lend_companion_rejected", []],
-  [anyone,"lord_tell_mission_lend_companion_accepted", [],
+[anyone,"lord_tell_mission_lend_companion_accepted", [],
    "I cannot thank you enough, {playername}. Worry not, your companion shall be returned to you with due haste.", "close_window",
    [(call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
     (call_script, "script_change_player_relation_with_troop","$g_talk_troop",1),
@@ -12496,11 +9322,11 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     (party_remove_members, "p_main_party", ":quest_target_troop", 1),
     (assign, "$g_leave_encounter",1),
    ]],
-  [anyone,"lord_tell_mission_lend_companion_rejected", [],
+[anyone,"lord_tell_mission_lend_companion_rejected", [],
    "Well, that's damned unfortunate, but I suppose I cannot force you or {s3} to agree.\
  I shall have to make do without.", "lord_pretalk",
    [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_collect_debt"),
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_collect_debt"),
   ##diplomacy start+ correct gender of s3 using reg0
   (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
   (call_script, "script_dplmc_store_troop_is_female",  ":quest_target_troop"),
@@ -12523,20 +9349,18 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	 #Next line: changed "him" to "{reg65?her:him}"
      (str_store_string, s2, "@{s9} asked you to collect the debt of {reg4} mon {s3} owes to {reg65?her:him}. {s3} was at {s4} when you were given this quest."),
    ]],
-  ##diplomacy end+
-  [anyone|plyr,"lord_tell_mission_collect_debt", [],
+[anyone|plyr,"lord_tell_mission_collect_debt", [],
  "Do you know where I can find {s3}, {s65}?", "lord_tell_mission_collect_debt_2", []],
-  [anyone,"lord_tell_mission_collect_debt_2", [
+[anyone,"lord_tell_mission_collect_debt_2", [
   ##diplomacy start+ correct gender of s3 using reg0
   (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),#added
   (call_script, "script_dplmc_store_troop_is_female",  ":quest_target_troop"),#added
   ],#Next line, change pronouns:
  "If you leave now, you should be able to find {reg0?her:him} at {s4}.\
  I've no doubt that {reg0?she:he} will be suitably embarassed by {reg0?her:his} conduct and give you all the money {reg0?she:he} owes me.", "lord_tell_mission_collect_debt_3", []],
- ##diplomacy end+
-  [anyone|plyr,"lord_tell_mission_collect_debt_3", [], "Then I will talk to {s3} on your behalf.", "lord_tell_mission_collect_debt_accepted", []],
-  [anyone|plyr,"lord_tell_mission_collect_debt_3", [], "Forgive me, {s65}, but I doubt I would be more successful than yourself.", "lord_tell_mission_collect_debt_rejected", []],
-  [anyone,"lord_tell_mission_collect_debt_accepted", [
+[anyone|plyr,"lord_tell_mission_collect_debt_3", [], "Then I will talk to {s3} on your behalf.", "lord_tell_mission_collect_debt_accepted", []],
+[anyone|plyr,"lord_tell_mission_collect_debt_3", [], "Forgive me, {s65}, but I doubt I would be more successful than yourself.", "lord_tell_mission_collect_debt_rejected", []],
+[anyone,"lord_tell_mission_collect_debt_accepted", [
 ##diplomacy start+ correct gender of s3 using reg0
   (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),#added
   (call_script, "script_dplmc_store_troop_is_female",  ":quest_target_troop"),#added
@@ -12547,44 +9371,9 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     (call_script, "script_change_player_relation_with_troop","$g_talk_troop", 1),
     (assign, "$g_leave_encounter",1),
    ]],
-  [anyone,"lord_tell_mission_collect_debt_rejected", [], "Perhaps not, {playername}. I suppose I'm never getting that money back...", "lord_pretalk",
+[anyone,"lord_tell_mission_collect_debt_rejected", [], "Perhaps not, {playername}. I suppose I'm never getting that money back...", "lord_pretalk",
    [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-##
-##  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_capture_conspirators")],
-## "TODO: I want you to capture troops in {reg1} conspirator parties that plan to rebel against me and join {s3}.", "lord_mission_told",
-##   [
-##       (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
-##       (assign, reg1, "$qst_capture_conspirators_num_parties_to_spawn"),
-##       (str_store_troop_name_link,1,"$g_talk_troop"),
-##       (str_store_party_name_link,2,"$g_encountered_party"),
-##       (str_store_troop_name,3,":quest_target_troop"),
-##       (setup_quest_text,"$random_quest_no"),
-##       (try_begin),
-##         (is_between, "$g_encountered_party", centers_begin, centers_end),
-##         (setup_quest_giver, "$random_quest_no", "str_given_by_s1_at_s2"),
-##       (else_try),
-##         (setup_quest_giver,"$random_quest_no", "str_given_by_s1_in_wilderness"),
-##       (try_end),
-##    ]],
-##
-##
-##  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_defend_nobles_against_peasants")],
-## "TODO: I want you to defend {reg1} noble parties against peasants.", "lord_mission_told",
-##   [
-##       (assign, reg1, "$qst_defend_nobles_against_peasants_num_noble_parties_to_spawn"),
-##       (str_store_troop_name_link,1,"$g_talk_troop"),
-##       (str_store_party_name_link,2,"$g_encountered_party"),
-##       (setup_quest_text,"$random_quest_no"),
-##       (try_begin),
-##         (is_between, "$g_encountered_party", centers_begin, centers_end),
-##         (setup_quest_giver, "$random_quest_no", "str_given_by_s1_at_s2"),
-##       (else_try),
-##         (setup_quest_giver,"$random_quest_no", "str_given_by_s1_in_wilderness"),
-##       (try_end),
-##    ]],
-##
-##
-  [anyone,"lord_tell_mission", [(eq, "$random_quest_no", "qst_incriminate_loyal_commander"),
+[anyone,"lord_tell_mission", [(eq, "$random_quest_no", "qst_incriminate_loyal_commander"),
                                 (quest_get_slot, ":quest_target_troop", "qst_incriminate_loyal_commander", slot_quest_target_troop),
                                 (quest_get_slot, ":quest_object_troop", "qst_incriminate_loyal_commander", slot_quest_object_troop),
                                 (quest_get_slot, ":quest_target_center", "qst_incriminate_loyal_commander", slot_quest_target_center),
@@ -12600,16 +9389,14 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
  As long as {reg3?she:he} has {reg3?her:his} vassal aiding {reg3?her:him}, it will be a difficult job beating {reg3?her:him}.\
  So I need to get {s15} out of the picture, and I have a plan just to do that...\
  With your help, naturally.", "lord_tell_mission_incriminate_commander",[]],
- ##diplomacy end+
-
-  [anyone|plyr,"lord_tell_mission_incriminate_commander", [], "{s66}, I am all ears.", "lord_tell_mission_incriminate_commander_2",[]],
-  [anyone|plyr,"lord_tell_mission_incriminate_commander", [], "I don't wish to involve myself in anything dishonourable against {s15}.", "lord_tell_mission_incriminate_commander_rejected",[]],
-  [anyone,"lord_tell_mission_incriminate_commander_rejected", [], "Dishonourable? Bah!\
+[anyone|plyr,"lord_tell_mission_incriminate_commander", [], "{s66}, I am all ears.", "lord_tell_mission_incriminate_commander_2",[]],
+[anyone|plyr,"lord_tell_mission_incriminate_commander", [], "I don't wish to involve myself in anything dishonourable against {s15}.", "lord_tell_mission_incriminate_commander_rejected",[]],
+[anyone,"lord_tell_mission_incriminate_commander_rejected", [], "Dishonourable? Bah!\
  I was hoping I could count on you, {playername}, but you've shown me what a fool I was.\
  I shall have to find someone whose loyalty I can trust.", "lord_pretalk",
    [(call_script, "script_change_player_relation_with_troop","$g_talk_troop",-5),
     (call_script, "script_change_player_honor", 2)]],
-  [anyone,"lord_tell_mission_incriminate_commander_2", [
+[anyone,"lord_tell_mission_incriminate_commander_2", [
 	##diplomacy start+ use correct gender for the other lord "s13" using reg3 (may be female)
 	(quest_get_slot, ":quest_target_troop", "qst_incriminate_loyal_commander", slot_quest_target_troop),
 	(call_script, "script_dplmc_store_troop_is_female_reg", ":quest_target_troop", 3),
@@ -12622,19 +9409,17 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
  bearing my own seal, which implicates {reg4?her:him} in a conspiracy with us to stage a coup in {s14}, in my favour.\
  If we can make {s13} believe the letter is genuine, {reg3?she:he} will deal with {s15} very swiftly.\
  Of course, the challenge there is to convince {s13} that the letter is indeed real...", "lord_tell_mission_incriminate_commander_3",[]],
- ##diplomacy end+
-
-  [anyone|plyr,"lord_tell_mission_incriminate_commander_3", [], "Please continue, {s65}...", "lord_tell_mission_incriminate_commander_4",[]],
-  [anyone|plyr,"lord_tell_mission_incriminate_commander_3", [], "No, I will not sully myself with this dishonourable scheme.", "lord_tell_mission_incriminate_commander_rejected",[]],
-  [anyone,"lord_tell_mission_incriminate_commander_4", [], "This is where you come into play.\
+[anyone|plyr,"lord_tell_mission_incriminate_commander_3", [], "Please continue, {s65}...", "lord_tell_mission_incriminate_commander_4",[]],
+[anyone|plyr,"lord_tell_mission_incriminate_commander_3", [], "No, I will not sully myself with this dishonourable scheme.", "lord_tell_mission_incriminate_commander_rejected",[]],
+[anyone,"lord_tell_mission_incriminate_commander_4", [], "This is where you come into play.\
  You'll take the letter to {s14}, then give it to one of your soldiers and instruct him to take it to {s15}.\
  I will have one of my spies inform the town garrison so that your man will be arrested on his way.\
  The guards will then find the letter and take it to {s13}.\
  They'll torture your man, of course, to try and get the truth out of him,\
  but all he knows is that you ordered the letter to be delivered to {s15} under the utmost secrecy.\
  {s13} knows you serve me, and the fool will certainly believe the whole charade.", "lord_tell_mission_incriminate_commander_5",[]],
-  [anyone|plyr,"lord_tell_mission_incriminate_commander_5", [], "Is that all?", "lord_tell_mission_incriminate_commander_7",[]],
-  [anyone,"lord_tell_mission_incriminate_commander_7", [(str_store_troop_name, s8, "$incriminate_quest_sacrificed_troop"),
+[anyone|plyr,"lord_tell_mission_incriminate_commander_5", [], "Is that all?", "lord_tell_mission_incriminate_commander_7",[]],
+[anyone,"lord_tell_mission_incriminate_commander_7", [(str_store_troop_name, s8, "$incriminate_quest_sacrificed_troop"),
                                                         (str_store_troop_name_plural, s9, "$incriminate_quest_sacrificed_troop"),
        ##diplomacy start+ use correct gender for the other lord "s13" using reg3 (may be female)
 	   (quest_get_slot, ":quest_target_troop", "qst_incriminate_loyal_commander", slot_quest_target_troop),
@@ -12643,16 +9428,14 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
  Your messenger must be someone trustworthy. If you sent the letter with a simple peasant, someone expendable,\
  {s13} might suspect a plot. {reg3?She:He} may have the wits of a snail, but even a snail can see the obvious.\
  Give the letter to someone of rank. One of your {s9}, perhaps.", "lord_tell_mission_incriminate_commander_8",[]],
-#changed "He" to "{reg3?She:He}"
- ##diplomacy end+
-  [anyone|plyr,"lord_tell_mission_incriminate_commander_8", [], "What? I can't send one of my trusted {s9} to his death!", "lord_tell_mission_incriminate_commander_9",[]],
-  [anyone|plyr,"lord_tell_mission_incriminate_commander_8", [], "Then a {s8} it will be.", "lord_tell_mission_incriminate_commander_fin",[]],
-  [anyone,"lord_tell_mission_incriminate_commander_9", [], "Come now, {playername}.\
+[anyone|plyr,"lord_tell_mission_incriminate_commander_8", [], "What? I can't send one of my trusted {s9} to his death!", "lord_tell_mission_incriminate_commander_9",[]],
+[anyone|plyr,"lord_tell_mission_incriminate_commander_8", [], "Then a {s8} it will be.", "lord_tell_mission_incriminate_commander_fin",[]],
+[anyone,"lord_tell_mission_incriminate_commander_9", [], "Come now, {playername}.\
  There is a place for sentimentality, but this is not it. Believe me, you shall be generously compensated,\
  and what is the purpose of soldiers if not to die at our say-so?", "lord_tell_mission_incriminate_commander_10",[]],
-  [anyone|plyr,"lord_tell_mission_incriminate_commander_10", [], "A {s8} it is.", "lord_tell_mission_incriminate_commander_fin",[]],
-  [anyone|plyr,"lord_tell_mission_incriminate_commander_10", [], "No, I'll not sacrifice one of my chosen men.", "lord_tell_mission_incriminate_commander_rejected",[]],
- [anyone,"lord_tell_mission_incriminate_commander_fin", [], "I can't tell you how pleased I am to hear that,\
+[anyone|plyr,"lord_tell_mission_incriminate_commander_10", [], "A {s8} it is.", "lord_tell_mission_incriminate_commander_fin",[]],
+[anyone|plyr,"lord_tell_mission_incriminate_commander_10", [], "No, I'll not sacrifice one of my chosen men.", "lord_tell_mission_incriminate_commander_rejected",[]],
+[anyone,"lord_tell_mission_incriminate_commander_fin", [], "I can't tell you how pleased I am to hear that,\
  {playername}. You are removing one of the greatest obstacles in my path.\
  Here is the letter, as well as 300 mon for your expenses.\
  Remember, there'll be more once you succeed. Much, much more...", "lord_pretalk",
@@ -12676,7 +9459,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
        ##diplomacy end+
        (call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
     ]],
-  [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_capture_prisoners")],
+[anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_capture_prisoners")],
  "A group of my soldiers were captured in a recent skirmish with the enemy.\
  Thankfully we have a mutual agreement of prisoner exchange, and they will release my men,\
  but they want us to give them prisoners of equal rank and number. Prisoners I don't currently have.\
@@ -12690,10 +9473,10 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
        (setup_quest_text,"$random_quest_no"),
        (str_store_string, s2, "@{s9} has requested you to bring him {reg1} {s3} as prisoners."),
     ]],
-  [anyone,"lord_tell_mission", [], "No {playername}. I do not need your help at this time.", "lord_pretalk",[]],
-  [anyone|plyr,"lord_mission_told", [], "You can count on me, {s65}.", "lord_mission_accepted",[]],
-  [anyone|plyr,"lord_mission_told", [], "I fear I cannot accept such a mission at the moment.", "lord_mission_rejected",[]],
-  [anyone,"lord_mission_accepted", [], "Excellent, {playername}, excellent. I have every confidence in you.", "close_window",
+[anyone,"lord_tell_mission", [], "No {playername}. I do not need your help at this time.", "lord_pretalk",[]],
+[anyone|plyr,"lord_mission_told", [], "You can count on me, {s65}.", "lord_mission_accepted",[]],
+[anyone|plyr,"lord_mission_told", [], "I fear I cannot accept such a mission at the moment.", "lord_mission_rejected",[]],
+[anyone,"lord_mission_accepted", [], "Excellent, {playername}, excellent. I have every confidence in you.", "close_window",
    [(assign, "$g_leave_encounter",1),
     (try_begin),
       (eq, "$random_quest_no", "qst_escort_lady"),
@@ -12858,7 +9641,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
       (assign, "$lord_requested_to_talk_to", "$g_talk_troop"),
     (try_end),
     ]],
-  [anyone,"lord_mission_rejected", [], "Is that so? Well, I suppose you're just not up to the task.\
+[anyone,"lord_mission_rejected", [], "Is that so? Well, I suppose you're just not up to the task.\
  I shall have to look for somebody with more mettle.", "close_window",
    [(assign, "$g_leave_encounter",1),
     (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),
@@ -12868,20 +9651,16 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     (try_end),
     (troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1),
     ]],
-##### TODO: QUESTS COMMENT OUT END
-
-#Leave
-  [anyone|plyr,"lord_talk",
+[anyone|plyr,"lord_talk",
   [
     (troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
   ], "I must leave now.", "lord_leave_prison",[]],
-  [anyone|plyr,"lord_talk",
+[anyone|plyr,"lord_talk",
   [
     (lt, "$g_talk_troop_faction_relation", 0),
     (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
   ], "This audience is over. I leave now.", "lord_leave",[]],
-##diplomacy start+
-   [anyone|plyr,"lord_talk",
+[anyone|plyr,"lord_talk",
      [
        (troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
        (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
@@ -12893,14 +9672,12 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
        (call_script, "script_change_player_honor", 2),
        (call_script, "script_add_log_entry", logent_lord_defeated_but_let_go_by_player, "trp_player",  -1, "$g_talk_troop", "$g_talk_troop_faction"),
      ]],
-##diplomacy end+
-
-  [anyone|plyr,"lord_talk",
+[anyone|plyr,"lord_talk",
   [
     (ge, "$g_talk_troop_faction_relation", 0),
     (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
   ], "I must beg my leave.", "lord_leave",[]],
-  [anyone,"lord_leave", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
+[anyone,"lord_leave", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
       (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
       (lt, "$g_talk_troop_faction_relation", 0),
       (store_partner_quest,":enemy_lord_quest"),
@@ -12915,11 +9692,11 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    "Before you go, {playername}, I have something to ask of you... We may be enemies in this war,\
  but I pray that you believe, as I do, that we can still be civil towards each other.\
  Thus I hoped that you would be kind enough to assist me in something important to me.", "lord_leave_give_quest",[]],
-  [anyone|plyr,"lord_leave_give_quest", [],
+[anyone|plyr,"lord_leave_give_quest", [],
    "I am listening.", "enemy_lord_tell_mission",[]],
-  [anyone,"lord_leave_prison", [],
+[anyone,"lord_leave_prison", [],
    "We'll meet again.", "close_window",[]],
- [anyone|auto_proceed,"lord_leave", [
+[anyone|auto_proceed,"lord_leave", [
  ##diplomacy start+
 #	(troop_get_type, ":type", "trp_player"),
 #	(eq, ":type", 1),
@@ -12939,341 +9716,24 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    "Farewell, my lady. I shall remain your most ardent admirer.", "close_window",
    [(eq,"$talk_context",tc_party_encounter),
    (assign, "$g_leave_encounter", 1)]],
-  [anyone|auto_proceed,"lord_leave", [(faction_slot_eq,"$g_talk_troop_faction",slot_faction_leader,"$g_talk_troop")],
+[anyone|auto_proceed,"lord_leave", [(faction_slot_eq,"$g_talk_troop_faction",slot_faction_leader,"$g_talk_troop")],
    "Of course, {playername}. Farewell.", "close_window",[(eq,"$talk_context",tc_party_encounter),(assign, "$g_leave_encounter", 1)]],
-  [anyone|auto_proceed,"lord_leave", [(ge,"$g_talk_troop_relation",10)],
+[anyone|auto_proceed,"lord_leave", [(ge,"$g_talk_troop_relation",10)],
    "Good journeys to you, {playername}.", "close_window",[(eq,"$talk_context",tc_party_encounter),(assign, "$g_leave_encounter", 1)]],
-  [anyone|auto_proceed,"lord_leave", [(ge, "$g_talk_troop_faction_relation", 0)],
+[anyone|auto_proceed,"lord_leave", [(ge, "$g_talk_troop_faction_relation", 0)],
    "Yes, yes. Farewell.", "close_window",[(eq,"$talk_context",tc_party_encounter),(assign, "$g_leave_encounter", 1)]],
-  [anyone|auto_proceed,"lord_leave", [],
+[anyone|auto_proceed,"lord_leave", [],
    "We will meet again.", "close_window",[(eq,"$talk_context",tc_party_encounter),(assign, "$g_leave_encounter", 1)]],
-  [anyone,"lady_journey_1", [],
+[anyone,"lady_journey_1", [],
    "I am doing quite fine, {playername}. Thank you for your concern.", "close_window",[]],
-  [anyone|plyr,"spouse_talk",
-   [
-   (eq, "$g_player_minister", "$g_talk_troop"),
-   ],
-   "As you are my chief minister, I wish to speak to about affairs of state", "minister_issues",[
- ]],
- 
-#gekokujo 3.0 integrating 1.158 start
-[anyone|plyr,"spouse_talk", [
-	(check_quest_active, "qst_offer_gift"),
-    (quest_slot_eq, "qst_offer_gift", slot_quest_giver_troop, "$g_talk_troop"),
-	
-    (quest_get_slot, ":target_troop", "qst_offer_gift", slot_quest_target_troop),
-	(str_store_troop_name, s4, ":target_troop"),
-	(player_has_item, "itm_furs"),
-	(player_has_item, "itm_velvet"),
-   ],
-   "I have the materials for {s4}'s gift.", "offer_gift_quest_complete",[
-   ]],
-#gekokujo 3.0 integrating 1.158 end
- 
-  [anyone|plyr,"spouse_talk",
-   [
-   (assign, "$political_quest_to_cancel", -1),
-   (try_begin),
-	(check_quest_active, "qst_offer_gift"),
-	(quest_slot_eq, "qst_offer_gift", slot_quest_giver_troop, "$g_talk_troop"),
-    (assign, "$political_quest_to_cancel", "qst_offer_gift"),
-	(str_store_string, s10, "str_offer_gift_description"),
-   (else_try),
-	(check_quest_active, "qst_resolve_dispute"),
-	(quest_slot_eq, "qst_resolve_dispute", slot_quest_giver_troop, "$g_talk_troop"),
-    (assign, "$political_quest_to_cancel", "qst_resolve_dispute"),
-	(str_store_string, s10, "str_resolve_dispute_description"),
-   (try_end),
-   (gt, "$political_quest_to_cancel", 0),
-   ],
-   "Let's abandon our plan to {s10}.", "spouse_cancel_political_quest",[
- ]],
-  [anyone,"spouse_cancel_political_quest",
-   [],
-   "Are you sure you want to drop that idea?", "spouse_cancel_political_quest_confirm",[
- ]],
-  [anyone|plyr,"spouse_cancel_political_quest_confirm",
-   [],
-   "Yes, I am sure. Let's abandon that idea.", "spouse_pretalk",[
-   (call_script, "script_abort_quest", "$political_quest_to_cancel", 1),
- ]],
-  [anyone|plyr,"spouse_cancel_political_quest_confirm",
-   [],
-   "Actually, never mind.", "spouse_pretalk",[
- ]],
-  [anyone|plyr,"spouse_talk",
-   [],
-   "Let us think of a way to improve our standing in this domain", "combined_political_quests",[
-   (call_script, "script_get_political_quest", "$g_talk_troop"),
-   (assign, "$political_quest_found", reg0),
-   (assign, "$political_quest_target_troop", reg1),
-   (assign, "$political_quest_object_troop", reg2),
- ]],
- ##diplomacy start+ Add "dedicate a tournament" option even after marriage
-  [anyone|plyr,"spouse_talk",
-   [
-	(gt, "$g_player_tournament_placement", 3),
-
-    (this_or_next|troop_slot_ge, "$g_talk_troop", slot_lord_reputation_type, lrep_conventional),
-    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
-		(is_between, "$g_talk_troop", kingdom_ladies_begin, kingdom_ladies_end),
-	],
-   "My {reg65?wife/husband}, I would like to dedicate my successes in this recent tournament to you", "dplmc_spouse_tournament_dedication_reaction",
-	[
-
-	(try_begin),
-		(gt, "$g_player_tournament_placement", 3),
-		(val_sub, "$g_player_tournament_placement", 3),
-		(val_mul, "$g_player_tournament_placement", 2),
-	(else_try),
-		(assign, "$g_player_tournament_placement", 0),
-	(try_end),
-
-    #Other spouses may be jealous.
-	(try_for_range, ":spouse", heroes_begin, heroes_end),#<- Iterate because of the possibility of polygamy
-		(neg|troop_slot_eq, ":spouse", slot_troop_occupation, dplmc_slto_dead),
-		(neq, ":spouse", "$g_talk_troop"),
-		(this_or_next|troop_slot_eq, "trp_player", slot_troop_spouse, ":spouse"),
-		(this_or_next|troop_slot_eq, ":spouse", slot_troop_spouse, "trp_player"),
-			(troop_slot_eq, "trp_player", slot_troop_betrothed, ":spouse"),
-		(call_script, "script_troop_change_relation_with_troop", ":spouse", "trp_player", -1),
-	(try_end),
-
-	(try_begin),
-		(troop_slot_eq, "$g_talk_troop", slot_lady_used_tournament, 1),
-		(val_div, "$g_player_tournament_placement", 3),
-		(str_store_string, s9, "str_another_tournament_dedication_oh_i_suppose_it_is_always_flattering"),
-	(else_try),
-		(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_conventional),
-		(val_mul, "$g_player_tournament_placement", 2),
-		(str_store_string, s9, "str_do_you_why_what_a_most_gallant_thing_to_say"),
-	(else_try),
-		(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
-		(val_div, "$g_player_tournament_placement", 2),
-		(str_store_string, s9, "str_hmm_i_cannot_say_that_i_altogether_approve_of_such_frivolity_but_i_must_confess_myself_a_bit_flattered"),
-	(else_try),
-		(str_store_string, s9, "str_why_thank_you_you_are_most_kind_to_do_so"),
-	(try_end),
-
-	(call_script, "script_troop_change_relation_with_troop", "$g_talk_troop", "trp_player", "$g_player_tournament_placement"),
-	(assign, "$g_player_tournament_placement", 0),
-	(troop_set_slot, "$g_talk_troop", slot_lady_used_tournament, 1),
-	]],
- ##diplomacy end+ (Add "dedicate a tournament" option even after marriage)
-
-  [anyone|plyr, "spouse_talk",
-   [
-	(neg|check_quest_active, "qst_organize_feast"),
-   ],
-   "I was thinking that perhaps we could host a feast", "spouse_organize_feast",[
- ]],
-  [anyone|plyr, "spouse_talk",
-   [
-   ],
-   "Let us take inventory of our household possessions", "spouse_household_possessions",[
-   (change_screen_loot, "trp_household_possessions"),
- ]],
-  [anyone, "spouse_household_possessions",
-   [
-   ],
-   "Anyway, that is the content of our larder.", "spouse_pretalk",[
- ]],
- 
-  [anyone|plyr, "spouse_talk",
-   [], 
-   "Let me see your equipment.", "spouse_review_equipment", 
-   []],
-   
-  [anyone, "spouse_review_equipment", 
-   [], 
-   "Very well, it's all here...", "spouse_pretalk",
-   [(change_screen_equip_other)]],
-  [anyone|plyr,"spouse_talk",
-   [],
-   "We shall speak later, my {wife/husband}", "close_window",[
-   	(assign, "$g_leave_encounter", 1),
- ]],
- #WEDDING CUTSCENE BEGINS HERE
-
-  [anyone, "spouse_pretalk",
-##diplomacy start+ use relation string
-#   [],
-#   "Is there anything else, my {husband/wife}?", "spouse_talk",[
- [	#load relation text into s0
-    (call_script, "script_dplmc_print_player_spouse_says_my_husband_wife_to_s0", "$g_talk_troop", 0),
-    ##diplomacy end+
-],
-	"Is there anything else, {s0}?", "spouse_talk", [
- ]],
-#take inventory
- [anyone,"spouse_organize_feast",
-   [
-   (faction_slot_eq, "$players_kingdom", slot_faction_ai_state, sfai_feast),
-   (faction_slot_eq, "$players_kingdom", slot_faction_ai_object, "$g_encountered_party"),
-	##diplomacy start+ load relation text into s0
-    (call_script, "script_dplmc_print_player_spouse_says_my_husband_wife_to_s0", "$g_talk_troop", 0),
-	##diplomacy end+
-   ],
-##diplomacy start+ use s0
-   "A splendid idea, {s0}. However, let us wait for the current feast here to conclude, before organizing another.", "spouse_pretalk",[
-]],
-##diplomacy end+
-
- [anyone,"spouse_organize_feast",
-   [
-	##diplomacy start+ Handle player is co-ruler of kingdom
-	(assign, ":is_coruler", 0),
-	(try_begin),
-		(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-		(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-		(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-		(assign, ":is_coruler", 1),
-	(try_end),
-	(this_or_next|eq, ":is_coruler", 1),
-	##diplomacy end+
-   (eq, "$players_kingdom", "fac_player_supporters_faction"),
-   (neg|is_between, "$g_player_court", centers_begin, centers_end),
-   	##diplomacy start+ load relation text into s0
-    (call_script, "script_dplmc_print_player_spouse_says_my_husband_wife_to_s0", "$g_talk_troop", 0),
-    ##diplomacy end+
-   ],
-   ##diplomacy start+
-   "A splendid idea, {s0}. However, we must establish a court before hosting a feast.", "spouse_pretalk",[
-   ##diplomacy end+
- ]],
- [anyone,"spouse_organize_feast",
-   [
-	##diplomacy start+ Handle player is co-ruler of kingdom
-	(assign, ":is_coruler", 0),
-	(try_begin),
-		(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-		(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-		(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-		(assign, ":is_coruler", 1),
-	(try_end),
-	(this_or_next|eq, ":is_coruler", 1),
-	##diplomacy end+
-   (eq, "$players_kingdom", "fac_player_supporters_faction"),
-   (store_current_hours, ":hours_since_last_feast"),
-   (faction_get_slot, ":last_feast_time", "$players_kingdom", slot_faction_last_feast_start_time),
-   (val_sub, ":hours_since_last_feast", ":last_feast_time"),
-   (try_begin),
-	(ge, "$cheat_mode", 1),
-	(assign, reg4, ":hours_since_last_feast"),
-	(str_store_faction_name, s4, "$players_kingdom"),
-	(display_message, "@{!}DEBUG -- {reg4} hours since last feast for {s4}"),
-   (try_end),
-   (lt, ":hours_since_last_feast", 120),
-   (store_sub, ":days_to_wait", 168, ":hours_since_last_feast"),
-   (val_div, ":days_to_wait", 24),
-   (assign, reg3, ":days_to_wait"),
-   	##diplomacy start+ load relation text into s0
-    (call_script, "script_dplmc_print_player_spouse_says_my_husband_wife_to_s0", "$g_talk_troop", 0),
-    ##diplomacy end+
-   ],
-   ##diplomacy start+
-   "A splendid idea, {s0}. However, our domain has recently had a feast. Perhaps we should wait another {reg3} days before we organize another one.", "spouse_pretalk",[
-   ##diplomacy end+
-]],
- [anyone,"spouse_organize_feast",
- 	##diplomacy start+ load relation text into s0
-	[
-    (call_script, "script_dplmc_print_player_spouse_says_my_husband_wife_to_s0", "$g_talk_troop", 0),
-   #[],
-   ],
-   "A splendid idea, {s0}. However, to not insult our guests, we must make sure that we can provide a large and varied repast, for the lords, their families, and their retinues. All told, we should count on a couple of hundred mouths to feed, over several days. Let us take an inventory of our household possessions...", "spouse_evaluate_larder_for_feast",[
-   ##diplomacy end+
-]],
-  [anyone, "spouse_evaluate_larder_for_feast",
-   [
-   (call_script, "script_internal_politics_rate_feast_to_s9", "trp_household_possessions", 600, "$players_kingdom", 0),   #party, number of guests, taste, consume items
-   (assign, "$feast_quality", reg0),
-   ],
-   "{s9}",   "spouse_feast_confirm",[]],
-  [anyone|plyr, "spouse_feast_confirm",
-   [
-   ],
-   "Let me add more items to our storehouses",   "spouse_feast_added_items", [
-   (change_screen_loot, "trp_household_possessions"),
-   ]],
-  [anyone, "spouse_feast_added_items",
-   [],
-   "All right -- let me reevalute what is there...",   "spouse_evaluate_larder_for_feast",[]],
-  [anyone|plyr, "spouse_feast_confirm",
-   [
-   (gt, "$feast_quality", 1),
-   ],
-   "Let us dispatch the invitations",   "spouse_feast_confirm_yes", []],
-  [anyone|plyr, "spouse_feast_confirm",
-   [
-   ],
-   "Let us wait, then",   "spouse_pretalk",[]],
-  [anyone, "spouse_feast_confirm_yes",
-   [ (neq, "$players_kingdom", "fac_player_supporters_faction"),],
-   "I shall send word, then, that we will host a feast as soon as conditions in the land permit. You perhaps should continue to stock our larder, so that we may do justice to our reputation for hospitality.",   "spouse_pretalk",[
-
-
-    (assign, ":feast_venue", -1),
-    (try_begin),
-		(is_between, "$g_encountered_party", walled_centers_begin, walled_centers_end),
-		(this_or_next|party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
-			(party_slot_eq, "$g_encountered_party", slot_town_lord, "$g_talk_troop"),
-		(assign, ":feast_venue", "$g_encountered_party"),
-	(else_try),
-		(try_for_range, ":center", walled_centers_begin, walled_centers_end),
-			(eq, ":feast_venue", -1),
-			(this_or_next|party_slot_eq, ":center", slot_town_lord, "trp_player"),
-				(party_slot_eq, ":center", slot_town_lord, "$g_talk_troop"),
-			(assign, ":feast_venue", ":center"),
-		(try_end),
-	(else_try),
-		(is_between, "$g_encountered_party", walled_centers_begin, walled_centers_end),
-		(assign, ":feast_venue", "$g_encountered_party"),
-    (try_end),
-
-
-	(str_store_party_name, s9, ":feast_venue"),
-	(setup_quest_text, "qst_organize_feast"),
-	(str_store_string, s2, "str_you_intend_to_bring_goods_to_s9_in_preparation_for_the_feast_which_will_be_held_as_soon_as_conditions_permit"),
-
-	(quest_set_slot, "qst_organize_feast", slot_quest_target_center, ":feast_venue"),
-	(quest_set_slot, "qst_organize_feast", slot_quest_expiration_days, 30),
-	(call_script, "script_start_quest", "qst_organize_feast", "$g_talk_troop"),
-   ]],
-   [anyone, "spouse_feast_confirm_yes",
-   [
-   ],
-   "Very well, then. Let the feast begin immediately at our court {reg4?here:} in {s9}. You perhaps should continue to stock our larder, so that we may do justice to our reputation for hospitality. You may declare the feast to be concluded at any time, either by beginning a campaign or by letting it be known that the vassals can return to their homes.",   "spouse_pretalk",[
-
-   (str_store_party_name, s9, "$g_player_court"),
-   (setup_quest_text, "qst_organize_feast"),
-   (str_store_string, s2, "str_you_intend_to_bring_goods_to_s9_in_preparation_for_the_feast_which_will_be_held_as_soon_as_conditions_permit"),
-
-   (quest_set_slot, "qst_organize_feast", slot_quest_target_center, "$g_player_court"),
-   (quest_set_slot, "qst_organize_feast", slot_quest_expiration_days, 30),
-   (call_script, "script_start_quest", "qst_organize_feast", "$g_talk_troop"),
-
-   (faction_set_slot, "$players_kingdom", slot_faction_ai_state, sfai_feast),
-   (faction_set_slot, "$players_kingdom", slot_faction_ai_object, "$g_player_court"),
-
-   (assign, "$player_marshal_ai_state", sfai_feast),
-   (assign, "$player_marshal_ai_object", "$g_player_court"),
-
-   (assign, "$g_recalculate_ais", 1),
-   (assign, reg4, 1),
-   (try_begin),
-	(neq, "$g_encountered_party", "$g_player_court"),
-	(assign, reg4, 0),
-   (try_end),
-   ]],
-  [anyone,"lady_stranded_next",
+[anyone,"lady_stranded_next",
   ##diplomacy start+ change to use script_dplmc_print_subordinate_says_sir_madame_to_s0
    #[],
    [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],#added
    "Greetings, {s0}. The tides of war have left me stranded here in this fortress, but I will shortly be departing. ", "close_window",[#changed {sir/my lady} to {s0}
    ##diplomacy end+
  ]],
-  [anyone|plyr,"lady_talk_refugee",
+[anyone|plyr,"lady_talk_refugee",
    [],
    "Of course, my lady", "close_window",[
     (troop_get_slot, ":current_location", "$g_talk_troop", slot_troop_cur_center),
@@ -13285,22 +9745,22 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 		(call_script, "script_troop_change_relation_with_troop", "trp_player", "$g_talk_troop", 1),
     (try_end),
  ]],
-  [anyone|plyr,"lady_talk_refugee",
+[anyone|plyr,"lady_talk_refugee",
    [],
    ##diplomacy start+ Allow the possibility of male versions of the lines
    #changed "my lady" to "{reg65?my lady:sirrah}"
    "You assume wrong, {reg65?my lady:sirrah}!", "lady_captive_talk",[
    ##diplomacy end+
  ]],
-  [anyone,"lady_captive_talk",
+[anyone,"lady_captive_talk",
    [],
    "What?! What infamy is this?", "lady_captive_confirm",[
  ]],
-  [anyone|plyr,"lady_captive_confirm",
+[anyone|plyr,"lady_captive_confirm",
    [],
    "My apologies - you must have misunderstood me. Of course you may leave.", "close_window",[
  ]],
-  [anyone|plyr,"lady_captive_confirm",
+[anyone|plyr,"lady_captive_confirm",
    [],
    "Contact your family to arrange for a ransom, my lady.", "close_window",[
     (troop_set_slot, "$g_talk_troop", slot_troop_prisoner_of_party, "$g_encountered_party"),
@@ -13382,70 +9842,18 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 ##diplomacy end+
 #incomplete -- make sure ransoms are offered for ladies
  ]],
-  [anyone|plyr,"kingdom_lady_captive",
-   [],
-   "Then write to your family, and ask them to hurry up with the ransom!", "close_window",[
- ]],
-#incomplete
-
-
-
-#  [anyone|plyr,"kingdom_lady_captive",
-#   [
-#    (troop_get_slot, ":is_female", "trp_player"),
-#	(eq, ":is_female", 0),
-
-#   (troop_slot_eq, "$g_talk_troop", slot_troop_spouse, -1),
-#   (troop_slot_eq, "trp_player", slot_troop_spouse, -1),
-#   ],
-#   "Then marry me forthwith, and stay here as my wife", "close_window",[
-# ]],#incomplete
-
-
-  [anyone|plyr,"kingdom_lady_captive",
-   [],
-   "I have changed my mind -- you are free to go", "close_window",[
-    ##diplomacy start+
-    #(troop_set_slot, "$g_talk_troop", slot_troop_prisoner_of_party, -1),
-	#(troop_set_slot, "$g_talk_troop", slot_troop_met, 1),
-
-	##Ensure the freeing works properly.
-	(try_begin),
-		#Add this for dual-use situations, such as if the lady is a prisoner of the party
-		(party_count_prisoners_of_type, ":holding_as_prisoner",  "p_main_party", "$g_talk_troop"),
-		(gt, ":holding_as_prisoner", 0),
-		(party_remove_prisoners, "p_main_party", "$g_talk_troop", 1),
-	(else_try),
-		(party_count_prisoners_of_type, ":holding_as_prisoner",  "$g_encountered_party", "$g_talk_troop"),
-		(gt, ":holding_as_prisoner", 0),
-		(party_remove_prisoners, "$g_encountered_party", "$g_talk_troop", 1),
-	(else_try),
-		(troop_get_slot, ":captor_party", "$g_talk_troop", slot_troop_prisoner_of_party),
-		(ge, ":captor_party", 0),
-		(party_count_prisoners_of_type, ":holding_as_prisoner",  ":captor_party", "$g_talk_troop"),
-		(gt, ":holding_as_prisoner", 0),
-		(party_remove_prisoners, ":captor_party", "$g_talk_troop", 1),
-	(try_end),
-
-	(troop_set_slot, "$g_talk_troop", slot_troop_prisoner_of_party, -1),
-	#close any open quests
-	(call_script, "script_remove_troop_from_prison", "$g_talk_troop"),
-	(str_store_troop_name, s7, "$g_talk_troop"),
-	(display_message, "str_dplmc_has_been_set_free"),
-	##diplomacy end+
-	]],
-  [anyone|plyr,"lady_duel_lost",
+[anyone|plyr,"lady_duel_lost",
 	[], "Very well - we must do as tradition demands... Farewell, my lady", "close_window", [
  ]],
-  [anyone|plyr,"lady_duel_lost",
+[anyone|plyr,"lady_duel_lost",
 	[], "Let honor and tradition hang!", "lady_duel_lost_flaunt_conventions", [
 	]],
-  [anyone, "lady_duel_lost_flaunt_conventions",
+[anyone, "lady_duel_lost_flaunt_conventions",
 	[], "Oh, {playername}! Although people will talk, it would so break my heart to no longer be able to see you. We shall ignore this silly, cruel tradition.", "close_window", [
 	(troop_set_slot, "$g_talk_troop", slot_troop_met, 2),
 	(call_script, "script_change_player_honor", -5),
 	]],
-  [anyone, "lady_duel_lost_flaunt_conventions",
+[anyone, "lady_duel_lost_flaunt_conventions",
 	[], "No, {playername} -- I cannot afford to fritter away my good name, and neither can you.", "close_window", [
 	]],
 [anyone,"lady_duel_rep_1",
@@ -13457,7 +9865,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(call_script, "script_troop_change_relation_with_troop", "trp_player", "$g_talk_troop", 1),
     (add_xp_as_reward, 1000),
  ]],
-   [anyone,"lady_duel_rep_2",
+[anyone,"lady_duel_rep_2",
    [##diplomacy start+
 	#check pronouns in case it's possible for the other lord to be a woman
 	(quest_get_slot, ":quest_target_troop", "qst_duel_courtship_rival", slot_quest_target_troop),
@@ -13469,9 +9877,38 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(call_script, "script_troop_change_relation_with_troop", "trp_player", "$g_talk_troop", -2),
     (add_xp_as_reward, 1000),
  ]],
-	[anyone|plyr,"lady_escort_lady_succeeded", [], "It was an honor to serve you, {s65}.", "close_window",[]],
-	#lady_start - contains news, quest assignments
-	[anyone,"lady_start", [
+[anyone|plyr,"lady_qst_duel_for_lady_succeeded_1", [], "Oh, it will just have to do.", "lady_qst_duel_for_lady_succeeded_2",[
+  (str_store_string,s10,"@Then take it, with my eternal thanks. You are a noble {man/woman}.\
+ I will never forget that you helped me in my time of need.")
+  ]],
+[anyone|plyr,"lady_qst_duel_for_lady_succeeded_1", [], "{s66}, this is far too much!", "lady_qst_duel_for_lady_succeeded_2",[
+  (str_store_string,s10,"@Forgive me, {playername}, but I must insist you accept it.\
+ The money means little to me, and I owe you so much.\
+ Here, take it, and let us speak no more of this."),
+    (call_script, "script_change_player_honor", 1),
+  ]],
+[anyone|plyr,"lady_qst_duel_for_lady_succeeded_1", [], "Please, {s65}, no reward is necessary.", "lady_qst_duel_for_lady_succeeded_2",[
+  (str_store_string,s10,"@{playername}, what a dear {man/woman} you are,\
+ but I will not allow you to refuse this. I owe you far more than I can say,\
+ and I am sure you can put this money to far better use than I."),
+    (call_script, "script_change_player_honor", 2),
+  ]],
+[anyone,"lady_qst_duel_for_lady_succeeded_2", [], "{s10}", "lady_pretalk",
+   [(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),
+    (add_xp_as_reward, 1000),
+    (call_script, "script_troop_add_gold", "trp_player", 2000),
+    (call_script, "script_end_quest", "qst_duel_for_lady"),
+    ]],
+[anyone|plyr,"lady_qst_duel_for_lady_failed", [], "I beg your forgiveness for my defeat, {s65}...", "lady_qst_duel_for_lady_failed_2",[]],
+[anyone,"lady_qst_duel_for_lady_failed_2", [], "It matters not, dear {playername}. You tried.\
+ The truth cannot be proven at the point of a sword, but you willingly put your life at stake for my honour.\
+ That alone will convince many of my innocence.", "lady_pretalk",
+   [(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 6),
+    (add_xp_as_reward, 400),
+    (call_script, "script_end_quest", "qst_duel_for_lady"),
+    ]],
+[anyone|plyr,"lady_escort_lady_succeeded", [], "It was an honor to serve you, {s65}.", "close_window",[]],
+[anyone,"lady_start", [
 					(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
 					(troop_slot_ge, "$g_talk_troop", slot_troop_met, 2),
 					(neg|troop_slot_eq, "$g_talk_troop", slot_troop_met, 4),
@@ -13484,7 +9921,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 					(ge, "$g_talk_troop_relation", 10),
 					],
     "I have sad news. I have become betrothed to {s5} -- against my will, I should say! Oh {playername} - I would so much rather be wed to you!", "lady_betrothed",[]],
-	[anyone,"lady_start", [
+[anyone,"lady_start", [
 					(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
 					(troop_slot_ge, "$g_talk_troop", slot_troop_met, 2),
 					(troop_get_slot, ":betrothed", "$g_talk_troop", slot_troop_betrothed),
@@ -13499,7 +9936,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 #		(call_script, "script_end_quest", "qst_visit_lady"),
 #	(try_end),
 	]],
-	[anyone,"lady_start",
+[anyone,"lady_start",
 	[
 	  (troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
 	  (troop_slot_eq, "$g_talk_troop", slot_troop_met, 2),
@@ -13532,10 +9969,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	],
 	#Use reg3 below for "him" to "{reg0?her:him}", etc.
     "I must tell you -- there is another lord who has been paying me attentions, although I cannot abide {reg0?her:him}. I fear {reg0?she:he} has designs on me, and may try to force me to wed against my will.", "lady_other_suitor",[]],
-	##diplomacy end+
-
-	#romantic news/quest assignments end
-  [anyone,"lady_start", [ #friendly reminder that time is short
+[anyone,"lady_start", [ #friendly reminder that time is short
 					(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
 					(lt, "$g_time_since_last_talk", 24),
 					(troop_slot_eq, "$g_talk_troop", slot_troop_met, 2),
@@ -13554,7 +9988,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 					(try_end),
 					],
    "{s11}It is probably not suitable for us to tarry too long here in conversation, but I would hope to see you again soon.", "lady_talk",[]],
-  [anyone,"lady_start", [ #unfriendly reminder that time is short
+[anyone,"lady_start", [ #unfriendly reminder that time is short
 					(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
 					(lt, "$g_time_since_last_talk", 24),
 					(troop_slot_eq, "$g_talk_troop", slot_troop_met, 2),
@@ -13570,12 +10004,11 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 					],
    "{s11}", "lady_talk",[]],
-	[anyone, "lady_start", [
+[anyone, "lady_start", [
 	(eq, "$lady_flirtation_location", "$g_encountered_party"),
 	(troop_slot_eq, "$g_talk_troop", slot_troop_met, 1),
 	],  "I was planning to retire for a little while, but perhaps we may have a chance to speak more later...", "lady_talk", []],
-	#Defeault lady_start - no news, assignments
-	[anyone,"lady_start", [
+[anyone,"lady_start", [
 	(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
 	(troop_slot_eq, "$g_talk_troop", slot_troop_met, 2),
 	(gt, "$g_talk_troop_relation", 0),
@@ -13603,15 +10036,14 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 
 	],"It is so delightful to have a chance to spend some time together.{s12}","lady_talk", []],
-	[anyone,"lady_start", [
+[anyone,"lady_start", [
 		(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
 	],"What brings you here today?","lady_talk", []],
-	#Betrothed
-	[anyone|plyr, "lady_proposal_pending", [],
+[anyone|plyr, "lady_proposal_pending", [],
     "No word so far...", "close_window",[]],
-	[anyone|plyr, "lady_proposal_pending", [],
+[anyone|plyr, "lady_proposal_pending", [],
     "On second thought, now is not the time for us to marry", "lady_proposal_pending_end",[]],
-	[anyone,"lady_proposal_pending_end", [
+[anyone,"lady_proposal_pending_end", [
 	(try_begin),
 		(gt, "$g_talk_troop_effective_relation", 19),
 		(str_store_string, s11, "str_very_well__i_will_let_you_choose_the_time"),
@@ -13622,20 +10054,20 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     "{s11}", "close_window",[
 	(call_script, "script_end_quest", "qst_formal_marriage_proposal"),
 	]],
-	[anyone|plyr,"lady_betrothed", [],
+[anyone|plyr,"lady_betrothed", [],
     "Never! We must elope together at once!", "lady_suggest_elope",[]],
-	[anyone|plyr,"lady_betrothed", [
+[anyone|plyr,"lady_betrothed", [
 	(troop_slot_eq, "$g_talk_troop", slot_troop_betrothed, -1),
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(call_script, "script_troop_get_family_relation_to_troop", reg0, "$g_talk_troop"),
 	],
     "Perhaps I may still be able to change your {s11}'s mind", "lady_pretalk",[]],
-	[anyone|plyr,"lady_betrothed", [],
+[anyone|plyr,"lady_betrothed", [],
     "So be it -- let us then part", "lady_conclude_relationship",[
 	]],
-	[anyone,"lady_suggest_elope", [(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_conventional)],
+[anyone,"lady_suggest_elope", [(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_conventional)],
     "Good {playername} -- you are a good and kind man, but a lady cannot defy her family. Such things are not done!", "lady_conclude_relationship",[]],
-  [anyone,"lady_suggest_elope",
+[anyone,"lady_suggest_elope",
     [
       (assign, "$romantic_rival", -1),
 	  (try_for_range, ":possible_rival", lords_begin, lords_end),
@@ -13660,12 +10092,12 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	##diplomacy end+
 	[
     ]],
-	[anyone,"lady_suggest_elope", [
+[anyone,"lady_suggest_elope", [
 	(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
 	(neg|troop_slot_ge, "trp_player", slot_troop_renown, 350)
 	],
     "Ah {playername}, you must realize. You are still finding your way in the world. I have great affection for you, {playername}, but I will not consign myself to obscurity.", "lady_conclude_relationship",[]],
-	[anyone,"lady_suggest_elope", [
+[anyone,"lady_suggest_elope", [
 	(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
 	(lt, "$player_honor", 20)
 	],
@@ -13673,11 +10105,9 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	#Replace "my husband" with "my betrothed", as the former doesn't make sense (the gender-neutrality of the replacement is a bonus)
 	#Also replace "I bare little affection" with "I bear little affection"
     "Ah {playername}, although you are kind to me, I am not certain enough of your moral fiber to risk such a thing. Although I bear little affection for my betrothed, it would be a weighty thing to go against my family's wishes, and I am not certain enough of you to take that step.", "lady_conclude_relationship",[]],
-	##diplomacy end+
-
-	[anyone,"lady_suggest_elope", [(le, "$g_talk_troop_effective_relation", 20),],
+[anyone,"lady_suggest_elope", [(le, "$g_talk_troop_effective_relation", 20),],
     "Good {playername} -- to elope would be to throw away my ties with my family, which are everything to me! I have a considerable affection for you, but I am not sure that I am prepared to risk that.", "lady_conclude_relationship",[]],
-	[anyone,"lady_suggest_elope", [
+[anyone,"lady_suggest_elope", [
 	(assign, "$home_for_spouse", -1),
 	(try_for_range, ":player_center", centers_begin, centers_end),
 		(eq, "$home_for_spouse", -1),
@@ -13692,9 +10122,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	],
 	#Replace "wife" with "{reg65?wife:husband}" and "mistress" with "{reg65?mistress:keeper}"
     "Good {playername} -- I am not used to the hardships of campaigning as you are. I want a home to call my own. If you were lord of a castle or town with a great hall, I would gladly go there as your {reg0?wife:husband}, to be {reg0?mistress:keeper} of the household. But I do not wish to live like a hunted animal.", "lady_conclude_relationship",[]],
-	##diplomacy end+
-
-	[anyone,"lady_suggest_elope", [
+[anyone,"lady_suggest_elope", [
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(call_script, "script_troop_get_family_relation_to_troop", reg0, "$g_talk_troop"),
 	##diplomacy start+
@@ -13702,149 +10130,100 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	],
 	#change "he" to "{reg4?she:he}", and "his" to "{reg4?her:his}"
     "Elope with you? Yes -- we could do that. It is a great step to defy my family -- but a loveless marriage, and life without you, might be a far worse thing! But be warned -- this will be a terrible blow to my {s11}'s prestige, and {reg4?she:he} will do everything in {reg4?her:his} power to bring you down.", "lady_elope_agree",[]],
-	##diplomacy end+
-
-	[anyone|plyr,"lady_elope_agree", [],
+[anyone|plyr,"lady_elope_agree", [],
     "Quickly, then! There is no time to lose.", "lady_elope_agree_nurse",[
 	]],
-	[anyone|plyr,"lady_elope_agree", [],##diplomacy start+ change "his" to {reg4?her:his}
+[anyone|plyr,"lady_elope_agree", [],##diplomacy start+ change "his" to {reg4?her:his}
     "Everything in {reg4?her:his} power, you say? Em... Let me think about this...", "close_window",[
 	##diplomacy end+
 	]],
-	[anyone, "lady_elope_agree_nurse", [],
+[anyone, "lady_elope_agree_nurse", [],
     "Your lordship... Your ladyship... Would you like me to witness your exchange of vows?", "lady_elope_agree_lady_vows",[
     (set_conversation_speaker_troop, trp_nurse_for_lady),
 	]],
-	[anyone, "lady_elope_agree_lady_vows", [
+[anyone, "lady_elope_agree_lady_vows", [
 	(str_store_troop_name, s4, "$g_talk_troop"),
 	],##diplomacy start+ allow both genders, change "husband" to "{husband/wife}"
     "Yes, do that. For my part, I make the following vow: I, {s4}, do swear that I accept {playername} as my {husband/wife}, according to the ancient law and custom of our land...", "lady_elope_agree_nurse_2",[
 	]],
-##diplomacy end+
-
-	[anyone, "lady_elope_agree_nurse_2", [
+[anyone, "lady_elope_agree_nurse_2", [
 	##diplomacy start+ Allow the possibility of male versions of the lines
 	],
 	#change "wife" to "{reg65?wife:husband}"
     "Very good. Do you, {playername}, swear similarly to accept {s4} as your {reg65?wife:husband}?", "lady_elope_agree_player_vows",[
     (set_conversation_speaker_troop, trp_nurse_for_lady),
 	]],
-##diplomacy end+
-
-	[anyone|plyr,"lady_elope_agree_player_vows", [],
+[anyone|plyr,"lady_elope_agree_player_vows", [],
     "I do.", "close_window",[
 	(call_script, "script_courtship_event_bride_marry_groom", "$g_talk_troop", "trp_player", 1), #1 is elopement
 	]],
-	[anyone|plyr,"lady_elope_agree_player_vows", [],
+[anyone|plyr,"lady_elope_agree_player_vows", [],
     "Eh, what? This is all moving too fast...", "close_window",[
 	]],
-	#markspot - do elopement here
-
-	[anyone|plyr,"lady_elope_agree", [
+[anyone|plyr,"lady_elope_agree", [
 	##diplomacy start+ Allow the possibility of male versions of the lines
 	],
 	#replaced "lady" with "{reg65?lady:young lad}" and "her" with "{reg65?her:his}"
     "Oh, really? My dear -- I could never separate a {reg65?lady:young lad} from {reg65?her:his} family like that...", "lady_conclude_relationship",[
 	##diplomacy end+
 	]],
-	[anyone,"lady_conclude_relationship", [],
+[anyone,"lady_conclude_relationship", [],
 	"So I suppose our time together must come to an end...", "lady_conclude_relationship_confirm", []],
-	[anyone|plyr,"lady_conclude_relationship_confirm", [],
+[anyone|plyr,"lady_conclude_relationship_confirm", [],
 	"Yes -- it must be...", "lady_conclude_relationship_confirm_yes", []],
-	[anyone|plyr,"lady_conclude_relationship_confirm", [],
+[anyone|plyr,"lady_conclude_relationship_confirm", [],
 	"Wait -- perhaps there is still a chance for us!", "lady_conclude_relationship_confirm_no", []],
-	[anyone,"lady_conclude_relationship_confirm_yes", [],
+[anyone,"lady_conclude_relationship_confirm_yes", [],
 	"Farewell, {playername}. We will see each other, in the palaces and castles of this land, but we must keep our distance from each other. I will remember these days fondly, nonetheless.", "close_window", [
 	(troop_set_slot, "$g_talk_troop", slot_troop_met, 4),
 	]],
-	[anyone,"lady_conclude_relationship_confirm_no", [],
+[anyone,"lady_conclude_relationship_confirm_no", [],
 	"In that case, we shall see what the future brings.", "close_window", [
 	]],
-  [anyone|plyr,"lady_generic_mission_succeeded", [], "Always an honour to serve, {s65}.", "lady_pretalk",[]],
-  [anyone|plyr ,"lady_premeet", [],  "I am {playername}.", "lady_meet", []],
-  [anyone|plyr ,"lady_premeet", [],  "My name is {playername}. At your service.", "lady_meet", []],
-  [anyone, "lady_meet", [
+[anyone|plyr,"lady_generic_mission_succeeded", [], "Always an honour to serve, {s65}.", "lady_pretalk",[]],
+[anyone|plyr ,"lady_premeet", [],  "I am {playername}.", "lady_meet", []],
+[anyone|plyr ,"lady_premeet", [],  "My name is {playername}. At your service.", "lady_meet", []],
+[anyone, "lady_meet", [
   (troop_slot_ge, "trp_player", slot_troop_renown, 200),
   ],  "Of course. How splendid to finally make your acquaintance.", "lady_meet_end", []],
-  [anyone, "lady_meet", [],  "{playername}? I do not believe I've heard of you before.", "lady_meet_end", []],
-  [anyone, "lady_meet_end", [
+[anyone, "lady_meet", [],  "{playername}? I do not believe I've heard of you before.", "lady_meet_end", []],
+[anyone, "lady_meet_end", [
 	(eq, "$lady_flirtation_location", "$g_encountered_party"),
   ],  "I am about to retire for a little while, but perhaps we may have a chance to speak more later...", "lady_talk", []],
-  [anyone, "lady_meet_end", [
+[anyone, "lady_meet_end", [
     (troop_slot_eq, "$g_talk_troop", slot_troop_spouse, -1),
 	(call_script, "script_troop_get_romantic_chemistry_with_troop", "$g_talk_troop", "trp_player"),
 	(le, reg0, 0),
 	(call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", "trp_player"),
 	(le, reg0, 0),
 	],  "Now, if you will excuse me...", "lady_talk", []],
-  [anyone, "lady_meet_end", [],  "Can I help you with anything?", "lady_talk", []],
-  [anyone|plyr,"lady_talk", [(neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
+[anyone, "lady_meet_end", [],  "Can I help you with anything?", "lady_talk", []],
+[anyone|plyr,"lady_talk", [(neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
 							 (ge, "$g_encountered_party_relation", 0),
   ],
    "I want to know the location of someone.", "lord_talk_ask_location",[]],
-##### TODO: QUESTS COMMENT OUT BEGIN
-##  [anyone|plyr,"lady_talk", [(check_quest_active, "qst_deliver_message_to_lover"),
-##                             (quest_slot_eq, "qst_deliver_message_to_lover", slot_quest_target_troop, "$g_talk_troop"),
-##                             (quest_get_slot, ":troop_no", "qst_deliver_message_to_lover", slot_quest_giver_troop),
-##                             (str_store_troop_name_link, 3, ":troop_no")],
-##   "I have brought you a message from {s3}", "lady_message_from_lover_success",[(call_script, "script_finish_quest", "qst_deliver_message_to_lover", 100)]],
-##
-##  [anyone|plyr,"lady_talk", [(check_quest_active, "qst_rescue_lady_under_siege"),
-##                             (quest_slot_eq, "qst_rescue_lady_under_siege", slot_quest_object_troop, "$g_talk_troop"),
-##                             (quest_slot_eq, "qst_rescue_lady_under_siege", slot_quest_current_state, 0)],
-##   "TODO: I'm taking you home!", "lady_rescue_from_siege_check",[]],
-##
-##
-##  [anyone,"lady_rescue_from_siege_check", [(neg|hero_can_join)],
-##   "TODO: You don't have enough room for me!", "close_window",[]],
-##
-##
-##  [anyone,"lady_rescue_from_siege_check", [], "TODO: Thank you so much!", "lady_pretalk",[(quest_set_slot, "qst_rescue_lady_under_siege", slot_quest_current_state, 1),
-##                                                                                          (troop_set_slot, "$g_talk_troop", slot_troop_cur_center, 0),
-##                                                                                          (troop_join, "$g_talk_troop")]],
-##  [anyone,"lady_message_from_lover_success", [], "TODO: Thank you so much!", "lady_pretalk",[]],
-##
-
-  [anyone,"lady_pretalk", [
+[anyone,"lady_pretalk", [
     (troop_slot_eq, "$g_talk_troop", slot_troop_spouse, -1),
 	(call_script, "script_troop_get_romantic_chemistry_with_troop", "$g_talk_troop", "trp_player"),
 	(le, reg0, 0),
 	(call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", "trp_player"),
 	(le, reg0, 0),
 ], "Now, if you will excuse me...", "lady_talk",[]],
-  [anyone,"lady_pretalk", [], "Is there anything else?", "lady_talk",[]],
-##[anyone|plyr,"lady_talk",
-##   [(troop_get_type, ":is_female", "trp_player"),
-##    (eq, ":is_female", 0),],
-##   "{!}CHEAT: I want to marry you! (1)", "wedding_ceremony_bride_vow",[]],
-##[anyone|plyr,"lady_talk",
-##   [(troop_get_type, ":is_female", "trp_player"),
-##    (eq, ":is_female", 0),],
-##   "{!}CHEAT: I want to marry you! (2)", "lady_elope_agree_nurse_2",[]],
-
-
-##diplomacy start+
-#Ask kingdom ladies about their relatives, getting personality & rivalry
-#information like from the chancellor.
-  [anyone|plyr,"lady_talk",
+[anyone,"lady_pretalk", [], "Is there anything else?", "lady_talk",[]],
+[anyone|plyr,"lady_talk",
    [(neg|eq, "$g_talk_troop_met", 0),],
    "I wished to ask about one of your relatives.", "dplmc_lady_relations2",[]],
-#Ask kingdom ladies about feasts.
-    [anyone|plyr, "lady_talk", [(neg|eq, "$g_talk_troop_met", 0),],
+[anyone|plyr, "lady_talk", [(neg|eq, "$g_talk_troop_met", 0),],
    "Do you know of any ongoing feasts?",
    "dplmc_lady_feasts", []],
-##diplomacy end+
-
-  [anyone|plyr,"lady_talk",
+[anyone|plyr,"lady_talk",
    ##diplomacy start+
    #[],#Don't show this option after the first meeting.  There's a separate "ask about relatives instead".
    [(eq, "$g_talk_troop_met", 0),
    ],
    #change "my lady" to "{reg0?my lady:good sir}"
    "May I have the honor of knowing more about you, {reg65?my lady:good sir}?", "lady_relations",[]],
-   ##diplomacy end+
-
-  [anyone,"lady_relations",
+[anyone,"lady_relations",
    [
     (str_store_string, s12, "str_i_am"),
 	(assign, ":relation_found", 0),
@@ -13919,9 +10298,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    #diplomacy start+
        (assign, "$g_talk_troop_met", 1),
        ]],
-   ##diplomacy end+
-
-  [anyone|plyr,"lady_talk",
+[anyone|plyr,"lady_talk",
    [
     ##diplomacy start+
     #(troop_get_type, ":is_female", "trp_player"),#dplmc+ removed
@@ -13970,7 +10347,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(assign, "$g_time_to_spare", 0),
 
 	]],
-  [anyone|plyr,"lady_talk",
+[anyone|plyr,"lady_talk",
    [
     ##diplomacy start+
     #(troop_get_type, ":is_female", "trp_player"),
@@ -14030,10 +10407,10 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(assign, "$g_player_tournament_placement", 0),
 	(troop_set_slot, "$g_talk_troop", slot_lady_used_tournament, 1),
 	]],
-  [anyone,"lady_tournament_dedication_reaction", [],
+[anyone,"lady_tournament_dedication_reaction", [],
    "{s9}", "lady_pretalk",
    []],
-  [anyone,"lady_profess_admiration", [
+[anyone,"lady_profess_admiration", [
 	(call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", "trp_player"),
     (gt, reg0, 0),
 
@@ -14058,12 +10435,12 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    [(troop_set_slot, "$g_talk_troop", slot_troop_met, 2),
 	(assign, "$lady_flirtation_location", "$g_encountered_party"),
    ]],
-  [anyone,"lady_profess_admiration", [
+[anyone,"lady_profess_admiration", [
   ],
    "Ah... You are too kind... My, the hour is getting rather late, isn't it? I really must be going.", "lady_pretalk",
    [(troop_set_slot, "$g_talk_troop", slot_troop_met, 2),
    ]],
-  [anyone|plyr,"lady_talk",
+[anyone|plyr,"lady_talk",
    [
 	 (troop_slot_eq, "$g_talk_troop", slot_troop_met, 2),
 	 (eq, "$g_time_to_spare", 1),
@@ -14074,11 +10451,11 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    ##diplomacy end+
 	 (assign, "$g_time_to_spare", 0),
    ]],
-  [anyone,"lady_recite_poetry", [
+[anyone,"lady_recite_poetry", [
   ],
    "That would depend on the poem. Did you intend to recite a verse?", "lady_recite_poetry",
    []],
-  [anyone|plyr,"lady_recite_poetry",
+[anyone|plyr,"lady_recite_poetry",
    [
 	 (gt, "$tragic_poem_recitations", 0),
 	 (troop_slot_eq, "$g_talk_troop", slot_lady_courtship_tragic_recited, 0),
@@ -14089,7 +10466,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    (troop_set_slot, "$g_talk_troop", slot_lady_courtship_tragic_recited, 1),
 
    ]],
-  [anyone|plyr,"lady_recite_poetry",
+[anyone|plyr,"lady_recite_poetry",
    [
 	 (gt, "$comic_poem_recitations", 0),
 	 (troop_slot_eq, "$g_talk_troop", slot_lady_courtship_comic_recited, 0),
@@ -14100,7 +10477,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    (troop_set_slot, "$g_talk_troop", slot_lady_courtship_comic_recited, 1),
 
    ]],
-  [anyone|plyr,"lady_recite_poetry",
+[anyone|plyr,"lady_recite_poetry",
    [
 	(gt, "$mystic_poem_recitations", 0),
 	(troop_slot_eq, "$g_talk_troop", slot_lady_courtship_mystic_recited, 0),
@@ -14111,7 +10488,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    (troop_set_slot, "$g_talk_troop", slot_lady_courtship_mystic_recited, 1),
 
    ]],
-  [anyone|plyr,"lady_recite_poetry",
+[anyone|plyr,"lady_recite_poetry",
    [
 	(gt, "$heroic_poem_recitations", 0),
 	(troop_slot_eq, "$g_talk_troop", slot_lady_courtship_heroic_recited, 0),
@@ -14121,7 +10498,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(troop_set_slot, "$g_talk_troop", slot_lady_courtship_heroic_recited, 1),
 
    ]],
-  [anyone|plyr,"lady_recite_poetry",
+[anyone|plyr,"lady_recite_poetry",
    [
 	(gt, "$allegoric_poem_recitations", 0),
 	(troop_slot_eq, "$g_talk_troop", slot_lady_courtship_allegoric_recited, 0),
@@ -14131,9 +10508,9 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     (assign, "$poem_selected", courtship_poem_allegoric),
 	(troop_set_slot, "$g_talk_troop", slot_lady_courtship_allegoric_recited, 1),
    ]],
-  [anyone|plyr,"lady_recite_poetry",
+[anyone|plyr,"lady_recite_poetry",
    [],"Actually, I can't think of any that I would care to recite...", "lady_pretalk",[]],
-   [anyone,"lady_recite_poetry_response",
+[anyone,"lady_recite_poetry_response",
    [
     (call_script, "script_courtship_poem_reactions", "$g_talk_troop", "$poem_selected"),
    ],
@@ -14142,7 +10519,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(call_script, "script_troop_change_relation_with_troop", "$g_talk_troop", "trp_player", ":reaction"),
     (call_script, "script_courtship_poem_reactions", "$g_talk_troop", "$poem_selected"), #this needs to be twice, as the above resets s11
    ]],
-   [anyone,"lady_private_conversation_end",
+[anyone,"lady_private_conversation_end",
 	[
 	(str_clear, s11),
 	(try_begin),
@@ -14155,7 +10532,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	[
 	(assign, "$g_time_to_spare", 0),
 	]],
-  [anyone|plyr,"lady_talk",
+[anyone|plyr,"lady_talk",
     [
 	(neg|check_quest_active, "qst_formal_marriage_proposal"),
 	(neg|troop_slot_ge, "trp_player", slot_troop_betrothed, active_npcs_begin),
@@ -14170,7 +10547,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     "Do you think that we may have a future together, {reg65?my lady:kind sir}?", "lady_marriage_discussion",[
 	##diplomacy end+
     ]],
-  [anyone,"lady_marriage_discussion",
+[anyone,"lady_marriage_discussion",
     [
 	(assign, "$romantic_rival", -1),
 	(try_for_range, ":possible_rival", lords_begin, lords_end),
@@ -14192,29 +10569,27 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     ],#"Sir" to "{Sir/Madame}", and "gentlemen" to "{gentlemen/suitors}"
     "{Sir/Madame} -- as you may know, I have been entertaining offers from a number of {gentlemen/suitors} such as yourself. I am not yet at a stage where I can commit to any of them.", "lady_other_suitor",[
     ]],
-	##diplomacy end+
-
-  [anyone,"lady_marriage_discussion",
+[anyone,"lady_marriage_discussion",
     [
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
 	(neg|troop_slot_ge, "trp_player", slot_troop_renown, 350),
 	],
     "It is good to hear that you are thinking seriously about the future. However, I would like to see you rise a little further in the world before I am ready to commit to marry you.", "lady_proposal_refused",[
     ]],
-  [anyone,"lady_marriage_discussion",
+[anyone,"lady_marriage_discussion",
     [
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
 	(lt, "$player_honor", 10)
 	],
     "It is good to hear that your intentions are honorable. However, I have resolved only to marry a man of the strongest moral fiber. I would like you to prove yourself more in that regard.", "lady_proposal_refused",[
     ]],
-  [anyone,"lady_marriage_discussion",
+[anyone,"lady_marriage_discussion",
     [
 	(lt, "$g_talk_troop_relation", 20),
     ],
     "Sir -- it is comforting to hear that your intentions towards me are honorable. But perhaps we should take the time to get to allow our affections for each other to grow a little stronger, before making any such decision.", "lady_proposal_refused",[
     ]],
-  [anyone,"lady_marriage_discussion",
+[anyone,"lady_marriage_discussion",
     [
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(assign, ":guardian", reg0),
@@ -14223,7 +10598,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(call_script, "script_troop_get_family_relation_to_troop", ":guardian", "$g_talk_troop"),
 	],
     "Oh {playername}, how happy that would make me! But my {s11} {s4} would never allow it... Perhaps it is best that we part...", "lady_betrothed", []],
-  [anyone,"lady_marriage_discussion",
+[anyone,"lady_marriage_discussion",
     [
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(assign, ":guardian", reg0),
@@ -14249,7 +10624,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(call_script, "script_troop_get_family_relation_to_troop", ":guardian", "$g_talk_troop"),
 	(str_store_troop_name, s4, ":guardian"),
     ]],
-  [anyone|plyr,"lady_proposal_refused",
+[anyone|plyr,"lady_proposal_refused",
     [
 	(is_between, "$g_talk_troop_relation", 12, 20),
     (this_or_next|neg|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
@@ -14259,7 +10634,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	],
     "Perhaps I can persuade you to delay no further.", "lady_proposal_refused_persuade_check",[
     ]],
-  [anyone,"lady_proposal_refused_persuade_check",
+[anyone,"lady_proposal_refused_persuade_check",
     [
 	],
     "What do you have to say?", "lady_proposal_refused_persuade_player_response",[
@@ -14284,19 +10659,17 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(dialog_box, "str_persuasion_opportunity"),
 
     ]],
-  [anyone|plyr,"lady_proposal_refused_persuade_player_response",
+[anyone|plyr,"lady_proposal_refused_persuade_player_response",
     [
 	##diplomacy start+ Allow the possibility of male versions of the lines
 	], #Replace "lady" with "{reg0?lady:lord}"
     "Love is as a rose, my {reg65?lady:lord}. Left unplucked, it may wither.", "lady_proposal_refused_persuade_result",[
     ]],
-	##diplomacy end+
-
-  [anyone|plyr,"lady_proposal_refused_persuade_player_response",
+[anyone|plyr,"lady_proposal_refused_persuade_player_response",
     [],
     "Oh, never mind.", "lady_pretalk",
     []],
-  [anyone,"lady_proposal_refused_persuade_result",
+[anyone,"lady_proposal_refused_persuade_result",
     [
 	(store_random_in_range, ":random", 0, 100),
 	(lt, ":random", "$g_persuasion_failure_chance"),
@@ -14306,7 +10679,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(jump_to_menu, "mnu_town"),
 	(finish_mission),
 	]],
-  [anyone,"lady_proposal_refused_persuade_result",
+[anyone,"lady_proposal_refused_persuade_result",
     [
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(assign, ":guardian", reg0),
@@ -14319,7 +10692,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	##diplomacy end+
 	(call_script, "script_troop_change_relation_with_troop", "$g_talk_troop", "trp_player", 5),
 	]],
-  [anyone,"lady_proposal_refused_persuade_result",
+[anyone,"lady_proposal_refused_persuade_result",
     [
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(assign, ":guardian", reg0),
@@ -14344,11 +10717,11 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(call_script, "script_start_quest", "qst_formal_marriage_proposal", "$g_talk_troop"),
 	(quest_set_slot, "qst_formal_marriage_proposal", slot_quest_giver_troop, "$g_talk_troop"),
     ]],
-  [anyone|plyr,"lady_proposal_refused",
+[anyone|plyr,"lady_proposal_refused",
     [],
     "Very well -- I shall continue to strive to be worthy of your esteem!", "close_window",[
     ]],
-  [anyone|plyr,"lady_proposal_refused",
+[anyone|plyr,"lady_proposal_refused",
     [
 	##diplomacy start+
 	#Enable this if "enhanced prejudice" mode is active.
@@ -14360,15 +10733,15 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	],
     "I am tired of these games! I will speak to your family about arranging a wedding immediately..", "lady_player_threatens_compel",[
     ]],
-  [anyone,"lady_player_threatens_compel",
+[anyone,"lady_player_threatens_compel",
     [],
     "What? Do you mean that?", "lady_player_threatens_compel_2",[
     ]],
-  [anyone|plyr,"lady_player_threatens_compel_2",
+[anyone|plyr,"lady_player_threatens_compel_2",
     [],
     "No, of couse not. Please forgive my burst of temper", "lady_private_conversation_end",[
     ]],
-  [anyone|plyr,"lady_player_threatens_compel_2",
+[anyone|plyr,"lady_player_threatens_compel_2",
     [],
     "Yes -- you clearly do not know what is in your best interests.", "close_window",[
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
@@ -14384,21 +10757,20 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(call_script, "script_start_quest", "qst_formal_marriage_proposal", "$g_talk_troop"),
 	(quest_set_slot, "qst_formal_marriage_proposal", slot_quest_giver_troop, "$g_talk_troop"),
     ]],
-	#rival suitor sequence
-  [anyone|plyr,"lady_other_suitor",
+[anyone|plyr,"lady_other_suitor",
     [],
     ##diplomacy start+
     #change "my lady" to "my {reg65?lady:lord}"
 	"It grieves me to hear that, my {reg65?lady:lord}, but such things must be", "lady_pretalk",
 	##diplomacy end+
 	[]],
-  [anyone|plyr,"lady_other_suitor",
+[anyone|plyr,"lady_other_suitor",
 	[],
 	##diplomacy start+ his to {his/her}
 	"Who is the miscreant! Tell me {his/her} name!", "lady_other_suitor_challenge",
 	##diplomacy end+
 	[]],
-  [anyone|plyr,"lady_other_suitor", #similar to other
+[anyone|plyr,"lady_other_suitor", #similar to other
     [
 	##diplomacy start+
 	#Enable this if "enhanced prejudice" mode is active.
@@ -14408,7 +10780,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	],
     "I am tired of these games! I will demand that your family compel you to marry me..", "lady_player_threatens_compel",[
     ]],
-  [anyone,"lady_other_suitor_challenge",
+[anyone,"lady_other_suitor_challenge",
 	[
 	  (check_quest_active,"qst_duel_courtship_rival"),
       (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", "$romantic_rival"),
@@ -14419,7 +10791,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	"I would be so grateful! But from what I understand, you already have a duel on your hands. {reg0?She:He} is not honor-bound to fight you, if you are committed to another combat. Please, conclude your other business in a hurry, to rescue me from that {reg0?woman:man}'s attentions!.", "lady_pretalk",
 	##diplomacy end+
 	[]],
-  [anyone,"lady_other_suitor_challenge",
+[anyone,"lady_other_suitor_challenge",
 	[
 	(check_quest_active,"qst_duel_courtship_rival"),
 	##diplomacy start+
@@ -14432,7 +10804,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	"Ah! Such talk. But from what I hear, you already have a duel on your hands. Finish one before you start another! Sigh... {reg0?You {men/women}:People} can be so silly...", "lady_pretalk",
 	##diplomacy end+
 	[]],
-  [anyone,"lady_other_suitor_challenge",
+[anyone,"lady_other_suitor_challenge",
 	[
     (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", "$romantic_rival"),
 	(lt, reg0, 0),
@@ -14443,7 +10815,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	"It is {s5}. Please, rescue me from that {reg0?woman:man}'s attentions!", "lady_other_suitor_challenge_confirm",
 	##diplomacy end+
 	[]],
-  [anyone,"lady_other_suitor_challenge",
+[anyone,"lady_other_suitor_challenge",
 	[
 	(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
 	(str_store_troop_name, s5, "$romantic_rival"),
@@ -14452,7 +10824,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	[
 	(assign, "$quarrel_penalty", 0),
 	]],
-  [anyone,"lady_other_suitor_challenge",
+[anyone,"lady_other_suitor_challenge",
 	[
 	(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_conventional),
 	(str_store_troop_name, s5, "$romantic_rival"),
@@ -14461,7 +10833,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	[##diplomacy end+
 	(assign, "$quarrel_penalty", -1),
 	]],
-  [anyone,"lady_other_suitor_challenge",
+[anyone,"lady_other_suitor_challenge",
 	[
 	(str_store_troop_name, s5, "$romantic_rival"),
 	],##diplomacy start+ change "sir" to "{sir/madame}"
@@ -14469,18 +10841,18 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	[##diplomacy end+
 	(assign, "$quarrel_penalty", -3),
 	]],
-  [anyone|plyr,"lady_other_suitor_challenge_confirm",
+[anyone|plyr,"lady_other_suitor_challenge_confirm",
 	[##diplomacy start+ Add support for female rival
     (call_script, "script_dplmc_store_troop_is_female",  "$romantic_rival"),],
 	#Change "him" to "{reg0?her:him}"
 	"So be it! I shall challenge {reg0?her:him} to a trial of arms!", "lady_other_suitor_challenge_confirm_yes",
 	##diplomacy end+
 	[]],
-  [anyone|plyr,"lady_other_suitor_challenge_confirm",
+[anyone|plyr,"lady_other_suitor_challenge_confirm",
 	[],
 	"On second thought, I let my passions run away with me there. Never mind.", "lady_other_suitor_challenge_confirm_no",
 	[]],
-  [anyone,"lady_other_suitor_challenge_confirm_yes",
+[anyone,"lady_other_suitor_challenge_confirm_yes",
 	[
 	  (try_begin),
 	    (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", "$romantic_rival"),
@@ -14512,11 +10884,11 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	  (quest_set_slot, "qst_duel_courtship_rival", slot_quest_expiration_days, 60),
 	  (quest_set_slot, "qst_duel_courtship_rival", slot_quest_current_state, 0),
 	]],
-  [anyone,"lady_other_suitor_challenge_confirm_no",
+[anyone,"lady_other_suitor_challenge_confirm_no",
 	[],
 	"Good. You are wise not to let your temper guide you.", "lady_private_conversation_end",
 	[]],
-  [anyone|plyr,"lady_talk",
+[anyone|plyr,"lady_talk",
    [
 	 (troop_slot_ge, "$g_talk_troop", slot_troop_spouse, 0),
 #     (troop_slot_ge, "$g_talk_troop", slot_troop_met, 2),
@@ -14525,12 +10897,12 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
      ],
    "Is there anything I can do to win your favour?", "lady_ask_for_quest",[(call_script, "script_get_quest", "$g_talk_troop"),
                                                                  (assign, "$random_quest_no", reg0)]],
-  [anyone,"lady_ask_for_quest",
+[anyone,"lady_ask_for_quest",
   [
     (troop_slot_eq, "$g_talk_troop", slot_troop_does_not_give_quest, 1),
   ],
    "I don't have anything else for you to do right now.", "lady_pretalk", []],
-  [anyone,"lady_ask_for_quest",
+[anyone,"lady_ask_for_quest",
   [
 	 (this_or_next|eq, "$random_quest_no", "qst_rescue_lord_by_replace"),
 	 (eq, "$random_quest_no", "qst_rescue_prisoner"),
@@ -14569,7 +10941,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
      (try_end),
 	 ##diplomacy end+
     ]],
-  [anyone,"lady_ask_for_quest", [
+[anyone,"lady_ask_for_quest", [
      (eq, "$random_quest_no", "qst_deliver_message_to_prisoner_lord"),
      (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
      (call_script, "script_troop_get_family_relation_to_troop", ":quest_target_troop", "$g_talk_troop"),
@@ -14590,10 +10962,10 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
      (setup_quest_text,"$random_quest_no"),
      (str_store_string, s2, "@{s11} asked you to deliver a message to {s13}, who is imprisoned at {s14}."),
     ]],
-  [anyone,"lady_ask_for_quest", [(eq, "$random_quest_no", "qst_duel_for_lady")],
+[anyone,"lady_ask_for_quest", [(eq, "$random_quest_no", "qst_duel_for_lady")],
    "Dear {playername}, you are kind to ask, but you know little of my troubles\
  and I can't possibly ask you to throw yourself into danger on my behalf.", "lady_quest_duel_for_lady",[]],
-  [anyone|plyr,"lady_quest_duel_for_lady", [], "Tell me what the problem is, and I can make my own decision.", "lady_quest_duel_for_lady_2",
+[anyone|plyr,"lady_quest_duel_for_lady", [], "Tell me what the problem is, and I can make my own decision.", "lady_quest_duel_for_lady_2",
    [
      (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
 
@@ -14602,7 +10974,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
      (str_store_string, s2, "@You agreed to challenge {s13} to defend {s11}'s honour."),
      (setup_quest_text,"$random_quest_no"),
     ]],
-  [anyone,"lady_quest_duel_for_lady_2", [
+[anyone,"lady_quest_duel_for_lady_2", [
   ##diplomacy start+ Add possibility of male version
   (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
   (call_script, "script_dplmc_store_troop_is_female",  ":quest_target_troop"),#gender of lord to challenge
@@ -14622,16 +10994,13 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
  Because {reg0?she:he} cannot harm my {reg1?wife:husband} directly, {reg0?she:he} is using me as a target to try and stain our name.\
  You should hear the awful things {reg0?she:he}'s said! I only wish there was someone brave enough to make {reg0?her:him} recant {reg0?her:his} slander,\
  but {s13} is a very fine swordsman, and {reg0?she:he}'s widely feared...", "lady_quest_duel_for_lady_3",[]],
- ##diplomacy end+
-
-  [anyone|plyr,"lady_quest_duel_for_lady_3", [
+[anyone|plyr,"lady_quest_duel_for_lady_3", [
   ##diplomacy start+ Add possibility of fe/male version
   (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
   (call_script, "script_dplmc_store_troop_is_female",  ":quest_target_troop"),#gender of lord to challenge
   #next line, him -> {reg0?her:him}, his -> {reg0?her:his}
   ], "I fear {reg0?her:him} not, {s65}. I will make {reg0?her:him} take back {reg0?her:his} lies.", "lady_quest_duel_for_lady_3_accepted",[]],
-  ##diplomacy end+
-  [anyone,"lady_quest_duel_for_lady_3_accepted", [], "Oh! I can't ask that of you, {playername}, but...\
+[anyone,"lady_quest_duel_for_lady_3_accepted", [], "Oh! I can't ask that of you, {playername}, but...\
  I would be forever indebted to you, and you are so sure. It would mean so much if you would defend my honour.\
  Thank you a thousand times, all my prayers and my favour go with you.", "close_window",
    [
@@ -14641,21 +11010,20 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
      (call_script, "script_report_quest_troop_positions", "$random_quest_no", ":quest_target_troop", 3),
      (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
      ]],
-  [anyone|plyr,"lady_quest_duel_for_lady_3", [##diplomacy start+ Use proper pronoun
+[anyone|plyr,"lady_quest_duel_for_lady_3", [##diplomacy start+ Use proper pronoun
   (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
   (call_script, "script_dplmc_store_troop_is_female",  ":quest_target_troop"),#gender of lord to challenge
   ], "If {reg0?she:he}'s that dangerous, perhaps maybe it would be better to ignore {reg0?her:him}...", "lady_quest_duel_for_lady_3_rejected",[]],
-  ##diplomacy end+
-  [anyone,"lady_quest_duel_for_lady_3_rejected", [], "Oh... Perhaps you're right, {playername}.\
+[anyone,"lady_quest_duel_for_lady_3_rejected", [], "Oh... Perhaps you're right, {playername}.\
  I should let go of these silly childhood ideas of chivalry and courage. {Men/People} are not like that,\
  not anymore. Good day to you.", "close_window",
    [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1),
     (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),
     ]],
-  [anyone,"lady_ask_for_quest", [], "No, {playername}, I've no need for a champion right now.", "lady_pretalk",[]],
-  [anyone|plyr,"lady_mission_told", [], "As you wish it, {s65}, it shall be done.", "lady_mission_accepted",[]],
-  [anyone|plyr,"lady_mission_told", [], "{s66}, I fear I cannot help you right now.", "lady_mission_rejected",[]],
-  [anyone,"lady_mission_accepted", [], "You are a true {gentleman/lady}, {playername}.\
+[anyone,"lady_ask_for_quest", [], "No, {playername}, I've no need for a champion right now.", "lady_pretalk",[]],
+[anyone|plyr,"lady_mission_told", [], "As you wish it, {s65}, it shall be done.", "lady_mission_accepted",[]],
+[anyone|plyr,"lady_mission_told", [], "{s66}, I fear I cannot help you right now.", "lady_mission_rejected",[]],
+[anyone,"lady_mission_accepted", [], "You are a true {gentleman/lady}, {playername}.\
  Thank you so much for helping me", "close_window",
    [
      (try_begin),
@@ -14664,8 +11032,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
      (try_end),
      (call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
     ]],
-##diplomacy start+ add male version
-  [anyone,"lady_mission_rejected", [
+[anyone,"lady_mission_rejected", [
   #changed "woman" -> "{reg65?woman:young lad}"
   ], "You'll not help a {reg65?woman:young lad} in need? You should be ashamed, {playername}...\
  Please leave me, I have some important embroidery to catch up.", "close_window",
@@ -14674,13 +11041,12 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
      (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),
      (troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1),
     ]],
-#Leave
-  [anyone|plyr,"lady_talk", [
+[anyone|plyr,"lady_talk", [
   (troop_slot_ge, "$g_talk_troop", slot_troop_spouse, 0),
   ], "I want to improve my relation with a lord. Can you help me?", "lady_restore_relation",[]],
-  [anyone,"lady_restore_relation", [(le, "$g_talk_troop_relation", 0)], "{playername}, I don't know you well enough to act on your behalf. I am sorry.", "lady_pretalk",[]],
-  [anyone,"lady_restore_relation", [], "Hmm. I guess you got on the wrong side of somebody. Very well, who do you want to restore your relation with?", "lady_restore_relation_2",[]],
-  [anyone|plyr|repeat_for_troops,"lady_restore_relation_2", [(store_repeat_object, ":troop_no"),
+[anyone,"lady_restore_relation", [(le, "$g_talk_troop_relation", 0)], "{playername}, I don't know you well enough to act on your behalf. I am sorry.", "lady_pretalk",[]],
+[anyone,"lady_restore_relation", [], "Hmm. I guess you got on the wrong side of somebody. Very well, who do you want to restore your relation with?", "lady_restore_relation_2",[]],
+[anyone|plyr|repeat_for_troops,"lady_restore_relation_2", [(store_repeat_object, ":troop_no"),
                                                              (is_between, ":troop_no", active_npcs_begin, active_npcs_end),
                                                              (store_troop_faction, ":faction_no", ":troop_no"),
                                                              (eq, "$g_talk_troop_faction", ":faction_no"),
@@ -14697,11 +11063,10 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
                                                              (try_end),
                                                              ],
    "{s1}", "lady_restore_relation_2b",[(store_repeat_object, "$troop_to_restore_relations_with")]],
-  ##diplomacy end+
-  [anyone|plyr,"lady_restore_relation_2", [], "Never mind. I get along with everyone well enough.", "lady_pretalk",[]],
-  [anyone,"lady_restore_relation_2b", [(str_store_troop_name, s10, "$troop_to_restore_relations_with")], "Well I can try to help you there.\
+[anyone|plyr,"lady_restore_relation_2", [], "Never mind. I get along with everyone well enough.", "lady_pretalk",[]],
+[anyone,"lady_restore_relation_2b", [(str_store_troop_name, s10, "$troop_to_restore_relations_with")], "Well I can try to help you there.\
  I am sure a few expensive gifts will make {s10} look at you more favorably.", "lady_restore_relation_3",[]],
-  [anyone,"lady_restore_relation_3", [(str_store_troop_name, s10, "$troop_to_restore_relations_with"),
+[anyone,"lady_restore_relation_3", [(str_store_troop_name, s10, "$troop_to_restore_relations_with"),
                                       (assign, "$lady_restore_cost_1", 1000),
                                       (assign, "$lady_restore_cost_2", 2000),
                                       (assign, "$lady_restore_cost_3", 3000),
@@ -14732,20 +11097,20 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    "You can improve your relation with {s10} by sending {reg4?her:him} a gift worth {reg10} mon.\
  But if you can afford spending {reg11} mon on the gift, it would make a good impression on {reg4?her:him}.\
  And if you can go up to {reg12} mon, that would really help smooth things out.", "lady_restore_relation_4",[]],
-  [anyone|plyr,"lady_restore_relation_4", [(store_troop_gold,":gold", "trp_player"),
+[anyone|plyr,"lady_restore_relation_4", [(store_troop_gold,":gold", "trp_player"),
                                            (ge, ":gold", "$lady_restore_cost_1"),
                                            (assign, reg10, "$lady_restore_cost_1")],
    "I think a gift of {reg10} mon will do.", "lady_restore_relation_5",[(assign, "$temp", 1), (assign, "$temp_2", "$lady_restore_cost_1")]],
-  [anyone|plyr,"lady_restore_relation_4", [(store_troop_gold,":gold", "trp_player"),
+[anyone|plyr,"lady_restore_relation_4", [(store_troop_gold,":gold", "trp_player"),
                                            (ge, ":gold", "$lady_restore_cost_2"),
                                            (assign, reg11, "$lady_restore_cost_2")],
    "Maybe I can afford {reg11} mon.", "lady_restore_relation_5",[(assign, "$temp", 2), (assign, "$temp_2", "$lady_restore_cost_2")]],
-  [anyone|plyr,"lady_restore_relation_4", [(store_troop_gold,":gold", "trp_player"),
+[anyone|plyr,"lady_restore_relation_4", [(store_troop_gold,":gold", "trp_player"),
                                            (ge, ":gold", "$lady_restore_cost_3"),
                                            (assign, reg12, "$lady_restore_cost_3")],
    "In that case, I am ready to spend {reg12} mon.", "lady_restore_relation_5",[(assign, "$temp", 3), (assign, "$temp_2", "$lady_restore_cost_3")]],
-  [anyone|plyr,"lady_restore_relation_4", [], "I don't think I can afford a gift at the moment.", "lady_restore_relation_cant_afford",[]],
-  [anyone,"lady_restore_relation_5", [], "Excellent. Then I'll choose an appropriate gift for you and send it to {s10} with your compliments.\
+[anyone|plyr,"lady_restore_relation_4", [], "I don't think I can afford a gift at the moment.", "lady_restore_relation_cant_afford",[]],
+[anyone,"lady_restore_relation_5", [], "Excellent. Then I'll choose an appropriate gift for you and send it to {s10} with your compliments.\
  I am sure {reg4?she:he} will appreciate the gesture.", "lady_restore_relation_6",[
      (troop_remove_gold, "trp_player","$temp_2"),
      (call_script, "script_change_player_relation_with_troop", "$troop_to_restore_relations_with", "$temp"),
@@ -14754,10 +11119,10 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	 (call_script, "script_dplmc_store_troop_is_female_reg", "$troop_to_restore_relations_with", 4),
 	 ##diplomacy end+
      ]],
-  [anyone|plyr,"lady_restore_relation_6", [], "Thank you for your help, madame.", "lady_pretalk",[]],
-  [anyone,"lady_restore_relation_cant_afford", [], "I am afraid, I can't be of much help in that case, {playername}. I am sorry.", "lady_pretalk",[]],
-  [anyone|plyr,"lady_talk", [], "I must beg my leave.", "lady_leave",[]],
-  [anyone|auto_proceed,"lady_leave", [
+[anyone|plyr,"lady_restore_relation_6", [], "Thank you for your help, madame.", "lady_pretalk",[]],
+[anyone,"lady_restore_relation_cant_afford", [], "I am afraid, I can't be of much help in that case, {playername}. I am sorry.", "lady_pretalk",[]],
+[anyone|plyr,"lady_talk", [], "I must beg my leave.", "lady_leave",[]],
+[anyone|auto_proceed,"lady_leave", [
   (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", "trp_player"),
   (try_begin),
 	(lt, reg0, 0),
@@ -14766,146 +11131,11 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	(str_store_string, s12, "str_farewell_playername"),
   (try_end),
   ], "{s12}", "close_window",[(eq,"$talk_context",tc_party_encounter),(assign, "$g_leave_encounter", 1)]],
-  [anyone|plyr,"ally_thanks_meet", [], "My name is {playername}.", "ally_thanks_meet_2", []],
-  [anyone, "ally_thanks_meet_2", [(ge, "$g_talk_troop_relation", 15),(str_store_troop_name, s1, "$g_talk_troop")],
-   "Well met indeed {playername}. My name is {s1} and I am forever in your debt. If there is ever anything I can help you with, just let me know...", "close_window", []],
-  [anyone, "ally_thanks_meet_2", [(ge, "$g_talk_troop_relation", 5),], "Well met {playername}. I am in your debt for what you just did. I hope one day I will find a way to repay it.", "close_window", []],
-  [anyone, "ally_thanks_meet_2", [], "Well met {playername}. I am {s1}. Thanks for your help and I hope we meet again.", "close_window", []],
-  [anyone,"combined_political_quests", [
-  (eq, "$political_quest_found", "qst_resolve_dispute"),
-	],
-   "{s9}", "political_quest_suggested",
-   [
-   (quest_set_slot, "qst_resolve_dispute", slot_quest_target_troop, "$political_quest_target_troop"),
-   (quest_set_slot, "qst_resolve_dispute", slot_quest_object_troop, "$political_quest_object_troop"),
-
-   (quest_get_slot, ":target_troop", "qst_resolve_dispute", slot_quest_target_troop),
-   (quest_get_slot, ":object_troop", "qst_resolve_dispute", slot_quest_object_troop),
-   (str_store_troop_name, s4, ":target_troop"),
-   (str_store_troop_name, s5, ":object_troop"),
-   (faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
-   (str_store_troop_name, s7, ":faction_leader"),
-   (try_begin),
-      (eq, "$players_kingdom", "fac_player_supporters_faction"),
-	  (faction_slot_eq, "fac_player_supporters_faction", slot_faction_leader, "trp_player"),
-	  (str_store_string, s9, "str_you_may_be_aware_my_lord_of_the_quarrel_between_s4_and_s5_which_is_damaging_the_unity_of_this_realm_and_sapping_your_authority_if_you_could_persuade_the_lords_to_reconcile_it_would_boost_your_own_standing_however_in_taking_this_on_you_run_the_risk_of_one_the_lords_deciding_that_you_have_taken_the_rivals_side"),
-   (else_try),
-	  (str_store_string, s9, "str_you_may_be_aware_my_lord_of_the_quarrel_between_s4_and_s5_which_is_damaging_the_unity_of_this_realm_and_sapping_your_authority_if_you_could_persuade_the_lords_to_reconcile_i_imagine_that_s7_would_be_most_pleased_however_in_taking_this_on_you_run_the_risk_of_one_the_lords_deciding_that_you_have_taken_the_rivals_side"),
-   (try_end),
-   ]],
-   [anyone,"combined_political_quests", [
-
-  (eq, "$political_quest_found", "qst_offer_gift"),
-  (quest_set_slot, "qst_offer_gift", slot_quest_target_troop, "$political_quest_target_troop"),
-  #gekokujo 3.0 integrating 1.158 change start
-  (quest_set_slot, "qst_offer_gift", slot_quest_giver_troop, "$g_talk_troop"),
-  #gekokujo 3.0 integrating 1.158 change end
-
-  (quest_get_slot, ":target_troop", "qst_offer_gift", slot_quest_target_troop),
-  (str_store_troop_name, s4, ":target_troop"),
-  (troop_get_type, reg4, ":target_troop"),
-  (call_script, "script_troop_get_family_relation_to_troop", ":target_troop", "$g_talk_troop"),
-
-	],
-   "Your relations with {s4} are not all that they could be. As {reg4?she:he} is my {s11}, I can mediate to attempt to mend your quarrel. Perhaps the best way for me to do this would be to send {reg4?her:him} a gift -- a fur-trimmed velvet robe, perhaps. If you can provide me with a bolt of velvet and a length of furs, I can have one made and sent to {reg4?her:him.}", "political_quest_suggested",
-   [
-   (quest_get_slot, ":target_troop", "qst_offer_gift", slot_quest_target_troop),
-   (troop_get_type, reg4, ":target_troop"),
-   ]],
-   [anyone,"combined_political_quests", [
-   (eq, "$political_quest_found", "qst_denounce_lord"),
-   (this_or_next|eq, "$g_talk_troop", "$g_player_minister"),
-		(troop_slot_eq, "trp_player", slot_troop_spouse, "$g_talk_troop"),
-
-   (str_store_troop_name, s4, "$political_quest_target_troop"),
-   ##diplomacy start+ use script for gender
-   #(troop_get_type, reg4, "$political_quest_target_troop"),
-   (call_script, "script_dplmc_store_troop_is_female_reg", "$political_quest_target_troop", 4),
-   ##diplomacy end+
-   (str_store_faction_name, s5, "$players_kingdom"),
-
-   (troop_get_slot, ":reputation_string", "$political_quest_target_troop", slot_lord_reputation_type),
-   (val_add, ":reputation_string", "str_lord_derogatory_default"),
-   (str_store_string, s7, ":reputation_string"),
-
-   (troop_get_slot, ":reputation_string", "$political_quest_target_troop", slot_lord_reputation_type),
-   (val_add, ":reputation_string", "str_lord_derogatory_result"),
-   (str_store_string, s8, ":reputation_string"),
-
-	],
-   "As you may realize, {s4} has many enemies among the lords of the {s5}. In particular, they feel that {reg4?she:he} is {s7}, and worry that {reg4?she:he} will {s8}. Were you to denounce {s4} to {reg4?her:his} face, you may reap much popularity -- although, of course, you would make an enemy of {reg4?her:him}, and risk being challenged to a duel.", "political_quest_suggested",
-   [
-   ]],
-    [anyone,"combined_political_quests", [
-    (eq, "$political_quest_found", "qst_denounce_lord"),
-    ##diplomacy start+ use script for gender
-    #(troop_get_type, reg4, "$political_quest_target_troop"),
-    (call_script, "script_dplmc_store_troop_is_female_reg", "$political_quest_target_troop", 4),
-    ##diplomacy end+
-
-	(str_clear, s9),
-	(call_script, "script_troop_get_relation_with_troop", "trp_player", "$g_talk_troop"),
-	(assign, ":player_relation_with_target", reg0),
-
-    (str_store_troop_name, s4, "$political_quest_target_troop"),
-	(try_begin),
-		(ge, ":player_relation_with_target", 2),
-		(neg|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_debauched),
-		(neg|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_quarrelsome),
-		(str_store_string, s9, "str_i_realize_that_you_are_on_good_terms_with_s4_but_we_ask_you_to_do_this_for_the_good_of_the_realm"),
-	(else_try),
-		(ge, ":player_relation_with_target", 2),
-		(str_store_string, s9, "str_i_realize_that_you_are_on_good_terms_with_s4_but_the_blow_will_hurt_him_more"),
-	(try_end),
-
-    (str_store_faction_name, s5, "$players_kingdom"),
-    (str_store_troop_name, s4, "$political_quest_target_troop"),
-
-    (troop_get_slot, ":reputation_string", "$political_quest_target_troop", slot_lord_reputation_type),
-    (val_add, ":reputation_string", "str_lord_derogatory_default"),
-    (str_store_string, s7, ":reputation_string"),
-
-    (troop_get_slot, ":reputation_string", "$political_quest_target_troop", slot_lord_reputation_type),
-    (val_add, ":reputation_string", "str_lord_derogatory_result"),
-    (str_store_string, s8, ":reputation_string"),
-
-
-	],
-
-    "As you may realize, many of us hereditary vassals of the {s5} consider {s4} to be {s7}, and a liability to our cause. We worry that {reg4?she:he} will {s8}. People know my views on {s4} already, but if you were to denounce {reg4?her:him} to {reg4?her:his} face, you would further erode his standing -- and discourage our great lord from entrusting {reg4?her:him} with any more power or responsibility. Of course, you would make an enemy of {reg4?her:him}, and risk being challenged to a duel.{s9}", "political_quest_suggested",
-    [
-
-
-	]],
-   [anyone,"combined_political_quests", [
-    (eq, "$political_quest_found", "qst_intrigue_against_lord"),
-    (str_store_troop_name, s4, "$political_quest_target_troop"),
-       ##diplomacy start+ use script for gender
-   #(troop_get_type, reg4, "$political_quest_target_troop"),
-   (call_script, "script_dplmc_store_troop_is_female_reg", "$political_quest_target_troop", 4),
-   ##diplomacy end+
-    (str_store_faction_name, s5, "$players_kingdom"),
-    (troop_get_slot, ":reputation_string", "$political_quest_target_troop", slot_lord_reputation_type),
-    (val_add, ":reputation_string", "str_lord_derogatory_default"),
-    (str_store_string, s7, ":reputation_string"),
-
-    (troop_get_slot, ":reputation_string_2", "$political_quest_target_troop", slot_lord_reputation_type),
-    (val_add, ":reputation_string_2", "str_lord_derogatory_result"),
-    (str_store_string, s8, ":reputation_string_2"),
-
-	(faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
-	(str_store_troop_name, s9, ":faction_leader"),
-	],
-   "You and I have a common interest in seeking to curtail the rise of {s4}. I feel that {reg4?she:he} is {s7}, and worry that {reg4?she:he} will {s8}. Were you to tell our leader {s9} your opinion of {s4}, it might discourage {s9} from granting {s4} any further powers or responsibilities, at least for a while, and I would be much obliged to you.", "political_quest_suggested",
-   []],
-  [anyone,"combined_political_quests", [],
-   "I cannot think of anything right now, but we will have some items of mutual interest in the future.", "political_quest_suggested",
-   []],
-  [anyone|plyr,"lord_persuade_lords_to_make_peace_completed", [],
+[anyone|plyr,"lord_persuade_lords_to_make_peace_completed", [],
    "Thank you. Let me have the money.", "lord_persuade_lords_to_make_peace_pay",[]],
-  [anyone|plyr,"lord_persuade_lords_to_make_peace_completed", [],
+[anyone|plyr,"lord_persuade_lords_to_make_peace_completed", [],
    "No need for a payment. I only did what was right.", "lord_persuade_lords_to_make_peace_no_pay",[]],
-  [anyone ,"lord_persuade_lords_to_make_peace_pay", [],
+[anyone ,"lord_persuade_lords_to_make_peace_pay", [],
    "Oh, yes, of course. We had already got the money for you.\
  Here, please accept these {reg12} mon together with our most sincere thanks.\
  Me and the people of our town will not forget your help.", "close_window",
@@ -14916,7 +11146,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     (quest_get_slot, ":quest_reward", "qst_persuade_lords_to_make_peace", slot_quest_gold_reward),
     (assign, reg12, ":quest_reward")
     ]],
-  [anyone ,"lord_persuade_lords_to_make_peace_no_pay", [],
+[anyone ,"lord_persuade_lords_to_make_peace_no_pay", [],
    "You are indeed an extraordinary person, {sir/madame}, and it is an honour for me to have known you.\
  You not only did what was impiossible and put an end to this terrible war, but you won't even accept a reward for it.\
  Very well, I will not insist on the matter, but please know that you will have our eternal respect and gratitude.", "close_window",
@@ -14925,13 +11155,9 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     (call_script, "script_change_player_relation_with_center", "$current_town", 8),
     (call_script, "script_end_quest", "qst_persuade_lords_to_make_peace"),
     ]],
-  [anyone|plyr,"lord_deal_with_night_bandits_completed", [],
+[anyone|plyr,"lord_deal_with_night_bandits_completed", [],
    "It was my pleasure, {s65}.", "close_window",[]],
-##diplomacy start+
-#Imported Floris dialog options letting you rebel directly from your liege by
-#leaving his kingdom and refusing to hand over your fiefs.
-## Floris - Rebellion Option
-  [anyone|plyr ,"lord_ask_leave_service_verify_again", [
+[anyone|plyr ,"lord_ask_leave_service_verify_again", [
 	##altered the condition block
 	(neg|troop_slot_eq, "trp_player", slot_troop_spouse, "$g_talk_troop"),
 	(neg|troop_slot_eq, "$g_talk_troop", slot_troop_spouse, "trp_player"),

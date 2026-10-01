@@ -14,6 +14,7 @@ from header_terrain_types import *
 from header_items import * #For ek_food, and so forth
 from module_constants import *
 
+
 dialogs_town_governance = [
 [anyone|plyr,"village_farmer_talk",
 [(check_quest_active, "qst_track_down_bandits"),
@@ -49,7 +50,383 @@ dialogs_town_governance = [
 (assign,"$encountered_party_friendly",0),
 ]],
 [anyone|plyr,"village_farmer_talk", [], "Carry on, then. Farewell.", "close_window",[(assign, "$g_leave_encounter",1)]],
-  [anyone,"mayor_begin", [(check_quest_active, "qst_persuade_lords_to_make_peace"),
+[anyone|plyr,"player_siege_castle_commander_1", [],
+"Surrender! Your situation is hopeless!", "player_siege_ask_surrender", []],
+[anyone|plyr,"player_siege_castle_commander_1", [], "Nothing. I'll leave you now.", "close_window", []],
+[anyone,"player_siege_ask_surrender", [(lt, "$g_enemy_strength", 100), (store_mul,":required_str","$g_enemy_strength",5),(ge, "$g_ally_strength", ":required_str")],
+"Perhaps... Do you give your word of honour that we'll be treated well?", "player_siege_ask_surrender_treatment", []],
+[anyone,"player_siege_ask_surrender", [(lt, "$g_enemy_strength", 200), (store_mul,":required_str","$g_enemy_strength",3),(ge, "$g_ally_strength", ":required_str")],
+"We are ready to leave this castle to you and march away if you give me your word of honour that you'll let us leave unmolested.", "player_siege_ask_leave_unmolested", []],
+[anyone,"player_siege_ask_surrender", [
+	(ge, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_LOW),#only enable if AI changes are active
+	(assign, reg0, 0),
+	(try_begin),
+		#I assume that $g_encountered_party is the town, but this could be wrong
+		(neg|party_slot_eq, "$g_encountered_party", slot_party_type, spt_castle),
+		(neg|party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
+		(try_begin),
+			(ge, "$cheat_mode", 1),
+			(assign, reg0, "$g_encountered_party"),
+			(str_store_party_name, s0, "$g_encountered_party"),
+			(party_get_slot, reg1, "$g_encountered_party", slot_party_type),
+			(display_message, "@{!}Party at address {reg0} named {s0} has slot_party_type {reg1} (not castle or town)"),
+		(try_end),
+		(assign, reg0, 1),#<- don't continue
+	(try_end),
+	(eq, reg0, 0),
+	#Don't bother continuing if the attackers don't outnumber the defenders by a decent ratio.
+	(store_mul, reg0,"$g_enemy_strength", 3),
+	(ge, "$g_ally_strength", reg0),
+
+	#Enemy must be below a certain strength to even consider giving up.
+	(game_get_reduce_campaign_ai, ":reduce_campaign_ai"),
+	(this_or_next|lt, "$g_enemy_strength", 500),# Hard (would be described as "small bands" on the world map)
+		(ge, ":reduce_campaign_ai", 1),
+	(this_or_next|lt, "$g_enemy_strength", 1000),# Medium ("enemy patrols")
+		(ge, ":reduce_campaign_ai", 2),
+	(lt, "$g_enemy_strength", 2000),# Easy ("medium-sized group")
+
+	#Prevent forts from surrendering to five men and a mule.
+	(assign, ":defender_str", "$g_enemy_strength"),
+	(val_max, ":defender_str", 5),#establish a minimum (if you can't just walk in, there must be some defenders)
+	(try_begin),
+		#Not that it matters much, given how extremely low it is, but increase the minimum for towns.
+		(party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
+		(val_max, ":defender_str", 10),
+	(try_end),
+
+	#Count fortresses and original fortresses for use below
+	(assign, ":forts_held", 0),
+	(assign, ":starting_forts", 0),
+	(try_for_range, ":center_no", walled_centers_begin, walled_centers_end),
+		(store_faction_of_party, reg0, ":center_no"),
+		(try_begin),
+			(eq, reg0, "$g_encountered_party_faction"),
+			(val_add, ":forts_held", 1),
+		(try_end),
+		(try_begin),
+			(party_slot_eq, ":center_no", slot_center_original_faction, "$g_encountered_party_faction"),
+			(val_add, ":starting_forts", 1),
+		(try_end),
+	(try_end),
+
+	#Always refuse to retreat if this is the last fortress
+	(gt, ":forts_held", 1),
+
+	#Always refuse to abandon a fort if they don't have more than 50% of their original size.
+	(store_mul, reg0, ":forts_held", 2),
+	(gt, reg0, ":starting_forts"),
+
+	#Always refuse to abandon a native fort if they don't have more than 100% of their original size
+	(assign, ":is_native", 0),
+	(try_begin),
+		(is_between, "$g_encountered_party_faction", npc_kingdoms_begin, npc_kingdoms_end),#this bonus is only intended for ordinary factions
+		(this_or_next|party_slot_eq, "$g_talk_troop", slot_troop_original_faction, "$g_encountered_party_faction"),
+			(party_slot_eq, "$g_encountered_party", slot_center_original_faction, "$g_encountered_party_faction"),
+		(assign, ":is_native", 1),
+	(try_end),
+
+	(this_or_next|gt, ":forts_held", ":starting_forts"),
+		(eq, ":is_native", 0),
+
+	#Now determine the number of attacking troops required to surrender.
+	#Default requirement is being outnumbered 8-to-1
+	(assign, ":surrender_ratio_10", 80),
+
+	#Adjust values based on defending commander's personality
+	(try_begin),
+		#Companions who like retreating are more likely to surrender
+		(call_script, "script_dplmc_get_troop_morality_value", "$g_talk_troop", tmt_aristocratic),
+		(lt, reg0, 0),
+		#On normal will agree if outnumbered 4-to-1
+		(val_div, ":surrender_ratio_10", 2),
+	(else_try),
+		#Companions who dislike retreating will be less likely to surrender
+		(this_or_next|ge, reg0, 1),#<- value for tmt_aristocratic
+		#The same goes for martial, self-righteous, and quarrelsome lords.
+		(this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_martial),
+		(this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_quarrelsome),
+		(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_selfrighteous),
+		#Exaggerate the effect of this to make it more noticable.
+		#On normal will agree if outnumbered 16-to-1.
+		(val_mul, ":surrender_ratio_10", 2),
+	(else_try),
+		#Faction leaders are more tenacious either when defending native territory, or when
+		#their faction is at less than 80% strength.
+		(this_or_next|is_between, "$g_talk_troop", kings_begin, kings_end),
+		(this_or_next|is_between, "$g_talk_troop", pretenders_begin, pretenders_end),
+			(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+		(store_mul, reg0, ":forts_held", 5),
+		(val_div, reg0, 4),
+		(this_or_next|lt, reg0, ":starting_forts"),
+			(ge, ":is_native", 1),
+		#On normal will agree if outnumbered 16-to-1.
+		(val_mul, ":surrender_ratio_10", 2),
+	(else_try),
+		#Ladies with traditional upbringings (other than adventurous ones) are also more likely to run away.
+		#So are roguish commoners without a positive tmt_aristocratic value.
+		(neg|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+		(this_or_next|troop_slot_ge, "$g_talk_troop", slot_lord_reputation_type, lrep_conventional),
+		(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_roguish),
+		#On normal will agree if outnumbered 4-to-1
+		(val_div, ":surrender_ratio_10", 2),
+	(try_end),
+
+	#Certain lords consider certain locations "native" and will not easily surrender their homes.
+	#Normally the following is just for companions, but I've set it to also include things
+	#like Lord Harringoth and Harringoth Castle, etc.  This is applied after personality factors,
+	#since it can enhance or counteract someone's native disposition.
+	(try_begin),
+		(is_between, "$g_talk_troop", active_npcs_begin, kingdom_ladies_end),
+		(troop_slot_eq, "$g_talk_troop", slot_troop_home, "$g_encountered_party"),
+		#On normal, most will agree if outnumbered 16-to-1, 8-to-1 if cowardly, 32-to-1 if brave
+		(val_mul, ":surrender_ratio_10", 2),
+	(try_end),
+
+	(val_clamp, ":surrender_ratio_10", 40, 320),#If the value is not in this range, there was a coding mistake
+	#Adjust threshold for campaign difficulty
+	(try_begin),
+		(lt, ":reduce_campaign_ai", 1),#hard, 150% (ordinarily 14-to-1, 8-to-1 for cowards, 28-to-1 for brave)
+		(val_mul, ":surrender_ratio_10", 3),
+		(val_div, ":surrender_ratio_10", 2),
+	(else_try),
+		(eq, ":reduce_campaign_ai", 0),#medium, 100% (ordinarily 8-to-1, 4-to-1 for cowards, 16-to-1 for brave)
+	(else_try),
+		(ge, ":reduce_campaign_ai", 2),#easy, 75% (ordinarily 6-to-1, 3-to-1 for cowards, 12-to-1 for brave)
+		(val_mul, ":surrender_ratio_10", 3),
+		(val_add, ":surrender_ratio_10", 2),
+		(val_div, ":surrender_ratio_10", 4),
+	(try_end),
+
+	#Compare the besiegers' strength to the "surrender threshold"
+	(store_mul, ":required_strength", ":defender_str", ":surrender_ratio_10"),
+	(store_mul, reg0, "$g_ally_strength", 10),
+	(ge, reg0, ":required_strength"),
+	],
+	"We are ready to leave this castle to you and march away if you give me your word of honour that you'll let us leave unmolested.", "player_siege_ask_leave_unmolested", []],
+[anyone,"player_siege_ask_surrender", [
+	#I assume that $g_encountered_party is the town, but this could be wrong
+	(this_or_next|party_slot_eq, "$g_encountered_party", slot_party_type, spt_castle),
+		(party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
+	(is_between, "$g_encountered_party_faction", kingdoms_begin, kingdoms_end),
+	#The attackers outnumber the defenders by a decent ratio.
+	(store_mul, reg0,"$g_enemy_strength", 4),
+	(ge, "$g_ally_strength", reg0),
+	#The attack is on native soil, or the odds are REALLY bad.
+	(store_mul, reg0, "$g_enemy_strength", 8),
+	(this_or_next|party_slot_eq, "$g_encountered_party", slot_center_original_faction, "$g_encountered_party_faction"),
+		(ge, "$g_ally_strength", reg0),
+	#Store name of castle and name of faction
+	(str_store_faction_name, s0, "$g_talk_troop_faction"),
+	(str_store_party_name, s1, "$g_encountered_party"),],
+	"The {s0} will never abandon {s1}!", "close_window", []],
+[anyone,"player_siege_ask_surrender", [],
+"Surrender? Hah! We can hold these walls until we all die of old age.", "close_window", []],
+[anyone|plyr,"player_siege_ask_surrender_treatment", [],
+"I give you nothing. Surrender now or prepare to die!", "player_siege_ask_surrender_treatment_reject", []],
+[anyone,"player_siege_ask_surrender_treatment_reject", [
+##diplomacy start+ Make both-gender version.
+],
+"{Bastard/Bitch}. We will fight you to the last man!", "close_window", []],
+[anyone|plyr,"player_siege_ask_surrender_treatment", [],
+"You will be ransomed and your soldiers will live. I give you my word.", "player_siege_ask_surrender_treatment_accept", []],
+[anyone,"player_siege_ask_surrender_treatment_accept", [],
+"Very well then. Under those terms, I offer you my surrender.", "close_window", [(assign,"$g_enemy_surrenders",1)]],
+[anyone|plyr,"player_siege_ask_leave_unmolested", [],
+"You have my word. You will not come under attack if you leave the castle.", "player_siege_ask_leave_unmolested_accept", []],
+[anyone,"player_siege_ask_leave_unmolested_accept", [],
+"Very well. Then we leave this castle to you. You have won this day. But we'll meet again.", "close_window", [(assign,"$g_castle_left_to_player",1)]],
+[anyone|plyr,"player_siege_ask_leave_unmolested", [],
+"Unacceptable. I want prisoners.", "player_siege_ask_leave_unmolested_reject", []],
+[anyone,"player_siege_ask_leave_unmolested_reject", [],
+"Then we will defend this castle to the death, and this parley is done. Farewell.", "close_window", []],
+[anyone|plyr,"castle_guard_players", [],
+   "Open the door. I'll go in.", "close_window",[(call_script, "script_enter_court", "$current_town")]],
+[anyone|plyr,"castle_guard_players", [],
+   "Never mind.", "close_window",[]],
+[anyone|plyr,"castle_guard_sneaked_intro_1", [], "I want to enter the hall and speak to the lord.", "castle_guard_sneaked_intro_2",[]],
+[anyone|plyr,"castle_guard_sneaked_intro_1", [], "[Leave]", "close_window",[]],
+[anyone,"castle_guard_sneaked_intro_2", [], "Are you out of your mind, {man/woman}?\
+ Beggars are not allowed into the hall. Now get lost or I'll beat you bloody.", "close_window",[]],
+[anyone|plyr,"castle_guard_intro_1", [],
+   "I want to enter the hall and speak to the lord.", "castle_guard_intro_2",[]],
+[anyone|plyr,"castle_guard_intro_1", [],
+   "Never mind.", "close_window",[]],
+[anyone,"castle_guard_intro_2", [
+	(faction_slot_eq, "$g_encountered_party_faction", slot_faction_ai_state, sfai_feast),
+	(faction_slot_eq, "$g_encountered_party_faction", slot_faction_ai_object, "$current_town"),
+
+	(this_or_next|neq, "$players_kingdom", "$g_encountered_party_faction"),
+		(neg|troop_slot_ge, "trp_player", slot_troop_renown, 50),
+
+	(neg|troop_slot_ge, "trp_player", slot_troop_renown, 125),
+	(neq, "$g_player_eligible_feast_center_no", "$current_town"),
+
+	(neg|check_quest_active, "qst_wed_betrothed"),
+	(neg|check_quest_active, "qst_wed_betrothed_female"),
+
+	(neg|troop_slot_ge, "trp_player", slot_troop_spouse, 1), #Married players always make the cut
+
+   ], "I'm afraid there is a feast in progress, and you are not invited.", "close_window",
+   []],
+[anyone,"castle_guard_intro_2", [], "You can go in after leaving your weapons with me. No one is allowed to carry arms into the lord's hall.", "castle_guard_intro_3",
+   []],
+[anyone|plyr,"castle_guard_intro_3", [], "Here, take my arms. I'll go in.", "close_window", [(call_script, "script_enter_court", "$current_town")]],
+[anyone|plyr,"castle_guard_intro_3", [], "No, I give my arms to no one.", "castle_guard_intro_2b", []],
+[anyone,"castle_guard_intro_2b", [], "Then you can't go in.", "close_window", []],
+[anyone,"castle_gate_guard_pretalk", [],
+   "Yes?", "castle_gate_guard_talk",[]],
+[anyone|plyr,"castle_gate_guard_talk", [(ge, "$g_encountered_party_relation", 0)],
+  "We need shelter for the night. Will you let us in?", "castle_gate_open",[]],
+[anyone|plyr,"castle_gate_guard_talk", [(party_slot_ge, "$g_encountered_party", slot_town_lord, 1)], "I want to speak with the lord of the castle.", "request_meeting_castle_lord",[]],
+[anyone|plyr,"castle_gate_guard_talk", [], "I want to speak with someone in the castle.", "request_meeting_other",[]],
+[anyone|plyr,"castle_gate_guard_talk", [], "[Leave]", "close_window",[]],
+[anyone,"castle_gate_open", [(party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+                                         (call_script, "script_get_troop_attached_party", ":castle_lord"),
+                                         (eq, "$g_encountered_party", reg0),
+                                         (ge, "$g_encountered_party_relation", 0),
+                                         (call_script, "script_troop_get_player_relation", ":castle_lord"),
+                                         (assign, ":castle_lord_relation", reg0),
+                                         #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
+                                         (ge, ":castle_lord_relation", 5),
+                                         (str_store_troop_name, s2, ":castle_lord")
+                                         ],  "My lord {s2} will be happy to see you {sir/madam}.\
+ Come on in. I am opening the gates for you.", "close_window",[(assign,"$g_permitted_to_center",1)]],
+[anyone,"castle_gate_open", [(party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+                                         (call_script, "script_get_troop_attached_party", ":castle_lord"),
+                                         (neq, "$g_encountered_party", reg0),
+                                         (ge, "$g_encountered_party_relation", 0),
+                                         (call_script, "script_troop_get_player_relation", ":castle_lord"),
+                                         (assign, ":castle_lord_relation", reg0),
+                                         #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
+                                         (ge, ":castle_lord_relation", 5),
+                                         (str_store_troop_name, s2, ":castle_lord")
+                                         ],  "My lord {s2} is not in the castle now.\
+ But I think he would approve of you taking shelter here.\
+ Come on in. I am opening the gates for you.", "close_window",[(assign,"$g_permitted_to_center",1)]],
+[anyone,"castle_gate_open", [(party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+                               (call_script, "script_troop_get_player_relation", ":castle_lord"),
+                               (assign, ":castle_lord_relation", reg0),
+                               #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
+                               (ge, ":castle_lord_relation", -2),
+                                         ],  "Come on in. I am opening the gates for you.", "close_window",[(assign,"$g_permitted_to_center",1)]],
+[anyone,"castle_gate_open", [(party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+                               (call_script, "script_troop_get_player_relation", ":castle_lord"),
+                               (assign, ":castle_lord_relation", reg0),
+                               #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
+                               (ge, ":castle_lord_relation", -19),
+                               (str_store_troop_name, s2, ":castle_lord")
+                                         ],  "Come on in. But make sure your men behave sensibly within the walls.\
+ My lord {s2} does not want trouble here.", "close_window",[(assign,"$g_permitted_to_center",1)]],
+[anyone,"castle_gate_open", [(party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+                               (str_store_troop_name, s2, ":castle_lord"),
+  ],  "My lord {s2} does not want you here. Begone now.", "close_window",[]],
+[anyone,"ransom_broker_pretalk", [],
+   "Anyway, if you have any prisoners, I will be happy to buy them from you.", "ransom_broker_talk",[]],
+[anyone|plyr,"ransom_broker_talk",
+   [[store_num_regular_prisoners,reg(0)],[ge,reg(0),1]],
+   "Then you'd better bring your purse. I have got prisoners to sell.", "ransom_broker_sell_prisoners",[]],
+[anyone|plyr,"ransom_broker_talk",
+   [(store_num_regular_prisoners,reg0),(ge,reg0,1)],
+   "I want to sell all the prisoners I have with me.", "ransom_broker_sell_prisoners_all",[]],
+[anyone,"ransom_broker_sell_prisoners_all", [
+  (call_script, "script_dplmc_sell_all_prisoners", 0, 0),#do not actually sell
+  (store_num_regular_prisoners, reg2),
+  (val_sub, reg2, 1),
+  ],
+  "Let's see...  I'll give you {reg0} mon for your {reg1} {reg2?prisoners:prisoner}.  Do we have a deal?", "ransom_broker_sell_prisoners_all_2", []],
+[anyone|plyr,"ransom_broker_sell_prisoners_all_2", [],
+   "We have a deal.", "ransom_broker_sell_prisoners_2", [(call_script, "script_dplmc_sell_all_prisoners", 1, 0),]
+  ],
+[anyone|plyr,"ransom_broker_sell_prisoners_all_2", [],
+   "Let me think about it again.", "ransom_broker_pretalk",[]],
+[anyone|plyr,"ransom_broker_talk",[
+  ], "I wish to ransom one of my companions.", "ransom_broker_ransom_companion",[]],
+[anyone,"ransom_broker_ransom_companion",[], "Whom do you wish to ransom?", "ransom_broker_ransom_companion_choose",[]],
+[anyone|plyr|repeat_for_troops,"ransom_broker_ransom_companion_choose",[
+  (store_repeat_object, ":imprisoned_companion"),
+  (neg|troop_slot_eq, ":imprisoned_companion", slot_troop_occupation, slto_kingdom_hero),
+  #gekokujo 3.0 microfactions! include fort companions start
+  #(is_between, ":imprisoned_companion", companions_begin, companions_end),
+  (is_between, ":imprisoned_companion", companions_begin, fort_companions_end),
+  #gekokujo 3.0 microfactions! include fort companions end
+  (troop_slot_ge, ":imprisoned_companion", slot_troop_prisoner_of_party, centers_begin),
+  (str_store_troop_name, s4, ":imprisoned_companion"),
+  ], "{s4}", "ransom_broker_ransom_companion_name_sum",[
+
+  (store_repeat_object, "$companion_to_be_ransomed"),
+  ]],
+[anyone|plyr,"ransom_broker_ransom_companion_choose",[
+  ], "Never mind", "ransom_broker_pretalk",[]],
+[anyone,"ransom_broker_ransom_companion_name_sum",[], "Let me check my ledger, here... Yes. Your friend is being held in the dungeon at {s7}. How interesting! I remember hearing that the rats down there are unusually large -- like mastiffs, they say... Now... For the very reasonable sum of {reg5} mon, which includes both the ransom and my commission and expenses, we can arrange it so that {s5} can once again enjoy {reg4?her:his} freedom. What do you say?", "ransom_broker_ransom_companion_verify",[
+  (str_store_troop_name, s5, "$companion_to_be_ransomed"),
+  ##diplomacy start+
+  #(troop_get_type, reg4, "$companion_to_be_ransomed"),
+  (call_script, "script_dplmc_store_troop_is_female_reg", "$companion_to_be_ransomed", 4),
+  ##diplomacy end+
+
+  (troop_get_slot, ":prison_location", "$companion_to_be_ransomed", slot_troop_prisoner_of_party),
+  (str_store_party_name, s7, ":prison_location"),
+
+  (store_character_level, ":companion_level", "$companion_to_be_ransomed"),
+  (store_add, "$companion_ransom_amount", ":companion_level", 20),
+  (val_mul, "$companion_ransom_amount", ":companion_level"),
+  (val_mul, "$companion_ransom_amount", 5), #Level 1: 110, level 40: 12,000
+  (assign, reg5, "$companion_ransom_amount"),
+  ]],
+[anyone|plyr,"ransom_broker_ransom_companion_verify",[
+  (store_troop_gold, ":player_gold", "trp_player"),
+  (ge, ":player_gold", "$companion_ransom_amount"),
+
+  ], "Here's your money.", "ransom_broker_ransom_companion_accept",[
+  (troop_remove_gold, "trp_player", "$companion_ransom_amount"),
+
+
+
+
+  (troop_set_slot, "$companion_to_be_ransomed", slot_troop_occupation, slto_player_companion),
+  (troop_set_slot, "$companion_to_be_ransomed", slot_troop_current_mission, npc_mission_rejoin_when_possible),
+  (troop_set_slot, "$companion_to_be_ransomed", slot_troop_days_on_mission, 1),
+
+  (try_begin),
+	(troop_get_slot, ":held_at_prison", "$companion_to_be_ransomed", slot_troop_prisoner_of_party),
+	##diplomacy start+ give ransom to one who was imprisoning the companion
+	(try_begin),
+		(is_between, ":held_at_prison", centers_begin, centers_end),
+		(party_get_slot, ":town_lord", ":held_at_prison", slot_town_lord),
+		(is_between, ":town_lord", heroes_begin, heroes_end),
+		(call_script, "script_dplmc_distribute_gold_to_lord_and_holdings", "$companion_ransom_amount", ":town_lord"),
+	(else_try),
+	    #if the center has no lord, split it among the faction
+		(store_faction_of_party, ":prison_faction", ":held_at_prison"),
+		(call_script, "script_dplmc_faction_leader_splits_gold", ":prison_faction", "$companion_ransom_amount"),
+	(try_end),
+	##diplomacy end+
+	(party_count_prisoners_of_type, ":holding_as_prisoner",  ":held_at_prison", "$companion_to_be_ransomed"),
+	(gt, ":holding_as_prisoner", 0),
+	(party_remove_prisoners, ":held_at_prison", "$companion_to_be_ransomed", 1),
+  (try_end),
+  (troop_set_slot, "$companion_to_be_ransomed", slot_troop_prisoner_of_party, -1),
+
+  (troop_set_slot, "$companion_to_be_ransomed", slot_troop_personalityclash_penalties, 0),
+  (troop_set_slot, "$companion_to_be_ransomed", slot_troop_morality_penalties, 0),
+
+  ]],
+[anyone|plyr,"ransom_broker_ransom_companion_verify",[
+  ], "I can't afford that right now.", "ransom_broker_ransom_companion_refuse",[]],
+[anyone,"ransom_broker_ransom_companion_accept",[], "Splendid! In a few days, I would think, you should find {s5} riding to rejoin you, blinking in the sunlight and no doubt very grateful! Is there any other way in which I can help you?", "ransom_broker_talk",[
+  (str_store_troop_name, s5, "$companion_to_be_ransomed"),
+
+  ]],
+[anyone,"ransom_broker_ransom_companion_refuse",[], "Of course, of course... Never mind what they say about the rats, by the way -- I've never actually seen one myself, on account of the pitch-black darkness. Anyway, I'm sure that {s5} will understand why it's important for you to control expenditures. Now... Was there anything else?", "ransom_broker_talk",[
+  (str_store_troop_name, s5, "$companion_to_be_ransomed"),
+  ]],
+[anyone|plyr,"ransom_broker_talk",[], "Not this time. Good-bye.", "close_window",[]],
+[anyone,"ransom_broker_sell_prisoners", [],
+  "Let me see what you have...", "ransom_broker_sell_prisoners_2",
+   [[change_screen_trade_prisoners]]],
+[anyone, "ransom_broker_sell_prisoners_2", [], "I will be staying here for a few days. Let me know if you need my services.", "close_window",[]],
+[anyone,"mayor_begin", [(check_quest_active, "qst_persuade_lords_to_make_peace"),
                           (quest_slot_eq, "qst_persuade_lords_to_make_peace", slot_quest_giver_troop, "$g_talk_troop"),
                           (check_quest_succeeded, "qst_persuade_lords_to_make_peace"),
                           (quest_get_slot, ":quest_target_troop", "qst_persuade_lords_to_make_peace", slot_quest_target_troop),
@@ -77,7 +454,7 @@ dialogs_town_governance = [
     #TODO: Change these values
     (add_xp_as_reward, 4000),
     ]],
-  [anyone,"mayor_begin", [(check_quest_active, "qst_deal_with_night_bandits"),
+[anyone,"mayor_begin", [(check_quest_active, "qst_deal_with_night_bandits"),
                           (quest_slot_eq, "qst_deal_with_night_bandits", slot_quest_giver_troop, "$g_talk_troop"),
                           (check_quest_succeeded, "qst_deal_with_night_bandits"),
                          ],
@@ -89,14 +466,13 @@ dialogs_town_governance = [
      (call_script, "script_change_player_relation_with_center", "$current_town", 1),
      (call_script, "script_end_quest", "qst_deal_with_night_bandits"),
     ]],
-# Ryan BEGIN
-  [anyone,"mayor_begin", [(check_quest_active, "qst_deal_with_looters"),
+[anyone,"mayor_begin", [(check_quest_active, "qst_deal_with_looters"),
                           (quest_slot_eq, "qst_deal_with_looters", slot_quest_giver_troop, "$g_talk_troop"),
                          ],
    "Ah, {playername}. Have you any progress to report?", "mayor_looters_quest_response",
    [
     ]],
-  [anyone|plyr,"mayor_looters_quest_response",
+[anyone|plyr,"mayor_looters_quest_response",
    [
      (store_num_parties_destroyed_by_player, ":num_looters_destroyed", "pt_looters"),
      (party_template_get_slot,":previous_looters_destroyed","pt_looters",slot_party_template_num_killed),
@@ -105,13 +481,13 @@ dialogs_town_governance = [
      (lt,":looters_paid_for",":num_looters_destroyed"),
      ],
    "I've killed some looters.", "mayor_looters_quest_destroyed",[]],
-  [anyone|plyr,"mayor_looters_quest_response", [(eq,1,0)
+[anyone|plyr,"mayor_looters_quest_response", [(eq,1,0)
   ],
    "I've brought you some goods.", "mayor_looters_quest_goods",[]],
-  [anyone|plyr,"mayor_looters_quest_response", [
+[anyone|plyr,"mayor_looters_quest_response", [
   ],
    "Not yet, sir. Farewell.", "close_window",[]],
-  [anyone,"mayor_looters_quest_destroyed", [],
+[anyone,"mayor_looters_quest_destroyed", [],
    "Aye, my scouts saw the whole thing. That should make anyone else think twice before turning outlaw!\
  The bounty is 40 mon for every band, so that makes {reg1} in total. Here is your money, as promised.",
    "mayor_looters_quest_destroyed_2",[
@@ -126,7 +502,7 @@ dialogs_town_governance = [
       (assign,":looters_paid_for",":num_looters_destroyed"),
       (quest_set_slot,"qst_deal_with_looters",slot_quest_current_state,":looters_paid_for"),
       ]],
-  [anyone,"mayor_looters_quest_destroyed_2", [
+[anyone,"mayor_looters_quest_destroyed_2", [
       (quest_get_slot,":total_looters","qst_deal_with_looters",slot_quest_target_amount),
       (quest_slot_ge,"qst_deal_with_looters",slot_quest_current_state,":total_looters"), # looters paid for >= total looters
       (quest_get_slot,":xp_reward","qst_deal_with_looters",slot_quest_xp_reward),
@@ -148,18 +524,18 @@ dialogs_town_governance = [
    I think that concludes our arrangement, {playername}. Please accept this silver as a token of my gratitude. Thank you, and farewell.",
    "close_window",[
       ]],
-  [anyone,"mayor_looters_quest_destroyed_2", [],
+[anyone,"mayor_looters_quest_destroyed_2", [],
    "Anything else you need?",
    "mayor_looters_quest_response",[
       ]],
-  [anyone,"mayor_looters_quest_goods", [
+[anyone,"mayor_looters_quest_goods", [
       (quest_get_slot,reg1,"qst_deal_with_looters",slot_quest_target_item),
   ],
    "Hah, I knew I could count on you! Just tell me which item to take from your baggage, and I'll send some men to collect it.\
  I still need {reg1} mon' worth of goods.",
    "mayor_looters_quest_goods_response",[
       ]],
-  [anyone|plyr|repeat_for_100,"mayor_looters_quest_goods_response", [
+[anyone|plyr|repeat_for_100,"mayor_looters_quest_goods_response", [
       (store_repeat_object,":goods"),
       (val_add,":goods",trade_goods_begin),
       (is_between,":goods",trade_goods_begin,trade_goods_end),
@@ -177,22 +553,22 @@ dialogs_town_governance = [
       (quest_set_slot,"qst_deal_with_looters",slot_quest_target_item,":gold_num"),
       (str_store_item_name,s6,":goods"),
    ]],
-  [anyone|plyr,"mayor_looters_quest_goods_response", [
+[anyone|plyr,"mayor_looters_quest_goods_response", [
   ],
    "Nothing at the moment, sir.", "mayor_looters_quest_goods_3",[]],
-  [anyone,"mayor_looters_quest_goods_3", [
+[anyone,"mayor_looters_quest_goods_3", [
   ],
    "Anything else you need?",
    "mayor_looters_quest_response",[
       ]],
-  [anyone,"mayor_looters_quest_goods_2", [
+[anyone,"mayor_looters_quest_goods_2", [
       (quest_slot_ge,"qst_deal_with_looters",slot_quest_target_item,1),
       (quest_get_slot,reg1,"qst_deal_with_looters",slot_quest_target_item),
   ],
    "Excellent, here is the money for your {s6}. Do you have any more goods to give me? I still need {reg1} mon' worth of goods.",
    "mayor_looters_quest_goods_response",[
       ]],
-  [anyone,"mayor_looters_quest_goods_2", [
+[anyone,"mayor_looters_quest_goods_2", [
       (neg|quest_slot_ge,"qst_deal_with_looters",slot_quest_target_item,1),
       (quest_get_slot,":xp_reward","qst_deal_with_looters",slot_quest_xp_reward),
       (quest_get_slot,":gold_reward","qst_deal_with_looters",slot_quest_gold_reward),
@@ -212,11 +588,7 @@ dialogs_town_governance = [
  Thank you for your help, I won't forget it.",
    "close_window",[
       ]],
-# Ryan END
-
-
-
-  [anyone,"mayor_begin", [(check_quest_active, "qst_move_cattle_herd"),
+[anyone,"mayor_begin", [(check_quest_active, "qst_move_cattle_herd"),
                           (quest_slot_eq, "qst_move_cattle_herd", slot_quest_giver_troop, "$g_talk_troop"),
                           (check_quest_succeeded, "qst_move_cattle_herd"),
                           ],
@@ -232,7 +604,7 @@ dialogs_town_governance = [
     (call_script, "script_end_quest", "qst_move_cattle_herd"),
     (assign, reg8, ":quest_gold_reward"),
     ]],
-  [anyone,"mayor_begin", [(check_quest_active, "qst_move_cattle_herd"),
+[anyone,"mayor_begin", [(check_quest_active, "qst_move_cattle_herd"),
                           (quest_slot_eq, "qst_move_cattle_herd", slot_quest_giver_troop, "$g_talk_troop"),
                           (check_quest_failed, "qst_move_cattle_herd"),
                           ],
@@ -240,7 +612,7 @@ dialogs_town_governance = [
  I had a very difficult time explaining your failure to the owner of that herd, {sir/madam}.\
  Do you have anything to say?", "move_cattle_herd_failed",
    []],
-  [anyone,"mayor_begin", [(check_quest_active, "qst_kidnapped_girl"),
+[anyone,"mayor_begin", [(check_quest_active, "qst_kidnapped_girl"),
                           (quest_slot_eq, "qst_kidnapped_girl", slot_quest_current_state, 4),
                           (quest_slot_eq, "qst_kidnapped_girl", slot_quest_giver_troop, "$g_talk_troop"),
                           ],
@@ -258,7 +630,7 @@ dialogs_town_governance = [
     (call_script, "script_change_player_relation_with_center", "$current_town", 2),
     (call_script, "script_end_quest", "qst_kidnapped_girl"),
     ]],
-  [anyone,"mayor_begin", [(check_quest_active, "qst_track_down_bandits"),
+[anyone,"mayor_begin", [(check_quest_active, "qst_track_down_bandits"),
                           (check_quest_succeeded, "qst_track_down_bandits"),
                           (quest_slot_eq, "qst_track_down_bandits", slot_quest_giver_troop, "$g_talk_troop"),
                           ],
@@ -275,7 +647,7 @@ dialogs_town_governance = [
                               (call_script, "script_end_quest", "qst_track_down_bandits"),
                               (assign, reg5, ":quest_gold_reward"),
                               ]],
-  [anyone,"mayor_begin", [(check_quest_active, "qst_troublesome_bandits"),
+[anyone,"mayor_begin", [(check_quest_active, "qst_troublesome_bandits"),
                           (check_quest_succeeded, "qst_troublesome_bandits"),
                           (quest_slot_eq, "qst_troublesome_bandits", slot_quest_giver_troop, "$g_talk_troop"),
                           ],
@@ -293,16 +665,14 @@ dialogs_town_governance = [
                               (call_script, "script_end_quest", "qst_troublesome_bandits"),
                               (assign, reg5, ":quest_gold_reward"),
                               ]],
-  #destroy lair quest end dialogs taken from here
-
-  [anyone,"mayor_begin", [(ge, "$debt_to_merchants_guild", 50)],
+[anyone,"mayor_begin", [(ge, "$debt_to_merchants_guild", 50)],
    "According to my accounts, you owe the merchants guild {reg1} mon.\
  I'd better collect that now.", "merchant_ask_for_debts",[(assign,reg(1),"$debt_to_merchants_guild")]],
-  [anyone,"mayor_begin", [], "What can I do for you?", "mayor_talk", []],
-  [anyone,"mayor_friendly_pretalk", [], "Now... What else may I do for you?", "mayor_talk",[]],
-  [anyone,"mayor_pretalk", [], "Yes?", "mayor_talk",[]],
-  [anyone|plyr,"mayor_talk", [], "Can you tell me about what you do?", "mayor_info_begin",[]],
-  [anyone|plyr,"mayor_talk", [(store_partner_quest, ":partner_quest"),
+[anyone,"mayor_begin", [], "What can I do for you?", "mayor_talk", []],
+[anyone,"mayor_friendly_pretalk", [], "Now... What else may I do for you?", "mayor_talk",[]],
+[anyone,"mayor_pretalk", [], "Yes?", "mayor_talk",[]],
+[anyone|plyr,"mayor_talk", [], "Can you tell me about what you do?", "mayor_info_begin",[]],
+[anyone|plyr,"mayor_talk", [(store_partner_quest, ":partner_quest"),
                               (lt, ":partner_quest", 0),
                               (neq, "$merchant_quest_last_offerer", "$g_talk_troop")],
    "Do you happen to have a special job for me?", "merchant_quest_requested",[
@@ -311,17 +681,15 @@ dialogs_town_governance = [
      (assign, "$random_merchant_quest_no", reg0),
      (assign,"$merchant_offered_quest","$random_merchant_quest_no"),
      ]],
-  [anyone|plyr,"mayor_talk", [(store_partner_quest, ":partner_quest"),
+[anyone|plyr,"mayor_talk", [(store_partner_quest, ":partner_quest"),
                               (lt, ":partner_quest", 0),
                               (eq,"$merchant_quest_last_offerer", "$g_talk_troop"),
                               (gt,"$merchant_offered_quest", 0) #not sure why was zero
                               ],
    "About that special job you offered me...", "merchant_quest_last_offered_job",[]],
-  [anyone|plyr,"mayor_talk", [(store_partner_quest,reg(2)),(ge,reg(2),0)],
+[anyone|plyr,"mayor_talk", [(store_partner_quest,reg(2)),(ge,reg(2),0)],
    "About the special job you gave me...", "merchant_quest_about_job",[]],
-  
-  #gekokujo 3.1 labor start
-  [anyone|plyr,"mayor_talk", 
+[anyone|plyr,"mayor_talk", 
     [
       (party_get_num_companions, ":num_companions", "p_main_party"),
       (try_begin),
@@ -332,8 +700,7 @@ dialogs_town_governance = [
       (try_end),
     ],
     "{s10}", "mayor_labor_answer", []],
-    
-  [anyone,"mayor_labor_answer", 
+[anyone,"mayor_labor_answer", 
     [
       (troop_get_slot, ":renown", "trp_player", slot_troop_renown),
       (try_begin),
@@ -348,44 +715,40 @@ dialogs_town_governance = [
       (try_end),
     ],
     "{s11}", "mayor_labor_decision", []],
-    
-  [anyone|plyr,"mayor_labor_decision", [], "That sounds good to me.", "close_window", 
+[anyone|plyr,"mayor_labor_decision", [], "That sounds good to me.", "close_window", 
     [
       (jump_to_menu, "mnu_labor"),
       (finish_mission),
     ]],
-    
-  [anyone|plyr,"mayor_labor_decision", [], "Actually, nevermind.", "mayor_pretalk", []],
-  #gekokujo 3.1 labor end
-
-  [anyone|plyr,"mayor_talk",[], "I have some questions of a political nature.", "mayor_political_talk",[]],
-  [anyone|plyr,"mayor_talk",[], "How is trade around here?", "mayor_economy_report_1",[
+[anyone|plyr,"mayor_labor_decision", [], "Actually, nevermind.", "mayor_pretalk", []],
+[anyone|plyr,"mayor_talk",[], "I have some questions of a political nature.", "mayor_political_talk",[]],
+[anyone|plyr,"mayor_talk",[], "How is trade around here?", "mayor_economy_report_1",[
   (call_script, "script_merchant_road_info_to_s42", "$g_encountered_party"), #also does items to s32
   ]],
-  [anyone|plyr,"mayor_talk",[
+[anyone|plyr,"mayor_talk",[
   ], "How does the wealth of this region compare with the rest of Japan?", "mayor_wealth_comparison_1",[
   ]],
-  [anyone|plyr,"mayor_talk",[
+[anyone|plyr,"mayor_talk",[
   (item_slot_ge, "itm_velvet", slot_item_secondary_raw_material, "itm_raw_dyes"), #ie, the item information has been updated, to ensure savegame compatibility
   ], "I wish to join the local guild and establish myself as a merchant", "mayor_investment_possible",[
   ]],
-  [anyone,"mayor_investment_possible",[
+[anyone,"mayor_investment_possible",[
   (party_slot_ge, "$g_encountered_party", slot_center_player_enterprise, 1),
   (party_get_slot, ":item_produced", "$g_encountered_party", slot_center_player_enterprise),
   (call_script, "script_get_enterprise_name", ":item_produced"),
   (str_store_string, s4, reg0),
   ], "But you already operate a {s4} here. The other merchant and craftsmen would be scandalized, I am sorry.", "mayor_pretalk",[
   ]],
-  [anyone,"mayor_investment_possible",[
+[anyone,"mayor_investment_possible",[
   (ge, "$cheat_mode", 3)
   ], "{!}CHEAT: Yes, we're playtesting this feature, and you're in cheat mode. Go right ahead.", "mayor_investment_advice",[
   ]],
-  [anyone,"mayor_investment_possible",[
+[anyone,"mayor_investment_possible",[
   (lt,"$g_encountered_party_relation",0),
   (str_store_string, s9, "str_enterprise_enemy_realm"),
 	], "{s9}", "mayor_pretalk",[
 	]],
-  [anyone,"mayor_investment_possible",[
+[anyone,"mayor_investment_possible",[
   (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
   ##diplomacy start+ Replace {sir/my lady} with {s0}
   (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
@@ -393,7 +756,7 @@ dialogs_town_governance = [
   ], "Of course, {lord/lady} {s0}. Though it is a bit strange to see a samurai take interest in our kind of work.", "mayor_investment_advice",[
 ##diplomacy end+
   ]],
-  [anyone,"mayor_investment_possible",[
+[anyone,"mayor_investment_possible",[
   (party_get_slot, ":town_liege", "$g_encountered_party", slot_town_lord),
   ##diplomacy start+ Add support for ladies etc.
   #(is_between, ":town_liege", active_npcs_begin, active_npcs_end),
@@ -405,8 +768,8 @@ dialogs_town_governance = [
   (str_store_troop_name, s4, ":town_liege"),
   ], "Well... Given your relationship with our leader, {s4}, I think that you will not find many members of the guild who are brave enough to vote you in.", "mayor_investment",[
   ]],
-  [anyone|auto_proceed,"mayor_investment",[], "{!}.", "mayor_pretalk",[]],
-  [anyone,"mayor_investment_possible",[
+[anyone|auto_proceed,"mayor_investment",[], "{!}.", "mayor_pretalk",[]],
+[anyone,"mayor_investment_possible",[
   ##diplomacy start+ Optional economic change, increase relation required
   ##OLD:
   #	(neg|party_slot_ge, "$current_town", slot_center_player_relation, 0),
@@ -430,16 +793,130 @@ dialogs_town_governance = [
   ##diplomacy end+
   ], "Well... To be honest, I think that we in the guild would like you to build a stronger relationship with the town first. We can be very particular about outsiders coming in and joining us.", "mayor_pretalk",[
   ]],
-  [anyone,"mayor_investment_possible",[
+[anyone,"mayor_investment_possible",[
   ##diplomacy start+ Replace {sir/my lady} with {s0}
   (call_script, "script_dplmc_print_commoner_at_arg1_says_sir_madame_to_s0", "$g_encountered_party"),
 #  ], "Very good, {sir/my lady}. We in the guild know and trust you, and I think I could find someone to sell you the land you need.", "mayor_investment_advice",[]],
   ], "Very good, {s0}. We in the guild know and trust you, and would be willing to make room for you.", "mayor_investment_advice",[]],
-##diplomacy end+
-
-  [anyone,"mayor_investment_advice",[], "A couple of things to keep in mind -- skilled laborers are always at a premium, so I doubt that you will be able to open up more than one business here. In order to make a profit for yourself, you should choose a commodity which is in relatively short supply, but for which the raw materials are cheap. What sort of shop would you like to start?", "investment_choose_enterprise",[
+[anyone,"mayor_investment_advice",[], "A couple of things to keep in mind -- skilled laborers are always at a premium, so I doubt that you will be able to open up more than one business here. In order to make a profit for yourself, you should choose a commodity which is in relatively short supply, but for which the raw materials are cheap. What sort of shop would you like to start?", "investment_choose_enterprise",[
   ]],
-  [anyone|plyr,"mayor_investment_confirm",[
+[anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_bread", "$g_encountered_party")], "A mill, to polish rice ({reg0} mon/week)", "investment_summary",[
+  (assign, "$enterprise_production", "itm_bread"),
+  ]],
+[anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_ale", "$g_encountered_party")], "A brewery, to make sake from rice ({reg0} mon/week)", "investment_summary",[
+  (assign, "$enterprise_production", "itm_ale"),
+  ]],
+[anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_leatherwork", "$g_encountered_party")], "A lacquerworks, to make lacquer ware from urushi sap ({reg0} mon/week)", "investment_summary",[
+  (assign, "$enterprise_production", "itm_leatherwork"),
+  ]],
+[anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_wine", "$g_encountered_party")], "A brewery, to make soy sauce from soybeans ({reg0} mon/week)", "investment_summary",[
+  (assign, "$enterprise_production", "itm_wine"),
+  ]],
+[anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_oil", "$g_encountered_party")], "A fish press, to make fish sauce from offal ({reg0} mon/week)", "investment_summary",[
+  (assign, "$enterprise_production", "itm_oil"),
+  ]],
+[anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_tools", "$g_encountered_party")], "An smithy, to make tools from iron ({reg0} mon/week)", "investment_summary",[
+  (assign, "$enterprise_production", "itm_tools"),
+  ]],
+[anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_velvet", "$g_encountered_party")], "A weavery and dyeworks, to make silk cloth from raw silk and dye ({reg0} mon/week)", "investment_summary",[
+  (assign, "$enterprise_production", "itm_velvet"),
+  ]],
+[anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_wool_cloth", "$g_encountered_party")], "A weavery, to make hemp cloth from hemp fiber ({reg0} mon/week)", "investment_summary",[
+  (assign, "$enterprise_production", "itm_wool_cloth"),
+  ]],
+[anyone|plyr,"investment_choose_enterprise",[(call_script, "script_process_player_enterprise", "itm_linen", "$g_encountered_party")], "A weavery, to make linen from flax ({reg0} mon/week)", "investment_summary",[
+  (assign, "$enterprise_production", "itm_linen"),
+  ]],
+[anyone|plyr,"investment_choose_enterprise",[], "Never mind", "mayor_pretalk",[
+  ]],
+[anyone,"investment_summary",[], "Very good, sir. The land and the materials on which you may build your {s3} will cost you {reg7} mon. Right now, your {s3} will produce {s4} worth {reg1} mon each week, while the {s6} needed to manufacture that batch will be {reg2} and labor and upkeep will be {reg3}.{s9} I should guess that your profit would be {reg0} mon a week. This assumes of course that prices remain constant -- which, I can virtually guarantee you, they will not. Do you wish to proceed?", "mayor_investment_confirm",
+  [
+    #(item_get_slot, ":base_price", "$enterprise_production", slot_item_base_price),
+    #(item_get_slot, ":number_runs", "$enterprise_production", slot_item_output_per_run),
+    #(store_mul, "$enterprise_cost", ":base_price", ":number_runs"),
+    #(val_mul, "$enterprise_cost", 5),
+    (item_get_slot, "$enterprise_cost", "$enterprise_production", slot_item_enterprise_building_cost),
+
+    (assign, reg7, "$enterprise_cost"),
+
+    (str_store_item_name, s4, "$enterprise_production"),
+
+    (call_script, "script_get_enterprise_name", "$enterprise_production"),
+    (str_store_string, s3, reg0),
+
+    (call_script, "script_process_player_enterprise", "$enterprise_production", "$g_encountered_party"),
+    #reg0: Profit per cycle
+    #reg1: Selling price of total goods
+    #reg2: Selling price of total goods
+
+    (item_get_slot, ":primary_raw_material", "$enterprise_production", slot_item_primary_raw_material),
+    (str_store_item_name, s6, ":primary_raw_material"),
+	##diplomacy start+ For testing, print some additional diagnostics
+	(assign, ":save_reg0", reg0),
+	(assign, ":save_reg1", reg1),
+	(try_begin),
+		(ge, "$cheat_mode", 1),
+		(ge, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_MEDIUM),
+		(try_begin),
+			(call_script, "script_dplmc_good_produced_at_center_or_its_villages", ":primary_raw_material", "$g_encountered_party"),
+			(ge, reg0, 1),
+			(display_message, "@{!}There is a local supply of {s6}."),
+		(else_try),
+			(store_sub, ":item_slot_no", ":primary_raw_material", trade_goods_begin),
+			(val_add, ":item_slot_no", slot_town_trade_good_prices_begin),
+			(item_get_slot, reg0, ":primary_raw_material", slot_item_base_price),
+			(party_get_slot, reg1, "$g_encountered_party", ":item_slot_no"),
+			(val_mul, reg0, reg1),
+			(val_div, reg0, average_price_factor),
+			(assign, ":base_price", reg0),
+			(call_script, "script_dplmc_assess_ability_to_purchase_good_from_center", ":primary_raw_material", "$g_encountered_party"),
+			(item_get_slot, reg1, ":primary_raw_material", slot_item_base_price),
+			(val_mul, reg1, reg0),
+			(val_div, reg1, average_price_factor),
+			(assign, reg0, ":base_price"),
+			(display_message, "@{!}{s6} must be imported, modifying the price from {reg0} to {reg1}."),
+		(try_end),
+	(try_end),
+	##diplomacy end+
+
+    (str_clear, s9),
+    (assign, ":cost_of_secondary_input", reg10),
+    (try_begin),
+	  (gt, ":cost_of_secondary_input", 0),
+	  (item_get_slot, ":secondary_raw_material", "$enterprise_production", slot_item_secondary_raw_material),
+      (str_store_item_name, s11, ":secondary_raw_material"),
+      (str_store_string, s9, "str_describe_secondary_input"),
+    (try_end),
+	##diplomacy end+
+	(try_begin),
+		(ge, "$cheat_mode", 1),
+		(ge, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_MEDIUM),
+		(gt, ":cost_of_secondary_input", 0),
+		(try_begin),
+			(call_script, "script_dplmc_good_produced_at_center_or_its_villages", ":secondary_raw_material", "$g_encountered_party"),
+			(ge, reg0, 1),
+			(display_message, "@{!}There is a local supply of {s11}."),
+		(else_try),
+			(store_sub, ":item_slot_no", ":secondary_raw_material", trade_goods_begin),
+			(val_add, ":item_slot_no", slot_town_trade_good_prices_begin),
+			(item_get_slot, reg0, ":secondary_raw_material", slot_item_base_price),
+			(party_get_slot, reg1, "$g_encountered_party", ":item_slot_no"),
+			(val_mul, reg0, reg1),
+			(val_div, reg0, average_price_factor),
+			(assign, ":base_price", reg0),
+			(call_script, "script_dplmc_assess_ability_to_purchase_good_from_center", ":secondary_raw_material", "$g_encountered_party"),
+			(item_get_slot, reg1, ":secondary_raw_material", slot_item_base_price),
+			(val_mul, reg1, reg0),
+			(val_div, reg1, average_price_factor),
+			(assign, reg0, ":base_price"),
+			(display_message, "@{!}{s9} must be imported, modifying the price from {reg0} to {reg1}."),
+		(try_end),
+	(try_end),
+	(assign, reg0, ":save_reg0"),
+	(assign, reg1, ":save_reg1"),
+	##diplomacy end+
+  ]],
+[anyone|plyr,"mayor_investment_confirm",[
   (store_troop_gold, ":player_gold", "trp_player"),
   (ge, ":player_gold","$enterprise_cost"),
   ], "Yes. Here is money for the land.", "mayor_investment_purchase",[
@@ -478,29 +955,26 @@ dialogs_town_governance = [
     (troop_set_name, ":craftsman_troop", "str_master_vinter"),
   (try_end),
   ]],
-  [anyone|plyr,"mayor_investment_confirm",[], "No -- that's not economical for me at the moment.", "mayor_pretalk",[
+[anyone|plyr,"mayor_investment_confirm",[], "No -- that's not economical for me at the moment.", "mayor_pretalk",[
   ]],
-  [anyone,"mayor_investment_purchase",[], "Very good. Your shop should be up and running in about a week. When next you come, and thereafter, you should speak to your {s4} about its operations.", "mayor_pretalk",[
+[anyone,"mayor_investment_purchase",[], "Very good. Your shop should be up and running in about a week. When next you come, and thereafter, you should speak to your {s4} about its operations.", "mayor_pretalk",[
   (store_sub, ":current_town_order", "$current_town", towns_begin),
   (store_add, ":craftsman_troop", ":current_town_order", "trp_town_1_master_craftsman"),
   (str_store_troop_name, s4, ":craftsman_troop"),
 
   ]],
-  [anyone|plyr,"mayor_talk", [], "[Leave]", "close_window",[]],
-  [anyone, "mayor_info_begin", [(str_store_party_name, s9, "$current_town")],
+[anyone|plyr,"mayor_talk", [], "[Leave]", "close_window",[]],
+[anyone, "mayor_info_begin", [(str_store_party_name, s9, "$current_town")],
    "I am the chief merchant of {s9}. You can say I am the leader of the commoners of {s9}.\
  I can help you find a job if you are looking for some honest work.", "mayor_info_talk",[(assign, "$mayor_info_lord_told",0)]],
-  [anyone|plyr,"mayor_info_talk",[(eq, "$mayor_info_lord_told",0)], "Who rules this town?", "mayor_info_lord",[]],
-  ##diplomacy start+ make gender correct
-  [anyone, "mayor_info_lord", [(party_get_slot, ":town_lord","$current_town",slot_town_lord),(str_store_troop_name, s10, ":town_lord"),
+[anyone|plyr,"mayor_info_talk",[(eq, "$mayor_info_lord_told",0)], "Who rules this town?", "mayor_info_lord",[]],
+[anyone, "mayor_info_lord", [(party_get_slot, ":town_lord","$current_town",slot_town_lord),(str_store_troop_name, s10, ":town_lord"),
   (call_script, "script_dplmc_store_troop_is_female", ":town_lord"),],#Next line, He -> {reg0?She:He}
    "Our town's lord and protector is {s10}. {reg0?She:He} owns the castle and sometimes resides there, and collects taxes from the town.\
  However we regulate ourselves in most of the matters that concern ourselves.\
  As the most elder merchant in the town, I have the privilege of speaking for the rest.", "mayor_info_talk",[(assign, "$mayor_info_lord_told",1)]],
- ##diplomacy end+
-
-  [anyone|plyr,"mayor_info_talk",[], "That's all I need to know. Thanks.", "mayor_pretalk",[]],
-  [anyone, "mayor_political_talk", [(faction_get_slot, ":faction_leader","$g_encountered_party_faction",slot_faction_leader),
+[anyone|plyr,"mayor_info_talk",[], "That's all I need to know. Thanks.", "mayor_pretalk",[]],
+[anyone, "mayor_political_talk", [(faction_get_slot, ":faction_leader","$g_encountered_party_faction",slot_faction_leader),
 									(str_store_troop_name, s10, ":faction_leader"),
 									(party_get_slot, ":town_lord","$current_town",slot_town_lord),
 									(try_begin),
@@ -515,7 +989,7 @@ dialogs_town_governance = [
 									(try_end),
 									],
    "Politics? Good heaven, the guild has nothing to do with politics. We are loyal servants of {s10}. We merely govern our own affairs, and pass on the townspeople's concerns to our lords and masters, and maybe warn them from time to time against evil advice. Anyway, what did you wish to ask?", "mayor_political_questions",[]],
-  [anyone,"mayor_prepolitics",[ (faction_get_slot, ":faction_leader","$g_encountered_party_faction",slot_faction_leader),
+[anyone,"mayor_prepolitics",[ (faction_get_slot, ":faction_leader","$g_encountered_party_faction",slot_faction_leader),
 								(try_begin),
 									(eq, ":faction_leader", "trp_player"),
 									(str_store_string, s9, "str_your_loyal_subjects"),
@@ -524,9 +998,9 @@ dialogs_town_governance = [
 									(str_store_string, s9, "str_loyal_subjects_of_s10"),
 								(try_end),
   ], "Did I mention that we here are all {s9}? Because I can't stress that enough... Anyway... Is there anything else?", "mayor_political_questions",[]],
-   [anyone|plyr,"mayor_political_questions",[], "What is the cause of all these wars in Japan?", "mayor_war_description_1",[
+[anyone|plyr,"mayor_political_questions",[], "What is the cause of all these wars in Japan?", "mayor_war_description_1",[
   ]],
-  [anyone,"mayor_war_description_1",[ (faction_get_slot, ":faction_leader","$g_encountered_party_faction",slot_faction_leader),
+[anyone,"mayor_war_description_1",[ (faction_get_slot, ":faction_leader","$g_encountered_party_faction",slot_faction_leader),
 								(str_store_troop_name, s10, ":faction_leader"),
 								(str_store_string, s22, "str_the"),
 								(try_begin),
@@ -536,23 +1010,23 @@ dialogs_town_governance = [
 								(val_max, "$g_mayor_given_political_dialog", 1),
 
   ], "Well, to answer your question generally, each daimyo claims to be the rightful holder to the office of old Muromachi shugo. In theory, any one realm has the right to declare war on any other realm at any time.", "mayor_war_description_2",[]],
-  [anyone,"mayor_war_description_2",[ (faction_get_slot, ":faction_leader","$g_encountered_party_faction",slot_faction_leader),
+[anyone,"mayor_war_description_2",[ (faction_get_slot, ":faction_leader","$g_encountered_party_faction",slot_faction_leader),
 								(str_store_troop_name, s10, ":faction_leader"),
 								(troop_get_type, reg4, ":faction_leader"),
   ], "In practice, to make war is exhausting work. It is easy enough to lay waste to the enemy's farmland, but crops will grow back, and it is a far different matter to capture an enemy stronghold and to hold it. So the daimyo of Japan will fight a little, sign a truce, fight a little more, and so on and so forth. Often, a daimyo will go to war when another clan provokes them. At such times, some bad influences who look to enrich themselves with ransoms and pillage will clamor for retribution, and thus the damage caused by war to a monarch's treasury is less than the damage caused by doing nothing would be to his authority... I'm of course not talking about {s10}, as no one would ever question {reg4?her:his} authority", "mayor_war_description_3",[]],
-  [anyone,"mayor_war_description_3",[
+[anyone,"mayor_war_description_3",[
  	(faction_get_slot, ":faction_leader","$g_encountered_party_faction",slot_faction_leader),
 	(troop_get_type, reg4, ":faction_leader"),
 
   ], "I would stress again that we in the guild have nothing to do with politics. But if {s10} were to ask for my advice on these matters, as a loyal subject, I would tell {reg4?her:him} that while {reg4?her:his} claim to all of Japan is truly just, even the most legitimate claim must be backed by armed men, and armed men want money, and money comes from trade, and war ruins trade, so sometimes the best way to push a claim is not to push it, if you know what I mean...", "mayor_war_description_4",[]],
-  [anyone,"mayor_war_description_4",[
+[anyone,"mayor_war_description_4",[
     (str_store_party_name, s4, "$g_encountered_party"),
 	(faction_get_slot, ":faction_leader","$g_encountered_party_faction",slot_faction_leader),
 	(troop_get_type, reg4, ":faction_leader"),
 
   ], "You may tell {s10} this if you see {reg4?her:him}. Don't mention my name specifically -- just say 'the people of {s4}' told you this. Our personal opinion, of course, as to what would be in {s10}'s best interests. None of us would ever dream of questioning a monarch's sovereign right to push {reg4?her:his} legitimate claims.", "mayor_prepolitics",[
   ]],
-  [anyone|plyr,"mayor_political_questions",[
+[anyone|plyr,"mayor_political_questions",[
 	(faction_get_slot, ":faction_leader","$g_encountered_party_faction",slot_faction_leader),
 	(str_store_troop_name, s10, ":faction_leader"),
 	(ge, "$g_mayor_given_political_dialog", 1),
@@ -565,9 +1039,9 @@ dialogs_town_governance = [
 	(eq, ":continue", 1),
   ], "What is {s10}'s policy in regards to the other domains of Japan?", "mayor_politics_assess",[
   ]],
-  [anyone,"mayor_politics_assess",[], "Which domain did you have in mind?", "mayor_politics_assess_realm",[
+[anyone,"mayor_politics_assess",[], "Which domain did you have in mind?", "mayor_politics_assess_realm",[
   ]],
-  [anyone|plyr|repeat_for_factions,"mayor_politics_assess_realm",[
+[anyone|plyr|repeat_for_factions,"mayor_politics_assess_realm",[
   (store_repeat_object, ":faction"),
   (is_between, ":faction", kingdoms_begin, kingdoms_end),
   (faction_slot_eq, ":faction", slot_faction_state, sfs_active),
@@ -576,37 +1050,34 @@ dialogs_town_governance = [
   ], "{s11}", "mayor_politics_give_realm_assessment",[
   (store_repeat_object, "$faction_selected"),
   ]],
-  [anyone,"mayor_politics_give_realm_assessment",[], "{s14}", "mayor_prepolitics",[
+[anyone,"mayor_politics_give_realm_assessment",[], "{s14}", "mayor_prepolitics",[
   (call_script, "script_npc_decision_checklist_peace_or_war", "$g_encountered_party_faction", "$faction_selected", -1),
   ]],
-   [anyone|plyr,"mayor_political_questions",[], "What can you say about the internal politics of the clans?", "mayor_internal_politics",[
+[anyone|plyr,"mayor_political_questions",[], "What can you say about the internal politics of the clans?", "mayor_internal_politics",[
   ]],
-  [anyone,"mayor_internal_politics",[
+[anyone,"mayor_internal_politics",[
   (str_store_faction_name, s4, "$g_encountered_party_faction"),
   (faction_get_slot, ":leader", "$g_encountered_party_faction", slot_faction_leader),
   (str_store_troop_name, s5, ":leader"),
   (troop_get_type, reg4, ":leader"),
   ], "Well, here in the {s4} we are all united by our love for {s5} and support for {reg4?her:his} legitimate claim to the rulership of all Japan. But I have heard some talk of internal bickering in other domains...", "mayor_internal_politics_2",[
   ]],
-  [anyone,"mayor_internal_politics_2",[], "The hereditary vassals of a clan often have very different ideas about honor, strategy, and the way a samurai should behave. In addition, they compete with each other for the ruler's favor, and are constantly weighing up their position -- how they stand, how their friends and family stand, and how their enemies stand.", "mayor_internal_politics_3", []],
-  [anyone,"mayor_internal_politics_3",[], "Underlying all the tensions is the possibility that a lord may abandon his leader, and pledge vassalhood to another. In theory, each lord has sworn an oath of vassalage, but in practice, a vassal can always find an excuse to absolve himself. The vassal may claim that the leader has failed to hold up his end of the bargain, to protect the vassal and treat him justly. Or, the vassal may claim that his leader is in fact a usurper, and another has a better claim to overlordship.", "mayor_internal_politics_4", []],
-  [anyone,"mayor_internal_politics_4",[], "Overlords and vassals still watch each other carefully. If a daimyo believes that his vassal is going to change sides or rebel, he may indict the vassal for treason and seize his properties. Likewise, if a vassal fears that he will be indicted, he may rebel. Usually, whoever makes the first move will be able to control the vassal's fortresses.", "mayor_internal_politics_5", []],
-  [anyone,"mayor_internal_politics_5",[], "Now, men do not trust a vassal who turns coat easily, nor do they trust an overlord who lightly throws around charges of treason. Those two factors can keep a domain together. But if relations between a vassal and an overlord deteriorates far enough, things can become very tense indeed... In other lands, of course. These things could never happen here in the {s4}.", "mayor_prepolitics", []],
-  [anyone|plyr, "mayor_political_questions", [], "That is all. Thank you.", "mayor_pretalk", []],
-  [anyone,"mayor_economy_report_1", [], "{s32}", "mayor_economy_report_2",
+[anyone,"mayor_internal_politics_2",[], "The hereditary vassals of a clan often have very different ideas about honor, strategy, and the way a samurai should behave. In addition, they compete with each other for the ruler's favor, and are constantly weighing up their position -- how they stand, how their friends and family stand, and how their enemies stand.", "mayor_internal_politics_3", []],
+[anyone,"mayor_internal_politics_3",[], "Underlying all the tensions is the possibility that a lord may abandon his leader, and pledge vassalhood to another. In theory, each lord has sworn an oath of vassalage, but in practice, a vassal can always find an excuse to absolve himself. The vassal may claim that the leader has failed to hold up his end of the bargain, to protect the vassal and treat him justly. Or, the vassal may claim that his leader is in fact a usurper, and another has a better claim to overlordship.", "mayor_internal_politics_4", []],
+[anyone,"mayor_internal_politics_4",[], "Overlords and vassals still watch each other carefully. If a daimyo believes that his vassal is going to change sides or rebel, he may indict the vassal for treason and seize his properties. Likewise, if a vassal fears that he will be indicted, he may rebel. Usually, whoever makes the first move will be able to control the vassal's fortresses.", "mayor_internal_politics_5", []],
+[anyone,"mayor_internal_politics_5",[], "Now, men do not trust a vassal who turns coat easily, nor do they trust an overlord who lightly throws around charges of treason. Those two factors can keep a domain together. But if relations between a vassal and an overlord deteriorates far enough, things can become very tense indeed... In other lands, of course. These things could never happen here in the {s4}.", "mayor_prepolitics", []],
+[anyone|plyr, "mayor_political_questions", [], "That is all. Thank you.", "mayor_pretalk", []],
+[anyone,"mayor_economy_report_1", [], "{s32}", "mayor_economy_report_2",
    []],
-  [anyone,"mayor_economy_report_2", [], "{s42}", "mayor_economy_report_3",
+[anyone,"mayor_economy_report_2", [], "{s42}", "mayor_economy_report_3",
    []],
-   [anyone,"mayor_economy_report_3", [], "{s47}", "mayor_pretalk",
+[anyone,"mayor_economy_report_3", [], "{s47}", "mayor_pretalk",
    []],
-  [anyone,"village_elder_deliver_cattle_thank", [],
+[anyone,"village_elder_deliver_cattle_thank", [],
    "My good {lord/lady}, please, is there anything I can do for you?", "village_elder_talk",[]],
-#replaced {sir/madam} with {s0}
-  ##diplomacy end+
-
-  [anyone ,"village_elder_pretalk", [],
+[anyone ,"village_elder_pretalk", [],
    "Is there anything else I can do for you?", "village_elder_talk",[]],
-  [anyone|plyr,"village_elder_talk", [(check_quest_active, "qst_hunt_down_fugitive"),
+[anyone|plyr,"village_elder_talk", [(check_quest_active, "qst_hunt_down_fugitive"),
                                       (neg|check_quest_concluded, "qst_hunt_down_fugitive"),
                                       (quest_slot_eq, "qst_hunt_down_fugitive", slot_quest_target_center, "$current_town"),
                                       (quest_get_slot, ":quest_target_dna", "qst_hunt_down_fugitive", slot_quest_target_dna),
@@ -614,25 +1085,19 @@ dialogs_town_governance = [
                                       (str_store_string, s4, s50),
                                       ],
    "I am looking for a man by the name of {s4}. I was told he may be hiding here.", "village_elder_ask_fugitive",[]],
-  [anyone ,"village_elder_ask_fugitive", [
+[anyone ,"village_elder_ask_fugitive", [
   ##diplomacy start+
    (call_script, "script_dplmc_print_commoner_at_arg1_says_sir_madame_to_s0", "$current_town"),#added (used in next two)
    (is_currently_night),
    ],
    "Strangers come and go to our village, {s0}. But I doubt you'll run into him at this hour of the night. You would have better luck during the day.", "village_elder_pretalk",[]],
-#changed {sir/madam} to {s0}
-  [anyone ,"village_elder_ask_fugitive", [],
+[anyone ,"village_elder_ask_fugitive", [],
    "Strangers come and go to our village, {s0}. If he is hiding here, you will surely find him if you look around.", "close_window",[]],
-#changed {sir/madam} to {s0}
-  ##diplomacy end+
-
-  [anyone|plyr,"village_elder_talk", [(store_partner_quest,":elder_quest"),(ge,":elder_quest",0)],
+[anyone|plyr,"village_elder_talk", [(store_partner_quest,":elder_quest"),(ge,":elder_quest",0)],
    "About the special task you asked of me...", "village_elder_active_mission_1",[]],
-  [anyone|plyr,"village_elder_talk", [(ge, "$g_talk_troop_faction_relation", 0),(store_partner_quest,":elder_quest"),(lt,":elder_quest",0)],
+[anyone|plyr,"village_elder_talk", [(ge, "$g_talk_troop_faction_relation", 0),(store_partner_quest,":elder_quest"),(lt,":elder_quest",0)],
    "Do you have any special tasks I can help you with?", "village_elder_request_mission_ask",[]],
-   
-  #gekokujo 3.1 labor start
-  [anyone|plyr,"village_elder_talk", 
+[anyone|plyr,"village_elder_talk", 
     [
       (party_get_num_companions, ":num_companions", "p_main_party"),
       (try_begin),
@@ -643,8 +1108,7 @@ dialogs_town_governance = [
       (try_end),
     ],
     "{s10}", "village_elder_labor_answer", []],
-    
-  [anyone,"village_elder_labor_answer", 
+[anyone,"village_elder_labor_answer", 
     [
       (troop_get_slot, ":renown", "trp_player", slot_troop_renown),
       (try_begin),
@@ -659,24 +1123,20 @@ dialogs_town_governance = [
       (try_end),
     ],
     "{s11}", "village_elder_labor_decision", []],
-    
-  [anyone|plyr,"village_elder_labor_decision", [], "That sounds good to me.", "close_window", 
+[anyone|plyr,"village_elder_labor_decision", [], "That sounds good to me.", "close_window", 
     [
       (jump_to_menu, "mnu_labor"),
       (finish_mission),
     ]],
-    
-  [anyone|plyr,"village_elder_labor_decision", [], "Actually, nevermind.", "village_elder_pretalk", []],
-  #gekokujo 3.1 labor end
-
-  [anyone|plyr,"village_elder_talk", [(party_slot_eq, "$current_town", slot_village_state, 0),
+[anyone|plyr,"village_elder_labor_decision", [], "Actually, nevermind.", "village_elder_pretalk", []],
+[anyone|plyr,"village_elder_talk", [(party_slot_eq, "$current_town", slot_village_state, 0),
                                       (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),],
    "I want to buy some supplies. I will pay with gold.", "village_elder_trade_begin",[]],
-  [anyone ,"village_elder_trade_begin", [], "Of course, {sir/madam}. Do you want to buy goods or cattle?", "village_elder_trade_talk",[]],
-  [anyone|plyr,"village_elder_trade_talk", [], "I want to buy food and supplies.", "village_elder_trade",[]],
-  [anyone ,"village_elder_trade", [],
+[anyone ,"village_elder_trade_begin", [], "Of course, {sir/madam}. Do you want to buy goods or cattle?", "village_elder_trade_talk",[]],
+[anyone|plyr,"village_elder_trade_talk", [], "I want to buy food and supplies.", "village_elder_trade",[]],
+[anyone ,"village_elder_trade", [],
    "We have some food and other supplies in our storehouse. Come have a look.", "village_elder_pretalk",[(change_screen_trade, "$g_talk_troop"),]],
-  [anyone|plyr,"village_elder_trade_talk", [(party_slot_eq, "$current_town", slot_village_state, 0),
+[anyone|plyr,"village_elder_trade_talk", [(party_slot_eq, "$current_town", slot_village_state, 0),
                                       (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
                                       (assign, ":quest_village", 0),
                                       (try_begin),
@@ -687,12 +1147,12 @@ dialogs_town_governance = [
                                       (eq, ":quest_village", 0),
                                       ],
    "I want to buy some cattle.", "village_elder_buy_cattle",[]],
-  [anyone|plyr,"village_elder_trade_talk", [], "I changed my mind. I don't need to buy anything.", "village_elder_pretalk",[]],
-  [anyone|plyr,"village_elder_talk",
+[anyone|plyr,"village_elder_trade_talk", [], "I changed my mind. I don't need to buy anything.", "village_elder_pretalk",[]],
+[anyone|plyr,"village_elder_talk",
    [
      ],
    "Have you seen any enemies around here recently?", "village_elder_ask_enemies",[]],
-  [anyone,"village_elder_ask_enemies",
+[anyone,"village_elder_ask_enemies",
    [
      (assign, ":give_report", 0),
      (party_get_slot, ":original_faction", "$g_encountered_party", slot_center_original_faction),
@@ -712,13 +1172,13 @@ dialogs_town_governance = [
    "I am sorry, {s0}. We have neither seen nor heard of any war parties in this area.", "village_elder_pretalk",#replaced {sir/madam} with {s0}
    ##diplomacy end+
    []],
-  [anyone,"village_elder_ask_enemies",
+[anyone,"village_elder_ask_enemies",
    [],
    "Hmm. Let me think about it...", "village_elder_tell_enemies",
    [
      (assign, "$temp", 0),
      ]],
-  [anyone,"village_elder_tell_enemies",
+[anyone,"village_elder_tell_enemies",
    [
      (assign, ":target_hero_index", "$temp"),
      (assign, ":end_cond", active_npcs_end),
@@ -760,7 +1220,7 @@ dialogs_town_governance = [
    [
      (val_add, "$temp", 1),
      ]],
-  [anyone,"village_elder_tell_enemies",
+[anyone,"village_elder_tell_enemies",
   ##diplomacy start+
    [(eq, "$temp", 0),
    	(call_script, "script_dplmc_print_commoner_at_arg1_says_sir_madame_to_s0", "$current_town"),#added
@@ -768,12 +1228,11 @@ dialogs_town_governance = [
    "No, {s0}. We haven't seen any war parties in this area for some time.", "village_elder_pretalk",#replaced {sir/madam} with {s0}
   ##diplomacy end+
    []],
-  [anyone,"village_elder_tell_enemies",
+[anyone,"village_elder_tell_enemies",
    [],
    "Well, I guess that was all.", "village_elder_pretalk",
    []],
-  #(fire set up dialogs begin) Asking village elder to set up fire for making prison break easier.
-  [anyone|plyr,"village_elder_talk",
+[anyone|plyr,"village_elder_talk",
   [
     (party_get_slot, ":bound_center", "$current_town", slot_village_bound_center),
 
@@ -797,7 +1256,7 @@ dialogs_town_governance = [
     (ge, ":num_heroes_in_dungeon", 1),
   ],
    "I need you to set a large fire on the outskirts of this village.", "village_elder_ask_set_fire",[]],
-  [anyone,"village_elder_ask_set_fire",
+[anyone,"village_elder_ask_set_fire",
    [
      ##diplomacy start+
 	 (call_script, "script_dplmc_print_commoner_at_arg1_says_sir_madame_to_s0", "$current_town"),#added (re-used several times below)
@@ -810,28 +1269,19 @@ dialogs_town_governance = [
    ],
    ##diplomacy start+
    "We have already agreed upon this, {s0}. I will do my best. You can trust me.", "close_window",[]],
-#changed {sir/my lady} to {s0}
-   ##diplomacy end+
-
-  [anyone,"village_elder_ask_set_fire",
+[anyone,"village_elder_ask_set_fire",
    [
      (eq, "$g_village_elder_did_not_liked_money_offered", 0),
    ],
    ##diplomacy start+
    "A fire, {s0}! Fires are dangerous! Why would you want such a thing?", "village_elder_ask_set_fire_1",[]],
-#changed {sir/madam} to {s0}
-   ##diplomacy end+
-
-  [anyone,"village_elder_ask_set_fire", #elder did not accepted 100 mon before
+[anyone,"village_elder_ask_set_fire", #elder did not accepted 100 mon before
    [
      (eq, "$g_village_elder_did_not_liked_money_offered", 1),
    ],
    ##diplomacy start+
    "I believe that we have already discussed this issue, {s0}.", "village_elder_ask_set_fire_5",[]],
-#changed {sir/my lady} to {s0}
-   ##diplomacy end+
-
-  [anyone,"village_elder_ask_set_fire", #elder did not accepted 100 and 200 mon before
+[anyone,"village_elder_ask_set_fire", #elder did not accepted 100 and 200 mon before
    [
      (eq, "$g_village_elder_did_not_liked_money_offered", 2),
    ],
@@ -840,55 +1290,49 @@ dialogs_town_governance = [
    "We talked about this before {s0} and your previous offers were low compared to risk you want me to take.",
    ##diplomacy end+
    "village_elder_ask_set_fire_5",[]],
-  [anyone|plyr,"village_elder_ask_set_fire_1",[],
+[anyone|plyr,"village_elder_ask_set_fire_1",[],
    "I have my reasons, and you will have yours -- a purse of silver. Will you do it, or not?", "village_elder_ask_set_fire_2",[]],
-  [anyone|plyr,"village_elder_ask_set_fire_1",[],
+[anyone|plyr,"village_elder_ask_set_fire_1",[],
   "Given the risk you are taking, you are entitled to know my plan.", "village_elder_ask_set_fire_explain_plan",[]],
-  [anyone|plyr,"village_elder_ask_set_fire_explain_plan",[
+[anyone|plyr,"village_elder_ask_set_fire_explain_plan",[
   (party_get_slot, ":bound_center", "$g_encountered_party", slot_village_bound_center),
   (str_store_party_name, s4, ":bound_center"),
   ],
    "I wish to rescue a prisoner from {s4}. When you light the fire, the guards in {s4} will see the smoke, and some of them will rush outside to see what is going on. ", "village_elder_ask_set_fire_2",[]],
-  [anyone,"village_elder_ask_set_fire_2",[
+[anyone,"village_elder_ask_set_fire_2",[
   (gt, "$g_talk_troop_effective_relation", 9),
   ],
 ##diplomacy start+ change {sir/my lady} to {s0}
    "As you wish, {s0}. You have been a good friend to this village, and, even though there is a risk, we should be glad to return the favor. When do you want this fire to start?", "village_elder_ask_set_fire_9",[]],
-##diplomacy end+
-
-  [anyone,"village_elder_ask_set_fire_2",[
+[anyone,"village_elder_ask_set_fire_2",[
   (lt, "$g_talk_troop_relation", 0),
   ],
 ##diplomacy start+ change {sir/my lady} to {s0}
    "I'm sorry, {s0}. You will forgive me for saying this, but we don't exactly have good reason to trust you. This is too dangerous.", "close_window",[]],
-##diplomacy end+
-
-  [anyone,"village_elder_ask_set_fire_2",[],
+[anyone,"village_elder_ask_set_fire_2",[],
  ##diplomacy start+ change {sir/my lady} to {s0}
    "As you say, {s0}. But in doing this, we are taking a very great risk. What's in it for us?", "village_elder_ask_set_fire_3",[]],
-##diplomacy end+
-
-  [anyone|plyr,"village_elder_ask_set_fire_3",
+[anyone|plyr,"village_elder_ask_set_fire_3",
   [
     (store_troop_gold, ":cur_gold", "trp_player"),
     (ge, ":cur_gold", 100),
   ],
    "I can give you 100 mon.", "village_elder_ask_set_fire_4",[(assign, "$g_last_money_offer_to_elder", 100),]],
-  [anyone|plyr,"village_elder_ask_set_fire_3",
+[anyone|plyr,"village_elder_ask_set_fire_3",
   [
     (store_troop_gold, ":cur_gold", "trp_player"),
     (ge, ":cur_gold", 200),
   ],
    "I can give you 200 mon.", "village_elder_ask_set_fire_6",[(assign, "$g_last_money_offer_to_elder", 200),]],
-  [anyone|plyr,"village_elder_ask_set_fire_3",
+[anyone|plyr,"village_elder_ask_set_fire_3",
   [
     (store_troop_gold, ":cur_gold", "trp_player"),
     (ge, ":cur_gold", 300),
   ],
    "I can give you 300 mon.", "village_elder_ask_set_fire_6",[(assign, "$g_last_money_offer_to_elder", 300),]],
-  [anyone|plyr,"village_elder_ask_set_fire_3",[],
+[anyone|plyr,"village_elder_ask_set_fire_3",[],
    "Never mind.", "close_window",[]],
-  [anyone,"village_elder_ask_set_fire_4",
+[anyone,"village_elder_ask_set_fire_4",
    [
      (eq, "$g_village_elder_did_not_liked_money_offered", 0),
    ],
@@ -896,40 +1340,40 @@ dialogs_town_governance = [
    [
      (assign, "$g_village_elder_did_not_liked_money_offered", 1),
    ]],
-  [anyone|plyr,"village_elder_ask_set_fire_5",
+[anyone|plyr,"village_elder_ask_set_fire_5",
    [
      (eq, "$g_village_elder_did_not_liked_money_offered", 1),
      (store_troop_gold, ":cur_gold", "trp_player"),
      (ge, ":cur_gold", 200),
    ],
    "Then let's increase your reward to 200 mon.", "village_elder_ask_set_fire_7", [(assign, "$g_last_money_offer_to_elder", 200),]],
-  [anyone|plyr,"village_elder_ask_set_fire_5",
+[anyone|plyr,"village_elder_ask_set_fire_5",
    [
      (eq, "$g_village_elder_did_not_liked_money_offered", 1),
      (store_troop_gold, ":cur_gold", "trp_player"),
      (ge, ":cur_gold", 300),
    ],
    "Then let's increase your reward to 300 mon.", "village_elder_ask_set_fire_6",[(assign, "$g_last_money_offer_to_elder", 300),]],
-  [anyone|plyr,"village_elder_ask_set_fire_5",
+[anyone|plyr,"village_elder_ask_set_fire_5",
    [
      (eq, "$g_village_elder_did_not_liked_money_offered", 2),
      (store_troop_gold, ":cur_gold", "trp_player"),
      (ge, ":cur_gold", 300),
    ],
    "Then let's increase your reward to 300 mon. This is my last offer.", "village_elder_ask_set_fire_6",[(assign, "$g_last_money_offer_to_elder", 300),]],
-  [anyone|plyr,"village_elder_ask_set_fire_5",[],
+[anyone|plyr,"village_elder_ask_set_fire_5",[],
    "Never mind.", "close_window",[]],
-  [anyone,"village_elder_ask_set_fire_6",[],
+[anyone,"village_elder_ask_set_fire_6",[],
    "Very well. You are asking me to take a very great risk, but I will do it. When do you want this fire to start?", "village_elder_ask_set_fire_9",
    [
      (troop_remove_gold, "trp_player", "$g_last_money_offer_to_elder"),
    ]],
-  [anyone,"village_elder_ask_set_fire_7",[],
+[anyone,"village_elder_ask_set_fire_7",[],
    "I cannot do such a dangerous thing for 200 mon.", "village_elder_talk",
    [
      (assign, "$g_village_elder_did_not_liked_money_offered", 2),
    ]],
-  [anyone|plyr,"village_elder_ask_set_fire_9",[],
+[anyone|plyr,"village_elder_ask_set_fire_9",[],
    "Continue with your preparations. One hour from now, I need that fire.", "village_elder_ask_set_fire_10",
    [
      (party_get_slot, ":bound_center", "$current_town", slot_village_bound_center),
@@ -951,7 +1395,7 @@ dialogs_town_governance = [
      (assign, "$next_center_will_be_fired", "$current_town"),
      (assign, "$g_village_elder_did_not_liked_money_offered", 0),
    ]],
-  [anyone|plyr,"village_elder_ask_set_fire_9",
+[anyone|plyr,"village_elder_ask_set_fire_9",
    [
      (store_time_of_day, ":cur_day_hour"),
      (ge, ":cur_day_hour", 6),
@@ -979,7 +1423,7 @@ dialogs_town_governance = [
      (assign, "$next_center_will_be_fired", "$current_town"),
      (assign, "$g_village_elder_did_not_liked_money_offered", 0),
     ]],
-  [anyone,"village_elder_ask_set_fire_10",[],
+[anyone,"village_elder_ask_set_fire_10",[],
    "Very well, {sir/my lady}. We will make our preparations. Now you make yours.", "close_window",
    [
    (assign, ":maximum_distance", -1),
@@ -1001,20 +1445,13 @@ dialogs_town_governance = [
      (try_end),
    (try_end),
    ]],
-  [anyone,"village_elder_ask_set_fire_11",[],
+[anyone,"village_elder_ask_set_fire_11",[],
    "As you wish, {sir/my lady}. May the heavens protect you.", "close_window",[]],
-  #(fire set up dialogs end)
-
-
-
-
-
-
-  [anyone|plyr,"village_elder_talk", [(call_script, "script_cf_village_recruit_volunteers_cond"),],
+[anyone|plyr,"village_elder_talk", [(call_script, "script_cf_village_recruit_volunteers_cond"),],
    "Are there any men from this village willing to join me?", "village_elder_recruit_start",[]],
-  [anyone|plyr,"village_elder_talk", [],
+[anyone|plyr,"village_elder_talk", [],
    "[Leave]", "close_window",[]],
-  [anyone ,"village_elder_buy_cattle", [(party_get_slot, reg5, "$g_encountered_party", slot_village_number_of_cattle),
+[anyone ,"village_elder_buy_cattle", [(party_get_slot, reg5, "$g_encountered_party", slot_village_number_of_cattle),
                                         (gt, reg5, 0),
                                         (store_item_value, ":cattle_cost", "itm_cattle_meat"),
                                         (call_script, "script_game_get_item_buy_price_factor", "itm_cattle_meat"),
@@ -1025,47 +1462,47 @@ dialogs_town_governance = [
                                         (assign, reg6, ":cattle_cost"),
                                         ],
    "We have {reg5} heads of cattle, each for {reg6} mon. How many do you want to buy?", "village_elder_buy_cattle_2",[]],
-  [anyone ,"village_elder_buy_cattle", [],
+[anyone ,"village_elder_buy_cattle", [],
    "I am afraid we have no cattle left in the village {sir/madam}.", "village_elder_buy_cattle_2",[]],
-  [anyone|plyr,"village_elder_buy_cattle_2", [(party_get_slot, ":num_cattle", "$g_encountered_party", slot_village_number_of_cattle),
+[anyone|plyr,"village_elder_buy_cattle_2", [(party_get_slot, ":num_cattle", "$g_encountered_party", slot_village_number_of_cattle),
                                               (ge, ":num_cattle", 1),
                                               (store_troop_gold, ":gold", "trp_player"),
                                               (ge, ":gold", "$temp"),],
    "One.", "village_elder_buy_cattle_complete",[(call_script, "script_buy_cattle_from_village", "$g_encountered_party", 1, "$temp"),
                                                        ]],
-  [anyone|plyr,"village_elder_buy_cattle_2", [(party_get_slot, ":num_cattle", "$g_encountered_party", slot_village_number_of_cattle),
+[anyone|plyr,"village_elder_buy_cattle_2", [(party_get_slot, ":num_cattle", "$g_encountered_party", slot_village_number_of_cattle),
                                               (ge, ":num_cattle", 2),
                                               (store_troop_gold, ":gold", "trp_player"),
                                               (store_mul, ":cost", "$temp", 2),
                                               (ge, ":gold", ":cost"),],
    "Two.", "village_elder_buy_cattle_complete",[(call_script, "script_buy_cattle_from_village", "$g_encountered_party", 2, "$temp"),
                                                        ]],
-  [anyone|plyr,"village_elder_buy_cattle_2", [(party_get_slot, ":num_cattle", "$g_encountered_party", slot_village_number_of_cattle),
+[anyone|plyr,"village_elder_buy_cattle_2", [(party_get_slot, ":num_cattle", "$g_encountered_party", slot_village_number_of_cattle),
                                               (ge, ":num_cattle", 3),
                                               (store_troop_gold, ":gold", "trp_player"),
                                               (store_mul, ":cost", "$temp", 3),
                                               (ge, ":gold", ":cost"),],
    "Three.", "village_elder_buy_cattle_complete",[(call_script, "script_buy_cattle_from_village", "$g_encountered_party", 3, "$temp"),
                                                        ]],
-  [anyone|plyr,"village_elder_buy_cattle_2", [(party_get_slot, ":num_cattle", "$g_encountered_party", slot_village_number_of_cattle),
+[anyone|plyr,"village_elder_buy_cattle_2", [(party_get_slot, ":num_cattle", "$g_encountered_party", slot_village_number_of_cattle),
                                               (ge, ":num_cattle", 4),
                                               (store_troop_gold, ":gold", "trp_player"),
                                               (store_mul, ":cost", "$temp", 4),
                                               (ge, ":gold", ":cost"),],
    "Four.", "village_elder_buy_cattle_complete",[(call_script, "script_buy_cattle_from_village", "$g_encountered_party", 4, "$temp"),
                                                        ]],
-  [anyone|plyr,"village_elder_buy_cattle_2", [(party_get_slot, ":num_cattle", "$g_encountered_party", slot_village_number_of_cattle),
+[anyone|plyr,"village_elder_buy_cattle_2", [(party_get_slot, ":num_cattle", "$g_encountered_party", slot_village_number_of_cattle),
                                               (ge, ":num_cattle", 5),
                                               (store_troop_gold, ":gold", "trp_player"),
                                               (store_mul, ":cost", "$temp", 5),
                                               (ge, ":gold", ":cost"),],
    "Five.", "village_elder_buy_cattle_complete",[(call_script, "script_buy_cattle_from_village", "$g_encountered_party", 5, "$temp"),
                                                        ]],
-  [anyone|plyr,"village_elder_buy_cattle_2", [],
+[anyone|plyr,"village_elder_buy_cattle_2", [],
    "Forget it.", "village_elder_pretalk",[]],
-  [anyone ,"village_elder_buy_cattle_complete", [],
+[anyone ,"village_elder_buy_cattle_complete", [],
    "I will tell the herders to round up the animals and bring them to you, {sir/madam}. I am sure you will be satisfied with your purchase.", "village_elder_pretalk",[]],
-  [anyone ,"village_elder_recruit_start", [(party_get_slot, ":num_volunteers", "$current_town", slot_center_volunteer_troop_amount),
+[anyone ,"village_elder_recruit_start", [(party_get_slot, ":num_volunteers", "$current_town", slot_center_volunteer_troop_amount),
                                            (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
                                            (val_min, ":num_volunteers", ":free_capacity"),
                                            (store_troop_gold, ":gold", "trp_player"),
@@ -1074,7 +1511,7 @@ dialogs_town_governance = [
                                            (le, ":num_volunteers", 0),
                                            ],
    "I don't think anyone would be interested, {sir/madam}. Is there anything else I can do for you?", "village_elder_talk",[]],
-  [anyone ,"village_elder_recruit_start", [(party_get_slot, ":num_volunteers", "$current_town", slot_center_volunteer_troop_amount),
+[anyone ,"village_elder_recruit_start", [(party_get_slot, ":num_volunteers", "$current_town", slot_center_volunteer_troop_amount),
                                            (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
                                            (val_min, ":num_volunteers", ":free_capacity"),
                                            (store_troop_gold, ":gold", "trp_player"),
@@ -1086,29 +1523,14 @@ dialogs_town_governance = [
                                            ],
    "I can think of {reg5} whom I suspect would jump at the chance. If you could pay 10 mon {reg7?each for their equipment:for his equipment}.\
  Does that suit you?", "village_elder_recruit_decision",[]],
-#not used:
-##  [anyone|plyr,"village_elder_recruit_decision", [(party_get_slot, ":num_volunteers", "$current_town", slot_center_volunteer_troop_amount),
-##                                                  (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
-##                                                  (val_min, ":num_volunteers", ":free_capacity"),
-##                                                  (store_troop_gold, ":gold", "trp_player"),
-##                                                  (store_div, ":gold_capacity", ":gold", 10),#10 mon per man
-##                                                  (val_min, ":num_volunteers", ":gold_capacity"),
-##                                                  (eq, ":num_volunteers", 0),],
-##   "So be it.", "village_elder_pretalk",
-##   [
-##     (try_begin),
-##       (party_slot_eq, "$current_town", slot_center_volunteer_troop_amount, 0), #do not change the value if it is above 0
-##       (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, -1),
-##     (try_end),]],
-
-  [anyone|plyr,"village_elder_recruit_decision", [(assign, ":num_volunteers", "$temp"),
+[anyone|plyr,"village_elder_recruit_decision", [(assign, ":num_volunteers", "$temp"),
                                                   (ge, ":num_volunteers", 1),
                                                   (store_add, reg7, ":num_volunteers", -1)],
    "Tell {reg7?them:him} to make ready.", "village_elder_pretalk",[(call_script, "script_village_recruit_volunteers_recruit"),]],
-  [anyone|plyr,"village_elder_recruit_decision", [(party_slot_ge, "$current_town", slot_center_volunteer_troop_amount, 1)],
+[anyone|plyr,"village_elder_recruit_decision", [(party_slot_ge, "$current_town", slot_center_volunteer_troop_amount, 1)],
    "No, not now.", "village_elder_pretalk",[]],
-  [anyone,"village_elder_active_mission_1", [], "Yes {sir/madam}, have you made any progress on it?", "village_elder_active_mission_2",[]],
-  [anyone|plyr,"village_elder_active_mission_2",[(store_partner_quest,":elder_quest"),
+[anyone,"village_elder_active_mission_1", [], "Yes {sir/madam}, have you made any progress on it?", "village_elder_active_mission_2",[]],
+[anyone|plyr,"village_elder_active_mission_2",[(store_partner_quest,":elder_quest"),
                                                  (eq, ":elder_quest", "qst_deliver_grain"),
                                                  (quest_get_slot, ":quest_target_amount", "qst_deliver_grain", slot_quest_target_amount),
                                                  (call_script, "script_get_troop_item_amount", "trp_player", "itm_grain"),
@@ -1118,7 +1540,7 @@ dialogs_town_governance = [
                                                  ],
    "Indeed. I brought you {reg5} sacks of brown rice.", "village_elder_deliver_grain_thank",
    []],
-  [anyone,"village_elder_deliver_grain_thank", [(str_store_party_name, s13, "$current_town")],
+[anyone,"village_elder_deliver_grain_thank", [(str_store_party_name, s13, "$current_town")],
    "My good {lord/lady}. You have saved us from hunger and desperation. We cannot thank you enough, but you'll always be in our prayers.\
  The village of {s13} will not forget what you have done for us.", "village_elder_deliver_grain_thank_2",
    [(quest_get_slot, ":quest_target_amount", "qst_deliver_grain", slot_quest_target_amount),
@@ -1131,41 +1553,23 @@ dialogs_town_governance = [
     (call_script, "script_add_log_entry", logent_helped_peasants, "trp_player",  "$current_town", -1, -1),
 #Troop commentaries end
    ]],
-  [anyone,"village_elder_deliver_grain_thank_2", [],
+[anyone,"village_elder_deliver_grain_thank_2", [],
    "My good {lord/lady}, please, is there anything I can do for you?", "village_elder_talk",[]],
-  [anyone|plyr,"village_elder_active_mission_2", [], "I am still working on it.", "village_elder_active_mission_3",[]],
-  [anyone|plyr,"village_elder_active_mission_2", [], "I am afraid I won't be able to finish it.", "village_elder_mission_failed",[]],
-  [anyone,"village_elder_active_mission_3",
+[anyone|plyr,"village_elder_active_mission_2", [], "I am still working on it.", "village_elder_active_mission_3",[]],
+[anyone|plyr,"village_elder_active_mission_2", [], "I am afraid I won't be able to finish it.", "village_elder_mission_failed",[]],
+[anyone,"village_elder_active_mission_3",
   ##diplomacy start+ change to use script_dplmc_print_subordinate_says_sir_madame_to_s0
   #[], "Thank you, {sir/madam}. We are praying for your success everyday.", "village_elder_pretalk",[]],
   [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
   "Thank you, {s0}. We are praying for your success everyday.", "village_elder_pretalk",[]],
-  ##diplomacy end+
-
-  ##diplomacy start+ change to use script_dplmc_print_subordinate_says_sir_madame_to_s0
-  [anyone,"village_elder_mission_failed", #[], "Ah, I am sorry to hear that {sir/madam}. I'll try to think of something else.",
+[anyone,"village_elder_mission_failed", #[], "Ah, I am sorry to hear that {sir/madam}. I'll try to think of something else.",
   [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
   "Ah, I am sorry to hear that {s0}. I'll try to think of something else.",
   ##diplomacy end+
   "village_elder_pretalk",
    [(store_partner_quest,":elder_quest"),
     (call_script, "script_abort_quest", ":elder_quest", 1)]],
-##
-##  [anyone,"village_elder_generic_mission_thank", [],
-##   "You have been so helpful {sir/madam}. I do not know how to thank you.", "village_elder_generic_mission_completed",[]],
-##
-##  [anyone|plyr,"village_elder_generic_mission_completed", [],
-##   "Speak not of it. I only did what needed to be done.", "village_elder_pretalk",[]],
-
-# Currently not needed.
-##  [anyone|plyr,"village_elder_generic_mission_failed", [],
-##   "TODO: I'm sorry I failed you sir. It won't happen again.", "village_elder_pretalk",
-##   [(store_partner_quest,":elder_quest"),
-##    (call_script, "script_finish_quest", ":elder_quest", 0),
-##    ]],
-
-
-  [anyone,"village_elder_request_mission_ask",
+[anyone,"village_elder_request_mission_ask",
   ##diplomacy start+ change to use script_dplmc_print_subordinate_says_sir_madame_to_s0
   #[(store_partner_quest,":elder_quest"),(ge,":elder_quest",0)],
   [(store_partner_quest,":elder_quest"),
@@ -1173,22 +1577,17 @@ dialogs_town_governance = [
    (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
   #"Well {sir/madam}, you are already engaged with a task helping us. We cannot ask more from you.", "village_elder_pretalk",[]],
   "Well {s0} you are already engaged with a task helping us. We cannot ask more from you.", "village_elder_pretalk",[]],
-  ##diplomacy end+
-
-  ##diplomacy start+ change to use script_dplmc_print_subordinate_says_sir_madame_to_s0
-  [anyone,"village_elder_request_mission_ask", #[(troop_slot_eq, "$g_talk_troop", slot_troop_does_not_give_quest, 1)],
+[anyone,"village_elder_request_mission_ask", #[(troop_slot_eq, "$g_talk_troop", slot_troop_does_not_give_quest, 1)],
    [(troop_slot_eq, "$g_talk_troop", slot_troop_does_not_give_quest, 1),
     (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
    #"No {sir/madam}, We don't have any other tasks for you.", "village_elder_pretalk",[]],
    "No {s0}, We don't have any other tasks for you.", "village_elder_pretalk",[]],
-   ##diplomacy end+
-
-  [anyone|auto_proceed,"village_elder_request_mission_ask", [], "A task?", "village_elder_tell_mission",
+[anyone|auto_proceed,"village_elder_request_mission_ask", [], "A task?", "village_elder_tell_mission",
    [
        (call_script, "script_get_quest", "$g_talk_troop"),
        (assign, "$random_quest_no", reg0),
    ]],
-  [anyone,"village_elder_tell_mission", [(eq,"$random_quest_no","qst_deliver_grain")],
+[anyone,"village_elder_tell_mission", [(eq,"$random_quest_no","qst_deliver_grain")],
    "{My good sir/My good lady}, our village has been going through such hardships lately.\
  The harvest has been bad, and recently some merciless bandits took away our seed that we had reserved for the planting season.\
  If we cannot find some rice soon, we will not be able to plant our fields and then we will have nothing to eat for the coming year.\
@@ -1200,18 +1599,17 @@ dialogs_town_governance = [
      (setup_quest_text,"$random_quest_no"),
      (str_store_string, s2, "@The elder of the village of {s3} asked you to bring them {reg5} sacks of brown rice."),
    ]],
-  [anyone|plyr,"village_elder_tell_deliver_grain_mission", [],
+[anyone|plyr,"village_elder_tell_deliver_grain_mission", [],
    "Hmmm. How much rice do you need?", "village_elder_tell_deliver_grain_mission_2",[]],
-  [anyone|plyr,"village_elder_tell_deliver_grain_mission", [],
+[anyone|plyr,"village_elder_tell_deliver_grain_mission", [],
    "I can't be bothered with this. Ask help from someone else.", "village_elder_deliver_grain_mission_reject",[]],
-  [anyone,"village_elder_tell_deliver_grain_mission_2", [(quest_get_slot, reg5, "$random_quest_no", slot_quest_target_amount)],
+[anyone,"village_elder_tell_deliver_grain_mission_2", [(quest_get_slot, reg5, "$random_quest_no", slot_quest_target_amount)],
    "I think {reg5} sacks of brown rice will get us through the next planting. Hopefully, we can find charitable people to help us with the rest.", "village_elder_tell_deliver_grain_mission_3",[]],
-  [anyone|plyr,"village_elder_tell_deliver_grain_mission_3", [],
+[anyone|plyr,"village_elder_tell_deliver_grain_mission_3", [],
    "Then I will go and find you the brown rice you need.", "village_elder_deliver_grain_mission_accept",[]],
-  [anyone|plyr,"village_elder_tell_deliver_grain_mission_3", [],
+[anyone|plyr,"village_elder_tell_deliver_grain_mission_3", [],
    "I am afraid I don't have time for this. You'll need to find help elsewhere.", "village_elder_deliver_grain_mission_reject",[]],
-  ##diplomacy start+ replace {sir/madam} with {my lord/my lady} or your highness if appropriate
-  [anyone,"village_elder_deliver_grain_mission_accept", #[], "Thank you, {sir/madam}. We'll be praying for you night and day.", "close_window",
+[anyone,"village_elder_deliver_grain_mission_accept", #[], "Thank you, {sir/madam}. We'll be praying for you night and day.", "close_window",
    [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
    "Thank you, {s0}. We'll be praying for you night and day.", "close_window",
   ##diplomacy end+
@@ -1219,13 +1617,12 @@ dialogs_town_governance = [
     (call_script, "script_change_player_relation_with_center", "$current_town", 5),
     (call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
     ]],
-##diplomacy start+ replace {sir/madam} with {my lord/my lady} or your highness if appropriate
-  [anyone,"village_elder_deliver_grain_mission_reject", #[], "Yes {sir/madam}, of course. I am sorry if I have bothered you with our troubles.", "close_window",
+[anyone,"village_elder_deliver_grain_mission_reject", #[], "Yes {sir/madam}, of course. I am sorry if I have bothered you with our troubles.", "close_window",
   [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),], "Yes {s0}, of course. I am sorry if I have bothered you with our troubles.", "close_window",
 ##diplomacy end+
    [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1),
     ]],
-  [anyone,"village_elder_tell_mission", [(eq,"$random_quest_no", "qst_train_peasants_against_bandits")],
+[anyone,"village_elder_tell_mission", [(eq,"$random_quest_no", "qst_train_peasants_against_bandits")],
    "We are suffering greatly at the hands of a group of bandits. They take our food and livestock,\
  and kill anyone who doesn't obey them immediately. Our men are angry that we cannot defend ourselves, but we are only simple farmers...\
  However, with some help, I think that some of the people here could be more than that.\
@@ -1238,12 +1635,11 @@ dialogs_town_governance = [
      (setup_quest_text, "$random_quest_no"),
      (str_store_string, s2, "@The elder of the village of {s13} asked you to train {reg5} peasants to fight against local bandits."),
    ]],
-  [anyone|plyr, "village_elder_tell_train_peasants_against_bandits_mission", [],
+[anyone|plyr, "village_elder_tell_train_peasants_against_bandits_mission", [],
    "I can teach you how to defend yourself.", "village_elder_train_peasants_against_bandits_mission_accept",[]],
-  [anyone|plyr, "village_elder_tell_train_peasants_against_bandits_mission", [],
+[anyone|plyr, "village_elder_tell_train_peasants_against_bandits_mission", [],
    "You peasants have no business taking up arms. Just pay the bandits and be off with it.", "village_elder_train_peasants_against_bandits_mission_reject",[]],
-  ##diplomacy start+ replace {sir/madam} with {my lord/my lady} or your highness if appropriate
-  [anyone,"village_elder_train_peasants_against_bandits_mission_accept",
+[anyone,"village_elder_train_peasants_against_bandits_mission_accept",
    [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
    "You will? Oh, splendid! We would be deeply indebted to you, {s0}. I'll instruct the village folk to assemble here and receive your training. If you can teach us how to defend ourselves, I promise you'll receive everything we can give you in return for your efforts.", "close_window",
 	##diplomacy end+
@@ -1253,15 +1649,14 @@ dialogs_town_governance = [
      (call_script, "script_change_player_relation_with_center", "$current_town", 3),
      (call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
      ]],
-##diplomacy start+ replace {sir/madam} with {my lord/my lady} or your highness if appropriate
-  [anyone,"village_elder_train_peasants_against_bandits_mission_reject", #[], "Yes, of course {sir/madam}.\
+[anyone,"village_elder_train_peasants_against_bandits_mission_reject", #[], "Yes, of course {sir/madam}.\
   [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
   "Yes, of course {s0}.  Thank you for your counsel.", "close_window",
 ##diplomacy end+
    [
      (troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1),
      ]],
-  [anyone,"village_elder_tell_mission", [(eq,"$random_quest_no","qst_deliver_cattle")],
+[anyone,"village_elder_tell_mission", [(eq,"$random_quest_no","qst_deliver_cattle")],
    "Bandits have driven away our cattle. Our pastures are empty. If we had just a few heads of cattle we could start to raise a herd again.",
    "village_elder_tell_deliver_cattle_mission",
    [
@@ -1271,202 +1666,619 @@ dialogs_town_governance = [
      (setup_quest_text,"$random_quest_no"),
      (str_store_string, s2, "@The elder of the village of {s3} asked you to bring them {reg5} heads of cattle."),
    ]],
-  [anyone|plyr,"village_elder_tell_deliver_cattle_mission", [],
+[anyone|plyr,"village_elder_tell_deliver_cattle_mission", [],
    "How many animals do you need?", "village_elder_tell_deliver_cattle_mission_2",[]],
-  [anyone|plyr,"village_elder_tell_deliver_cattle_mission", [],
+[anyone|plyr,"village_elder_tell_deliver_cattle_mission", [],
    "I don't have time for this. Ask help from someone else.", "village_elder_deliver_cattle_mission_reject",[]],
-  [anyone,"village_elder_tell_deliver_cattle_mission_2", [(quest_get_slot, reg5, "$random_quest_no", slot_quest_target_amount)],
+[anyone,"village_elder_tell_deliver_cattle_mission_2", [(quest_get_slot, reg5, "$random_quest_no", slot_quest_target_amount)],
    "I think {reg5} heads will suffice for a small herd.", "village_elder_tell_deliver_cattle_mission_3",[]],
-  [anyone|plyr,"village_elder_tell_deliver_cattle_mission_3", [],
+[anyone|plyr,"village_elder_tell_deliver_cattle_mission_3", [],
    "Then I will bring you the cattle you need.", "village_elder_deliver_cattle_mission_accept",[]],
-  [anyone|plyr,"village_elder_tell_deliver_cattle_mission_3", [],
+[anyone|plyr,"village_elder_tell_deliver_cattle_mission_3", [],
    "I am afraid I don't have time for this. You'll need to find help elsewhere.", "village_elder_deliver_cattle_mission_reject",[]],
-  ##diplomacy start+ replace {sir/madam} with {my lord/my lady} or your highness if appropriate
-  [anyone,"village_elder_deliver_cattle_mission_accept", [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),], "Thank you, {s0}. We'll be praying for you night and day.", "close_window",
+[anyone,"village_elder_deliver_cattle_mission_accept", [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),], "Thank you, {s0}. We'll be praying for you night and day.", "close_window",
   ##diplomacy end+
    [(assign, "$g_leave_encounter",1),
     (call_script, "script_change_player_relation_with_center", "$current_town", 3),
     (call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
     ]],
-  ##diplomacy start+ replace {sir/madam} with {my lord/my lady} or your highness if appropriate
-  [anyone,"village_elder_deliver_cattle_mission_reject", [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),], "Yes {s0}, of course. I am sorry if I have bothered you with our troubles.", "close_window",
+[anyone,"village_elder_deliver_cattle_mission_reject", [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),], "Yes {s0}, of course. I am sorry if I have bothered you with our troubles.", "close_window",
   ##diplomacy end+
    [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1),
     ]],
-  #diplomacy start+ replace {sir/madam} with {my lord/my lady} or your highness if appropriate
-  [anyone,"village_elder_tell_mission", [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),], "Thank you, {s0}, but we do not really need anything right now.", "village_elder_pretalk",[]],
-  #diplomacy end+
-
-##  [anyone|plyr,"village_elder_mission_told", [], "TODO: As you wish sir. You can count on me.", "village_elder_mission_accepted",[]],
-##  [anyone|plyr,"village_elder_mission_told", [], "TODO: I'm afraid I can't carry out this mission right now, sir.", "village_elder_mission_rejected",[]],
-##
-##  [anyone,"village_elder_mission_accepted", [], "TODO: Excellent. Do this {playername}. I really have high hopes for you.", "close_window",
-##   [(assign, "$g_leave_encounter",1),
-##    (try_begin),
-##    #TODO: Add quest initializations here
-##    (try_end),
-##    (call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
-##    ]],
-
-##  [anyone,"village_elder_mission_rejected", [], "TODO: Is that so? Perhaps you are not up for the task anyway...", "close_window",
-##   [(assign, "$g_leave_encounter",1),
-##    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),
-##    (troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1),
-##    ]],
-
-
-
-
-#Goods Merchants
-
-  [anyone ,"start", [(is_between,"$g_talk_troop",goods_merchants_begin,goods_merchants_end),
-                     (party_slot_eq, "$current_town", slot_town_lord, "trp_player")],
-   "{My lord/my lady}, you honour my humble shop with your presence.", "goods_merchant_talk",[]],
-	
-  [anyone, "fort_deputy_discuss", [], "Anything else?","fort_deputy_discuss_options", []],
-	
-  #ask deputy about potential companion
-  [anyone|plyr, "fort_deputy_discuss_options", [
-      (party_get_slot, ":companion", "$current_town", slot_fort_npc_2),
-      (troop_slot_ge, ":companion", slot_troop_met, 1),
-	  (str_store_troop_name, s2, ":companion"),
-	  (try_begin),
-	    (this_or_next|party_slot_eq, "$current_town", slot_fort_npc_2_state, 3), #companion has been recruited
-	    (party_slot_eq, "$current_town", slot_fort_npc_2_state, 4), #companion has been promoted to lord
-        (str_store_string, s2, "@Would you like to know how {s2} has been doing?"),
-	  (else_try),
-        (str_store_string, s2, "@I wish to ask about {s2}."), #default request
-	  (try_end),
-    ], "{s2}", "fort_deputy_discuss_companion", []],
-  #deputy responds about companion
-  [anyone, "fort_deputy_discuss_companion", [ 
-      (store_sub, ":offset", "$current_town", forts_begin),
-	  (try_begin),
-	    (party_slot_eq, "$current_town", slot_fort_npc_2_state, 4), #companion has been promoted to lord
-	    (store_add, ":deputy_talk", "str_gekokujo_fort_1_deputy_ask_companion_promoted", ":offset"),
-	  (else_try),
-	    (party_slot_eq, "$current_town", slot_fort_npc_2_state, 3), #companion has been recruited
-	    (store_add, ":deputy_talk", "str_gekokujo_fort_1_deputy_ask_companion_recruited", ":offset"),
-	  (else_try),
-	    (party_slot_eq, "$current_town", slot_fort_npc_2_state, 2), #companion has returned temporarily
-        (party_get_slot, ":companion", "$current_town", slot_fort_npc_2),
-		(str_store_troop_name, s3, ":companion"),
-        (assign, ":deputy_talk", "str_gekokujo_fort_deputy_ask_companion_returned"),
-	  (else_try),
-        (store_add, ":deputy_talk", "str_gekokujo_fort_1_deputy_ask_companion", ":offset"), #default response
-	  (try_end),
-      (str_store_string, s45, ":deputy_talk"),
-    ], "{s45}","fort_deputy_discuss", []],
-	
-  #ask deputy permission for the companion to join
-  [anyone|plyr, "fort_deputy_discuss_options", [
-      (party_slot_eq, "$current_town", slot_fort_npc_2_state, 1), #this should only show up if you've already asked companion to join
-      (party_get_slot, ":companion", "$current_town", slot_fort_npc_2),
-      (troop_slot_ge, ":companion", slot_troop_met, 1),
-	  (str_store_troop_name, s2, ":companion"),
-    ], "I wish for {s2} to join me.", "fort_deputy_discuss_companion_recruit", []],
-  
-  #deputy responds about companion joining
-  [anyone, "fort_deputy_discuss_companion_recruit", [ 
-      (store_sub, ":offset", "$current_town", forts_begin),
-      (store_add, ":deputy_talk", "str_gekokujo_fort_1_deputy_ask_companion_recruit", ":offset"),
-      (str_store_string, s45, ":deputy_talk"),
-    ], "{s45}","fort_deputy_discuss", [
-	  (party_set_slot, "$current_town", slot_fort_npc_2_state, 3), #set to "companion recruited"
-	  (party_get_slot, ":companion", "$current_town", slot_fort_npc_2),
-	  #(party_add_members, "p_main_party", ":companion", 1),
-	  (call_script, "script_recruit_troop_as_companion", ":companion")
+[anyone,"village_elder_tell_mission", [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),], "Thank you, {s0}, but we do not really need anything right now.", "village_elder_pretalk",[]],
+[anyone|plyr,"prisoner_chat", [], "Do not try running away or trying something stupid. I will be watching you.", "prisoner_chat_2",[]],
+[anyone,"prisoner_chat_2", [], "No, I swear I won't.", "close_window",[]],
+[anyone|plyr,"town_merchant_talk", [(is_between,"$g_talk_troop",weapon_merchants_begin,weapon_merchants_end)],
+   "I want to buy a new weapon. Show me your wares.", "trade_requested_weapons",[]],
+[anyone|plyr,"town_merchant_talk", [(is_between,"$g_talk_troop",armor_merchants_begin,armor_merchants_end)],
+   "I am looking for some equipment. Show me what you have.", "trade_requested_armor",[]],
+[anyone|plyr,"town_merchant_talk", [(is_between,"$g_talk_troop",horse_merchants_begin,horse_merchants_end)],
+   "I am thinking of buying a horse.", "trade_requested_horse",[]],
+[anyone|plyr,"town_merchant_talk", [
+   (is_between,"$g_talk_troop",weapon_merchants_begin,weapon_merchants_end),],
+   "I'd like to sell some weapons.", "dplmc_trade_autosell_1",[
+	(assign, "$temp", weapons_begin),
+	(assign, "$temp_2", ranged_weapons_end),#this range includes shields
 	]],
-  
-  #deputy - ask about fort specialties
-  [anyone|plyr, "fort_deputy_discuss_options", [
-      (str_store_party_name, s3, "$current_town"),
-    ], "What does {s3} have to offer?", "fort_deputy_discuss_specialty", []],
-  [anyone, "fort_deputy_discuss_specialty", [
-      (store_sub, ":offset", "$current_town", forts_begin),
-      (store_add, ":deputy_talk", "str_gekokujo_fort_1_deputy_ask_specialty", ":offset"),
-      (str_store_string, s45, ":deputy_talk"),
-    ], "{s45}","fort_deputy_discuss", []],
-  
-  #deputy - ask for troops (we add it to the garrison)
-  [anyone|plyr, "fort_deputy_discuss_options", [
-      (party_slot_eq, "$current_town", slot_fort_timer, 0),
-    ], "I wish to recruit some men.", "fort_deputy_discuss_recruit", []],
-	
-  [anyone, "fort_deputy_discuss_recruit", [], "Very well.", "fort_deputy_discuss", [
-      (party_set_slot, "$current_town", slot_fort_timer, 7), #reset the timer
-      (store_random_in_range, ":rand_recruits", 15, 31), #15 to 31 recruits
-      (party_get_slot, ":recruit", "$current_town", slot_fort_recruit_type), #determine the type of recruits
-      (party_add_members, "$current_town", ":recruit", ":rand_recruits"), #give them to the town garrison
-      (change_screen_exchange_members, 1, "$current_town"), #change to the garrison screen
+[anyone|plyr,"town_merchant_talk", [
+   (is_between,"$g_talk_troop",armor_merchants_begin,armor_merchants_end),],
+   "I'd like to sell some armor.", "dplmc_trade_autosell_1",[
+	(assign, "$temp", armors_begin),
+	(assign, "$temp_2", armors_end),
+	]],
+[anyone|plyr,"town_merchant_talk", [
+   (is_between, "$g_talk_troop", horse_merchants_begin, horse_merchants_end),],
+   "I'd like to sell some horses to you.", "dplmc_trade_autosell_1",[
+	(assign, "$temp", horses_begin),
+	(assign, "$temp_2", horses_end),
+	]],
+[anyone|plyr,"town_merchant_talk", [], "Tell me. What are people talking about these days?", "merchant_gossip",[]],
+[anyone|plyr,"town_merchant_talk", [], "Good-bye.", "close_window",[]],
+[anyone|plyr,"town_dweller_talk", [(check_quest_active, "qst_hunt_down_fugitive"),
+                                     (neg|check_quest_concluded, "qst_hunt_down_fugitive"),
+                                      (quest_slot_eq, "qst_hunt_down_fugitive", slot_quest_target_center, "$current_town"),
+                                      (quest_get_slot, ":quest_target_dna", "qst_hunt_down_fugitive", slot_quest_target_dna),
+                                      (call_script, "script_get_name_from_dna_to_s50", ":quest_target_dna"),
+                                      (str_store_string, s4, s50),
+                                      ],
+   "I am looking for a man by the name of {s4}. I was told he may be hiding here.", "town_dweller_ask_fugitive",[]],
+[anyone ,"town_dweller_ask_fugitive", #[],
+   [(call_script,"script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
+   "Strangers come and go to our village, {s0}. If he is hiding here, you will surely find him if you look around.", "close_window",[]],
+[anyone|plyr,"town_dweller_talk",
+   [
+     (eq, 1, 0),
+     (check_quest_active, "qst_meet_spy_in_enemy_town"),
+     (neg|check_quest_succeeded, "qst_meet_spy_in_enemy_town"),
+     (quest_slot_eq, "qst_meet_spy_in_enemy_town", slot_quest_target_center, "$current_town"),
+     (str_store_item_name,s5,"$spy_item_worn"),
+     ],
+   "Pardon me, but is that a {s5} you're wearing?", "town_dweller_quest_meet_spy_in_enemy_town_ask_item",
+   [
+     ]],
+[anyone, "town_dweller_quest_meet_spy_in_enemy_town_ask_item", [
+     (str_store_item_name,s5,"$spy_item_worn"),
+
+     (try_begin),
+     (troop_has_item_equipped,"$g_talk_troop","$spy_item_worn"),
+     (str_store_string,s6,"@A {s5}? Well... Yes, I suppose it is. What a strange thing to ask."),
+     (else_try),
+     (str_store_string,s6,"@Eh? No, it most certainly is not a {s5}. I'd start questioning my eyesight if I were you."),
+     (try_end),
+  ],
+   "{s6}", "town_dweller_talk",[]],
+[anyone|plyr|repeat_for_100,"town_dweller_talk",
+   [
+     (store_repeat_object,":object"),
+     (lt,":object",4), # repeat only 4 times
+
+     (check_quest_active, "qst_meet_spy_in_enemy_town"),
+     (neg|check_quest_succeeded, "qst_meet_spy_in_enemy_town"),
+     (quest_slot_eq, "qst_meet_spy_in_enemy_town", slot_quest_target_center, "$current_town"),
+
+     (store_add,":string",":object","str_secret_sign_1"),
+     (str_store_string, s4, ":string"),
+     ],
+   "{s4}", "town_dweller_quest_meet_spy_in_enemy_town",
+   [
+     (store_repeat_object,":object"),
+     (assign, "$temp", ":object"),
+     ]],
+[anyone ,"town_dweller_quest_meet_spy_in_enemy_town",
+   [
+     (call_script, "script_agent_get_town_walker_details", "$g_talk_agent"),
+     (assign, ":walker_type", reg0),
+     (eq, ":walker_type", walkert_spy),
+     (quest_get_slot, ":secret_sign", "qst_meet_spy_in_enemy_town", slot_quest_target_amount),
+     (val_sub, ":secret_sign", secret_signs_begin),
+     (eq, ":secret_sign", "$temp"),
+     (store_add, ":countersign", ":secret_sign", countersigns_begin),
+     (str_store_string, s4, ":countersign"),
+     ],
+   "{s4}", "town_dweller_quest_meet_spy_in_enemy_town_know",[]],
+[anyone, "town_dweller_quest_meet_spy_in_enemy_town", [],
+   "Eh? What kind of gibberish is that?", "town_dweller_quest_meet_spy_in_enemy_town_dont_know",[]],
+[anyone|plyr, "town_dweller_quest_meet_spy_in_enemy_town_dont_know", [],
+   "Never mind.", "close_window",[]],
+[anyone|plyr, "town_dweller_quest_meet_spy_in_enemy_town_know", [
+     (quest_get_slot, ":quest_giver", "qst_meet_spy_in_enemy_town", slot_quest_giver_troop),
+     (str_store_troop_name, s4, ":quest_giver"),
+  ],
+   "{s4} sent me to collect your reports. Do you have them with you?", "town_dweller_quest_meet_spy_in_enemy_town_chat",[]],
+[anyone, "town_dweller_quest_meet_spy_in_enemy_town_chat", [
+     (quest_get_slot, ":quest_giver", "qst_meet_spy_in_enemy_town", slot_quest_giver_troop),
+     (str_store_troop_name, s4, ":quest_giver"),
+  ],
+   "I've been expecting you. Here they are, make sure they reach {s4} intact and without delay.", "town_dweller_quest_meet_spy_in_enemy_town_chat_2",[
+     (call_script, "script_succeed_quest", "qst_meet_spy_in_enemy_town"),
+     (call_script, "script_center_remove_walker_type_from_walkers", "$current_town", walkert_spy),
+   ]],
+[anyone|plyr, "town_dweller_quest_meet_spy_in_enemy_town_chat_2", [],
+   "Farewell.", "close_window",
+   [
+     ]],
+[anyone|plyr,"town_dweller_talk", [(party_slot_eq, "$current_town", slot_party_type, spt_village),
+                                     (eq, "$info_inquired", 0)], "What can you tell me about this village?", "town_dweller_ask_info",[(assign, "$info_inquired", 1)]],
+[anyone|plyr,"town_dweller_talk", [(party_slot_eq, "$current_town", slot_party_type, spt_town),
+                                     (eq, "$info_inquired", 0)], "What can you tell me about this town?", "town_dweller_ask_info",[(assign, "$info_inquired", 1)]],
+[anyone,"town_dweller_ask_info", [(str_store_party_name, s5, "$current_town"),
+                                    (assign, reg4, 0),
+                                    (try_begin),
+                                      (party_slot_eq, "$current_town", slot_party_type, spt_town),
+                                      (assign, reg4, 1),
+                                    (try_end),
+									#diplomacy start+
+									#replace {sir/madame} with {my lord/my lady} or {your highness} if appropriate
+									(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+                                    (str_store_string, s6, "@This is the {reg4?town:village} of {s5}, {s0}."),
+									##diplomacy end+
+                                    (str_clear, s10),
+                                    (try_begin),
+                                      (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
+                                      (str_store_string, s10, "@{s6} Our {reg4?town:village} and the surrounding lands belong to you of course, my {lord/lady}."),
+                                    (else_try),
+                                      (party_get_slot, ":town_lord", "$current_town", slot_town_lord),
+                                      (ge, ":town_lord", 0),
+                                      (str_store_troop_name, s7, ":town_lord"),
+                                      (store_troop_faction, ":town_lord_faction", ":town_lord"),
+                                      (str_store_faction_name, s8, ":town_lord_faction"),
+                                      (str_store_string, s10, "@{s6} Our {reg4?town:village} and the surrounding lands belong to {s7} of {s8}."),
+                                    (try_end),
+                                    (str_clear, s5),
+                                    (assign, ":number_of_goods", 0),
+                                    (try_for_range, ":cur_good", trade_goods_begin, trade_goods_end),
+                                      #(store_sub, ":cur_good_slot", ":cur_good", trade_goods_begin),
+                                      #(val_add, ":cur_good_slot", slot_town_trade_good_productions_begin),
+                                      #(party_get_slot, ":production", "$g_encountered_party", ":cur_good_slot"),
+
+                                      (call_script, "script_center_get_production", "$g_encountered_party", ":cur_good"),
+                                      (assign, ":production", reg0),
+                                      (ge, ":production", 20),
+
+                                      (str_store_item_name, s3, ":cur_good"),
+                                      (try_begin),
+                                        (eq, ":number_of_goods", 0),
+                                        (str_store_string, s5, s3),
+                                      (else_try),
+                                        (eq, ":number_of_goods", 1),
+                                        (str_store_string, s5, "@{s3} and {s5}"),
+                                      (else_try),
+                                        (str_store_string, s5, "@{!}{s3}, {s5}"),
+                                      (try_end),
+                                      (val_add, ":number_of_goods", 1),
+                                    (try_end),
+									(try_begin),
+										(gt, ":number_of_goods", 0),
+										(assign, reg20, 1),
+									(else_try),
+										(assign, reg20, 0),
+									(try_end),
+
+                                    (str_store_string, s11, "@{reg20?We mostly produce {s5} here:We don't produce much here these days}.\
+ If you would like to learn more, you can speak with the {reg4?chief merchant:village headman}. He is nearby, right over there."),
+                                    ],
+   "{s10} {s11}", "close_window",[]],
+[anyone|plyr,"town_dweller_talk", [(party_slot_eq, "$current_town", slot_party_type, spt_village),
+                                     (eq, "$welfare_inquired", 0)], "How is life here?", "town_dweller_ask_situation",[(assign, "$welfare_inquired", 1)]],
+[anyone|plyr,"town_dweller_talk", [(party_slot_eq, "$current_town", slot_party_type, spt_town),
+                                     (eq, "$welfare_inquired", 0)], "How is life here?", "town_dweller_ask_situation",[(assign, "$welfare_inquired", 1)]],
+[anyone,"town_dweller_ask_situation", [(call_script, "script_agent_get_town_walker_details", "$g_talk_agent"),
+                                         (assign, ":walker_type", reg0),
+                                         (eq, ":walker_type", walkert_needs_money),
+										 #diplomacy start+ replace {sir/madame} with {my lord/my lady} or {your highness} if appropriate
+										 (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+										 #diplomacy end+
+                                         (party_slot_eq, "$current_town", slot_party_type, spt_village)],
+   #diplomacy start+ replace {sir/madame} with {my lord/my lady} or {your highness} if appropriate
+   "Disaster has struck my family, {s0}. We have no land of our own, and the others have no money to pay for our labor, or even to help us. My poor children lie at home hungry and sick. I don't know what we'll do.", "town_dweller_poor",[]],
+[anyone,"town_dweller_ask_situation", [(call_script, "script_agent_get_town_walker_details", "$g_talk_agent"),
+                                         (assign, ":walker_type", reg0),
+										 #diplomacy start+ replace {sir/madame} with {my lord/my lady} or {your highness} if appropriate
+										 (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+										 #diplomacy end+
+                                         (eq, ":walker_type", walkert_needs_money)],
+   #diplomacy start+ replace {sir/madame} with {my lord/my lady} or {your highness} if appropriate
+   "My life is miserable, {s0}. I haven't been able to find a job for months, and my poor children go to bed hungry each night.\
+ My neighbours are too poor themselves to help me.", "town_dweller_poor",[]],
+[anyone|plyr,"town_dweller_poor", [(store_troop_gold, ":gold", "trp_player"),
+                                     (ge, ":gold", 300),
+                                     ],
+   "Then take these 300 mon. I hope this will help you and your family.", "town_dweller_poor_paid",
+   [(troop_remove_gold, "trp_player", 300),
     ]],
-  
-  #deputy - ask for trade goods (we add it to the warehouse)
-  [anyone|plyr, "fort_deputy_discuss_options", [
-      (party_slot_eq, "$current_town", slot_fort_timer, 0),
-    ], "I wish to produce some goods.", "fort_deputy_discuss_produce", []],
-	
-  [anyone, "fort_deputy_discuss_produce", [], "They are ready to be shipped, my {lord/lady}.", "fort_deputy_discuss", [
-      (party_set_slot, "$current_town", slot_fort_timer, 7), #reset the timer
-	  
-      (try_begin),
-	    (eq, "$current_town", "p_fort_1"), #sado produces 5-10 dried sea fish
-        (store_random_in_range, ":rand_goods", 5, 11),
-        (assign, ":goods", "itm_smoked_fish"),
-      (else_try),
-	    (eq, "$current_town", "p_fort_2"), #tsushima produces 1-3 spice
-        (store_random_in_range, ":rand_goods", 1, 4),
-        (assign, ":goods", "itm_spice"),
-      (else_try),
-	    (eq, "$current_town", "p_fort_3"), #kokawa-dera produces 5-8 lacquer ware
-        (store_random_in_range, ":rand_goods", 5, 9),
-        (assign, ":goods", "itm_leatherwork"),
-      (else_try),
-	    (eq, "$current_town", "p_fort_4"), #mii-dera produces 4-8 linen cloth
-        (store_random_in_range, ":rand_goods", 4, 9),
-        (assign, ":goods", "itm_linen"),
-      (else_try),
-	    (eq, "$current_town", "p_fort_5"), #niputay produces 4-7 iron
-        (store_random_in_range, ":rand_goods", 4, 8),
-        (assign, ":goods", "itm_iron"),
-      (else_try),
-	    (eq, "$current_town", "p_fort_6"), #otasut produces 3-4 furs
-        (store_random_in_range, ":rand_goods", 3, 5),
-        (assign, ":goods", "itm_furs"),
+[anyone|plyr,"town_dweller_poor", [],
+   "Then clearly you must travel somewhere else, or learn another trade.", "town_dweller_poor_not_paid",[]],
+[anyone,"town_dweller_poor_not_paid", [], "Yes {sir/madam}. I will do as you say.", "close_window",[]],
+[anyone,"town_dweller_poor_paid", [], "{My lord/My good lady}. \
+ You are so good and generous. I will tell everyone how you helped us.", "close_window",
+   [(call_script, "script_change_player_relation_with_center", "$g_encountered_party", 1),
+    (call_script, "script_agent_get_town_walker_details", "$g_talk_agent"),
+    (assign, ":walker_no", reg2),
+    (call_script, "script_center_set_walker_to_type", "$g_encountered_party", ":walker_no", walkert_needs_money_helped),
+    ]],
+[anyone,"town_dweller_ask_situation", [(call_script, "script_agent_get_town_walker_details", "$g_talk_agent"),
+                                         (assign, ":walker_type", reg0),
+                                         (eq, ":walker_type", walkert_needs_money_helped),
+										 #diplomacy start+ replace {sir/madame} with {my lord/my lady} or {your highness} if appropriate
+										 (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+										 #diplomacy end+
+                                         ],
+   #diplomacy start+ replace {sir/madame} with {my lord/my lady} or {your highness} if appropriate
+   "Thank you for your kindness {s0}. With your help our lives will be better. I will pray for you everyday.", "close_window",[]],
+[anyone,"town_dweller_ask_situation", [(neg|party_slot_ge, "$current_town", slot_town_prosperity, 30),
+  #diplomacy start+ replace {sir/madame} with {my lord/my lady} or {your highness} if appropriate
+  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
+   "Times are hard, {s0}. We work hard all day and yet we go to sleep hungry most nights.", "town_dweller_talk",[]],
+[anyone,"town_dweller_ask_situation", [(neg|party_slot_ge, "$current_town", slot_town_prosperity, 70),#],
+   #diplomacy start+ replace {sir/madame} with {my lord/my lady} or {your highness} if appropriate
+   (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
+   "Times are hard, {s0}. But we must count our blessings.", "town_dweller_talk",[]],
+[anyone,"town_dweller_ask_situation",
+  ##diplomacy start+ replace {sir/madame} with {my lord/my lady} or {your highness} if appropriate
+  [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
+   "We are not doing too badly {s0}. We must count our blessings.", "town_dweller_talk",[]],
+[anyone|plyr,"town_dweller_talk", [], "What is your trade?", "town_dweller_ask_trade",[]],
+[anyone,"town_dweller_ask_trade", [
+  (call_script, "script_town_walker_occupation_string_to_s14", "$g_talk_agent"),
+  ],
+   "{s14}", "town_dweller_talk",[]],
+[anyone|plyr,"town_dweller_talk", [(eq, "$rumors_inquired", 0)], "What is the latest rumor around here?", "town_dweller_ask_rumor",[(assign, "$rumors_inquired", 1)]],
+[anyone,"town_dweller_ask_rumor", [
+  (store_skill_level, reg0, "skl_persuasion", "trp_player"),
+  (store_sub, reg0, -5, reg0),
+  (neg|party_slot_ge, "$current_town", slot_center_player_relation, reg0),
+  ],
+  "I don't know anything that would be of interest to you.", "town_dweller_talk",[]],
+[anyone,"town_dweller_ask_rumor", [(store_mul, ":rumor_id", "$current_town", 197),
+                                     (val_add,  ":rumor_id", "$g_talk_agent"),
+                                     (call_script, "script_get_rumor_to_s61", ":rumor_id"),
+                                     (gt, reg0, 0)], "{s61}", "town_dweller_talk",[]],
+[anyone,"town_dweller_ask_rumor", [], "I haven't heard anything interesting lately.", "town_dweller_talk",[]],
+[anyone|plyr,"town_dweller_talk", [], "[Action]", "town_dweller_crime_1", []],
+[anyone,"town_dweller_crime_1", [], "{Sir/Madam}?...", "town_dweller_crime_2", []],
+[anyone|plyr,"town_dweller_crime_2", 
+    [
+      (get_player_agent_no, ":player"),
+      
+      (assign, reg30, 0), #total holiness score
+      
+      #first run, check for monk's clothes and accoutrements
+      (try_for_range, ":ek_slot", ek_item_0, ek_foot),
+        (agent_get_item_slot, ":item", ":player", ":ek_slot"),
+        (gt, ":item", 0),
+        
+        (try_begin),
+          (eq, ":item", "itm_gekokujo_kimono_2_monk"), #+45 for monk's clothes
+          (val_add, reg30, 45),
+        (else_try),
+          (eq, ":item", "itm_gekokujo_monk_headwrap"), #+30 for monk's cowl
+          (val_add, reg30, 30),
+        (else_try),
+          (eq, ":item", "itm_gekokujo_sugegasa_1"), #+15 for sugegasa
+          (val_add, reg30, 15),
+        (else_try),
+          (is_between, ":item", "itm_gekokujo_jo", "itm_gekokujo_otsuchi"), #+15 for bo or jo *wielded*
+          (agent_get_wielded_item, ":wielded", ":player", 0),
+          (eq, ":wielded", ":item"),
+          (val_add, reg30, 15),
+        (try_end),
       (try_end),
-	  
-      (troop_add_items, "$g_talk_troop", ":goods", ":rand_goods"), #give them to the deputy aka warehouse inventory
-      (change_screen_loot, "$g_talk_troop"), #change to the warehouse inventry screen
+      
+      #second run, flat 75 for wearing miko's clothes
+      (agent_get_item_slot, ":item", ":player", ek_body),
+      (try_begin),
+        (eq, ":item", "itm_gekokujo_hakama_1_miko"),
+        (assign, reg30, 75), #override any monk bonuses
+      (try_end),
+      
+      #third run, -15 for each large weapon, helmet, and armor
+      (try_for_range, ":ek_slot", ek_item_0, ek_foot),
+        (agent_get_item_slot, ":item", ":player", ":ek_slot"),
+        (gt, ":item", 0),
+        
+        (this_or_next|is_between, ":item", "itm_gekokujo_katana_1", "itm_gekokujo_tanto_1"), #large 1
+        (this_or_next|is_between, ":item", "itm_gekokujo_ninjato_1", "itm_gekokujo_kama_1"), #large 2
+        (this_or_next|is_between, ":item", "itm_gekokujo_otsuchi", "itm_gekokujo_bullets_1"), #large 3
+        (this_or_next|is_between, ":item", "itm_gekokujo_tatami_short_1", "itm_gekokujo_sugegasa_1"), #armor
+        (is_between, ":item", "itm_gekokujo_hari_o_1", "itm_gekokujo_tabi"), #helmets
+        
+        (val_sub, reg30, 15),
+      (try_end),
+      
+      (val_min, reg30, 90),
+      (val_max, reg30, 0),
+    ], 
+    "[Beg] - {reg30}% to succeed", "town_dweller_beg_result", 
+    [
+      #check if the begging was a success
+      (store_random_in_range, ":beg_roll", 0, 100),
+      (try_begin),
+        (ge, reg30, ":beg_roll"),
+        (assign, "$gekokujo_beg_result", 1),
+      (else_try),
+        (assign, "$gekokujo_beg_result", 0),
+      (try_end),
     ]],
-  
-  #deputy - ask for work status (timer)
-  [anyone|plyr, "fort_deputy_discuss_options", [
-      (party_slot_ge, "$current_town", slot_fort_timer, 1),
-    ], "When are you able to recruit men or produce goods again?", "fort_deputy_discuss_timer", []],
-	
-  [anyone, "fort_deputy_discuss_timer", [
-      (party_get_slot, reg2, "$current_town", slot_fort_timer),
-	  (try_begin),
-	    (gt, reg2, 1),
-		(str_store_string, s3, "@{reg2} days"),
-	  (else_try),
-		(str_store_string, s3, "@another day"),
-	  (try_end),
-    ], "At the pace we are going, surely no more than {s3}.", "fort_deputy_discuss", []],
-  
-  #deputy - ask to see fort's warehouse
-  [anyone|plyr,"fort_deputy_discuss_options", [],
-    "Let's check the warehouse inventories.", "fort_deputy_discuss", [
-      (change_screen_loot, "$g_talk_troop"),
+[anyone, "town_dweller_beg_result", 
+    [
+      (store_random_in_range, ":variation", 0, 5),
+      
+      (try_begin),
+        (eq, "$gekokujo_beg_result", 1),
+        (store_add, ":reply", "str_gekokujo_beg_success_reply_1", ":variation"),
+      (else_try),
+        (store_add, ":reply", "str_gekokujo_beg_fail_reply_1", ":variation"),
+      (try_end),
+      
+      (str_store_string, s35, ":reply"),
+    ], 
+    "{s35}", "close_window",
+    [
+      (jump_to_menu, "mnu_beg"),
+      (finish_mission),
     ]],
-	
-  #deputy - ask to see equipment
-  [anyone|plyr,"fort_deputy_discuss_options", [], "Let me see your equipment.", "fort_deputy_discuss_equipment", []],
-  [anyone,"fort_deputy_discuss_equipment", [], "Very well, it's all here...", "fort_deputy_discuss", [(change_screen_equip_other)]],
-  #deputy - end dialogue
-  [anyone|plyr,"fort_deputy_discuss_options", [],
-    "That is all for now.", "close_window", []],
-  [anyone,"mayor_wealth_comparison_1",[
+[anyone|plyr,"town_dweller_crime_2", 
+    [
+      (get_player_agent_no, ":player"),
+      
+      (assign, reg5, 0), #total intimidation score
+      (assign, reg6, 90), #total getaway score
+      
+      (try_for_range, ":ek_slot", ek_item_0, ek_head),
+        (agent_get_item_slot, ":item", ":player", ":ek_slot"),
+        (gt, ":item", 0),
+        
+        (assign, ":weapon_score", 0),
+        (assign, ":getaway_score", 0),
+        
+        (try_begin),
+          #basic weapons are +10% to steal, -15% to get away
+          (this_or_next|is_between, ":item", "itm_wooden_stick", "itm_gekokujo_katana_1"),
+          (is_between, ":item", "itm_gekokujo_kama_1", "itm_gekokujo_bo_iron"),
+          (assign, ":weapon_score", 10),
+          (assign, ":getaway_score", -15),
+        (else_try),
+          #ranged weapons are +20% to steal, -30% to get away
+          (is_between, ":item", "itm_gekokujo_yumi_1", "itm_gekokujo_bullets_1"),
+          (assign, ":weapon_score", 20),
+          (assign, ":getaway_score", -30),
+        (else_try),
+          #large weapons are +30% to steal, -35% to get away
+          (this_or_next|is_between, ":item", "itm_gekokujo_katana_1", "itm_gekokujo_tanto_1"),
+          (this_or_next|is_between, ":item", "itm_gekokujo_sabakato_blunt", "itm_gekokujo_kama_1"),
+          (is_between, ":item", "itm_gekokujo_bo_iron", "itm_gekokujo_yumi_1"),
+          (assign, ":weapon_score", 30),
+          (assign, ":getaway_score", -35),
+        (else_try),
+          #ninja weapons and tantos are +50% to steal, -10% to get away
+          (is_between, ":item", "itm_gekokujo_tanto_1", "itm_gekokujo_sabakato_blunt"),
+          (assign, ":weapon_score", 50),
+          (assign, ":getaway_score", -10),
+        (try_end),
+        
+        #having the weapon out doubles the scores
+        (try_begin),
+          (agent_get_wielded_item, ":wielded", ":player", 0),
+          (eq, ":wielded", ":item"),
+          (val_mul, ":weapon_score", 2),
+          (val_mul, ":getaway_score", 2),
+        (try_end),
+        
+        (val_add, reg5, ":weapon_score"),
+        (val_add, reg6, ":getaway_score"),
+      (try_end),
+      
+      (val_min, reg5, 100),
+      (val_max, reg5, 0),
+      
+      (val_min, reg6, 100),
+      (val_max, reg6, 0),
+    ], 
+    "[Mug] - {reg5}% to steal, {reg6}% to escape", "town_dweller_crime_result", 
+    [
+      (assign, "$gekokujo_crime_type", 1), #1 = mugging
+      
+      #check if the mugging was a success
+      (store_random_in_range, ":crime_roll", 0, 100),
+      (try_begin),
+        (ge, reg5, ":crime_roll"),
+        (assign, "$gekokujo_crime_result", 1),
+      (else_try),
+        (assign, "$gekokujo_crime_result", 0),
+      (try_end),
+      
+      #DEBUG start
+      #(assign, reg9, ":crime_roll"),
+      #(display_message, "@Mug Chance: {reg5}, Mug Roll: {reg9}"),
+      #DEBUG end
+      
+      #check if the getaway was a success
+      (store_random_in_range, ":crime_roll", 0, 100),
+      (try_begin),
+        (gt, reg6, ":crime_roll"),
+        (assign, "$gekokujo_getaway_result", 1),
+      (else_try),
+        (assign, "$gekokujo_getaway_result", 0),
+      (try_end),
+      
+      #DEBUG start
+      #(assign, reg9, ":crime_roll"),
+      #(display_message, "@Getaway Chance: {reg6}, Getaway Roll: {reg9}"),
+      #DEBUG end
+    ]],
+[anyone|plyr,"town_dweller_crime_2", 
+    [
+      (store_skill_level, reg7, "skl_looting", "trp_player"), #stealing skill
+      (store_skill_level, reg8, "skl_athletics", "trp_player"), #getaway skill
+      
+      #pickpocket chance should range 10% to 90%
+      (val_mul, reg7, 8),
+      (val_add, reg7, 10),
+      
+      #getaway chance should be +4% per athletics skill
+      (val_mul, reg8, 4),
+      
+      #getaway chance modified by the clothing and headgear you wear
+      (get_player_agent_no, ":player"),
+      (agent_get_item_slot, ":body", ":player", ek_body),
+      (try_begin),
+        #+50% for 'normal' clothes
+        (is_between, ":body", "itm_gekokujo_kimono_1_1", "itm_gekokujo_tatami_half_1"),
+        (val_add, reg8, 50),
+      (else_try),
+        #+24% for light armors, foreign clothes, and nude (too conspicuous)
+        (this_or_next|is_between, ":body", "itm_gekokujo_ezo_armor_1", "itm_pilgrim_hood"),
+        (is_between, ":body", "itm_gekokujo_tatami_half_1", "itm_gekokujo_okegawa_short_1"),
+        (neg|gt, ":body", 0),
+        (val_add, reg8, 24),
+      (try_end),
+      (agent_get_item_slot, ":head", ":player", ek_head),
+      (try_begin),
+        #+50% for cowls
+        (is_between, ":head", "itm_gekokujo_monk_headwrap", "itm_gekokujo_jingasa_1"),
+        (eq, ":head", "itm_pilgrim_hood"),
+        (val_add, reg8, 50),
+      (else_try),
+        #+24% for sugegasa and jingasa
+        (is_between, ":head", "itm_gekokujo_jingasa_1", "itm_gekokujo_hari_o_1"),
+        (eq, ":head", "itm_gekokujo_sugegasa_1"),
+        (val_add, reg8, 24),
+      (try_end),
+      #+0% for everything else
+      
+      (val_min, reg8, 100),
+      (val_max, reg8, 0),
+    ], 
+    "[Pickpocket] - {reg7}% to steal, {reg8}% to escape", "town_dweller_crime_result", 
+    [
+      (assign, "$gekokujo_crime_type", 2), #2 = pickpocketing
+      
+      #check if the pickpocketing was a success
+      (store_random_in_range, ":crime_roll", 0, 100),
+      (try_begin),
+        (gt, reg7, ":crime_roll"),
+        (assign, "$gekokujo_crime_result", 1),
+      (else_try),
+        (assign, "$gekokujo_crime_result", 0),
+      (try_end),
+      
+      #DEBUG start
+      #(assign, reg10, ":crime_roll"),
+      #(display_message, "@Pickpocket Chance: {reg7}, Pickpocket Roll: {reg10}"),
+      #DEBUG end
+      
+      #check if the getaway was a success
+      (store_random_in_range, ":crime_roll", 0, 100),
+      (try_begin),
+        (gt, reg8, ":crime_roll"),
+        (assign, "$gekokujo_getaway_result", 1),
+      (else_try),
+        (assign, "$gekokujo_getaway_result", 0),
+      (try_end),
+      
+      #DEBUG start
+      #(assign, reg10, ":crime_roll"),
+      #(display_message, "@Getaway Chance: {reg8}, Getaway Roll: {reg10}"),
+      #DEBUG end
+    ]],
+[anyone|plyr,"town_dweller_crime_2", 
+    [
+      (store_skill_level, reg11, "skl_tracking", "trp_player"), #stalking skill
+      
+      #stalking chance should be +4% per tracking skill
+      (val_mul, reg11, 4),
+      
+      #stalking chance modified by the clothing and headgear you wear
+      (get_player_agent_no, ":player"),
+      (agent_get_item_slot, ":body", ":player", ek_body),
+      (try_begin),
+        #+50% for 'normal' clothes
+        (is_between, ":body", "itm_gekokujo_kimono_1_1", "itm_gekokujo_tatami_half_1"),
+        (val_add, reg11, 50),
+      (else_try),
+        #+24% for light armors, foreign clothes, and nude (too conspicuous)
+        (this_or_next|is_between, ":body", "itm_gekokujo_ezo_armor_1", "itm_pilgrim_hood"),
+        (is_between, ":body", "itm_gekokujo_tatami_half_1", "itm_gekokujo_okegawa_short_1"),
+        (neg|gt, ":body", 0),
+        (val_add, reg11, 24),
+      (try_end),
+      (agent_get_item_slot, ":head", ":player", ek_head),
+      (try_begin),
+        #+50% for cowls
+        (is_between, ":head", "itm_gekokujo_monk_headwrap", "itm_gekokujo_jingasa_1"),
+        (eq, ":head", "itm_pilgrim_hood"),
+        (val_add, reg11, 50),
+      (else_try),
+        #+24% for sugegasa and jingasa
+        (is_between, ":head", "itm_gekokujo_jingasa_1", "itm_gekokujo_hari_o_1"),
+        (eq, ":head", "itm_gekokujo_sugegasa_1"),
+        (val_add, reg11, 24),
+      (try_end),
+      #+0% for everything else
+      
+      (val_min, reg11, 100),
+      (val_max, reg11, 0),
+    ], 
+    "[Follow Home] - {reg11}% to stalk", "town_dweller_crime_result", 
+    [
+      (assign, "$gekokujo_crime_type", 3), #3 = stalking
+      
+      #check if the stalking was a success
+      (store_random_in_range, ":crime_roll", 0, 100),
+      (try_begin),
+        (gt, reg11, ":crime_roll"),
+        (assign, "$gekokujo_crime_result", 1),
+      (else_try),
+        (assign, "$gekokujo_crime_result", 0),
+      (try_end),
+      
+      (assign, "$gekokujo_getaway_result", 1), #you can't get caught stalking
+      
+      #(jump_to_menu, "mnu_crime"),
+      #(finish_mission),
+    ]],
+[anyone|plyr,"town_dweller_crime_2", [], "Nevermind.", "close_window", []],
+[anyone, "town_dweller_crime_result", 
+    [
+      (store_random_in_range, ":variation", 0, 5),
+      
+      (try_begin),
+        (eq, "$gekokujo_crime_result", 1),
+        (try_begin),
+          (eq, "$gekokujo_crime_type", 1), #mugging
+          (store_add, ":reply", "str_gekokujo_mug_success_reply_1", ":variation"),
+        (else_try),
+          (eq, "$gekokujo_crime_type", 2), #pickpocketing
+          (store_add, ":reply", "str_gekokujo_pickpocket_success_reply_1", ":variation"),
+        (else_try),
+          #stalking
+          (store_add, ":reply", "str_gekokujo_stalking_reply_1", ":variation"),
+        (try_end),
+      (else_try),
+        (try_begin),
+          (eq, "$gekokujo_crime_type", 1), #mugging
+          (store_add, ":reply", "str_gekokujo_mug_fail_reply_1", ":variation"),
+        (else_try),
+          (eq, "$gekokujo_crime_type", 2), #pickpocketing
+          (store_add, ":reply", "str_gekokujo_pickpocket_fail_reply_1", ":variation"),
+        (else_try),
+          #stalking
+          (store_add, ":reply", "str_gekokujo_stalking_reply_1", ":variation"),
+        (try_end),
+      (try_end),
+      
+      (str_store_string, s5, ":reply"),
+    ], 
+    "{s5}", "close_window",
+    [
+      (jump_to_menu, "mnu_crime"),
+      (finish_mission),
+    ]],
+[anyone|plyr,"town_dweller_talk", [], "[Leave]", "close_window",[]],
+[anyone,"enemy_defeated", [], "Arggh! I hate this.", "close_window",[]],
+[anyone,"party_relieved", [], "Thank you for helping us against those bastards.", "close_window",[]],
+[anyone,"mayor_wealth_comparison_1",[
 
   (assign, ":wealthiest_center", "$g_encountered_party"),
   (assign, ":poorer_centers", 0),
@@ -1498,11 +2310,7 @@ dialogs_town_governance = [
 
   ], "Overall, the wealthiest town in Japan is known to be {s4}. Here in {s5}, we are poorer than {reg4} towns, and richer than {reg5}.", "mayor_wealth_comparison_2",[
   ]],
-  #Production of this town
-  #Production of the hinterland
-  #Volume of trade
-
-  [anyone,"mayor_wealth_comparison_2",[
+[anyone,"mayor_wealth_comparison_2",[
 
   (assign, ":wealthiest_center", "$g_encountered_party"),
   (assign, ":poorer_centers", 0),
@@ -1557,7 +2365,7 @@ dialogs_town_governance = [
 
   ], "In terms of local industry, the most productive town in Japan is known to be {s4}. Here in {s5}, we produce less than {reg4} towns, and produce more than {reg5}. Production is of course affected by the supply of raw materials, as well as by the overall prosperity of the town.", "mayor_wealth_comparison_3",[
   ]],
-  [anyone,"mayor_wealth_comparison_3",[
+[anyone,"mayor_wealth_comparison_3",[
 
   (assign, ":wealthiest_center", "$g_encountered_party"),
   (assign, ":poorer_centers", 0),
@@ -1622,7 +2430,7 @@ dialogs_town_governance = [
 
   ], "In terms of the output of the surrounding villages, the town of {s4} is the richest in Japan. Here in {s5}, the villages produce less than the hinterland around {reg4} towns, and produce more than {reg5}. The wealth of a town's hinterland, of course, is heavily dependent on the tides of war. Looting and pillage, and shifts in territory, can make a major impact.", "mayor_wealth_comparison_4",[
   ]],
-  [anyone,"mayor_wealth_comparison_4",[
+[anyone,"mayor_wealth_comparison_4",[
 
   (assign, ":wealthiest_center", "$g_encountered_party"),
   (assign, ":poorer_centers", 0),
@@ -1692,7 +2500,7 @@ dialogs_town_governance = [
 
   ], "In terms of trade, the town of {s4} is believed to have received the most visits from caravans over the past few months. Here in {s5}, we are less visited than {reg4} towns, and more visited than {reg5}. ", "mayor_wealth_comparison_5",[
   ]],
-  [anyone,"mayor_wealth_comparison_5",[
+[anyone,"mayor_wealth_comparison_5",[
 
   (assign, ":wealthiest_center", "$g_encountered_party"),
   (assign, ":poorer_centers", 0),

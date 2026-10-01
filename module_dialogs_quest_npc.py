@@ -14,6 +14,7 @@ from header_terrain_types import *
 from header_items import * #For ek_food, and so forth
 from module_constants import *
 
+
 dialogs_quest_npc = [
 [anyone, "merchant_quest_4_start",
 [
@@ -120,8 +121,6 @@ dialogs_quest_npc = [
 (str_store_string, s2, "str_find_the_lair_near_s9_and_free_the_brother_of_the_prominent_s10_merchant"),
 (call_script, "script_start_quest", "qst_save_relative_of_merchant", ":troop_of_merchant"),
 ]],
-#rescuerescue
-[anyone|plyr,"rescue_prisoner_succeed_2", [], "Always an honour to serve, {s65}.", "lord_pretalk",[]],
 [anyone|plyr, "merchant_quest_3b", #was startup
 [
 ],
@@ -175,8 +174,6 @@ dialogs_quest_npc = [
 #"Now -- here's my plan. I could bring this to the attention of {s4}, lord of the city, but that would mean an investigation, my word against the samurai's, and witnesses can be bought and evidence destroyed, or maybe the whole thing will be forgotten if the enemy comes across the border again, and all I'll get for my trouble is a knife in the ribs. In time of war, you see, a {s0}'s eye wanders far from {reg4?her:his} domain, and {reg4?her:his} subjects suffer. So I've got another idea. I've got a small group of townsfolk together, some men in my employ and some others who've lost relatives to these bandits, and we'll storm the samurai's home and bring him in chains before {s4}, hopefully with a few captured bandits to explain how things stack up.", "merchant_quest_4b4",
 "I mustn't give you all the credit, however. We have been able to get away with a lot so far thanks to some patron samurai among the officials that serve {s4}, lord of the town. Although they are minor in clout, there's a lot of them. But there are other samurai that oppose them -- oppose us -- and that is what the business of Minemaru's murder and Horenbo's kidnapping are all about. We need to take the opportunity you opened with your mansion raid to finish this once and for all. By silencing our enemies, we can embed ourselves even more deeply into the fabric of this domain.", "merchant_quest_4b4",
 []],
-##diplomacy end+
-
 [anyone, "merchant_quest_4b4",
 [
 ],
@@ -256,7 +253,6 @@ dialogs_quest_npc = [
 ],
 "Right. I can keep my men standing by. If you let this go too long, then I suppose that I will have to finish this affair without you, but I would be most pleased if you could be part of it as well. For now, take what time you need.", "close_window",
 []],
-#QUEST 2 - Learning where prominent's brother is.
 [anyone|plyr, "merchant_quest_2a",
 [
 ],
@@ -293,7 +289,6 @@ dialogs_quest_npc = [
 "I apologize, I have to put this off temporarily.", "close_window",
 [
 ]],
-#Quest 3 - Saving merchant's brother.
 [anyone|plyr, "merchant_quest_3a",
 [
 ],
@@ -355,15 +350,12 @@ dialogs_quest_npc = [
 "I'm afraid I have more important things to do at the moment.", "close_window",
 [
 ]],
-##diplomacy start+ Allow skipping the tutorial.
 [anyone|plyr,"merchant_quest_persuasion",
 [
 (ge, "$cheat_mode", 1),
 ],
 "{!}[CHEAT] I have played this before, and would prefer to skip the tutorial.", "dplmc_devel_merchant_quest_skip",
 []],
-##diplomacy end+
-
 [anyone, "merchant_quest_2",
 [
 ],
@@ -382,184 +374,24 @@ dialogs_quest_npc = [
 "As long as I walk alive and free in this town, I am proof that we will overcome the rule of the samurai within my lifetime.", "close_window",
 [
 ]],
-[anyone|plyr, "quest_meet_spy_in_enemy_town_completed", [],
-"I have the reports you wanted right here.", "quest_meet_spy_in_enemy_town_completed_2",[]],
-[anyone, "quest_meet_spy_in_enemy_town_completed_2", [],
-"Ahh, well done. It's good to have competent {men/people} on my side. Here is the payment I promised you.", "lord_pretalk",
-[
-(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
-(add_xp_as_reward, 500),
-(quest_get_slot, ":gold", "qst_meet_spy_in_enemy_town", slot_quest_gold_reward),
-(call_script, "script_troop_add_gold", "trp_player", ":gold"),
-(call_script, "script_end_quest", "qst_meet_spy_in_enemy_town"),
-]],
-  [anyone,"quest_meet_spy_in_enemy_town_accepted", [], "Excellent! Make your way to {s13} as soon as you can, the spy will be waiting.", "quest_meet_spy_in_enemy_town_accepted_response",
-   [
-     (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-     (quest_get_slot, ":secret_sign", "$random_quest_no", slot_quest_target_amount),
-     (store_sub, ":countersign", ":secret_sign", secret_signs_begin),
-     (val_add, ":countersign", countersigns_begin),
-     (str_store_troop_name_link, s9, "$g_talk_troop"),
-     (str_store_string, s11, ":secret_sign"),
-     (str_store_string, s12, ":countersign"),
-     (str_store_party_name_link, s13, ":quest_target_center"),
-     (setup_quest_text, "$random_quest_no"),
-     (str_store_string, s2, "@{s9} has asked you to meet with a spy in {s13}."),
-     (call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
-     (call_script, "script_cf_center_get_free_walker", ":quest_target_center"),
-     (call_script, "script_center_set_walker_to_type", ":quest_target_center", reg0, walkert_spy),
-     (str_store_item_name,s14,"$spy_item_worn"),
-     #TODO: Change this value
-     (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
-     (assign, "$g_leave_encounter",1),
-    ]],
-  [anyone|plyr,"quest_meet_spy_in_enemy_town_accepted_response", [(quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-                                                                  (str_store_party_name_link, s13, ":quest_target_center")],
-   "{s13} is heavily defended. How can I get close without being noticed?", "quest_meet_spy_in_enemy_town_accepted_2",
-   []],
-  [anyone,"quest_meet_spy_in_enemy_town_accepted_2", [], "You shall have to use stealth. Take care to avoid enemy strongholds, villages and patrols, and don't bring too many men with you. If you fail to sneak in the first time, give it a while for the garrison to lower its guard again, or you may have a difficult time infiltrating the town.", "quest_meet_spy_in_enemy_town_accepted_response",
-   []],
-  [anyone|plyr,"quest_meet_spy_in_enemy_town_accepted_response", [], "How will I recognise the spy?", "quest_meet_spy_in_enemy_town_accepted_3",
-   []],
-  [anyone,"quest_meet_spy_in_enemy_town_accepted_3", [(quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-                                                      (str_store_party_name_link, s13, ":quest_target_center"),
-													  ##diplomacy start+ Use script for gender
-                                                      #(troop_get_type, reg7, "$spy_quest_troop"),
-													  (assign, reg7, 0),
-													  (try_begin),
-														(call_script, "script_cf_dplmc_troop_is_female", "$spy_quest_troop"),
-														(assign, reg7, 1),
-													  (try_end),
-													  ##diplomacy end+
-                                                      (quest_get_slot, ":secret_sign", "$random_quest_no", slot_quest_target_amount),
-                                                      (store_sub, ":countersign", ":secret_sign", secret_signs_begin),
-                                                      (val_add, ":countersign", countersigns_begin),
-                                                      (str_store_string, s11, ":secret_sign"),
-                                                      (str_store_string, s12, ":countersign"),],
-   "Once you get to {s13} you must talk to the locals, the spy will be one of them. If you think you've found the spy, say the phrase '{s11}' The spy will respond with the phrase '{s12}' Thus you will know the other, and {reg7?she:he} will give you any information {reg7?she:he}'s gathered in my service.", "quest_meet_spy_in_enemy_town_accepted_response",
-   []],
-  [anyone|plyr,"quest_meet_spy_in_enemy_town_accepted_response", [], "Will I be paid?", "quest_meet_spy_in_enemy_town_accepted_4",
-   []],
-  [anyone,"quest_meet_spy_in_enemy_town_accepted_4", [], "Of course, I have plenty of silver in my coffers for loyal {men/women} like you. Do well by me, {playername}, and you'll rise high.", "quest_meet_spy_in_enemy_town_accepted_response",
-   []],
-  [anyone|plyr,"quest_meet_spy_in_enemy_town_accepted_response", [], "I know what to do. Farewell, my lord.", "quest_meet_spy_in_enemy_town_accepted_end",
-   []],
-  [anyone,"quest_meet_spy_in_enemy_town_accepted_end", [(quest_get_slot, ":secret_sign", "$random_quest_no", slot_quest_target_amount),
-                                                        (store_sub, ":countersign", ":secret_sign", secret_signs_begin),
-                                                        (val_add, ":countersign", countersigns_begin),
-                                                        (str_store_string, s11, ":secret_sign"),
-                                                        (str_store_string, s12, ":countersign")],
-   "Good luck, {playername}. Remember, the secret phrase is '{s11}' The counterphrase is '{s12}' Bring any reports back to me, and I'll compensate you for your trouble.", "lord_pretalk",
-   []],
-  [anyone,"quest_meet_spy_in_enemy_town_rejected", [], "As you wish, {playername}, but I strongly advise you to forget anything I told you about any spies. They do not exist, have never existed, and no one will ever find them. Remember that.", "lord_pretalk",
-   [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-  [anyone,"quest_raid_caravan_to_start_war_accepted", [], "Very good!\
- A raid on a caravan, or, if you can't manage that, an attack on one of their villages, should do the trick.\
- Now, good luck and good hunting. Go set the borders aflame!", "close_window",
-   [
-     (quest_get_slot, ":quest_target_faction", "$random_quest_no", slot_quest_target_faction),
-     (quest_get_slot, ":quest_target_amount", "$random_quest_no", slot_quest_target_amount),
-     (str_store_troop_name_link, s9, "$g_talk_troop"),
-     (str_store_faction_name_link, s13, ":quest_target_faction"),
-     (assign, reg13, ":quest_target_amount"),
-     (setup_quest_text,"$random_quest_no"),
-     (str_store_string, s2, "str_s9_asked_you_to_attack_a_village_or_some_caravans_as_to_provoke_a_war_with_s13"),
-     (call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
-#     (call_script, "script_change_player_relation_with_troop","$g_talk_troop",5),
-     (assign, "$g_leave_encounter",1),
-    ]],
-  [anyone,"quest_raid_caravan_to_start_war_rejected_1", [], "Ah, you think so? But how long will your precious peace last? Not long, believe me.", "lord_pretalk",
-   [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-  [anyone,"quest_raid_caravan_to_start_war_rejected_2", [], "Hm. As you wish, {playername}.\
- I thought you had some fire in you, but it seems I was wrong.", "lord_pretalk",
-   [(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
-    ##diplomacy end+
- [anyone|plyr,"lady_qst_duel_for_lady_succeeded_1", [], "Oh, it will just have to do.", "lady_qst_duel_for_lady_succeeded_2",[
-  (str_store_string,s10,"@Then take it, with my eternal thanks. You are a noble {man/woman}.\
- I will never forget that you helped me in my time of need.")
-  ]],
-  [anyone|plyr,"lady_qst_duel_for_lady_succeeded_1", [], "{s66}, this is far too much!", "lady_qst_duel_for_lady_succeeded_2",[
-  (str_store_string,s10,"@Forgive me, {playername}, but I must insist you accept it.\
- The money means little to me, and I owe you so much.\
- Here, take it, and let us speak no more of this."),
-    (call_script, "script_change_player_honor", 1),
-  ]],
-  [anyone|plyr,"lady_qst_duel_for_lady_succeeded_1", [], "Please, {s65}, no reward is necessary.", "lady_qst_duel_for_lady_succeeded_2",[
-  (str_store_string,s10,"@{playername}, what a dear {man/woman} you are,\
- but I will not allow you to refuse this. I owe you far more than I can say,\
- and I am sure you can put this money to far better use than I."),
-    (call_script, "script_change_player_honor", 2),
-  ]],
-  [anyone,"lady_qst_duel_for_lady_succeeded_2", [], "{s10}", "lady_pretalk",
-   [(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),
-    (add_xp_as_reward, 1000),
-    (call_script, "script_troop_add_gold", "trp_player", 2000),
-    (call_script, "script_end_quest", "qst_duel_for_lady"),
-    ]],
-  [anyone|plyr,"lady_qst_duel_for_lady_failed", [], "I beg your forgiveness for my defeat, {s65}...", "lady_qst_duel_for_lady_failed_2",[]],
-  [anyone,"lady_qst_duel_for_lady_failed_2", [], "It matters not, dear {playername}. You tried.\
- The truth cannot be proven at the point of a sword, but you willingly put your life at stake for my honour.\
- That alone will convince many of my innocence.", "lady_pretalk",
-   [(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 6),
-    (add_xp_as_reward, 400),
-    (call_script, "script_end_quest", "qst_duel_for_lady"),
-    ]],
-#rescuerescue
-   [anyone|plyr,"rescue_prisoner_succeed_1", [], "Always an honour to serve, {s65}.", "lady_pretalk",[]],
-  [trp_fugitive|plyr,"fugitive_1", [
-     (quest_get_slot, ":quest_target_dna", "qst_hunt_down_fugitive", slot_quest_target_dna),
-     (call_script, "script_get_name_from_dna_to_s50", ":quest_target_dna"),
-     (str_store_string, s4, s50),
-      ], "I am looking for a murderer by the name of {s4}. You fit his description.", "fugitive_2",[]],
-  [trp_fugitive|plyr,"fugitive_1", [], "Nothing. Sorry to trouble you.", "close_window",[]],
-  [trp_fugitive,"fugitive_2", [], "I don't understand, {sir/madam}.\
- I never killed anyone. I think you've got the wrong man.", "fugitive_3",[]],
-  [trp_fugitive|plyr,"fugitive_3", [], "Then drop your sword. If you are innocent, you have nothing to fear.\
- We'll go now and talk to your neighbours, and if they verify your story, I'll go on my way.", "fugitive_4",[]],
-  [anyone,"fugitive_4", [], "I'm not going anywhere, friend. You're going to have to fight for your silver, today.", "fugitive_5",
-   []],
-  [trp_fugitive|plyr,"fugitive_5", [], "No problem. I really just need your head, anyway.", "fugitive_fight_start",[]],
-  [trp_fugitive|plyr,"fugitive_5", [], "I come not for money, but to execute the law!", "fugitive_fight_start",[]],
-  [trp_fugitive|plyr,"fugitive_5", [], "Alas, that you cannot be made to see reason.", "fugitive_fight_start",[]],
-  [anyone,"fugitive_fight_start", [], "Die, dog!", "close_window",
-   [
-	(set_party_battle_mode),
-    (quest_set_slot, "qst_hunt_down_fugitive", slot_quest_current_state, 1),
-    (call_script, "script_activate_tavern_attackers"),
-   ]],
-  [anyone|plyr,"spy_partners_talk",
-   [
-     (quest_get_slot, ":quest_giver", "qst_follow_spy", slot_quest_giver_troop),
-     (str_store_troop_name, s1, ":quest_giver"),
-     ],
-   "In the name of {s1} You are under arrest!", "spy_partners_talk_2",[]],
-  [anyone,"spy_partners_talk_2", [], "You will have to fight us first!", "close_window",[]],
-  [anyone|plyr,"spy_partners_talk", [], "Never mind me. I was just passing by.", "close_window",[(assign, "$g_leave_encounter",1)]],
-  [anyone,"merchant_quest_about_job", [], "What about it?", "merchant_quest_about_job_2",[]],
-  [anyone|plyr,"merchant_quest_about_job_2", [], "What if I can't finish it?", "merchant_quest_what_if_fail",[]],
-  [anyone|plyr,"merchant_quest_about_job_2", [], "Well, I'm still working on it.", "merchant_quest_about_job_working",[]],
-  [anyone,"merchant_quest_about_job_working", [], "Good. I'm sure you will handle it.", "mayor_pretalk",[]],
-  [anyone,"merchant_quest_last_offered_job", [], "Eh, you want to reconsider that. Good...", "merchant_quest_brief",
+[anyone,"merchant_quest_about_job", [], "What about it?", "merchant_quest_about_job_2",[]],
+[anyone|plyr,"merchant_quest_about_job_2", [], "What if I can't finish it?", "merchant_quest_what_if_fail",[]],
+[anyone|plyr,"merchant_quest_about_job_2", [], "Well, I'm still working on it.", "merchant_quest_about_job_working",[]],
+[anyone,"merchant_quest_about_job_working", [], "Good. I'm sure you will handle it.", "mayor_pretalk",[]],
+[anyone,"merchant_quest_last_offered_job", [], "Eh, you want to reconsider that. Good...", "merchant_quest_brief",
    [[assign,"$random_merchant_quest_no","$merchant_offered_quest"]]],
-  [anyone,"merchant_quest_what_if_fail", [(store_partner_quest,":partner_quest"),(eq,":partner_quest","qst_deliver_wine")],
+[anyone,"merchant_quest_what_if_fail", [(store_partner_quest,":partner_quest"),(eq,":partner_quest","qst_deliver_wine")],
    "I hope you don't fail. In that case, I'll have to ask for the price of the cargo you were carrying.", "mayor_pretalk",[]],
-  [anyone,"merchant_quest_what_if_fail", [], "Well, just do your best to finish it.", "mayor_pretalk",[]],
-  [anyone,"merchant_quest_taken", [], "Excellent. I am counting on you then. Good luck.", "mayor_pretalk",
+[anyone,"merchant_quest_what_if_fail", [], "Well, just do your best to finish it.", "mayor_pretalk",[]],
+[anyone,"merchant_quest_taken", [], "Excellent. I am counting on you then. Good luck.", "mayor_pretalk",
    []],
-  [anyone,"merchant_quest_stall", [], "Well, the job will be available for a few more days I guess. Tell me if you decide to take it.", "mayor_pretalk",[]],
-###################################################################3
-# Random Merchant quests....
-##############################
-
-# Ryan BEGIN
-  # deal with looters
-
-  [anyone,"merchant_quest_requested",
+[anyone,"merchant_quest_stall", [], "Well, the job will be available for a few more days I guess. Tell me if you decide to take it.", "mayor_pretalk",[]],
+[anyone,"merchant_quest_requested",
    [
      (eq,"$random_merchant_quest_no","qst_deal_with_looters"),
      ],
    "Well, you look able enough. I think I might have something you could do.", "merchant_quest_brief", []],
-  [anyone,"merchant_quest_brief",
+[anyone,"merchant_quest_brief",
    [
      (eq,"$random_merchant_quest_no","qst_deal_with_looters"),
      (try_begin),
@@ -574,9 +406,9 @@ dialogs_quest_npc = [
  and that's led some of our less upstanding locals to try and make their fortune out of looting the shops and farms during the confusion.\
  A lot of valuable goods were taken. I need somebody to teach those bastards a lesson.\
  Sound like your kind of work?", "merchant_quest_looters_choice", []],
-  [anyone|plyr,"merchant_quest_looters_choice", [], "Aye, I'll do it.", "merchant_quest_looters_brief", []],
-  [anyone|plyr,"merchant_quest_looters_choice", [], "I'm afraid I can't take the job at the moment.", "merchant_quest_stall",[]],
-  [anyone,"merchant_quest_looters_brief", [
+[anyone|plyr,"merchant_quest_looters_choice", [], "Aye, I'll do it.", "merchant_quest_looters_brief", []],
+[anyone|plyr,"merchant_quest_looters_choice", [], "I'm afraid I can't take the job at the moment.", "merchant_quest_stall",[]],
+[anyone,"merchant_quest_looters_brief", [
    (try_begin),
 	(party_slot_eq,"$g_encountered_party",slot_party_type,spt_town),
 	(str_store_string,s5,"@town"),
@@ -612,10 +444,7 @@ dialogs_quest_npc = [
  I'll pay you a bounty of 40 mon on every band of looters you destroy,\
  until all the looters are dealt with.", "close_window",
    []],
-# Ryan END
-
-#The following few quests are non-random -- they will be checked every time a player asks for a job. If circumstances allow it, then the player will
-  [anyone,"merchant_quest_requested", [
+[anyone,"merchant_quest_requested", [
   (eq,"$random_merchant_quest_no","qst_retaliate_for_border_incident"),
 
   (quest_get_slot, ":target_faction", "qst_retaliate_for_border_incident", slot_quest_target_faction),
@@ -628,9 +457,7 @@ dialogs_quest_npc = [
 #Next line, fix pronouns with reg0
 	], "Well, there is a very great favor which you could do us... As you may have heard, some {s10}s have come across the border to attack our people. {s5} is under great pressure from some of the more bellicose of {reg0?her:his} vassals to respond with a declaration of war. Unfortunately, while the great lords of this land grow rich from bloodshed, we of the commons will be caught in the middle, and will suffer.",
 	"merchant_quest_explain_2", []],
-##diplomacy end+
-
-  [anyone,"merchant_quest_explain_2", [
+[anyone,"merchant_quest_explain_2", [
   (eq,"$random_merchant_quest_no","qst_retaliate_for_border_incident"),
   (quest_get_slot, ":target_troop", "qst_retaliate_for_border_incident", slot_quest_target_troop),
   (str_store_troop_name, s7, ":target_troop"),
@@ -642,16 +469,14 @@ dialogs_quest_npc = [
 ##diplomacy start+ Fix pronouns with reg0
   "We are not saying that {s5} should overlook this aggression -- far from it! But if {reg0?she:he} charges one of {reg0?her:his} own lords to respond, then the cycle of provocation will necessarily lead to a full-fledged confrontation. Now, if an outsider were to step in and defeat a {s10} lord in battle, then honor would be done, and it would defuse the clamor for war. If the defeated lord were a known troublemaker -- {s7} -- then the {s10}s might be able to overlook it.",
   "merchant_quest_brief",[]],
-##diplomacy end+
-
-  [anyone,"merchant_quest_brief", [
+[anyone,"merchant_quest_brief", [
   (eq,"$random_merchant_quest_no","qst_retaliate_for_border_incident"),
   (quest_get_slot, ":target_troop", "qst_retaliate_for_border_incident", slot_quest_target_troop),
   (str_store_troop_name, s7, ":target_troop"),
   ],
   "We need you to attack and defeat {s7}. This will not be an easy task, and that outsider would damage {his/her} relationship with the {s10}s, but we would be very grateful. We could not acknowledge a connection with that outsider, but we could be sure that {he/she} would be handsomely rewarded... Could you do this?",
   "merchant_quest_retaliate_confirm",[]],
-  [anyone|plyr,"merchant_quest_retaliate_confirm", [], "Aye, I can do it.", "merchant_quest_track_bandits_brief", [
+[anyone|plyr,"merchant_quest_retaliate_confirm", [], "Aye, I can do it.", "merchant_quest_track_bandits_brief", [
 #    (quest_set_slot, "qst_retaliate_for_border_incident", slot_quest_target_troop, "$g_target_leader"),
 #    (quest_set_slot, "qst_retaliate_for_border_incident", slot_quest_target_faction, "$g_target_faction"),
 
@@ -660,12 +485,10 @@ dialogs_quest_npc = [
     (str_store_string, s2, "str_track_down_s7_and_defeat_him_defusing_calls_for_war_within_the_s11"),
     (call_script, "script_start_quest", "qst_retaliate_for_border_incident", "$g_talk_troop"),
   ]],
-  [anyone|plyr,"merchant_quest_retaliate_confirm", [], "I would prefer not to get mixed up in such things", "merchant_pretalk", [
+[anyone|plyr,"merchant_quest_retaliate_confirm", [], "I would prefer not to get mixed up in such things", "merchant_pretalk", [
 	(quest_set_slot, "qst_retaliate_for_border_incident", slot_quest_dont_give_again_remaining_days, 5),
   ]],
-  #gekokujo 3.0 monk rebel lair dialogue fix end
-   
-  [anyone|plyr,"merchant_quest_track_bandit_lair_choice", [], "Aye, I'll do it.", "merchant_quest_destroy_lair_brief", [
+[anyone|plyr,"merchant_quest_track_bandit_lair_choice", [], "Aye, I'll do it.", "merchant_quest_destroy_lair_brief", [
 
     (quest_get_slot, ":target_party", "qst_destroy_bandit_lair", slot_quest_target_party),
     (party_set_flags, ":target_party", pf_quest_party, 1),
@@ -679,15 +502,15 @@ dialogs_quest_npc = [
     (str_store_string, s2, "str_bandit_lair_quest_description"),
     (call_script, "script_start_quest", "qst_destroy_bandit_lair", "$g_talk_troop"),
   ]],
-  [anyone|plyr,"merchant_quest_track_bandit_lair_choice", [], "I'm afraid I can't take the job at the moment.", "lord_pretalk",[
+[anyone|plyr,"merchant_quest_track_bandit_lair_choice", [], "I'm afraid I can't take the job at the moment.", "lord_pretalk",[
   (quest_set_slot, "qst_destroy_bandit_lair", slot_quest_dont_give_again_remaining_days, 1),
   ]],
-   [anyone,"merchant_quest_destroy_lair_brief", [
+[anyone,"merchant_quest_destroy_lair_brief", [
   ], "Very good. We will await word of your success.", "close_window",
    [
    (assign, "$g_leave_encounter", 1),
    ]],
-  [anyone,"merchant_quest_requested", [
+[anyone,"merchant_quest_requested", [
   (eq,"$random_merchant_quest_no", "qst_track_down_bandits"),
   ], "We have heard that {s4}, some travellers on the road {reg4?to:from} {s5} were attacked by {s7}.", "merchant_quest_brief",
    [
@@ -727,14 +550,14 @@ dialogs_quest_npc = [
    ###
    (quest_set_slot, "qst_track_down_bandits", slot_quest_target_party, "$g_bandit_party_for_bounty"),
    ]],
-  [anyone,"merchant_quest_brief", [
+[anyone,"merchant_quest_brief", [
      (eq,"$random_merchant_quest_no", "qst_track_down_bandits"),
      (quest_get_slot, ":target_party", "qst_track_down_bandits", slot_quest_target_party),
 	 (str_store_party_name, s4, ":target_party"),
 	 ],
 	"We would like you to track these {s4} down. The merchants of the town were able to get a description of their leader, and have put together a bounty. If you can hunt them down and destroy them, we'll make it worth your while...", "merchant_quest_track_bandits_choice",
    []],
-  [anyone|plyr,"merchant_quest_track_bandits_choice", [], "Aye, I'll do it.", "merchant_quest_track_bandits_brief", [
+[anyone|plyr,"merchant_quest_track_bandits_choice", [], "Aye, I'll do it.", "merchant_quest_track_bandits_brief", [
     (assign, "$merchant_offered_quest", 0),
 	(assign,"$merchant_quest_last_offerer", "$g_talk_troop"),
 
@@ -750,22 +573,21 @@ dialogs_quest_npc = [
     (str_store_string, s2, "str_track_down_the_s9_who_attacked_travellers_near_s8_then_report_back_to_the_town"),
     (call_script, "script_start_quest", "qst_track_down_bandits", "$g_talk_troop"),
   ]],
-   [anyone,"merchant_quest_track_bandits_brief", [
+[anyone,"merchant_quest_track_bandits_brief", [
   ], "Very good. The band may not have lingered long in the area, but chances are that they will be spotted by other travellers on the road.", "close_window",
    [
    (assign, "$g_leave_encounter", 1),
    ]],
-  [anyone|plyr,"merchant_quest_track_bandits_choice", [], "I'm afraid I can't take the job at the moment.", "merchant_quest_stall",[
+[anyone|plyr,"merchant_quest_track_bandits_choice", [], "I'm afraid I can't take the job at the moment.", "merchant_quest_stall",[
   (quest_set_slot, "qst_track_down_bandits", slot_quest_dont_give_again_remaining_days, 1),
   ]],
-  #Random quests begin here. Deliver wine:
-  [anyone,"merchant_quest_requested", [(eq,"$random_merchant_quest_no","qst_deliver_wine"),], "You're looking for a job?\
+[anyone,"merchant_quest_requested", [(eq,"$random_merchant_quest_no","qst_deliver_wine"),], "You're looking for a job?\
  Actually I was looking for someone to deliver some {s4}.\
  Perhaps you can do that...", "merchant_quest_brief",
    [(quest_get_slot, ":quest_target_item", "qst_deliver_wine", slot_quest_target_item),
     (str_store_item_name, s4, ":quest_target_item"),
     ]],
-  [anyone,"merchant_quest_brief", [(eq,"$random_merchant_quest_no","qst_deliver_wine")],
+[anyone,"merchant_quest_brief", [(eq,"$random_merchant_quest_no","qst_deliver_wine")],
    "I have a cargo of {s6} that needs to be delivered to the inn at {s4}.\
  If you can take {reg5} units of {s6} to {s4} in 7 days, you may earn {reg8} mon.\
  What do you say?", "merchant_quest_brief_deliver_wine",
@@ -781,7 +603,7 @@ dialogs_quest_npc = [
     (str_store_string, s2, "@{s9} of {s3} asked you to deliver {reg5} units of {s6} to the inn at {s4} in 7 days."),
     #s2 should not be changed until the decision is made
    ]],
-  [anyone|plyr,"merchant_quest_brief_deliver_wine", [(store_free_inventory_capacity,":capacity"),
+[anyone|plyr,"merchant_quest_brief_deliver_wine", [(store_free_inventory_capacity,":capacity"),
                                                      (quest_get_slot, ":quest_target_amount", "qst_deliver_wine", slot_quest_target_amount),
                                                      (ge, ":capacity", ":quest_target_amount"),
                                                      ],
@@ -791,13 +613,12 @@ dialogs_quest_npc = [
     (troop_add_items, "trp_player", ":quest_target_item",":quest_target_amount"),
     (call_script, "script_start_quest", "qst_deliver_wine", "$g_talk_troop"),
     ]],
-  [anyone|plyr,"merchant_quest_brief_deliver_wine", [], "I am afraid I can't carry all that cargo now.", "merchant_quest_stall",[]],
-#escort merchant caravan:
-  [anyone,"merchant_quest_requested", [(eq,"$random_merchant_quest_no","qst_escort_merchant_caravan")], "You're looking for a job?\
+[anyone|plyr,"merchant_quest_brief_deliver_wine", [], "I am afraid I can't carry all that cargo now.", "merchant_quest_stall",[]],
+[anyone,"merchant_quest_requested", [(eq,"$random_merchant_quest_no","qst_escort_merchant_caravan")], "You're looking for a job?\
  Actually I was looking for someone to escort a caravan.\
  Perhaps you can do that...", "merchant_quest_brief",
    []],
-  [anyone,"merchant_quest_brief", [(eq, "$random_merchant_quest_no", "qst_escort_merchant_caravan")],
+[anyone,"merchant_quest_brief", [(eq, "$random_merchant_quest_no", "qst_escort_merchant_caravan")],
    "I am going to send a caravan of goods to {s8}.\
  However with all those bandits and deserters on the roads, I don't want to send them out without an escort.\
  If you can lead that caravan to {s8} in 15 days, you will earn {reg8} mon.\
@@ -807,62 +628,27 @@ dialogs_quest_npc = [
     (quest_get_slot, ":quest_target_center", "qst_escort_merchant_caravan", slot_quest_target_center),
     (str_store_party_name, s8, ":quest_target_center"),
    ]],
-  [anyone|plyr,"escort_merchant_caravan_quest_brief", [(store_party_size_wo_prisoners, ":party_size", "p_main_party"),
-                                                       (quest_get_slot, ":quest_target_amount", "qst_escort_merchant_caravan", slot_quest_target_amount),
-                                                       (ge,":party_size",":quest_target_amount"),
-                                                       ],
-   "Alright. I will escort the caravan.", "merchant_quest_taken",
-   [(quest_get_slot, ":quest_target_center", "qst_escort_merchant_caravan", slot_quest_target_center),
-    (set_spawn_radius, 1),
-    (spawn_around_party,"$g_encountered_party","pt_merchant_caravan"),
-    (assign, ":quest_target_party", reg0),
-    (party_set_ai_behavior, ":quest_target_party", ai_bhvr_track_party),
-    (party_set_ai_object, ":quest_target_party", "p_main_party"),
-    (party_set_flags, ":quest_target_party", pf_default_behavior, 0),
-    (quest_set_slot, "qst_escort_merchant_caravan", slot_quest_target_party, ":quest_target_party"),
-    (quest_set_slot, "qst_escort_merchant_caravan", slot_quest_current_state, 0),
-    (str_store_party_name_link, s8, ":quest_target_center"),
-    (setup_quest_text, "qst_escort_merchant_caravan"),
-    (str_store_string, s2, "@Escort the merchant caravan to the town of {s8}."),
-    (call_script, "script_start_quest", "qst_escort_merchant_caravan", "$g_talk_troop"),
-    ]],
-  [anyone|plyr,"escort_merchant_caravan_quest_brief", [(store_party_size_wo_prisoners, ":party_size", "p_main_party"),
-                                                       (quest_get_slot, ":quest_target_amount", "qst_escort_merchant_caravan", slot_quest_target_amount),
-                                                       (lt,":party_size",":quest_target_amount"),],
-   "I am afraid I don't have that many soldiers with me.", "merchant_quest_stall",[]],
-  [anyone|plyr,"escort_merchant_caravan_quest_brief", [(store_party_size_wo_prisoners, ":party_size", "p_main_party"),
-                                                       (quest_get_slot, ":quest_target_amount", "qst_escort_merchant_caravan", slot_quest_target_amount),
-                                                       (ge,":party_size",":quest_target_amount"),],
-   "Sorry. I can't do that right now", "merchant_quest_stall",[]],
-  [anyone|plyr,"escort_merchant_caravan_talk", [], "You follow my lead. I'll take you through a safe route.", "merchant_caravan_follow_lead",[]],
-  [anyone|plyr,"escort_merchant_caravan_talk", [], "You stay here for a while. I'll go ahead and check the road.", "merchant_caravan_stay_here",[]],
-#  [anyone|plyr,"escort_merchant_caravan_talk", [], "You go ahead to {s1}. I'll catch up with you.", "merchant_caravan_go_to_destination",[]],
-#  [anyone,"merchant_caravan_go_to_destination", [], "Alright. But stay close.", "close_window",[[assign,"escort_merchant_caravan_mode",2]]],
-
-
-# Troublesome bandits:
-  [anyone,"merchant_quest_requested", [(eq, "$random_merchant_quest_no", "qst_troublesome_bandits")],
+[anyone,"merchant_quest_requested", [(eq, "$random_merchant_quest_no", "qst_troublesome_bandits")],
  "Actually, I was looking for an able adventurer like you.\
  There's this group of particularly troublesome bandits.\
  They have infested the vicinity of our town and are preying on my caravans.\
  They have avoided all the soldiers and the militias up to now.\
  If someone doesn't stop them soon, I am going to be ruined...", "merchant_quest_brief",
    []],
-  [anyone,"merchant_quest_brief", [(eq,"$random_merchant_quest_no", "qst_troublesome_bandits")],
+[anyone,"merchant_quest_brief", [(eq,"$random_merchant_quest_no", "qst_troublesome_bandits")],
   "I will pay you {reg8} mon if you hunt down those troublesome bandits.\
  It's dangerous work. But I believe that you are the {man/one} for it.\
  What do you say?", "troublesome_bandits_quest_brief",[(quest_get_slot, reg8, "qst_troublesome_bandits", slot_quest_gold_reward),
                                                        ]],
-  [anyone,"merchant_quest_taken_bandits", [], "You will? Splendid. Good luck to you.", "close_window",
+[anyone,"merchant_quest_taken_bandits", [], "You will? Splendid. Good luck to you.", "close_window",
    []],
-# Kidnapped girl:
-  [anyone,"merchant_quest_requested", [(eq, "$random_merchant_quest_no", "qst_kidnapped_girl")],
+[anyone,"merchant_quest_requested", [(eq, "$random_merchant_quest_no", "qst_kidnapped_girl")],
  "Actually, I was looking for a reliable {man/helper} that can undertake an important mission.\
  A group of bandits have kidnapped the daughter of a friend of mine and are holding her for ransom.\
  My friend is ready to pay them, but we still need\
  someone to take the money to those rascals and bring the girl back to safety.", "merchant_quest_brief",
    []],
-  [anyone,"merchant_quest_brief", [(eq, "$random_merchant_quest_no", "qst_kidnapped_girl")],
+[anyone,"merchant_quest_brief", [(eq, "$random_merchant_quest_no", "qst_kidnapped_girl")],
   "The amount the bandits ask as ransom is {reg12} mon.\
  I will give you that money once you accept to take the quest.\
  You have 15 days to take the money to the bandits who will be waiting near the village of {s4}.\
@@ -873,75 +659,19 @@ dialogs_quest_npc = [
                                  (quest_get_slot, reg8, "qst_kidnapped_girl", slot_quest_gold_reward),
                                  (quest_get_slot, reg12, "qst_kidnapped_girl", slot_quest_target_amount),
                                  ]],
-  [party_tpl|pt_bandits_awaiting_ransom|plyr, "bandits_awaiting_ransom_intro_1", [(store_troop_gold, ":cur_gold"),
-                                                                                  (quest_get_slot, ":quest_target_amount", "qst_kidnapped_girl", slot_quest_target_amount),
-                                                                                  (ge, ":cur_gold", ":quest_target_amount")
-                                                                                  ],
-   "Here, take the money. Just set the girl free.", "bandits_awaiting_ransom_pay",[]],
-  [party_tpl|pt_bandits_awaiting_ransom, "bandits_awaiting_ransom_pay", [],
-   "Heh. You've brought the money all right.\
- You can take the girl now.\
- It was a pleasure doing business with you...", "close_window",
-   [(quest_get_slot, ":quest_target_amount", "qst_kidnapped_girl", slot_quest_target_amount),
-    (quest_get_slot, ":quest_target_party", "qst_kidnapped_girl", slot_quest_target_party),
-    (quest_get_slot, ":quest_target_center", "qst_kidnapped_girl", slot_quest_target_center),
-    (troop_remove_gold, "trp_player", ":quest_target_amount"),
-    (remove_member_from_party, "trp_kidnapped_girl", ":quest_target_party"),
-    (set_spawn_radius, 1),
-    (spawn_around_party, ":quest_target_party", "pt_kidnapped_girl"),
-    (assign, ":girl_party", reg0),
-    (party_set_ai_behavior, ":girl_party", ai_bhvr_hold),
-    (party_set_flags, ":girl_party", pf_default_behavior, 0),
-    (quest_set_slot, "qst_kidnapped_girl", slot_quest_current_state, 2),
-    (party_set_ai_behavior, ":quest_target_party", ai_bhvr_travel_to_party),
-    (party_set_ai_object, ":quest_target_party", ":quest_target_center"),
-    (party_set_flags, ":quest_target_party", pf_default_behavior, 0),
-    (add_gold_to_party, ":quest_target_amount", ":quest_target_party"),
-    (assign, "$g_leave_encounter",1),
-    ]],
-  [anyone|plyr, "bandits_awaiting_ransom_intro_1", [],
-   "No way! You release the girl first.", "bandits_awaiting_ransom_b",[]],
-  [anyone, "bandits_awaiting_ransom_b", [],
-   "You fool! Stop playing games and give us the money! ", "bandits_awaiting_ransom_b2",[]],
-  [anyone|plyr, "bandits_awaiting_ransom_b2", [(store_troop_gold, ":cur_gold"),
-                                               (quest_get_slot, ":quest_target_amount", "qst_kidnapped_girl", slot_quest_target_amount),
-                                               (ge, ":cur_gold", ":quest_target_amount")],
-   "All right. Here's your money. Let the girl go now.", "bandits_awaiting_ransom_pay",[]],
-  [anyone|plyr, "bandits_awaiting_ransom_b2", [],
-   "I had left the money in a safe place. Let me go fetch it.", "bandits_awaiting_ransom_no_money",[]],
-  [anyone, "bandits_awaiting_ransom_no_money", [],
-   "Are you testing our patience or something?  Go and bring that money here quickly.", "close_window",[(assign, "$g_leave_encounter",1)]],
-  [anyone|plyr, "bandits_awaiting_ransom_b2", [],
-   "I have no intention to pay you anything. I demand that you release the girl now!", "bandits_awaiting_ransom_fight",[]],
-  [anyone, "bandits_awaiting_ransom_fight", [],
-   "You won't be demanding anything when you're dead.", "close_window",[(encounter_attack),]],
-  [anyone|plyr,"bandits_awaiting_remeet", [],
-   "Sorry to bother you. I'll be on my way now.", "close_window",[(assign, "$g_leave_encounter",1)]],
-  [anyone|plyr,"bandits_awaiting_remeet", [],
-   "We have one more business. You'll give the money back to me.", "bandits_awaiting_remeet_2",[]],
-  [anyone,"bandits_awaiting_remeet_2", [],
-   "Oh, that business! Of course. Let us get down to it.", "close_window",[(encounter_attack)]],
-  [anyone|plyr,"merchant_quest_about_job_2", [(store_partner_quest, ":partner_quest"),
+[anyone|plyr,"merchant_quest_about_job_2", [(store_partner_quest, ":partner_quest"),
                                               (eq, ":partner_quest", "qst_kidnapped_girl"),
                                               (quest_slot_eq, "qst_kidnapped_girl", slot_quest_current_state, 3),
                                               (neg|main_party_has_troop, "trp_kidnapped_girl")],
    "Unfortunately I lost the girl on the way here...", "lost_kidnapped_girl",[]],
-  [anyone,"merchant_quest_about_job_5a", [],
+[anyone,"merchant_quest_about_job_5a", [],
    "At least you have the decency to return the money.", "close_window",[]],
-  [anyone,"merchant_quest_about_job_5b", [],
+[anyone,"merchant_quest_about_job_5b", [],
    "Do you expect me to believe that? You are going to pay that ransom fee back! Go and bring the money now!",
    "close_window",[(quest_get_slot, ":quest_target_amount", "qst_kidnapped_girl", slot_quest_target_amount),
                    (val_add, "$debt_to_merchants_guild", ":quest_target_amount"),
                    ]],
-#  Give us the money now. Quick.
-# Here, take the money. Just set the girl free.
-# Heh, It was a pleasure doing business with you.
-
-# You set the girl free first. You'll have the money afterwards.
-# Stop playing games.
-
-#persuade_lords_to_make_peace
-  [anyone,"merchant_quest_requested", [(eq, "$random_merchant_quest_no", "qst_persuade_lords_to_make_peace"),
+[anyone,"merchant_quest_requested", [(eq, "$random_merchant_quest_no", "qst_persuade_lords_to_make_peace"),
                                        (quest_get_slot, ":quest_target_faction", "qst_persuade_lords_to_make_peace", slot_quest_target_faction),
                                        (quest_get_slot, ":quest_object_troop", "qst_persuade_lords_to_make_peace", slot_quest_object_troop),
                                        (quest_get_slot, ":quest_target_troop", "qst_persuade_lords_to_make_peace", slot_quest_target_troop),
@@ -955,12 +685,12 @@ dialogs_quest_npc = [
  And as if those aren't enough, the taxes to maintain the war take away the last bits of our savings.\
  If peace does not come soon, we can not hold on for much longer.", "merchant_quest_persuade_peace_1",
    []],
-  [anyone|plyr,"merchant_quest_persuade_peace_1", [], "You are right. But who can stop this madness called war?", "merchant_quest_brief",[]],
-  [anyone|plyr,"merchant_quest_persuade_peace_1", [], "It is your duty to help the samurai in their war effort. You shouldn't complain about it.", "merchant_quest_persuade_peace_reject",[]],
-  [anyone,"merchant_quest_persuade_peace_reject", [], "Hah. The samurai fight their wars for their greed and their dreams of glory.\
+[anyone|plyr,"merchant_quest_persuade_peace_1", [], "You are right. But who can stop this madness called war?", "merchant_quest_brief",[]],
+[anyone|plyr,"merchant_quest_persuade_peace_1", [], "It is your duty to help the samurai in their war effort. You shouldn't complain about it.", "merchant_quest_persuade_peace_reject",[]],
+[anyone,"merchant_quest_persuade_peace_reject", [], "Hah. The samurai fight their wars for their greed and their dreams of glory.\
  And it is poor honest folk like us who have to bear the real burden.\
  But you obviously don't want to hear about that.", "close_window",[]],
-  [anyone,"merchant_quest_brief", [(eq,"$random_merchant_quest_no","qst_persuade_lords_to_make_peace"),
+[anyone,"merchant_quest_brief", [(eq,"$random_merchant_quest_no","qst_persuade_lords_to_make_peace"),
   ##diplomacy start+ gender correct
   (quest_get_slot, ":quest_object_troop", "qst_persuade_lords_to_make_peace", slot_quest_object_troop),
   (call_script, "script_dplmc_store_troop_is_female", ":quest_object_troop"),
@@ -979,11 +709,9 @@ dialogs_quest_npc = [
  However, there are powerful lords on both sides whose interests lie in continuing the war.\
  {reg0?They:These men} urge all others not to heed to the word of sensible men, but to keep fighting.\
  While these leaders remain influential, no peace settlement can be reached.", "merchant_quest_persuade_peace_3",[]],
-##diplomacy end+
-
-  [anyone|plyr,"merchant_quest_persuade_peace_3", [], "Who are these warmongers who block the way of peace?", "merchant_quest_persuade_peace_4",[]],
-  [anyone|plyr,"merchant_quest_persuade_peace_3", [], "Who are these lords you speak of?", "merchant_quest_persuade_peace_4",[]],
-  [anyone,"merchant_quest_persuade_peace_4", [], "They are {s12} from {s15} and {s13} from {s14}. Until they change their mind or lose their influence,\
+[anyone|plyr,"merchant_quest_persuade_peace_3", [], "Who are these warmongers who block the way of peace?", "merchant_quest_persuade_peace_4",[]],
+[anyone|plyr,"merchant_quest_persuade_peace_3", [], "Who are these lords you speak of?", "merchant_quest_persuade_peace_4",[]],
+[anyone,"merchant_quest_persuade_peace_4", [], "They are {s12} from {s15} and {s13} from {s14}. Until they change their mind or lose their influence,\
  there will be no chance of having peace between the two sides.", "merchant_quest_persuade_peace_5",[
        (quest_get_slot, ":quest_target_faction", "qst_persuade_lords_to_make_peace", slot_quest_target_faction),
        (quest_get_slot, ":quest_object_troop", "qst_persuade_lords_to_make_peace", slot_quest_object_troop),
@@ -993,17 +721,17 @@ dialogs_quest_npc = [
        (str_store_faction_name_link, s14, ":quest_target_faction"),
        (str_store_faction_name_link, s15, "$g_encountered_party_faction"),
      ]],
-  [anyone|plyr,"merchant_quest_persuade_peace_5", [], "What can be done about this?", "merchant_quest_persuade_peace_6",[]],
-  [anyone|plyr,"merchant_quest_persuade_peace_5", [], "Alas, it seems nothing can be done about it.", "merchant_quest_persuade_peace_6",[]],
-  [anyone,"merchant_quest_persuade_peace_6", [], "There is a way to resolve the issue.\
+[anyone|plyr,"merchant_quest_persuade_peace_5", [], "What can be done about this?", "merchant_quest_persuade_peace_6",[]],
+[anyone|plyr,"merchant_quest_persuade_peace_5", [], "Alas, it seems nothing can be done about it.", "merchant_quest_persuade_peace_6",[]],
+[anyone,"merchant_quest_persuade_peace_6", [], "There is a way to resolve the issue.\
  A particularly determined person can perhaps persuade one or both of these lords to accept making peace.\
  And even if that fails, it can be possible to see that these lords are defeated by force and taken prisoner.\
  If they are captive, they will lose their influence and they can no longer oppose a settlement... What do you think? Can you do it?",
    "merchant_quest_persuade_peace_7",[]],
-  [anyone|plyr,"merchant_quest_persuade_peace_7", [], "It seems difficult. But I will try.", "merchant_quest_persuade_peace_8",[]],
-  [anyone|plyr,"merchant_quest_persuade_peace_7", [], "If the price is right, I may.", "merchant_quest_persuade_peace_8",[]],
-  [anyone|plyr,"merchant_quest_persuade_peace_7", [], "Forget it. This is not my problem.", "merchant_quest_persuade_peace_8",[]],
-  [anyone,"merchant_quest_persuade_peace_8", [], "Most of the merchants in the town will gladly open up their purses to support such a plan.\
+[anyone|plyr,"merchant_quest_persuade_peace_7", [], "It seems difficult. But I will try.", "merchant_quest_persuade_peace_8",[]],
+[anyone|plyr,"merchant_quest_persuade_peace_7", [], "If the price is right, I may.", "merchant_quest_persuade_peace_8",[]],
+[anyone|plyr,"merchant_quest_persuade_peace_7", [], "Forget it. This is not my problem.", "merchant_quest_persuade_peace_8",[]],
+[anyone,"merchant_quest_persuade_peace_8", [], "Most of the merchants in the town will gladly open up their purses to support such a plan.\
  I think we can collect {reg12} mon between ourselves.\
  We will be happy to reward you with that sum, if you can work this out.\
  Convince {s12} and {s13} to accept a peace settlement,\
@@ -1015,9 +743,9 @@ dialogs_quest_npc = [
        (str_store_troop_name_link, s13, ":quest_target_troop"),
        (quest_get_slot, ":quest_reward", "qst_persuade_lords_to_make_peace", slot_quest_gold_reward),
        (assign, reg12, ":quest_reward")]],
-  [anyone|plyr,"merchant_quest_persuade_peace_9", [], "All right. I will do my best.", "merchant_quest_persuade_peace_10",[]],
-  [anyone|plyr,"merchant_quest_persuade_peace_9", [], "Sorry. I can not do this.", "merchant_quest_persuade_peace_no",[]],
-  [anyone,"merchant_quest_persuade_peace_10", [], "Excellent. You will have our blessings.\
+[anyone|plyr,"merchant_quest_persuade_peace_9", [], "All right. I will do my best.", "merchant_quest_persuade_peace_10",[]],
+[anyone|plyr,"merchant_quest_persuade_peace_9", [], "Sorry. I can not do this.", "merchant_quest_persuade_peace_no",[]],
+[anyone,"merchant_quest_persuade_peace_10", [], "Excellent. You will have our blessings.\
  I hope you can deal with those two old goats.\
  We will be waiting and hoping for the good news.", "close_window",[
      (str_store_party_name_link, s4, "$g_encountered_party"),
@@ -1040,11 +768,10 @@ dialogs_quest_npc = [
      (call_script, "script_report_quest_troop_positions", "qst_persuade_lords_to_make_peace", ":quest_object_troop", 3),
      (call_script, "script_report_quest_troop_positions", "qst_persuade_lords_to_make_peace", ":quest_target_troop", 4),
      ]],
-  [anyone,"merchant_quest_persuade_peace_no", [], "Don't say no right away. Think about this for some time.\
+[anyone,"merchant_quest_persuade_peace_no", [], "Don't say no right away. Think about this for some time.\
  If there is a {man/lady} who can manage to do this, it is you.",
    "close_window",[]],
-#deal with night bandits
-  [anyone,"merchant_quest_requested",
+[anyone,"merchant_quest_requested",
    [
      (eq, "$random_merchant_quest_no", "qst_deal_with_night_bandits"),
      ],
@@ -1055,7 +782,7 @@ dialogs_quest_npc = [
  I need someone who can take on these bandits alone and win. That seems to be the only way of bringing them to justice.\
  Are you up to the task?", "merchant_quest_deal_with_night_bandits",
    []],
-  [anyone,"merchant_quest_brief",
+[anyone,"merchant_quest_brief",
    [
      (eq,"$random_merchant_quest_no","qst_deal_with_night_bandits"),
      ],
@@ -1066,7 +793,7 @@ dialogs_quest_npc = [
  I need someone who can take on these bandits alone and win. That seems to be the only way of bringing them to justice.\
  Are you up to the task?", "merchant_quest_deal_with_night_bandits",
    []],
-  [anyone|plyr,"merchant_quest_deal_with_night_bandits", [],
+[anyone|plyr,"merchant_quest_deal_with_night_bandits", [],
    "Killing bandits? Why, certainly!",
    "deal_with_night_bandits_quest_taken",
    [
@@ -1075,15 +802,14 @@ dialogs_quest_npc = [
      (str_store_string, s2, "@The elder merchant of {s14} has asked you to deal with a group of bandits terrorising the streets of {s14}. They only come out at night, and only attack lone travellers on the streets."),
      (call_script, "script_start_quest", "qst_deal_with_night_bandits", "$g_talk_troop"),
      ]],
-  [anyone|plyr, "merchant_quest_deal_with_night_bandits", [],
+[anyone|plyr, "merchant_quest_deal_with_night_bandits", [],
    "My apologies, I'm not interested.", "merchant_quest_stall",[]],
-#move cattle herd
-  [anyone,"merchant_quest_requested", [(eq, "$random_merchant_quest_no", "qst_move_cattle_herd"),
+[anyone,"merchant_quest_requested", [(eq, "$random_merchant_quest_no", "qst_move_cattle_herd"),
                                        (quest_get_slot, ":target_center", "qst_move_cattle_herd", slot_quest_target_center),
                                        (str_store_party_name,s13,":target_center"),],
    "One of the merchants here is looking for herdsmen to take his cattle to the market at {s13}.", "merchant_quest_brief",
    []],
-  [anyone,"merchant_quest_brief",
+[anyone,"merchant_quest_brief",
    [
     (eq,"$random_merchant_quest_no","qst_move_cattle_herd"),
     (quest_get_slot, reg8, "qst_move_cattle_herd", slot_quest_gold_reward),
@@ -1094,14 +820,8 @@ dialogs_quest_npc = [
  but it must be absolutely no later than 30 days.\
  If you can do that, I'd be willing to pay you {reg8} mon for your trouble. Interested?", "move_cattle_herd_quest_brief",
    []],
-#################################################
-#################### Random merchant quests end
-
-  [anyone,"merchant_quest_requested", [], "I am afraid I can't offer you a job right now.", "mayor_pretalk",[]],
-  #gekokujo 3.0 new bandit types end
-
-
-  [anyone,"bandit_introduce", [
+[anyone,"merchant_quest_requested", [], "I am afraid I can't offer you a job right now.", "mayor_pretalk",[]],
+[anyone,"bandit_introduce", [
       (store_random_in_range, ":rand", 11, 15),
         (str_store_string, s11, "@I can smell a fat purse a mile away. Methinks yours could do with some lightening, eh?"),
         (str_store_string, s12, "@Why, it be another traveller, chance met upon the road! I should warn you, country here's a mite dangerous for a good {fellow/woman} like you. But for a small donation my boys and I'll make sure you get rightways to your destination, eh?"),
@@ -1110,8 +830,9 @@ dialogs_quest_npc = [
         (str_store_string_reg, s5, ":rand"),
 #gekokujo 3.0 no more bandit talk start
     ], "{s5}", "bandit_talk",[]],
-  [anyone|plyr,"bandit_talk", [], "There's no need to fight. I can pay for free passage.", "bandit_barter",[]],
-  [anyone,"bandit_barter",
+[anyone|plyr,"bandit_talk", [], "I'll give you nothing but cold steel, you scum!", "close_window",[[encounter_attack]]],
+[anyone|plyr,"bandit_talk", [], "There's no need to fight. I can pay for free passage.", "bandit_barter",[]],
+[anyone,"bandit_barter",
    [(store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
     (ge, ":bandit_relation", -50),
     (store_troop_gold, ":total_value", "trp_player"),
@@ -1129,23 +850,23 @@ dialogs_quest_npc = [
     (val_max, "$bandit_tribute", 10),
     (assign, reg5, "$bandit_tribute")
     ], "Silver without blood, that's our favourite kind! Hmm, having a look at you, I reckon you could easily come up with {reg5} mon. Pay it, and we'll let you be on your way.", "bandit_barter_2",[]],
-  [anyone|plyr,"bandit_barter_2", [[store_troop_gold,reg(2)],[ge,reg(2),"$bandit_tribute"],[assign,reg(5),"$bandit_tribute"]],
+[anyone|plyr,"bandit_barter_2", [[store_troop_gold,reg(2)],[ge,reg(2),"$bandit_tribute"],[assign,reg(5),"$bandit_tribute"]],
    "Very well, take it.", "bandit_barter_3a",[[troop_remove_gold, "trp_player","$bandit_tribute"]]],
-  [anyone|plyr,"bandit_barter_2", [],
+[anyone|plyr,"bandit_barter_2", [],
    "I don't have that much money with me", "bandit_barter_3b",[]],
-  [anyone,"bandit_barter_3b", [],
+[anyone,"bandit_barter_3b", [],
    "That's too bad. I guess we'll just have to sell you into slavery. Take {him/her}!", "close_window",[[encounter_attack]]],
-  [anyone,"bandit_barter", [],
+[anyone,"bandit_barter", [],
    "Hey, I've heard of you! You slaughter us freebooters like dogs, and now you expect us to let you go for a few stinking coins?\
  Forget it. You gave us no quarter, and you'll get none from us.", "close_window",[]],
-  [anyone,"bandit_barter_3a", [], "Heh, that wasn't so hard, was it? All right, we'll let you go now. Be off.", "close_window",[
+[anyone,"bandit_barter_3a", [], "Heh, that wasn't so hard, was it? All right, we'll let you go now. Be off.", "close_window",[
     (store_current_hours,":protected_until"),
     (val_add, ":protected_until", 72),
     (party_set_slot,"$g_encountered_party",slot_party_ignore_player_until,":protected_until"),
     (party_ignore_player, "$g_encountered_party", 72),
     (assign, "$g_leave_encounter",1)
     ]],
-  [anyone|plyr,"bandit_meet", [], "Your luck has run out, wretch. Prepare to die!", "bandit_attack",
+[anyone|plyr,"bandit_meet", [], "Your luck has run out, wretch. Prepare to die!", "bandit_attack",
    [(store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
     (val_sub, ":bandit_relation", 3),
     (val_max, ":bandit_relation", -100),
@@ -1153,7 +874,7 @@ dialogs_quest_npc = [
     (party_ignore_player, "$g_encountered_party", 0),
     (party_set_slot,"$g_encountered_party",slot_party_ignore_player_until, 0),
     ]],
-  [anyone,"bandit_attack", [
+[anyone,"bandit_attack", [
       (store_random_in_range, ":rand", 11, 15),
         (str_store_string, s11, "@Another fool come to throw {him/her}self on my weapon, eh? Fine, let's fight!"),
         (str_store_string, s12, "@We're not afraid of you, {sirrah/wench}. Time to bust some heads!"),
@@ -1161,8 +882,8 @@ dialogs_quest_npc = [
         (str_store_string, s14, "@Brave words. Let's see you back them up with deeds, cur!"),
         (str_store_string_reg, s5, ":rand"),
       ], "{s5}", "close_window",[]],
-  [anyone|plyr,"bandit_meet", [], "Never mind, I have no business with you.", "close_window",[(assign, "$g_leave_encounter", 1)]],
-  [anyone|plyr,"merchant_quest_4e",
+[anyone|plyr,"bandit_meet", [], "Never mind, I have no business with you.", "close_window",[(assign, "$g_leave_encounter", 1)]],
+[anyone|plyr,"merchant_quest_4e",
   [
     (try_begin),
       (eq, "$g_killed_first_bandit", 1),
@@ -1188,46 +909,49 @@ dialogs_quest_npc = [
   [
     (assign, "$dialog_with_merchant_ended", 1),
   ]],
-  [anyone|plyr,"merchant_quest_4e",
+[anyone|plyr,"merchant_quest_4e",
+  [
+  ],
+  "Heaven alone grants us victory.", "merchant_finale",
+[  (assign, "$dialog_with_merchant_ended", 1),
+  ]],
+[anyone|plyr,"merchant_quest_4e",
   [],
   "I'm glad to see that you're alive, too.", "merchant_finale",
   [
     (assign, "$dialog_with_merchant_ended", 1),
   ]],
-  [anyone,"merchant_quest_1_prologue_1",
+[anyone,"merchant_quest_1_prologue_1",
   [
   ],
   "I have tried to live my life while ignoring the samurai, even in these turbulent times. I figured that if I kept my head down, none of their plots or wars would affect me. I was wrong. They... They killed my brother.", "merchant_quest_1_prologue_2",
   []],
-  [anyone,"merchant_quest_1_prologue_2",
+[anyone,"merchant_quest_1_prologue_2",
   [],
   "Minemaru... He was a hothead for sure. Maybe he showed disrespect to a haughty lordling? I don't know what actually happened, but it doesn't matter to me whether he brought it upon himself or not. Nobody should be so exalted that they could kill a brother, son, or father just because they weren't grovelled to as they wished. This is no way for the rest of us to live.", "merchant_quest_1_prologue_3",
   []],
-  [anyone,"merchant_quest_1_prologue_3",
+[anyone,"merchant_quest_1_prologue_3",
   [],
   "My other brother, Horenbo, tried to investigate the murder, but he's disappeared since. I originally feared the worst, but I've just come across a rumor that says he's still alive, as a captive. So here's what I ask of you: gather a small party, track down who has taken him, teach them a lesson they won't forget, and get Horenbo home safe. In return, you'll earn my eternal gratitude and a large sum of money. What do you say?", "merchant_quest_1a",
   []],
-  [anyone|plyr,"merchant_quest_1a",
+[anyone|plyr,"merchant_quest_1a",
   [
   ],
   "I am interested.", "merchant_quest_1b",[]],
-  [anyone|plyr,"merchant_quest_1a",
+[anyone|plyr,"merchant_quest_1a",
   [
   ],
   "I am not interested, have more important business to do.", "close_window",
   [
     (assign, "$dialog_with_merchant_ended", 1),
   ]],
-  ##diplomacy start+ Allow skipping the tutorial.
-  [anyone|plyr,"merchant_quest_1a",
+[anyone|plyr,"merchant_quest_1a",
   [
      (ge, "$cheat_mode", 1),
   ],
   "{!}[CHEAT] I have played this before, and would prefer to skip the tutorial.", "dplmc_devel_merchant_quest_skip",
   []],
-  ##diplomacy end+
-
-  [anyone,"merchant_quest_1b",
+[anyone,"merchant_quest_1b",
   [
   ],
   "You won't be able to do this by yourself, though. If you try and take on a samurai and his retainers single-handedly, you will surely lose your head. You must round up a group of volunteers and form a band. There's always a few boys in the villages around here, looking for work that's more interesting than tilling the soil or hauling water. They'll follow you if you pay. So... Take this purse of 100 mon. Consider it an advance on your reward. Go round to the villages, and use the money to hire some help. I'll reckon that you need at least five men to take on these scoundrels.", "merchant_quest_1c",
@@ -1242,11 +966,11 @@ dialogs_quest_npc = [
 
     (party_get_position, pos1, "$current_town"),
   ]],
-  [anyone|plyr,"merchant_quest_1c",
+[anyone|plyr,"merchant_quest_1c",
   [
   ],
   "Very good, sir. I'll go collect some men from around the villages.", "merchant_quest_1d",[]],
-  [anyone,"merchant_quest_1d",
+[anyone,"merchant_quest_1d",
   [
     (str_store_party_name, s1, "$current_town"),
   ],
