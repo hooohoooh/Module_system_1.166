@@ -228,8 +228,7 @@ presentations_army_management = [
                     (str_store_troop_name, s40, "trp_player"),
                     (call_script, "script_lco_create_label", "str_lco_s40", 750, 714, 1000, tf_center_justify),
                     (str_clear, s40),
-                    (call_script, "script_lco_create_mesh", "mesh_pic_camp", -300, 138, 750, 750),
-                    (call_script, "script_lco_create_mesh", "mesh_pic_messenger", 110, 138, 750, 750),
+                    (call_script, "script_lco_create_mesh", "mesh_pic_camp", 0, 0, 1000, 1000),
 
                     # PRESENTATION AUTO-EQUIP FORM
 
