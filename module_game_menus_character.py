@@ -545,12 +545,35 @@ game_menus_character = [
 ##diplomacy end+
     [
        ("start_mod",[],"快 速 开 始",
-         [(troop_set_type,"trp_player",0),
-           (assign,"$character_gender",tf_male),
+         [
+          # debug 快速开局：跳过全部创建步骤，直接进入世界地图
+          (troop_set_type,"trp_player",0),
+          (assign,"$character_gender",tf_male),
           (troop_raise_attribute,"trp_player",ca_intelligence,-4),
-           (change_screen_return,0),
-           ]
-          ),
+          # 名字叫 A
+          (str_store_string, s1, "@A"),
+          (troop_set_name, "trp_player", s1),
+          # 属性点全部加给第一个属性（力量）
+          (troop_get_attribute_points, ":attr_pts", "trp_player"),
+          (troop_raise_attribute, "trp_player", ca_strength, ":attr_pts"),
+          (troop_set_attribute_points, "trp_player", 0),
+          # 熟练度全部加给第一个专精（单手武器）
+          (troop_get_proficiency_points, ":prof_pts", "trp_player"),
+          (troop_raise_proficiency, "trp_player", wpt_one_handed_weapon, ":prof_pts"),
+          (troop_set_proficiency_points, "trp_player", 0),
+          # 技能点全部加给第一个技能（铁骨），避免开局强制分配
+          (troop_get_skill_points, ":skill_pts", "trp_player"),
+          (troop_raise_skill, "trp_player", skl_ironflesh, ":skill_pts"),
+          (troop_set_skill_points, "trp_player", 0),
+          # 出生在第一个城市（同 start_phase_2 的 town_1 选项）
+          (assign, "$current_town", "p_town_1"),
+          (assign, "$g_starting_town", "$current_town"),
+          (call_script, "script_player_arrived"),
+          (party_set_morale, "p_main_party", 100),
+          (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
+          (change_screen_map),
+          ]
+         ),
       ("start_male",[],"Male",
        [
          (troop_set_type,"trp_player", 0),
