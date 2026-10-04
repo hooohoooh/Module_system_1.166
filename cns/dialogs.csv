@@ -3497,3 +3497,4 @@ dlga_lord_request_promotion:lord_pretalk|我 不 相 信 你 足 以 让 你 更
 dlga_lord_request_retire:lord_pretalk|很 好 , {playername}. {s11} {s12} 
 dlga_lord_request_vacation:lord_pretalk|很 好 {playername}. 你 应 该 休 息 一 段 时 间 。 两 周 后 回 来 。 
 dlga_ask_return_from_leave:lord_pretalk|欢 迎 回 来 {playername}. 你 的 战 友 都 挺 想 念 你 的 ， 现 在 回 到 你 的 岗 位 上 吧 。 
+dlga_manhunter_talk_b:close_window|不 就 在 你 面 前 吗 ！

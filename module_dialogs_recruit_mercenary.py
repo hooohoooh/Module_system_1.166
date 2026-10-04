@@ -159,6 +159,14 @@ You can get some bruises of course, but better that than being cut down in the r
 [party_tpl|pt_manhunters,"manhunter_talk_b1", [], "I knew it! Come on, boys, lets go get these bastards! Thanks a lot, friend.", "close_window",[(assign, "$g_leave_encounter",1)]],
 [party_tpl|pt_manhunters|plyr,"manhunter_talk_b", [], "No, haven't seen any bandits lately.", "manhunter_talk_b2",[]],
 [party_tpl|pt_manhunters,"manhunter_talk_b2", [], "Bah. They're holed up in this country like rats, but we'll smoke them out sooner or later.", "close_window",[(assign, "$g_leave_encounter",1)]],
+# gekokujo: hostile patrol only - player answers "right in front of you" and starts the fight
+[party_tpl|pt_manhunters|plyr,"manhunter_talk_b", [
+(store_faction_of_party, ":player_faction", "p_main_party"),
+(store_faction_of_party, ":encountered_faction", "$g_encountered_party"),
+(store_relation, ":relation", ":player_faction", ":encountered_faction"),
+(lt, ":relation", 0),
+], "Right in front of you!", "close_window",
+[[encounter_attack]]],
 [anyone|plyr, "mercenary_after_recruited", [],
    "Make your preparations. We'll be moving at dawn.", "mercenary_after_recruited_2", []],
 [anyone|plyr, "mercenary_after_recruited", [],
