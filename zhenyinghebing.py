@@ -32,7 +32,9 @@ zhenyinghebing_scripts = [
         (is_between, ":ym_2", npc_kingdoms_begin, npc_kingdoms_end),
         (is_between, ":ym_3", npc_kingdoms_begin, npc_kingdoms_end),
         (is_between, ":ym_4", npc_kingdoms_begin, npc_kingdoms_end),
-        (is_between, ":ym_5", kings_begin, lords_end),
+        # the player may lead the target faction (took over at game start)
+        (this_or_next|is_between, ":ym_5", kings_begin, lords_end),
+        (eq, ":ym_5", "trp_player"),
 
         (store_faction_of_troop, ":ym_6", ":ym_5"),
         (this_or_next|eq, ":ym_6", ":ym_1"),
@@ -55,8 +57,11 @@ zhenyinghebing_scripts = [
         (try_end),
 
         (troop_set_faction, ":ym_5", ":ym_1"),
-        (call_script, "script_troop_set_title_according_to_faction",
-            ":ym_5", ":ym_1"),
+        (try_begin),
+          (neq, ":ym_5", "trp_player"), # never rename the player with a faction title
+          (call_script, "script_troop_set_title_according_to_faction",
+              ":ym_5", ":ym_1"),
+        (try_end),
 
         (try_for_parties, ":ym_9"),
             (store_faction_of_party, ":ym_10", ":ym_9"),

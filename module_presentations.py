@@ -31,9 +31,10 @@ from module_presentations_politics_reports import presentations_politics_reports
 from module_presentations_battle import presentations_battle
 from module_presentations_army_management import presentations_army_management
 from module_presentations_core_misc import presentations_core_misc
+from module_presentations_game_start import presentations_game_start
 ##split modules end
 
-presentations = presentations_multiplayer + presentations_banner + presentations_politics_reports + presentations_battle + presentations_army_management + presentations_core_misc
+presentations = presentations_multiplayer + presentations_banner + presentations_politics_reports + presentations_battle + presentations_army_management + presentations_core_misc + presentations_game_start
 
 # modmerger_start version=201 type=2
 try:

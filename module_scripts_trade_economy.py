@@ -2297,11 +2297,11 @@ scripts_trade_economy = [
 		(ge, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),#this must be explicitly enabled
 	    (party_get_slot, ":prosperity_75", ":cur_center", slot_town_prosperity),
 		(val_add, ":prosperity_75", 75),
-		(store_mul, ":target_gold", ":prosperity_75", 1500),
+		(store_mul, ":target_gold", ":prosperity_75", 3000),
 		(val_add, ":target_gold", 62),
-		(val_div, ":target_gold", 125),#average 1500
+		(val_div, ":target_gold", 125),#average 3000
 		(lt, ":cur_gold", ":target_gold"),
-		(store_random_in_range,":new_gold",500,1000),
+		(store_random_in_range,":new_gold",1000,2000),
 		(val_mul, ":new_gold", ":prosperity_75"),
 		(val_add, ":new_gold", 62),
 		(val_div, ":new_gold", 125),
@@ -2310,8 +2310,8 @@ scripts_trade_economy = [
 		(lt, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),
 	    #fall through to default behavior
 	    ##diplomacy end+
-      (lt,":cur_gold",1500),
-      (store_random_in_range,":new_gold",500,1000),
+      (lt,":cur_gold",3000),
+      (store_random_in_range,":new_gold",1000,2000),
       (call_script, "script_troop_add_gold", ":cur_merchant", ":new_gold"),
     ##diplomacy start+
     (try_end),
@@ -2342,11 +2342,11 @@ scripts_trade_economy = [
 			(ge, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),#this must be explicitly enabled
 		    (party_get_slot, ":prosperity_75", ":cur_town", slot_town_prosperity),
 			(val_add, ":prosperity_75", 75),
-			(store_mul, ":target_gold", ":prosperity_75", 900),
+			(store_mul, ":target_gold", ":prosperity_75", 1800),
 			(val_add, ":target_gold", 62),
-			(val_div, ":target_gold", 125),#average 900
+			(val_div, ":target_gold", 125),#average 1800
 			(lt, reg(6), ":target_gold"),
-			(store_random_in_range,":new_gold",200,400),
+			(store_random_in_range,":new_gold",400,800),
 			(val_mul, ":new_gold", ":prosperity_75"),
 			(val_add, ":new_gold", 62),
 			(val_div, ":new_gold", 125),
@@ -2355,8 +2355,8 @@ scripts_trade_economy = [
 			(lt, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),
 		    #fall through to default behavior
 		    ##diplomacy end+
-	    (lt,reg6,1000),
-	    (store_random_in_range,":new_gold",250,500),
+	    (lt,reg6,2000),
+    (store_random_in_range,":new_gold",500,1000),
 	    (call_script, "script_troop_add_gold", ":cur_merchant", ":new_gold"),
 		##diplomacy start+
 		(try_end),
@@ -2401,11 +2401,11 @@ scripts_trade_economy = [
 			(ge, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),#this must be explicitly enabled
 		    (party_get_slot, ":prosperity_75", ":cur_town", slot_town_prosperity),
 			(val_add, ":prosperity_75", 75),
-			(store_mul, ":target_gold", ":prosperity_75", 900),
+			(store_mul, ":target_gold", ":prosperity_75", 1800),
 			(val_add, ":target_gold", 62),
-			(val_div, ":target_gold", 125),#average 900
+			(val_div, ":target_gold", 125),#average 1800
 			(lt, reg6, ":target_gold"),
-			(store_random_in_range,":new_gold",200,400),
+			(store_random_in_range,":new_gold",400,800),
 			(val_mul, ":new_gold", ":prosperity_75"),
 			(val_add, ":new_gold", 62),
 			(val_div, ":new_gold", 125),
@@ -2414,8 +2414,8 @@ scripts_trade_economy = [
 			(lt, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),
 		    #fall through to default behavior
 		    ##diplomacy end+
-      (lt, reg6, 1000),
-      (store_random_in_range, ":new_gold", 250, 500),
+      (lt, reg6, 2000),
+      (store_random_in_range, ":new_gold", 500, 1000),
       (call_script, "script_troop_add_gold", ":cur_merchant", ":new_gold"),
 	  ##diplomacy start+
 	  (try_end),
@@ -2442,11 +2442,11 @@ scripts_trade_economy = [
 		(ge, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),#this must be explicitly enabled
 	    (party_get_slot, ":prosperity_75", ":cur_town", slot_town_prosperity),
 		(val_add, ":prosperity_75", 75),
-		(store_mul, ":target_gold", ":prosperity_75", 600),
+		(store_mul, ":target_gold", ":prosperity_75", 1200),
 		(val_add, ":target_gold", 62),
-		(val_div, ":target_gold", 125),#average 600
+		(val_div, ":target_gold", 125),#average 1200
 		(lt, ":cur_gold", ":target_gold"),
-		(store_random_in_range,":new_gold",200,400),
+		(store_random_in_range,":new_gold",400,800),
 		(val_mul, ":new_gold", ":prosperity_75"),
 		(val_add, ":new_gold", 62),
 		(val_div, ":new_gold", 125),
@@ -2455,8 +2455,8 @@ scripts_trade_economy = [
 		(lt, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),
 	    #fall through to default behavior
 	    ##diplomacy end+
-      (lt, ":cur_gold", 600),
-      (store_random_in_range, ":new_gold", 250, 500),
+      (lt, ":cur_gold", 1200),
+      (store_random_in_range, ":new_gold", 500, 1000),
       (call_script, "script_troop_add_gold", ":cur_merchant", ":new_gold"),
     ##diplomacy start+
     (try_end),

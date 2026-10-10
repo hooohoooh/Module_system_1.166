@@ -1556,7 +1556,9 @@ Still I am sorry that I'll leave you soon. You must promise me, you'll come visi
                           (store_distance_to_party_from_party, ":distance", "p_main_party", ":quest_target_center"),
                           (lt, ":distance", 10),
                           ], "Yes {sir/madam}?", "sacrificed_messenger_1",[]],
-[anyone,"member_chat", [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),], "Your orders {s0}?", "regular_member_talk",[]],
+[anyone,"member_chat", [
+  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+  ], "Your orders {s0}?", "regular_member_talk",[]],
 [anyone,"member_direct_campaign", [], "Yes, {my lord/my lady}. Which message do you wish to send to the vassals?", "member_direct_campaign_choice",
   []],
 [anyone|plyr,"member_direct_campaign_choice",

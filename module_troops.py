@@ -298,7 +298,7 @@ tf_guarantee_all_wo_ranged = tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_
 troops = [
   ["player","Player","Player",tf_hero|tf_unmoveable_in_party_window,no_scene,reserved,fac_player_faction,
    [itm_tushifu,itm_fanshizhenli_tongyong,itm_gekokujo_katana_1],
-   str_8|agi_8|int_8|cha_8,wp(30),0,
+   str_8|agi_8|int_8|cha_8,wp(0),0,
    0x000000018000700a36db6db6db6db6db00000000001db6db0000000000000000],
   ["multiplayer_profile_troop_male","multiplayer_profile_troop_male","multiplayer_profile_troop_male", tf_hero|tf_guarantee_all, 0, 0,fac_commoners,
    [itm_gekokujo_hakama_1, itm_gekokujo_sandal_1],
@@ -1406,11 +1406,11 @@ troops = [
    0x00000001f600641558a98a252289265200000000001ebb2a0000000000000000],
   
   ["npc5", "Meiling", "Meiling", tf_hero|tf_female|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners, 
-   [itm_gekokujo_tanto_2, itm_gekokujo_kimono_3_1, itm_gekokujo_sandal_2], 
-   str_16|agi_6|int_7|cha_8|level(5), 
-   wp_one_handed(180)|wp_throwing(140)|wp(40), 
+   [itm_sabingdui, itm_gekokujo_bullets_1, itm_katana_samurai21, itm_french_t, itm_baihudui3,itm_br_cavalry_gloves_short, itm_mufujunguankuzi], 
+   str_16|agi_16|int_17|cha_18|level(5), 
+   wp_one_handed(180)|wp_throwing(140)|wp(240), 
    knows_warrior_npc|knows_power_strike_5|knows_weapon_master_3|knows_spotting_3|knows_athletics_2|knows_ironflesh_2|knows_tracking_3, 
-   0x000000004600600938dcb2a7246db95d00000000001dc92b0000000000000000],
+   0x000000000308801c7b0bda5d1cb143da00000000000000000000000000000000],
   
   ["npc6", "Tojiko", "Tojiko", tf_hero|tf_female|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners, 
    [itm_gekokujo_tanto_1, itm_mfxj, itm_gekokujo_sandal_2, itm_gekokujo_bullets_1, itm_spencer_carb], 

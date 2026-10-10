@@ -13,7 +13,7 @@ from module_factions import dplmc_factions_end
 from module_constants import *
 
 simple_triggers_core_daily = [
-# This trigger is deprecated. Use "script_game_event_party_encounter" in module_scripts.py instead  
+# This trigger is deprecated. Use "script_game_event_party_encounter" in module_scripts.py instead
   (ti_on_party_encounter,
    [
     ]),

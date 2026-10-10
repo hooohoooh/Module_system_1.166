@@ -83,8 +83,8 @@ for _bucket_name, _bucket in _MENU_BUCKETS:
         _MENU_INDEX[_menu[0]] = _menu
 
 _MENU_ORDER = [
-    "start_game_0", "start_phase_2", "start_game_3", "tutorial", "reports", "custom_battle_scene", "custom_battle_end", "start_game_1",
-    "start_character_1", "start_character_2", "start_character_3", "start_character_4", "choose_skill", "past_life_explanation", "auto_return", "morale_report",
+    "start_game_0", "start_phase_2", "start_game_3", "tutorial", "reports", "custom_battle_scene", "custom_battle_end",
+    "choose_skill", "past_life_explanation", "auto_return", "morale_report",
     "courtship_relations", "lord_relations", "companion_report", "faction_orders", "character_report", "party_size_report", "faction_relations_report", "camp",
     "camp_cheat", "camp_gekokujo", "cheat_gekokujo", "gekokujo_companions", "cheat_enter_scene", "cheat_enter_scene_p2", "cheat_enter_scene_p3", "gekokujo_bio",
     "cheat_find_item", "cheat_change_weather", "camp_action", "camp_recruit_prisoners", "camp_no_prisoners", "camp_action_read_book", "camp_action_read_book_start", "retirement_verify",
@@ -117,9 +117,10 @@ _MENU_ORDER = [
     "dplmc_notification_nonaggression_declared", "dplmc_question_alliance_offer", "dplmc_question_defensive_offer", "dplmc_question_trade_offer", "dplmc_question_nonaggression_offer", "dplmc_notification_alliance_expired", "dplmc_notification_defensive_expired", "dplmc_notification_trade_expired",
     "dplmc_dictate_terms", "dplmc_deny_terms", "dplmc_village_riot_result", "dplmc_village_riot_removed", "dplmc_town_riot_removed", "dplmc_riot_negotiate", "dplmc_notification_riot", "dplmc_notification_appoint_chamberlain",
     "dplmc_chamberlain_confirm", "dplmc_notification_appoint_constable", "dplmc_constable_confirm", "dplmc_notification_appoint_chancellor", "dplmc_chancellor_confirm", "dplmc_deserters", "dplmc_negotiate_besieger", "dplmc_messenger",
-    "dplmc_scout", "dplmc_domestic_policy", "dplmc_affiliate_end", "dplmc_preferences", "dplmc_affiliated_family_report", "dplmc_start_select_prejudice", "dplmc_economic_report", "zhaobing",
+    "dplmc_scout", "dplmc_domestic_policy", "dplmc_affiliate_end", "dplmc_preferences", "dplmc_affiliated_family_report", "dplmc_economic_report", "zhaobing",
     "zhaobing2", "zhaobing3", "zhaobing4", "xinzhengfuchengli", "niaoyufujianzhizhan", "dk_invasion_start_warning", "set_invasion", "notification_give_vassal_gift",
     "lco_presentation", "lco_view_character", "lco_auto_return", "upgrade_template", "troops_overview",
+    "start_game_1", "start_character_1", "start_character_2", "start_character_3", "start_character_4",
 ]
 
 game_menus = [_MENU_INDEX[_menu_id] for _menu_id in _MENU_ORDER]

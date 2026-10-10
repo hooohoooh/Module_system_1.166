@@ -1809,7 +1809,11 @@ simple_triggers_politics_ai = [
         (call_script, "script_add_notification_menu", "mnu_notification_one_faction_left", ":cur_kingdom", 0),
         (try_begin),
           (eq, ":cur_kingdom", "fac_kingdom_28"),
-          (faction_set_slot, "fac_kingdom_28", slot_faction_leader, "trp_kingdom_28_lord2"),
+          (faction_get_slot, ":k28_leader", "fac_kingdom_28", slot_faction_leader),
+          (try_begin),
+            (neq, ":k28_leader", "trp_player"), # never dethrone the player at endgame
+            (faction_set_slot, "fac_kingdom_28", slot_faction_leader, "trp_kingdom_28_lord2"),
+          (try_end),
           (call_script, "script_add_notification_menu", "mnu_xinzhengfuchengli", ":cur_kingdom", 0),
         (try_end),
       (try_end),

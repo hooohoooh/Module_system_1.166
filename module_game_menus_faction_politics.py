@@ -3831,33 +3831,7 @@ game_menus_faction_politics = [
         ]),
      ]
   ),
-  ("dplmc_start_select_prejudice",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "In the society of Sengoku Japan depicted in the game, war and politics were usually dominated by male members of the samurai class.  Beacause of this, a female character can face initial prejudice, and some opportunities open to men will not be available (although a woman will also have some opportunities a man will not).  Some players might find distasteful, so if you want you can ignore that aspect of society in medieval Japan.^^You can later change your mind through the options in the Camp menu.",
-    "none",
-    [],
-    [
-      ("dplmc_start_prejudice_yes",[],"I do not mind encountering sexism.",
-       [
-         (assign, "$g_disable_condescending_comments", 0),#Default value
-         (jump_to_menu,"mnu_start_character_1"),
-        ]
-       ),
-      ("dplmc_start_prejudice_no",[],"I would prefer not to encounter as much sexism.",
-       [
-         (assign, "$g_disable_condescending_comments", 2),#Any value 2 or higher shuts off sexist setting elements
-         (jump_to_menu, "mnu_start_character_1"),
-       ]
-       ),
-	  ("go_back",[],"Go back",
-       [
-	     (jump_to_menu,"mnu_start_game_1"),
-       ]),
-    ]
-  ),
-	 
-## Tocan Invasion- ##
-## Tocan+ ##   
-   ("notification_give_vassal_gift",0, #Jinnai 
+("notification_give_vassal_gift",0, #Jinnai 
     "{s4} is recognizing your loyal service as a vassal by rewarding you with a {s1}.",
     "none",
     [
