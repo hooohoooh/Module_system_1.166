@@ -17,23 +17,6 @@ from header_skills import *
 from module_mission_templates import af_castle_lord, bodyguard_triggers, caba_order_triggers, common_arena_fight_tab_press, common_battle_check_friendly_kills, common_battle_check_victory_condition, common_battle_init_banner, common_battle_inventory, common_battle_mission_start, common_battle_order_panel, common_battle_order_panel_tick, common_battle_tab_press, common_battle_victory_display, common_custom_battle_question_answered, common_custom_battle_tab_press, common_custom_siege_init, common_fade, common_gekokujo_sabakato_switch_check, common_gekokujo_siege_gate, common_gekokujo_siege_init, common_inventory_not_available, common_music_situation_update, common_siege_ai_trigger_init, common_siege_ai_trigger_init_2, common_siege_ai_trigger_init_after_2_secs, common_siege_assign_men_to_belfry, common_siege_attacker_do_not_stall, common_siege_attacker_reinforcement_check, common_siege_check_defeat_condition, common_siege_defender_reinforcement_archer_reposition, common_siege_defender_reinforcement_check, common_siege_init, common_siege_init_ai_and_belfry, common_siege_move_belfry, common_siege_question_answered, common_siege_refill_ammo, common_siege_rotate_belfry, custom_battle_check_defeat_condition, custom_battle_check_victory_condition, dplmc_battle_mode_triggers, multiplayer_battle_window_opened, multiplayer_once_at_the_first_frame, multiplayer_server_check_belfry_movement, multiplayer_server_check_end_map, multiplayer_server_check_polls, multiplayer_server_manage_bots, multiplayer_server_spawn_bots, pilgrim_disguise, prebattle_orders_triggers, tournament_triggers, trigger_cannon
 
 mission_templates_field_battle = [
-# This template is used in party encounters and such.
-# 
-  (
-    "conversation_encounter",0,-1,
-    "Conversation_encounter",
-    [( 0,mtef_visitor_source,af_override_fullhelm,0,1,[]),( 1,mtef_visitor_source,af_override_fullhelm,0,1,[]),
-     ( 2,mtef_visitor_source,af_override_fullhelm,0,1,[]),( 3,mtef_visitor_source,af_override_fullhelm,0,1,[]),( 4,mtef_visitor_source,af_override_fullhelm,0,1,[]),( 5,mtef_visitor_source,af_override_fullhelm,0,1,[]),( 6,mtef_visitor_source,af_override_fullhelm,0,1,[]),
-     ( 7,mtef_visitor_source,af_override_fullhelm,0,1,[]),( 8,mtef_visitor_source,af_override_fullhelm,0,1,[]),( 9,mtef_visitor_source,af_override_fullhelm,0,1,[]),(10,mtef_visitor_source,af_override_fullhelm,0,1,[]),(11,mtef_visitor_source,af_override_fullhelm,0,1,[]),
-    #prisoners now...
-     (12,mtef_visitor_source,af_override_fullhelm,0,1,[]),(13,mtef_visitor_source,af_override_fullhelm,0,1,[]),(14,mtef_visitor_source,af_override_fullhelm,0,1,[]),(15,mtef_visitor_source,af_override_fullhelm,0,1,[]),(16,mtef_visitor_source,af_override_fullhelm,0,1,[]),
-    #Other party
-     (17,mtef_visitor_source,af_override_fullhelm,0,1,[]),(18,mtef_visitor_source,af_override_fullhelm,0,1,[]),(19,mtef_visitor_source,af_override_fullhelm,0,1,[]),(20,mtef_visitor_source,af_override_fullhelm,0,1,[]),(21,mtef_visitor_source,af_override_fullhelm,0,1,[]),
-     (22,mtef_visitor_source,af_override_fullhelm,0,1,[]),(23,mtef_visitor_source,af_override_fullhelm,0,1,[]),(24,mtef_visitor_source,af_override_fullhelm,0,1,[]),(25,mtef_visitor_source,af_override_fullhelm,0,1,[]),(26,mtef_visitor_source,af_override_fullhelm,0,1,[]),
-     (27,mtef_visitor_source,af_override_fullhelm,0,1,[]),(28,mtef_visitor_source,af_override_fullhelm,0,1,[]),(29,mtef_visitor_source,af_override_fullhelm,0,1,[]),(30,mtef_visitor_source,af_override_fullhelm,0,1,[]),(31,mtef_visitor_source,af_override_fullhelm,0,1,[]),
-     ],
-    [],
-  ),
   
   #gekokujo 3.1 encounters framework start
   #this is pretty much a copy of mt_back_alley_revolt, with different entry points and bodyguards

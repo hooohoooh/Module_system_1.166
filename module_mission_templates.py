@@ -4589,6 +4589,8 @@ from module_mission_templates_multiplayer import mission_templates_multiplayer
 from module_mission_templates_core_misc import mission_templates_core_misc
 ##split modules end
 
+# NOTE: engine hardcodes mission template indices 0 (town_default) and 1 (conversation_encounter);
+# town_village must stay the first bucket and conversation_encounter must remain the 2nd template overall.
 mission_templates = mission_templates_town_village + mission_templates_siege + mission_templates_field_battle + mission_templates_arena_training + mission_templates_tutorial + mission_templates_multiplayer + mission_templates_core_misc
 
 # modmerger_start version=201 type=4
